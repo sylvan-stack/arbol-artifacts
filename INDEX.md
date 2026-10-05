@@ -1,5 +1,11 @@
 # Arbol: Catalog
 
+## Reference
+
+- [`GLOSSARY.md`](GLOSSARY.md): the canonical terms, one per heading. Copied from the legacy corpus on 2026-10-05. Entries that describe the legacy architecture are history.
+
+## Chapters
+
 No chapters yet.
 
 ## Conventions
