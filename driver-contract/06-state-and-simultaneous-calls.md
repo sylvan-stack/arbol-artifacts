@@ -145,12 +145,12 @@ The digest is the SHA-256, in hexadecimal, of the JSON text of a list with one e
 | DRV-6.1 | keep its files in the layout above, under the state directory alone, readable by the owner only, and treat a missing file or folder as empty | New | Claude: `base.info`, `state.lock` (base layout and privacy); contract pending C38; Codex pending |
 | DRV-6.2 | write every file whole, by writing a temporary file in the same folder and renaming it | New | Claude: `state.atomic-write`; Codex pending |
 | DRV-6.3 | write the data format number when it creates the state directory, and do nothing but fail with `state_newer` when it finds a higher number than it knows | New | Claude: `base.state-newer`; contract pending C38; Codex pending |
-| DRV-6.4 | hold a Subscription's lock only while it rewrites that Subscription's record, never across a request to the vendor, a run of the vendor tool or a sign-in | New | Claude: `subscriptions.create`, `subscriptions.update`, `subscriptions.independent` (local rewrites); vendor operations pending; Codex pending |
+| DRV-6.4 | hold a Subscription's lock only while it rewrites that Subscription's record, never across a request to the vendor, a run of the vendor tool or a sign-in | New | Claude: `subscriptions.create`, `subscriptions.update`, `subscriptions.independent`, `C2`, `C5`, `subscriptions.late-check` (vendor calls outside locks); run operations and Codex pending |
 | DRV-6.5 | wait for a taken lock in steps of 50 milliseconds, take over a lock whose owner is dead, and fail with `internal` after 10 seconds | New | Claude: `state.lock` (contention, dead owner, timeout, dead reaper); contract pending C38; Codex pending |
 | DRV-6.6 | name the owner of every lock and of every record of something in progress by process identifier and start time, and count an owner as alive only when both match | New | Claude: `state.owner`, `state.lock`; Codex pending |
 | DRV-6.7 | keep `runs/<run id>.json` from the start of a run to its final event, created so that a second run with the same identifier fails | New | contract |
 | DRV-6.8 | stop a run of another call by sending its owner the termination signal and waiting until its record is gone, for at most 20 seconds | New | contract |
-| DRV-6.9 | end a pending sign-in of another call in the same way before starting its own, and end a replaced sign-in with a `failed` step whose error is `in_use` | New | contract |
+| DRV-6.9 | end a pending sign-in of another call in the same way before starting its own, and end a replaced sign-in with a `failed` step whose error is `in_use` | New | Claude: `C2`, `C6`; Codex pending |
 | DRV-6.10 | clear the leftovers of a killed call, as the table above says, before a `run`, `runs list`, `runs stop` or a change to a Subscription does its own work, ending a vendor tool that outlived its Driver | New | contract |
 | DRV-6.11 | keep one entry of the map per chat session and Subscription, in a file named after the SHA-256 of the chat session identifier, holding the fields above and no message | New | contract |
 | DRV-6.12 | continue a saved conversation only when every check of the table above holds, and otherwise build a new one and give the first reason that failed, in the order of the table | New | contract |
@@ -172,6 +172,9 @@ interface LockFile { owner: Owner }                      // subscriptions/<id>/l
 interface SignInRecord {                                 // subscriptions/<id>/sign-in.json
   owner: Owner;
   expiresAt: string;
+  operation?: "sign_in" | "sign_out" | "remove"; // absent means sign_in; other operations reserve credential changes without a long-held lock
+  stopReason?: "replaced" | "signed_out";  // set under the Subscription lock before signalling
+  tool?: Owner;                         // allows a later call to end an orphaned login child
 }
 
 interface RunRecord {                                    // runs/<run id>.json
@@ -224,6 +227,7 @@ arbol:product-spec/12-lessons-and-invariants.md#6. Many resident services with s
 
 | ID | Question | Proposed default | Outcome |
 |---|---|---|---|
+| DRV-D38 | How are sign-in replacement and late vendor answers coordinated? | Reserve sign-in.json under the Subscription lock for sign-in, sign-out or removal; only a sign-in reservation presents the state signing_in; set stopReason before signalling its owner, then wait outside the lock. The owner checks this reason before storing a result. Record the login child owner for cleanup after a killed command; attempt files live in tmp/sign-in-<subscription id>. A status or usage answer updates only the record revision it checked, so a late answer cannot restore a signed-out account. Removing an initial family Subscription clears its stored data and leaves its implicit signed-out record available | Decided 6 October 2026 during SYL-78, a technical choice |
 | DRV-D36 | How are base state errors and process identities read? | A malformed `format` or progress record fails with `internal`, without its contents in the error. On macOS and Linux, process start times come from `/bin/ps` with a clean environment and the C locale. A lock is published by linking a complete temporary owner record into place, failing if `lock` exists, so no reader sees a half-written owner | Decided 6 October 2026 during SYL-75, a technical choice |
 | DRV-D28 | How does a Driver notice that the last answer of a chat was replaced, when no message of the user changed? | The caller stores, with each answer and tool call, the identifier of the run that produced it, and hands it back in the history. The Driver compares the last one with the run its saved conversation ends in. Without it a chat that had its last answer made again on the other Driver would be continued with the old answer | Withdrawn 6 October 2026. The owner had understood the fingerprint to cover the whole conversation, so the text of the replies became part of it (DRV-D10), and no run identifier is needed (SYL-72) |
 | DRV-D29 | How do calls that run at the same moment keep out of each other's way? | A lock file per Subscription, created so that a second creation fails, held only while one record is rewritten. Whatever lasts is a record naming its owner, never a lock. File locks of the operating system are not used: Node.js offers none without an add-on | Decided 6 October 2026, a technical choice made in drafting on the owner's go-ahead |

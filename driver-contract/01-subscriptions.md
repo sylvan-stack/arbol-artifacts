@@ -143,31 +143,31 @@ arbol:product-spec/05-intelligence-providers.md#Thinking level
 
 | ID | A Driver must… | Origin | Verified by |
 |---|---|---|---|
-| DRV-1.1 | have one Subscription per vendor family from the start, named after the family, with one of them as its default; let further ones be created, relabelled and removed through its commands | Changed | Claude: `subscriptions.local`, `subscriptions.create`, `C1` (families, create, list and relabel); removal and default run pending; Codex pending |
-| DRV-1.2 | give every Subscription its own credential and its own vendor-tool home, so that two Subscriptions of one family never share login state, configuration or transcripts | Changed | Claude: `subscriptions.environment`, `subscriptions.create` (private homes); child wiring and live pending; Codex pending |
-| DRV-1.3 | never return, log or emit a credential value. No operation exports one | Kept | unit, contract |
-| DRV-1.4 | check a key when it reads it at sign-in and reject anything but printable ASCII without spaces, naming up to three offending characters | Kept | unit |
-| DRV-1.5 | keep one pending sign-in per Subscription; a new one replaces it; an unfinished one ends after five minutes and leaves the Subscription `signed_out` | Kept | contract |
-| DRV-1.6 | tell the caller which hosts a sign-in page may visit, so the caller's window can refuse all others | Kept | contract |
-| DRV-1.7 | move a Subscription to `needs_attention`, with the reason and the remedy, as soon as the vendor rejects its credential in any operation or run | Changed | contract |
-| DRV-1.8 | never hold a copy of a credential that the vendor tool renews by itself | Changed | contract |
-| DRV-1.10 | serialise sign-in, sign-out and removal of one Subscription across processes | Kept | contract |
-| DRV-1.11 | refuse a run and a request for the model catalog for a Subscription that is not `signed_in`, with the error `not_signed_in`, before any vendor tool is started. `check` works in every state but `signed_out`, and `usage` answers a Subscription that is not signed in with the outcome `needs_sign_in` | Changed | Claude: `subscriptions.refused`, `C40` (unsigned models, check and usage); runs and attention-state checks pending; Codex pending |
-| DRV-1.12 | on sign-out remove the credential, the account details and the stored usage report. Sign-out and removal are refused while a run uses the Subscription, unless forced, in which case the runs are cancelled first | Changed | contract |
-| DRV-1.13 | on removal delete the Subscription's home and Keychain item | New | contract |
-| DRV-1.14 | answer `list` from stored state without contacting a vendor, and contact a vendor only in `check`, `usage`, `models` and sign-in | New | Claude: `subscriptions.local`, `C1` (list contacts no vendor); authenticated operations pending; Codex pending |
-| DRV-1.15 | apply a partial update by changing only the fields given | Changed | Claude: `subscriptions.update`, `C1` (label update and omitted fields); Codex pending |
-| DRV-1.16 | fetch usage only when asked; never poll | Kept | contract |
-| DRV-1.17 | report usage with one of the four outcomes; an unknown value is absent, never zero | Kept | unit, contract |
-| DRV-1.18 | store the last `ok` usage report with the Subscription and return it with the record | Kept | contract |
-| DRV-1.19 | take a model catalog only from the Subscription's own vendor family and mark a built-in fallback as such | Kept | unit, contract |
-| DRV-1.20 | fetch a model catalog without spending inference quota | Changed | probe |
-| DRV-1.21 | report per model the effort levels the vendor tool accepts, in the vendor's own words, where the tool exposes them | Changed | probe |
-| DRV-1.22 | take account name, e-mail, organisation and plan only from the vendor and clear them at sign-out | Kept | contract |
-| DRV-1.23 | print the new record as the result of every command that changes a Subscription | New | Claude: `C1` (create and update return the record); sign-in, sign-out and check pending; Codex pending |
-| DRV-1.24 | treat a Subscription recorded as `signing_in` whose `sign-in` command no longer runs as `signed_out` | New | Claude: `subscriptions.progress` (reading live, dead and reused owners); command cancellation pending; Codex pending |
-| DRV-1.25 | carry a sign-in attempt in one `sign-in` command: steps as lines on standard output, the code of an `enter_code` step as a line on standard input, and the attempt cancelled when the command is ended | New | contract |
-| DRV-1.26 | read a key only from the source its settings file names for the Subscription. For the Keychain, which is the default: name the Subscription's item in the `store_secret` step, go on by itself once the item is filled, and remove from it a key that fails the check of DRV-1.4 or that the vendor rejects at sign-in. For a command: run it whenever the key is needed, keep what it prints nowhere, and fail the sign-in on a key that is refused | Changed | contract |
+| DRV-1.1 | have one Subscription per vendor family from the start, named after the family, with one of them as its default; let further ones be created, relabelled and removed through its commands | Changed | Claude: `subscriptions.local`, `subscriptions.create`, `C1`; default inference pending SYL-80; Codex pending |
+| DRV-1.2 | give every Subscription its own credential and its own vendor-tool home, so that two Subscriptions of one family never share login state, configuration or transcripts | Changed | Claude: `subscriptions.environment`, `C39`, `probe.subscriptions`, `live.subscriptions`; run children pending SYL-80; Codex pending |
+| DRV-1.3 | never return, log or emit a credential value. No operation exports one | Kept | Claude: `C7`, `subscriptions.import`, `subscriptions.secret-source` (subscription operations); run output pending SYL-80; Codex pending |
+| DRV-1.4 | check a key when it reads it at sign-in and reject anything but printable ASCII without spaces, naming up to three offending characters | Kept | Claude: `subscriptions.key-validation`, `subscriptions.keychain`, `C3`; Codex pending |
+| DRV-1.5 | keep one pending sign-in per Subscription; a new one replaces it; an unfinished one ends after five minutes and leaves the Subscription `signed_out` | Kept | Claude: `C2`; Codex pending |
+| DRV-1.6 | tell the caller which hosts a sign-in page may visit, so the caller's window can refuse all others | Kept | Claude: `C2`, `probe.subscriptions`; Codex pending |
+| DRV-1.7 | move a Subscription to `needs_attention`, with the reason and the remedy, as soon as the vendor rejects its credential in any operation or run | Changed | Claude: `C4` (checks), `C41` (usage); run rejection pending SYL-80; Codex pending |
+| DRV-1.8 | never hold a copy of a credential that the vendor tool renews by itself | Changed | Claude: `C7`, `probe.subscriptions`, `live.subscriptions`; Codex pending |
+| DRV-1.10 | serialise sign-in, sign-out and removal of one Subscription across processes | Kept | Claude: `C2`, `C5`, `subscriptions.late-check`, `state.lock`; Codex pending |
+| DRV-1.11 | refuse a run and a request for the model catalog for a Subscription that is not `signed_in`, with the error `not_signed_in`, before any vendor tool is started. `check` works in every state but `signed_out`, and `usage` answers a Subscription that is not signed in with the outcome `needs_sign_in` | Changed | Claude: `subscriptions.refused`, `C40`, `C4` (attention-state recovery); run refusals pending SYL-80; Codex pending |
+| DRV-1.12 | on sign-out remove the credential, the account details and the stored usage report. Sign-out and removal are refused while a run uses the Subscription, unless forced, in which case the runs are cancelled first | Changed | Claude: `C5` (run records), `C41` (account clearing), `C2` (Keychain deletion); real run cancellation pending SYL-80; Codex pending |
+| DRV-1.13 | on removal delete the Subscription's home and Keychain item | New | Claude: `C1`, `C5`, `subscriptions.import` (Keychain and home removal); Codex pending |
+| DRV-1.14 | answer `list` from stored state without contacting a vendor, and contact a vendor only in `check`, `usage`, `models` and sign-in | New | Claude: `C1`, `C2`, `C4`, `C41`, `probe.subscriptions`; Codex pending |
+| DRV-1.15 | apply a partial update by changing only the fields given | Changed | Claude: `subscriptions.update`, `C1`; Codex pending |
+| DRV-1.16 | fetch usage only when asked; never poll | Kept | Claude: `C41`; Codex pending |
+| DRV-1.17 | report usage with one of the four outcomes; an unknown value is absent, never zero | Kept | Claude: `subscriptions.quota`, `C41`; Codex pending |
+| DRV-1.18 | store the last `ok` usage report with the Subscription and return it with the record | Kept | Claude: `subscriptions.update`, `C41`; run-derived Anthropic reports pending SYL-80; Codex pending |
+| DRV-1.19 | take a model catalog only from the Subscription's own vendor family and mark a built-in fallback as such | Kept | Claude: `C41`; Codex pending |
+| DRV-1.20 | fetch a model catalog without spending inference quota | Changed | Claude: `probe.subscriptions`, `live.subscriptions`, `C41` (gateway GET without inference); Codex pending |
+| DRV-1.21 | report per model the effort levels the vendor tool accepts, in the vendor's own words, where the tool exposes them | Changed | Claude: `probe.subscriptions`, `live.subscriptions`; Codex pending |
+| DRV-1.22 | take account name, e-mail, organisation and plan only from the vendor and clear them at sign-out | Kept | Claude: `C41`, `live.subscriptions`; Codex pending |
+| DRV-1.23 | print the new record as the result of every command that changes a Subscription | New | Claude: `C1`, `C2`, `C4`, `C41`; Codex pending |
+| DRV-1.24 | treat a Subscription recorded as `signing_in` whose `sign-in` command no longer runs as `signed_out` | New | Claude: `subscriptions.progress`, `C6`; Codex pending |
+| DRV-1.25 | carry a sign-in attempt in one `sign-in` command: steps as lines on standard output, the code of an `enter_code` step as a line on standard input, and the attempt cancelled when the command is ended | New | Claude: `C2`, `C6`, `subscriptions.source-timeout`; Codex pending |
+| DRV-1.26 | read a key only from the source its settings file names for the Subscription. For the Keychain, which is the default: name the Subscription's item in the `store_secret` step, go on by itself once the item is filled, and remove from it a key that fails the check of DRV-1.4 or that the vendor rejects at sign-in. For a command: run it whenever the key is needed, keep what it prints nowhere, and fail the sign-in on a key that is refused | Changed | Claude: `C2`, `C3`, `subscriptions.secret-source`, `subscriptions.source-timeout`; Codex pending |
 
 DRV-1.9 had a Driver renew a credential. It was withdrawn on 6 October 2026: the vendor tools renew their own logins and a key is never renewed, so no family has a credential a Driver could renew. Its number is not used again.
 
