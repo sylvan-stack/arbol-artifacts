@@ -41,7 +41,7 @@ Nothing else is kept. A folder or file that is missing is created when it is fir
 
 ### Writing a file
 
-A file is always written whole: the Driver writes the new content to a temporary file in the same folder and renames it over the old one. A reader therefore sees the old content or the new, never a part. Every file is JSON in UTF-8, except `format`.
+A durable state file is always written whole: the Driver writes the new content to a temporary file in the same folder and renames it over the old one. A reader therefore sees the old content or the new, never a part. Durable state files are JSON in UTF-8, except `format`. Scratch files under `tmp` may be scripts or process ledgers in text form.
 
 ### The data format number
 
@@ -142,16 +142,16 @@ The digest is the SHA-256, in hexadecimal, of the JSON text of a list with one e
 
 | ID | A Driver must… | Origin | Verified by |
 |---|---|---|---|
-| DRV-6.1 | keep its files in the layout above, under the state directory alone, readable by the owner only, and treat a missing file or folder as empty | New | Claude: `base.info`, `state.lock` (base layout and privacy); contract pending C38; Codex pending |
-| DRV-6.2 | write every file whole, by writing a temporary file in the same folder and renaming it | New | Claude: `state.atomic-write`; Codex pending |
-| DRV-6.3 | write the data format number when it creates the state directory, and do nothing but fail with `state_newer` when it finds a higher number than it knows | New | Claude: `base.state-newer`; contract pending C38; Codex pending |
+| DRV-6.1 | keep its files in the layout above, under the state directory alone, readable by the owner only, and treat a missing file or folder as empty | New | Claude: `base.info`, `state.lock`, `stop.shell-ledger`, `C38`; Codex pending |
+| DRV-6.2 | write every durable state file whole, by writing a temporary file in the same folder and renaming it | New | Claude: `state.atomic-write`; Codex pending |
+| DRV-6.3 | write the data format number when it creates the state directory, and do nothing but fail with `state_newer` when it finds a higher number than it knows | New | Claude: `base.state-newer`, `C38`; Codex pending |
 | DRV-6.4 | hold a Subscription's lock only while it rewrites that Subscription's record, never across a request to the vendor, a run of the vendor tool or a sign-in | New | Claude: `subscriptions.create`, `subscriptions.update`, `subscriptions.independent`, `C2`, `C5`, `subscriptions.late-check` (vendor calls outside locks); run operations and Codex pending |
-| DRV-6.5 | wait for a taken lock in steps of 50 milliseconds, take over a lock whose owner is dead, and fail with `internal` after 10 seconds | New | Claude: `state.lock` (contention, dead owner, timeout, dead reaper); contract pending C38; Codex pending |
+| DRV-6.5 | wait for a taken lock in steps of 50 milliseconds, take over a lock whose owner is dead, and fail with `internal` after 10 seconds | New | Claude: `state.lock` (contention, dead owner, timeout, dead reaper), `C38` (concurrent changes); Codex pending |
 | DRV-6.6 | name the owner of every lock and of every record of something in progress by process identifier and start time, and count an owner as alive only when both match | New | Claude: `state.owner`, `state.lock`; Codex pending |
 | DRV-6.7 | keep `runs/<run id>.json` from the start of a run to its final event, created so that a second run with the same identifier fails | New | Claude: `C33`, `C40`; Codex pending |
-| DRV-6.8 | stop a run of another call by sending its owner the termination signal and waiting until its record is gone, for at most 20 seconds | New | contract |
+| DRV-6.8 | stop a run of another call by sending its owner the termination signal and waiting until its record is gone, for at most 20 seconds | New | Claude: `C33`, `C16`; Codex pending |
 | DRV-6.9 | end a pending sign-in of another call in the same way before starting its own, and end a replaced sign-in with a `failed` step whose error is `in_use` | New | Claude: `C2`, `C6`; Codex pending |
-| DRV-6.10 | clear the leftovers of a killed call, as the table above says, before a `run`, `runs list`, `runs stop` or a change to a Subscription does its own work, ending a vendor tool that outlived its Driver | New | contract |
+| DRV-6.10 | clear the leftovers of a killed call, as the table above says, before a `run`, `runs list`, `runs stop` or a change to a Subscription does its own work, ending a vendor tool that outlived its Driver | New | Claude: `C38`, `C6`, `state.lock`, `stop.recovery`, `stop.unfinished-writes`, `live.stopping`; Codex pending |
 | DRV-6.11 | keep one entry of the map per chat session and Subscription, in a file named after the SHA-256 of the chat session identifier, holding the fields above and no message | New | Claude: `C14`, `continuity.map`; Codex pending |
 | DRV-6.12 | continue a saved conversation only when every check of the table above holds, and otherwise build a new one and give the first reason that failed, in the order of the table | New | Claude: `C14`; Codex pending |
 | DRV-6.13 | compute the digest of the messages and the system prompt digest as stated above | New | Claude: `continuity.digest`; Codex pending |
@@ -186,6 +186,8 @@ interface RunRecord {                                    // runs/<run id>.json
   chatKey?: string;                                      // absent when the request named no chat session
   conversation?: string;                                 // the vendor tool's conversation the run uses
   tool?: Owner;                                          // the vendor tool's process, once it runs
+  continuedConversation?: string;                        // the prior map entry to invalidate on failure or recovery
+  cleanupOwner?: Owner;                                  // a call recovering a killed run, elected under the Subscription lock
 }
 
 interface ChatEntry {                                    // subscriptions/<id>/chats/<chat key>.json
@@ -227,6 +229,7 @@ arbol:product-spec/12-lessons-and-invariants.md#6. Many resident services with s
 
 | ID | Question | Proposed default | Outcome |
 |---|---|---|---|
+| DRV-D40 | How do simultaneous calls recover a killed run safely? | A short Subscription lock elects cleanupOwner in the run record; cleanup runs outside the lock. Other calls wait for that cleanup or take it over if its owner died. Under the lock, remove only the map entry matching continuedConversation, then remove the run record after its processes and temporary folder. Record the tool owner as soon as it starts and also publish its identity from its shell launcher before exec, so death while the Driver discovers the child leaves a recoverable identity. Scratch launchers and the shell ledger may be text files; durable state remains JSON | Decided 7 October 2026 during SYL-83, a technical choice |
 | DRV-D39 | How are continuity digests and simultaneous resumes made deterministic? | Use the message tuples stated above. Under the Subscription lock, read the map, choose the conversation and publish the run record that reserves it; release the lock before starting the tool. Under that same short lock, write a completed map entry or conditionally remove the entry that a failed run continued | Decided 7 October 2026 during SYL-82, a technical choice |
 | DRV-D38 | How are sign-in replacement and late vendor answers coordinated? | Reserve sign-in.json under the Subscription lock for sign-in, sign-out or removal; only a sign-in reservation presents the state signing_in; set stopReason before signalling its owner, then wait outside the lock. The owner checks this reason before storing a result. Record the login child owner for cleanup after a killed command; attempt files live in tmp/sign-in-<subscription id>. A status or usage answer updates only the record revision it checked, so a late answer cannot restore a signed-out account. Removing an initial family Subscription clears its stored data and leaves its implicit signed-out record available | Decided 6 October 2026 during SYL-78, a technical choice |
 | DRV-D36 | How are base state errors and process identities read? | A malformed `format` or progress record fails with `internal`, without its contents in the error. On macOS and Linux, process start times come from `/bin/ps` with a clean environment and the C locale. A lock is published by linking a complete temporary owner record into place, failing if `lock` exists, so no reader sees a half-written owner | Decided 6 October 2026 during SYL-75, a technical choice |
