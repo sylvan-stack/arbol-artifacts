@@ -149,7 +149,7 @@ arbol:product-spec/05-intelligence-providers.md#Thinking level
 | DRV-1.4 | check a key when it reads it at sign-in and reject anything but printable ASCII without spaces, naming up to three offending characters | Kept | Claude: `subscriptions.key-validation`, `subscriptions.keychain`, `C3`; Codex pending |
 | DRV-1.5 | keep one pending sign-in per Subscription; a new one replaces it; an unfinished one ends after five minutes and leaves the Subscription `signed_out` | Kept | Claude: `C2`; Codex pending |
 | DRV-1.6 | tell the caller which hosts a sign-in page may visit, so the caller's window can refuse all others | Kept | Claude: `C2`, `probe.subscriptions`; Codex pending |
-| DRV-1.7 | move a Subscription to `needs_attention`, with the reason and the remedy, as soon as the vendor rejects its credential in any operation or run | Changed | Claude: `C4` (checks), `C41` (usage); run rejection pending SYL-80; Codex pending |
+| DRV-1.7 | move a Subscription to `needs_attention`, with the reason and the remedy, as soon as the vendor rejects its credential in any operation or run | Changed | Claude: `C4` (check and run), `C28`, `C41` (usage), `probe.errors`; Codex pending |
 | DRV-1.8 | never hold a copy of a credential that the vendor tool renews by itself | Changed | Claude: `C7`, `probe.subscriptions`, `live.subscriptions`; Codex pending |
 | DRV-1.10 | serialise sign-in, sign-out and removal of one Subscription across processes | Kept | Claude: `C2`, `C5`, `subscriptions.late-check`, `state.lock`; Codex pending |
 | DRV-1.11 | refuse a run and a request for the model catalog for a Subscription that is not `signed_in`, with the error `not_signed_in`, before any vendor tool is started. `check` works in every state but `signed_out`, and `usage` answers a Subscription that is not signed in with the outcome `needs_sign_in` | Changed | Claude: `subscriptions.refused`, `C40`, `C4` (attention-state recovery); Codex pending |
@@ -158,8 +158,8 @@ arbol:product-spec/05-intelligence-providers.md#Thinking level
 | DRV-1.14 | answer `list` from stored state without contacting a vendor, and contact a vendor only in `check`, `usage`, `models` and sign-in | New | Claude: `C1`, `C2`, `C4`, `C41`, `probe.subscriptions`; Codex pending |
 | DRV-1.15 | apply a partial update by changing only the fields given | Changed | Claude: `subscriptions.update`, `C1`; Codex pending |
 | DRV-1.16 | fetch usage only when asked; never poll | Kept | Claude: `C41`; Codex pending |
-| DRV-1.17 | report usage with one of the four outcomes; an unknown value is absent, never zero | Kept | Claude: `subscriptions.quota`, `C41`; Codex pending |
-| DRV-1.18 | store the last `ok` usage report with the Subscription and return it with the record | Kept | Claude: `subscriptions.update`, `C41`; run-derived Anthropic reports pending SYL-80; Codex pending |
+| DRV-1.17 | report usage with one of the four outcomes; an unknown value is absent, never zero | Kept | Claude: `subscriptions.quota`, `C41`, `errors.usage`; Codex pending |
+| DRV-1.18 | store the last `ok` usage report with the Subscription and return it with the record | Kept | Claude: `subscriptions.update`, `C41`, `C30`, `errors.run-report`, `live.errors-usage`; Codex pending |
 | DRV-1.19 | take a model catalog only from the Subscription's own vendor family and mark a built-in fallback as such | Kept | Claude: `C41`; Codex pending |
 | DRV-1.20 | fetch a model catalog without spending inference quota | Changed | Claude: `probe.subscriptions`, `live.subscriptions`, `C41` (gateway GET without inference); Codex pending |
 | DRV-1.21 | report per model the effort levels the vendor tool accepts, in the vendor's own words, where the tool exposes them | Changed | Claude: `probe.subscriptions`, `live.subscriptions`; Codex pending |
