@@ -178,9 +178,9 @@ Current records and source/package provenance: `~/Artifacts/arbol-codex-driver/r
 | DRV-0.11 | be one command-line program whose command line is its only interface: no library, no socket, and every invocation ends by itself when its operation is done | Changed | Claude Python: `C32`, `test_runtime.CompatibilityTests`, `test_runtime.TransportTests`; Codex Python: `C32` |
 | DRV-0.12 | follow the command-line rules above for input, output, errors and exit status | New | Claude Python: `C32`, `test_runtime.CompatibilityTests`, `test_runtime.TransportTests`; Codex Python: `C32`, `OutputTests.test_serialized_output_gapless_events_lone_surrogates_and_cancelled_blocked_flush` |
 | DRV-0.14 | take no secret as an argument, on standard input or in a file, and read every secret it needs from the place its settings file names: by default the Keychain, read with the system's `security` command, or else a command of the owner's that prints the secret. The one exception is an import the owner starts, which may read a key from the file it imports | Changed | Claude Python: `C32`, `test_runtime.CompatibilityTests`, `test_runtime.TransportTests`; Codex Python: `C32` |
-| DRV-0.15 | be built into numbered Builds as BLD-0 says, report the build number of the Build that runs in `info` and at the start of every run, and keep the format number of BLD-0.13 in its state directory | New | Claude Python: `C32`, `test_runtime.CompatibilityTests`, `test_runtime.TransportTests`; Codex Python: `C32`, `Foundation.test_build_identity_ignores_cwd_and_rejects_invalid_metadata`, `PackagingTests.test_build_record_requires_matching_number_entry_and_version` |
+| DRV-0.15 | be built into numbered Builds as BLD-0 says, report the build number of the Build that runs in `info` and at the start of every run, and keep the format number of BLD-0.13 in its state directory | New | Claude Python: `C32`, `test_runtime.CompatibilityTests`, `test_runtime.TransportTests`; Codex Python: `C32`, `Foundation.test_build_identity_ignores_cwd_and_rejects_invalid_metadata`, `PackagingTests.test_build_record_requires_matching_number_entry_and_version`; Codex SYL-94 Build 1: `build.clean-working`, `build.contract (C32 and numbered started events)`, `build.test-state-cleanup` |
 | DRV-0.16 | read its settings file at the start of every invocation, never write it except in an import the owner starts, and refuse to run with `invalid_input` when the file cannot be read, naming the file and the fault | New | Claude Python: `C10`, `test_runtime.CompatibilityTests`, `test_runtime.TransportTests`; Codex Python: `C10`, `Foundation.test_arguments_settings_environment_and_error_sanitization` |
-| DRV-0.13 | report with `info` its package version and build number, the version of this contract it implements and the vendor tool it found, and never remove or change a command, option, event or error code within one contract version | New | Claude Python: `C32`, `test_runtime.CompatibilityTests`, `test_runtime.TransportTests`; Codex Python: `C32`, `Foundation.test_build_identity_ignores_cwd_and_rejects_invalid_metadata` |
+| DRV-0.13 | report with `info` its package version and build number, the version of this contract it implements and the vendor tool it found, and never remove or change a command, option, event or error code within one contract version | New | Claude Python: `C32`, `test_runtime.CompatibilityTests`, `test_runtime.TransportTests`; Codex Python: `C32`, `Foundation.test_build_identity_ignores_cwd_and_rejects_invalid_metadata`; Codex SYL-94 Build 1: `build.launcher-default`, `build.launcher-named`, `build.contract (C32)` |
 
 ## Known problems in version 1
 
@@ -206,6 +206,41 @@ The Glossary entries below describe version 1. They need new wording once this s
 | [Driver Instance](../GLOSSARY.md#driver-instance) | History. Arbol 2 has no versioned Driver process |
 | [Subscription](../GLOSSARY.md#subscription) | Created and removed through its Driver; several per vendor family; the credential is no longer "passed to the Driver per Turn" |
 | [Intelligence Provider](../GLOSSARY.md#intelligence-provider-ip) | Still the caller's configured route. It names a Driver and a Subscription; Root no longer hands a token to the Driver |
+
+## SYL-94 numbered Build verification, 7 October 2026
+
+Codex Build `1`, package version `1.0.0`, is the first working numbered Python
+Build and the production default. It was built from a clean checkout of
+`19fb51de21b074f62984fe28ad2450c3b1b09268`, using the repository's
+`arbol-build.json` with locked uv setup, Ruff, strict mypy and standalone
+packaging. The Build's own CPython 3.14.8 ran all 128 packaged unit tests; its
+direct executable passed all 38 shared conformance scenarios, including
+numbered `info` and `started` identity. The final `dev.build-check` passed with
+exactly one no-tools ready request on `test-chatgpt`, using `gpt-5.6-luna` with
+low effort. Its report retains actual tokens, tool/source/runtime provenance
+and usage before and after. Contract and state format remain `1`.
+
+Default and explicitly named launcher invocations both report Build `1` and
+package version `1.0.0`. The direct executable also runs from an unrelated
+folder with only HOME, PATH and LANG, without a source checkout or external
+Python/uv/Node on PATH. Package and registry source records agree, and the
+pinned standalone interpreter and packaged file digests passed verification.
+The test state has no active run or temporary residue after the live gate.
+
+An intentionally failing first check reserved Build `2`, retained its failed
+record and log, and spent no inference quota. Build `1` stayed the default;
+explicit selection of Build `2` was refused and listed only Build `1` as
+available. The production build tool and launchers required no changes.
+Extended vendor live checks were not run; previously unobserved real vendor
+failures remain unobserved. Earlier candidate and migration records stay
+historical.
+
+Acceptance names and raw records:
+`~/Artifacts/arbol-codex-driver/research/first-working-build-2026-10-07/verification.json`,
+`coverage-audit.json`, `working-build.log`, `failed-build.log` and
+`dev-build-check.json`. The numbered folder and launcher remain installed at
+`~/Library/Application Support/Arbol/builds/arbol-codex-driver/1/` and
+`~/.local/bin/arbol-codex-driver`.
 
 ## Python migration verification, 7 October 2026
 
