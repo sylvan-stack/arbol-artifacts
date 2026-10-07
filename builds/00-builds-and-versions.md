@@ -143,23 +143,23 @@ arbol:product-spec/12-lessons-and-invariants.md#4. The upgrade machinery became 
 | BLD-0.2 | give a number when a build starts and never give it twice, also after a failed build and after pruning | New | `builds.concurrent`, `builds.concurrent-mutations`, `builds.failed-check`, `builds.prune`, `builds.interrupted-build` |
 | BLD-0.3 | keep each Build in a folder of its own with its record, and need nothing but that folder to run it | Changed | `builds.folder-alone` |
 | BLD-0.4 | record for every Build its package version and its source: repository, branch, commit, and whether the checkout held uncommitted changes | Kept | `builds.source` |
-| BLD-0.5 | mark a Build `working` only when the build finished and every check the component runs on each build passed, for a Driver the one real message through the installed vendor tool included | New | `builds.description`, `builds.driver-checks` (scripted live outcome); real Driver build checks: SYL-93 and SYL-94 |
+| BLD-0.5 | mark a Build `working` only when the build finished and every check the component runs on each build passed, for a Driver the one real message through the installed vendor tool included | New | `builds.description`, `builds.driver-checks` (scripted live outcome); Claude: `build.clean-working`, `build.checks`, `dev.build-check` (Build 1, one real Haiku message), `build.failed-check`; Codex pending (SYL-94) |
 | BLD-0.6 | keep the record and the log of a failed build | New | `builds.failed-check`, `builds.failed-command`, `builds.interrupted-build` |
 | BLD-0.7 | take as the default the `working` Build with the highest build number, worked out from the records at every start, with no stored setting | Changed | `builds.two-builds`, `builds.withdraw`, `builds.damaged-record` |
 | BLD-0.8 | run the named Build when the launcher's first argument is `-v <build number>`, refuse a Build that cannot be run, and list those that can | New | `builds.launch-refusal`, `builds.prune` |
 | BLD-0.9 | pass arguments, standard input and output, signals and the exit status through the launcher unchanged | New | `builds.streams`, `builds.signals` |
 | BLD-0.10 | let a damaged or missing record take only its own Build out of use | New | `builds.damaged-record` |
 | BLD-0.11 | prune only on command, keep every record, and never remove the default Build | Kept | `builds.prune`, `builds.concurrent-prune`, `builds.concurrent-mutations` |
-| BLD-0.15 | build a component as its repository's `arbol-build.json` says, hand the build commands and the checks the Build's folder and number in `ARBOL_BUILD_DIR` and `ARBOL_BUILD_NUMBER`, and run the checks against the Build's own program, not through the launcher | New | `builds.description`, `builds.driver-checks`, `builds.invalid-description` |
+| BLD-0.15 | build a component as its repository's `arbol-build.json` says, hand the build commands and the checks the Build's folder and number in `ARBOL_BUILD_DIR` and `ARBOL_BUILD_NUMBER`, and run the checks against the Build's own program, not through the launcher | New | `builds.description`, `builds.driver-checks`, `builds.invalid-description`; Claude: `build.clean-working`, `build.checks` (81 unit tests and 38 conformance scenarios from the numbered Build) |
 | BLD-0.16 | write a component's launcher, a Node.js program without dependencies, into `~/.local/bin` or the folder named with `--bin-dir` when the component is first built | New | `builds.paths`, `builds.install` |
 
 Every component must:
 
 | ID | A component must… | Origin | Verified by |
 |---|---|---|---|
-| BLD-0.12 | report its package version and the build number of the Build that is running, wherever it reports about itself | Kept | Claude Driver: `base.info`, `base.packaged-info`; other components pending |
+| BLD-0.12 | report its package version and the build number of the Build that is running, wherever it reports about itself | Kept | Claude Driver: `base.info`, `base.packaged-info`, `build.launcher-default`, `build.launcher-named`; other components pending |
 | BLD-0.13 | write a format number into the data its Builds share, refuse data with a higher number than it knows, and raise the number only for a change older Builds cannot read | Changed | Claude Driver: `base.state-newer`; build tool delegation and declared formats: `builds.shared-data-format`; other components pending |
-| BLD-0.14 | read its build number and its package version from the record in its own folder, and report the build number `0` when it runs outside a Build's folder | New | Claude Driver: `base.build-identity`, `base.packaged-info`; other components pending |
+| BLD-0.14 | read its build number and its package version from the record in its own folder, and report the build number `0` when it runs outside a Build's folder | New | Claude Driver: `base.build-identity`, `base.packaged-info`, `build.launcher-default`, `build.launcher-named`; other components pending |
 
 ## Interface
 
