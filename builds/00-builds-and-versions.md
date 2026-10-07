@@ -157,9 +157,9 @@ Every component must:
 
 | ID | A component must… | Origin | Verified by |
 |---|---|---|---|
-| BLD-0.12 | report its package version and the build number of the Build that is running, wherever it reports about itself | Kept | Claude Driver: `base.info`, `base.packaged-info`, `build.launcher-default`, `build.launcher-named`; other components pending |
-| BLD-0.13 | write a format number into the data its Builds share, refuse data with a higher number than it knows, and raise the number only for a change older Builds cannot read | Changed | Claude Driver: `base.state-newer`; build tool delegation and declared formats: `builds.shared-data-format`; other components pending |
-| BLD-0.14 | read its build number and its package version from the record in its own folder, and report the build number `0` when it runs outside a Build's folder | New | Claude Driver: `base.build-identity`, `base.packaged-info`, `build.launcher-default`, `build.launcher-named`; other components pending |
+| BLD-0.12 | report its package version and the build number of the Build that is running, wherever it reports about itself | Kept | Claude Driver: `base.info`, `base.packaged-info`, `build.launcher-default`, `build.launcher-named`; Codex Driver: `base.info`, `base.packaged-info`, `C32` (info; run identity pending); other components pending |
+| BLD-0.13 | write a format number into the data its Builds share, refuse data with a higher number than it knows, and raise the number only for a change older Builds cannot read | Changed | Claude Driver: `base.state-newer`; build tool delegation and declared formats: `builds.shared-data-format`; Codex Driver: `state.format`, `base.state-newer`; other components pending |
+| BLD-0.14 | read its build number and its package version from the record in its own folder, and report the build number `0` when it runs outside a Build's folder | New | Claude Driver: `base.build-identity`, `base.packaged-info`, `build.launcher-default`, `build.launcher-named`; Codex Driver: `base.build-identity`, `base.packaged-info`; other components pending |
 
 ## Interface
 

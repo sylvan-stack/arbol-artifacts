@@ -116,9 +116,9 @@ Both vendor tools report the account's limit windows while a run is in progress,
 
 | ID | A Driver must… | Origin | Verified by |
 |---|---|---|---|
-| DRV-4.1 | report every failure as one error object with a code from the table above | Changed | Claude: `base.errors`, `base.cli`, `C26`; Codex pending |
-| DRV-4.2 | write the message for the Leather Bag, in the vendor's words where there are any, without a credential and without more than 1 KiB of the tool's output | Kept | Claude: `base.error-text`, `base.settings`, `errors.diagnostics`; Codex pending |
-| DRV-4.3 | mark an error as worth trying again only for `rate_limited` and `vendor_unavailable` | Kept | Claude: `base.errors`, `C26`; Codex pending |
+| DRV-4.1 | report every failure as one error object with a code from the table above | Changed | Claude: `base.errors`, `base.cli`, `C26`; Codex: `errors`, `base.cli`, `base.tool-failure` (base failures; vendor protocol failures pending) |
+| DRV-4.2 | write the message for the Leather Bag, in the vendor's words where there are any, without a credential and without more than 1 KiB of the tool's output | Kept | Claude: `base.error-text`, `base.settings`, `errors.diagnostics`; Codex: `errors`, `settings`, `base.tool-failure` (redaction, Unicode-safe one-KiB excerpts and withheld faulty values) |
+| DRV-4.3 | mark an error as worth trying again only for `rate_limited` and `vendor_unavailable` | Kept | Claude: `base.errors`, `C26`; Codex: `errors` (exact retry policy) |
 | DRV-4.4 | classify by the fields the tool states, fall back to wording only where it states none, and record in the detail which was used | Changed | Claude: `errors.precedence`, `C26`; Codex pending |
 | DRV-4.5 | give the wait of a `rate_limited` error only when the vendor names a time | Changed | Claude: `errors.wait`, `C27`; Codex pending |
 | DRV-4.6 | never wait out a limit and never start a run again after one | Kept | Claude: `C26`, `C27`; Codex pending |
@@ -129,7 +129,7 @@ Both vendor tools report the account's limit windows while a run is in progress,
 | DRV-4.11 | on a reached limit stop the run as in DRV-2.16 and finish it as `failed` with `limit_reached` | New | Claude: `C29`; Codex pending |
 | DRV-4.12 | report the vendor tool's own retries as `notice` events and bound them where the tool allows | New | Claude: `C28`, `probe.errors`; Codex pending |
 | DRV-4.13 | store the latest limit information a run received as the Subscription's last usage report when the run ends | New | Claude: `C30`, `errors.usage`, `live.errors-usage`; Codex pending |
-| DRV-4.14 | name the tool, the found version and the needed version in `tool_missing` and `tool_unsupported` | New | Claude: `base.tool-missing`, `base.tool-old`, `C31`; Codex pending |
+| DRV-4.14 | name the tool, the found version and the needed version in `tool_missing` and `tool_unsupported` | New | Claude: `base.tool-missing`, `base.tool-old`, `C31`; Codex: `base.tool-missing`, `base.tool-old`, `C31` |
 | DRV-4.15 | finish a run as `failed` with `internal` when the Driver itself fails, and never leave a run without a final event | Kept | Claude: `C43`, `run.failures`; Codex pending |
 
 ## Interface
