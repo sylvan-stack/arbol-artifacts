@@ -103,6 +103,10 @@ Every `received.jsonl` record has `scenario` and `part` strings, `arguments` and
 
 The suite judges a scenario by what the Driver writes on its standard output, by its exit status, by the files in the state directory where a scenario names them, and by `received.jsonl`.
 
+### Python migration checks
+
+SYL-95 carries forward every implemented shared scenario and its existing scope without changing assertions. Each Driver adds strict mypy and Ruff checks and packaged standard-library `unittest` tests, including asynchronous lifecycle tests. Cross-language fixtures cover compact JSON/history fingerprints, Unicode and images, folder encoding, Keychain identities, format-1 reads and writes, mixed-executable locks and peer stopping, and conditional preservation of newer records. Python probes and live checks need fresh records with actual source, runtime and tool provenance; historical TypeScript evidence remains explicitly historical. Claude must pass all 38 scenarios. Codex retains its implemented scenario/part set and leaves the pending SYL-90 through SYL-94 checks pending.
+
 ### The checks a Build carries
 
 Every Build of a Driver has four commands for checking it. They are part of the Driver's program, under `dev`, so that a Build can be checked as it stands.

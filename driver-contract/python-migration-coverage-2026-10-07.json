@@ -1,0 +1,2310 @@
+{
+  "issue": "SYL-95",
+  "date": "2026-10-07",
+  "requirements": [
+    {
+      "requirement": "DRV-0.1",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/00-overview-and-boundary.md",
+      "behavior": "offer the commands of DRV-1 to DRV-4 with the same names, options, inputs, outputs and error codes as every other Driver. Family-specific data travels in fields this contract marks as family-specific",
+      "historicalVerification": "Claude: `base.cli`, `C32`; Codex: `arguments`, `base.cli`, `C10`, `C11`, `C12`, `C13`, `C18`, `C19`, `C20`, `C33` (request stdin), `C40`, `C42`, `C43` (command frame and fresh-run operations; continuity, stopping and remaining tool/error operations pending)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-0.2",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/00-overview-and-boundary.md",
+      "behavior": "run with the Subscription, model and effort a request names, and with the defaults of its settings file for what the request leaves out. It never puts another model or another account in place of one that was named and cannot be used",
+      "historicalVerification": "Claude: `C10`, `C40`, `run.request`; Codex: `C10`, `C40`, `run.request`, `run.validation`, `run.lifecycle` (fresh runs and default selection; continuity pending SYL-88)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-0.3",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/00-overview-and-boundary.md",
+      "behavior": "keep a credential value only in the macOS Keychain or wherever the owner's own command keeps it (DRV-0.14), in the vendor tool's own credential store inside that Subscription's home, and in the environment of the one child process that needs it. Never in a state file, log, event, error, command-line argument or address",
+      "historicalVerification": "Claude: `C7`, `dev.redaction`, `subscriptions.keychain`, `subscriptions.import`, `subscriptions.secret-source`; Codex: `C7` (subscription scope), `app-server.home`; run output pending SYL-86",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-0.4",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/00-overview-and-boundary.md",
+      "behavior": "give each Subscription its own home for the vendor tool and never write the Leather Bag's own setup of the tool (`~/.claude`, `~/.codex` and the files beside them). Read from it only the owner's skills and MCP servers, in the places the Driver's specification names (DRV-3.31), and anything else only in an import the Leather Bag starts explicitly",
+      "historicalVerification": "Claude: `C39`, `probe.subscriptions`, `live.subscriptions` (private config homes and owner configuration unchanged); `C9`, `C37`, `probe.tools` (owner user skills and MCP servers with owner tree unchanged); Codex: `app-server.home`, `C39`, `probe.subscriptions`, `live.subscriptions` (private account homes; owner skills/MCP pending SYL-90)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-0.5",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/00-overview-and-boundary.md",
+      "behavior": "build the environment of every child process from a short allow-list, then apply exactly one account. Inherited variables that select an account or configure the vendor tool never reach the child",
+      "historicalVerification": "Claude: `base.environment`, `subscriptions.environment`, `C8`; Codex: `base.environment`, `base.tool-failure`, `base.cancel`, `base.tool-descendants`, `app-server.home`, `C8`, `run.lifecycle`, `live.run` (version, account and fresh-run children)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-0.6",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/00-overview-and-boundary.md",
+      "behavior": "report the vendor tool it found: path, version and whether that version is supported. With a missing or unsupported tool every operation that needs it fails with a typed error naming the tool and the version",
+      "historicalVerification": "Claude: `base.info`, `base.tool-cache`, `base.tool-missing`, `base.tool-old`, `probe.base-info`, `C31`, `C32` (info); Codex: `base.info`, `base.tool-cache`, `base.tool-missing`, `base.tool-old`, `probe.base-info`, `C31`, `C32` (info)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-0.7",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/00-overview-and-boundary.md",
+      "behavior": "report every failure as one error object with a code from the closed list of DRV-4, a message a Leather Bag can act on, and whether a retry can succeed. A caller never has to match error text",
+      "historicalVerification": "Claude: `base.errors`, `base.cli` (base failures); contract pending C26; Codex: `errors`, `base.cli`, `base.tool-failure` (base failures; vendor protocol errors pending)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-0.8",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/00-overview-and-boundary.md",
+      "behavior": "keep nothing between invocations except in its state directory, the Keychain and the vendor tool's home; every invocation starts from those alone",
+      "historicalVerification": "Claude: `base.info`, `base.settings` (fresh invocations); contract pending C6; Codex: `base.info`, `base.settings`, `C32` (info from isolated fresh invocations; lifecycle commands pending)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-0.9",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/00-overview-and-boundary.md",
+      "behavior": "serialise changes to one Subscription, across processes, and never let operations on one Subscription wait for another",
+      "historicalVerification": "Claude: `C1`, `C2`, `C5`, `subscriptions.independent`, `subscriptions.late-check`, `state.lock`; Codex: `subscriptions.create`, `subscriptions.update`, `subscriptions.independent`, `subscriptions.late-check`, `C2`, `C40`, `run.control`, `run.lifecycle` (Subscription mutations and fresh-run registration)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-0.10",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/00-overview-and-boundary.md",
+      "behavior": "leave no child process behind when a run ends, is cancelled or its caller goes away",
+      "historicalVerification": "Claude: `C15`, `C17`, `C38`, `live.stopping`; Codex: `C15`, `C17`, `C38`, `stop.paths`, `stop.output`, `stop.process-groups`, `stop.recovery`, `live.stopping`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-0.11",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/00-overview-and-boundary.md",
+      "behavior": "be one command-line program whose command line is its only interface: no library, no socket, and every invocation ends by itself when its operation is done",
+      "historicalVerification": "Claude: `base.cli`, `base.info`, `C32`; Codex: `base.cli`, `base.info`, `C32`, `C10`, `C12`, `C42`, `C43`, `live.run` (base and fresh-run invocations)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-0.12",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/00-overview-and-boundary.md",
+      "behavior": "follow the command-line rules above for input, output, errors and exit status",
+      "historicalVerification": "Claude: `base.cli`, `base.cancel`, `C32`; Codex: `arguments`, `base.cli`, `base.cancel`, `C10`, `C12`, `C15`, `C17`, `C33` (Codex scope), `C42`, `C43`, `run.text`, `stop.paths`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-0.14",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/00-overview-and-boundary.md",
+      "behavior": "take no secret as an argument, on standard input or in a file, and read every secret it needs from the place its settings file names: by default the Keychain, read with the system's `security` command, or else a command of the owner's that prints the secret. The one exception is an import the owner starts, which may read a key from the file it imports",
+      "historicalVerification": "Claude: `C2`, `C3`, `C7`, `C32`, `subscriptions.secret-source`, `subscriptions.import` (explicit synthetic import exception); Codex: `subscriptions.refused`, `C7` (subscription scope); ChatGPT has no key or import operation",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-0.15",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/00-overview-and-boundary.md",
+      "behavior": "be built into numbered Builds as BLD-0 says, report the build number of the Build that runs in `info` and at the start of every run, and keep the format number of BLD-0.13 in its state directory",
+      "historicalVerification": "Claude: `base.packaged-info`, `base.state-newer`, `C32` (info and started), `build.clean-working`, `build.launcher-default`, `build.launcher-named`, `build.failed-check`; Codex: `base.packaged-info`, `base.state-newer`, `C32`, `C10`, `run.lifecycle`, `live.run` (info and started identity; numbered Builds pending)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-0.16",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/00-overview-and-boundary.md",
+      "behavior": "read its settings file at the start of every invocation, never write it except in an import the owner starts, and refuse to run with `invalid_input` when the file cannot be read, naming the file and the fault",
+      "historicalVerification": "Claude: `base.settings`; contract pending C10; Codex: `settings`, `base.settings` (reload, validation, notices and no writes)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-0.13",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/00-overview-and-boundary.md",
+      "behavior": "report with `info` its package version and build number, the version of this contract it implements and the vendor tool it found, and never remove or change a command, option, event or error code within one contract version",
+      "historicalVerification": "Claude: `base.info`, `base.packaged-info`, `C32`; Codex: `base.info`, `base.packaged-info`, `C32` (info)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.1",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "have one Subscription per vendor family from the start, named after the family, with one of them as its default; let further ones be created, relabelled and removed through its commands",
+      "historicalVerification": "Claude: `subscriptions.local`, `subscriptions.create`, `C1`; default inference pending SYL-80; Codex: `subscriptions.local`, `subscriptions.create`, `C1`, `C10`, `run.request`, `run.lifecycle` (local operations and default fresh inference)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.2",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "give every Subscription its own credential and its own vendor-tool home, so that two Subscriptions of one family never share login state, configuration or transcripts",
+      "historicalVerification": "Claude: `subscriptions.environment`, `C39`, `probe.subscriptions`, `live.subscriptions`; run children pending SYL-80; Codex: `app-server.home`, `C39`, `probe.subscriptions`, `live.subscriptions`, `run.lifecycle`, `live.run`, `live.no-tools` (Subscription and fresh-run homes)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.3",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "never return, log or emit a credential value. No operation exports one",
+      "historicalVerification": "Claude: `C7`, `subscriptions.import`, `subscriptions.secret-source` (subscription operations); run output pending SYL-80; Codex: `C7` (subscription scope), `subscriptions.snapshots`, `app-server.home`; run output pending SYL-86",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.4",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "check a key when it reads it at sign-in and reject anything but printable ASCII without spaces, naming up to three offending characters",
+      "historicalVerification": "Claude: `subscriptions.key-validation`, `subscriptions.keychain`, `C3`; Codex: not applicable (ChatGPT vendor login has no key)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.5",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "keep one pending sign-in per Subscription; a new one replaces it; an unfinished one ends after five minutes and leaves the Subscription `signed_out`",
+      "historicalVerification": "Claude: `C2`; Codex: `C2` (replacement, five-minute expiry and independent device login)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.6",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "tell the caller which hosts a sign-in page may visit, so the caller's window can refuse all others",
+      "historicalVerification": "Claude: `C2`, `probe.subscriptions`; Codex: `C2`, `probe.subscriptions`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.7",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "move a Subscription to `needs_attention`, with the reason and the remedy, as soon as the vendor rejects its credential in any operation or run",
+      "historicalVerification": "Claude: `C4` (check and run), `C28`, `C41` (usage), `probe.errors`; Codex: `C4` (check), `C41` (usage), `app-server.rejection`; run rejection pending SYL-91",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.8",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "never hold a copy of a credential that the vendor tool renews by itself",
+      "historicalVerification": "Claude: `C7`, `probe.subscriptions`, `live.subscriptions`; Codex: `C7` (subscription scope), `app-server.home`, `probe.subscriptions`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.10",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "serialise sign-in, sign-out and removal of one Subscription across processes",
+      "historicalVerification": "Claude: `C2`, `C5`, `subscriptions.late-check`, `state.lock`; Codex: `C2`, `C5` (subscription scope), `subscriptions.late-check`, `subscriptions.active-run`, `stop.subscription-force` (synthetic dying owners; native Driver stops separately covered by `C15`, `C33`)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.11",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "refuse a run and a request for the model catalog for a Subscription that is not `signed_in`, with the error `not_signed_in`, before any vendor tool is started. `check` works in every state but `signed_out`, and `usage` answers a Subscription that is not signed in with the outcome `needs_sign_in`",
+      "historicalVerification": "Claude: `subscriptions.refused`, `C40`, `C4` (attention-state recovery); Codex: `subscriptions.refused`, `C40` (including unsigned run refusal), `C4` (attention-state recovery), `run.validation`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.12",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "on sign-out remove the credential, the account details and the stored usage report. Sign-out and removal are refused while a run uses the Subscription, unless forced, in which case the runs are cancelled first",
+      "historicalVerification": "Claude: `C5` (run records), `C41` (account clearing), `C2` (Keychain deletion); real run cancellation pending SYL-80; Codex: `C5` (subscription scope), `C41`, `subscriptions.active-run`, `stop.subscription-force` (refusal, forced synthetic-owner cleanup and account clearing; native Driver stops separately covered by `C15`, `C33`)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.13",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "on removal delete the Subscription's home and Keychain item",
+      "historicalVerification": "Claude: `C1`, `C5`, `subscriptions.import` (Keychain and home removal); Codex: `C1`, `C5` (subscription scope), `subscriptions.remove` (home removal; no Keychain item in this family)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.14",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "answer `list` from stored state without contacting a vendor, and contact a vendor only in `check`, `usage`, `models` and sign-in",
+      "historicalVerification": "Claude: `C1`, `C2`, `C4`, `C41`, `probe.subscriptions`; Codex: `subscriptions.local`, `C1`, `C41`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.15",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "apply a partial update by changing only the fields given",
+      "historicalVerification": "Claude: `subscriptions.update`, `C1`; Codex: `subscriptions.update`, `C1`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.16",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "fetch usage only when asked; never poll",
+      "historicalVerification": "Claude: `C41`; Codex: `C41` (one requested usage RPC, no inference)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.17",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "report usage with one of the four outcomes; an unknown value is absent, never zero",
+      "historicalVerification": "Claude: `subscriptions.quota`, `C41`, `errors.usage`; Codex: `catalog.usage`, `catalog.unknowns`, `catalog.malformed`, `C41` (applicable ChatGPT outcomes)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.18",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "store the last `ok` usage report with the Subscription and return it with the record",
+      "historicalVerification": "Claude: `subscriptions.update`, `C41`, `C30`, `errors.run-report`, `live.errors-usage`; Codex: `subscriptions.update`, `C41`, `live.subscriptions`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.19",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "take a model catalog only from the Subscription's own vendor family and mark a built-in fallback as such",
+      "historicalVerification": "Claude: `C41`; Codex: `catalog.fallback`, `C41`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.20",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "fetch a model catalog without spending inference quota",
+      "historicalVerification": "Claude: `probe.subscriptions`, `live.subscriptions`, `C41` (gateway GET without inference); Codex: `probe.subscriptions`, `live.subscriptions`, `C41` (no inference RPCs)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.21",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "report per model the effort levels the vendor tool accepts, in the vendor's own words, where the tool exposes them",
+      "historicalVerification": "Claude: `probe.subscriptions`, `live.subscriptions`; Codex: `catalog.models`, `catalog.pages`, `live.subscriptions`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.22",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "take account name, e-mail, organisation and plan only from the vendor and clear them at sign-out",
+      "historicalVerification": "Claude: `C41`, `live.subscriptions`; Codex: `C41`, `live.subscriptions`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.23",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "print the new record as the result of every command that changes a Subscription",
+      "historicalVerification": "Claude: `C1`, `C2`, `C4`, `C41`; Codex: `C1`, `C2`, `C4` (subscription scope), `C41`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.24",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "treat a Subscription recorded as `signing_in` whose `sign-in` command no longer runs as `signed_out`",
+      "historicalVerification": "Claude: `subscriptions.progress`, `C6`; Codex: `subscriptions.progress`, `C6`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.25",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "carry a sign-in attempt in one `sign-in` command: steps as lines on standard output, the code of an `enter_code` step as a line on standard input, and the attempt cancelled when the command is ended",
+      "historicalVerification": "Claude: `C2`, `C6`, `subscriptions.source-timeout`; Codex: `C2`, `C6`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-1.26",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/01-subscriptions.md",
+      "behavior": "read a key only from the source its settings file names for the Subscription. For the Keychain, which is the default: name the Subscription's item in the `store_secret` step, go on by itself once the item is filled, and remove from it a key that fails the check of DRV-1.4 or that the vendor rejects at sign-in. For a command: run it whenever the key is needed, keep what it prints nowhere, and fail the sign-in on a key that is refused",
+      "historicalVerification": "Claude: `C2`, `C3`, `subscriptions.secret-source`, `subscriptions.source-timeout`; Codex: not applicable (ChatGPT vendor login has no key)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.1",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "run exactly what the request names: Subscription, model, effort, system prompt, folders, conversation, message. A missing Subscription, model or effort is taken from the Driver's settings file, and where that names none, from the Driver's default Subscription and the vendor tool's own default model and effort",
+      "historicalVerification": "Claude: `C10`, `C40`, `run.request`, `C14`; Codex: `C10`, `C40`, `run.request`, `run.lifecycle`, `C14`, `continuity.run`, `live.run`, `live.continuity`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.2",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "refuse a request, before anything is sent to the vendor, when the Subscription is not `signed_in`, a folder does not exist, the run identifier is already in use, or the Driver can tell that the tool will not accept the model or the effort",
+      "historicalVerification": "Claude: `C40`, `run.validation`; Codex: `C40`, `run.validation`, `run.control` (unsigned, missing folders, duplicate identifiers and strict model/effort/tier preflight)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.3",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "emit one ordered stream per run with gapless sequence numbers, and end it with exactly one `finished` event on every path, including a failure to start and a failure inside the Driver",
+      "historicalVerification": "Claude: `C10`, `C12`, `C15`, `C42`, `C43`, `run.failures`; Codex: `C10`, `C12`, `C15`, `C17`, `C33` (Codex scope), `C42`, `C43`, `run.lifecycle`, `run.failures`, `stop.paths`, `stop.accepted-turn`, `stop.recovery-failure`, `live.run`, `live.stopping`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.4",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "emit `text` and `thinking` blocks as complete blocks, whether or not their pieces were emitted",
+      "historicalVerification": "Claude: `C10`, `run.protocol`; Codex: `C10`, `run.protocol`, `live.run`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.5",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "emit a `text` block that precedes a tool call before that call's `tool_started`",
+      "historicalVerification": "Claude: `C11`; Codex: `C11`, `run.tools`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.6",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "close every `tool_started` with one `tool_finished` and every `ask_opened` with one `ask_closed` before `finished`",
+      "historicalVerification": "Claude: `C11`, `C42` (tool calls); questions pending SYL-84; Codex: `C11`, `C15`, `C42`, `run.outcomes`, `run.failures`, `stop.subagent`, `stop.subagent-completion`, `stop.nested-subagents`, `stop.collaboration-spawn` (command and spawn closure; remaining advanced tool/question handling pending SYL-90)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.7",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "report `completed` only when the tool ended the run without marking its result as an error",
+      "historicalVerification": "Claude: `C12`, `live.run` (completed results); failure envelopes recorded in `tool-probes-2026-10-05.md`; Codex: `C12`, `run.outcomes`, `run.failures`, `live.run` (failed turns and completed results)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.8",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "keep everything already emitted when a run fails or is cancelled, and report the tokens it spent",
+      "historicalVerification": "Claude: `C42` (failure), `C15`, `live.stopping` (cancellation); Codex: `C42`, `C15`, `run.failures`, `stop.paths`, `live.stopping` (delivered output and reported usage retained through cancellation)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.9",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "say in the final event of a failed run whether output was produced and which tool calls were left unfinished",
+      "historicalVerification": "Claude: `C42`; Codex: `C42`, `run.outcomes`, `run.failures`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.10",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "never start a run again by itself",
+      "historicalVerification": "Claude: `C42`; Codex: `C42`, `run.failures`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.11",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "produce a correct run from the caller's history alone, its messages and its tool calls, whatever Subscription, model or Driver served the earlier ones",
+      "historicalVerification": "Claude: `C14`, `continuity.session`, `live.continuity`; Codex: `C14`, `history.native`, `history.labelled`, `continuity.run`, `live.continuity`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.12",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "continue the tool's saved conversation when its map names one for the request's chat session and Subscription, that conversation exists and it covers exactly the messages sent; otherwise build a new one from the messages in the tool's own format and record it",
+      "historicalVerification": "Claude: `C14`, `continuity.concurrent`, `live.continuity`; Codex: `C14`, `continuity.selection`, `continuity.concurrent`, `continuity.run`, `live.continuity`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.13",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "state in `started` whether the conversation is `fresh`, `resumed` or `rebuilt`, with the reason for a rebuild",
+      "historicalVerification": "Claude: `C14`; Codex: `C10`, `C14`, `run.lifecycle`, `continuity.run`, `live.run`, `live.continuity`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.15",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "report usage as totals for the run so far; leave out what the vendor does not report; name the model that actually ran",
+      "historicalVerification": "Claude: `C13`, `run.usage`, `run.zai`, `live.run`; Codex: `C13`, `run.usage`, `run.notices`, `live.run`, `live.no-tools` (per-request totals, cached/reasoning counts and actual model; no subscription cost)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.16",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "on stop, ask the tool to stop where it can be asked, end its processes after 2 seconds, and finish within 15 seconds in total",
+      "historicalVerification": "Claude: `C15`, `stop.shutdown`, `probe.stopping`, `live.stopping`; Codex: `C15`, `stop.paths`, `stop.stubborn`, `stop.accepted-turn`, `stop.late-subagent-turn`, `stop.late-collaboration-spawn`, `stop.nested-subagents`, `stop.collaboration-spawn`, `stop.backpressure`, `probe.stopping`, `live.stopping`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.17",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "on stop, close open questions as withdrawn and running tool calls as interrupted, then emit `finished` with outcome `cancelled`",
+      "historicalVerification": "Claude: `C15` (questions withdrawn and calls interrupted); Codex: `C15`, `stop.paths`, `stop.subagent`, `stop.nested-subagents`, `stop.collaboration-spawn`, `live.stopping` (running calls interrupted; Codex emits no caller questions)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.18",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "treat a stop of an ended or unknown run as success",
+      "historicalVerification": "Claude: `C16`; Codex: `C16`, `runs.stop`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.19",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "leave no process a run started alive after its final event, and no sub-agent at work, except a process that left the command that started it for a process group or a session of its own (DRV-D33)",
+      "historicalVerification": "Claude: `C15`, `C17`, `C38`, `stop.group-identity`, `live.stopping`; Codex: `C15`, `C17`, `C38`, `stop.group-identity`, `stop.process-groups`, `stop.recovery`, `stop.subagent`, `stop.nested-subagents`, `stop.collaboration-spawn`, `live.stopping`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.20",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "run a request with all tools switched off as one prompt in and one text out, in an empty folder of its own when none is given; where the vendor tool cannot be started without its tools, lock the run down as the Driver's specification states and report what the agent does nonetheless",
+      "historicalVerification": "Claude: `C19`, `live.run`; Codex: `C19`, `run.images`, `live.no-tools`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.21",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "keep runs independent: a failure, a stop or a slow consumer of one run never delays or fails another",
+      "historicalVerification": "Claude: `C18`, `C15` (stop isolation); Codex: `C18`, `C15` (parallel runs, slow-reader independence and stop isolation)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.22",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "cut a tool result to 200 KiB, whatever its shape, and flag that it was cut",
+      "historicalVerification": "Claude: `C20`, `run.truncation`; Codex: `C20`, `run.truncation`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.23",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "accept images with the message and with earlier messages as PNG, JPEG, WebP or GIF, and refuse any other type before starting the tool",
+      "historicalVerification": "Claude: `run.validation`, `run.images`, `C14`, `continuity.session`; Codex: `run.request`, `run.validation`, `run.images`, `history.native`, `history.images`, `C14`, `continuity.run`, `probe.continuity` (current and history images; no live image inference)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.24",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "echo the caller's labels of a request on every event of its run and give them no meaning",
+      "historicalVerification": "Claude: `C10`, `run.images`, `run.refusal`; Codex: `C10`, `run.request`, `run.validation`, `run.lifecycle`, `live.run`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.25",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "write the events of a run to the standard output of its `run` command, one JSON object per line, and end the process after `finished` with the exit status of the outcome",
+      "historicalVerification": "Claude: `C10`, `C12`, `C15`, `C17`, `C33`, `C42`, `C43`; Codex: `C10`, `C12`, `C15`, `C17`, `C33` (Codex scope), `C42`, `C43`, `run.text`, `stop.paths`, `stop.backpressure`, `live.run`, `live.stopping` (final write attempted only within the remaining stop budget)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.26",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "stop a run, as in DRV-2.16, on a `stop` line, on an interrupt or termination signal, on `runs stop`, when its events can no longer be written, and when its control input ends",
+      "historicalVerification": "Claude: `C15`, `stop.shutdown`, `C17`, `C33`; Codex: `C15`, `C17`, `C33` (Codex scope), `stop.paths`, `stop.output`, `stop.startup`, `stop.stdin-request`, `stop.stdin-request-eof`, `stop.accepted-turn`, `stop.backpressure`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.27",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "keep a record of every run in progress in the state directory, so that another invocation can list the runs, refuse a run identifier in use and stop a run by its identifier",
+      "historicalVerification": "Claude: `C33`, `C40`; Codex: `C33` (Codex scope), `C38`, `C40`, `run.control`, `run.lifecycle`, `runs.stop`, `stop.recovery`, `live.run`, `live.stopping`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.28",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "answer a line on the control input that it does not accept with a `control_refused` event, and let the run go on",
+      "historicalVerification": "Claude: `C33`, `C36`; Codex: `run.control` (malformed control lines and unmatched answers; interactive questions pending SYL-90)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.34",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "keep a map from the caller's chat session and the Subscription to the tool's saved conversation, holding identifiers and a digest of what that conversation covers and no message; write an entry only after a completed run and remove the entry of a conversation whose run ended any other way; keep no other record of a conversation",
+      "historicalVerification": "Claude: `C14`, `continuity.map`, `live.continuity`; Codex: `C14`, `continuity.digest`, `continuity.map`, `continuity.run`, `live.continuity`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.35",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "when it builds a conversation, write into it the earlier tool calls with their results, whichever Driver reported them, and the images of the earlier messages, all in the tool's own form, a `shell` call with its plain command and working folder (DRV-3.19); fall back to text only where the tool refuses",
+      "historicalVerification": "Claude: `C14`, `continuity.session`, `probe.continuity`, `live.continuity`; Codex: `C14`, `history.native`, `continuity.run`, `probe.continuity`, `live.continuity`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-2.36",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/02-inference.md",
+      "behavior": "write the result of a history's tool call as text by the rule above wherever its vendor tool takes results as text, and use the text form above, with a `notice`, where the vendor tool refuses a conversation built in its own format",
+      "historicalVerification": "Claude: `continuity.results`, `continuity.session`, `C14`; Codex: `history.results`, `history.labelled`, `continuity.run`, `C14`, `probe.continuity`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-3.19",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/03-tools-and-permissions.md",
+      "behavior": "show every command the agent runs in a terminal as the tool `shell`, with the input and result above, in events, and write a `shell` call of a history back in its own tool's form or, where that form is not known, in a form its tool was seen to accept",
+      "historicalVerification": "Claude: `C11`, `C14`, `C35`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-3.20",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/03-tools-and-permissions.md",
+      "behavior": "give a run with tools every tool the vendor tool offers in the Subscription's home, and name no tool to it, neither to allow nor to forbid",
+      "historicalVerification": "Claude: `tools.arguments`, `C35`, `probe.tools`, `live.tools`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-3.21",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/03-tools-and-permissions.md",
+      "behavior": "start the vendor tool so that it carries out every tool call without asking, with the access of the owner's account",
+      "historicalVerification": "Claude: `C35`, `probe.tools`, `live.tools`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-3.22",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/03-tools-and-permissions.md",
+      "behavior": "ask its caller for no permission; answer at once a request for permission that the vendor tool sends nonetheless, approving it where the tool's protocol has an answer that approves and declining it otherwise, and emit a `notice`",
+      "historicalVerification": "Claude: `C25`, `tools.unexpected permissions`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-3.23",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/03-tools-and-permissions.md",
+      "behavior": "end a call the vendor tool refused by itself with `tool_finished` as a failure carrying the tool's reason, and let the run go on",
+      "historicalVerification": "Claude: `C35`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-3.24",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/03-tools-and-permissions.md",
+      "behavior": "name, on every event that reports what a sub-agent did, the call that started the sub-agent, and keep a sub-agent's text out of the run's answer",
+      "historicalVerification": "Claude: `C35`, `tools.recorded sub-agent envelopes`, `live.tools`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-3.32",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/03-tools-and-permissions.md",
+      "behavior": "keep a run going, with its events, until the agent, every sub-agent it started and every command it left running in the background have ended, and treat nothing the agent says while one of them still works as the end of the run",
+      "historicalVerification": "Claude: `C35`, `live.tools`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-3.25",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/03-tools-and-permissions.md",
+      "behavior": "switch off no part of its vendor tool except the tool's own memory: its tools, its sub-agents, the services connected to the account and what the working folder sets up for the tool stay as the tool ships them",
+      "historicalVerification": "Claude: `tools.arguments`, `C35`, `probe.tools`; working-folder instruction evidence in the 6 October tool probe; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-3.26",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/03-tools-and-permissions.md",
+      "behavior": "carry a question from the agent to the person to its caller as `ask_opened`, after the `tool_started` of the call it belongs to and naming that call",
+      "historicalVerification": "Claude: `C36`, `live.tools`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-3.27",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/03-tools-and-permissions.md",
+      "behavior": "keep a question open, without a time limit of its own, until it is answered, withdrawn or the run ends, and allow several open questions and answers in any order",
+      "historicalVerification": "Claude: `C36`, `tools.questions`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-3.28",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/03-tools-and-permissions.md",
+      "behavior": "check an answer before it reaches the vendor tool and deliver it exactly once; treat a second answer as success without effect; refuse a malformed answer with `invalid_input` and an answer to a question that was withdrawn or never opened with `not_found`, each in a `control_refused` event",
+      "historicalVerification": "Claude: `C36`, `tools.questions`, `tools.failed answer delivery`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-3.29",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/03-tools-and-permissions.md",
+      "behavior": "end the run as `cancelled` when the caller declines a question",
+      "historicalVerification": "Claude: `C36`, `tools.decline`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-3.30",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/03-tools-and-permissions.md",
+      "behavior": "in a run without a control input, give the agent no means to ask where the vendor tool allows that, and decline a question that arises nonetheless with a message saying that nobody is there to answer",
+      "historicalVerification": "Claude: `C33`, `tools.unexpected permissions`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-3.31",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/03-tools-and-permissions.md",
+      "behavior": "give a run with tools the owner's own skills and MCP servers of the vendor tool, taken from the owner's own setup of that tool, and neither read anything else there nor change anything there",
+      "historicalVerification": "Claude: `C9`, `C37`, `tools.owner setup`, `probe.tools` (owner tree unchanged); Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-4.1",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/04-errors-and-limits.md",
+      "behavior": "report every failure as one error object with a code from the table above",
+      "historicalVerification": "Claude: `base.errors`, `base.cli`, `C26`; Codex: `errors`, `base.cli`, `base.tool-failure`, `C12`, `C42`, `run.failures` (base errors and baseline vendor/tool failures; classification pending SYL-91)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-4.2",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/04-errors-and-limits.md",
+      "behavior": "write the message for the Leather Bag, in the vendor's words where there are any, without a credential and without more than 1 KiB of the tool's output",
+      "historicalVerification": "Claude: `base.error-text`, `base.settings`, `errors.diagnostics`; Codex: `errors`, `settings`, `base.tool-failure` (redaction, Unicode-safe one-KiB excerpts and withheld faulty values)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-4.3",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/04-errors-and-limits.md",
+      "behavior": "mark an error as worth trying again only for `rate_limited` and `vendor_unavailable`",
+      "historicalVerification": "Claude: `base.errors`, `C26`; Codex: `errors` (exact retry policy)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-4.4",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/04-errors-and-limits.md",
+      "behavior": "classify by the fields the tool states, fall back to wording only where it states none, and record in the detail which was used",
+      "historicalVerification": "Claude: `errors.precedence`, `C26`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-4.5",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/04-errors-and-limits.md",
+      "behavior": "give the wait of a `rate_limited` error only when the vendor names a time",
+      "historicalVerification": "Claude: `errors.wait`, `C27`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-4.6",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/04-errors-and-limits.md",
+      "behavior": "never wait out a limit and never start a run again after one",
+      "historicalVerification": "Claude: `C26`, `C27`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-4.7",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/04-errors-and-limits.md",
+      "behavior": "move the Subscription to `needs_attention` together with every `credential_rejected` error",
+      "historicalVerification": "Claude: `C4`, `C28`, `errors.run-report`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-4.8",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/04-errors-and-limits.md",
+      "behavior": "end a run at the first refusal of the credential it can see, without waiting for the tool's retries",
+      "historicalVerification": "Claude: `C28`, `probe.errors`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-4.9",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/04-errors-and-limits.md",
+      "behavior": "apply the start limit of 60 seconds and the idle and total limits of the request, with the defaults above",
+      "historicalVerification": "Claude: `C29`, `errors.clocks`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-4.10",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/04-errors-and-limits.md",
+      "behavior": "stop the idle clock while a tool call or a command left in the background is running, or a question is open",
+      "historicalVerification": "Claude: `C29`, `errors.clocks`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-4.11",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/04-errors-and-limits.md",
+      "behavior": "on a reached limit stop the run as in DRV-2.16 and finish it as `failed` with `limit_reached`",
+      "historicalVerification": "Claude: `C29`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-4.12",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/04-errors-and-limits.md",
+      "behavior": "report the vendor tool's own retries as `notice` events and bound them where the tool allows",
+      "historicalVerification": "Claude: `C28`, `probe.errors`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-4.13",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/04-errors-and-limits.md",
+      "behavior": "store the latest limit information a run received as the Subscription's last usage report when the run ends",
+      "historicalVerification": "Claude: `C30`, `errors.usage`, `live.errors-usage`; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-4.14",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/04-errors-and-limits.md",
+      "behavior": "name the tool, the found version and the needed version in `tool_missing` and `tool_unsupported`",
+      "historicalVerification": "Claude: `base.tool-missing`, `base.tool-old`, `C31`; Codex: `base.tool-missing`, `base.tool-old`, `C31`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-4.15",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/04-errors-and-limits.md",
+      "behavior": "finish a run as `failed` with `internal` when the Driver itself fails, and never leave a run without a final event",
+      "historicalVerification": "Claude: `C43`, `run.failures`; Codex: `C43`, `run.failures` (internal state failure and transport/protocol failures each end with one final event)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-5.1",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/05-conformance.md",
+      "behavior": "ship a stand-in for its vendor tool and pass the scenarios above with it, without network, account or quota",
+      "historicalVerification": "Claude: `C1`, `C2`, `C3`, `C4`, `C5`, `C6`, `C7`, `C8`, `C9`, `C10`, `C11`, `C12`, `C13`, `C14`, `C15`, `C16`, `C17`, `C18`, `C19`, `C20`, `C25`, `C26`, `C27`, `C28`, `C29`, `C30`, `C31`, `C32`, `C33`, `C35`, `C36`, `C37`, `C38`, `C39`, `C40`, `C41`, `C42`, `C43` (all 38 scenarios); Codex: `C1`, `C2`, `C6`, `C39`, `C41`, plus subscription scopes of `C4`, `C5`, `C7`, `C8`, `C40`; `C10`, `C11`, `C12`, `C13`, `C14`, `C15`, `C16`, `C17`, `C18`, `C19`, `C20`, `C38`, `C42`, `C43`, Codex no-question scope of `C33` and fresh-run scope of `C40`; remaining advanced tools and error scopes pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-5.2",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/05-conformance.md",
+      "behavior": "derive every stand-in script from a probe record and name the tool version it shows",
+      "historicalVerification": "Claude: `base.stand-in`, `probe.subscriptions`, `live.subscriptions`, `test/run-protocol-2026-10-06.json` (Claude 2.1.289 raw run envelopes, explicitly synthetic test variants), `probe.run-settings`, `probe.continuity` (Claude 2.1.289 refusal envelope and native session acceptance); `probe.errors` and `test/errors-protocol-2026-10-07.json` (recorded Claude 2.1.289 error, retry and limit envelopes; explicitly synthetic variants); Codex: `base.stand-in`, `base.stand-in-handshake`, `probe.base-info` (codex-cli 0.159.2 version and recorded initialize response, explicitly synthetic old-version and home/platform variants); run and stop scripts derive from `research/probe-scripts-2026-10-06/live/codex-all.json`, the stopping addendum of `research/tool-probes-2026-10-05.md`, and `research/stopping-initial-2026-10-07.json` (the observed `spawnAgent` announcement form), with marked synthetic count, failure, truncation, process and timing variants; `probe.run-protocol`, `probe.stopping` confirm installed stable fields",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-5.3",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/05-conformance.md",
+      "behavior": "provide its probes as a command that sends no prompt, uses only homes created for it and a clean environment, and writes a record of shapes without values",
+      "historicalVerification": "Claude: `dev.probe`, `dev.records`, `C32`, real `dev probe` on Claude 2.1.289 (research/dev-probe-2026-10-07.json, zero inference requests); Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-5.4",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/05-conformance.md",
+      "behavior": "provide its live checks as a separate command that runs only when asked for, refuses to start when the account's usage is exhausted, and reports what it spent",
+      "historicalVerification": "Claude: `dev.gates`, `dev.live-check`, `dev.failed-cost`, `C32` (opt-in orchestration, usage preflight and spending reports); historical `live.run`, `live.tools`, `live.continuity`, `live.stopping`, `live.errors-usage` retain the real behavior checks. A new six-turn vendor run was not requested; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-5.5",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/05-conformance.md",
+      "behavior": "have a scenario for every requirement of DRV-0 to DRV-4 and of DRV-6 whose check names `contract`",
+      "historicalVerification": "`runner.shared-scenarios`, `runner.selection` (C31 and C32 info registered); remaining coverage pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-5.6",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/05-conformance.md",
+      "behavior": "provide the one real message of a build (BLD-0) as a check of its own: one prompt, as small as possible, through the installed tool on its test Subscription, under the rules of DRV-5.4",
+      "historicalVerification": "Claude: `dev.build-check`, `C32`, real `dev build-check` on test-anthropic (research/dev-build-check-2026-10-07.json, one Haiku message); `build.clean-working`, `build.checks` (numbered Build 1, research/first-working-build-2026-10-07.json, one real Haiku message); Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-5.7",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/05-conformance.md",
+      "behavior": "divide every fixed wait of this contract by the number in `ARBOL_TEST_TIME_SCALE`, when its environment holds one",
+      "historicalVerification": "Claude: `state.time-scale`, `state.lock` (base waits); other waits and contract pending; Codex: `state.time-scale`, `state.lock` (base waits; later lifecycle waits pending)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-5.8",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/05-conformance.md",
+      "behavior": "carry the commands `dev stand-in`, `dev probe`, `dev live-check` and `dev build-check` in every Build, as stated above",
+      "historicalVerification": "Claude: `dev.gates`, `dev.probe`, `dev.build-check`, `dev.live-check`, `C32`, `build.checks` (all 38 scenarios and 81 unit tests from numbered Build 1); Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-5.9",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/05-conformance.md",
+      "behavior": "hold, in its stand-in, a script for every scenario, play the one named in the file `scenario` of its folder, and append what it saw to `received.jsonl` there",
+      "historicalVerification": "Claude: `C2`, `C4`, `C5`, `C6`, `C7`, `C8`, `C9`, `C10`, `C11`, `C12`, `C13`, `C14`, `C15`, `C16`, `C17`, `C18`, `C19`, `C20`, `C25`, `C26`, `C27`, `C28`, `C29`, `C30`, `C31`, `C32`, `C33`, `C35`, `C36`, `C37`, `C38`, `C39`, `C40`, `C41`, `C42`, `C43`; all scenario scripts present; Codex: `base.stand-in`, `base.stand-in-handshake`, `C31`, `C32` , `C1`, `C2`, `C6`, `C39`, `C41`, subscription scopes of `C4`, `C5`, `C7`, `C8`, `C40` (base, subscription and fresh-run scripts); `C10`, `C11`, `C12`, `C13`, `C14`, `C15`, `C16`, `C17`, `C18`, `C19`, `C20`, `C38`, `C42`, `C43`, Codex no-question scope of `C33` and fresh-run scope of `C40`; later scenario scripts pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-5.10",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/05-conformance.md",
+      "behavior": "use the Subscription `test-<family>` of its default family for `dev build-check`, and fail without starting when it is missing, not signed in or shows a window used up",
+      "historicalVerification": "Claude: `dev.gates`, `C32`, `dev.build-check`, real `dev build-check` on test-anthropic; Codex pending",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-6.1",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/06-state-and-simultaneous-calls.md",
+      "behavior": "keep its files in the layout above, under the state directory alone, readable by the owner only, and treat a missing file or folder as empty",
+      "historicalVerification": "Claude: `base.info`, `state.lock`, `stop.shell-ledger`, `C38`; Codex: `state.layout`, `base.info`, `run.lifecycle`, `run.images`, `C38`, `stop.recovery`, `live.run`, `live.stopping`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-6.2",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/06-state-and-simultaneous-calls.md",
+      "behavior": "write every durable state file whole, by writing a temporary file in the same folder and renaming it",
+      "historicalVerification": "Claude: `state.atomic-write`; Codex: `state.atomic-write`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-6.3",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/06-state-and-simultaneous-calls.md",
+      "behavior": "write the data format number when it creates the state directory, and do nothing but fail with `state_newer` when it finds a higher number than it knows",
+      "historicalVerification": "Claude: `base.state-newer`, `C38`; Codex: `state.format`, `base.state-newer`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-6.4",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/06-state-and-simultaneous-calls.md",
+      "behavior": "hold a Subscription's lock only while it rewrites that Subscription's record, never across a request to the vendor, a run of the vendor tool or a sign-in",
+      "historicalVerification": "Claude: `subscriptions.create`, `subscriptions.update`, `subscriptions.independent`, `C2`, `C5`, `subscriptions.late-check` (vendor calls outside locks); run operations pending; Codex: `subscriptions.create`, `subscriptions.update`, `subscriptions.independent`, `subscriptions.late-check`, `C2`, `C18`, `C38`, `run.lifecycle`, `stop.recovery` (cleanup election and map invalidation under short locks; process cleanup outside them)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-6.5",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/06-state-and-simultaneous-calls.md",
+      "behavior": "wait for a taken lock in steps of 50 milliseconds, take over a lock whose owner is dead, and fail with `internal` after 10 seconds",
+      "historicalVerification": "Claude: `state.lock` (contention, dead owner, timeout, dead reaper), `C38` (concurrent changes); Codex: `state.lock` (real process contention, dead/reused owner, dead reaper, timeout and independent Subscriptions)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-6.6",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/06-state-and-simultaneous-calls.md",
+      "behavior": "name the owner of every lock and of every record of something in progress by process identifier and start time, and count an owner as alive only when both match",
+      "historicalVerification": "Claude: `state.owner`, `state.lock`; Codex: `state.owner`, `state.lock`, `run.lifecycle`, `run.control`, `stop.group-identity`, `stop.recovery` (run, recovery and process-ledger identities, including reused owners)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-6.7",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/06-state-and-simultaneous-calls.md",
+      "behavior": "keep `runs/<run id>.json` from the start of a run to its final event, created so that a second run with the same identifier fails",
+      "historicalVerification": "Claude: `C33`, `C40`; Codex: `C40`, `run.control`, `run.lifecycle`, `live.run` (fresh-run reservation, duplicate refusal and final-event removal)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-6.8",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/06-state-and-simultaneous-calls.md",
+      "behavior": "stop a run of another call by sending its owner the termination signal and waiting until its record is gone, for at most 20 seconds",
+      "historicalVerification": "Claude: `C33`, `C16`; Codex: `C33` (peer-stop scope), `C16`, `runs.stop`, `stop.paths`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-6.9",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/06-state-and-simultaneous-calls.md",
+      "behavior": "end a pending sign-in of another call in the same way before starting its own, and end a replaced sign-in with a `failed` step whose error is `in_use`",
+      "historicalVerification": "Claude: `C2`, `C6`; Codex: `C2`, `C6`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-6.10",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/06-state-and-simultaneous-calls.md",
+      "behavior": "clear the leftovers of a killed call, as the table above says, before a `run`, `runs list`, `runs stop` or a change to a Subscription does its own work, ending a vendor tool that outlived its Driver",
+      "historicalVerification": "Claude: `C38`, `C6`, `state.lock`, `stop.recovery`, `stop.unfinished-writes`, `live.stopping`; Codex: `subscriptions.progress`, `C6`, `C38`, `subscriptions.active-run`, `stop.recovery`, `stop.unfinished-writes`, `stop.subscription-force`, `live.stopping`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-6.11",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/06-state-and-simultaneous-calls.md",
+      "behavior": "keep one entry of the map per chat session and Subscription, in a file named after the SHA-256 of the chat session identifier, holding the fields above and no message",
+      "historicalVerification": "Claude: `C14`, `continuity.map`; Codex: `C14`, `continuity.map`, `live.continuity`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-6.12",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/06-state-and-simultaneous-calls.md",
+      "behavior": "continue a saved conversation only when every check of the table above holds, and otherwise build a new one and give the first reason that failed, in the order of the table",
+      "historicalVerification": "Claude: `C14`; Codex: `C14`, `continuity.selection`, `continuity.run`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-6.13",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/06-state-and-simultaneous-calls.md",
+      "behavior": "compute the digest of the messages and the system prompt digest as stated above",
+      "historicalVerification": "Claude: `continuity.digest`; Codex: `continuity.digest`, `continuity.run`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-6.14",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/06-state-and-simultaneous-calls.md",
+      "behavior": "write an entry of the map only after a completed run, and remove the entry a run was continuing when that run ends any other way and the entry still names the same conversation",
+      "historicalVerification": "Claude: `C14`, `continuity.map`; Codex: `C14`, `C38`, `continuity.map`, `continuity.run`, `stop.recovery` (conditional map invalidation after failure and killed-process cleanup; newer completions preserved)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-6.15",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/06-state-and-simultaneous-calls.md",
+      "behavior": "never wait for another run that uses the same saved conversation: build a new conversation instead",
+      "historicalVerification": "Claude: `C14`, `continuity.concurrent`; Codex: `C14`, `continuity.concurrent`, `continuity.run`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "DRV-6.16",
+      "source": "/Users/msix/Artifacts/arbol/driver-contract/06-state-and-simultaneous-calls.md",
+      "behavior": "ask the vendor tool's program for its version only when its path, size or change time differs from what `tool.json` holds",
+      "historicalVerification": "Claude: `base.tool-cache`; Codex: `base.tool-cache`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-0.1",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/00-overview-and-legacy-map.md",
+      "behavior": "find the `claude` executable from `toolPath` in its settings file or else on the search path, read its version by running it, and report both",
+      "historicalVerification": "`base.info`, `base.tool-cache`, `probe.base-info`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-0.2",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/00-overview-and-legacy-map.md",
+      "behavior": "refuse to run with a tool older than the oldest supported version, naming both versions",
+      "historicalVerification": "`base.tool-old`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-0.3",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/00-overview-and-legacy-map.md",
+      "behavior": "need nothing but the tool, its state directory and the Keychain to start: no database, no other Arbol service, no file from an Artifact Corpus",
+      "historicalVerification": "`base.info`, `C1`, `C10`, `C32`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-0.4",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/00-overview-and-legacy-map.md",
+      "behavior": "take the system prompt as text in the request and add nothing to it",
+      "historicalVerification": "`run.request`, `C10`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-0.5",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/00-overview-and-legacy-map.md",
+      "behavior": "confine the effect of a malformed message from the tool to the run it arrived in",
+      "historicalVerification": "`run.protocol`, `C18`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-1.1",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/01-subscriptions.md",
+      "behavior": "offer the families `anthropic` (vendor login) and `zai` (key) with the settings listed above, with one Subscription of each from the start, named `anthropic` and `zai`, and `anthropic` as the default unless the settings file names another",
+      "historicalVerification": "`subscriptions.local`, `subscriptions.create`, `C1`, `C10`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-1.2",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/01-subscriptions.md",
+      "behavior": "set `CLAUDE_CONFIG_DIR` to the Subscription's home for every child process of that Subscription",
+      "historicalVerification": "`subscriptions.environment`, `C39`, `C8`, `C10`, `probe.subscriptions`, `live.subscriptions`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-1.3",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/01-subscriptions.md",
+      "behavior": "build each child's environment from an allow-list; no inherited `ANTHROPIC_*`, `CLAUDE_*` or `CLAUDECODE` variable reaches the tool",
+      "historicalVerification": "`subscriptions.environment`, `base.environment`, `C8`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-1.4",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/01-subscriptions.md",
+      "behavior": "apply a `zai` account as gateway address, key, model names and allowed tuning variables in the child's environment, with the key read from its source (DRV-0.14) when the child is started",
+      "historicalVerification": "`subscriptions.environment`, `subscriptions.secret-source`, `C2`, `C7`, `run.zai`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-1.5",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/01-subscriptions.md",
+      "behavior": "accept a `baseUrl` only if it is an http or https address",
+      "historicalVerification": "`subscriptions.settings`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-1.6",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/01-subscriptions.md",
+      "behavior": "accept in `toolEnvironment` only variable names on its allow-list, and never one that selects an account or an address",
+      "historicalVerification": "`subscriptions.settings`, `subscriptions.environment`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-1.7",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/01-subscriptions.md",
+      "behavior": "read no settings file from the Leather Bag's own tool configuration when a child is started",
+      "historicalVerification": "`C8`, `probe.subscriptions`, `live.subscriptions` (owner configuration unchanged)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-1.8",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/01-subscriptions.md",
+      "behavior": "sign an `anthropic` Subscription in and out with the tool's own `auth` commands run in the Subscription's home, with `BROWSER` set so that the sign-in address reaches the caller instead of the system browser, and hold no Anthropic credential itself",
+      "historicalVerification": "`C2`, `C6`, `C7`, `probe.subscriptions`, `live.subscriptions` (existing tool-owned login)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-1.9",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/01-subscriptions.md",
+      "behavior": "on `zai` sign-in read the key from its source (DRV-0.14), check it against z.ai, remove a rejected key from the Keychain item when it came from there, and keep it when z.ai cannot be reached",
+      "historicalVerification": "`C2`, `C3`, `C4`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-1.10",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/01-subscriptions.md",
+      "behavior": "keep a `zai` key as one Keychain item per Subscription, under the service `com.sylvan-stack.arbol.claude-driver`, extended as DRV-1 says when the state directory is not the default one, with the Subscription's identifier as the account, separate from version 1's items, and read it with the system's `security` command. A Subscription whose settings name a command as the source of its key has no item",
+      "historicalVerification": "`subscriptions.keychain`, `C2`, `C3`, `subscriptions.import`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-1.11",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/01-subscriptions.md",
+      "behavior": "never attempt to renew a `zai` key; a rejection moves the Subscription to `needs_attention` with the remedy \"replace the key\"",
+      "historicalVerification": "`C4`, `C41`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-1.12",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/01-subscriptions.md",
+      "behavior": "check an `anthropic` Subscription with `claude auth status --json` and a `zai` Subscription with the quota address; neither spends inference quota",
+      "historicalVerification": "`C4`, `probe.subscriptions`, `live.subscriptions`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-1.13",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/01-subscriptions.md",
+      "behavior": "turn z.ai's quota answer into a usage report by the rules in the Usage table",
+      "historicalVerification": "`subscriptions.quota`, `C41`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-1.14",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/01-subscriptions.md",
+      "behavior": "build the `anthropic` usage report from the limit information the tool writes during a run, keep the latest with the Subscription, and answer `unsupported` while there is none",
+      "historicalVerification": "`subscriptions.update`, `C41`, `errors.usage`, `C30`, `live.errors-usage`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-1.15",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/01-subscriptions.md",
+      "behavior": "take the `anthropic` catalog from the tool's `initialize` answer, without a prompt and without a request to the vendor's model interface",
+      "historicalVerification": "`probe.subscriptions`, `live.subscriptions`, `C41`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-1.16",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/01-subscriptions.md",
+      "behavior": "take the `zai` catalog from z.ai and fall back only to its built-in z.ai list",
+      "historicalVerification": "`C41`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-1.17",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/01-subscriptions.md",
+      "behavior": "provide a one-time import command, `subscriptions import <id> --from <file>`, that reads a `claude` settings file, writes its gateway address, model names and allowed tuning variables into the `zai` entry of the Driver's settings file, stores its key in the Keychain through the standard input of the `security` program, prints no value from it and leaves the `claude` file unchanged",
+      "historicalVerification": "`subscriptions.import` (synthetic file and key only)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-1.18",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/01-subscriptions.md",
+      "behavior": "leave the renewal of an `anthropic` login to the tool, and ask for a new sign-in only when the tool reports that it is not logged in or the vendor has rejected the login",
+      "historicalVerification": "`C4`, `C7`, `C28`, `live.subscriptions`, `probe.errors`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.1",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "carry out a run as one `claude` process with the stream arguments, in the Subscription's home and the request's working folder, and start the tool a second time within a run only when its first start was refused for the conversation it was to continue (CLD-2.10, CLD-2.11)",
+      "historicalVerification": "`C10`, `C18`, `C14`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.3",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "pass `--permission-mode bypassPermissions` on every run, whatever mode the home would start in",
+      "historicalVerification": "`probe.run-settings`, `C10`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.4",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "switch the tool's auto memory off for every run",
+      "historicalVerification": "`probe.run-settings`, `run.images`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.5",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "pass the request's system prompt with `--append-system-prompt` and add no text of its own",
+      "historicalVerification": "`run.request`, `C10`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.6",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "read what the tool applied with `get_settings` before sending the message, and refuse the run when the effort differs from the request",
+      "historicalVerification": "`C40`, `probe.run-settings`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.7",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "refuse a request whose working folder or additional folder does not exist, since the tool accepts a missing folder silently",
+      "historicalVerification": "`run.validation`, `C40`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.8",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "write only complete JSON objects, one per line, to the tool",
+      "historicalVerification": "`run.images`, `run.protocol`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.9",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "start a fresh conversation under a new random session identifier and never reuse one",
+      "historicalVerification": "`C10`, `C14`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.10",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "resume a session only when its file is in the Subscription's home and no other run in progress uses it, and rebuild otherwise",
+      "historicalVerification": "`C14`, `continuity.concurrent`, `live.continuity`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.11",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "rebuild by writing a session file from the request's history, with its tool calls as tool-use and tool-result blocks and its images as image blocks, and fall back to a fresh session with the earlier messages as one labelled text when the tool does not accept the file",
+      "historicalVerification": "`C14`, `continuity.session`, `probe.continuity`, `live.continuity`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.12",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "derive the session folder from the working folder's real path by replacing every character that is not a letter or a digit with `-`",
+      "historicalVerification": "`continuity.session`, `continuity.long-folder`, `probe.continuity`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.13",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "map the tool's records to events by the table above",
+      "historicalVerification": "`run.protocol`, `C10`, `C11`, `C12`, `C13`, `C25`, `C35`, `C36`, `C42`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.14",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "emit `text`, `thinking` and `tool_started` from the tool's whole-block records",
+      "historicalVerification": "`C10`, `C11`, `run.protocol`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.15",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "decide `completed` or `failed` by the error flag of the `result` record, never by its subtype or its wording",
+      "historicalVerification": "`C12`, `live.run` (completed results); failure envelopes recorded in `tool-probes-2026-10-05.md`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.16",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "answer a control request of an unknown kind with an error",
+      "historicalVerification": "`run.protocol`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.17",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "fail only the run in which a record it cannot use arrived",
+      "historicalVerification": "`C18`, `run.protocol`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.18",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "take final usage from the `result` records, the token counts added up over them and the cost from the last one, and report cost only when the tool states it at list prices",
+      "historicalVerification": "`run.usage`, `run.zai`, `C13`, `live.run`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.19",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "close the tool's input after the `result` record that leaves no background task, and end the tool by signal when it has not exited after 2 seconds",
+      "historicalVerification": "`C17`, `C35`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.20",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "stop a run with the `interrupt` control request, and never by closing the input",
+      "historicalVerification": "`C15`, `C33`, `probe.stopping`, `live.stopping`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.21",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "give the tool, through `CLAUDE_CODE_SHELL`, a shell of the Driver's own making that notes every shell call, and after the tool has exited end every process still in the process group of a noted call, leaving alone a group whose number a later process has taken",
+      "historicalVerification": "`C17`, `C38`, `stop.shell-ledger`, `stop.group-identity`, `live.stopping`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.22",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "run a request without tools with `--tools \"\"`, and without a working folder also with `--no-session-persistence` in an empty folder of its own, removing a session file it wrote for such a run when the run ends",
+      "historicalVerification": "`probe.run-settings`, `C19`, `live.run`, `C14`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.23",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "send images as image blocks of the user record, and of the earlier user messages in a rebuilt session",
+      "historicalVerification": "`run.validation`, `run.images`, `C14`, `continuity.session`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.24",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "write a rebuilt session file with the keys, the order of lines, the made-up call identifiers and the result texts stated above, and use the text form of DRV-2 where no file can be written or the tool refuses it",
+      "historicalVerification": "`continuity.session`, `continuity.results`, `continuity.unwritable-session`, `C14`, `probe.continuity`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-2.25",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/02-inference.md",
+      "behavior": "pass `--system-prompt-snapshot off` on every run, and continue a saved conversation also when the request's system prompt is not the one it was last run with",
+      "historicalVerification": "`C14`, `probe.run-settings`, `live.continuity`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-3.12",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/03-tools-and-permissions.md",
+      "behavior": "report a call the tool refused by itself as `tool_finished`, failed, with the tool's text",
+      "historicalVerification": "`C35`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-3.14",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/03-tools-and-permissions.md",
+      "behavior": "pass no argument that names, allows or forbids a tool for a run with tools, and `--tools \"\"` for a run without",
+      "historicalVerification": "`tools.arguments`, `C35`, `probe.tools`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-3.15",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/03-tools-and-permissions.md",
+      "behavior": "pass `--permission-mode bypassPermissions` on every run, and `--permission-prompt-tool stdio` only for a run with tools that has a control input",
+      "historicalVerification": "`tools.arguments`, `C33`, `C35`, `probe.tools`, `live.tools`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-3.16",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/03-tools-and-permissions.md",
+      "behavior": "answer at once a `can_use_tool` request that is not a question from the agent, by the table above, with a message on every deny and a `notice`, and fail the run on a request without an identifier",
+      "historicalVerification": "`C25`, `tools.unexpected permissions`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-3.17",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/03-tools-and-permissions.md",
+      "behavior": "set `parentCallId` from `parent_tool_use_id` on every event built from a record that carries one, and keep the text of such records out of the answer",
+      "historicalVerification": "`C35`, `tools.recorded sub-agent envelopes`, `live.tools`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-3.21",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/03-tools-and-permissions.md",
+      "behavior": "treat a `result` record as the end of the run only when no background task is left, by the `tasks` list of the last `background_tasks_changed` record, and keep the tool's input open and go on reading until then",
+      "historicalVerification": "`C35`, `live.tools`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-3.18",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/03-tools-and-permissions.md",
+      "behavior": "switch the tool's own memory off with `CLAUDE_CODE_DISABLE_AUTO_MEMORY=1`, and pass no other argument and set no other variable that switches a part of the tool off",
+      "historicalVerification": "`C35`, `probe.tools`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-3.19",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/03-tools-and-permissions.md",
+      "behavior": "carry `AskUserQuestion` to the caller as `ask_opened` and answer it through the answers added to the tool's input; decline through a deny that interrupts; emit `ask_closed` as withdrawn on `control_cancel_request` and refuse a later answer with `not_found`",
+      "historicalVerification": "`C36`, `tools.questions`, `tools.decline`, `tools.failed answer delivery`, `live.tools`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-3.20",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/03-tools-and-permissions.md",
+      "behavior": "hold a private `skills` directory in every Subscription's home with links to the owner's user skills in `~/.claude/skills`, keeping account-synced skills private, and pass `--mcp-config ~/.claude.json` on a run with tools, each only where the owner has it; read nothing else of the owner's own setup and write nothing there",
+      "historicalVerification": "`C9`, `C37`, `tools.owner setup`, `probe.tools`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-4.1",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/04-errors-and-limits.md",
+      "behavior": "decide the error code of a failed run by the mapping table, first matching row",
+      "historicalVerification": "`errors.precedence`, `C26`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-4.2",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/04-errors-and-limits.md",
+      "behavior": "use the wording lists only when the tool states no error code and no status, and mark the error as decided by wording",
+      "historicalVerification": "`errors.precedence`, `C26`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-4.3",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/04-errors-and-limits.md",
+      "behavior": "read seconds and minutes with the number; without a unit assume seconds only after \"retry after\"",
+      "historicalVerification": "`errors.wait`, `C27`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-4.4",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/04-errors-and-limits.md",
+      "behavior": "emit a `notice` for every `api_retry` record",
+      "historicalVerification": "`C28`, `probe.errors`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-4.5",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/04-errors-and-limits.md",
+      "behavior": "stop the run at the first `api_retry` record with status 401 or 403 and finish it as `credential_rejected`",
+      "historicalVerification": "`C28`, `probe.errors`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-4.6",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/04-errors-and-limits.md",
+      "behavior": "limit the tool's retries to three",
+      "historicalVerification": "`probe.errors`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-4.7",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/04-errors-and-limits.md",
+      "behavior": "build the usage report of an `anthropic` Subscription from the latest `rate_limit_event` of a run by the table above",
+      "historicalVerification": "`errors.usage`, `C30`, `live.errors-usage`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-4.8",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/04-errors-and-limits.md",
+      "behavior": "take the wait of a `rate_limited` error from the text, else from the reset of the limiting window, else give none",
+      "historicalVerification": "`errors.wait`, `C27`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-4.9",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/04-errors-and-limits.md",
+      "behavior": "treat every record on standard output as a sign of life",
+      "historicalVerification": "`errors.clocks`, `C29`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-4.10",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/04-errors-and-limits.md",
+      "behavior": "give the exit status and at most 1 KiB of standard error with `tool_failed` and `tool_unsupported`",
+      "historicalVerification": "`errors.diagnostics`, `C26`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CLD-4.11",
+      "source": "/Users/msix/Artifacts/arbol-claude-driver/specs/04-errors-and-limits.md",
+      "behavior": "read the tool's version by running it, and refuse to use a version below the oldest supported one",
+      "historicalVerification": "`base.tool-cache`, `base.tool-old`, `probe.base-info`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-0.1",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/00-overview-and-legacy-map.md",
+      "behavior": "find the `codex` executable from `toolPath` in its settings file or else on the search path, read its version by running it, and report both",
+      "historicalVerification": "`base.info`, `base.tool-cache`, `base.tool-missing`, `base.tool-old`, `probe.base-info` (codex-cli 0.159.2 on 7 October 2026; zero prompts)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-0.2",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/00-overview-and-legacy-map.md",
+      "behavior": "work with every tool version from the oldest supported one upward, and judge compatibility by the tool's answers, never by the size or checksum of one build",
+      "historicalVerification": "`base.tool-old` (version boundary and later versions, no binary pin)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-0.3",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/00-overview-and-legacy-map.md",
+      "behavior": "need nothing but the tool and its state directory to start: no database, no other Arbol service, no file from an Artifact Corpus",
+      "historicalVerification": "`C32` (info), `base.packaged-info`, `C10`, `run.lifecycle`, `live.run` (isolated base and fresh-run executable; continuity and complete lifecycle coverage pending)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": true
+    },
+    {
+      "requirement": "CDX-0.4",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/00-overview-and-legacy-map.md",
+      "behavior": "take the system prompt as text in the request and add nothing to it",
+      "historicalVerification": "`C10`, `run.request`, `run.lifecycle` (system prompt passed unchanged as developerInstructions)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-0.5",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/00-overview-and-legacy-map.md",
+      "behavior": "use a request the tool marks as experimental only where a specification names it and says why",
+      "historicalVerification": "`probe.run-protocol`, `run.lifecycle`, `run.images` (stable-schema fresh-run requests; native continuity and owner tools pending SYL-88/SYL-90)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": true
+    },
+    {
+      "requirement": "CDX-1.1",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/01-subscriptions.md",
+      "behavior": "offer the family `chatgpt` (vendor login, no settings), with one Subscription from the start, named `chatgpt`, which is the default",
+      "historicalVerification": "`subscriptions.local`, `C1` (default account; default inference pending SYL-86)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": true
+    },
+    {
+      "requirement": "CDX-1.2",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/01-subscriptions.md",
+      "behavior": "set `CODEX_HOME` to the Subscription's home for every child process of that Subscription, and create that home readable by the owner only",
+      "historicalVerification": "`subscriptions.create`, `app-server.home`, `probe.subscriptions`, `live.subscriptions`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-1.3",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/01-subscriptions.md",
+      "behavior": "stop an app-server whose handshake answer names another home than the Subscription's",
+      "historicalVerification": "`app-server.validation`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-1.4",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/01-subscriptions.md",
+      "behavior": "build each child's environment from an allow-list; no inherited `OPENAI_*` or `CODEX_*` variable reaches the tool",
+      "historicalVerification": "`app-server.home`, `C8` (subscription children)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-1.5",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/01-subscriptions.md",
+      "behavior": "write the configuration in a Subscription's home itself, and never copy the Leather Bag's own `~/.codex` or write to it. Read from it only what CDX-3.14 names",
+      "historicalVerification": "`app-server.home`, `probe.subscriptions`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-1.6",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/01-subscriptions.md",
+      "behavior": "sign in and out only through the app-server's `account/login/start`, `account/login/cancel` and `account/logout`, and hold no ChatGPT credential itself",
+      "historicalVerification": "`C2`, `C5` (subscription scope), `probe.subscriptions`; successful browser consent recorded 6 October 2026, not repeated",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-1.7",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/01-subscriptions.md",
+      "behavior": "offer both the sign-in on this machine and the device-code sign-in, the second when `sign-in` is called with `--by-code`",
+      "historicalVerification": "`C2`, `probe.subscriptions` (both sign-in methods return their steps; fresh browser consent not repeated)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-1.8",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/01-subscriptions.md",
+      "behavior": "keep the app-server of a pending sign-in running until the tool reports completion, the attempt is cancelled or it times out, and leave no process behind afterwards",
+      "historicalVerification": "`C2`, `C6`, `app-server.cancel`, `app-server.descendants`, `probe.subscriptions`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-1.9",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/01-subscriptions.md",
+      "behavior": "never read, copy or log the login the tool stores in a home",
+      "historicalVerification": "`app-server.home`, `subscriptions.snapshots`, `C7` (subscription scope)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-1.10",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/01-subscriptions.md",
+      "behavior": "check a Subscription with `account/read` and a renewal of the login, and move it to `needs_attention` when the home holds no ChatGPT account",
+      "historicalVerification": "`C4` (subscription scope), `app-server.rejection`, `live.subscriptions`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-1.11",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/01-subscriptions.md",
+      "behavior": "build the usage report from `account/rateLimits/read` by the table above",
+      "historicalVerification": "`catalog.usage`, `catalog.unknowns`, `catalog.malformed`, `C41`, `live.subscriptions`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-1.12",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/01-subscriptions.md",
+      "behavior": "build the model catalog from `model/list`, all pages, without hidden models",
+      "historicalVerification": "`catalog.models`, `catalog.pages`, `catalog.fallback`, `C41`, `live.subscriptions`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-1.13",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/01-subscriptions.md",
+      "behavior": "make no request of its own to a ChatGPT or OpenAI address",
+      "historicalVerification": "`app-server.home`, `C41` (only app-server account RPCs; no inference requests)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-1.14",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/01-subscriptions.md",
+      "behavior": "let only one sign-in on this machine be pending across all its Subscriptions, and report a sign-in ended by another login on the machine as `failed` with that reason",
+      "historicalVerification": "`C2` (cross-home local replacement and independent device codes), `probe.subscriptions`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-1.15",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/01-subscriptions.md",
+      "behavior": "read a usage window's kind from its length",
+      "historicalVerification": "`catalog.usage`, `catalog.unknowns`, `C41`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-2.1",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/02-inference.md",
+      "behavior": "start one app-server process per run, in a process group of its own, with the Subscription's home, the request's working folder and the environment of CDX-1",
+      "historicalVerification": "`C18`, `app-server.home`, `run.lifecycle`, `live.run` (one private-home app-server per fresh run)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-2.2",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/02-inference.md",
+      "behavior": "write the configuration of a home itself, read the effective configuration back after the handshake, and refuse the run when the tool reports the file invalid, ignores a setting or shows another value",
+      "historicalVerification": "`app-server.home`, `app-server.validation`, `run.lifecycle`, `probe.run-protocol`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-2.3",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/02-inference.md",
+      "behavior": "check the account with `account/read` before starting a turn, and refuse the run with `not_signed_in` when the home holds no ChatGPT account",
+      "historicalVerification": "`C40`, `run.validation`, `catalog.account`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-2.4",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/02-inference.md",
+      "behavior": "check the request's model and effort against `model/list` before starting a turn",
+      "historicalVerification": "`C40`, `run.validation`, `catalog.pages` (tool catalog without an inference fallback)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-2.5",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/02-inference.md",
+      "behavior": "answer every request of the tool it does not know with an error",
+      "historicalVerification": "`app-server.unknown-request`, `run.unknown-request`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-2.6",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/02-inference.md",
+      "behavior": "abandon a handshake request that is not answered within 30 seconds and fail the run",
+      "historicalVerification": "`app-server.failures`, `app-server.start-cancel` (handshake/request failures with explicit short unit-test timeouts; run requests use the 30-second contract bound)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-2.7",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/02-inference.md",
+      "behavior": "use a saved thread for every run that has tools or a working folder, and a thread the tool does not save otherwise",
+      "historicalVerification": "`run.lifecycle`, `run.images`, `C14`, `continuity.run`, `live.run`, `live.no-tools`, `live.continuity` (saved runs with tools/folder; ephemeral completion otherwise)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-2.8",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/02-inference.md",
+      "behavior": "resume a thread only through `thread/resume` in the run's own process, and rebuild when the resume is refused",
+      "historicalVerification": "`C14`, `continuity.run`, `probe.continuity`, `live.continuity`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-2.9",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/02-inference.md",
+      "behavior": "for a rebuild, insert the earlier messages with their images and the tool calls into the new thread with `thread/inject_items` before the turn, and fall back to one labelled text before the new message when the tool refuses the request",
+      "historicalVerification": "`C14`, `history.native`, `history.labelled`, `history.images`, `continuity.run`, `probe.continuity`, `live.continuity`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-2.10",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/02-inference.md",
+      "behavior": "send the system prompt as `developerInstructions` and nothing of its own in the instruction fields",
+      "historicalVerification": "`C10`, `run.lifecycle`, `probe.run-protocol`, `live.run`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-2.11",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/02-inference.md",
+      "behavior": "send model, effort, service tier, approval and sandbox settings with every `turn/start`, also on a resumed thread",
+      "historicalVerification": "`run.lifecycle`, `run.images`, `continuity.run`, `probe.run-protocol`, `probe.continuity`, `live.run`, `live.continuity`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-2.12",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/02-inference.md",
+      "behavior": "map the tool's notifications to events by the table above, fail the run on a notification that names its thread and another turn, report one that names the thread of a sub-agent of the run as CDX-3 says, and pass over one that names any other thread, with one `notice`",
+      "historicalVerification": "`C10`, `C11`, `C12`, `C13`, `run.protocol`, `run.tools`, `run.notices`, `stop.subagent`, `stop.nested-subagents`, `stop.collaboration-spawn` (main mapping and announced descendant attribution; remaining advanced routing checks pending SYL-90)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": true
+    },
+    {
+      "requirement": "CDX-2.13",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/02-inference.md",
+      "behavior": "emit `text` from the completed message item, so that a caller that missed deltas still receives the whole text",
+      "historicalVerification": "`C10`, `run.protocol`, `run.text`, `live.run`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-2.14",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/02-inference.md",
+      "behavior": "after `turn/completed`, wait for commands still running and for sub-agents still at work until the tool reports them ended, and up to 2 seconds for any other open call, then close the rest itself, before emitting `finished`",
+      "historicalVerification": "`run.tools`, `run.outcomes`, `run.failures`, `stop.subagent-completion`, `stop.other-call` (late shell results, active child waits and bounded other-call closure; remaining advanced tool checks pending SYL-90)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": true
+    },
+    {
+      "requirement": "CDX-2.15",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/02-inference.md",
+      "behavior": "report as usage the sum of the per-request counts since the run started, with cached and reasoning counts, and the model the tool reports",
+      "historicalVerification": "`C13`, `run.usage`, `run.notices`, `live.run`, `live.no-tools`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-2.16",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/02-inference.md",
+      "behavior": "end every run by closing the process's input, and end the process group by signal when the process has not exited after 2 seconds; for a stop, anchor this escalation to the original stop time without a new EOF or signal grace period",
+      "historicalVerification": "`C15`, `stop.shutdown`, `C17`, `C38`, `run.lifecycle`, `run.failures`, `app-server.startup-eof`, `stop.startup`, `stop.stubborn`, `stop.process-groups`, `stop.recovery`, `stop.backpressure`, `probe.stopping`, `live.run`, `live.no-tools`, `live.stopping`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-2.17",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/02-inference.md",
+      "behavior": "on stop send `turn/interrupt` for the run's turn and for the active turn of every sub-agent, give those requests and the wait for the turns' end 2 seconds, then end the process as in CDX-2.16",
+      "historicalVerification": "`C15`, `stop.shutdown`, `stop.paths`, `stop.stubborn`, `stop.subagent`, `stop.nested-subagents`, `stop.collaboration-spawn`, `stop.accepted-turn`, `stop.late-subagent-turn`, `stop.late-collaboration-spawn`, `probe.stopping`, `live.stopping`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-2.18",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/02-inference.md",
+      "behavior": "write an entry to the map only for a completed run on a saved thread",
+      "historicalVerification": "`C14`, `continuity.map`, `continuity.run`, `live.continuity`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-2.19",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/02-inference.md",
+      "behavior": "write message images to a temporary folder for the run and remove it when the run has ended",
+      "historicalVerification": "`run.request`, `run.images`, `history.images`, `continuity.run` (private current/fallback-history files removed after the run)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-2.20",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/02-inference.md",
+      "behavior": "use no request the tool marks as experimental in a run",
+      "historicalVerification": "`probe.run-protocol`, `probe.continuity`, `run.lifecycle`, `run.images`, `continuity.run` (request names and fields checked against the installed stable schema)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-2.21",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/02-inference.md",
+      "behavior": "insert a history with one `thread/inject_items` request, in the item forms, with the made-up call identifiers and the result texts stated above, and send the text form of DRV-2 where the tool refuses the request",
+      "historicalVerification": "`history.native`, `history.results`, `history.labelled`, `C14`, `continuity.run`, `probe.continuity`, `live.continuity`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-3.1",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/03-tools-and-permissions.md",
+      "behavior": "run commands and patches through the app-server itself, without a separate executor process",
+      "historicalVerification": "`C11`, `run.tools`, `run.lifecycle` (commands and baseline patches through the single app-server)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-3.2",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/03-tools-and-permissions.md",
+      "behavior": "write `memories = false` and no other feature switch into the configuration of a home, so that every other part of the tool is as the tool ships it, and set `web_search` to `live`",
+      "historicalVerification": "`app-server.home`, `app-server.validation`, `run.lifecycle` (memories only, live web search and configuration readback)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-3.3",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/03-tools-and-permissions.md",
+      "behavior": "send the sandbox `danger-full-access` and the approval policy `never` when the thread of a run with tools is started and with every turn",
+      "historicalVerification": "`run.lifecycle`, `live.run` (fresh thread and turn; resumed turns pending SYL-88)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": true
+    },
+    {
+      "requirement": "CDX-3.9",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/03-tools-and-permissions.md",
+      "behavior": "answer a command approval or a file-change approval that arrives nonetheless with `accept` and every other request of the tool with an error, and emit a `notice`",
+      "historicalVerification": "unit",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-3.11",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/03-tools-and-permissions.md",
+      "behavior": "for a run without tools, send the sandbox `read-only` and the approval policy `never`, use an empty folder of its own when the request names no working folder, and report a tool call that occurs nonetheless without failing the run",
+      "historicalVerification": "`C19`, `run.images`, `live.no-tools`",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-3.12",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/03-tools-and-permissions.md",
+      "behavior": "set `parentCallId` on every event that reports what a sub-agent did, and keep a sub-agent's text out of the answer: a sub-agent's work is every notification that names a thread announced by a `subAgentActivity` item or by the `receiverThreadIds` of a successfully completed `collabAgentToolCall` of tool `spawnAgent`; the parent identifier is the call that announced that thread",
+      "historicalVerification": "`stop.subagent`, `stop.nested-subagents`, `stop.collaboration-spawn` (stopping paths and both observed child-announcement forms; remaining advanced tool routing checks pending SYL-90)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": true
+    },
+    {
+      "requirement": "CDX-3.13",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/03-tools-and-permissions.md",
+      "behavior": "emit no question from the agent, for as long as the tool offers such questions only in its experimental mode",
+      "historicalVerification": "unit",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-3.14",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/03-tools-and-permissions.md",
+      "behavior": "hand the `[mcp_servers]` tables of the owner's `~/.codex/config.toml` to the tool in the `config` of `thread/start` for a run with tools, and write, log and report them nowhere; read nothing else of the owner's `~/.codex` and write nothing there",
+      "historicalVerification": "contract, probe",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-3.15",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/03-tools-and-permissions.md",
+      "behavior": "keep a run going after its turn has completed while a sub-agent's turn is still active, and stop a sub-agent with a `turn/interrupt` for its own thread and turn",
+      "historicalVerification": "`C15`, `stop.subagent`, `stop.nested-subagents`, `stop.collaboration-spawn`, `stop.late-subagent-turn`, `stop.late-collaboration-spawn`, `stop.subagent-completion`, `live.stopping` (active child waits and stopping; remaining advanced tool checks pending SYL-90)",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": true
+    },
+    {
+      "requirement": "CDX-4.1",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/04-errors-and-limits.md",
+      "behavior": "decide the error code of a failed turn from `codexErrorInfo` by the mapping table, first matching row",
+      "historicalVerification": "unit, contract",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-4.2",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/04-errors-and-limits.md",
+      "behavior": "read the vendor's answer in the message of an error of class `other` to recognise an unsupported model and an unsupported effort",
+      "historicalVerification": "unit, probe",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-4.3",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/04-errors-and-limits.md",
+      "behavior": "use the wording lists only for the class `other` or a missing class, and mark the error as decided by wording",
+      "historicalVerification": "unit",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-4.4",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/04-errors-and-limits.md",
+      "behavior": "emit a `notice` for every `error` notification whose `willRetry` is true",
+      "historicalVerification": "contract",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-4.5",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/04-errors-and-limits.md",
+      "behavior": "stop the run at the first retry notification with status 401 or 403 and finish it as `credential_rejected`",
+      "historicalVerification": "contract, probe",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-4.6",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/04-errors-and-limits.md",
+      "behavior": "keep the latest `account/rateLimits/updated` of a run and store it as the Subscription's usage report when the run ends, without losing values the notification lacks",
+      "historicalVerification": "unit, contract",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-4.7",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/04-errors-and-limits.md",
+      "behavior": "on a `rate_limited` failure, ask the tool once for the account's limits before ending the process and take the wait from the exhausted window",
+      "historicalVerification": "contract",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-4.8",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/04-errors-and-limits.md",
+      "behavior": "treat every notification as a sign of life",
+      "historicalVerification": "unit",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-4.9",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/04-errors-and-limits.md",
+      "behavior": "report a process that ends before `turn/completed` as `tool_failed`, with at most 1 KiB from the end of its log",
+      "historicalVerification": "contract",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    },
+    {
+      "requirement": "CDX-4.10",
+      "source": "/Users/msix/Artifacts/arbol-codex-driver/specs/04-errors-and-limits.md",
+      "behavior": "read the tool's version from the handshake and fail the run on a version below the oldest supported one",
+      "historicalVerification": "unit",
+      "migrationCheck": "assigned: preserved shared scenarios + Python unittest; concrete names pending port verification",
+      "status": "pending Python verification",
+      "codexPending": false
+    }
+  ],
+  "codexWrappers": {
+    "conformance-base.mjs": {
+      "sha256": "a40dc925c15d0da2766a0a06a20e309d4c1f78ec30d3daee9ddf02b374c9f370",
+      "scopeSource": "// C32 also exercises later tasks. Run its existing shared info check explicitly.\nimport { resolve } from 'node:path';\nimport { pathToFileURL } from 'node:url';\nconst suite = resolve(process.argv[2] ?? '../arbol');\nconst { runSuite } = await import(pathToFileURL(resolve(suite, 'dist/conformance/runner.js')));\nconst { c31 } = await import(pathToFileURL(resolve(suite, 'dist/conformance/scenarios/c31.js')));\nconst { c32, checkDriverInfo } = await import(pathToFileURL(resolve(suite, 'dist/conformance/scenarios/c32.js')));\nconst cli = resolve(import.meta.dirname, '../bin/arbol-codex-driver.mjs');\nprocess.exitCode = await runSuite([process.execPath, cli], [c31,\n  { ...c32, scope: 'info only (SYL-79)', covers: ['DRV-0.6', 'DRV-0.13', 'DRV-0.15'], run: checkDriverInfo },\n]);\n",
+      "migrationConstraint": "change command selection only; preserve scenarios, functions, scopes, covers and assertions"
+    },
+    "conformance-continuity.mjs": {
+      "sha256": "0b6ea6327ca91af328d96effed2dddae8676ce499054ee2846a032078b239168",
+      "scopeSource": "// SYL-88 exercises the shared history and continuity scenario with the Codex\n// app-server stand-in. No vendor inference or credentials are used.\nimport { resolve } from 'node:path';\nimport { pathToFileURL } from 'node:url';\nconst suite = resolve(process.argv[2] ?? '../arbol');\nconst { runSuite } = await import(pathToFileURL(resolve(suite, 'dist/conformance/runner.js')));\nconst { c14 } = await import(pathToFileURL(resolve(suite, 'dist/conformance/scenarios/c14.js')));\nconst cli = resolve(import.meta.dirname, '../bin/arbol-codex-driver.mjs');\nprocess.exitCode = await runSuite([process.execPath, cli], [c14]);\n",
+      "migrationConstraint": "change command selection only; preserve scenarios, functions, scopes, covers and assertions"
+    },
+    "conformance-runs.mjs": {
+      "sha256": "9a5fe16a500b31e271cb865865f36dfdfe6fb4c3bf1c12b2183dc6cf5275957b",
+      "scopeSource": "// SYL-86 covers fresh runs. Interactive questions, continuity and cancellation\n// belong to later tasks; their limited scenarios retain explicit report scopes.\nimport { resolve } from 'node:path';\nimport { pathToFileURL } from 'node:url';\nconst suite = resolve(process.argv[2] ?? '../arbol');\nconst { runSuite } = await import(pathToFileURL(resolve(suite, 'dist/conformance/runner.js')));\nconst { c10, c11, c12, c13, c18, c19, c20, c33, c42, c43, checkRunWithoutControl, runRefusals } =\n  await import(pathToFileURL(resolve(suite, 'dist/conformance/scenarios/runs.js')));\nconst { c40, checkSubscriptionRefusals } = await import(pathToFileURL(resolve(suite, 'dist/conformance/scenarios/c40.js')));\nconst cli = resolve(import.meta.dirname, '../bin/arbol-codex-driver.mjs');\nprocess.exitCode = await runSuite([process.execPath, cli], [\n  c10, c11, c12, c13, c18, c19, c20,\n  { ...c33, scope: 'no control input and JSON request from stdin only (SYL-86)', covers: ['DRV-2.25', 'DRV-6.7 (request stdin)'], run: checkRunWithoutControl },\n  { ...c40, scope: 'unsigned runs and fresh-run directory, duplicate ID, model, effort and tier refusals (SYL-86)',\n    covers: ['DRV-1.11 (unsigned runs)', 'DRV-2.2'], async run(home) { await checkSubscriptionRefusals(home, true); await runRefusals(home); } },\n  c42, c43,\n]);\n",
+      "migrationConstraint": "change command selection only; preserve scenarios, functions, scopes, covers and assertions"
+    },
+    "conformance-stops.mjs": {
+      "sha256": "36a8c4d5cd27857a13c6ac9b26042439093542591dbe4864e81129d671caf7a3",
+      "scopeSource": "// SYL-89 stopping and recovery. Codex exposes no caller questions (CDX-3.13),\n// so C33 carries an explicit scope excluding Claude's unanswered ask fixture.\nimport { resolve } from 'node:path';\nimport { pathToFileURL } from 'node:url';\nconst suite = resolve(process.argv[2] ?? '../arbol');\nconst { runSuite } = await import(pathToFileURL(resolve(suite, 'dist/conformance/runner.js')));\nconst { c15, c16, c17, c38, waitFor } = await import(pathToFileURL(resolve(suite, 'dist/conformance/scenarios/stops.js')));\nconst { c33, checkRunWithoutControl, stream } = await import(pathToFileURL(resolve(suite, 'dist/conformance/scenarios/runs.js')));\nconst { check, equal } = await import(pathToFileURL(resolve(suite, 'dist/conformance/check.js')));\nconst cli = resolve(import.meta.dirname, '../bin/arbol-codex-driver.mjs');\nconst scopedC33 = { ...c33, scope: 'no control, stdin request, malformed control, active records and runs stop; caller questions excluded by CDX-3.13 (SYL-89)',\n  covers: ['DRV-2.25', 'DRV-2.26', 'DRV-2.27', 'DRV-2.28', 'DRV-6.7', 'DRV-6.8'], async run(home) {\n    const id = await checkRunWithoutControl(home);\n    await home.part('plain'); const active = home.start(['run', '--subscription', id, '--run-id', 'visible-run', '--control', 'hold']);\n    try {\n      active.child.stdin.write('not-json\\n'); active.send({ type: 'answer', askId: 'missing', answer: {} });\n      await waitFor('Active run listed', async () => JSON.parse((await home.call(['runs', 'list'])).stdout)\n        .some(run => run.runId === 'visible-run' && run.subscriptionId === id));\n      const records = stream(await active.done); equal('Control refusals', records.filter(event => event.type === 'control_refused').length, 2);\n    } finally { await active.dispose(); }\n    equal('No ended runs listed', JSON.parse((await home.call(['runs', 'list'])).stdout), []);\n    await home.part('stopping'); const stopped = home.start(['run', '--subscription', id, '--run-id', 'stop-from-peer', 'answer']);\n    try {\n      await waitFor('Run started before peer stop', async () => stopped.lines.some(event => event.type === 'started'));\n      const reply = await home.call(['runs', 'stop', 'stop-from-peer']); equal('Peer stop exit', reply.status, 0); equal('Peer stop output', reply.stdout, '');\n      stream(await stopped.done, 'cancelled'); check('Final emitted before stop returns', stopped.lines.at(-1)?.type === 'finished', 'finished', stopped.lines.at(-1));\n    } finally { await stopped.dispose(); }\n  } };\nprocess.exitCode = await runSuite([process.execPath, cli], [c15, c16, c17, scopedC33, c38]);\n",
+      "migrationConstraint": "change command selection only; preserve scenarios, functions, scopes, covers and assertions"
+    },
+    "conformance-subscriptions.mjs": {
+      "sha256": "c821ae76b3de5d62e2cba107d91dae1cf5b3be61ac870164ce03f780a06db83d",
+      "scopeSource": "// SYL-81 implements account operations; full run scenarios remain in the shared\n// suite for Drivers whose inference tasks are complete. Keep partial scopes in\n// the report so a passing subscription check cannot imply passing run coverage.\nimport { resolve } from 'node:path';\nimport { pathToFileURL } from 'node:url';\nconst suite = resolve(process.argv[2] ?? '../arbol');\nconst { runSuite } = await import(pathToFileURL(resolve(suite, 'dist/conformance/runner.js')));\nconst { c1 } = await import(pathToFileURL(resolve(suite, 'dist/conformance/scenarios/c1.js')));\nconst {\n  c2, c4, c5, c6, c7, c8, c39, c41,\n  checkSubscriptionRejection, checkSubscriptionRemoval, checkSubscriptionCredentials, checkSubscriptionEnvironments,\n} = await import(pathToFileURL(resolve(suite, 'dist/conformance/scenarios/subscriptions.js')));\nconst { c40, checkSubscriptionRefusals } = await import(pathToFileURL(resolve(suite, 'dist/conformance/scenarios/c40.js')));\nconst cli = resolve(import.meta.dirname, '../bin/arbol-codex-driver.mjs');\nprocess.exitCode = await runSuite([process.execPath, cli], [\n  c1, c2,\n  { ...c4, scope: 'subscription check rejection and recovery only (SYL-81)', covers: ['DRV-1.7 (check)', 'DRV-1.11 (attention check)'], run: checkSubscriptionRejection },\n  { ...c5, scope: 'sign-out, account clearing and home removal only (SYL-81)', covers: ['DRV-1.12 (without runs)', 'DRV-1.13'], run: checkSubscriptionRemoval },\n  c6,\n  { ...c7, scope: 'subscription operations and tool-owned login only (SYL-81)', covers: ['DRV-0.3 (subscriptions)', 'DRV-1.3 (subscriptions)', 'DRV-1.8'], run: checkSubscriptionCredentials },\n  { ...c8, scope: 'sign-in, status, usage and catalog children only (SYL-81)', covers: ['DRV-0.5 (subscriptions)'], run: checkSubscriptionEnvironments },\n  c39,\n  { ...c40, scope: 'unsigned models, check and usage only (SYL-81)', covers: ['DRV-1.11 (subscription operations)'], run: checkSubscriptionRefusals },\n  c41,\n]);\n",
+      "migrationConstraint": "change command selection only; preserve scenarios, functions, scopes, covers and assertions"
+    }
+  }
+}

@@ -227,6 +227,10 @@ arbol:drivers/codex/arbol_driver_codex/tool_process.py#ToolProcess._cleanup
 arbol:product-spec/12-lessons-and-invariants.md#6. Many resident services with strict, version-coupled contracts
 -->
 
+## Python migration compatibility, 7 October 2026
+
+SYL-95 records the TypeScript baseline at Claude 8932287 and Codex 37daaf8, with golden history/snapshot/path/Keychain vectors generated using Node 24.21.0. The Claude baseline hashes adjacent assistant blocks containing separate halves of one UTF-16 surrogate pair differently from the same complete Unicode message; Codex already buffers the trailing half. Python uses the complete-message digest for that case, retaining the legacy result as an explicit regression fixture rather than reproducing the defect. A previously saved Claude entry with that defective digest is safely rebuilt with the existing history_differs reason; its JSON state shape is unchanged. All other golden vectors retain exact TypeScript bytes/digests, including isolated surrogates, controls and decoded image bytes. This corrects message-block merging required by DRV-2 and changes neither contract 1 nor state format 1.
+
 ## Decisions
 
 | ID | Question | Proposed default | Outcome |
