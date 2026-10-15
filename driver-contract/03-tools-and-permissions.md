@@ -43,11 +43,11 @@ Observed in version 1: the Claude route disallowed five tools by name, among the
 
 Observed with the installed tools on 6 October 2026: `claude` read the instruction file `CLAUDE.md` of the working folder, and `AGENTS.md` where that was the only one. `codex` read `AGENTS.md` and did not read `CLAUDE.md`. Both tools listed the owner's skills in a new home, and both started an MCP server that was handed to them at the start of a run.
 
-<!-- sources:
-arbol:drivers/claude/arbol_driver_claude/turn.py#TurnRunner._build_argv_native
-arbol:drivers/codex/arbol_driver_codex/session.py#control_argv
-arbol:product-spec/06-tools-and-permissions.md#Two ways a tool runs
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:drivers/claude/arbol_driver_claude/turn.py#TurnRunner._build_argv_native`
+- `arbol_deprecated_v1:drivers/codex/arbol_driver_codex/session.py#control_argv`
+- `arbol_deprecated_v1:product-spec/06-tools-and-permissions.md#Two ways a tool runs`
 
 ### Nothing asks for permission
 
@@ -59,11 +59,11 @@ The vendor tool can still refuse a call by itself, for instance a command its te
 
 Observed in version 1: on the Claude route the tool asked and Root answered, by rule or by the Leather Bag; a route setting called Full Permissions made Root approve automatically, question by question. The Codex route never asked: the tool ran with full access, its approval requests were declined, and Full Permissions had no effect.
 
-<!-- sources:
-arbol:product-spec/06-tools-and-permissions.md#Full Permissions
-arbol:product-spec/06-tools-and-permissions.md#Defaults and remaining decisions
-arbol:drivers/codex/arbol_driver_codex/session.py#tool_policy
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:product-spec/06-tools-and-permissions.md#Full Permissions`
+- `arbol_deprecated_v1:product-spec/06-tools-and-permissions.md#Defaults and remaining decisions`
+- `arbol_deprecated_v1:drivers/codex/arbol_driver_codex/session.py#tool_policy`
 
 ### Commands in a terminal
 
@@ -112,9 +112,9 @@ A Driver whose vendor tool cannot carry such questions never emits them, and say
 
 Observed in version 1: questions from the agent arrived through the same bridge as permission questions on the Claude route, were answered in the chat window only, and cancelling one stopped the response. The Codex route had none.
 
-<!-- sources:
-arbol:product-spec/06-tools-and-permissions.md#Questions from the agent
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:product-spec/06-tools-and-permissions.md#Questions from the agent`
 
 ## SYL-92 verification, 7 October 2026
 
@@ -179,10 +179,10 @@ Not to be reproduced.
 - **One malformed question disabled every later turn.**
 - **A question the tool raised and the Driver did not know was never answered**, and the turn waited forever.
 
-<!-- sources:
-arbol:product-spec/06-tools-and-permissions.md#Known problems and lessons
-arbol:drivers/claude/arbol_driver_claude/turn.py#TurnRunner._run_native
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:product-spec/06-tools-and-permissions.md#Known problems and lessons`
+- `arbol_deprecated_v1:drivers/claude/arbol_driver_claude/turn.py#TurnRunner._run_native`
 
 ## Python migration verification, 7 October 2026
 

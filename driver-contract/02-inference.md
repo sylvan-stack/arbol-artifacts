@@ -23,10 +23,10 @@ A Driver never starts a run again by itself. Whether a failed run is repeated is
 
 Observed in version 1: the Driver ran one attempt per request and left retries to Root. Root repeated an attempt automatically only while nothing of it had been stored, at most twice for transient errors, and never repeated a tool whose effect was uncertain.
 
-<!-- sources:
-arbol:product-spec/03-turn-execution.md#Three nested units
-arbol:product-spec/03-turn-execution.md#Rules to preserve
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:product-spec/03-turn-execution.md#Three nested units`
+- `arbol_deprecated_v1:product-spec/03-turn-execution.md#Rules to preserve`
 
 ### The run as a process
 
@@ -61,11 +61,11 @@ Ordering rules: a `text` block that precedes a tool call is emitted before that 
 
 Observed in version 1: the Claude route streamed text and reasoning in pieces and emitted a tool call at its block boundary so that prose landed before the tool that followed it. The Codex route emitted text only as whole items at their end and command output only when the command had finished. Neither had a complete-block event beside the pieces; a caller that missed pieces had to wait for stored output.
 
-<!-- sources:
-arbol:drivers/claude/arbol_driver_claude/turn.py#TurnRunner._handle_stream_record
-arbol:drivers/codex/arbol_driver_codex/protocol.py#map_exec_event
-arbol:product-spec/03-turn-execution.md#Rules to preserve
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:drivers/claude/arbol_driver_claude/turn.py#TurnRunner._handle_stream_record`
+- `arbol_deprecated_v1:drivers/codex/arbol_driver_codex/protocol.py#map_exec_event`
+- `arbol_deprecated_v1:product-spec/03-turn-execution.md#Rules to preserve`
 
 ### Outcomes
 
@@ -79,12 +79,12 @@ A failed or cancelled run keeps everything it emitted: events already sent stay 
 
 Observed in version 1: on the Claude route only wording about rate limits or authentication made a result a failure; every other error result ended the turn as completed. A probe on 5 October 2026 showed the installed tool reporting a failed login as a result of subtype `success` with its error flag set, which that rule also reads as completed. A rate-limited turn was stored as completed in the Driver's own bookkeeping.
 
-<!-- sources:
-arbol:drivers/claude/arbol_driver_claude/turn.py#TurnRunner._run_native
-arbol:drivers/claude/arbol_driver_claude/rate_limit.py#is_rate_limit_signal
-arbol:daemons/shared/arbol_shared/turn_store.py#_status_for_done
-arbol:product-spec/03-turn-execution.md#Rules to preserve
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:drivers/claude/arbol_driver_claude/turn.py#TurnRunner._run_native`
+- `arbol_deprecated_v1:drivers/claude/arbol_driver_claude/rate_limit.py#is_rate_limit_signal`
+- `arbol_deprecated_v1:daemons/shared/arbol_shared/turn_store.py#_status_for_done`
+- `arbol_deprecated_v1:product-spec/03-turn-execution.md#Rules to preserve`
 
 ### The conversation
 
@@ -140,12 +140,12 @@ A run that names no chat session is built from its messages, and nothing is reco
 
 Observed in version 1: no vendor-side conversation identifier was stored. The Claude route rewrote the tool's saved session from Arbol's history before every follow-up, and the Codex route started a new conversation for every attempt with the earlier messages written into the prompt. In both, the agent saw what it had said between messages but not what it had read or done, every message re-sent everything, and long chats grew until the vendor rejected them. The Product Specification proposes native resuming with a visible fallback as the default for the rewrite.
 
-<!-- sources:
-arbol:product-spec/03-turn-execution.md#Conversation continuity towards the provider
-arbol:product-spec/12-lessons-and-invariants.md#Decisions for the successor's design
-arbol:drivers/claude/arbol_driver_claude/jsonl.py#history_to_jsonl_lines
-arbol:drivers/codex/arbol_driver_codex/protocol.py#render_prompt
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:product-spec/03-turn-execution.md#Conversation continuity towards the provider`
+- `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#Decisions for the successor's design`
+- `arbol_deprecated_v1:drivers/claude/arbol_driver_claude/jsonl.py#history_to_jsonl_lines`
+- `arbol_deprecated_v1:drivers/codex/arbol_driver_codex/protocol.py#render_prompt`
 
 ### Usage
 
@@ -153,11 +153,11 @@ A `usage` event carries the run's totals so far, not an increment: a caller that
 
 Observed in version 1: each report was an increment that Root summed within an attempt. On the Claude route sums from intermediate records could count the same tokens twice. On the Codex route cached and reasoning tokens were dropped and the model reported was the one asked for, also after the vendor had moved the run to another.
 
-<!-- sources:
-arbol:product-spec/03-turn-execution.md#Usage accounting
-arbol:drivers/claude/arbol_driver_claude/protocol.py#extract_usage
-arbol:drivers/codex/arbol_driver_codex/protocol.py#usage_from
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:product-spec/03-turn-execution.md#Usage accounting`
+- `arbol_deprecated_v1:drivers/claude/arbol_driver_claude/protocol.py#extract_usage`
+- `arbol_deprecated_v1:drivers/codex/arbol_driver_codex/protocol.py#usage_from`
 
 ### Stopping a run
 
@@ -173,12 +173,12 @@ Observed with the installed tools on 6 October 2026, real runs: a process that a
 
 Observed in version 1: stop ended the tool's processes without telling the tool, with a forced kill after 2 seconds and 15 seconds for cleanup in total. On the Codex route commands the agent had started were left running on purpose.
 
-<!-- sources:
-arbol:product-spec/03-turn-execution.md#Cancel
-arbol:product-spec/03-turn-execution.md#Limits and defaults
-arbol:drivers/claude/arbol_driver_claude/turn.py#TurnRunner.cancel
-arbol:drivers/codex/arbol_driver_codex/tool_process.py#ToolProcess._cleanup
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:product-spec/03-turn-execution.md#Cancel`
+- `arbol_deprecated_v1:product-spec/03-turn-execution.md#Limits and defaults`
+- `arbol_deprecated_v1:drivers/claude/arbol_driver_claude/turn.py#TurnRunner.cancel`
+- `arbol_deprecated_v1:drivers/codex/arbol_driver_codex/tool_process.py#ToolProcess._cleanup`
 
 ### A run without tools
 
@@ -186,10 +186,10 @@ A request may switch all tools off. Such a run is one prompt in and one text out
 
 Observed in version 1: Completions for Anthropic and z.ai started the Claude tool once in a fresh empty folder with every tool disallowed; Completions for ChatGPT called the vendor's backend directly. They lived in Root, with their own retry loop.
 
-<!-- sources:
-arbol:daemons/core/arbol_core/completion.py
-arbol:product-spec/05-intelligence-providers.md#Completions
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:daemons/core/arbol_core/completion.py`
+- `arbol_deprecated_v1:product-spec/05-intelligence-providers.md#Completions`
 
 ### Several runs at once
 
@@ -221,10 +221,10 @@ Current records and source/package provenance: `~/Artifacts/arbol-codex-driver/r
 | DRV-2.12 | continue the tool's saved conversation when its map names one for the request's chat session and Subscription, that conversation exists and it covers exactly the messages sent; otherwise build a new one from the messages in the tool's own format and record it | Changed | Claude Python: `C14`, `test_runtime.RequestTests`, `test_runtime.ProtocolTests`, `test_runtime.TransportTests`; Codex Python: `C14`, `Continuity.test_native_history_and_visible_text_fallback_preserve_tools_images_and_system_prompt`, `Continuity.test_resume_overrides_and_delayed_restored_usage_do_not_count_previous_thread`, `Continuity.test_resume_vendor_refusal_and_missing_rollout_rebuild_then_failed_resume_invalidates_map`, `Foundation.test_continuity_selection_order_conditional_settlement_and_killed_owner` |
 | DRV-2.13 | state in `started` whether the conversation is `fresh`, `resumed` or `rebuilt`, with the reason for a rebuild | New | Claude Python: `C14`, `test_runtime.RequestTests`, `test_runtime.ProtocolTests`, `test_runtime.TransportTests`; Codex Python: `C14`, `Foundation.test_continuity_selection_order_conditional_settlement_and_killed_owner` |
 | DRV-2.15 | report usage as totals for the run so far; leave out what the vendor does not report; name the model that actually ran | Changed | Claude Python: `C13`, `test_runtime.RequestTests`, `test_runtime.ProtocolTests`, `test_runtime.TransportTests`; Codex Python: `C13`, `Continuity.test_resume_overrides_and_delayed_restored_usage_do_not_count_previous_thread`, `Mapper.test_text_authoritative_blocks_reasoning_usage_dedup_and_reroute` |
-| DRV-2.16 | on stop, ask the tool to stop where it can be asked, end its processes after 2 seconds, and finish within 15 seconds in total | Changed | Claude Python: `C15`, `test_runtime.RequestTests`, `test_runtime.ProtocolTests`, `test_runtime.TransportTests`; Codex Python: `C15`, `Lifecycle.test_accepted_turn_before_rpc_reply_is_interrupted`, `Lifecycle.test_active_nested_and_late_discovered_children_are_interrupted_and_attributed`, `Lifecycle.test_control_signals_eof_and_peer_stop_interrupt_once_then_cleanup`, `Lifecycle.test_ignored_interrupt_and_stop_during_normal_eof_use_same_force_anchor` |
+| DRV-2.16 | on stop, ask the tool to stop where it can be asked, end its processes after 2 seconds, and finish within 15 seconds in total | Changed | Claude Python: `C15`, `test_runtime.RequestTests`, `test_runtime.ProtocolTests`, `test_runtime.TransportTests`; Codex Python: `C15`, `Interrupt.test_the_tool_is_asked_once_even_after_the_grace`, `Lifecycle.test_accepted_turn_before_rpc_reply_is_interrupted`, `Lifecycle.test_active_nested_and_late_discovered_children_are_interrupted_and_attributed`, `Lifecycle.test_control_signals_eof_and_peer_stop_interrupt_once_then_cleanup`, `Lifecycle.test_ignored_interrupt_and_stop_during_normal_eof_use_same_force_anchor` |
 | DRV-2.17 | on stop, close open questions as withdrawn and running tool calls as interrupted, then emit `finished` with outcome `cancelled` | Kept | Claude Python: `C15`, `test_runtime.RequestTests`, `test_runtime.ProtocolTests`, `test_runtime.TransportTests`; Codex Python: `C15`, `Lifecycle.test_active_nested_and_late_discovered_children_are_interrupted_and_attributed` |
 | DRV-2.18 | treat a stop of an ended or unknown run as success | Kept | Claude Python: `C16`, `test_runtime.RequestTests`, `test_runtime.ProtocolTests`, `test_runtime.TransportTests`; Codex Python: `C16` |
-| DRV-2.19 | leave no process a run started alive after its final event, and no sub-agent at work, except a process that left the command that started it for a process group or a session of its own (DRV-D33) | Changed | Claude Python: `C15`, `C17`, `test_runtime.RequestTests`, `test_runtime.ProtocolTests`, `test_runtime.TransportTests`; Codex Python: `C15`, `C17`, `AppServerTests.test_cleanup_survives_capture_failure_and_ends_ignoring_descendant`, `AppServerTests.test_startup_wrong_home_config_and_cancellation_gives_eof_before_force`, `ForcedProcessGroupTests.test_immediate_kill_refuses_reused_or_wrong_group_leaders`, `Lifecycle.test_blocked_output_cleanup_and_final_deadline_for_signal_and_control`, `Lifecycle.test_broken_output_cancels_native_turn_and_cleans_workers`, `Lifecycle.test_ignored_interrupt_and_stop_during_normal_eof_use_same_force_anchor` |
+| DRV-2.19 | leave no process a run started alive after its final event, and no sub-agent at work, except a process that left the command that started it for a process group or a session of its own (DRV-D33) | Changed | Claude Python: `C15`, `C17`, `test_runtime.RequestTests`, `test_runtime.ProtocolTests`, `test_runtime.TransportTests`, `ProcessGroupTests.test_a_group_that_has_exited_but_is_not_reaped_is_ending`; Codex Python: `C15`, `C17`, `ForcedProcessGroupTests.test_a_group_that_is_ending_may_answer_eperm`, `AppServerTests.test_cleanup_survives_capture_failure_and_ends_ignoring_descendant`, `AppServerTests.test_startup_wrong_home_config_and_cancellation_gives_eof_before_force`, `ForcedProcessGroupTests.test_immediate_kill_refuses_reused_or_wrong_group_leaders`, `Lifecycle.test_blocked_output_cleanup_and_final_deadline_for_signal_and_control`, `Lifecycle.test_broken_output_cancels_native_turn_and_cleans_workers`, `Lifecycle.test_ignored_interrupt_and_stop_during_normal_eof_use_same_force_anchor` |
 | DRV-2.20 | run a request with all tools switched off as one prompt in and one text out, in an empty folder of its own when none is given; where the vendor tool cannot be started without its tools, lock the run down as the Driver's specification states and report what the agent does nonetheless | Changed | Claude Python: `C19`, `test_runtime.RequestTests`, `test_runtime.ProtocolTests`, `test_runtime.TransportTests`; Codex Python: `C19`, `Continuity.test_native_history_and_visible_text_fallback_preserve_tools_images_and_system_prompt` |
 | DRV-2.21 | keep runs independent: a failure, a stop or a slow consumer of one run never delays or fails another | Changed | Claude Python: `C15`, `C18`, `test_runtime.RequestTests`, `test_runtime.ProtocolTests`, `test_runtime.TransportTests`; Codex Python: `C15`, `C18`, `AppServerTests.test_private_home_configuration_clean_environment_and_owner_cleanup`, `Lifecycle.test_control_signals_eof_and_peer_stop_interrupt_once_then_cleanup` |
 | DRV-2.22 | cut a tool result to 200 KiB, whatever its shape, and flag that it was cut | Changed | Claude Python: `C20`, `test_runtime.RequestTests`, `test_runtime.ProtocolTests`, `test_runtime.TransportTests`; Codex Python: `C20`, `Mapper.test_protocol_malformed_foreign_notices_outcome_and_utf8_truncation`, `MapperTools.test_web_results_are_opaque_and_large_mcp_results_are_utf8_bounded` |
@@ -378,11 +378,11 @@ Not to be reproduced.
 - **One malformed message from the tool disabled every later turn** of every chat on the Claude route until the Driver was restarted.
 - **Everything was kept in the Driver's memory.** The replay copy of each turn held every piece of output, was never compacted, and was released only when the next turn started.
 
-<!-- sources:
-arbol:product-spec/03-turn-execution.md#Known problems and lessons
-arbol:daemons/shared/arbol_shared/turn_store.py#TurnStore
-arbol:drivers/codex/arbol_driver_codex/turn.py#TurnRunner._run_one_cycle
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:product-spec/03-turn-execution.md#Known problems and lessons`
+- `arbol_deprecated_v1:daemons/shared/arbol_shared/turn_store.py#TurnStore`
+- `arbol_deprecated_v1:drivers/codex/arbol_driver_codex/turn.py#TurnRunner._run_one_cycle`
 
 ## Python migration verification, 7 October 2026
 

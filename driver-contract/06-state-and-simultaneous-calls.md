@@ -227,11 +227,11 @@ Not to be reproduced.
 - **Leftovers were nobody's job.** One saved session per attempt was never read again and never removed, and commands the Codex route had started were left running on purpose.
 - **One lock, held too long, stopped everything.** Root collected the answers to all open questions before it delivered any.
 
-<!-- sources:
-arbol:daemons/shared/arbol_shared/turn_store.py#TurnStore
-arbol:drivers/codex/arbol_driver_codex/tool_process.py#ToolProcess._cleanup
-arbol:product-spec/12-lessons-and-invariants.md#6. Many resident services with strict, version-coupled contracts
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:daemons/shared/arbol_shared/turn_store.py#TurnStore`
+- `arbol_deprecated_v1:drivers/codex/arbol_driver_codex/tool_process.py#ToolProcess._cleanup`
+- `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#6. Many resident services with strict, version-coupled contracts`
 
 ## Python migration compatibility, 7 October 2026
 

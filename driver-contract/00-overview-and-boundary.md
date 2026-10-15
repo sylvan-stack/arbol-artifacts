@@ -31,13 +31,13 @@ Observed in version 1: a Driver only ran turns. It received a ready credential w
 | Chat sessions and their history | Root | Caller, unchanged: Arbol and its Trunks. A Driver keeps no conversation and is sent the messages with every run. It keeps only a map from the caller's chat session to the vendor tool's saved conversation (DRV-2) |
 | Deciding a tool permission request | Root with the Effector | Nobody. The agent runs as trusted and nothing asks (DRV-3) |
 
-<!-- sources:
-arbol:product-spec/05-intelligence-providers.md#Concept model
-arbol:daemons/core/arbol_core/subscriptions.py
-arbol:daemons/core/arbol_core/rpc/subscription.py
-arbol:daemons/core/arbol_core/orchestration/agent_attempt_execution.py#AgentAttemptExecutionService.compose_turn_options
-arbol:daemons/shared/arbol_shared/claude_cli.py
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:product-spec/05-intelligence-providers.md#Concept model`
+- `arbol_deprecated_v1:daemons/core/arbol_core/subscriptions.py`
+- `arbol_deprecated_v1:daemons/core/arbol_core/rpc/subscription.py`
+- `arbol_deprecated_v1:daemons/core/arbol_core/orchestration/agent_attempt_execution.py#AgentAttemptExecutionService.compose_turn_options`
+- `arbol_deprecated_v1:daemons/shared/arbol_shared/claude_cli.py`
 
 ## Drivers and Subscription families
 
@@ -51,10 +51,10 @@ A [Provider](../GLOSSARY.md#provider) value has two meanings that must stay apar
 
 Not served in the first version: the direct ChatGPT backend route (`universe`, retired in version 1), a Cursor route (historical), key-billed API accounts of either vendor.
 
-<!-- sources:
-arbol:product-spec/05-intelligence-providers.md#Concept model
-arbol:daemons/core/arbol_core/subscriptions.py#DEFAULT_SUBSCRIPTIONS
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:product-spec/05-intelligence-providers.md#Concept model`
+- `arbol_deprecated_v1:daemons/core/arbol_core/subscriptions.py#DEFAULT_SUBSCRIPTIONS`
 
 ## Packaging and hosting
 
@@ -135,7 +135,7 @@ arbol-claude-driver run "hello"     # the anthropic Subscription, its default mo
 | What is named wins | The file only fills in what a run leaves out. A model or Subscription that a run names and that cannot be used fails the run; nothing is put in its place |
 | A default that does not fit | A `defaultEffort` that the model of a run does not take is left out, and the run says so in a `notice`. An effort the run itself names and the model does not take fails the run |
 | What was used | The `started` event of a run names the Subscription, the model and the effort it runs with |
-| A faulty file | A file that cannot be read as below refuses the run with `invalid_input`, naming the file and the fault. A key the Driver does not know is ignored and named in a `notice`. For a command with one JSON result, notices are an optional `notices` array on that result; each has `code` and `message`. Settings must be a JSON object, and every known field must have the type in `DriverSettings`. A faulty field is named without printing its value |
+| A faulty file | A file that cannot be read as below refuses the run with `invalid_input`, naming the file and the fault. A key the Driver does not know is a fault too, and the message names it. For a command with one JSON result, notices are an optional `notices` array on that result; each has `code` and `message`. Settings must be a JSON object, and every known field must have the type in `DriverSettings`. A faulty field is named without printing its value |
 | Who writes it | The Driver never does, except in an import the owner starts (CLD-1.17) |
 
 ```ts
@@ -179,7 +179,7 @@ Current records and source/package provenance: `~/Artifacts/arbol-codex-driver/r
 | DRV-0.12 | follow the command-line rules above for input, output, errors and exit status | New | Claude Python: `C32`, `test_runtime.CompatibilityTests`, `test_runtime.TransportTests`; Codex Python: `C32`, `OutputTests.test_serialized_output_gapless_events_lone_surrogates_and_cancelled_blocked_flush` |
 | DRV-0.14 | take no secret as an argument, on standard input or in a file, and read every secret it needs from the place its settings file names: by default the Keychain, read with the system's `security` command, or else a command of the owner's that prints the secret. The one exception is an import the owner starts, which may read a key from the file it imports | Changed | Claude Python: `C32`, `test_runtime.CompatibilityTests`, `test_runtime.TransportTests`; Codex Python: `C32` |
 | DRV-0.15 | be built into numbered Builds as BLD-0 says, report the build number of the Build that runs in `info` and at the start of every run, and keep the format number of BLD-0.13 in its state directory | New | Claude Python: `C32`, `test_runtime.CompatibilityTests`, `test_runtime.TransportTests`; Codex Python: `C32`, `Foundation.test_build_identity_ignores_cwd_and_rejects_invalid_metadata`, `PackagingTests.test_build_record_requires_matching_number_entry_and_version`; Codex SYL-94 Build 1: `build.clean-working`, `build.contract (C32 and numbered started events)`, `build.test-state-cleanup` |
-| DRV-0.16 | read its settings file at the start of every invocation, never write it except in an import the owner starts, and refuse to run with `invalid_input` when the file cannot be read, naming the file and the fault | New | Claude Python: `C10`, `test_runtime.CompatibilityTests`, `test_runtime.TransportTests`; Codex Python: `C10`, `Foundation.test_arguments_settings_environment_and_error_sanitization` |
+| DRV-0.16 | read its settings file at the start of every invocation, never write it except in an import the owner starts, and refuse to run with `invalid_input` when the file cannot be read, naming the file and the fault | New | Claude Python: `C10`, `test_runtime.CompatibilityTests`, `test_runtime.TransportTests`; Codex Python: `C10`, `Foundation.test_arguments_settings_environment_and_error_sanitization`, `FamilySettings.test_an_unknown_family_setting_refuses_and_is_named`. An unknown key, from 14 October 2026: Claude `CompatibilityTests.test_settings_unknown_values_withheld_and_environment_allowlist`, Codex the two named above |
 | DRV-0.13 | report with `info` its package version and build number, the version of this contract it implements and the vendor tool it found, and never remove or change a command, option, event or error code within one contract version | New | Claude Python: `C32`, `test_runtime.CompatibilityTests`, `test_runtime.TransportTests`; Codex Python: `C32`, `Foundation.test_build_identity_ignores_cwd_and_rejects_invalid_metadata`; Codex SYL-94 Build 1: `build.launcher-default`, `build.launcher-named`, `build.contract (C32)` |
 
 ## Known problems in version 1
@@ -189,12 +189,12 @@ Current records and source/package provenance: `~/Artifacts/arbol-codex-driver/r
 - **A deny-list for the environment.** The Claude route removed `ANTHROPIC_*` and five named variables before a launch and let everything else through. Observed on 5 October 2026: a shell started from a Claude desktop session carries more than twenty other `CLAUDE_*` variables, among them session and entry-point identifiers, which that list would have passed on. The same day, a `claude` subcommand started from such a shell replaced the stored Anthropic login of the default config folder: the tool behaved as if a host managed its credentials.
 - **Resident Driver processes.** Each Driver was a versioned service with its own socket and launch job. Old and new builds ran side by side during an upgrade, and a partially rolled-back upgrade left turns blocked until manual recovery.
 
-<!-- sources:
-arbol:product-spec/05-intelligence-providers.md#Can two accounts of one vendor run at the same time, isolated?
-arbol:product-spec/05-intelligence-providers.md#Known problems and lessons
-arbol:daemons/shared/arbol_shared/claude_cli.py#environment
-arbol:daemons/core/arbol_core/orchestration/agent_attempt_execution.py#AgentAttemptExecutionService._refresh_bound_subscription_token
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:product-spec/05-intelligence-providers.md#Can two accounts of one vendor run at the same time, isolated?`
+- `arbol_deprecated_v1:product-spec/05-intelligence-providers.md#Known problems and lessons`
+- `arbol_deprecated_v1:daemons/shared/arbol_shared/claude_cli.py#environment`
+- `arbol_deprecated_v1:daemons/core/arbol_core/orchestration/agent_attempt_execution.py#AgentAttemptExecutionService._refresh_bound_subscription_token`
 
 ## Vocabulary changes this contract requires
 
@@ -256,12 +256,12 @@ SYL-95 verification is recorded in the requirement-level `~/Artifacts/arbol/driv
 | DRV-D4 | Keychain access from the Driver | A native binding to the Security framework. Version 1 found the `security` command unusable for writing: the value is visible in the process list, or the write silently stores nothing for long values. To check with it: whether macOS asks the owner for permission when a Driver reads an item that another program stored (DRV-0.14) | Decided 6 October 2026 by the owner, against the proposed default: no native binding. A Driver reads a key with the system's `security` command, which is safe for reading; version 1's trouble with it was about writing. The settings file can name a command that prints the key instead, so that another store, such as Proton Pass, can take the Keychain's place without a change to the Driver (SYL-37). To check when it is built: whether macOS asks the owner once when a Driver first reads an item that another program stored |
 | DRV-D5 | Oldest supported vendor tool versions | The versions the specifications were probed against: `claude` 2.1.289, `codex` 0.159.2 | Decided 6 October 2026 by the owner: the proposed default. What matters is that a Driver keeps working with the newest version of its tool; nothing is done for older ones (SYL-38) |
 | DRV-D20 | May commands an agent started outlive the run? | No, on either Driver: DRV-0.10 and DRV-2.19 hold without exception. Version 1 ended them on the Claude route and left them running on purpose on the Codex route. A real test on 6 October 2026 found one kind of program that no Driver can find again; the owner accepted that limit the same day (DRV-D33 in DRV-2) | Decided 5 October 2026 by the owner: the proposed default (SYL-11) |
-| DRV-D34 | How are settings faults and notices reported by a command with one result? | Validate known fields by the interface types, without printing their values. Unknown keys are ignored and named in an optional `notices` array of objects with `code` and `message` on the result. Family settings are validated by the family when used | Decided 6 October 2026 during SYL-75, a technical choice |
+| DRV-D34 | How are settings faults and notices reported by a command with one result? | Validate known fields by the interface types, without printing their values. A key the Driver does not know refuses the file with `invalid_input` and is named. Other notices go in an optional `notices` array of objects with `code` and `message` on the result. Family settings are validated by the family when used | Decided 6 October 2026 during SYL-75, a technical choice. Until 14 October 2026 a key the Driver did not know was ignored and named in a notice; that day the owner decided that it refuses the file, in a Driver as in the classifier (CLS-D5 in CLS-0) |
 | DRV-D24 | Where are settings kept? | Every Arbol component keeps its settings in the folder `~/.arbol`, one plain file per component, which Arbol or any editor reads and changes. A Driver's file holds the default Subscription, the default model and effort of each Subscription, and each Subscription's own settings. Each Driver has one Subscription per family from the start, and the Claude Driver's default is `anthropic` | Decided 6 October 2026 by the owner |
 
-<!-- sources:
-arbol:daemons/shared/arbol_shared/macos_keychain.py
-arbol:product-spec/12-lessons-and-invariants.md#6. Many resident services with strict, version-coupled contracts
-arbol:product-spec/12-lessons-and-invariants.md#Product guarantees the rewrite must keep
-arbol:product-spec/12-lessons-and-invariants.md#Decisions for the successor's design
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:daemons/shared/arbol_shared/macos_keychain.py`
+- `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#6. Many resident services with strict, version-coupled contracts`
+- `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#Product guarantees the rewrite must keep`
+- `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#Decisions for the successor's design`

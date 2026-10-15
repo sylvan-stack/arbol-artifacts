@@ -1,0 +1,102 @@
+{
+  "workspace": "https://linear.app/sylvan-stack",
+  "team": "Sylvan Stack",
+  "project": {
+    "name": "Arbol",
+    "url": "https://linear.app/sylvan-stack/project/arbol-e2185acd2538",
+    "id": "P-SYL-1"
+  },
+  "note": "Local files are the originals. Linear documents are copies republished from them.",
+  "documents": {
+    "driver-contract/README.md": {
+      "title": "Driver Contract · Conventions and index",
+      "id": "3b865e8f-1fed-4318-aecd-6121bfabc5d2",
+      "url": "https://linear.app/sylvan-stack/document/driver-contract-conventions-and-index-31b9bf676427",
+      "published": "2026-10-08"
+    },
+    "driver-contract/00-overview-and-boundary.md": {
+      "title": "Driver Contract · 00 Overview and boundary",
+      "id": "589ae07e-9aac-4ae5-8248-6a782bb07487",
+      "url": "https://linear.app/sylvan-stack/document/driver-contract-00-overview-and-boundary-53753bc16b67",
+      "published": "2026-10-08"
+    },
+    "driver-contract/01-subscriptions.md": {
+      "title": "Driver Contract · 01 Subscriptions",
+      "id": "f014150e-bce8-430f-a30f-08d035019e6b",
+      "url": "https://linear.app/sylvan-stack/document/driver-contract-01-subscriptions-4191256562f0",
+      "published": "2026-10-08"
+    },
+    "driver-contract/02-inference.md": {
+      "title": "Driver Contract · 02 Inference",
+      "id": "6e636599-3910-4aa4-adde-453ad91d83b1",
+      "url": "https://linear.app/sylvan-stack/document/driver-contract-02-inference-03e3b5d5aa8e",
+      "published": "2026-10-08"
+    },
+    "driver-contract/03-tools-and-permissions.md": {
+      "title": "Driver Contract · 03 Tools and permissions",
+      "id": "3d8b672f-0b8b-43c4-8875-3f5147698e30",
+      "url": "https://linear.app/sylvan-stack/document/driver-contract-03-tools-and-permissions-54e712a1ff5e",
+      "published": "2026-10-08"
+    },
+    "driver-contract/04-errors-and-limits.md": {
+      "title": "Driver Contract · 04 Errors and limits",
+      "id": "42718e8f-c3fc-4aeb-ad7d-fba36d5032ff",
+      "url": "https://linear.app/sylvan-stack/document/driver-contract-04-errors-and-limits-a9a43a08c1e5",
+      "published": "2026-10-08"
+    },
+    "driver-contract/05-conformance.md": {
+      "title": "Driver Contract · 05 Conformance",
+      "id": "aa8487bc-c7b6-4646-861d-f02c39af781d",
+      "url": "https://linear.app/sylvan-stack/document/driver-contract-05-conformance-ee03d09a297d",
+      "published": "2026-10-08"
+    },
+    "builds/00-builds-and-versions.md": {
+      "title": "Builds · 00 Builds and versions",
+      "id": "7956994f-dbe8-4ea0-b255-95750c8bb8f4",
+      "url": "https://linear.app/sylvan-stack/document/builds-00-builds-and-versions-d9da4af9b7e9",
+      "published": "2026-10-13"
+    },
+    "driver-contract/06-state-and-simultaneous-calls.md": {
+      "title": "Driver Contract · 06 State and simultaneous calls",
+      "id": "04ca3274-7aeb-4ebb-b03a-44553f310f17",
+      "url": "https://linear.app/sylvan-stack/document/driver-contract-06-state-and-simultaneous-calls-5cfd1ee0d701",
+      "published": "2026-10-08"
+    },
+    "driver-contract/python-migration-plan-2026-10-07.md": {
+      "title": "Arbol Driver migration to Python implementation plan",
+      "id": "98ff7204-94aa-458d-89a3-66c83230332c",
+      "url": "https://linear.app/sylvan-stack/document/arbol-driver-migration-to-python-implementation-plan-4577a76c0c13",
+      "published": "2026-10-07"
+    },
+    "architecture/README.md": {
+      "title": "Architecture · Conventions and index",
+      "id": "e81a21af-8f07-45aa-bc39-fcfe11f394b4",
+      "url": "https://linear.app/sylvan-stack/document/architecture-conventions-and-index-ba6987a22987",
+      "published": "2026-10-13"
+    },
+    "architecture/00-components-and-boundaries.md": {
+      "title": "Architecture · 00 Components and boundaries",
+      "id": "07cb7f04-9fa2-4c72-a851-19030adab774",
+      "url": "https://linear.app/sylvan-stack/document/architecture-00-components-and-boundaries-189b959d02e0",
+      "published": "2026-10-13"
+    },
+    "architecture/01-roots.md": {
+      "title": "Architecture · 01 Roots",
+      "id": "d7dfbf62-ab7b-4854-a3d7-702558ba87d6",
+      "url": "https://linear.app/sylvan-stack/document/architecture-01-roots-42bd5a875282",
+      "published": "2026-10-13"
+    },
+    "architecture/02-chat-exchange-across-components.md": {
+      "title": "Architecture · 02 A Chat Exchange across the components",
+      "id": "3ecfac19-084a-4414-af72-56ddf22de213",
+      "url": "https://linear.app/sylvan-stack/document/architecture-02-a-chat-exchange-across-the-components-31ff36731c9c",
+      "published": "2026-10-13"
+    },
+    "architecture/03-stuck-trunks.md": {
+      "title": "Architecture · 03 Stuck Trunks",
+      "id": "c1327755-54ec-4cdb-8404-e73f04c5f09f",
+      "url": "https://linear.app/sylvan-stack/document/architecture-03-stuck-trunks-af3c035c70b3",
+      "published": "2026-10-13"
+    }
+  }
+}

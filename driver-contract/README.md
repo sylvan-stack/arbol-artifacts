@@ -23,7 +23,9 @@ Driver specifications: [Claude Driver](../../arbol-claude-driver/specs/README.md
 
 ## Conventions
 
-**Shape of a specification.** Purpose, Scope, Behaviour, Requirements, Interface, Known problems, Decisions. Behaviour sections that describe version 1 end with a block of [Source Refs](../GLOSSARY.md#source-ref) into the deprecated repository (`arbol:`), so a changed or disputed claim can be checked against the old code.
+**Shape of a specification.** Purpose, Scope, Behaviour, Requirements, Interface, Known problems, Decisions. Behaviour sections that describe version 1 end with ordinary historical evidence locators such as `arbol_deprecated_v1:path#symbol`, so a changed or disputed claim can be checked against the frozen code or corpus. These citations are not machine-readable Source Ref declarations and create no provenance edges.
+
+**Source Refs.** A [Source Ref](../GLOSSARY.md#source-ref) may name only an enabled repository. Use machine-readable section comments or frontmatter `sources:` only for claims about enabled repositories; active contract references such as `arbol:driver-contract/02-inference.md#Behaviour` stay Source Refs. References to disabled or frozen repositories remain ordinary Markdown links or historical locators, with their exact paths and symbols preserved.
 
 **Requirement identifiers.** `DRV-1.4` is requirement 4 of contract specification 1. A Driver specification with the same number refines it: `CLD-1.x` and `CDX-1.x` state how `DRV-1` is met. A number is never reused. A withdrawn requirement leaves its table and is named in a sentence below it, with the date and the decision that withdrew it.
 

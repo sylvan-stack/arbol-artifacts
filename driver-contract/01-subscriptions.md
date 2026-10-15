@@ -21,11 +21,11 @@ A Driver has one Subscription for each vendor family it serves from the start, n
 
 Observed in version 1: exactly three Subscriptions existed, one per vendor family, declared in code. They could not be added, renamed or removed.
 
-<!-- sources:
-arbol:daemons/core/arbol_core/subscriptions.py#DEFAULT_SUBSCRIPTIONS
-arbol:daemons/core/arbol_core/db/subscriptions.py#upsert_subscription
-arbol:product-spec/05-intelligence-providers.md#A new requirement, not parity
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:daemons/core/arbol_core/subscriptions.py#DEFAULT_SUBSCRIPTIONS`
+- `arbol_deprecated_v1:daemons/core/arbol_core/db/subscriptions.py#upsert_subscription`
+- `arbol_deprecated_v1:product-spec/05-intelligence-providers.md#A new requirement, not parity`
 
 ### States
 
@@ -50,12 +50,12 @@ Transitions:
 
 Observed in version 1: three reachable states, logged out, logged in and error, where error meant only "the last sign-in attempt failed". A fourth, expired, was declared and never set. An account whose credential the vendor rejected during a turn kept the state logged in.
 
-<!-- sources:
-arbol:product-spec/05-intelligence-providers.md#Sign-in and sign-out
-arbol:product-spec/05-intelligence-providers.md#Expiry and what the Leather Bag sees
-arbol:daemons/core/arbol_core/db/subscriptions.py#set_subscription_auth
-arbol:daemons/core/arbol_core/rpc/subscription.py#_await_login_completion
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:product-spec/05-intelligence-providers.md#Sign-in and sign-out`
+- `arbol_deprecated_v1:product-spec/05-intelligence-providers.md#Expiry and what the Leather Bag sees`
+- `arbol_deprecated_v1:daemons/core/arbol_core/db/subscriptions.py#set_subscription_auth`
+- `arbol_deprecated_v1:daemons/core/arbol_core/rpc/subscription.py#_await_login_completion`
 
 ### Signing in
 
@@ -79,13 +79,13 @@ One attempt per Subscription is pending at a time; starting another ends the fir
 
 Observed in version 1: the Anthropic family used an authorisation page in an Arbol-owned window with a local callback listener, a pending attempt was replaced by a second login, and a background watcher gave up after about five minutes. The ChatGPT family had no in-app sign-in: a credential file left by the vendor tool was copied. The z.ai family took a pasted key.
 
-<!-- sources:
-arbol:daemons/core/arbol_core/subscription_login.py#start_login
-arbol:daemons/core/arbol_core/subscription_login.py#complete_login
-arbol:daemons/core/arbol_core/rpc/subscription.py#_login
-arbol:daemons/core/arbol_core/rpc/subscription.py#_set_token
-arbol:daemons/core/arbol_core/universe_import.py#import_from_auth_json
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:daemons/core/arbol_core/subscription_login.py#start_login`
+- `arbol_deprecated_v1:daemons/core/arbol_core/subscription_login.py#complete_login`
+- `arbol_deprecated_v1:daemons/core/arbol_core/rpc/subscription.py#_login`
+- `arbol_deprecated_v1:daemons/core/arbol_core/rpc/subscription.py#_set_token`
+- `arbol_deprecated_v1:daemons/core/arbol_core/universe_import.py#import_from_auth_json`
 
 ### Credentials
 
@@ -95,13 +95,13 @@ A key is checked when the Driver reads it at sign-in: printable ASCII without sp
 
 Observed in version 1: every credential was a Keychain item written through the Security framework, never through the system's command-line helper. A copied ChatGPT credential went stale because the vendor tool rotated its renewal token after the copy was taken; the recovery was to copy again. Two concurrent turns on one Anthropic account could both renew the same credential in the legacy runtime; the newer runtime added a lock per Subscription.
 
-<!-- sources:
-arbol:daemons/core/arbol_core/subscriptions.py#SubscriptionCredentialStore
-arbol:daemons/shared/arbol_shared/macos_keychain.py
-arbol:daemons/core/arbol_core/rpc/subscription.py#_set_token
-arbol:daemons/shared/arbol_shared/state/credentials.py#ProviderCredentials.options
-arbol:daemons/core/arbol_core/orchestration/agent_attempt_execution.py#AgentAttemptExecutionService._refresh_bound_subscription_token
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:daemons/core/arbol_core/subscriptions.py#SubscriptionCredentialStore`
+- `arbol_deprecated_v1:daemons/shared/arbol_shared/macos_keychain.py`
+- `arbol_deprecated_v1:daemons/core/arbol_core/rpc/subscription.py#_set_token`
+- `arbol_deprecated_v1:daemons/shared/arbol_shared/state/credentials.py#ProviderCredentials.options`
+- `arbol_deprecated_v1:daemons/core/arbol_core/orchestration/agent_attempt_execution.py#AgentAttemptExecutionService._refresh_bound_subscription_token`
 
 ### Usage
 
@@ -118,12 +118,12 @@ The Driver keeps the last `ok` report with the Subscription so a caller can show
 
 Observed in version 1: usage was fetched when the accounts page opened, after sign-in and on Refresh; nothing polled. The last good Anthropic reading was cached. Three different sources were in use, one of them a web page read in a hidden browser session.
 
-<!-- sources:
-arbol:product-spec/05-intelligence-providers.md#Usage and rate-limit information
-arbol:daemons/core/arbol_core/rpc/subscription.py#_zai_usage
-arbol:daemons/core/arbol_core/rpc/subscription.py#_codex_usage
-arbol:daemons/core/arbol_core/db/subscriptions.py#set_subscription_usage_cache
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:product-spec/05-intelligence-providers.md#Usage and rate-limit information`
+- `arbol_deprecated_v1:daemons/core/arbol_core/rpc/subscription.py#_zai_usage`
+- `arbol_deprecated_v1:daemons/core/arbol_core/rpc/subscription.py#_codex_usage`
+- `arbol_deprecated_v1:daemons/core/arbol_core/db/subscriptions.py#set_subscription_usage_cache`
 
 ### Model catalog
 
@@ -131,13 +131,13 @@ The model catalog lists what this Subscription can run. It always comes from the
 
 Observed in version 1: the Anthropic list was read from the vendor's interface with the account's token and each model was then probed with a one-token request; the ChatGPT list came from a backend address that only reveals newer models to a recent enough client version; the z.ai list came from z.ai's own interface. One vocabulary of seven thinking levels was mapped onto every route, and three of the seven requested nothing or the same thing on some routes.
 
-<!-- sources:
-arbol:daemons/core/arbol_core/provider_models.py#fetch_claude_models
-arbol:daemons/core/arbol_core/provider_models.py#_filter_claude_entitled
-arbol:daemons/core/arbol_core/provider_models.py#fetch_codex_models
-arbol:daemons/core/arbol_core/provider_models.py#fetch_zai_models
-arbol:product-spec/05-intelligence-providers.md#Thinking level
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:daemons/core/arbol_core/provider_models.py#fetch_claude_models`
+- `arbol_deprecated_v1:daemons/core/arbol_core/provider_models.py#_filter_claude_entitled`
+- `arbol_deprecated_v1:daemons/core/arbol_core/provider_models.py#fetch_codex_models`
+- `arbol_deprecated_v1:daemons/core/arbol_core/provider_models.py#fetch_zai_models`
+- `arbol_deprecated_v1:product-spec/05-intelligence-providers.md#Thinking level`
 
 ## SYL-92 verification, 7 October 2026
 
@@ -274,13 +274,13 @@ Not to be reproduced.
 - **A partial update erased settings.** The command-line client documented that omitted options keep their value; the receiving side reset several of them.
 - **One account per vendor.** A second account of a vendor could not be configured.
 
-<!-- sources:
-arbol:product-spec/05-intelligence-providers.md#Known problems and lessons
-arbol:product-spec/05-intelligence-providers.md#Can two accounts of one vendor run at the same time, isolated?
-arbol:daemons/shared/arbol_shared/subscription_oauth.py
-arbol:daemons/core/arbol_core/provider_models.py#_arbol_fetch_codex_models_payload
-arbol:daemons/core/arbol_core/universe_usage.py#build_headers
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:product-spec/05-intelligence-providers.md#Known problems and lessons`
+- `arbol_deprecated_v1:product-spec/05-intelligence-providers.md#Can two accounts of one vendor run at the same time, isolated?`
+- `arbol_deprecated_v1:daemons/shared/arbol_shared/subscription_oauth.py`
+- `arbol_deprecated_v1:daemons/core/arbol_core/provider_models.py#_arbol_fetch_codex_models_payload`
+- `arbol_deprecated_v1:daemons/core/arbol_core/universe_usage.py#build_headers`
 
 ## Python migration verification, 7 October 2026
 

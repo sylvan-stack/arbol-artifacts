@@ -14,6 +14,8 @@ Event/replay descriptions below apply to the legacy profile. The implemented
 explicit [State Runtime Profile](#state-runtime-profile) has separate current-row
 authority; building it does not activate production or authorize retention cleanup.
 
+The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and Exchange Assignment follow the [current architecture](architecture/README.md). Trunk Runtime is retained as a historical term. The other definitions describing legacy processes and Event Log interactions have not been rewritten by that architecture revision.
+
 **Table of Contents**
 
 - **A** — [A-Nex](#a-nex) · [Action Item](#action-item) · [Activity](#activity) · [Activity Execution](#activity-execution) · [Activity Graph](#activity-graph) · [Activation Rule](#activation-rule) · [Admission Boundary](#admission-boundary) · [Agent Attempt](#agent-attempt) · [Aggregate](#aggregate) · [Answer Beacon](#answer-beacon) · [Answer Threshold](#answer-threshold) · [Arbol](#arbol) · [Arbol Trunk](#arbol-trunk) · [Arbol Component](#arbol-component) · [Arbol Root](#arbol-root) · [Arbol Internals](#arbol-internals) · [Arbol Secret](#arbol-secret) · [Arbol Swift App](#arbol-swift-app) · [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) · [Artifact](#artifact) · [Artifact Chapter](#artifact-chapter) · [Artifact Corpus](#artifact-corpus) · [Artifact Space](#artifact-space) · [Attestation](#attestation) · [Authoritative Input](#authoritative-input) · [Authority Epoch](#authority-epoch)
@@ -33,7 +35,7 @@ authority; building it does not activate production or authorize retention clean
 - **P** — [Parse Result](#parse-result) · [Parser](#parser) · [Parser Pipeline](#parser-pipeline) · [Provider](#provider)
 - **R** — [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Routine](#routine) · [Runbook](#runbook)
 - **S** — [Scan](#scan) · [Signal](#signal) · [Signal Rule](#signal-rule) · [Signal Type](#signal-type) · [Seqoya Lab](#seqoya-lab) · [Source Ref](#source-ref) · [Sparse Retrieval](#sparse-retrieval) · [Spine](#spine) · [Spotlight](#spotlight) · [Stale](#stale) · [Stale Summary Regeneration](#stale-summary-regeneration) · [State Runtime Profile](#state-runtime-profile) · [Steward](#steward) · [Stint](#stint) · [Subscription](#subscription) · [Summary Node](#summary-node) · [Surface](#surface) · [Swimlane](#swimlane) · [Swimlane Details](#swimlane-details) · [Swimlane Pool](#swimlane-pool) · [Swimmer](#swimmer) · [Sync Pass](#sync-pass)
-- **T** — [Taproot](#taproot) · [Text Snapshot](#text-snapshot) · [Theme](#theme) · [Ticket Workspace](#ticket-workspace) · [Tool](#tool) · [Tool Request](#tool-request) · [Tracked Source](#tracked-source) · [Trunk Runtime](#trunk-runtime) · [Turn](#turn)
+- **T** — [Taproot](#taproot) · [Text Snapshot](#text-snapshot) · [Theme](#theme) · [Tool](#tool) · [Tool Request](#tool-request) · [Tracked Source](#tracked-source) · [Trunk Runtime](#trunk-runtime) · [Turn](#turn)
 - **U** — [UI](#ui) · [UIShell / Chrome](#uishell--chrome)
 - **V** — [Visit](#visit)
 - **W** — [Wall](#wall) · [Willo Station](#willo-station) · [Working Directory](#working-directory) · [Worktree](#worktree) · [Worktree Container](#worktree-container)
@@ -112,17 +114,17 @@ The text-free sunrise separator marking the transition from an agent's visible t
 
 ## Arbol
 
-The local, single-user macOS app: an [Arbol Swift App](#arbol-swift-app) (WKWebView shells) over an [Arbol Root](#arbol-root), [Arbol Trunks](#arbol-trunk), [Driver](#driver) processes, and an [Effector](#effector). One app family, several windows.
+The local, single-user macOS application, consisting of one global [Arbol Swift App](#arbol-swift-app) and one backend for each [Arbol Root](#arbol-root) in use. A Root's `arbol` Build supplies its backend and UI renderer bundles; the Swift App hosts those bundles in web views and passes their Bridge calls to that Root's backend. The backend holds listeners, resolves Brain Recipes and calls the Root's manager to start [Arbol Trunks](#arbol-trunk), which run [Drivers](#driver). The command line is also `arbol` and works without a running backend. Roots keep separate chat databases and settings; the Swift App and Drivers are shared. See [components and boundaries](architecture/00-components-and-boundaries.md).
 
-**Example:** Opening Elma Chat creates a Chat Session coordinated by an Arbol Trunk; the Trunk uses shared Root capabilities, a Driver, and Effector to produce the conversation's fruits.
+**Example:** Elma Chat opened in Golden Root uses Golden's renderer bundle and backend. Its accepted Exchange keeps running in a detached Trunk process when Arbol quits; reopening Arbol discovers the retained Roots and reads Golden's database and Exchange records again.
 
 ## Arbol Trunk
 
-A complete, versionable implementation of an Arbol communication strategy. An Arbol Trunk owns the end-to-end interaction lifecycle it supports—from Chat Session input and context preparation through agent invocation, response boundaries, tools, retry/failover, recovery, inspection, and outcomes—rather than acting only as prompt enrichment. Different Trunk kinds may coordinate different Activities and produce different fruits. **Trunk names the reusable implementation/definition:** each [Chat Exchange](#chat-exchange) is assigned to one concrete Trunk Runtime, while consecutive Exchanges in one Chat Session may use different Trunks or runtime generations. There is no separate user-facing `Trunk Instance` term. The first implementation is the **Default Arbol Trunk**, created by behavior-preserving isolation of the current `ChatSessionOrchestrator` communication code. Design notes live in [`grafts/arbol-trunks/notes.md`](../arbol_deprecated_v1/grafts/arbol-trunks/notes.md), with process interactions in [`grafts/arbol-trunks/component-model.md`](../arbol_deprecated_v1/grafts/arbol-trunks/component-model.md).
+A complete, versionable implementation of an Arbol communication strategy. Each distinct implementation is a component with its own numbered [Builds](#build). It owns one [Chat Exchange](#chat-exchange) from accepted input to its final state, including its chat data. Each Exchange runs in one detached process, started from a Trunk Build compatible with its [Arbol Root](#arbol-root)'s contract and chat-table layout. Its record retains the `rootId` and Trunk Build; changing a default or starting another Root never moves accepted work. The Trunk receives the resolved Driver, Subscription, model and effort, and does not choose another route or require Arbol, its Root manager or the database to finish. The inside of the first Trunk is specified separately; the common boundary is [what any Trunk must offer](architecture/00-components-and-boundaries.md#what-any-trunk-must-offer).
 
 **Naming warning:** **Arbol Trunk** is the new architectural term. The established bare [Branch](#branch) term continues to name a Git branch Entity; Arbol Trunk is unambiguous.
 
-**Example:** A baseline conversational Trunk and a later research-specialized Trunk can use different Activity Graphs while sharing the same Arbol Root and Event Log boundaries.
+**Example:** Golden Root lists a conversational Trunk and a research Trunk whose Builds both support its contract and chat tables. The caller picks the research component; Golden's Root Build starts that component's newest compatible working Build for this Exchange. A later Exchange in the same Chat Session may use the conversational Trunk.
 
 ## Arbol Component
 
@@ -150,7 +152,7 @@ Umbrella term for any [Chat Session](#chat-session) a [Leather Bag](#initiator) 
 
 Arbol-owned metadata attached to an external [Entity](#entity). It can add properties the external system does not have or override an external property when Arbol has better local knowledge. The external value is retained for provenance; consumers use the Arbol override as the effective value when one exists. Name an individual field with the concise `Arbol` prefix — for example **Arbol status** (`arbol_status`) — rather than “Arbol Internal Status.”
 
-**Example:** Jira reports a ticket as `In Development`, but local work has reached review. Its `arbol_status: In Code Review` makes `In Code Review` the effective status in Oaken while the original Jira status remains available as `Jira status`.
+**Example:** An external tracker reports an issue as `In Development`, but local work has reached review. Its `arbol_status: In Code Review` makes `In Code Review` the effective status in Oaken while the tracker's original status remains available for provenance.
 
 ## Arbol Secret
 
@@ -160,9 +162,9 @@ An [Entity](#entity) (kind `secret`, tag `sec`): a user-provided value containin
 
 ## Arbol Swift App
 
-The native macOS Swift/AppKit host binary that backs every Arbol window. It loads a [UI](#ui)'s renderer bundle into a `WKWebView`, exposes the [Bridge](#bridge) to it, and proxies RPC/streams to [Arbol Root](#arbol-root). One shared binary; one process per open window. *(Previously referred to informally as the "Swift host".)*
+The native macOS Swift/AppKit component built from `arbol-app`, with its own numbered [Builds](#build) outside every [Arbol Root](#arbol-root). One process holds the tray menu, hotkeys, native surfaces and the web views of the UIs. It discovers the retained Roots on every start and loads each selected Root's renderer bundles from that Root's `arbol` Build. It exposes the [Bridge](#bridge) and passes calls and subscriptions to the selected Root's backend without interpreting them or opening its database. Each Root records its minimum App Build; the tray menu offers Roots the running App can serve and says which Build the others need. See [the Swift App and the backend](architecture/00-components-and-boundaries.md#arbol-the-swift-app-and-the-backend).
 
-**Example:** Opening Elma Chat launches an Arbol Swift App process that hosts the Elma renderer bundle in a WKWebView and connects it to [Arbol Root](#arbol-root) over the [Bridge](#bridge).
+**Example:** One Swift App shows Golden Root and Frodo Root in its tray menu. Opening Elma Chat in each loads that Root's renderer and connects it to that Root's backend; neither operation creates another Swift App process.
 
 ## Artifact
 
@@ -236,7 +238,7 @@ A named, reusable **definition of agent work**: instructions plus typed input/ou
 
 A **deterministic composition of [Blueprint](#blueprint) runs** — the *program* to the Blueprint's *function*: real code (sequence, gates, retries, fan-out) calling Blueprints, whose typed inputs/outputs are the ABI that makes deterministic chaining possible. Control flow is never YAML-encoded: a Blueprint Chain is a **plain Python script** — itself a [Tool](#tool) — living in `~/Artifacts/mycel/chains/` (the Mycel corpus — a Mycel Operation usable from any repo, deliberately NOT in the Arbol repo or corpus) with its [Runbook](#runbook) as a same-name sibling `.md`. Shared plumbing comes from `chainlib`: an append-only process log (`~/.infer/chains/<run-id>/chain.jsonl`), resume of unfinished runs, Promise.all-style `parallel()`, and parent labels when chains call chains. A chain's steps are its [Cells](#cell) (Tool / Blueprint / lambda); each agent Cell runs as its own [Chat Session](#chat-session) — fresh context per Cell, so the verifier is never the context that produced the work — and gates are enforced by code, not hoped for in instructions: an unmet `done_when` ABORTS the chain. In degraded mode a chain stays a readable script an agent drives by hand (`--dry-run` prints exactly what by-hand means). Design + plumbing: `plans/blueprints.md`.
 
-**Example:** `start-new-ticket.py` turns a Jira key into a full ticket workspace in 7 steps; `prepare-ticket.py` deliberately duplicates its first 4 (preparation without research) rather than sharing a sub-chain — chains evolve independently and each reads whole.
+**Example:** A chain script runs a research Blueprint, aborts when its `done_when` is unmet, and only then starts a planning Blueprint in a fresh Chat Session; a second chain that needs the same first steps duplicates them rather than sharing a sub-chain — chains evolve independently and each reads whole.
 
 
 ## Brain Recipe
@@ -256,14 +258,13 @@ An [Entity](#entity) (kind `branch`, tag `brn`): a git branch plus the metadata 
 
 - `name` — full branch name
 - `repo` — the [Repo](#repo) code name this branch belongs to (e.g. `Arbol`)
-- `jiraTicket` — Jira ticket number · `jiraLink` — Jira URL
 - `path` — path to the branch's checked-out [Worktree](#worktree), when present
 - `isWorktree` — whether the branch lives in a git worktree · `worktreeName` — that folder's name (when `isWorktree`)
 - `isFeatureBranch` · `isSubBranch` · `isReleaseBranch` · `isMaster` — branch-role flags
 
 *(Planned feature.)*
 
-**Example:** `feature/DEMO-108-auth-refactor`, checked out as a worktree, links to its Jira ticket, the commits and MR raised on it, and the Chat Sessions that worked there.
+**Example:** `feature/auth-refactor`, checked out as a worktree, links to the ticket it implements, the commits and MR raised on it, and the Chat Sessions that worked there.
 
 ## Branch Overlay
 
@@ -290,9 +291,9 @@ The versioned set of build outputs (binaries, app/renderer bundles) produced by 
 
 ## Cell
 
-One step of a [Blueprint Chain](#blueprint-chain) — the chain's **unit of execution, resume, and rendering**. A chain is a *sequence of Cells* the way a notebook is a sequence of cells: each Cell runs in order, produces its declared output, is independently **skippable on resume** (a completed Cell is not re-run — `--until N` stops after Cell N and the next invocation resumes there), and is **gated** by code (a failed gate ABORTS the whole chain — the guarantee a chain adds over instructions). A Cell is one of three **kinds**: a **[Tool](#tool) Cell** (deterministic subprocess, no agent — e.g. a `mycel mirror fetch`; gate = exit 0), a **[Blueprint](#blueprint) Cell** (a named [Blueprint Run](#blueprint) in its own fresh [Chat Session](#chat-session); gate = `done_when`), or a **lambda Cell** (an inline anonymous agent — a fresh Chat Session with a prompt but no reusable Blueprint; gate = the session completing). Every agent Cell (Blueprint or lambda) gets **fresh context**, so the verifier is never the context that produced the work. A Cell is NOT a Blueprint's internal **Step** (`### Step N` — sequential messages accumulating in ONE session): Steps share one context, Cells never do — the word *Cell* exists precisely to keep the two apart. The **code keeps the short name `step`** (`chain_step=N` labels, `--until N`, `step_started`/`step_finished` log events); *Cell* is the leather-bag term — the same split as [Chat Session](#chat-session) vs the `session` code name. Each Cell's start/finish/skip is one line in the chain's process log (`~/.infer/chains/<run-id>/chain.jsonl`), rendered `Cell N/total · kind · title`.
+One step of a [Blueprint Chain](#blueprint-chain) — the chain's **unit of execution, resume, and rendering**. A chain is a *sequence of Cells* the way a notebook is a sequence of cells: each Cell runs in order, produces its declared output, is independently **skippable on resume** (a completed Cell is not re-run — `--until N` stops after Cell N and the next invocation resumes there), and is **gated** by code (a failed gate ABORTS the whole chain — the guarantee a chain adds over instructions). A Cell is one of three **kinds**: a **[Tool](#tool) Cell** (deterministic subprocess, no agent — e.g. a `mycel sync`; gate = exit 0), a **[Blueprint](#blueprint) Cell** (a named [Blueprint Run](#blueprint) in its own fresh [Chat Session](#chat-session); gate = `done_when`), or a **lambda Cell** (an inline anonymous agent — a fresh Chat Session with a prompt but no reusable Blueprint; gate = the session completing). Every agent Cell (Blueprint or lambda) gets **fresh context**, so the verifier is never the context that produced the work. A Cell is NOT a Blueprint's internal **Step** (`### Step N` — sequential messages accumulating in ONE session): Steps share one context, Cells never do — the word *Cell* exists precisely to keep the two apart. The **code keeps the short name `step`** (`chain_step=N` labels, `--until N`, `step_started`/`step_finished` log events); *Cell* is the leather-bag term — the same split as [Chat Session](#chat-session) vs the `session` code name. Each Cell's start/finish/skip is one line in the chain's process log (`~/.infer/chains/<run-id>/chain.jsonl`), rendered `Cell N/total · kind · title`.
 
-**Example:** `start-new-ticket` runs 7 Cells — Cell 1 *mirror fetch* (Tool) → Cell 2 *format-ticket* (Blueprint) → Cell 3 *objectives* (lambda) → … → Cell 7 *deep-research* (Blueprint). `--until 3` stops after Cell 3; re-running the same key resumes at Cell 4.
+**Example:** A chain runs 4 Cells — Cell 1 *sync* (Tool) → Cell 2 *research* (Blueprint) → Cell 3 *objectives* (lambda) → Cell 4 *plan* (Blueprint). `--until 2` stops after Cell 2; re-running with the same input resumes at Cell 3.
 
 ## Change Walkthrough
 
@@ -359,17 +360,17 @@ A **mechanically generated per-repo overview document** (`generated/code-map.md`
 
 ## Code Scout
 
-The **reconnaissance pass over a codebase** — fast, wide, and shallow, the deliberate opposite of deep research. A Code Scout sweeps cheap signals (retrieval, `better-grep`, the [Code Map](#code-map)) *for* a ticket's [Objectives](#objectives) and hands later work a map of **where to dig**: files/modules each with a one-line why, first hunches explicitly marked unverified, surprises the ticket's framing did not predict, and blind spots where the scan found nothing. Signals, not conclusions — a scout that starts verifying has stopped scouting. Embodied as the `scout-codebase` [Blueprint](#blueprint) (read-only, producing `code-scout.md` in the ticket workspace), step 6 of the Start New Ticket [Blueprint Chain](#blueprint-chain), and available standalone via the `code-scout` skill.
+The **reconnaissance pass over a codebase** — fast, wide, and shallow, the deliberate opposite of deep research. A Code Scout sweeps cheap signals (retrieval, `better-grep`, the [Code Map](#code-map)) *for* a ticket's [Objectives](#objectives) and hands later work a map of **where to dig**: files/modules each with a one-line why, first hunches explicitly marked unverified, surprises the ticket's framing did not predict, and blind spots where the scan found nothing. Signals, not conclusions — a scout that starts verifying has stopped scouting. Embodied as the `scout-codebase` [Blueprint](#blueprint) (read-only, producing `code-scout.md`).
 
 **Example:** For a limits ticket, the scout lists `apps/limit/src/domain/services` ("objective 2 — recalculation lives here"), flags an unexpected feature toggle guarding the old path as a *surprise*, and admits it found nothing about the notification requirement — so deep research knows exactly where to spend its hour.
 
 ## Code Corpus
 
-One of the two kinds of [Corpus](#corpus) a [Repo](#repo) has: its **source code**, [ingested](#ingest) into [Chunks](#chunk) keyed `path#symbol` (with language, symbol kind, and line span). Chunking is code-aware per language: Python via stdlib `ast`, Svelte block-aware, TypeScript/TSX/JavaScript via tree-sitter, ops scripts/plists/Swift as whole-file chunks. Named per Repo, rooted by its `~/.mycel/config.toml` entry: the **Arbol Code Corpus** spans the roots configured in `~/.mycel/config.toml`, currently including `daemons/`, `drivers/`, `renderer/apps/`, `cli/`, `scripts/`, `launchd/`, and `tests/`. It powers hybrid code search (`mycel search --only code`) and is the substrate for the planned code↔doc [Derivations](#derivation). Contrast the [Artifact Corpus](#artifact-corpus), the same Repo's documents.
+One of the two kinds of [Corpus](#corpus) a [Repo](#repo) has: its **source code**, [ingested](#ingest) into [Chunks](#chunk) keyed `path#symbol` (with language, symbol kind, and line span). Chunking is code-aware per language: Python via stdlib `ast`, Svelte block-aware, TypeScript/TSX/JavaScript via tree-sitter, ops scripts/plists/Swift as whole-file chunks. Named per enabled Repo, rooted by its `~/.mycel/config.toml` entry. The frozen `arbol_deprecated_v1` code and artifact corpora are excluded from indexing. Version 1's Arbol code roots included `daemons/`, `drivers/`, `renderer/apps/`, `cli/`, `scripts/`, `launchd/`, and `tests/`; these are historical locations, not the active Arbol index scope. It powers hybrid code search (`mycel search --only code`) and is the substrate for the planned code↔doc [Derivations](#derivation). Contrast the [Artifact Corpus](#artifact-corpus), the same Repo's documents.
 
-<!-- sources:
-mycel:mycel/knowledge/code_chunker.py
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `mycel_deprecated_v1:mycel/knowledge/code_chunker.py`
 
 **Example:** Saving a change to `raptor.py` makes the [Corpus Watcher](#corpus-watcher) fire a [Sync Pass](#sync-pass): only the edited symbols re-chunk and re-embed.
 
@@ -485,9 +486,11 @@ A **one-shot, non-agentic** model call: a single prompt → output via a [Brain 
 <a id="core"></a>
 ## Arbol Root
 
-**Arbol Root** is Arbol's control plane and UI gateway: it holds [Arbol Trunks](#arbol-trunk) together, manages their runtime generations, selects a concrete Trunk Runtime for each new [Chat Exchange](#chat-exchange), and serves UI-oriented commands, projections, and subscriptions. Once a Trunk durably accepts an Exchange, Root is not part of that Exchange's required execution path; the Trunk must continue while Root is stopped or restarting. The current implementation is the Python daemon and code surface `arbol-core` (directories `daemons/core/` / `arbol_core/`), which still contains chat orchestration and is the sole [Event Log](#event-log) writer. Those are migration-era implementation facts, not the target boundary. The implementation code keeps the historical `arbol-core` name, but **"Root" is the single canonical term** — the former synonym "Core" is retired and should not be used in product/architecture prose.
+**Arbol Root**, or **Root**, is a named, persistent environment for all [Arbol Trunks](#arbol-trunk) compatible with it: its identifier, display name, folder, database, settings and the Builds of `arbol` and `arbol-root` made for it. A **Root Build** is a numbered Build of `arbol-root`, the manager of that environment. It lists compatible Trunk components and Builds, selects a compatible working Build within the caller's chosen component or the configured default, starts Exchanges detached, lists and stops them, and delegates interrupted-Exchange settlement to a Trunk. Each invocation is a short command; no resident Root process is required. The environment outlives its manager's invocations and Builds. See [Roots](architecture/01-roots.md) and [the Root manager](architecture/00-components-and-boundaries.md#arbol-root).
 
-**Example:** A Surface sends a Chat Session command to Arbol Root; Root selects a Trunk Runtime for the new Chat Exchange and later serves durable progress from shared projections even if Root restarted during execution.
+Roots replace the proposed name Ring. A breaking change creates a new Root beside the old one, preserving the old Root's chats and usability. The global `arbol-roots` command, outside every Root, manages the catalogue, creation, readiness, failure, minimum App Build, migration and removal. The global Swift App discovers Roots again when it starts; each Root has its own backend and renderer Builds. Drivers, Subscriptions, Trunk Builds, the App and the build registry are shared. The Root manager holds compatibility and lifecycle policy, reads Exchange records and never reads chat content or opens the database. An accepted Exchange keeps its `rootId` and Trunk Build and continues when the manager, backend or App ends.
+
+**Example:** Golden Root uses Root Build `6`; Frodo Root uses Root Build `8`. Both can use a compatible research Trunk Build when their contract and chat-table layout match. Replacing Golden's Root Build changes later command invocations, while its existing Exchanges continue in the processes already started for them.
 
 ## Corpus
 
@@ -639,7 +642,7 @@ The **standalone app that holds the warm on-device embedding model** — `mycel_
 
 One durable, provider-message-level input to email automation. Its private external capture is stored raw-first under `~/Artifacts/mirrors/emails/`; a versioned Normalizer writes canonical text, structured metadata, and sanitized HTML under `~/Artifacts/emails/`. Root keeps a rebuildable index with provider message/thread identity, an immutable acceptance sequence, content hash, provenance paths, and evidence-based completeness (`preview`, `partial`, `rendered_complete`, or `raw_complete`). Gmail DOM captures may be `rendered_complete`, never `raw_complete`.
 
-**Example:** One rendered GitLab notification inside a Gmail conversation becomes an Email Source Item distinct from the inbox-row/thread preview and from other messages in that conversation.
+**Example:** One rendered notification inside a Gmail conversation becomes an Email Source Item distinct from the inbox-row/thread preview and from other messages in that conversation.
 
 ## Embedder Profile
 
@@ -649,7 +652,7 @@ Per-[Repo](#repo) setting naming **which embedding model** the repo's [Chunks](#
 
 ## Entity
 
-Any first-class Arbol citizen — an MR, a commit, a git [Branch](#branch), a JIRA ticket, a glossary term, a [Chat Session](#chat-session), an email, a Slack message, an artifact, a requirement, an invariant — and more kinds as they are added. Entities are numerous and get connected to one another by [Entity Edges](#entity-edge). Rendered uniformly on every [Surface](#surface) via `EntityChip` / `EntityCard` — never re-styled per Surface. An optional **state** value recolours an entity (an `mr` green when `merged`, a [Swimmer](#swimmer) red when `blocked`). See also: [Entity Kind](#entity-kind), [Entity Shape](#entity-shape), [Entity Edge](#entity-edge). Kinds (tags lowercase):
+Any first-class Arbol citizen — an MR, a commit, a git [Branch](#branch), a ticket, a glossary term, a [Chat Session](#chat-session), an email, a Slack message, an artifact, a requirement, an invariant — and more kinds as they are added. Entities are numerous and get connected to one another by [Entity Edges](#entity-edge). Rendered uniformly on every [Surface](#surface) via `EntityChip` / `EntityCard` — never re-styled per Surface. An optional **state** value recolours an entity (an `mr` green when `merged`, a [Swimmer](#swimmer) red when `blocked`). See also: [Entity Kind](#entity-kind), [Entity Shape](#entity-shape), [Entity Edge](#entity-edge). Kinds (tags lowercase):
 
 | kind | tag | shape |
 | --- | --- | --- |
@@ -673,7 +676,7 @@ Any first-class Arbol citizen — an MR, a commit, a git [Branch](#branch), a JI
 | `prompt` | pmt | mark |
 | `response` | rsp | mark |
 
-**Example:** A JIRA ticket, a merge request, a [Chat Session](#chat-session), and a glossary term are all Entities, so the UI renders each as an `EntityChip` or `EntityCard`.
+**Example:** A ticket, a merge request, a [Chat Session](#chat-session), and a glossary term are all Entities, so the UI renders each as an `EntityChip` or `EntityCard`.
 
 ## Entity Card
 
@@ -701,9 +704,9 @@ The reusable compact UI representation of an [Entity URI](#entity-uri). It parse
 
 ## Entity Context Menu
 
-The shared UI **context menu** displayed for any component associated with an [Entity](#entity), including Chat Session cards, Jira issues, and Grafts. It provides the Entity-generic actions **Link to entity…** and **Send to** → **Graft**, **Spotlight**, or **Swimlane…**. Entity types and host surfaces may extend it with additional, entity-specific items; those additions appear after the shared actions and do not replace them. The component is implemented in the design system as `openEntityContextMenu` and attaches to Entity-backed chips, cards, rows, and detail surfaces through `entityLinkTarget`.
+The shared UI **context menu** displayed for any component associated with an [Entity](#entity), including Chat Session cards, tickets, and Grafts. It provides the Entity-generic actions **Link to entity…** and **Send to** → **Graft**, **Spotlight**, or **Swimlane…**. Entity types and host surfaces may extend it with additional, entity-specific items; those additions appear after the shared actions and do not replace them. The component is implemented in the design system as `openEntityContextMenu` and attaches to Entity-backed chips, cards, rows, and detail surfaces through `entityLinkTarget`.
 
-**Example:** Right-clicking a Chat Session card opens its Entity Context Menu, where **Send to → Spotlight** adds that Chat Session to the current Spotlight; a Jira issue may also show Jira-specific actions below the common section.
+**Example:** Right-clicking a Chat Session card opens its Entity Context Menu, where **Send to → Spotlight** adds that Chat Session to the current Spotlight; a ticket may also show ticket-specific actions below the common section.
 
 ## Entity Edge
 
@@ -725,7 +728,7 @@ How an [Entity](#entity) renders in time: **span** (has duration → a bar; live
 
 ## Entity URI
 
-A plain-string locator for one [Entity](#entity), with either form `[<short-repo>:<short-entity-type>:<entity-id>:<title-base64>]` or `[<short-entity-type>:<entity-id>:<title-base64>]`. The surrounding square brackets and three or four non-empty parts are required. `short-repo` is optional: when present, it is the Repo's registered short code and carries [Repo](#repo) context; it is not restricted to three characters. Repo-less Entities such as prompts and responses normally use the three-part form. Omitting `short-repo` is semantically equivalent to the explicit `any` Repo code: parsers normalize a three-part URI to `any`, never to a null Repo value. `[any:...]` remains a valid explicit spelling when a four-part URI is useful. `short-entity-type` is the [Entity Kind](#entity-kind)'s registered tag and is limited to at most three characters. `entity-id` is the Entity's ID in the Arbol database, never an ID from Jira, Confluence, GitLab, or another external system. `title-base64` is the Base64 encoding of a UTF-8 title or other human-readable description selected when the URI is created. Entity identity is the pair `(short-entity-type, entity-id)`: neither `short-repo` nor `title-base64` participates in identity. The Repo code is routing/provenance context, and the encoded title is a stable display snapshot that lets a [Surface](#surface) render a useful, request-free [Entity Chip](#entity-chip).
+A plain-string locator for one [Entity](#entity), with either form `[<short-repo>:<short-entity-type>:<entity-id>:<title-base64>]` or `[<short-entity-type>:<entity-id>:<title-base64>]`. The surrounding square brackets and three or four non-empty parts are required. `short-repo` is optional: when present, it is the Repo's registered short code and carries [Repo](#repo) context; it is not restricted to three characters. Repo-less Entities such as prompts and responses normally use the three-part form. Omitting `short-repo` is semantically equivalent to the explicit `any` Repo code: parsers normalize a three-part URI to `any`, never to a null Repo value. `[any:...]` remains a valid explicit spelling when a four-part URI is useful. `short-entity-type` is the [Entity Kind](#entity-kind)'s registered tag and is limited to at most three characters. `entity-id` is the Entity's ID in the Arbol database, never an ID from an external system. `title-base64` is the Base64 encoding of a UTF-8 title or other human-readable description selected when the URI is created. Entity identity is the pair `(short-entity-type, entity-id)`: neither `short-repo` nor `title-base64` participates in identity. The Repo code is routing/provenance context, and the encoded title is a stable display snapshot that lets a [Surface](#surface) render a useful, request-free [Entity Chip](#entity-chip).
 
 An Entity's canonical Entity URI is generated when the Entity is created and stored in the Arbol database with the Entity. The creation path derives or copies an appropriate display title from the Entity data, Base64-encodes it, and persists the resulting URI; consumers copy that stored URI rather than repeatedly choosing a title and regenerating it. An ordinary later title change does not automatically rewrite already stored or distributed Entity URIs. If another URI carries a different title snapshot but the same Entity Kind tag and Entity ID, it still identifies the same Entity. The code-level type name is `EntityUri`.
 
@@ -775,11 +778,11 @@ The architecture in which accepted state changes are represented first as immuta
 
 ## Exchange Assignment
 
-The idempotent control-plane decision and durable handshake that binds one new [Chat Exchange](#chat-exchange) to one concrete [Trunk Runtime](#trunk-runtime) from Composer opening through terminal Exchange settlement. [Arbol Root](#arbol-root) selects a healthy accepting runtime and requests assignment using stable Chat Session, Exchange, command, and expected-revision identities. The runtime validates the request, atomically records Exchange opening and exclusive runtime ownership through the [Event Log](#event-log), and acknowledges only after persistence succeeds. At that point the Exchange is **Trunk-owned** and can continue while Root is absent.
+The acceptance boundary that binds a new [Chat Exchange](#chat-exchange) to its [Arbol Root](#arbol-root), selected Trunk Build and detached process. The Root manager starts the selected compatible Build with the resolved route and Root. The Trunk writes the Exchange record in that Root's folder and the submitted message in its database before reporting acceptance. From acceptance to the final state the Exchange is Trunk-owned and retains its `rootId` and Trunk Build. It continues when the manager or Arbol is absent; it is never reassigned by a Build or Root change. If input is refused before acceptance, the Draft stays in the composer. See [the Exchange steps](architecture/02-chat-exchange-across-components.md#the-steps).
 
-Assignment is not agent invocation, an [Activity](#activity), or migration of running work. Repeating the same assignment command returns the same established ownership; a runtime that rejects before ownership is established may be replaced by another selection. Once ownership is established, an ordinary rebuild never transfers that Exchange. The next Exchange in the same Chat Session may be assigned to another Trunk Runtime.
+This replaces the legacy assignment to a resident Trunk Runtime generation. There is one process per accepted Exchange; the precise command and file formats, including duplicate-submission handling, belong to the Trunk Contract and are not specified by this definition.
 
-**Example:** Root asks Default Trunk runtime B to own Exchange E4. B records the unique `E4 → runtime B` ownership fact and acknowledges it. If Root dies before receiving that acknowledgement, it safely repeats the same command after restart and discovers B as the existing owner rather than creating E5 or assigning E4 twice.
+**Example:** Golden Root's manager starts research Trunk Build `a3` for Exchange E4. The Trunk records E4's Golden `rootId`, Build and process, writes its input and acknowledges acceptance. Opening Frodo Root later does not move E4; it finishes in Golden.
 
 ## Fanout
 
@@ -1000,9 +1003,9 @@ A Nex names the participant, not the pair, a conversation, or a project. The par
 
 ## Normalizer
 
-A pure, versioned conversion [Entity](#entity) that turns external-provider data already stored in a raw mirror into the stable user-facing representation Arbol consumes. A Normalizer never fetches, reads credentials, mutates raw data, writes a projection, or reads the clock; the caller durably mirrors first, invokes the Normalizer, writes the derived output, then records a hash-linked normalization manifest. Jira, Confluence, and GitLab Normalizers produce derived Markdown [Artifacts](#artifact); the Slack Normalizer produces Willo Slack Surface write models. The common contract and provider conversion rules live in [`architecture/normalizers/`](../arbol_deprecated_v1/architecture/normalizers/README.md).
+A pure, versioned conversion [Entity](#entity) that turns external-provider data already stored in a raw mirror into the stable user-facing representation Arbol consumes. A Normalizer never fetches, reads credentials, mutates raw data, writes a projection, or reads the clock; the caller durably mirrors first, invokes the Normalizer, writes the derived output, then records a hash-linked normalization manifest. A Normalizer may produce derived Markdown [Artifacts](#artifact); the Slack Normalizer produces Willo Slack Surface write models. The common contract and provider conversion rules live in [`architecture/normalizers/`](../arbol_deprecated_v1/architecture/normalizers/README.md).
 
-**Example:** `JiraNormalizer` deterministically converts the raw `ARB-42` API envelope into `~/Artifacts/jira/ARB-42.md`; its sibling manifest records the Normalizer/output-schema versions and SHA-256 of `~/Artifacts/mirrors/jira/ARB-42.json`.
+**Example:** A Normalizer deterministically converts a raw API envelope held in the mirror into its derived output; the sibling manifest records the Normalizer/output-schema versions and the SHA-256 of the raw file.
 
 ## Native Tool Call
 
@@ -1025,7 +1028,7 @@ The task-management and delivery workspace [UI](#ui). See also: [Swimlane Pool](
 
 ## Objectives
 
-The **verifiable completion conditions of a ticket or task** — not a restatement of its requirements, but the checklist consulted **when the work is done** to decide whether the objectives are met. Written *before* the work starts (the Start-New-Ticket [Blueprint Chain](#blueprint-chain) extracts them into the ticket workspace's `objectives.md`), checked *after* — they define "done" before "doing". The ticket-level analog of a [Blueprint](#blueprint)'s `done_when`: same shape, one level up. Objectives drive downstream judgment — [Gather-Jira-Context] includes only objective-relevant material, deep research angles derive from them, and a future Close-Ticket chain verifies them as its gate.
+The **verifiable completion conditions of a ticket or task** — not a restatement of its requirements, but the checklist consulted **when the work is done** to decide whether the objectives are met. Written *before* the work starts, checked *after* — they define "done" before "doing". The ticket-level analog of a [Blueprint](#blueprint)'s `done_when`: same shape, one level up. Objectives drive downstream judgment — context gathering includes only objective-relevant material, deep research angles derive from them, and a future Close-Ticket chain verifies them as its gate.
 
 **Example:** a ticket "check if redlock is released in activity.interceptor" yields objectives like "the lock's release path under every interceptor exit (success, error, timeout) is IDENTIFIED with file:line evidence, and a verdict released/leaked is stated per path" — checkable at the end, not a paraphrase of the title.
 
@@ -1039,19 +1042,19 @@ A named set of [Repos](#repo) belonging to one organizational unit. An Organizat
 
 An immutable, durable, typed result of running one versioned [Parser](#parser) against one content hash of an [Email Source Item](#email-source-item). It records `matched`, `not_matched`, `partial`, or `failed`, extracted data, parser/output/pipeline versions, stage provenance, diagnostics, and a private result Artifact. Results are reusable by multiple Signal Rules and cache by source content plus Parser versions.
 
-**Example:** The GitLab Parser produces a partial Parse Result from a Gmail preview containing `kind: pipeline.failed`, project, branch, commit, and detection evidence.
+**Example:** A code-host Parser produces a partial Parse Result from a Gmail preview containing `kind: pipeline.failed`, project, branch, commit, and detection evidence.
 
 ## Parser
 
 A named, code-owned, versioned extractor that turns one [Email Source Item](#email-source-item) into typed semantic data. A Parser may use deterministic stages and explicitly requested Completion-backed classification stages, but it does not express user policy and does not directly decide which Signal to emit.
 
-**Example:** `email.gitlab@1` recognizes GitLab notification structure and extracts MR, pipeline, project, branch, participant, comment, and provider-instance fields.
+**Example:** A provider Parser such as `email.<provider>@1` recognizes that provider's notification structure and extracts MR, pipeline, project, branch, participant, comment, and provider-instance fields.
 
 ## Parser Pipeline
 
 The ordered or dispatching composition of [Parser](#parser) stages used to produce a [Parse Result](#parse-result). Pipelines are code-owned in V1; users configure Signal Rules rather than executable parser code.
 
-**Example:** GitLab detection routes an MR-comment email to deterministic extraction, followed only when a Rule requires it by an urgency classifier.
+**Example:** Provider detection routes an MR-comment email to deterministic extraction, followed only when a Rule requires it by an urgency classifier.
 
 ## Provider
 
@@ -1084,9 +1087,9 @@ The hierarchical summary layer over a [Corpus](#corpus): tier 0 is the corpus [C
 
 ## Reference
 
-A **locator**: a pointer to a target — a file path, [Artifact](#artifact)-section anchor, code-symbol path, http link, or Jira/ticket link (a "see also" is one too). Its only integrity question is **does it still resolve**: a Reference breaks when its target is **renamed, moved, or removed**, *not* when the target's content changes (a linked ticket can be rewritten and the link stays valid). It's checked by **resolution** — a cheap lookup ("does this path / anchor / ticket still exist?"), needing no model and no [trust score](#attestation); a broken Reference is just a "fix the pointer" item. Distinct from an [Entity Edge](#entity-edge) (a structural tie in the entity graph) and — crucially — from **using a term's meaning**, which is *not* a Reference but a meaning-dependency ([Derivation](#derivation) / [Coupling](#coupling)) checked by re-verification instead.
+A **locator**: a pointer to a target — a file path, [Artifact](#artifact)-section anchor, code-symbol path, http link, or ticket link (a "see also" is one too). Its only integrity question is **does it still resolve**: a Reference breaks when its target is **renamed, moved, or removed**, *not* when the target's content changes (a linked ticket can be rewritten and the link stays valid). It's checked by **resolution** — a cheap lookup ("does this path / anchor / ticket still exist?"), needing no model and no [trust score](#attestation); a broken Reference is just a "fix the pointer" item. Distinct from an [Entity Edge](#entity-edge) (a structural tie in the entity graph) and — crucially — from **using a term's meaning**, which is *not* a Reference but a meaning-dependency ([Derivation](#derivation) / [Coupling](#coupling)) checked by re-verification instead.
 
-**Example:** `[see auth](auth.md#tokens)`, a Jira link, and a path like `core/session.py` are References — they survive content edits to their targets and break only on rename / move / remove. A sentence that *relies on what "Errand" means* is, by contrast, a [Derivation](#derivation) — not a Reference.
+**Example:** `[see auth](auth.md#tokens)`, a ticket link, and a path like `core/session.py` are References — they survive content edits to their targets and break only on rename / move / remove. A sentence that *relies on what "Errand" means* is, by contrast, a [Derivation](#derivation) — not a Reference.
 
 ## Refresh
 
@@ -1157,25 +1160,25 @@ The administration [UI](#ui): [Intelligence Providers](#intelligence-provider-ip
 
 One immutable business-relevant fact Arbol observed or derived, stored in the append-only durable Signal Journal before live publication. A Signal has a dotted Signal Type, source/source reference, occurrence/send times, schema-validated data, a journal sequence, idempotency identity, and derivation provenance. It is not editable configuration and is semantically separate from an Event Log event.
 
-**Example:** A new matching source emits one `gitlab.pipeline.failed` Signal whose provenance identifies its Signal Rule version and Parse Result.
+**Example:** A new matching source emits one `<provider>.pipeline.failed` Signal whose provenance identifies its Signal Rule version and Parse Result.
 
 ## Signal Rule
 
 Editable user automation configuration that evaluates typed source/[Parse Result](#parse-result) paths and maps a match into one declared [Signal Type](#signal-type). Each edit creates an immutable version with a future-only Email Source acceptance cutoff; retained email can be used only for a non-emitting Test. Rules can be enabled, disabled, archived, or restored without deleting versions or Signal provenance.
 
-**Example:** A Rule matches `parsed.kind == pipeline.failed` and a provider project, then maps branch and commit into `gitlab.pipeline.failed`.
+**Example:** A Rule matches `parsed.kind == pipeline.failed` and a provider project, then maps branch and commit into `<provider>.pipeline.failed`.
 
 ## Signal Type
 
 A code-owned lower-case dotted name plus a versioned data schema for one family of [Signals](#signal). Signal Rule mappings are validated against it before activation and emissions are validated before journaling.
 
-**Example:** `gitlab.merge_request.comment@1` requires project, merge-request IID, and comment fields.
+**Example:** `<provider>.merge_request.comment@1` requires project, merge-request IID, and comment fields.
 
 ## Source Ref
 
-An in-file provenance declaration — `repo:path[#symbol]` — that [Ingest](#ingest) materializes into a `declared` [Derivation](#derivation). Two homes: per-section refs in an HTML comment (`<!-- sources: … -->`, one ref per line — invisible in rendered markdown, readable in the raw file, attached to the section's own [Chunk](#chunk)), and frontmatter `sources:` for *document-wide governors* (the ticket snapshot, the extract this document answers to — attached to the document's first chunk). Refs use the chunk's **natural key**, never its id: the ULID is the projection's bookkeeping; documents speak the external identity, and ingest translates. Granularity follows the claim: `path#symbol` pins one function (the default for code research), `path#ClassName` watches the class *family* (header + methods), bare `path` the whole file, `file.md#Heading` a section of another artifact. The rule for *what deserves a ref*: an edge follows a **claim, not attention** — cite what a section says something about (including recorded dismissals), never everything that was merely read. The file is the truth: removing a ref removes its edge on the next ingest; a ref that fails to resolve is recorded **loudly** on the chunk (visible in the Chunks Viewer) and retried on later passes — never silently dropped.
+An in-file provenance declaration — `repo:path[#symbol]` — that [Ingest](#ingest) materializes into a `declared` [Derivation](#derivation). Only enabled repositories may be named by Source Refs. Citations to disabled or frozen repositories use ordinary Markdown links or historical evidence locators and create no provenance edges. Two homes: per-section refs in an HTML comment (`<!-- sources: … -->`, one ref per line — invisible in rendered markdown, readable in the raw file, attached to the section's own [Chunk](#chunk)), and frontmatter `sources:` for *document-wide governors* (the ticket snapshot, the extract this document answers to — attached to the document's first chunk). Refs use the chunk's **natural key**, never its id: the ULID is the projection's bookkeeping; documents speak the external identity, and ingest translates. Granularity follows the claim: `path#symbol` pins one function (the default for code research), `path#ClassName` watches the class *family* (header + methods), bare `path` the whole file, `file.md#Heading` a section of another artifact. The rule for *what deserves a ref*: an edge follows a **claim, not attention** — cite what a section says something about (including recorded dismissals), never everything that was merely read. The file is the truth: removing a ref removes its edge on the next ingest; a ref that fails to resolve is recorded **loudly** on the chunk (visible in the Chunks Viewer) and retried on later passes — never silently dropped.
 
-**Example:** A research doc's section on limit cooldown ends with a `sources:` comment citing `arbol:daemons/core/arbol_core/artifact_reconciler.py#classify_artifact`. When that method changes, [Detection](#detection) marks exactly that section [Stale](#stale) — edits elsewhere in the file stay silent. (The complete `<!-- sources: … -->` form is deliberately not spelled out here: ingest reads raw text, so a complete comment would bind this very entry to that method — an illustration is not a claim.)
+**Example:** A Driver specification cites the enabled contract section `arbol:driver-contract/02-inference.md#Behaviour` in its `sources:` comment. When that contract section changes, [Detection](#detection) marks exactly that section [Stale](#stale) — edits elsewhere in the file stay silent. (The complete `<!-- sources: … -->` form is deliberately not spelled out here: ingest reads raw text, so a complete comment would bind this very entry to that contract section — an illustration is not a claim. The earlier example, `arbol_deprecated_v1:daemons/core/arbol_core/artifact_reconciler.py#classify_artifact`, is now an ordinary historical locator.)
 
 ## Sparse Retrieval
 
@@ -1269,7 +1272,7 @@ The `Oaken[Swimlanes]` page: a vertical-time board of all [Swimlanes](#swimlane)
 
 ## Swimmer
 
-One Oaken task: a track inside a [Swimlane](#swimlane), rooted on any source [Entity](#entity) with a `start`, an optional typed [Wall](#wall), optional `blocked`, and a stream of child Entities. **Create swimmer** asks for an existing Swimlane, then adds the selected Entity there with its start set to creation time. **Create swimlane** creates a new workstream and performs the same addition as its first Swimmer. When the source Entity has an **Arbol final time**, that time and urgency become the Swimmer's Wall. External metadata such as **Jira Due Date** is only a hint and never creates or changes a Wall. Jira tickets and [Grafts](#graft) are the first Entity kinds surfaced for these actions, but the root contract is Entity-generic.
+One Oaken task: a track inside a [Swimlane](#swimlane), rooted on any source [Entity](#entity) with a `start`, an optional typed [Wall](#wall), optional `blocked`, and a stream of child Entities. **Create swimmer** asks for an existing Swimlane, then adds the selected Entity there with its start set to creation time. **Create swimlane** creates a new workstream and performs the same addition as its first Swimmer. When the source Entity has an **Arbol final time**, that time and urgency become the Swimmer's Wall. External metadata such as a tracker's due date is only a hint and never creates or changes a Wall. Tickets and [Grafts](#graft) are the first Entity kinds surfaced for these actions, but the root contract is Entity-generic.
 
 **Example:** A ticket “Implement login rate limiting” or a Graft “Review the authentication MR” becomes a Swimmer starting now; if the source has a deadline, that deadline becomes its wall, and later commits/MRs become child Entities.
 
@@ -1297,17 +1300,11 @@ One of the 12-step brightness ladder (dark→light), set via `data-theme` on the
 
 **Example:** Switching from a dark redwood theme to a lighter theme changes token values while components keep using the same design tokens.
 
-## Ticket Workspace
-
-The **curated per-ticket folder** `~/Artifacts/jira/<KEY>-<slug>/` — the working home for one Jira ticket: the formatted `ticket.md`, verifiable `objectives.md`, curated `jira-context.md`, `code-scout.md`, and `research.md` built by the prepare-ticket / start-new-ticket [Blueprint Chains](#blueprint-chain), plus hand-authored subtask [Artifacts](#artifact) (investigation, implementation plans, validation notes). The **curated layer** over the mirror layer, and the disambiguation matters: `~/Artifacts/mirrors/jira/<KEY>.md` is the *fetched, never-hand-edited, refresh-overwritten* mirror (`operations/external-mirrors.md`), while workspace files are *authored* and evolve — they cite the mirror via [Source Refs](#source-ref), so [Detection](#detection) flags them when a refresh changes the ticket underneath. The ticket-workflow operation reads the workspace on every start/resume, and subtask artifacts accumulate here rather than in flat files.
-
-**Example:** `~/Artifacts/jira/DEMO-110-update-example-setting/` holds ticket.md, objectives.md, and `DEMO-110-implementation-plan.md`; `mycel mirror fetch jira DEMO-110` refreshes the mirror those docs cite, and Detection flags the workspace docs if the ticket moved underneath them.
-
 ## Tool
 
 Any **CLI or script that does work** — the reusable units of external logic the intelligence system runs (`mycel`, `infer`, `blueprint`, `better-grep`, `mycel-embedder`, `arbol-cli`, or an ad-hoc script). Distinct from a [Mycel Operation](#mycel-operation) (a *process* — what should happen) and a [Blueprint](#blueprint) (agent *work*): a Tool is a concrete executable with a fixed interface — inputs, outputs, exit codes. Every Tool carries a **[Runbook](#runbook)** (its motivation + how-to), kept near its file: client-agnostic CLIs document in `~/Artifacts/mycel/tools/` (Arbol-only ones in `~/Artifacts/Arbol/tools/`), chains next to their script in `~/Artifacts/mycel/chains/` — with [Source Refs](#source-ref) to repo-hosted implementing code so [Detection](#detection) flags the manual when the tool changes. Tools are the composable substrate [Blueprints](#blueprint) and [Blueprint Chains](#blueprint-chain) lean on: rather than embed bash inline, a step or chain **calls a documented Tool** — external logic stays a named, versioned, runbook'd unit instead of a copy-pasted snippet. A [Blueprint Chain](#blueprint-chain) is itself a Tool (a script composing blueprint runs).
 
-**Example:** a spike-doc blueprint step says "run `mycel mirror fetch jira {ticket} --closure`" — a Tool call with a runbook — rather than open-coding the Jira API; when the mirror tool changes, Detection flags its runbook, not every blueprint that uses it.
+**Example:** a research guide step says "run `mycel search --repo <repo> "<question>"`" — a Tool call with a runbook — rather than open-coding the retrieval query; when the tool changes, Detection flags its runbook, not every guide that uses it.
 
 ## Tool Request
 
@@ -1323,9 +1320,9 @@ A whole-file hash record for a [Derivation](#derivation) source that isn't itsel
 
 ## Trunk Runtime
 
-One concrete, separately running process generation executing an [Arbol Trunk](#arbol-trunk) implementation. A Trunk Runtime may own many concurrent [Chat Exchanges](#chat-exchange), but each Exchange whose assignment it durably accepted remains pinned to one concrete runtime through terminal settlement. Old and new generations coexist during safe rebuild: new Exchanges may be admitted to the replacement while the old runtime finishes its accepted work. Trunk Runtime is an operational identity carrying Trunk kind/version/build and endpoint provenance; it is not a separate user-facing `Trunk Instance` entity.
+Historical name for a resident process generation that hosted several [Chat Exchanges](#chat-exchange). It belongs to the version 1 topology and is not carried over into Arbol 2. Current [Arbol Trunks](#arbol-trunk) run one accepted Exchange per detached process; their numbered Builds may coexist without resident runtime generations or a draining upgrade protocol. See [components and boundaries](architecture/00-components-and-boundaries.md).
 
-**Example:** Default Trunk runtime generation A continues an Exchange through tools while Root restarts and generation B starts; after restart, Root assigns the next Exchange to B and retires A only after A owns no unfinished Exchanges.
+**Example:** A version 1 upgrade kept runtime generation A running until its Exchanges drained into final states. Arbol 2 instead starts a chosen compatible Build for each new Exchange, while existing Exchange processes finish independently.
 
 ## Turn
 

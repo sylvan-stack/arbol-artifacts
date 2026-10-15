@@ -44,11 +44,11 @@ A failure the Driver cannot place is `vendor_error` when the vendor said somethi
 
 Observed in version 1: a failure was an event with a free text. The Claude route added one flag for authentication failures. Root decided what to do by matching phrases in that text, with its own copy of the phrase list. A missing executable surfaced as "launch outcome remains unresolved".
 
-<!-- sources:
-arbol:drivers/claude/arbol_driver_claude/protocol.py#AUTH_ERROR_INDICATORS
-arbol:daemons/core/arbol_core/orchestration/support.py#_is_claude_auth_error
-arbol:product-spec/03-turn-execution.md#Failures and what the Leather Bag sees
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:drivers/claude/arbol_driver_claude/protocol.py#AUTH_ERROR_INDICATORS`
+- `arbol_deprecated_v1:daemons/core/arbol_core/orchestration/support.py#_is_claude_auth_error`
+- `arbol_deprecated_v1:product-spec/03-turn-execution.md#Failures and what the Leather Bag sees`
 
 ### Recognising a failure
 
@@ -56,11 +56,11 @@ A Driver classifies by what its tool states in fields: an error code, a status n
 
 Observed in version 1: both routes classified by wording alone. The match was a search for short fragments anywhere in the text, so a login failure that mentioned a quota became a rate limit, and "retry after 5 minutes" was read as five seconds. The tools' own fields, including the error information of the Codex protocol and the limit records of the Claude stream, were not read.
 
-<!-- sources:
-arbol:drivers/claude/arbol_driver_claude/rate_limit.py#is_rate_limit_signal
-arbol:drivers/claude/arbol_driver_claude/rate_limit.py#extract_recovery_seconds
-arbol:drivers/codex/arbol_driver_codex/rate_limit.py#is_rate_limit_text
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:drivers/claude/arbol_driver_claude/rate_limit.py#is_rate_limit_signal`
+- `arbol_deprecated_v1:drivers/claude/arbol_driver_claude/rate_limit.py#extract_recovery_seconds`
+- `arbol_deprecated_v1:drivers/codex/arbol_driver_codex/rate_limit.py#is_rate_limit_text`
 
 ### Rate limits
 
@@ -70,11 +70,11 @@ A limit concerns the account, so the Subscription stays `signed_in`.
 
 Observed in version 1: the Driver reported the limit with an optional hint in seconds. Root then avoided that route until the hint had passed, or for 60 seconds without one, waited at most 300 seconds on the same route when there was no other, and made at most three attempts per message.
 
-<!-- sources:
-arbol:product-spec/03-turn-execution.md#Limits and defaults
-arbol:product-spec/05-intelligence-providers.md#The IP of each later turn
-arbol:daemons/core/arbol_core/rate_limit_tracker.py#RateLimitTracker
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:product-spec/03-turn-execution.md#Limits and defaults`
+- `arbol_deprecated_v1:product-spec/05-intelligence-providers.md#The IP of each later turn`
+- `arbol_deprecated_v1:daemons/core/arbol_core/rate_limit_tracker.py#RateLimitTracker`
 
 ### Rejected credentials
 
@@ -82,10 +82,10 @@ When the vendor rejects the credential in a run or in any other operation, the e
 
 Observed in version 1: Root renewed the Anthropic token before a turn when it was about to expire, and once after a failure, repeating the turn only if nothing had been produced. With a wrong gateway key, the installed tool retries ten times over almost three minutes before it gives up.
 
-<!-- sources:
-arbol:product-spec/05-intelligence-providers.md#Expiry and what the Leather Bag sees
-arbol:daemons/core/arbol_core/orchestration/agent_attempt_execution.py#AgentAttemptExecutionService._refresh_bound_subscription_token
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:product-spec/05-intelligence-providers.md#Expiry and what the Leather Bag sees`
+- `arbol_deprecated_v1:daemons/core/arbol_core/orchestration/agent_attempt_execution.py#AgentAttemptExecutionService._refresh_bound_subscription_token`
 
 ### Time limits of a run
 
@@ -103,10 +103,10 @@ The vendor tools retry failed requests to the vendor by themselves. A Driver rep
 
 Observed in version 1: no limit of any kind. A silent turn held its processes until someone stopped it, and a separate scan marked a chat as stalled after 15 minutes without acting on it.
 
-<!-- sources:
-arbol:product-spec/03-turn-execution.md#Limits and defaults
-arbol:product-spec/06-tools-and-permissions.md#Rules to preserve
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:product-spec/03-turn-execution.md#Limits and defaults`
+- `arbol_deprecated_v1:product-spec/06-tools-and-permissions.md#Rules to preserve`
 
 ### Limit information during a run
 
@@ -177,10 +177,10 @@ Not to be reproduced.
 - **Nothing ended a silent turn.**
 - **A wrong key cost minutes**, because nothing ended the tool's retries.
 
-<!-- sources:
-arbol:product-spec/03-turn-execution.md#Known problems and lessons
-arbol:drivers/codex/arbol_driver_codex/rate_limit.py#extract_recovery_seconds
--->
+Historical evidence (frozen version 1; ordinary locators, not Source Refs):
+
+- `arbol_deprecated_v1:product-spec/03-turn-execution.md#Known problems and lessons`
+- `arbol_deprecated_v1:drivers/codex/arbol_driver_codex/rate_limit.py#extract_recovery_seconds`
 
 ## Python migration verification, 7 October 2026
 
