@@ -240,7 +240,7 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 
 ### Languages
 
-`arbol-root`, `arbol-trunk`, `arbol-classifier`, the Arbol backend and the command line are typed Python with a packaged interpreter, as the Drivers are (DRV-D1, BLD-0). The Arbol Swift App is Swift. The renderer bundles are web pages. The build tool, the launchers and the conformance runner are typed Python too, by the owner's decision of 14 October 2026. They are not Builds, so they run on the pinned interpreter that is installed with `arbol-builds` ([BLD-D15](../builds/00-builds-and-versions.md#decisions)), and so does `arbol-roots`.
+`arbol-root`, `arbol-trunk`, `arbol-classifier`, the Arbol backend and the command line are typed Python with a packaged interpreter, as the Drivers are (DRV-D1, BLD-0). The Arbol Swift App is Swift. The renderer bundles are web pages. The build tool, the launchers and the conformance runner are typed Python too, by the owner's decision of 14 October 2026. They are not Builds: the build tool and the launchers run on the pinned interpreter that is installed with `arbol-builds` ([BLD-D15](../builds/00-builds-and-versions.md#decisions)), and so does `arbol-roots`; a Driver's contract check runs the conformance runner with the Python of the Build it checks.
 
 ### What fails together
 
