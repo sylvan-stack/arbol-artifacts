@@ -1,2 +1,6 @@
 generated/
 .DS_Store
+
+# Results of tests, probes and checks stay on this machine (owner, 15 October 2026).
+driver-contract/python-migration-*.json
+driver-contract/python-migration-fixtures/
