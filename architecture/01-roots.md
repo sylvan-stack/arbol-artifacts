@@ -50,7 +50,7 @@ Nothing inside a Root can be relied on in the next one. What lies outside must t
 
 ### Names
 
-A Root is not numbered. It has a loud name of its own, such as "First Sapling" or "Frodo Root".
+A Root is not numbered. It has a loud name of its own, such as "First Sapling".
 
 A Root has an *identifier*, one lower-case word such as `sapling`, and a *display name*, "First Sapling" ([ARC-D26](#decisions)). The identifier names the Root's folders, its database and its Builds, and is what `--root sapling` takes. The display name is shown in the tray menu and in the header of every UI. Because there is no number, the Root's record says which Root it grew from; that gives the direction in which chats are migrated.
 
@@ -78,7 +78,7 @@ Settings are plain files under `~/.arbol`, and state is under the application fo
       root.json                           the Root's record
       exchanges/                          one folder for each Chat Exchange in progress (ARC-2)
       backend.sock                        the Arbol backend's socket file, while it runs (ARC-0)
-    frodo/
+    <second>/                             a second Root, made from First Sapling
       root.json
       exchanges/
 ```
@@ -103,8 +103,8 @@ Root-aware selection in BLD-0 qualifies a component's default Build by the Root.
 |---|---|
 | 5 | First Sapling |
 | 6 | First Sapling |
-| 7 | Frodo Root |
-| 8 | Frodo Root |
+| 7 | The second Root |
+| 8 | The second Root |
 
 Opening the First Sapling has to start Build 6, not Build 8. The selection rules are ([ARC-D32](#decisions), with the terminology replaced by ARC-D47):
 
@@ -185,15 +185,15 @@ A new Root always means that something broke, but seldom in every table. The scr
 | is new | Creates it |
 
 ```text
-arbol-roots create frodo --name "Frodo Root" --from sapling
-  1. makes the empty database arbol_frodo
+arbol-roots create <second> --name "<its loud name>" --from sapling
+  1. makes the empty database arbol_<second>
   2. copies First Sapling's settings
-arbol-builds build arbol-root --root frodo
-  3. makes a Build of arbol-root for Frodo; it carries Frodo's table layout and migration script in layout/
-arbol-roots migrate frodo
-  4. creates Frodo's tables from the layout
-  5. runs Frodo's migration script, which only reads arbol_sapling
-  → Frodo is `preparing`. First Sapling stays current and untouched
+arbol-builds build arbol-root --root <second>
+  3. makes a Build of arbol-root for the second Root; it carries the second Root's table layout and migration script in layout/
+arbol-roots migrate <second>
+  4. creates the second Root's tables from the layout
+  5. runs the second Root's migration script, which only reads arbol_sapling
+  → The second Root is `preparing`. First Sapling stays current and untouched
 ```
 
 | Rule | Detail |
@@ -371,7 +371,7 @@ The entries below retain the terminology and outcomes recorded on 9 October 2026
 |---|---|---|---|
 | ARC-D23 | How does Arbol live with breaking changes? | A second place, with its own folder and database, is made on purpose and stays rare | Decided 9 October 2026 by the owner: breaking changes are expected, a complete rewrite of Arbol included, and must be supported. Each one is a named entry in a list, its name is shown in the header or the tray menu, it has a database of its own, and the chats of the entry before it are migrated into its tables while the originals stay |
 | ARC-D24 | What is such an entry called? | Ring | Decided 9 October 2026 by the owner: Ring, in place of the owner's "milestone" or "generation" |
-| ARC-D25 | How are Rings named? | By number, as in the examples of the discussion | Decided 9 October 2026 by the owner: not by number. Each has a loud name, such as "Great Ring", "Frodo Ring" or "Golden Ring" |
+| ARC-D25 | How are Rings named? | By number, as in the examples of the discussion | Decided 9 October 2026 by the owner: not by number. Each has a loud name of its own |
 | ARC-D26 | What stands for the number? | An identifier of one lower-case word and a display name. The Ring's record names the Ring it grew from | Decided 9 October 2026 by the owner: the proposed default |
 | ARC-D27 | What lies outside every Ring? | The tray menu, the launchers, the build registry and the list of Rings, with none of a Ring's code | Decided 9 October 2026 by the owner: the proposed default; the tray menu has this function. Drivers and Trunks are numbered on their own, and Root chooses among them |
 | ARC-D28 | One database for all Rings, or one for each? | One for each Ring, on one server | Decided 9 October 2026 by the owner: Rings that break with each other have their own databases |
