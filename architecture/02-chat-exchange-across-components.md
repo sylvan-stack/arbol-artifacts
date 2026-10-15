@@ -13,7 +13,7 @@ It follows the conventions of the [Driver Contract](../driver-contract/README.md
 
 Covered: the steps between the components, the folder of an Exchange, the arriving answer, stop and answers to the agent's questions, the end, an Exchange whose process is gone, a database that cannot be reached, a rate limit, Arbol quitting.
 
-Not covered: what a Trunk does inside an Exchange, and the formats of the files in the folder, which are fixed with the first Trunk; the components ([ARC-0](00-components-and-boundaries.md)); Roots ([ARC-1](01-roots.md)); the Driver's run ([DRV-2](../driver-contract/02-inference.md)); a message sent while its chat is busy, which will steer the running agent once that is specified ([ARC-D54](#decisions)); detecting and ending a stuck Trunk ([ARC-3](03-stuck-trunks.md)).
+Not covered: what a Trunk does inside an Exchange, which each Trunk's own specification states, and the formats of the files in the folder, which are fixed in the [Root Contract](../../arbol-root/contract/README.md) ([RCT-1](../../arbol-root/contract/01-the-exchange-folder.md), [RCT-2](../../arbol-root/contract/02-starting-stopping-and-settling.md)); the components ([ARC-0](00-components-and-boundaries.md)); Roots ([ARC-1](01-roots.md)); the Driver's run ([DRV-2](../driver-contract/02-inference.md)); a message sent while its chat is busy, which will steer the running agent once that is specified ([ARC-D54](#decisions)); detecting and ending a stuck Trunk ([ARC-3](03-stuck-trunks.md)).
 
 ## Behaviour
 
@@ -38,7 +38,7 @@ A message that is not accepted starts nothing, and its [Draft](../GLOSSARY.md#dr
     control              stop, and answers to the agent's questions
 ```
 
-The folder is the whole interface between a running Trunk and everything else. A compatible manager Build of the owning Root reads the records to list what runs. That Root's backend follows `events.jsonl`; stop and answers are written to `control` using its compatible interface. Cross-Root callers use the common management reply and delegate to the owning Root instead of interpreting another Root's Trunk files. The file names are those of the discussion of 9 October 2026; their formats are fixed in the Trunk Contract, with the ownership requirements here.
+The folder is the whole interface between a running Trunk and everything else. A compatible manager Build of the owning Root reads the records to list what runs. That Root's backend follows `events.jsonl`; stop and answers are written to `control` using its compatible interface. Cross-Root callers use the common management reply and delegate to the owning Root instead of interpreting another Root's Trunk files. The file names are those of the discussion of 9 October 2026; their formats are fixed in the Root Contract (RCT-1, RCT-2), with the ownership requirements here.
 
 Every Exchange record identifies the persistent Root and the concrete Trunk component and Build that accepted it. The manager Build that started it may also be recorded as provenance; it is not the Root's identity. A compatible manager update changes neither that ownership nor the running Trunk Build. New Roots and migration copies do not take over the original process.
 
@@ -46,7 +46,7 @@ A folder exists only while its Exchange is in progress, or until what is left of
 
 ### The arriving answer is a file
 
-Finished messages and tool calls go straight to the database. Only the fragments of an answer that is still arriving, thousands for one answer, go to `events.jsonl`.
+`events.jsonl` holds every event of the answer as it arrives, finished parts too; finished parts also go to the database, and no row is written for a fragment (RCT-1, [RCT-D9](../../arbol-root/contract/01-the-exchange-folder.md#decisions)).
 
 | Reason | Detail |
 |---|---|
@@ -72,13 +72,13 @@ An answer to a question the agent asks the Leather Bag ([DRV-3](../driver-contra
 
 ### The end
 
-A Trunk ends an Exchange by itself: it writes the final state to the database and removes its folder. No other component has to accept, confirm or record the end. The final states seen from outside are completed, failed with its cause, cancelled, and interrupted.
+A Trunk ends an Exchange by itself: it writes the final state to the database and removes its folder. No other component has to accept, confirm or record the end. The final states seen from outside are completed, failed with its cause, cancelled, and interrupted; a rate limit is the cause of `failed`, not a state of its own (RCT-2).
 
 ### An Exchange whose process is gone
 
 A Trunk that is killed leaves its folder behind, with a record whose process no longer lives. Whether a process lives is told as a Driver tells it (DRV-6).
 
-"Running" has one source, which is a record in the folder together with a live process ([ARC-D44](#decisions)). An Exchange that is open in the database with no live process is shown as interrupted. Root sees it at its next listing and has a Trunk Build settle it. Settling saves what the folder holds, with its true state ([ARC-D53](#decisions)). When the folder holds a finished result that could not be saved, the Trunk Build saves it with its own final state: completed, failed or cancelled. When the process died before it finished, the Trunk Build saves what the agent had produced, with the state interrupted. Then it removes the folder. No repair names a turn, and no script is needed.
+"Running" has one source, which is a record in the folder together with a live process ([ARC-D44](#decisions)). An Exchange that is open in the database with no live process is shown as interrupted. Root lists it as interrupted, or as unsaved when its record already has its end ([RTM-0](../../arbol-root/specs/00-the-commands.md#the-listing)), and `arbol-root settle` has a Trunk Build settle it; Arbol runs it when its backend starts, when it sees the database return, and after a listing that shows it ([RTM-0](../../arbol-root/specs/00-the-commands.md#settling)). Settling saves what the folder holds, with its true state ([ARC-D53](#decisions)). When the folder holds a finished result that could not be saved, the Trunk Build saves it with its own final state: completed, failed or cancelled. When the process died before it finished, the Trunk Build saves what the agent had produced, with the state interrupted. Then it removes the folder. No repair names a turn, and no script is needed.
 
 A failed, stuck or cancelled Exchange concerns its own chat only. Other chats go on and new chats start. After a failed or a cancelled Exchange the same chat takes a new message. A stuck Exchange is still in progress, so its chat stays busy until that Exchange is ended. How a stuck Trunk is detected and ended is the subject of [ARC-3](03-stuck-trunks.md).
 
@@ -95,7 +95,7 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 |---|---|
 | At acceptance | The message is refused with the cause. Nothing is started and the Draft stays |
 | While the agent works | The answer keeps arriving in the file. The Trunk writes finished parts when the database is back |
-| At the end | The Trunk tries again for a while. If it has to end first, it leaves the result in its folder, and the folder stays until the result is in the database ([ARC-D43](#decisions)). Settling saves it with its own final state, at the next start of Arbol or when the Arbol backend sees the database return. Until then a UI shows the answer from the folder, marked as not yet saved ([ARC-D53](#decisions)) |
+| At the end | The Trunk tries again for a while. If it has to end first, it leaves the result in its folder, and the folder stays until the result is in the database ([ARC-D43](#decisions)). Settling saves it with its own final state (`arbol-root settle`, RTM-0), at the next start of Arbol or when the Arbol backend sees the database return. Until then a UI shows the answer from the folder, marked as not yet saved ([ARC-D53](#decisions)) |
 
 A Trunk never needs the database in order to finish, and what an agent produced is never lost because the database was away.
 
@@ -103,7 +103,7 @@ A database that does not answer is not a normal state. For as long as it lasts, 
 
 ### A rate limit
 
-When the Driver's run ends with `rate_limited` ([DRV-4](../driver-contract/04-errors-and-limits.md)), the Trunk ends the Exchange with that outcome. It does not take another route by itself. Arbol offers to send again with what the Brain Recipe's logic picks next (ARC-0).
+When the Driver's run ends with `rate_limited` ([DRV-4](../driver-contract/04-errors-and-limits.md)), the Trunk ends the Exchange as failed with that cause. It does not take another route by itself. Arbol offers to send again with what the Brain Recipe's logic picks next (ARC-0).
 
 ### When Arbol quits
 
@@ -124,7 +124,7 @@ The backend compatible with each Root reads that Root's database and Exchange fi
 | ARC-2.7 | show an Exchange whose process is gone as interrupted, settle it without a script that names it, keep what the agent had produced, and save a finished result that is still in its folder with its own final state | Changed | drill |
 | ARC-2.8 | keep a failed, stuck or cancelled Exchange to its own chat: other chats go on and new chats start, and after a failed or a cancelled Exchange the same chat takes a new message | Changed | drill |
 | ARC-2.9 | refuse a new message while the database cannot be reached, and lose no result of an Exchange in progress | Changed | drill |
-| ARC-2.10 | end an Exchange with the outcome `rate_limited` when its run met a rate limit, and take no other route inside the Trunk | Changed | contract |
+| ARC-2.10 | end an Exchange as failed with the cause `rate_limited` when its run met a rate limit, and take no other route inside the Trunk | Changed | contract |
 | ARC-2.11 | stop no Exchange when Arbol quits, every UI closes or the Arbol backend ends, and show on return what was produced meanwhile | Kept | drill |
 | ARC-2.12 | record each accepted Exchange's persistent Root identity and concrete Trunk component and Build, retain them through compatible updates and restarts, and leave the original process with its Root when another Root is created or history is migrated | New | contract |
 | ARC-2.13 | rediscover Exchanges across every retained Root on App or backend restart through the common Root catalogue and matching manager replies, isolate discovery failures by Root, and delegate detailed reads and controls to the owning Root's compatible components | New | drill |
@@ -132,7 +132,7 @@ The backend compatible with each Root reads that Root's database and Exchange fi
 
 ## Interface
 
-The folder of an Exchange, as in *The folder of an Exchange* above. The formats of `record.json`, `events.jsonl` and `control`, and the commands of a Trunk, are fixed in the Trunk Contract.
+The folder of an Exchange, as in *The folder of an Exchange* above. The formats of `record.json`, `events.jsonl` and `control`, and the commands of a Trunk, are fixed in the Root Contract (RCT-1, RCT-2).
 
 ## Known problems in version 1
 

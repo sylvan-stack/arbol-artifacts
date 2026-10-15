@@ -21,9 +21,9 @@ Not covered: what the migration script of a given Root contains; the components 
 
 A **Root** is the persistent identity and compatibility environment. A **Root Build** is a numbered Build of the `arbol-root` program that manages that Root. A **Root invocation** runs one command and ends (ARC-0). The Root exists while none of its commands or its backend is running. Restarting the Arbol backend or Swift App, or replacing the manager with a compatible Root Build, creates no new Root and changes no Exchange ownership.
 
-Inside a Root, compatible Builds come and go and the chats stay: a new Build of `arbol`, of `arbol-root`, of a Trunk or of a Driver works on the same folder and the same database. Root manages every Trunk implementation whose declared contract and chat-table layout it supports. A new implementation that satisfies those conditions belongs to the same Root; it does not require a new environment merely because its communication strategy is different.
+Inside a Root, compatible Builds come and go and the chats stay: a new Build of `arbol`, of `arbol-root`, of a Trunk or of a Driver works on the same folder and the same database. Root manages every Trunk implementation whose Builds list the Root's [Root Contract](../../arbol-root/contract/README.md) version ([RCT-0](../../arbol-root/contract/00-overview.md#versions-what-fits-together)). A new implementation that satisfies that condition belongs to the same Root; it does not require a new environment merely because its communication strategy is different.
 
-A change makes a new Root when the Builds of the present Root cannot live with it: a Trunk contract becomes incompatible, the chat tables or settings change in a way older Builds cannot read, or the backend and UIs change the way they work together incompatibly. A change that older Builds can ignore, such as a new column or a new table, stays inside the Root (BLD-0.13). The newer Root supports the changed components while the older Root keeps managing its own compatible Trunks and their Exchanges.
+A change makes a new Root when the Builds of the present Root cannot live with it: its Trunks need another Root Contract version, the chat tables or settings change in a way older Builds cannot read, or the backend and UIs change the way they work together incompatibly. A change that older Builds can ignore, such as a new column or a new table, stays inside the Root (BLD-0.13). The newer Root supports the changed components while the older Root keeps managing its own compatible Trunks and their Exchanges.
 
 Root now includes the compatibility environment formerly specified as a Ring ([ARC-D47](#decisions)). It is not a resident service or a Trunk process generation. A running Exchange belongs to one Root identity and one concrete Trunk Build; a new Root or Root Build never takes that Exchange over.
 
@@ -42,7 +42,7 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 | The launchers, the build registry and `arbol-builds` (BLD-0) | The Builds of `arbol-root`, which carry the Root's table layout and its migration script |
 | `arbol-roots` and the list of Roots | The Root's folder |
 | The [Drivers](../GLOSSARY.md#driver), their state and their [Subscriptions](../GLOSSARY.md#subscription) | The Root's database |
-| The Trunk Builds. They are numbered on their own, and each names the Root whose chat tables it writes | The Root's settings |
+| The Trunk Builds. They are numbered on their own, and each lists the Root Contract versions it implements | The Root's settings |
 | The PostgreSQL server | |
 | The Builds of `arbol-classifier` (ARC-0) | |
 
@@ -67,7 +67,7 @@ Settings are plain files under `~/.arbol`, and state is under the application fo
   roots/
     golden/
       arbol.json                          Brain Recipes and the settings of the UIs of this Root
-      arbol-root.json                     the manager's settings for compatible Trunks
+      arbol-root.json                     kept for later: the manager has no settings yet (RTM-D3, Open)
 
 ~/Library/Application Support/Arbol/      state: written by the programs
   builds/                                 every Build of every component (BLD-0)
@@ -88,11 +88,11 @@ The list of Roots is nothing more than the `root.json` files. These records have
 
 Each Root has one database on the one PostgreSQL server (ARC-0), named in its `root.json`, for example `arbol_golden`. A chat has no column that names a Root, because its database is the Root. A program of one Root never opens the database of another: a UI Build reads the tables it was made for and no others. The one exception is a Root's migration script, which reads the database of the Root it grew from ([below](#moving-chats-between-roots)).
 
-Every table of a Root's database is created from the Root's *table layout*, which the Root's `arbol-root` Builds carry ([ARC-D48](00-components-and-boundaries.md#decisions), [ARC-D49](#decisions)). The layout covers the chat tables and Arbol's own tables alike, and no Trunk and no backend creates or changes a table. `arbol-roots create` makes the database empty. `arbol-roots migrate` then creates the tables from the layout and, for a Root that grew from another, fills them with that Root's migration script ([ARC-D34](#decisions)). For the first Root it creates the tables and brings nothing over.
+Every table of a Root's database is created from the Root's *table layout*, which the Root's `arbol-root` Builds carry ([ARC-D48](00-components-and-boundaries.md#decisions), [ARC-D49](#decisions)). The chat tables come from the `layout.sql` of the Root's Root Contract version (`contract/<version>/layout.sql` in the `arbol-root` repository), shared by every Root of that version; Arbol's own tables, and the record of where each migrated chat came from, come from the Root's own layout ([RCT-3](../../arbol-root/contract/03-the-chat-tables.md), [RCT-D25](../../arbol-root/contract/03-the-chat-tables.md#decisions)). No Trunk and no backend creates or changes a table. `arbol-roots create` makes the database empty. `arbol-roots migrate` then creates the tables from the layout and, for a Root that grew from another, fills them with that Root's migration script ([ARC-D34](#decisions)). For the first Root it creates the tables and brings nothing over.
 
 Owning a database is an environment property. The `arbol-root` manager never opens the database or reads chat content. `arbol-roots` arranges database creation and runs the layout and the migration script that the target Root's newest working `arbol-root` Build carries; Trunks and the Arbol backend write the rows of their tables (ARC-0). The global tool contains no Root's table layout. It finds the server through the address in `~/.arbol/database.json` and the password in the Keychain ([ARC-D51](#decisions)).
 
-Inside a Root a table changes only by additions that older Builds can ignore. Any other change makes a new Root. An addition is made by the Root: a later `arbol-root` Build of the same Root carries the layout with the addition, and `arbol-roots layout` applies it. A Trunk or a backend that needs a new table or column gets it this way and adds none itself.
+Inside a Root a table changes only by additions that older Builds can ignore. Any other change makes a new Root. An addition is made by the Root: a later `arbol-root` Build of the same Root carries the layout with the addition, and `arbol-roots layout` applies it. A Trunk or a backend that needs a new table or column gets it this way and adds none itself. For the chat tables, an addition belongs to a Root Contract version; how one is made is decided with the first ([RCT-D24](../../arbol-root/contract/03-the-chat-tables.md#decisions)).
 
 ### Builds and Roots
 
@@ -113,11 +113,11 @@ Opening the Golden Root has to start Build 6, not Build 8. The selection rules a
 | The default is worked out for a Root | The default Build is the working Build with the highest build number among those of the Root that was asked for. When no Root is named, that is the current Root, the newest working one. The whole rule is: the newest working Build of the newest working Root |
 | Naming a Root | `--root <identifier>` as the launcher's first argument, in the way of `-v`. A Build named with `-v` needs no Root: its record says which one it belongs to |
 | Pruning | Pruning keeps the newest working Build of every Root that still exists |
-| Trunks and Drivers | Their Builds belong to no Root. A record says what the Build is compatible with: the contract version it implements, and for a Trunk the Root whose chat tables it writes. For a Trunk, Root first chooses the caller's named implementation or its configured default, then the newest working Build of that component that fits (ARC-0) |
-| A Root that leaves the chat tables as they were | Its record names the Root whose table layout it uses. A Trunk Build that writes that layout serves both Roots and is not built again ([ARC-D40](#decisions)) |
+| Trunks and Drivers | Their Builds belong to no Root. A record says what the Build is compatible with: for a Driver the contract version it implements, and for a Trunk the Root Contract versions it implements. For a Trunk, Root first chooses the caller's named Trunk or else the Trivial Trunk, then the newest working Build of that Trunk that fits (ARC-0, RCT-0) |
+| A Root that leaves the chat tables as they were | Its record names the same Root Contract version as the Root before it. A Trunk Build that lists that version serves both Roots and is not built again ([ARC-D40](#decisions)) |
 | The Arbol Swift App | A component of its own, `arbol-app`. Its Builds are numbered as BLD-0 says and belong to no Root (ARC-D21) |
 
-Within a Root, `arbol-root trunks` lists all working Trunk implementations and Builds that satisfy the manager's declared contracts and the Root's chat-table layout, grouped by component (ARC-0). Compatibility is evaluated for every Trunk component in the registry, not just for versions of a single implementation. For new work, `arbol-root` chooses the caller's named component or its configured default, then the newest compatible Build within that component. It never compares independent components' Build numbers to choose an implementation. With neither a named component nor a configured default, it refuses the start and returns the eligible list. An accepted Exchange keeps its recorded concrete Build. The inventory and selection build nothing: `arbol-builds` remains the only build tool.
+Within a Root, `arbol-root trunks` lists every Trunk and its Builds, marking those that list the Root's Root Contract version and the one `run` would start (ARC-0, RCT-0). Compatibility is evaluated for every Trunk component in the registry, not just for versions of a single implementation. For new work, `arbol-root` chooses the named Trunk or else the Trivial Trunk, then the Build `arbol-trunk list` marks chosen, which it starts with an exact `-v` ([RTM-0](../../arbol-root/specs/00-the-commands.md#starting-a-trunk)). It never compares independent components' Build numbers to choose an implementation. An accepted Exchange keeps its recorded concrete Build. The inventory and selection build nothing: `arbol-builds` remains the only build tool.
 
 The build registry and launchers remain implemented without Root qualification until that work is completed. The rules here and in BLD-0 specify the target behaviour; changing the specification alone does not add runtime support.
 
@@ -129,14 +129,14 @@ One tool, `arbol-roots`, creates and changes Roots. It lies beside `arbol-builds
 
 | Command | What it does |
 |---|---|
-| `arbol-roots create <identifier> --name <display name> [--from <root>]` | Makes the folder, the record and the empty database of a Root in the state `preparing`. Records the oldest Build of `arbol-app` the Root works with, by default the newest working one. With `--from`, records the Root it grows from and copies its settings once. It runs no script, because the Root's Builds do not exist yet |
+| `arbol-roots create <identifier> --name <display name> [--from <root>] [--root-contract <version>]` | Makes the folder, the record and the empty database of a Root in the state `preparing`. Records the oldest Build of `arbol-app` the Root works with, by default the newest working one. With `--from`, records the Root it grows from and copies its settings once. Writes the Root Contract version named with `--root-contract` into the record as `rootContract`; without the option, the version of the `--from` Root, and 1 when there is none (RCT-0.11). It runs no script, because the Root's Builds do not exist yet |
 | `arbol-roots list` | Prints the records, newest first, and marks the current Root |
 | `arbol-roots show [<identifier>]` | Prints one record; without an identifier, the current Root's |
-| `arbol-roots ready <identifier>` | Marks a Root `working`: a new Root that is ready to be used, or a failed one that works again |
+| `arbol-roots ready <identifier>` | Marks a Root `working`: a new Root that is ready to be used, or a failed one that works again. It does so only while a working Build of the Trivial Trunk lists the Root's Root Contract version (RCT-0.13) |
 | `arbol-roots fail <identifier> --reason <text>` | Marks a working Root `failed` |
 | `arbol-roots app <identifier> <build number>` | Raises the oldest Build of `arbol-app` the Root works with, when a later Build of the Root needs a newer Swift App |
-| `arbol-roots migrate <identifier> [--chat <chat>] [--check]` | Runs what the Root's newest working `arbol-root` Build carries: it creates the tables from the layout and, for a Root that grew from another, brings the chats over. For the whole database while the Root is `preparing`, as often as needed, or for one chat. With `--check` it brings nothing over: it compares the migrated chats with their originals and marks the stale ones |
-| `arbol-roots layout <identifier>` | Applies the table layout of the Root's newest working `arbol-root` Build to a Root in use: it adds what is missing and changes nothing else |
+| `arbol-roots migrate <identifier> [--chat <chat>] [--check]` | Runs what the Root's newest working `arbol-root` Build carries: it creates the tables from the layout and, for a Root that grew from another, brings the chats over. For the whole database while the Root is `preparing`, as often as needed, or for one chat. For the whole database it is refused unless the Root is `preparing`. It then drops the Root's database and makes it again, empty, runs `layout/chat-tables.sql` and `layout/root-tables.sql` of that Build, then `layout/migrate.sql` with `psql` in an empty folder of its own, with the variables `from_database` and `from_root`, and removes the folder ([RTM-1](../../arbol-root/specs/01-builds-layouts-and-migration.md#how-arbol-roots-runs-the-files)). With `--check` it brings nothing over: it compares the migrated chats with their originals and marks the stale ones. `--chat` and `--check` are not in the first thin path ([RTM-D12](../../arbol-root/specs/01-builds-layouts-and-migration.md#decisions), Open) |
+| `arbol-roots layout <identifier>` | Runs `layout/chat-tables.sql` and `layout/root-tables.sql` of the Root's newest working `arbol-root` Build on a Root in use: it adds what is missing and changes nothing else |
 | `arbol-roots remove <identifier>` | Removes a Root's folder, settings and database. Never the current Root |
 
 This global tool can list the catalogue and create the first Root without selecting a Root Build first. The per-Root `arbol-root` program manages compatible Trunks and Exchanges inside an existing Root. They are separate entry points with different scopes.
@@ -187,8 +187,8 @@ A new Root always means that something broke, but seldom in every table. The scr
 arbol-roots create frodo --name "Frodo Root" --from golden
   1. makes the empty database arbol_frodo
   2. copies Golden's settings
-arbol-builds build arbol-root
-  3. makes a Build of arbol-root for Frodo; it carries Frodo's table layout and migration script
+arbol-builds build arbol-root --root frodo
+  3. makes a Build of arbol-root for Frodo; it carries Frodo's table layout and migration script in layout/
 arbol-roots migrate frodo
   4. creates Frodo's tables from the layout
   5. runs Frodo's migration script, which only reads arbol_golden
@@ -199,13 +199,13 @@ arbol-roots migrate frodo
 |---|---|
 | One script for each Root | It is written together with the breaking change, for the one step from the Root the new Root grows from. It is the only program of the newer Root that knows the older tables |
 | The older Root is only read | The script changes and removes nothing there |
-| Repeatable | While the new Root is `preparing`, its database can be thrown away and the migration run again as often as needed. The Root in use stays current meanwhile, so a migration never stands in the way of daily work |
+| Repeatable | While the new Root is `preparing`, its database can be thrown away and the migration run again as often as needed. The Root in use stays current meanwhile, so a migration never stands in the way of daily work. `arbol-roots migrate` makes it empty again before each run, and refuses once the Root has left `preparing` (RTM-1) |
 | A failure is loud | A migration that fails leaves the new Root `preparing` and names what failed. Nothing is cut or skipped silently |
-| Nothing in progress is carried over | An Exchange that was open in the older Root is copied as history at the migration snapshot. Its target copy has no process and is settled as interrupted (ARC-2); the original Exchange and its process continue untouched in the older Root |
+| Nothing in progress is carried over | An Exchange that was open in the older Root is copied as history at the migration snapshot. The migration script writes its target copy as interrupted, ended at the time of the snapshot (RTM-1); the original Exchange and its process continue untouched in the older Root |
 | Text is kept exactly | The text of every message arrives as it was. A Driver continues the vendor's saved conversation only when the history it is sent matches what that conversation covers, and otherwise builds it again from the history ([DRV-6](../driver-contract/06-state-and-simultaneous-calls.md)). An agent therefore never remembers turns of another Root that its own transcript does not show |
 | One direction | From the Root a Root grew from, into that Root. Converting from a newer Root to an older one is not built |
 
-Both Roots can be written. A chat can therefore go on in the older Root after the migration:
+Both Roots can be written. A chat can therefore go on in the older Root after the migration (what the newer Root does about it is not in the first thin path: [RTM-D12](../../arbol-root/specs/01-builds-layouts-and-migration.md#decisions), Open):
 
 | The chat was continued… | What the newer Root does |
 |---|---|
@@ -213,11 +213,11 @@ Both Roots can be written. A chat can therefore go on in the older Root after th
 | in the newer Root only | Nothing. The older Root cannot show that its chat is behind: its code was written before the newer Root existed |
 | in both | Marks its copy stale. Bringing it over again adds the older Root's chat as a second chat beside the first, so that nothing written in either Root is lost |
 
-For this each migrated chat records the Root and the chat it came from, and how far that original had got.
+For this each migrated chat records the Root and the chat it came from, and how far that original had got, in the table `migrated_chats` of the Root's own layout (RTM-1).
 
-Only the migration script may look into the older database, so it also makes this comparison. The Arbol backend of the newer Root runs `arbol-roots migrate <identifier> --check` when it starts and when a UI of that Root opens its chat list. The check changes nothing in the older Root and nothing in the newer one except the stale marks. This timing is the proposed default: the owner was not sure of it on 13 October 2026 and had it built first, to see how it works ([ARC-D50](#decisions)).
+Only the migration script may look into the older database, so it also makes this comparison. The Arbol backend of the newer Root runs `arbol-roots migrate <identifier> --check` when it starts and when a UI of that Root opens its chat list. The check changes nothing in the older Root and nothing in the newer one except the stale marks. This timing is the proposed default: the owner was not sure of it on 13 October 2026 and had it built first, to see how it works ([ARC-D50](#decisions)). The check is not in the first thin path (RTM-D12, Open).
 
-The same script brings one chat over again ([ARC-D41](#decisions)). A migration is therefore written so that it can run for all chats or for one. No file form is used: the older tables are read directly, by this script alone.
+The same script brings one chat over again ([ARC-D41](#decisions)). A migration is therefore written so that it can run for all chats or for one; the form for one chat is not in the first thin path (RTM-D12, Open). No file form is used: the older tables are read directly, by this script alone.
 
 A Root's migration script is kept with the Root's table layout in the `arbol-root` repository, and the Root's `arbol-root` Builds carry both ([ARC-D49](#decisions), which replaced ARC-D45 on 13 October 2026). `arbol-roots` runs the script of the newest working Build.
 
@@ -231,7 +231,7 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 
 ### Settings
 
-The settings of `arbol` and of `arbol-root`, Brain Recipes among them, are kept for each Root in `~/.arbol/roots/<root>/`. Otherwise the programs of an older Root would have to read a file whose shape a newer Root had changed. `~/.arbol` itself keeps only the settings of what lies outside every Root: the Drivers, `arbol-classifier`, the address of the database server in `database.json` ([ARC-D51](#decisions)) and the rule for removing unused Builds in `arbol-builds.json` (BLD-0). This narrows DRV-D24, which gave every component one file in `~/.arbol`.
+The settings of `arbol` and of `arbol-root`, Brain Recipes among them, are kept for each Root in `~/.arbol/roots/<root>/` (`arbol-root` has none yet: [RTM-D3](../../arbol-root/specs/00-the-commands.md#decisions), Open). Otherwise the programs of an older Root would have to read a file whose shape a newer Root had changed. `~/.arbol` itself keeps only the settings of what lies outside every Root: the Drivers, `arbol-classifier`, the address of the database server in `database.json` ([ARC-D51](#decisions)) and the rule for removing unused Builds in `arbol-builds.json` (BLD-0). This narrows DRV-D24, which gave every component one file in `~/.arbol`.
 
 The settings are copied once from the Root a new Root grows from, when it is created ([ARC-D33](#decisions)). After that the two sets are separate.
 
@@ -241,7 +241,7 @@ Every Root holds a full copy of the chats that were migrated into it. Arbol show
 
 ### A place for tests
 
-A test does not get a Root of its own. It runs the Builds of the very Root it tests, on another folder and another database that are named with options, as a Driver takes `--state-dir` and `arbol-builds` takes `--registry-dir` ([ARC-D37](#decisions)). No test can then reach the chats of a Root in use.
+A test does not get a Root of its own. It runs the Builds of the very Root it tests, on another folder and another database that are named with options, as a Driver takes `--state-dir` and `arbol-builds` takes `--registry-dir` ([ARC-D37](#decisions)). `arbol-root`, which opens no database, takes `--root-dir` and `--bin-dir` (RTM-0); the layouts and the migration script are checked on a database server of the check's own (RTM-1). A Trunk Build, which belongs to no Root, is tested in a home folder of its own ([RCT-4](../../arbol-root/contract/04-conformance.md), [RCT-D29](../../arbol-root/contract/04-conformance.md#decisions), Open). No test can then reach the chats of a Root in use.
 
 Observed in version 1: a test fixture dropped every schema with a test name in whatever database it reached, and a scratch database alone did not isolate sockets and launch records.
 
@@ -275,15 +275,15 @@ Roots:
 | ARC-1.7 | take as the current Root the newest Root in the state `working`, worked out from the records at every start with no stored setting, send a command without a named Root to it, and run listeners in its backend alone | New | unit |
 | ARC-1.8 | keep an older Root usable, for reading and for continuing chats, as long as its folder, database and Builds exist | New | journey |
 | ARC-1.9 | create Roots, mark them ready or failed, and remove them through `arbol-roots` alone, and remove one only on command and never the current one | New | unit |
-| ARC-1.10 | keep the settings of `arbol` and `arbol-root` for each Root in `~/.arbol/roots/<root>/` | Changed | unit |
+| ARC-1.10 | keep the settings of `arbol` and `arbol-root` for each Root in `~/.arbol/roots/<root>/` (`arbol-root` has none yet: RTM-D3, Open) | Changed | unit |
 | ARC-1.11 | show the size of each Root's database | New | journey |
 | ARC-1.21 | let the owner mark a working Root `failed` with a reason, never take a failed Root as current, and still open it when it is named | New | unit |
 | ARC-1.23 | name in each Root's record the oldest Build of `arbol-app` the Root works with, and offer in the tray menu only the Roots the running Swift App is new enough for | New | unit |
-| ARC-1.22 | run a test with the Builds of the Root under test on a folder and a database of the test's own, so that it cannot reach the chats of a Root in use | Changed | unit |
-| ARC-1.24 | support all working Trunk implementations and Builds satisfying the Root manager's declared contracts and the Root's chat-table layout, and expose them through `arbol-root trunks` | New | unit |
+| ARC-1.22 | run a test with the Builds of the Root under test on a folder and a database of the test's own, and a test of a Trunk Build in a home folder of its own (RCT-4, RCT-D29, Open), so that it cannot reach the chats of a Root in use | Changed | unit |
+| ARC-1.24 | support all working Trunk implementations and Builds whose Build records list the Root's Root Contract version, and expose them through `arbol-root trunks` | New | unit |
 | ARC-1.25 | rediscover Exchanges across retained Roots through the shared Root catalogue and each Root's matching manager, isolate a failing Root's listing, and route management to the recorded owning Root | New | drill |
 | ARC-1.26 | keep a Root's identity independent of its manager invocation and compatible Build replacements, and change no established Exchange ownership when the App or backend restarts | New | drill |
-| ARC-1.28 | create and change every table of a Root's database from the table layout that the Root's `arbol-root` Builds carry, apply to a Root in use only additions that its older Builds can ignore, and let no Trunk and no backend create or change a table | New | unit |
+| ARC-1.28 | create and change every table of a Root's database from the table layout that the Root's `arbol-root` Builds carry, apply to a Root in use only additions that its older Builds can ignore, for the chat tables as their Root Contract version allows (RCT-D24), and let no Trunk and no backend create or change a table | New | unit |
 
 Builds:
 
@@ -298,13 +298,13 @@ Moving chats:
 | ID | A migration must… | Origin | Verified by |
 |---|---|---|---|
 | ARC-1.15 | read the database of the older Root without changing or removing anything there, and be the only program of the newer Root that knows the older tables | Changed | unit |
-| ARC-1.16 | go in one direction, from the Root a Root grew from, and be repeatable: for the whole database while the Root is `preparing`, and for one chat afterwards | New | unit |
+| ARC-1.16 | go in one direction, from the Root a Root grew from, and be repeatable: for the whole database while the Root is `preparing`, and for one chat afterwards (one chat is not in the first thin path: RTM-D12, Open) | New | unit |
 | ARC-1.17 | copy a table that did not change as it is, convert the rows of a table that changed, keep the text of every message exactly as it was, and transfer no running Exchange or process | Changed | unit |
 | ARC-1.18 | leave the Root in use current and untouched while it runs and when it fails, and name what failed without cutting or skipping anything silently | Changed | drill |
-| ARC-1.19 | mark a migrated chat stale when its original has gone further, checking when the Arbol backend of the newer Root starts and when its chat list is opened, and offer to bring it over again | New | journey |
-| ARC-1.20 | replace a copy only when the copy was not continued in the newer Root, and otherwise bring the original in as a second chat | New | unit |
-| ARC-1.27 | leave an original running Exchange and its process untouched in the older Root, and settle only its target history copy as interrupted when that Exchange was open at the migration snapshot | New | drill |
-| ARC-1.29 | be carried, together with the Root's table layout, by the `arbol-root` Builds of the Root it fills, and be run by `arbol-roots` alone | New | unit |
+| ARC-1.19 | mark a migrated chat stale when its original has gone further, checking when the Arbol backend of the newer Root starts and when its chat list is opened, and offer to bring it over again (not in the first thin path: RTM-D12, Open) | New | journey |
+| ARC-1.20 | replace a copy only when the copy was not continued in the newer Root, and otherwise bring the original in as a second chat (not in the first thin path: RTM-D12, Open) | New | unit |
+| ARC-1.27 | leave an original running Exchange and its process untouched in the older Root, and write only its target history copy as interrupted when that Exchange was open at the migration snapshot | New | drill |
+| ARC-1.29 | be carried, together with the Root's table layout, by the `arbol-root` Builds of the Root it fills, and be run on a Root's database by `arbol-roots` alone, and otherwise only by the checks of an `arbol-root` Build on a database server of the check's own (RTM-1) | New | unit |
 
 ## Interface
 
@@ -319,7 +319,7 @@ interface RootRecord {                 // root.json
   grewFrom?: string;                   // the identifier of the Root it grew from; absent for the first Root
   database: string;                    // the name of its database, "arbol_golden"
   app: string;                         // the oldest Build of arbol-app this Root works with, "7"
-  chatTablesOf?: string;               // the Root whose table layout it uses; absent: its own
+  rootContract: number;                // the one version of the Root Contract this Root uses, 1; never changes (RCT-0)
   failed?: { at: string; reason: string };
 }
 ```
@@ -330,8 +330,8 @@ The Root and compatibility fields of the `BuildRecord` of BLD-0 are:
 interface BuildRecord {
   // …
   root?: string;                       // a Build of arbol or arbol-root: the Root it was made for. Absent for a Trunk, a Driver and the Arbol Swift App
-  contract?: number;                   // a Driver or a Trunk: the contract version it implements
-  chatTablesOf?: string;               // a Trunk: the Root whose chat tables it writes
+  contract?: number;                   // a Driver: the contract version it implements
+  rootContracts?: number[];            // a Trunk: the versions of the Root Contract it implements, [1] (RCT-0)
 }
 ```
 
@@ -387,7 +387,7 @@ The entries below retain the terminology and outcomes recorded on 9 October 2026
 | ARC-D38 | How much space may Rings take? | Arbol shows the size of each Ring's database, and a Ring is removed only on command | Decided 9 October 2026 by the owner: the proposed default |
 | ARC-D39 | What is built first? | One thin path through every part, and a trivial second Ring with an import at the start | Decided 9 October 2026 by the owner: the proposed default |
 | ARC-D45 | Where is a Ring's migration script kept? | With the definition of the Ring, beside `arbol-rings` in the `arbol` repository. It is written together with the breaking change | Decided 9 October 2026 by the owner: the proposed default. Replaced on 13 October 2026 by ARC-D49: the script is kept in the `arbol-root` repository and carried by the Root's `arbol-root` Builds |
-| ARC-D40 | A new Ring leaves the chat tables as they were. Must every Trunk be built again for it? | No. The Ring's record names the Ring whose table layout it uses, and a Trunk Build that writes that layout serves both | Decided 9 October 2026 by the owner: the proposed default. The exact form is fixed with the Trunk Contract |
+| ARC-D40 | A new Ring leaves the chat tables as they were. Must every Trunk be built again for it? | No. The Ring's record names the Ring whose table layout it uses, and a Trunk Build that writes that layout serves both | Decided 9 October 2026 by the owner: the proposed default. The exact form is fixed with the Trunk Contract. Changed 15 October 2026 by [RCT-D3](../../arbol-root/contract/00-overview.md#decisions): the exact form is a shared Root Contract version, which each Root's record names as `rootContract`, in place of `chatTablesOf` |
 | ARC-D47 | Are Rings needed as a separate concept, and what does Root organize? | A named Root holds all compatible Trunk implementations and inherits the environment identity, isolation, settings, retained Builds and migration responsibilities; Roots coexist across breaking changes | Decided 12 October 2026 by the owner: use Roots in place of Rings throughout the current specifications. Root is the persistent compatibility environment, a Root Build is its versioned manager, and a manager invocation is one command. An incompatible change creates another retained Root; compatible implementations and Builds stay in the same Root. Arbol discovers running Exchanges across Roots after restart, through each owning Root's compatible manager, without transferring accepted work. This supersedes ARC-D24's name and the former separation between the Ring environment and Root manager. The shared `root.json` catalogue, `roots/` paths, `--root` option and global `arbol-roots` bootstrap tool are the corresponding interface choices |
 | ARC-D49 | Where are a Root's table layout and its migration script kept, and who creates the tables? | In the `arbol-root` repository, carried by that Root's `arbol-root` Builds and run by `arbol-roots`. The layout covers every table of the Root's database, Arbol's own tables included. The script of the first Root only creates the tables. Creating a Root and filling it become two steps: create the record, build, then migrate | Decided 13 October 2026 by the owner: agreed. It follows from ARC-D48 and replaces ARC-D45, which kept the script beside `arbol-roots` in the `arbol` repository. The command `arbol-roots layout` and the option `migrate --check` are a technical choice made the same day |
 | ARC-D50 | When does a newer Root check whether a chat went on in the older Root? | When the Arbol backend of the newer Root starts and when its chat list is opened. The check only compares and marks | Decided 13 October 2026 by the owner, for now: "Not sure yet. Let's implement your suggestion first and we'll see how it works." To be looked at again once it is in use |

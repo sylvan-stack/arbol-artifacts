@@ -13,7 +13,7 @@ It follows the conventions of the [Driver Contract](../driver-contract/README.md
 
 Covered: the components and what each owns, the direction of dependence, the processes and their lifetimes, the two parts of Arbol, the command line, small model calls, accounts, secrets, Brain Recipes and the resolved route, what Arbol Root does, what any Trunk must offer, who writes which data, the database server, the languages, what fails together.
 
-Not covered: the creation, isolation and migration of named Roots ([ARC-1](01-roots.md)); the path of one Chat Exchange through the components ([ARC-2](02-chat-exchange-across-components.md)); the inside of a Trunk and its command line, which are specified with the first Trunk; the Drivers ([DRV-0](../driver-contract/00-overview-and-boundary.md)); Builds ([BLD-0](../builds/00-builds-and-versions.md)); what each UI shows; what Telegram does; a message sent while its chat is busy.
+Not covered: the creation, isolation and migration of named Roots ([ARC-1](01-roots.md)); the path of one Chat Exchange through the components ([ARC-2](02-chat-exchange-across-components.md)); the inside of a Trunk, which each Trunk's own specification states; a Trunk's command line and files, which are in the [Root Contract](../../arbol-root/contract/README.md) ([RCT-0](../../arbol-root/contract/00-overview.md) to [RCT-2](../../arbol-root/contract/02-starting-stopping-and-settling.md)); the Drivers ([DRV-0](../driver-contract/00-overview-and-boundary.md)); Builds ([BLD-0](../builds/00-builds-and-versions.md)); what each UI shows; what Telegram does; a message sent while its chat is busy.
 
 ## Behaviour
 
@@ -23,8 +23,8 @@ Not covered: the creation, isolation and migration of named Roots ([ARC-1](01-ro
 |---|---|---|
 | The [Arbol Swift App](../GLOSSARY.md#arbol-swift-app), built from `arbol-app` | The tray menu, the hotkeys and the native surfaces; the web views that show the UIs | Opens the database. Interprets what a UI and its backend say to each other |
 | `arbol` | Every [Surface](../GLOSSARY.md#surface): the renderer bundles of the [UIs](../GLOSSARY.md#ui), the [CLI](../GLOSSARY.md#cli), Telegram. The Arbol backend. [Brain Recipes](../GLOSSARY.md#brain-recipe). The tools `arbol-builds` and `arbol-roots` | Runs an agent itself. Writes a table that a Trunk writes, except a chat's title |
-| `arbol-root` | Managing every compatible Trunk of a named Root: choosing compatible Builds, listing and controlling Exchanges, and arranging interrupted settlement. Starting a Trunk for a new Chat Exchange with the Build it picks. The layout of every table in the Root's database, and the script that brings chats over from the Root before it ([ARC-D48](#decisions)) | Stays running. Reads chat content. Opens the database. Is needed by an Exchange that was accepted |
-| `arbol-trunk` | One Chat Exchange from accepted input to its final state; the rows of the chat tables | Knows a Brain Recipe. Manages an account. Creates or changes a table. Needs Arbol, the Root manager or the database in order to finish |
+| `arbol-root` | Managing every compatible Trunk of a named Root: choosing compatible Builds, listing and controlling Exchanges, and arranging interrupted settlement. Starting a Trunk for a new Chat Exchange with the Build it picks. The layout of the Root's own tables and the `layout.sql` of its Root Contract version for the chat tables ([RCT-3](../../arbol-root/contract/03-the-chat-tables.md)), and the script that brings chats over from the Root before it ([ARC-D48](#decisions)) | Stays running. Reads chat content. Opens the database. Is needed by an Exchange that was accepted |
+| A Trunk (`arbol-trunk/<code name>`, such as `arbol-trunk/trivial`; all in the repository `arbol-trunk`, with one launcher, `arbol-trunk`, for every Trunk) | One Chat Exchange from accepted input to its final state; the rows of the chat tables | Knows a Brain Recipe. Manages an account. Creates or changes a table. Needs Arbol, the Root manager or the database in order to finish |
 | A Driver | The vendor tool and its [Subscriptions](../GLOSSARY.md#subscription) (DRV-0) | Keeps a conversation |
 | `arbol-classifier` | Classifications through Jev: the key, the pinned model version and the limits of size and time | Interprets a question. Keeps anything between two calls. Starts another component |
 
@@ -62,7 +62,7 @@ Arbol Swift App  →  arbol  →  arbol-root  →  arbol-trunk  →  a Driver  �
 | Arbol Swift App | The [Leather Bag](../GLOSSARY.md#leather-bag) | As long as Arbol runs. One |
 | Arbol backend | The Arbol Swift App | The current Root's: as long as Arbol runs. Another Root's: while one of its UIs is open. One per Root in use |
 | `arbol-root` | The Arbol backend or the command line | One command, then it ends |
-| A Trunk process | `arbol-root`, detached | One Chat Exchange. It outlives whoever started it, and Arbol |
+| A Trunk process | `arbol-root`, detached; or a person, in the foreground ([RCT-2](../../arbol-root/contract/02-starting-stopping-and-settling.md)) | One Chat Exchange. It outlives whoever started it, and Arbol |
 | A Driver run | The Trunk | One run. It does not outlive its caller (DRV-2) |
 | A classification | The Trunk | One call of `arbol-classifier` |
 | PostgreSQL | The system | Always |
@@ -167,26 +167,26 @@ Before an Exchange starts, Arbol resolves the Brain Recipe to a *route*: the Dri
 | Consequence | Detail |
 |---|---|
 | What ran is known | The route is recorded with the Exchange. A retry or a recovery runs what was accepted, and the UI shows the account and the model that ran |
-| A Trunk cannot change the route | When a run ends with `rate_limited` ([DRV-4](../driver-contract/04-errors-and-limits.md)), the Trunk ends the Exchange with that outcome. Arbol then offers to send again with what the recipe logic picks next. There is no automatic failover inside a Trunk |
+| A Trunk cannot change the route | When a run ends with `rate_limited` ([DRV-4](../driver-contract/04-errors-and-limits.md)), the Trunk ends the Exchange as failed with that cause. Arbol then offers to send again with what the recipe logic picks next. There is no automatic failover inside a Trunk |
 | Listeners resolve too | A message that arrives through a listener has its Brain Recipe resolved like any other, because the backend holds that logic whether or not a UI is open |
 
 ### Arbol Root
 
 A **Root** is a named, persistent compatibility environment: its identity, settings, database, Exchange folders and compatible component Builds are described in ARC-1. The Root exists while its stored record and state exist. Its identity survives App, backend and manager restarts.
 
-A **Root Build** is a numbered Build of `arbol-root` made for that Root. A **Root invocation** is one command from such a Build. None stays running, and manager invocations keep nothing between them except files. The manager reads metadata; the Trunks and backend keep their existing database-writing responsibilities. `arbol-roots`, outside individual Roots, creates environments and invokes their migration scripts; `arbol-builds` alone builds components. A Root Build also carries the layout of every table in its Root's database and the Root's migration script ([ARC-D48](#decisions), [ARC-D49](01-roots.md#decisions)). `arbol-roots` runs them; no manager command opens the database.
+A **Root Build** is a numbered Build of `arbol-root` made for that Root. A **Root invocation** is one command from such a Build. None stays running, and manager invocations keep nothing between them except files. The manager reads metadata; the Trunks and backend keep their existing database-writing responsibilities. `arbol-roots`, outside individual Roots, creates environments and invokes their migration scripts; `arbol-builds` alone builds components. A Root Build carries, in its folder `layout/`, the chat tables of its Root Contract version, the Root's own tables and the Root's migration script ([ARC-D48](#decisions), [ARC-D49](01-roots.md#decisions), [RTM-1](../../arbol-root/specs/01-builds-layouts-and-migration.md)). `arbol-roots` runs them; no manager command opens the database.
 
 | What it does | How |
 |---|---|
-| Compatible Trunks (`trunks`) | Lists all working Trunk implementations and Builds whose declared contracts and chat-table layout this Root supports |
-| Start | Selects a compatible Build of the requested Trunk implementation and starts it detached for a new Chat Exchange, handing it the route and this Root's identity |
-| List | Reads the records in the Root's `exchanges/` folder and checks which processes are alive. Gives each Exchange's heartbeat and what it waits for ([ARC-3](03-stuck-trunks.md)) |
+| Compatible Trunks (`trunks`) | Prints what `arbol-trunk --root <root> list` prints: every Trunk, its Builds, which fit this Root and which one `run` would start ([RTM-0](../../arbol-root/specs/00-the-commands.md)) |
+| Start | Starts the named Trunk, or else the Trivial Trunk, with the Build the caller names or else the one `arbol-trunk list` marks chosen, always with an exact `-v` and the Exchange the caller names with `--exchange` (RTM-0) |
+| List | Reads the records in the Root's `exchanges/` folder and checks which processes are alive; it starts nothing and settles nothing (RTM-0). Gives each Exchange's heartbeat and what it waits for ([ARC-3](03-stuck-trunks.md)) |
 | Stop | Tells one Exchange to stop, and ends its processes by force when it has not ended after 20 seconds or when that is asked for ([ARC-3](03-stuck-trunks.md)) |
-| Settle | Has a Trunk Build save what the folder of an ended Exchange holds: a finished result with its own final state, and otherwise what had arrived, as interrupted (ARC-2) |
+| Settle | Has the chosen Build of the Trivial Trunk save what the folder of each Exchange whose process is gone holds: a finished result with its own final state, and otherwise what had arrived, as interrupted (ARC-2, RTM-0). Arbol runs it when its backend starts, when it sees the database return, and after a listing that shows such an Exchange |
 
-The manager supports every Trunk implementation whose declared Trunk Contract it speaks and whose chat-table layout fits the Root (including a shared layout named by `chatTablesOf`). A caller names a Trunk component or uses the default in this Root's settings. The manager selects the newest working compatible Build of that component; the caller may name a particular compatible Build, and the settings may narrow the allowed Builds. With no component choice or configured default, the command refuses and lists the eligible implementations. Build numbers of different components are never compared to choose a Trunk. Different compatible Trunks can have Exchanges in progress in the same Root.
+The manager supports every Trunk whose Builds list the Root's Root Contract version (RCT-0). A caller names a Trunk by its code name, or gets the Trivial Trunk, the default Trunk of every Root ([RCT-D2](../../arbol-root/contract/00-overview.md#decisions)). The newest working Build of that Trunk that fits is started, or a named Build that fits. No setting of the Root narrows which Builds may run, until the owner decides otherwise ([RCT-D28](../../arbol-root/contract/00-overview.md#decisions), Open). Build numbers of different components are never compared to choose a Trunk. Different compatible Trunks can have Exchanges in progress in the same Root.
 
-Every listing reads this Root's Exchange records anew and checks their processes. It includes Exchanges started by earlier compatible manager Builds and Trunks started by hand with this Root's identity. Its common metadata reply identifies the Root, Exchange, chat, concrete Trunk component and Build, process and state. The App can combine such replies across Roots without interpreting their Trunk-specific files. A new Root never adopts another Root's Exchanges.
+Every listing reads this Root's Exchange records anew and checks their processes. It includes Exchanges started by earlier compatible manager Builds and Trunks started by hand with this Root's identity. Its listing (RTM-0) identifies the Root, Exchange, chat, concrete Trunk component and Build, process and state. The App can combine such replies across Roots without interpreting their Trunk-specific files. A new Root never adopts another Root's Exchanges.
 
 The `arbol-root` manager never reads chat content or opens a database. It knows an Exchange only through its ownership and execution metadata. The Root environment owns a database; its backend and Trunks open it, and its migration script is invoked by `arbol-roots`. Environment ownership changes none of the table writers below.
 
@@ -194,15 +194,15 @@ The `arbol-root` manager never reads chat content or opens a database. It knows 
 
 This is everything the rest of Arbol needs from a Trunk. The owner confirmed the seven points on 9 October 2026. Point 6 then read "It can export a chat to the file form and import one"; the owner replaced that the same day by a migration script for each Root (ARC-D34). On 13 October 2026 the owner gave the layout of the chat tables to the Root, which changed points 3 and 6 ([ARC-D48](#decisions)), and replaced the helper commands of point 7 ([ARC-D56](#decisions)).
 
-1. **One process per Chat Exchange.** `arbol-root` starts it detached and hands it the resolved Subscription, model and effort.
+1. **One process per Chat Exchange.** `arbol-root` starts it detached and hands it the route, the small-call route, the Root, the working folder, the chat and the message (RCT-0).
 2. **It shows itself in the Root's `exchanges/` folder.** Its record is there, the arriving answer goes there for the Arbol backend to follow, and stop and answers reach it there.
 3. **It writes rows into the chat tables of the Root's database.** The Root provides the tables; a Trunk creates and changes none. Arbol reads them.
 4. **It never needs Arbol, the Root manager or the database in order to finish.**
-5. **Its Build record names the contract version it implements and the Root whose chat tables it writes.**
-6. **It keeps to the layout of the chat tables that its Root states.** Every Trunk of a Root writes the same tables, and the migration script of a later Root can copy and convert them (ARC-1).
+5. **Its Build record lists the versions of the Root Contract it implements** (RCT-0).
+6. **It keeps to the `layout.sql` of its Root's Root Contract version** (RCT-3). Every Trunk of a Root writes the same tables, and the migration script of a later Root can copy and convert them (ARC-1).
 7. **For small calls it uses what lies to its right:** a Driver run without tools on the small-call route it was handed, and `arbol-classifier`.
 
-How a Trunk prepares context, whether it makes titles and how it retries are not stated here. They belong to the specification of each Trunk. How the chat tables are laid out belongs to the Root (ARC-1).
+How a Trunk prepares context, whether it makes titles and how it retries are not stated here. They belong to the specification of each Trunk, for the Trivial Trunk [TRV-0](../../arbol-trunk/trunks/trivial/specs/00-the-trivial-trunk.md). How the chat tables are laid out belongs to the Root (ARC-1).
 
 A Trunk that needs a table or a column that its Root does not have cannot add it. When the older Builds of the Root can ignore the addition, the Root adds it to its layout. Any other change makes a new Root (ARC-1).
 
@@ -215,7 +215,8 @@ A Trunk also shows that it is alive, and ends itself when its work hangs, so tha
 | Chats: [Chat Sessions](../GLOSSARY.md#chat-session), Exchanges and their content | The Root's database | The Trunk | The Arbol backend, directly with SQL |
 | [Drafts](../GLOSSARY.md#draft) and Arbol's own tables | The Root's database | The Arbol backend | The Arbol backend |
 | An Exchange in progress: its record and the arriving answer | The Root's folder | The Trunk | Root manager (record only); Arbol backend (record and arriving answer) |
-| Brain Recipes and the settings of `arbol` and `arbol-root` | `~/.arbol/roots/<root>/` | The Leather Bag, or Arbol for them | `arbol`, `arbol-root` |
+| Stop, and answers to the agent's questions (`control`) | The Exchange's folder | The Root manager (stop), the Arbol backend (answers) | The Trunk |
+| Brain Recipes and the settings of `arbol`; `arbol-root` has none yet ([RTM-D3](../../arbol-root/specs/00-the-commands.md#decisions), Open) | `~/.arbol/roots/<root>/` | The Leather Bag, or Arbol for them | `arbol` |
 | Subscriptions and all Driver state | The Driver's state directory (DRV-6) | The Driver | The Driver |
 | Builds | The build registry (BLD-0) | `arbol-builds` | Everything that starts a Build |
 | The list of Roots | The `root.json` files (ARC-1) | `arbol-roots` | The tray menu, the launchers |
@@ -288,21 +289,21 @@ The Root manager:
 | ID | The Root manager must… | Origin | Verified by |
 |---|---|---|---|
 | ARC-0.15 | consist of commands that end, keep nothing between two of them except files, and know the Exchanges in progress from the records in the Root's folder alone | Changed | drill |
-| ARC-0.16 | pick for a new Exchange the newest working compatible Build of the caller's named Trunk component or this Root's configured default, unless the caller names a compatible Build; refuse a missing choice or incompatible Build with the eligible implementations | Changed | unit |
+| ARC-0.16 | pick for a new Exchange the newest working compatible Build of the caller's named Trunk component or the Trivial Trunk, unless the caller names a compatible Build; refuse a Build that does not fit as the launcher `arbol-trunk` refuses it (RCT-0.9) | Changed | unit |
 | ARC-0.17 | never read chat content, never open the database, and build nothing | Changed | unit |
-| ARC-0.27 | expose every working Trunk implementation and Build compatible with the named Root's supported contracts and chat-table layout, and manage Exchanges of different compatible implementations in that Root | New | contract |
+| ARC-0.27 | expose every working Trunk implementation and Build whose Build record lists the named Root's Root Contract version, and manage Exchanges of different compatible implementations in that Root | New | unit: RTM-0.3 |
 | ARC-0.28 | distinguish the persistent Root identity from its manager Build and invocation, and keep that identity unchanged across compatible Build updates and restarts | New | drill |
 
 A Trunk, seen from outside:
 
 | ID | A Trunk must… | Origin | Verified by |
 |---|---|---|---|
-| ARC-0.18 | run one Chat Exchange in one detached process, with the route it was handed | Changed | contract |
+| ARC-0.18 | run one Chat Exchange in one process, detached when `arbol-root` starts it (RCT-2), with the route it was handed | Changed | contract |
 | ARC-0.19 | keep its record and the arriving answer in the Root's `exchanges/` folder, and take stop and answers there | Changed | contract |
 | ARC-0.20 | write rows into the chat tables of the Root's database, and create or change no table | Changed | contract |
 | ARC-0.21 | finish an Exchange while Arbol, the Root manager or the database is absent | Changed | drill |
-| ARC-0.22 | name in its Build record the contract version it implements and the Root whose chat tables it writes | New | unit |
-| ARC-0.24 | make its small text calls as Driver runs without tools on the small-call route it was handed, make its classifications through `arbol-classifier`, and go on when such a call is missing, slow or fails | New | contract |
+| ARC-0.22 | list in its Build record the versions of the Root Contract it implements (RCT-0.1) | New | unit |
+| ARC-0.24 | make its small text calls as Driver runs without tools on the small-call route it was handed, make its classifications through `arbol-classifier`, and go on when such a call is missing, slow or fails | New | contract: RCT-2.22, scenario R19 of [RCT-4](../../arbol-root/contract/04-conformance.md) |
 
 ARC-0.23, which had each Trunk state the layout of its chat tables, was withdrawn on 13 October 2026 by [ARC-D48](#decisions): the layout belongs to the Root ([ARC-1.28](01-roots.md#requirements)).
 
@@ -375,9 +376,14 @@ The Root environment wording below follows ARC-D47 of 12 October 2026. The entri
 |---|---|
 | Root | The named, persistent compatibility environment of ARC-1, described by the Arbol Root entry. It replaces the former Ring concept (ARC-D47) |
 | Arbol backend | New. The Python process of a Root's `arbol` Build that answers the Bridge and holds the listeners |
+| Root Contract | New. The contract a Root shares with all its Trunks, in place of the name Trunk Contract ([RCT-D1](../../arbol-root/contract/00-overview.md#decisions)) |
+| Trivial Trunk | New. The first Trunk, code name `trivial`: one Driver run with the route it is handed. The default Trunk of every Root (RCT-D2, TRV-0) |
+| Code name | The name of a Trunk, one lower-case word such as `trivial`, never a number; part of the Arbol Trunk entry (RCT-D2) |
 | [Arbol](../GLOSSARY.md#arbol) | The Arbol Swift App and the Arbol backend, over `arbol-root`, Trunks and Drivers |
 | [Arbol Root](../GLOSSARY.md#arbol-root) | A named persistent environment that manages all compatible Trunks. Its separately numbered `arbol-root` Builds provide short-lived management commands; App and backend restarts preserve the Root and rediscover its Exchanges |
 | [Arbol Trunk](../GLOSSARY.md#arbol-trunk) | Still the owner of a Chat Exchange from end to end. One process per Exchange |
+| [Chat Exchange](../GLOSSARY.md#chat-exchange) | One message of the Leather Bag in a chat and the agent's answer to it, from its acceptance by one Trunk process to its end; one row of `exchanges` (RCT-2, RCT-3). No longer owned by a resident Trunk Runtime, and with no retries or failovers inside it |
+| [Draft](../GLOSSARY.md#draft) | Kept by Arbol before a Chat Exchange is accepted, no longer inside one |
 | [Trunk Runtime](../GLOSSARY.md#trunk-runtime), [Default Arbol Trunk](../GLOSSARY.md#default-arbol-trunk) | History. There is no resident Trunk and no generation of one |
 | [Arbol Swift App](../GLOSSARY.md#arbol-swift-app) | A component of its own, `arbol-app`. Its Builds belong to no Root, and each Root names the oldest of them it works with. It passes the Bridge on to the Arbol backend, not to Root, and loads renderer bundles from a Root's Build |
 | [UI](../GLOSSARY.md#ui) | Its renderer bundle is no longer baked into an `.app`. Three remain: Elma Chat, Willo Station, Seqoya Lab |

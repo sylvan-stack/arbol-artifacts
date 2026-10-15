@@ -13,7 +13,7 @@ It follows the conventions of the [Driver Contract](../driver-contract/README.md
 
 Covered: what counts as stuck and what does not, the signs of life of a Trunk, a Trunk that ends itself, how Arbol notices from outside, ending a stuck Exchange, a stop that is not obeyed, a Driver that falls silent, long waits on purpose, a Mac that slept.
 
-Not covered: an Exchange whose process is gone, which is settled as interrupted ([ARC-2](02-chat-exchange-across-components.md)); a vendor tool that hangs inside a run, which the Driver ends by its own time limits ([DRV-4](../driver-contract/04-errors-and-limits.md)); the formats of the files in the folder of an Exchange, which are fixed in the Trunk Contract; a message that steers a running agent (ARC-D54).
+Not covered: an Exchange whose process is gone, which is settled as interrupted ([ARC-2](02-chat-exchange-across-components.md)); a vendor tool that hangs inside a run, which the Driver ends by its own time limits ([DRV-4](../driver-contract/04-errors-and-limits.md)); the formats of the files in the folder of an Exchange, which are fixed in the [Root Contract](../../arbol-root/contract/README.md) ([RCT-1](../../arbol-root/contract/01-the-exchange-folder.md)); a message that steers a running agent (ARC-D54).
 
 ## Behaviour
 
@@ -61,9 +61,9 @@ A stuck Exchange is ended without asking ([ARC-D57](#decisions)). By its definit
 
 The command is `arbol-root stop --force <exchange>`:
 
-1. It sends the Trunk's processes the signal to end.
+1. It sends SIGTERM to the process group the Trunk leads ([RCT-2](../../arbol-root/contract/02-starting-stopping-and-settling.md#one-process-group)).
 2. After 5 seconds it ends by force what is still alive of them.
-3. It has a Trunk Build settle the Exchange: what had arrived is saved, the final state is interrupted, and the folder is removed (ARC-2).
+3. It has the chosen Build of the Trivial Trunk settle the Exchange ([RTM-0](../../arbol-root/specs/00-the-commands.md#settling)): what had arrived is saved, the final state is interrupted, unless its end was already written (RCT-2), and the folder is removed (ARC-2).
 
 The Driver's run ends with its caller (DRV-2), and the next call of that Driver clears what a killed call left behind (DRV-6).
 
@@ -77,13 +77,13 @@ The Driver's run ends with its caller (DRV-2), and the next call of that Driver 
 
 A stop is a line in the `control` file of the Exchange (ARC-2). The Trunk stops the Driver's run, which may take 15 seconds (DRV-2), and ends the Exchange as cancelled.
 
-`arbol-root stop <exchange>` writes that line and waits. When the Exchange has not ended after 20 seconds, the same command ends it by force, as above ([ARC-D60](#decisions)). The Exchange is then interrupted and not cancelled, because the Trunk never confirmed the stop.
+`arbol-root stop <exchange>` writes that line and waits. When the Exchange has not ended after 20 seconds, the same command ends it by force, as above ([ARC-D60](#decisions)). The Exchange is then interrupted and not cancelled, because the Trunk never confirmed the stop, unless its end was already written ([RCT-2](../../arbol-root/contract/02-starting-stopping-and-settling.md)).
 
 A UI shows "stopping" from the request until the Exchange has ended, and then its true final state. Stopping an Exchange that has ended already, or that is unknown, succeeds and changes nothing, as with a run (DRV-2). The Leather Bag can therefore always use stop to bring a chat back to a state in which it takes a message.
 
 ### A Driver that falls silent
 
-A Driver ends a silent vendor tool by itself (DRV-4). The Driver's own process can hang too. A Trunk therefore does not wait for a silent Driver without end: when a run has given no event for one minute longer than its idle limit, while no tool call, no command in the background and no question is open, the Trunk ends the run's process and ends the Exchange as failed, naming the cause.
+A Driver ends a silent vendor tool by itself (DRV-4). The Driver's own process can hang too. A Trunk therefore does not wait for a silent Driver without end: when a run has given no event for one minute longer than its idle limit, while no tool call, no command in the background (how a Trunk tells a command in the background: [RCT-D30](../../arbol-root/contract/02-starting-stopping-and-settling.md#decisions), Open) and no question is open, the Trunk ends the run's process and ends the Exchange as failed, naming the cause.
 
 This is ordinary work of a Trunk whose heartbeat goes on. It needs nothing from outside.
 
@@ -111,15 +111,15 @@ A Trunk:
 | ARC-3.1 | raise a heartbeat in the folder of its Exchange from the loop that does its work, at least every 10 seconds, whatever it is waiting for | New | contract |
 | ARC-3.2 | state in that folder what it is waiting for and since when: the Driver, a tool call or command, an answer, the database or a small model call | New | contract |
 | ARC-3.3 | end its own process and everything it started when its work has not raised the heartbeat for 60 seconds | New | drill |
-| ARC-3.4 | end a Driver run that gave no event for one minute longer than its idle limit while no tool call, command in the background or question was open, and end the Exchange as failed with that cause | New | contract |
+| ARC-3.4 | end a Driver run that gave no event for one minute longer than its idle limit while no tool call, command in the background or question was open, and end the Exchange as failed with that cause | New | contract: RCT-2.21, scenario R18 of [RCT-4](../../arbol-root/contract/04-conformance.md) ([RCT-D30](../../arbol-root/contract/02-starting-stopping-and-settling.md#decisions), Open) |
 
 The Root manager:
 
 | ID | The Root manager must… | Origin | Verified by |
 |---|---|---|---|
-| ARC-3.5 | give in every listing each Exchange's heartbeat and what it is waiting for | New | contract |
-| ARC-3.6 | on `stop`, write the stop and wait, end the Trunk's processes by force when the Exchange has not ended after 20 seconds, and have it settled as interrupted | Changed | drill |
-| ARC-3.7 | on `stop --force`, send the Trunk's processes the signal to end, end by force after 5 seconds what is still alive, leave none of them alive, and have the Exchange settled as interrupted | Changed | drill |
+| ARC-3.5 | give in every listing each Exchange's heartbeat and what it is waiting for | New | unit: RTM-0.6 |
+| ARC-3.6 | on `stop`, write the stop and wait, end the Trunk's processes by force when the Exchange has not ended after 20 seconds, and have it settled as interrupted, unless its end was already written (RCT-2) | Changed | drill |
+| ARC-3.7 | on `stop --force`, send the Trunk's processes the signal to end, end by force after 5 seconds what is still alive, leave none of them alive, and have the Exchange settled as interrupted, unless its end was already written (RCT-2) | Changed | drill |
 | ARC-3.8 | treat the stop of an Exchange that has ended or is unknown as success | Kept | unit |
 
 Arbol:
@@ -135,10 +135,10 @@ Arbol:
 
 ## Interface
 
-Proposed. The exact forms are fixed in the Trunk Contract and with `arbol-root`.
+The exact forms are in RCT-1 and RTM-0.
 
 ```ts
-// added, for each Exchange, to the listing reply of arbol-root (ARC-0)
+// in record.json under signsOfLife (RCT-1), and for each Exchange in the listing of arbol-root (RTM-0)
 interface SignsOfLife {
   heartbeat: number;                 // the Trunk's counter; it only grows
   waitingFor: "driver" | "tool" | "answer" | "database" | "small-call";
@@ -147,9 +147,11 @@ interface SignsOfLife {
 
 // arbol-root stop <exchange> [--force]
 interface StopResult {
+  root: string;                      // "golden"
   exchange: string;
-  ended: "cancelled" | "interrupted" | "completed" | "failed" | "none";   // none: it had ended already, or is unknown
-  forced: boolean;                   // true: the Trunk's processes were ended by force
+  ended: "cancelled" | "interrupted" | "completed" | "failed" | "saved" | "none";   // saved: the folder went before the end could be read, or settling printed none; none: it had ended already, or is unknown
+  forced: boolean;                   // true: a signal was sent to the Trunk's process group
+  settling?: SettleOutcome;          // what settling printed, or the refusal that kept it from running (RTM-0)
 }
 ```
 

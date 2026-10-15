@@ -33,9 +33,9 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **N** — [Native Tool Call](#native-tool-call) · [Nex](#nex) · [Normalizer](#normalizer) · [Now Line](#now-line)
 - **O** — [Oaken](#oaken) · [Objectives](#objectives) · [Organization](#organization)
 - **P** — [Parse Result](#parse-result) · [Parser](#parser) · [Parser Pipeline](#parser-pipeline) · [Provider](#provider)
-- **R** — [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Routine](#routine) · [Runbook](#runbook)
+- **R** — [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Routine](#routine) · [Runbook](#runbook)
 - **S** — [Scan](#scan) · [Signal](#signal) · [Signal Rule](#signal-rule) · [Signal Type](#signal-type) · [Seqoya Lab](#seqoya-lab) · [Source Ref](#source-ref) · [Sparse Retrieval](#sparse-retrieval) · [Spine](#spine) · [Spotlight](#spotlight) · [Stale](#stale) · [Stale Summary Regeneration](#stale-summary-regeneration) · [State Runtime Profile](#state-runtime-profile) · [Steward](#steward) · [Stint](#stint) · [Subscription](#subscription) · [Summary Node](#summary-node) · [Surface](#surface) · [Swimlane](#swimlane) · [Swimlane Details](#swimlane-details) · [Swimlane Pool](#swimlane-pool) · [Swimmer](#swimmer) · [Sync Pass](#sync-pass)
-- **T** — [Taproot](#taproot) · [Text Snapshot](#text-snapshot) · [Theme](#theme) · [Tool](#tool) · [Tool Request](#tool-request) · [Tracked Source](#tracked-source) · [Trunk Runtime](#trunk-runtime) · [Turn](#turn)
+- **T** — [Taproot](#taproot) · [Text Snapshot](#text-snapshot) · [Theme](#theme) · [Tool](#tool) · [Tool Request](#tool-request) · [Tracked Source](#tracked-source) · [Trivial Trunk](#trivial-trunk) · [Trunk Runtime](#trunk-runtime) · [Turn](#turn)
 - **U** — [UI](#ui) · [UIShell / Chrome](#uishell--chrome)
 - **V** — [Visit](#visit)
 - **W** — [Wall](#wall) · [Willo Station](#willo-station) · [Working Directory](#working-directory) · [Worktree](#worktree) · [Worktree Container](#worktree-container)
@@ -120,11 +120,11 @@ The local, single-user macOS application, consisting of one global [Arbol Swift 
 
 ## Arbol Trunk
 
-A complete, versionable implementation of an Arbol communication strategy. Each distinct implementation is a component with its own numbered [Builds](#build). It owns one [Chat Exchange](#chat-exchange) from accepted input to its final state, including its chat data. Each Exchange runs in one detached process, started from a Trunk Build compatible with its [Arbol Root](#arbol-root)'s contract and chat-table layout. Its record retains the `rootId` and Trunk Build; changing a default or starting another Root never moves accepted work. The Trunk receives the resolved Driver, Subscription, model and effort, and does not choose another route or require Arbol, its Root manager or the database to finish. The inside of the first Trunk is specified separately; the common boundary is [what any Trunk must offer](architecture/00-components-and-boundaries.md#what-any-trunk-must-offer).
+A complete, versionable implementation of an Arbol communication strategy, named by a *code name* such as `trivial`. Each distinct implementation is a component `arbol-trunk/<code name>`, kept with every other Trunk in the repository `arbol-trunk`, with its own numbered [Builds](#build). It owns one [Chat Exchange](#chat-exchange) from accepted input to its final state, including its chat data. Each Exchange runs in one process, started from a Trunk Build whose list of [Root Contract](#root-contract) versions holds its [Arbol Root](#arbol-root)'s version, and detached when `arbol-root` starts it. Its record retains the `root` and Trunk Build; changing a default or starting another Root never moves accepted work. The Trunk receives the resolved Driver, Subscription, model and effort, and does not choose another route or require Arbol, its Root manager or the database to finish. The inside of the first Trunk, the [Trivial Trunk](#trivial-trunk), is specified separately; the common boundary is [what any Trunk must offer](architecture/00-components-and-boundaries.md#what-any-trunk-must-offer).
 
 **Naming warning:** **Arbol Trunk** is the new architectural term. The established bare [Branch](#branch) term continues to name a Git branch Entity; Arbol Trunk is unambiguous.
 
-**Example:** Golden Root lists a conversational Trunk and a research Trunk whose Builds both support its contract and chat tables. The caller picks the research component; Golden's Root Build starts that component's newest compatible working Build for this Exchange. A later Exchange in the same Chat Session may use the conversational Trunk.
+**Example:** Golden Root lists a conversational Trunk and a research Trunk whose Builds both list its Root Contract version. The caller picks the research component; Golden's Root Build starts that component's newest compatible working Build for this Exchange. A later Exchange in the same Chat Session may use the conversational Trunk.
 
 ## Arbol Component
 
@@ -215,7 +215,7 @@ An attestation **decays**: it is bound to the version it verified, so when the c
 
 ## Authoritative Input
 
-The exact initiator input durably accepted by an [Arbol Trunk](#arbol-trunk) as the request to execute in one [Chat Exchange](#chat-exchange). Before acceptance, Composer content is a provisional [Draft](#draft) and may trigger speculative Activities; after acceptance, the immutable Authoritative Input is the only text and attachment set that may determine the Exchange's agent invocation and required effects. Accepting Authoritative Input is distinct from [Exchange Assignment](#exchange-assignment): assignment establishes which Trunk Runtime owns the Exchange, while input acceptance establishes what that Exchange must process.
+The exact initiator input durably accepted by an [Arbol Trunk](#arbol-trunk) as the request to execute in one [Chat Exchange](#chat-exchange). Before acceptance, Composer content is a provisional [Draft](#draft) and may trigger speculative Activities; after acceptance, the immutable Authoritative Input is the only text and attachment set that may determine the Exchange's agent invocation and required effects. Accepting Authoritative Input is distinct from [Exchange Assignment](#exchange-assignment): assignment binds the Exchange to its Root, Trunk Build and process, while input acceptance establishes what that Exchange must process.
 
 **Example:** A Draft mentions “Arbol Trunk,” starts speculative Cue extraction, and is then edited before Send. Only the exact text and attachments accepted on Send are Authoritative Input; removed provisional Cues cannot affect the agent invocation.
 
@@ -303,13 +303,11 @@ A guided inspection of code changes on a dedicated Elma page: the Leather Bag se
 
 ## Chat Exchange
 
-One bounded initiator-request/agent-response lifecycle within a [Chat Session](#chat-session), owned from established [Exchange Assignment](#exchange-assignment) through terminal settlement by one concrete [Trunk Runtime](#trunk-runtime). A Chat Exchange begins when input composition for one initiator request begins and ends after the agent reaches a terminal input boundary—or the interaction fails or is cancelled—and every required Exchange-scoped [Activity](#activity) has settled.
+One message of the [Leather Bag](#leather-bag) in a [Chat Session](#chat-session) and the agent's answer to it, from its acceptance by one [Arbol Trunk](#arbol-trunk) process ([RCT-2](../arbol-root/contract/02-starting-stopping-and-settling.md#accepting-a-message)) to its end; one row of `exchanges` in the chat tables of its [Arbol Root](#arbol-root)'s database ([RCT-3](../arbol-root/contract/03-the-chat-tables.md)). A message that is refused is no Exchange: it leaves no row, starts nothing, and its [Draft](#draft) stays in the composer. From acceptance the one process owns the Exchange and runs it with the one route it was handed, with no retry on another route and no failover. It ends the Exchange by itself as completed, failed with its cause, or cancelled; when the process died first, settling ends it as interrupted. An Exchange may hold several agent [Turns](#turn) and tool calls. **Chat Exchange** replaces the old broad product use of “Turn”; `Exchange` is the accepted short form when context is unambiguous. See [a Chat Exchange across the components](architecture/02-chat-exchange-across-components.md).
 
-The runtime establishes ownership by durably recording the Exchange opening, assignment, and concrete runtime identity in the [Event Log](#event-log), then acknowledging Root's idempotent assignment command. **Trunk-owned Exchange** describes this lifecycle state; it is not a different Exchange kind. Ownership must not be confused with later acceptance of the [Authoritative Input](#authoritative-input).
+In version 1 an Exchange was owned by a resident [Trunk Runtime](#trunk-runtime) through an assignment recorded in the [Event Log](#event-log), began when the composing of a message began, and could hold Draft revisions, retries and failovers.
 
-A Chat Exchange may contain Draft revisions, one authoritative submitted input, multiple [Agent Attempts](#agent-attempt), agent [Turns](#turn), Tool Requests and continuations, retries, failovers, parallel Activities, and required post-response work. Consecutive Exchanges in one Chat Session may be assigned to different Trunks or runtime generations; an active Exchange is never switched merely because a rebuild occurred. **Chat Exchange** replaces the old broad product use of “Turn”; `Exchange` is the accepted short form when context is unambiguous.
-
-**Example:** One request leads to ten sequential Bash Tool Requests and then a final response: that is one Chat Exchange containing eleven agent Turns. The next request in the same Chat Session is another Exchange and may run on a newer Trunk Runtime.
+**Example:** One message leads to ten Bash tool calls and then a final answer: that is one Chat Exchange, one row of `exchanges`. The next message in the same Chat Session is another Exchange, and may run on a newer Trunk Build.
 
 ## Chat Note
 
@@ -486,11 +484,11 @@ A **one-shot, non-agentic** model call: a single prompt → output via a [Brain 
 <a id="core"></a>
 ## Arbol Root
 
-**Arbol Root**, or **Root**, is a named, persistent environment for all [Arbol Trunks](#arbol-trunk) compatible with it: its identifier, display name, folder, database, settings and the Builds of `arbol` and `arbol-root` made for it. A **Root Build** is a numbered Build of `arbol-root`, the manager of that environment. It lists compatible Trunk components and Builds, selects a compatible working Build within the caller's chosen component or the configured default, starts Exchanges detached, lists and stops them, and delegates interrupted-Exchange settlement to a Trunk. Each invocation is a short command; no resident Root process is required. The environment outlives its manager's invocations and Builds. See [Roots](architecture/01-roots.md) and [the Root manager](architecture/00-components-and-boundaries.md#arbol-root).
+**Arbol Root**, or **Root**, is a named, persistent environment for all [Arbol Trunks](#arbol-trunk) compatible with it: its identifier, display name, folder, database, settings and the Builds of `arbol` and `arbol-root` made for it. A **Root Build** is a numbered Build of `arbol-root`, the manager of that environment. It lists compatible Trunk components and Builds, selects a compatible working Build within the caller's chosen component or the [Trivial Trunk](#trivial-trunk), starts Exchanges detached, lists and stops them, and delegates interrupted-Exchange settlement to a Trunk. Each invocation is a short command; no resident Root process is required. The environment outlives its manager's invocations and Builds. See [Roots](architecture/01-roots.md) and [the Root manager](architecture/00-components-and-boundaries.md#arbol-root).
 
-Roots replace the proposed name Ring. A breaking change creates a new Root beside the old one, preserving the old Root's chats and usability. The global `arbol-roots` command, outside every Root, manages the catalogue, creation, readiness, failure, minimum App Build, migration and removal. The global Swift App discovers Roots again when it starts; each Root has its own backend and renderer Builds. Drivers, Subscriptions, Trunk Builds, the App and the build registry are shared. The Root manager holds compatibility and lifecycle policy, reads Exchange records and never reads chat content or opens the database. An accepted Exchange keeps its `rootId` and Trunk Build and continues when the manager, backend or App ends.
+Roots replace the proposed name Ring. A breaking change creates a new Root beside the old one, preserving the old Root's chats and usability. The global `arbol-roots` command, outside every Root, manages the catalogue, creation, readiness, failure, minimum App Build, migration and removal. The global Swift App discovers Roots again when it starts; each Root has its own backend and renderer Builds. Drivers, Subscriptions, Trunk Builds, the App and the build registry are shared. The Root manager holds compatibility and lifecycle policy, reads Exchange records and never reads chat content or opens the database. An accepted Exchange keeps its `root` and Trunk Build and continues when the manager, backend or App ends.
 
-**Example:** Golden Root uses Root Build `6`; Frodo Root uses Root Build `8`. Both can use a compatible research Trunk Build when their contract and chat-table layout match. Replacing Golden's Root Build changes later command invocations, while its existing Exchanges continue in the processes already started for them.
+**Example:** Golden Root uses Root Build `6`; Frodo Root uses Root Build `8`. Both can use a compatible research Trunk Build when both use the same Root Contract version. Replacing Golden's Root Build changes later command invocations, while its existing Exchanges continue in the processes already started for them.
 
 ## Corpus
 
@@ -514,7 +512,7 @@ Use **sparingly**. A reference or link is *not* a Coupling — promote it only w
 
 ## Default Arbol Trunk
 
-The first [Arbol Trunk](#arbol-trunk), created by behavior-preserving isolation of the chat communication implementation currently centered on `ChatSessionOrchestrator`. It is the compatibility baseline used while Root–Trunk process boundaries, complete Chat Session Event Sourcing, and side-by-side Trunk replacement are introduced. “Default” names this specific Trunk implementation, not a permanently privileged architecture role; later Trunks may be selected for future [Chat Exchanges](#chat-exchange).
+The first [Arbol Trunk](#arbol-trunk), created by behavior-preserving isolation of the chat communication implementation currently centered on `ChatSessionOrchestrator`. It is the compatibility baseline used while Root–Trunk process boundaries, complete Chat Session Event Sourcing, and side-by-side Trunk replacement are introduced. “Default” names this specific Trunk implementation, not a permanently privileged architecture role; later Trunks may be selected for future [Chat Exchanges](#chat-exchange). It is not the [Trivial Trunk](#trivial-trunk), the default Trunk of every Root in Arbol 2.
 
 **Example:** During the first migration, all new Exchanges are assigned to a Default Arbol Trunk runtime even though old and new runtime generations may coexist during a safe rebuild.
 
@@ -552,11 +550,11 @@ The designed refinement handles a source change on **two channels**, by *what ki
 
 ## Draft
 
-Provisional Composer input—text, attachments, and related editable selections—inside one [Chat Exchange](#chat-exchange) before [Authoritative Input](#authoritative-input) is accepted. A Draft may have durable, coalesced revisions so it survives UI or Root restart and so speculative [Activity Executions](#activity-execution) can identify the exact [Text Snapshot](#text-snapshot) they observed. Draft revision facts belong to the complete [Chat Session](#chat-session) history; they do not form a second independent conversation truth. Sending accepts one immutable Authoritative Input for the Exchange. Abandoning a Draft closes or cancels the provisional Exchange according to Trunk policy without pretending that its speculative outputs were submitted.
+Composer input—text, attachments, and related editable selections—that the [Leather Bag](#leather-bag) has not sent yet, before a [Chat Exchange](#chat-exchange) is accepted. A Draft belongs to Arbol: the Arbol backend keeps it in Arbol's own tables of the Root's database, apart from the chat tables a Trunk writes (see [who writes what](architecture/00-components-and-boundaries.md#who-writes-what)). It may have durable, coalesced revisions so it survives a restart of a UI or of the backend, and so speculative [Activity Executions](#activity-execution) can identify the exact [Text Snapshot](#text-snapshot) they observed. Sending hands the message to a Trunk: once the Trunk accepts it, it is the Exchange's [Authoritative Input](#authoritative-input); when it is refused, nothing starts and the Draft stays in the composer ([the Exchange steps](architecture/02-chat-exchange-across-components.md#the-steps)). Abandoning a Draft starts no Exchange.
 
-The current implementation still stores new-chat Drafts independently and creates its narrower `session` record only on Send. That is migration-era behavior, not the target product definition.
+In version 1 a Draft was placed inside a provisional, Trunk-owned Chat Exchange, which abandoning the Draft closed or cancelled; the implementation stored new-chat Drafts on their own and made the chat's record only on Send.
 
-**Example:** Opening a new Composer creates a Chat Session and Trunk-owned Exchange containing a Draft. Several coalesced revisions may trigger speculative Cue extraction; Send freezes one revision as Authoritative Input, while abandonment records that the Exchange ended without submission.
+**Example:** The Leather Bag types in a new chat's Composer, and several coalesced revisions may trigger speculative Cue extraction. On Send a Trunk accepts the text, and a Chat Exchange begins. Had the database been away, the message would have been refused, and the Draft would have stayed in the Composer.
 
 ## Drift
 
@@ -778,11 +776,11 @@ The architecture in which accepted state changes are represented first as immuta
 
 ## Exchange Assignment
 
-The acceptance boundary that binds a new [Chat Exchange](#chat-exchange) to its [Arbol Root](#arbol-root), selected Trunk Build and detached process. The Root manager starts the selected compatible Build with the resolved route and Root. The Trunk writes the Exchange record in that Root's folder and the submitted message in its database before reporting acceptance. From acceptance to the final state the Exchange is Trunk-owned and retains its `rootId` and Trunk Build. It continues when the manager or Arbol is absent; it is never reassigned by a Build or Root change. If input is refused before acceptance, the Draft stays in the composer. See [the Exchange steps](architecture/02-chat-exchange-across-components.md#the-steps).
+The acceptance boundary that binds a new [Chat Exchange](#chat-exchange) to its [Arbol Root](#arbol-root), selected Trunk Build and process. The Root manager starts the selected compatible Build with the resolved route and Root. The Trunk writes the Exchange record in that Root's folder and the submitted message in its database before reporting acceptance. From acceptance to the final state the Exchange is Trunk-owned and retains its `root` and Trunk Build. It continues when the manager or Arbol is absent; it is never reassigned by a Build or Root change. If input is refused before acceptance, the Draft stays in the composer. See [the Exchange steps](architecture/02-chat-exchange-across-components.md#the-steps).
 
-This replaces the legacy assignment to a resident Trunk Runtime generation. There is one process per accepted Exchange; the precise command and file formats, including duplicate-submission handling, belong to the Trunk Contract and are not specified by this definition.
+This replaces the legacy assignment to a resident Trunk Runtime generation. There is one process per accepted Exchange; the precise command and file formats, including duplicate-submission handling, belong to the [Root Contract](#root-contract) ([RCT-2](../arbol-root/contract/02-starting-stopping-and-settling.md#a-repeat-after-a-lost-answer): a repeat with the same Exchange identifier starts nothing) and are not specified by this definition.
 
-**Example:** Golden Root's manager starts research Trunk Build `a3` for Exchange E4. The Trunk records E4's Golden `rootId`, Build and process, writes its input and acknowledges acceptance. Opening Frodo Root later does not move E4; it finishes in Golden.
+**Example:** Golden Root's manager starts research Trunk Build `a3` for Exchange E4. The Trunk records E4's Golden `root`, Build and process, writes its input and acknowledges acceptance. Opening Frodo Root later does not move E4; it finishes in Golden.
 
 ## Fanout
 
@@ -1132,6 +1130,12 @@ An [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) dispatched to r
 
 **Example:** A [Research Trip](#research-trip) uses Retrieval to pull only the chunks relevant to "how are turns persisted" instead of reading whole files.
 
+## Root Contract
+
+The contract that an [Arbol Root](#arbol-root) shares with all its [Arbol Trunks](#arbol-trunk): the command `arbol-trunk`, the folder of each [Chat Exchange](#chat-exchange) while it runs, the chat tables of the Root's database, and a conformance suite that every Trunk Build passes. Only the Root Contract has version numbers: a Root uses one version, named as `rootContract` in its record, and each Trunk Build lists the versions it implements as `rootContracts`. A Trunk Build fits a Root when its list holds the Root's version, and Roots of the same version share every Trunk Build that fits. It replaces the name Trunk Contract. See [the Root Contract](../arbol-root/contract/README.md).
+
+**Example:** Golden Root and Frodo Root both use version 1, so Build 4 of the [Trivial Trunk](#trivial-trunk), with `"rootContracts": [1, 2]`, runs in both without being built again.
+
 ## Routine
 
 Recurring or triggered work performed by a [Steward](#steward), commonly maintenance such as re-ingesting a corpus, sweeping stale chunks, or garbage-collecting. Each run that requires agent work is an [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) whose [Initiator](#initiator) is the Steward. A schedule or event supplies an activation opportunity and the Steward's activation policy decides whether to act; neither the trigger nor Mandate condition is the Initiator. The Steward's authority is recorded through the exact [Mandate](#mandate) version used. Distinct from an [Errand](#errand), which is one-off delegated work.
@@ -1318,9 +1322,15 @@ A whole-file hash record for a [Derivation](#derivation) source that isn't itsel
 
 **Example:** A design doc chunk derived from `session.py` before code ingestion existed: the file is a Tracked Source, so editing it still flags the doc chunk [Stale](#stale) — file-level granularity instead of symbol-level.
 
+## Trivial Trunk
+
+The first [Arbol Trunk](#arbol-trunk), code name `trivial`: for each [Chat Exchange](#chat-exchange) it makes one Driver run with the route it is handed, and nothing else. It is the default Trunk of every [Arbol Root](#arbol-root), so a command that names no Trunk gets it, and a Root is marked working only while a working Build of it fits the Root. It carries as little logic as it can, so that Arbol keeps working when every other Trunk fails. It is not the [Default Arbol Trunk](#default-arbol-trunk) of version 1. See [the Trivial Trunk's specifications](../arbol-trunk/trunks/trivial/specs/README.md).
+
+**Example:** `arbol-trunk run "What does build.sh do?"` starts the newest working Build of `trivial` that fits the current Root.
+
 ## Trunk Runtime
 
-Historical name for a resident process generation that hosted several [Chat Exchanges](#chat-exchange). It belongs to the version 1 topology and is not carried over into Arbol 2. Current [Arbol Trunks](#arbol-trunk) run one accepted Exchange per detached process; their numbered Builds may coexist without resident runtime generations or a draining upgrade protocol. See [components and boundaries](architecture/00-components-and-boundaries.md).
+Historical name for a resident process generation that hosted several [Chat Exchanges](#chat-exchange). It belongs to the version 1 topology and is not carried over into Arbol 2. Current [Arbol Trunks](#arbol-trunk) run one accepted Exchange per process; their numbered Builds may coexist without resident runtime generations or a draining upgrade protocol. See [components and boundaries](architecture/00-components-and-boundaries.md).
 
 **Example:** A version 1 upgrade kept runtime generation A running until its Exchanges drained into final states. Arbol 2 instead starts a chosen compatible Build for each new Exchange, while existing Exchange processes finish independently.
 

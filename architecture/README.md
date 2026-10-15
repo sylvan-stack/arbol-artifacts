@@ -5,7 +5,7 @@ role: authored
 
 How Arbol 2 is divided into components, what each one owns, and how Arbol stays usable when a later version breaks with an earlier one. The owner decided the original points on 9 October 2026 and on 12 October merged the former Ring environment into the named Root (ARC-D47). Each decision is recorded with its outcome in a *Decisions* table. On 13 October 2026 the owner had ARC-0 to ARC-2 assessed and decided the points the assessment raised (ARC-D48 to ARC-D56), had ARC-3 written and decided its five points (ARC-D57 to ARC-D61), and accepted all four specifications.
 
-The inside of an [Arbol Trunk](../GLOSSARY.md#arbol-trunk) is absent on purpose. This chapter says only what the rest of Arbol needs from any Trunk ([ARC-0](00-components-and-boundaries.md#what-any-trunk-must-offer)). How a Trunk works is specified separately, with the first Trunk.
+The inside of an [Arbol Trunk](../GLOSSARY.md#arbol-trunk) is absent on purpose. This chapter says only what the rest of Arbol needs from any Trunk ([ARC-0](00-components-and-boundaries.md#what-any-trunk-must-offer)). How a Trunk works is specified separately, for the first Trunk in the [Trivial Trunk's specifications](../../arbol-trunk/trunks/trivial/specs/README.md).
 
 ## Specifications
 
@@ -44,6 +44,8 @@ The chapter follows the conventions of the [Driver Contract](../driver-contract/
 | drill | A failure is caused on purpose (a process killed, the database stopped, a folder deleted) and the application ends in a truthful state and stays usable |
 
 *probe* is used here also for a scripted check against the installed database server.
+
+*contract*, in a requirement that a Trunk must meet, means the conformance suite of the [Root Contract](../../arbol-root/contract/README.md) ([RCT-4](../../arbol-root/contract/04-conformance.md)).
 
 Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 
