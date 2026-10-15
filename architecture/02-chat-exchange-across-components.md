@@ -31,7 +31,7 @@ A message that is not accepted starts nothing, and its [Draft](../GLOSSARY.md#dr
 ### The folder of an Exchange
 
 ```text
-~/Library/Application Support/Arbol/roots/golden/exchanges/
+~/Library/Application Support/Arbol/roots/sapling/exchanges/
   7f3a…/                 one folder for each Chat Exchange in progress
     record.json          the Root identity, process, Trunk component and Build, chat, route
     events.jsonl         the answer as it arrives

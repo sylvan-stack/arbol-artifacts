@@ -94,10 +94,10 @@ For a component outside Roots, except the Trunks (below), `-v <build number>` is
 The launchers of `arbol` and `arbol-root` additionally recognise `--root <identifier>` before `-v`. Their selection prefix is `[--root <identifier>] [-v <build number>]`; all later arguments are passed unchanged. With `--root` alone they start that Root's default Build. With neither option they start the current Root's default Build. A Build named by `-v` supplies its own Root from its record and needs no `--root`; if both are supplied and disagree, the launcher refuses the call. The Driver and `arbol-app` launchers keep the existing `-v` form and accept no Root selector. The launcher `arbol-trunk` takes `[--root <identifier>] [<code name>] [-v <build number>]` before the command, hands the Build `--root <root>` before it, refuses with `unknown_root`, `unknown_trunk` and `no_fit`, and answers `list` itself (RCT-0.7 to RCT-0.10).
 
 ```sh
-arbol --root golden send …                  # Golden Root's default arbol Build
-arbol-root --root golden list               # Golden Root's default Root Build
+arbol --root sapling send …                  # First Sapling's default arbol Build
+arbol-root --root sapling list               # First Sapling's default Root Build
 arbol-root -v a3 list                       # Build a3, in the Root its record names
-arbol-root --root golden -v a3 list          # only if Build a3 belongs to Golden Root
+arbol-root --root sapling -v a3 list          # only if Build a3 belongs to First Sapling
 ```
 
 A named Build that is still `building`, pruned or unknown, or `failed` without its program, is refused, and the refusal lists the Builds that can be run. A named Build that is `withdrawn` runs, with a line on standard error that says so and gives the reason. A named Build that is `failed` and has its program runs too, with a line on standard error that says so and names the step that failed ([BLD-D13](#decisions)). For example, `arbol-classifier -v 3 add-key` runs Build 3 before any Build of the classifier has passed its real question to Jev.

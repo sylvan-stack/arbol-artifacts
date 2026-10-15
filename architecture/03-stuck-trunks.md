@@ -147,7 +147,7 @@ interface SignsOfLife {
 
 // arbol-root stop <exchange> [--force]
 interface StopResult {
-  root: string;                      // "golden"
+  root: string;                      // "sapling"
   exchange: string;
   ended: "cancelled" | "interrupted" | "completed" | "failed" | "saved" | "none";   // saved: the folder went before the end could be read, or settling printed none; none: it had ended already, or is unknown
   forced: boolean;                   // true: a signal was sent to the Trunk's process group

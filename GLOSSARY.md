@@ -116,7 +116,7 @@ The text-free sunrise separator marking the transition from an agent's visible t
 
 The local, single-user macOS application, consisting of one global [Arbol Swift App](#arbol-swift-app) and one backend for each [Arbol Root](#arbol-root) in use. A Root's `arbol` Build supplies its backend and UI renderer bundles; the Swift App hosts those bundles in web views and passes their Bridge calls to that Root's backend. The backend holds listeners, resolves Brain Recipes and calls the Root's manager to start [Arbol Trunks](#arbol-trunk), which run [Drivers](#driver). The command line is also `arbol` and works without a running backend. Roots keep separate chat databases and settings; the Swift App and Drivers are shared. See [components and boundaries](architecture/00-components-and-boundaries.md).
 
-**Example:** Elma Chat opened in Golden Root uses Golden's renderer bundle and backend. Its accepted Exchange keeps running in a detached Trunk process when Arbol quits; reopening Arbol discovers the retained Roots and reads Golden's database and Exchange records again.
+**Example:** Elma Chat opened in First Sapling uses First Sapling's renderer bundle and backend. Its accepted Exchange keeps running in a detached Trunk process when Arbol quits; reopening Arbol discovers the retained Roots and reads First Sapling's database and Exchange records again.
 
 ## Arbol Trunk
 
@@ -124,7 +124,7 @@ A complete, versionable implementation of an Arbol communication strategy, named
 
 **Naming warning:** **Arbol Trunk** is the new architectural term. The established bare [Branch](#branch) term continues to name a Git branch Entity; Arbol Trunk is unambiguous.
 
-**Example:** Golden Root lists a conversational Trunk and a research Trunk whose Builds both list its Root Contract version. The caller picks the research component; Golden's Root Build starts that component's newest compatible working Build for this Exchange. A later Exchange in the same Chat Session may use the conversational Trunk.
+**Example:** First Sapling lists a conversational Trunk and a research Trunk whose Builds both list its Root Contract version. The caller picks the research component; First Sapling's Root Build starts that component's newest compatible working Build for this Exchange. A later Exchange in the same Chat Session may use the conversational Trunk.
 
 ## Arbol Component
 
@@ -164,7 +164,7 @@ An [Entity](#entity) (kind `secret`, tag `sec`): a user-provided value containin
 
 The native macOS Swift/AppKit component built from `arbol-app`, with its own numbered [Builds](#build) outside every [Arbol Root](#arbol-root). One process holds the tray menu, hotkeys, native surfaces and the web views of the UIs. It discovers the retained Roots on every start and loads each selected Root's renderer bundles from that Root's `arbol` Build. It exposes the [Bridge](#bridge) and passes calls and subscriptions to the selected Root's backend without interpreting them or opening its database. Each Root records its minimum App Build; the tray menu offers Roots the running App can serve and says which Build the others need. See [the Swift App and the backend](architecture/00-components-and-boundaries.md#arbol-the-swift-app-and-the-backend).
 
-**Example:** One Swift App shows Golden Root and Frodo Root in its tray menu. Opening Elma Chat in each loads that Root's renderer and connects it to that Root's backend; neither operation creates another Swift App process.
+**Example:** One Swift App shows First Sapling and Frodo Root in its tray menu. Opening Elma Chat in each loads that Root's renderer and connects it to that Root's backend; neither operation creates another Swift App process.
 
 ## Artifact
 
@@ -488,7 +488,7 @@ A **one-shot, non-agentic** model call: a single prompt → output via a [Brain 
 
 Roots replace the proposed name Ring. A breaking change creates a new Root beside the old one, preserving the old Root's chats and usability. The global `arbol-roots` command, outside every Root, manages the catalogue, creation, readiness, failure, minimum App Build, migration and removal. The global Swift App discovers Roots again when it starts; each Root has its own backend and renderer Builds. Drivers, Subscriptions, Trunk Builds, the App and the build registry are shared. The Root manager holds compatibility and lifecycle policy, reads Exchange records and never reads chat content or opens the database. An accepted Exchange keeps its `root` and Trunk Build and continues when the manager, backend or App ends.
 
-**Example:** Golden Root uses Root Build `6`; Frodo Root uses Root Build `8`. Both can use a compatible research Trunk Build when both use the same Root Contract version. Replacing Golden's Root Build changes later command invocations, while its existing Exchanges continue in the processes already started for them.
+**Example:** First Sapling uses Root Build `6`; Frodo Root uses Root Build `8`. Both can use a compatible research Trunk Build when both use the same Root Contract version. Replacing First Sapling's Root Build changes later command invocations, while its existing Exchanges continue in the processes already started for them.
 
 ## Corpus
 
@@ -780,7 +780,7 @@ The acceptance boundary that binds a new [Chat Exchange](#chat-exchange) to its 
 
 This replaces the legacy assignment to a resident Trunk Runtime generation. There is one process per accepted Exchange; the precise command and file formats, including duplicate-submission handling, belong to the [Root Contract](#root-contract) ([RCT-2](../arbol-root/contract/02-starting-stopping-and-settling.md#a-repeat-after-a-lost-answer): a repeat with the same Exchange identifier starts nothing) and are not specified by this definition.
 
-**Example:** Golden Root's manager starts research Trunk Build `a3` for Exchange E4. The Trunk records E4's Golden `root`, Build and process, writes its input and acknowledges acceptance. Opening Frodo Root later does not move E4; it finishes in Golden.
+**Example:** First Sapling's manager starts research Trunk Build `a3` for Exchange E4. The Trunk records E4's First Sapling `root`, Build and process, writes its input and acknowledges acceptance. Opening Frodo Root later does not move E4; it finishes in First Sapling.
 
 ## Fanout
 
@@ -1134,7 +1134,7 @@ An [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) dispatched to r
 
 The contract that an [Arbol Root](#arbol-root) shares with all its [Arbol Trunks](#arbol-trunk): the command `arbol-trunk`, the folder of each [Chat Exchange](#chat-exchange) while it runs, the chat tables of the Root's database, and a conformance suite that every Trunk Build passes. Only the Root Contract has version numbers: a Root uses one version, named as `rootContract` in its record, and each Trunk Build lists the versions it implements as `rootContracts`. A Trunk Build fits a Root when its list holds the Root's version, and Roots of the same version share every Trunk Build that fits. It replaces the name Trunk Contract. See [the Root Contract](../arbol-root/contract/README.md).
 
-**Example:** Golden Root and Frodo Root both use version 1, so Build 4 of the [Trivial Trunk](#trivial-trunk), with `"rootContracts": [1, 2]`, runs in both without being built again.
+**Example:** First Sapling and Frodo Root both use version 1, so Build 4 of the [Trivial Trunk](#trivial-trunk), with `"rootContracts": [1, 2]`, runs in both without being built again.
 
 ## Routine
 

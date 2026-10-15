@@ -50,9 +50,9 @@ Nothing inside a Root can be relied on in the next one. What lies outside must t
 
 ### Names
 
-A Root is not numbered. It has a loud name of its own, such as "Golden Root" or "Frodo Root".
+A Root is not numbered. It has a loud name of its own, such as "First Sapling" or "Frodo Root".
 
-A Root has an *identifier*, one lower-case word such as `golden`, and a *display name*, "Golden Root" ([ARC-D26](#decisions)). The identifier names the Root's folders, its database and its Builds, and is what `--root golden` takes. The display name is shown in the tray menu and in the header of every UI. Because there is no number, the Root's record says which Root it grew from; that gives the direction in which chats are migrated.
+A Root has an *identifier*, one lower-case word such as `sapling`, and a *display name*, "First Sapling" ([ARC-D26](#decisions)). The identifier names the Root's folders, its database and its Builds, and is what `--root sapling` takes. The display name is shown in the tray menu and in the header of every UI. Because there is no number, the Root's record says which Root it grew from; that gives the direction in which chats are migrated.
 
 ### A Root on disk
 
@@ -67,14 +67,14 @@ Settings are plain files under `~/.arbol`, and state is under the application fo
   arbol-trunk/                            the Trunks' settings (RCT-0)
     trivial.json                          the Trivial Trunk's, shared by all Roots
   roots/
-    golden/
+    sapling/
       arbol.json                          Brain Recipes and the settings of the UIs of this Root
 
 ~/Library/Application Support/Arbol/      state: written by the programs
   builds/                                 every Build of every component (BLD-0)
   drivers/                                Driver state, shared by all Roots (DRV-6)
   roots/
-    golden/
+    sapling/
       root.json                           the Root's record
       exchanges/                          one folder for each Chat Exchange in progress (ARC-2)
       backend.sock                        the Arbol backend's socket file, while it runs (ARC-0)
@@ -87,7 +87,7 @@ The list of Roots is nothing more than the `root.json` files. These records have
 
 ### The database of a Root
 
-Each Root has one database on the one PostgreSQL server (ARC-0), named in its `root.json`, for example `arbol_golden`. A chat has no column that names a Root, because its database is the Root. A program of one Root never opens the database of another: a UI Build reads the tables it was made for and no others. The one exception is a Root's migration script, which reads the database of the Root it grew from ([below](#moving-chats-between-roots)).
+Each Root has one database on the one PostgreSQL server (ARC-0), named in its `root.json`, for example `arbol_sapling`. A chat has no column that names a Root, because its database is the Root. A program of one Root never opens the database of another: a UI Build reads the tables it was made for and no others. The one exception is a Root's migration script, which reads the database of the Root it grew from ([below](#moving-chats-between-roots)).
 
 Every table of a Root's database is created from the Root's *table layout*, which the Root's `arbol-root` Builds carry ([ARC-D48](00-components-and-boundaries.md#decisions), [ARC-D49](#decisions)). The chat tables come from the `layout.sql` of the Root's Root Contract version (`contract/<version>/layout.sql` in the `arbol-root` repository), shared by every Root of that version; Arbol's own tables, and the record of where each migrated chat came from, come from the Root's own layout ([RCT-3](../../arbol-root/contract/03-the-chat-tables.md), [RCT-D25](../../arbol-root/contract/03-the-chat-tables.md#decisions)). No Trunk and no backend creates or changes a table. `arbol-roots create` makes the database empty. `arbol-roots migrate` then creates the tables from the layout and, for a Root that grew from another, fills them with that Root's migration script ([ARC-D34](#decisions)). For the first Root it creates the tables and brings nothing over.
 
@@ -101,12 +101,12 @@ Root-aware selection in BLD-0 qualifies a component's default Build by the Root.
 
 | Build of `arbol-root` | Made for |
 |---|---|
-| 5 | Golden Root |
-| 6 | Golden Root |
+| 5 | First Sapling |
+| 6 | First Sapling |
 | 7 | Frodo Root |
 | 8 | Frodo Root |
 
-Opening the Golden Root has to start Build 6, not Build 8. The selection rules are ([ARC-D32](#decisions), with the terminology replaced by ARC-D47):
+Opening the First Sapling has to start Build 6, not Build 8. The selection rules are ([ARC-D32](#decisions), with the terminology replaced by ARC-D47):
 
 | Change | Detail |
 |---|---|
@@ -185,15 +185,15 @@ A new Root always means that something broke, but seldom in every table. The scr
 | is new | Creates it |
 
 ```text
-arbol-roots create frodo --name "Frodo Root" --from golden
+arbol-roots create frodo --name "Frodo Root" --from sapling
   1. makes the empty database arbol_frodo
-  2. copies Golden's settings
+  2. copies First Sapling's settings
 arbol-builds build arbol-root --root frodo
   3. makes a Build of arbol-root for Frodo; it carries Frodo's table layout and migration script in layout/
 arbol-roots migrate frodo
   4. creates Frodo's tables from the layout
-  5. runs Frodo's migration script, which only reads arbol_golden
-  → Frodo is `preparing`. Golden stays current and untouched
+  5. runs Frodo's migration script, which only reads arbol_sapling
+  → Frodo is `preparing`. First Sapling stays current and untouched
 ```
 
 | Rule | Detail |
@@ -313,12 +313,12 @@ Proposed. The shared Root record and listing envelope are read outside any one R
 
 ```ts
 interface RootRecord {                 // root.json
-  root: string;                        // the identifier, "golden"
-  name: string;                        // the display name, "Golden Root"
+  root: string;                        // the identifier, "sapling"
+  name: string;                        // the display name, "First Sapling"
   status: "preparing" | "working" | "failed";
   createdAt: string;                   // ISO 8601, UTC; the newest working Root is the current one
   grewFrom?: string;                   // the identifier of the Root it grew from; absent for the first Root
-  database: string;                    // the name of its database, "arbol_golden"
+  database: string;                    // the name of its database, "arbol_sapling"
   app: string;                         // the oldest Build of arbol-app this Root works with, "7"
   rootContract: number;                // the one version of the Root Contract this Root uses, 1; never changes (RCT-0)
   failed?: { at: string; reason: string };

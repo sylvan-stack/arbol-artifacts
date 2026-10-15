@@ -227,7 +227,7 @@ Arbol reads the chat tables directly, so each Build of the UIs and the backend i
 
 ### The database server
 
-Chats are kept in PostgreSQL. The server is Arbol's own and not Mycel's, so that Mycel's extensions and upgrades cannot fail both. It is installed directly on the Mac and not in a container: its data folder is then on the Mac's own disk, where Arbol can report its size like that of any folder. It listens on the loopback address only. Its password is in the Keychain, and settings hold only the address, as with Mycel's store. The address is in the file `~/.arbol/database.json` ([ARC-D51](01-roots.md#decisions)).
+Chats are kept in PostgreSQL. The server is Arbol's own and not Mycel's, so that Mycel's extensions and upgrades cannot fail both. It is installed directly on the Mac and not in a container: its data folder is then on the Mac's own disk, where Arbol can report its size like that of any folder. It listens on the loopback address only. Its password is in the Keychain, and settings hold only the address, as with Mycel's store. The installation of the server makes the password up and stores it in its Keychain item itself, without showing it to anyone (the owner, 15 October 2026, SYL-156). The address is in the file `~/.arbol/database.json` ([ARC-D51](01-roots.md#decisions)).
 
 Arbol reports the server's health and the size of each Root's database, and warns before space runs out. A server that does not answer is not a normal state, and Arbol calls the Leather Bag's attention to it (ARC-2).
 
