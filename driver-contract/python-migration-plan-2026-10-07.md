@@ -30,7 +30,7 @@ Cross-language compatibility must include:
 
 ## Phase 1 Record the baseline and update the specifications
 
-Capture the actual current commit and worktree state of both repositories when implementation starts. Preserve current fixture files and evidence, including unsuccessful attempts. The planning baseline on 7 October 2026 is Claude `8932287` and Codex `37daaf8`; refresh this if either repository advances. Claude's historical Build record names an earlier source revision, so it cannot stand in for fresh Python verification.
+Capture the actual current commit and worktree state of both repositories when implementation starts. Preserve current fixture files and evidence, including unsuccessful attempts. The planning baseline on 7 October 2026 is Claude `5ea45f2` and Codex `37daaf8`; refresh this if either repository advances. Claude's historical Build record names an earlier source revision, so it cannot stand in for fresh Python verification.
 
 Record the owner's dated supersession of DRV-D1, preserving the original decision and rationale as history. Update both Driver overview language statements and Claude's development/check/packaging decisions, including CLD-D13, CLD-D15, and CLD-D16, with Python equivalents. CLD-D1 and CDX-D1 concern authentication and remain intact. Audit active task instructions for TypeScript-only commands and republish changed specification originals to Linear before implementation diverges from them.
 
