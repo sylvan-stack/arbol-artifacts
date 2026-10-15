@@ -298,6 +298,14 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 - `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#6. Many resident services with strict, version-coupled contracts`
 - `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#Anti-goals`
 
+## SYL-165 build tool verification, 15 October 2026
+
+`arbol-builds` and the launchers are typed Python since `arbol` commit `682e388` ([BLD-D15](#decisions)); the fixes from two reviews are in `3ed089f` and `bc6bc7a`. On 15 October 2026 the tool was installed into `~/.local/bin` with its pinned CPython 3.14.8. The installation rewrote the three launchers then in use, `arbol-classifier`, `arbol-claude-driver` and `arbol-codex-driver` ([BLD-D14](#decisions)), and removed the Node.js tool; a copy of that tool and its launchers is kept in `~/.local/share/arbol-builds-node-backup-2026-10-15`. From a clean login shell, `arbol-builds list` lists all 21 records, and `info` of each component reports its default Build: classifier 6, Claude Driver a, Codex Driver 5. A named older working Build (`arbol-claude-driver -v 9 info`) runs; a named failed Build that has its program (`arbol-classifier -v 5 info`) runs and prints its warning line; an unknown number is refused with the list of Builds that can run. No vendor request was sent.
+
+All 45 checks of `arbol:tests/test_builds.py` pass, and so do Ruff and strict mypy. The 22 checks of the TypeScript tool keep their names, the `builds.*` names in the Requirements table, so those names now verify the Python tool; 23 more cover what the Python tool adds and what the two reviews found untested. Of 53 faults planted in the code one at a time, every one makes a check fail; two of them, the two copies of one Ctrl-C safeguard, only together. Both Drivers' rehearsals (`scripts/verify_build.py`, synthetic checks, no vendor request) pass with the Python tool.
+
+A launcher adds 15.19 ms to a direct start (median of 60 rounds; 95th percentile 16.96 ms), against 23.46 ms for a Node.js launcher timed in the same rounds.
+
 ## Root extension verification, 12 October 2026
 
 BLD-0.17–23 are accepted requirements with pending unit checks. The installed `arbol-builds` tool and launchers do not yet implement Root association, `--root`, current-Root defaults, per-Root pruning protection or Trunk compatibility inventory. The Driver build and launcher checks below verify the existing global Driver path only. They do not establish that any Root-aware path works, and no Root-aware requirement is marked implemented by this edit. `arbol-app`, `arbol`, the Root manager and the first Trunk need their own Build checks before those components can be described as implemented. BLD-0.24–27, accepted on 13 October 2026, are not implemented either: the launchers record no start, and `arbol-builds` has no `lock`, `unlock` or `prune --unused`.
