@@ -120,7 +120,7 @@ Opening the First Sapling has to start Build 6, not Build 8. The selection rules
 
 Within a Root, `arbol-root trunks` lists every Trunk and its Builds, marking those that list the Root's Root Contract version and the one `run` would start (ARC-0, RCT-0). Compatibility is evaluated for every Trunk component in the registry, not just for versions of a single implementation. For new work, `arbol-root` chooses the named Trunk or else the Trivial Trunk, then the Build `arbol-trunk list` marks chosen, which it starts with an exact `-v` ([RTM-0](../../arbol-root/specs/00-the-commands.md#starting-a-trunk)). It never compares independent components' Build numbers to choose an implementation. An accepted Exchange keeps its recorded concrete Build. The inventory and selection build nothing: `arbol-builds` remains the only build tool.
 
-The build registry and launchers remain implemented without Root qualification until that work is completed. The rules here and in BLD-0 specify the target behaviour; changing the specification alone does not add runtime support.
+Since SYL-155, on 16 October 2026, the record of a Build of `arbol` or `arbol-root` names its Root and a Trunk Build's record its Root Contract versions; the launchers and the default Build still choose without the Root until that work is completed. The rules here and in BLD-0 specify the target behaviour; changing the specification alone does not add runtime support.
 
 ### The tray menu and `arbol-roots`
 
@@ -290,7 +290,7 @@ Builds:
 
 | ID | The registry, its tool and the launchers must… | Origin | Verified by |
 |---|---|---|---|
-| ARC-1.12 | record for a Build of `arbol` or `arbol-root` the Root it was made for | New | unit |
+| ARC-1.12 | record for a Build of `arbol` or `arbol-root` the Root it was made for | New | unit: `builds.root-of-build` |
 | ARC-1.13 | take as the default the working Build with the highest build number among the Builds of the Root asked for, and the current Root when none is named | Changed | unit |
 | ARC-1.14 | keep the newest working Build of every existing Root when pruning | Changed | unit |
 
