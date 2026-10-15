@@ -18,27 +18,27 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 
 **Table of Contents**
 
-- **A** — [A-Nex](#a-nex) · [Action Item](#action-item) · [Activity](#activity) · [Activity Execution](#activity-execution) · [Activity Graph](#activity-graph) · [Activation Rule](#activation-rule) · [Admission Boundary](#admission-boundary) · [Agent Attempt](#agent-attempt) · [Aggregate](#aggregate) · [Answer Beacon](#answer-beacon) · [Answer Threshold](#answer-threshold) · [Arbol](#arbol) · [Arbol Trunk](#arbol-trunk) · [Arbol Component](#arbol-component) · [Arbol Root](#arbol-root) · [Arbol Internals](#arbol-internals) · [Arbol Secret](#arbol-secret) · [Arbol Swift App](#arbol-swift-app) · [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) · [Artifact](#artifact) · [Artifact Chapter](#artifact-chapter) · [Artifact Corpus](#artifact-corpus) · [Artifact Space](#artifact-space) · [Attestation](#attestation) · [Authoritative Input](#authoritative-input) · [Authority Epoch](#authority-epoch)
-- **B** — [better-grep](#better-grep) · [Blueprint](#blueprint) · [Blueprint Chain](#blueprint-chain) · [Brain Recipe](#brain-recipe) · [Branch](#branch) · [Branch Overlay](#branch-overlay) · [Bridge](#bridge) · [Build](#build)
+- **A** — [A-Nex](#a-nex) · [Action Item](#action-item) · [Activity](#activity) · [Activity Execution](#activity-execution) · [Activity Graph](#activity-graph) · [Activation Rule](#activation-rule) · [Admission Boundary](#admission-boundary) · [Agent Attempt](#agent-attempt) · [Aggregate](#aggregate) · [Answer Beacon](#answer-beacon) · [Answer Threshold](#answer-threshold) · [Arbol](#arbol) · [Arbol Trunk](#arbol-trunk) · [Arbol Component](#arbol-component) · [Arbol Root](#arbol-root) · [Arbol Internals](#arbol-internals) · [Arbol Secret](#arbol-secret) · [Arbol Swift App](#arbol-swift-app) · [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) · [Arc](#arc) · [Artifact](#artifact) · [Artifact Chapter](#artifact-chapter) · [Artifact Corpus](#artifact-corpus) · [Artifact Space](#artifact-space) · [Attestation](#attestation) · [Authoritative Input](#authoritative-input) · [Authority Epoch](#authority-epoch)
+- **B** — [Beat](#beat) · [better-grep](#better-grep) · [Blueprint](#blueprint) · [Blueprint Chain](#blueprint-chain) · [Brain Recipe](#brain-recipe) · [Branch](#branch) · [Branch Overlay](#branch-overlay) · [Bridge](#bridge) · [Build](#build) · [Burn](#burn)
 - **C** — [Cell](#cell) · [Change Walkthrough](#change-walkthrough) · [Chat Exchange](#chat-exchange) · [Chat Note](#chat-note) · [Chat Session](#chat-session) · [Checkpoint](#checkpoint) · [Chunk](#chunk) · [Chunking](#chunking) · [CLI](#cli) · [Code Corpus](#code-corpus) · [Code Map](#code-map) · [Code Scout](#code-scout) · [Command](#command) · [Communicado](#communicado) · [Communicado Action](#communicado-action) · [Communicado Delivery](#communicado-delivery) · [Communicado Descriptor](#communicado-descriptor) · [Communicado Family](#communicado-family) · [Communicado Presentation](#communicado-presentation) · [Communicado Species](#communicado-species) · [Communicado State](#communicado-state) · [Companion](#companion) · [Completion](#completion) · [Corpus](#corpus) · [Corpus Watcher](#corpus-watcher) · [Coupling](#coupling) · [Cue](#cue) · [Cue Channel](#cue-channel) · [Cue Command](#cue-command) · [Cue Detection Catalog](#cue-detection-catalog) · [Cue Target](#cue-target) · [Cue Target Cache](#cue-target-cache)
 - **D** — [Default Arbol Trunk](#default-arbol-trunk) · [Delegate](#delegate) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance)
 - **E** — [Effector](#effector) · [Email Source Item](#email-source-item) · [Elma Chat](#elma-chat) · [Elma View Page](#elma-view-page) · [Embedder Profile](#embedder-profile) · [Embedding](#embedding) · [Embedding Provider](#embedding-provider) · [Entity](#entity) · [Entity Card](#entity-card) · [Entity Card Content](#entity-card-content) · [Entity Card Resolver](#entity-card-resolver) · [Entity Chip](#entity-chip) · [Entity Context Menu](#entity-context-menu) · [Entity Edge](#entity-edge) · [Entity Kind](#entity-kind) · [Entity Shape](#entity-shape) · [Entity URI](#entity-uri) · [Env Keepers](#env-keepers) · [Errand](#errand) · [Event Log](#event-log) · [Event Log Service](#event-log-service) · [Event Sourcing](#event-sourcing) · [Exchange Assignment](#exchange-assignment)
 - **F** — [Fanout](#fanout) · [Flyer](#flyer) · [Fold / Projection](#fold--projection) · [Font Scale](#font-scale) · [Free-standing](#free-standing)
-- **G** — [Generation](#generation) · [Graft](#graft)
+- **G** — [Generation](#generation)
 - **H** — [H-Nex](#h-nex) · [Heartwood](#heartwood) · [Hunk Review](#hunk-review)
 - **I** — [Identity Reconciliation](#identity-reconciliation) · [Ignore Rule](#ignore-rule) · [Ingest](#ingest) · [Initiator](#initiator) · [Instructions Hub](#instructions-hub) · [Intelligence Provider (IP)](#intelligence-provider-ip)
 - **K** — [Knowledge System](#knowledge-system)
-- **L** — [Ladder](#ladder) · [Leather Bag](#leather-bag) · [Living Topic](#living-topic)
+- **L** — [Ladder](#ladder) · [Leather Bag](#leather-bag) · [Living Topic](#living-topic) · [Load](#load)
 - **M** — [Mac OS Communicado](#mac-os-communicado) · [Mandate](#mandate) · [Mycel](#mycel) · [Mycel Operation](#mycel-operation) · [Mycel Skill](#mycel-skill) · [Mycel-enabled](#mycel-enabled) · [Mycel-integrated](#mycel-integrated)
 - **N** — [Native Tool Call](#native-tool-call) · [Nex](#nex) · [Normalizer](#normalizer) · [Now Line](#now-line)
 - **O** — [Oaken](#oaken) · [Objectives](#objectives) · [Organization](#organization)
 - **P** — [Parse Result](#parse-result) · [Parser](#parser) · [Parser Pipeline](#parser-pipeline) · [Provider](#provider)
-- **R** — [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Routine](#routine) · [Runbook](#runbook)
-- **S** — [Scan](#scan) · [Signal](#signal) · [Signal Rule](#signal-rule) · [Signal Type](#signal-type) · [Seqoya Lab](#seqoya-lab) · [Source Ref](#source-ref) · [Sparse Retrieval](#sparse-retrieval) · [Spine](#spine) · [Spotlight](#spotlight) · [Stale](#stale) · [Stale Summary Regeneration](#stale-summary-regeneration) · [State Runtime Profile](#state-runtime-profile) · [Steward](#steward) · [Stint](#stint) · [Subscription](#subscription) · [Summary Node](#summary-node) · [Surface](#surface) · [Swimlane](#swimlane) · [Swimlane Details](#swimlane-details) · [Swimlane Pool](#swimlane-pool) · [Swimmer](#swimmer) · [Sync Pass](#sync-pass)
+- **R** — [Radar](#radar) · [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Routine](#routine) · [Runbook](#runbook)
+- **S** — [Saga](#saga) · [Scan](#scan) · [Signal](#signal) · [Signal Rule](#signal-rule) · [Signal Type](#signal-type) · [Seqoya Lab](#seqoya-lab) · [Source Ref](#source-ref) · [Sparse Retrieval](#sparse-retrieval) · [Spotlight](#spotlight) · [Stale](#stale) · [Stale Summary Regeneration](#stale-summary-regeneration) · [State Runtime Profile](#state-runtime-profile) · [Steward](#steward) · [Stint](#stint) · [Subscription](#subscription) · [Summary Node](#summary-node) · [Surface](#surface) · [Sync Pass](#sync-pass)
 - **T** — [Taproot](#taproot) · [Text Snapshot](#text-snapshot) · [Theme](#theme) · [Tool](#tool) · [Tool Request](#tool-request) · [Tracked Source](#tracked-source) · [Trivial Trunk](#trivial-trunk) · [Trunk Runtime](#trunk-runtime) · [Turn](#turn)
 - **U** — [UI](#ui) · [UIShell / Chrome](#uishell--chrome)
-- **V** — [Visit](#visit)
-- **W** — [Wall](#wall) · [Willo Station](#willo-station) · [Working Directory](#working-directory) · [Worktree](#worktree) · [Worktree Container](#worktree-container)
+- **V** — [Velocity](#velocity) · [Visit](#visit)
+- **W** — [Willo Station](#willo-station) · [Working Directory](#working-directory) · [Workload](#workload) · [Worktree](#worktree) · [Worktree Container](#worktree-container)
 
 ---
 
@@ -166,6 +166,12 @@ The native macOS Swift/AppKit component built from `arbol-app`, with its own num
 
 **Example:** One Swift App shows First Sapling and a second Root in its tray menu. Opening Elma Chat in each loads that Root's renderer and connects it to that Root's backend; neither operation creates another Swift App process.
 
+## Arc
+
+The middle tier of a [Saga](#saga): a coherent sub-stream of related [Beats](#beat) within one Saga — for example one subsystem's share of a migration. A specific Arc is named by proper name plus tier word — "Glossary Arc", "Arbol Specs Arc" (see [Saga](#saga) **Usage**). Like every Saga tier, an Arc declares its own territory, and its Beats are exclusive while active — overlapping Beats queue instead of running together. Nesting stops at Beats: an Arc cannot contain another Arc.
+
+**Example:** The "Semantic Research Saga" has a "Glossary Arc"; that Arc groups the Beats that change the glossary and nothing else.
+
 ## Artifact
 
 A documentation file — a working document for a [Repo](#repo). Artifacts may live in the Repo's [Artifact Space](#artifact-space), `~/Artifacts/<repo-name>/`, or inside the Repo folder itself. They are almost always Markdown and are not source code, but an Artifact may be **any format** (`.txt`, `.pdf`, `.html`, or even source code used as documentation) — what makes a file an Artifact is its *purpose* (documentation / working notes), not its location or extension. **Not build output** — the files a [Build](#build) produces are never Artifacts. Representable as an [Entity](#entity) of kind `artifact`.
@@ -222,6 +228,12 @@ The exact initiator input durably accepted by an [Arbol Trunk](#arbol-trunk) as 
 ## Authority Epoch
 
 The persisted state generation used with database and installation identity to fence stale SQL/runtime owners. Epoch mismatch rejects authority; elapsed time or an epoch change alone does not establish native process exclusion, successful cleanup or a receiver ACK. See [State Runtime Profile](#state-runtime-profile).
+
+## Beat
+
+The leaf tier of a [Saga](#saga): the task-sized unit of work an agent picks up and runs to done or abandoned — typically through an [Errand](#errand). A specific Beat is named by proper name plus tier word — "Trunk Implementation Beat", "Workflow Semantics Beat" (see [Saga](#saga) **Usage**). A Beat declares its own territory like every other tier, may carry [Objectives](#objectives) as its done-when, and is where progress is measured: a Saga's or Arc's progress is read from its Beats' outcomes, which is what a future board visualization would show per unit.
+
+**Example:** The "Idempotency Key Column Beat" touches `migrations/…` and `ledger/writer.py` only; while a [Delegate](#delegate) works it, no other active Beat, Arc, or Saga may claim those files.
 
 ## better-grep
 
@@ -288,6 +300,12 @@ target-scope: local_section
 The versioned set of build outputs (binaries, app/renderer bundles) produced by one `build.sh` run, identified by a `build_id`. A [Driver Instance](#driver-instance) is a [Driver](#driver) pinned to one Build. *(Build outputs are not [Artifacts](#artifact) — different sense of the word.)*
 
 **Example:** Running `build.sh` at 13:55 can produce build `20260612T135543Z`; a driver instance may then be pinned to that exact build.
+
+## Burn
+
+The **accumulated token consumption** of saga work: every token spent by the agents working a unit, from its start to now, reportable per [Subscription](#subscription), [Brain Recipe](#brain-recipe), and [Stint](#stint). Burn is a stock, not a rate — the rate of token generation is [Velocity](#velocity). Scoped like every Radar metric: "**Research Saga Burn**" is one unit's total, **Radar Burn** the machine-wide total (see [Radar](#radar)). *(Planned feature.)*
+
+**Example:** "Semantic Research Saga" has burned 412k tokens across two Delegates — 300k of them on the second [Brain Recipe](#brain-recipe) of its [Ladder](#ladder).
 
 ## Cell
 
@@ -650,12 +668,12 @@ Per-[Repo](#repo) setting naming **which embedding model** the repo's [Chunks](#
 
 ## Entity
 
-Any first-class Arbol citizen — an MR, a commit, a git [Branch](#branch), a ticket, a glossary term, a [Chat Session](#chat-session), an email, a Slack message, an artifact, a requirement, an invariant — and more kinds as they are added. Entities are numerous and get connected to one another by [Entity Edges](#entity-edge). Rendered uniformly on every [Surface](#surface) via `EntityChip` / `EntityCard` — never re-styled per Surface. An optional **state** value recolours an entity (an `mr` green when `merged`, a [Swimmer](#swimmer) red when `blocked`). See also: [Entity Kind](#entity-kind), [Entity Shape](#entity-shape), [Entity Edge](#entity-edge). Kinds (tags lowercase):
+Any first-class Arbol citizen — an MR, a commit, a git [Branch](#branch), a ticket, a glossary term, a [Chat Session](#chat-session), an email, a Slack message, an artifact, a requirement, an invariant — and more kinds as they are added. Entities are numerous and get connected to one another by [Entity Edges](#entity-edge). Rendered uniformly on every [Surface](#surface) via `EntityChip` / `EntityCard` — never re-styled per Surface. An optional **state** value recolours an entity (an `mr` green when `merged`, a ticket red when `blocked`). See also: [Entity Kind](#entity-kind), [Entity Shape](#entity-shape), [Entity Edge](#entity-edge). Kinds (tags lowercase):
 
 | kind | tag | shape |
 | --- | --- | --- |
 | `ticket` | tic | mark |
-| `graft` | grf | note |
+| `saga` | sag | note |
 | `mr` | mr | mark |
 | `commit` | cmt | mark |
 | `slack` | slk | mark |
@@ -702,7 +720,7 @@ The reusable compact UI representation of an [Entity URI](#entity-uri). It parse
 
 ## Entity Context Menu
 
-The shared UI **context menu** displayed for any component associated with an [Entity](#entity), including Chat Session cards, tickets, and Grafts. It provides the Entity-generic actions **Link to entity…** and **Send to** → **Graft**, **Spotlight**, or **Swimlane…**. Entity types and host surfaces may extend it with additional, entity-specific items; those additions appear after the shared actions and do not replace them. The component is implemented in the design system as `openEntityContextMenu` and attaches to Entity-backed chips, cards, rows, and detail surfaces through `entityLinkTarget`.
+The shared UI **context menu** displayed for any component associated with an [Entity](#entity), including Chat Session cards, tickets, and Sagas, Arcs, and Beats. It provides the Entity-generic actions **Link to entity…** and **Send to** → **Saga**, **Arc**, **Beat**, or **Spotlight**. Entity types and host surfaces may extend it with additional, entity-specific items; those additions appear after the shared actions and do not replace them. The component is implemented in the design system as `openEntityContextMenu` and attaches to Entity-backed chips, cards, rows, and detail surfaces through `entityLinkTarget`.
 
 **Example:** Right-clicking a Chat Session card opens its Entity Context Menu, where **Send to → Spotlight** adds that Chat Session to the current Spotlight; a ticket may also show ticket-specific actions below the common section.
 
@@ -823,17 +841,6 @@ The umbrella for [Mycel](#mycel)'s **productive** side: *producing or regenerati
 
 **Example:** A [Routine](#routine) could regenerate a stale "API reference" [Chunk](#chunk) from the code it derives from, then leave it Unattested for a competent reviewer — that's Generation; the [Detection](#detection) that flagged it stale is not.
 
-## Graft
-
-An [Entity](#entity) (kind `graft`, tag `grf`, shape `note`): a **bounded Arbol-native work item** with an intended outcome and a lifecycle — self-assigned, grafted onto the tree rather than grown from one provider's seed (horticultural *graft* + "hard graft" = work). A Graft may stand alone or **wrap any Entity** by retaining that Entity's canonical Repo + kind + ID as its source identity; wrapping does not copy, replace, contain, or confer ownership over the source. Other tickets, MRs, messages, Chat Sessions, and Artifacts may be related context, but a Graft is never a generic folder, topic, current-attention marker, or permission grant. The defining test is whether the work can eventually be declared done or intentionally abandoned.
-
-Simple format: title, description, a type (`subtask`, `code-review`, `merge-request`, `trc-management`, `spike`, `branching-chores`, `solution-defense`, `deep-research`, `code-scout`), a status (`open` | `done`), a planned start, and optional urgency reusing the [Wall](#wall) vocabulary (`estimated` | `due` | `deadline` + a final time) — no urgency means backlog. The planned start and final time are scheduling properties of the Graft; they do not create a separate Focus Time or Focus Block Entity. Tracked on [Oaken](#oaken)'s Tasks → Grafts page. Creating a [Swimmer](#swimmer) from a Graft copies its planned start and optional urgency to that Swimmer; creating a [Swimlane](#swimlane) from it also creates that first Swimmer. Stored in Root Postgres via the `graft.*` RPC family — user-curated planning state outside the [Event Log](#event-log), like Swimlanes. Distinct from an [Errand](#errand) (a delegated one-off Chat Session): a Graft is the work item, not its execution.
-
-**Focus Area** and **Focus Time** are retired names. Outcome-bearing records using either old name migrate to Grafts; loose organization remains a Swimlane or ordinary Entity relationship rather than another work Entity.
-
-**Example:** "Migrate Willo Station off legacy snapshots" can be a standalone `deep-research` Graft scheduled to start Tuesday at 14:00. A titleless Slack conversation can instead be wrapped from any message into a named Graft while the Slack message remains its source Entity.
-
-
 ## Hunk Review
 
 The shared component that displays a selected **Diff** as changed files, code changes, and the commit information relevant to its current [Diff View](#diff-view). Hunk Review does not create or persist views: its host selects the Diff View and supplies the constructed Diff.
@@ -919,11 +926,17 @@ The carbon-based decision unit at the keyboard — the person driving Arbol. **T
 
 ## Living Topic
 
-An [Entity](#entity) (kind `living_topic`, tag `liv`, shape `note`): a durable, evolving context hub for a subject whose continuity spans multiple independent events or periods of work. A Living Topic relates [Chat Sessions](#chat-session), [Artifacts](#artifact), tickets, [Grafts](#graft), messages, requirements, and any other Entities that concern the same subject over time. These are [Entity Edges](#entity-edge), not ownership or filesystem containment: one Entity may be linked to several Living Topics, and deleting a Living Topic deletes only the topic and its links.
+An [Entity](#entity) (kind `living_topic`, tag `liv`, shape `note`): a durable, evolving context hub for a subject whose continuity spans multiple independent events or periods of work. A Living Topic relates [Chat Sessions](#chat-session), [Artifacts](#artifact), tickets, [Sagas](#saga), [Arcs](#arc), [Beats](#beat), messages, requirements, and any other Entities that concern the same subject over time. These are [Entity Edges](#entity-edge), not ownership or filesystem containment: one Entity may be linked to several Living Topics, and deleting a Living Topic deletes only the topic and its links.
 
-A Living Topic is not bounded work, a schedule, or a current-attention designation. A [Graft](#graft) represents something that can be completed or abandoned; a [Spotlight](#spotlight) identifies what the Leather Bag currently wants kept in focus; a Living Topic preserves continuity even while the concern is quiet and after individual manifestations are resolved. Living Topics are created, edited, deleted, expanded, and linked to Entities on the `Seqoya[Living Topics]` page. **Link Entity** opens standard Entity Search; pressing Enter links the selected Entity to that topic.
+A Living Topic is not bounded work, a schedule, or a current-attention designation. A [Saga](#saga), [Arc](#arc), or [Beat](#beat) represents work that can be completed or abandoned; a [Spotlight](#spotlight) identifies what the Leather Bag currently wants kept in focus; a Living Topic preserves continuity even while the concern is quiet and after individual manifestations are resolved. Living Topics are created, edited, deleted, expanded, and linked to Entities on the `Seqoya[Living Topics]` page. **Link Entity** opens standard Entity Search; pressing Enter links the selected Entity to that topic.
 
 **Example:** “Intermittent authentication failures” remains one Living Topic while separate incidents, Slack discussions, Chat Sessions, investigation Artifacts, tickets, and fixes appear over months in different forms.
+
+## Load
+
+The **instantaneous measure of agent work in flight**: how many agents are actively working a scope and how much live [Chat Session](#chat-session) context they hold. **Radar Load** is the total across all projects and sagas on this computer — the machine's agentic load at this moment; a unit's load is the agents it employs. Load is what the capacity question reads against: units that add no Load but hold runnable territory are exactly what could start next. Scoped per unit and machine-wide (see [Radar](#radar)). *(Planned feature.)*
+
+**Example:** Radar Load: four Delegates, ~380k tokens of live context. "Glossary Arc": one Delegate at 60k context — and two Beats whose territories overlap nothing active, ready to start.
 
 ## Mac OS Communicado
 
@@ -1015,13 +1028,13 @@ A tool the [Driver](#driver)'s CLI runs itself (`Bash, Read, Write, Edit, Glob, 
 
 The glowing accent rule at the current time on the [Oaken](#oaken) time axis. The anchor everything measures against: spent vs remaining, overdue, live-span growth, countdowns.
 
-**Example:** In Oaken, a live task bar grows until it touches the Now Line; if its wall is below the Now Line, the task is overdue.
+**Example:** In Oaken, a live task bar grows until it touches the Now Line; if the task's deadline sits below the Now Line, the task is overdue.
 
 ## Oaken
 
-The task-management and delivery workspace [UI](#ui). See also: [Swimlane Pool](#swimlane-pool), [Swimlane](#swimlane), [Swimmer](#swimmer), [Wall](#wall), [Spine](#spine), [Now Line](#now-line).
+The task-management and delivery workspace [UI](#ui). See also: [Saga](#saga), [Radar](#radar), [Now Line](#now-line).
 
-**Example:** A delivery lead uses Oaken to see swimlanes for product workstreams, swimmers for active tasks, and deadline walls for upcoming releases.
+**Example:** A delivery lead uses Oaken to follow Sagas for product workstreams and how much of each is done.
 
 
 ## Objectives
@@ -1064,6 +1077,16 @@ Two distinct layers carry a provider value, and they deliberately differ for gat
 - **Vendor family** (the [Subscription](#subscription) level): who you actually pay and whose usage/models/branding apply. The glm subscription's family is `zai` (Z.AI), never Anthropic — even though its transport is the claude CLI.
 
 **Example:** `claude` is the transport provider for both `bro-claude` and `safe-claude`; `codex` is a different provider with its own driver. The `glm` IP rides the `claude` transport while its bound subscription belongs to the `zai` family — so its model picker offers GLM models and its usage comes from z.ai's quota API, never claude.ai or api.anthropic.com.
+
+## Radar
+
+The live overview of all saga work: every [Saga](#saga), [Arc](#arc), and [Beat](#beat), its state and progress, and which agent holds each active unit. The Radar is a living picture, not a registry — units appear when they start, advance as they progress, and clear when they finish — so it answers the two standing questions directly: what could run right now (the units whose declared territories overlap no active territory), and which part of the project each running agent is in. *(Planned feature.)*
+
+The Radar watches work, not processes: monitoring Arbol processes themselves remains [Willo Station](#willo-station)'s job. Typically rendered as an [Oaken](#oaken) view.
+
+The Radar is also the gathering point for work statistics (under design): the [Workload](#workload) family — [Burn](#burn) (accumulated token consumption), [Load](#load) (agents working now and their live context), [Velocity](#velocity) (token generation rate) — together with summaries of the work done, estimated progress, and spend and usage rollups per [Subscription](#subscription), [Brain Recipe](#brain-recipe), and [Stint](#stint). Radar metrics scope symmetrically: per unit — "**Research Saga Burn**" — and machine-wide — **Radar Burn**, **Radar Load**, **Radar Velocity** — all projects and sagas on this computer.
+
+**Example:** The Radar shows the "Semantic Research Saga" with its "Glossary Arc" three Beats along, the "Trunk Implementation Beat" held by a [Delegate](#delegate), and the "Implementing Specs Saga" greyed out as queued — its territory overlaps the active "Writing Specs Saga". The corner reads "Radar Load: 4 Delegates · ~380k tokens live" and "Radar Velocity: 520 tok/s".
 
 ## RAPTOR Rebuild
 
@@ -1148,6 +1171,18 @@ A **technical manual for a tool**, kept **near its file** (the runbook-near-file
 
 **Example:** `tools/deployment.md`'s failure-mode table (poisoned-package zlib crashes, orphan-core reaping, socket-wait timing) carries refs to `rebuild-and-restart.sh` — edit that script and Detection flags the section for review.
 
+## Saga
+
+An **independent stream of work** that does not interfere with other Sagas: no two concurrently active Sagas make changes in the same code and/or [Artifacts](#artifact). Each unit declares a **territory** — the code, files, and artifacts it may touch — and a territory is **exclusive while active**: declared territories may overlap, but a unit cannot start or keep running while an active unit's territory overlaps its own. Overlap therefore means sequencing, not a violation — phases of one effort queue behind each other — and the parallel-capacity question stays countable at every tier: at any moment, how many units overlap no active territory, and which part of the project each running one owns. *(Planned feature.)*
+
+Sagas nest exactly **two levels deep**: a top-level **Saga** — a high-level direction of work — contains **[Arcs](#arc)**, and an Arc contains **[Beats](#beat)**. All three tiers are one record kind, a Saga at different levels of nesting, and every one of them is an independent stream. The exclusivity rule settles only units outside a containment line — sibling Beats of one Arc, sibling Arcs of one Saga, and unrelated Sagas never run concurrently on overlapping territory, while an ancestor runs through its descendants. Nesting goes no deeper — an Arc cannot contain another Arc, and a Beat contains nothing. How a territory is declared, held and checked is in the [Sagas guide](../mycel/operations/sagas.md).
+
+Not the distributed-systems "saga pattern" (compensating transactions): a Saga names a direction of work, not a transaction scheme. Distinct from an [Errand](#errand) (the delegated session through which an agent works a Beat — the Errand is execution, the Saga is the work) and [Activities](#activity) (trunk-internal execution units below the Saga layer).
+
+**Usage:** A specific unit is always referred to by its proper name followed by its tier word, with the tier word capitalized — "Semantic Research Saga", "Glossary Arc", "Trunk Implementation Beat". Prose, UI labels, and code use the full form for a specific unit (code identifiers end in the tier: `semantic_research_saga`); the bare tier word is reserved for generic statements about a tier ("an Arc cannot contain another Arc") and back-references whose antecedent is unambiguous in the same paragraph. Unqualified **Saga** (plural **Sagas**) may also denote a unit of any tier when the family sense is meant; when the tier matters, name it.
+
+**Example:** The "Semantic Research Saga" contains the "Glossary Arc" and the "Arbol Specs Arc"; the "Glossary Arc" contains the "Trunk Implementation Beat" and the "Workflow Semantics Beat". The two Beats touch disjoint files, so two [Delegates](#delegate) can work them at once. The "Writing Specs Saga" and the "Implementing Specs Saga" declare overlapping territories — both change the spec artifacts — so they never run at the same time: "Implementing Specs Saga" becomes runnable the moment "Writing Specs Saga" finishes.
+
 ## Scan
 
 The first step of [Ingest](#ingest): read every file of a [Corpus](#corpus) from disk and compute each file's whole-file content hash. Read-only — no database writes — and it produces the picture of "what exists right now" the rest of Ingest works from. A file whose hash matches the stored one is **skipped entirely** (its chunks are provably identical, since [Chunking](#chunking) is deterministic); this short-circuit is what makes an idle Ingest sub-second.
@@ -1190,15 +1225,9 @@ Search **by exact words** (BM25 / keyword / *lexical* search): a text is represe
 
 **Example:** The query `hash_at_gen` instantly tops the chunks containing that literal token — no embedding involved; asking "where is drift pinned to a source version" instead needs the dense arm.
 
-## Spine
-
-A [Swimmer's](#swimmer) vertical bar: spent segment (start→[Now Line](#now-line)) + remaining (Now Line→[Wall](#wall)), with overdue / planned variants.
-
-**Example:** A swimmer that started at 10:00 and has a due wall at 14:00 shows a spent spine segment from 10:00 to now and a remaining segment from now to 14:00.
-
 ## Spotlight
 
-A durable, Leather-Bag-controlled designation attached to exactly one [Entity](#entity), indicating that the Entity belongs to the Leather Bag's current area of interest. Spotlight answers only **“What do I want Arbol to keep in focus?”** It is not a container, work item, schedule, response request, authority grant, or execution trigger. A [Graft](#graft) represents bounded work; an [Action Item](#action-item) is a Communicado requiring a response.
+A durable, Leather-Bag-controlled designation attached to exactly one [Entity](#entity), indicating that the Entity belongs to the Leather Bag's current area of interest. Spotlight answers only **“What do I want Arbol to keep in focus?”** It is not a container, work item, schedule, response request, authority grant, or execution trigger. A [Beat](#beat) is a bounded piece of work; an [Action Item](#action-item) is a Communicado requiring a response.
 
 Spotlight is persisted as current set membership only: a database row means the Entity is Spotlighted; removing it deletes that row. It has no start/end dates, inactive rows, expiration, or retained Spotlight history. A Spotlight may target any Entity Kind, including a Communicado. It is fully orthogonal to Communicado status: Action Items are not Spotlighted automatically, and resolving a Spotlighted Action Item leaves its Spotlight intact.
 
@@ -1255,30 +1284,6 @@ One node of a [RAPTOR Tree](#raptor-tree): a `derived` [Chunk](#chunk) holding t
 Any environment or channel through which something interacts with [Arbol](#arbol)—inbound or outbound, and not only a GUI. Surfaces include the four **[UIs](#ui)** (windowed surfaces), the **[CLI](#cli)** (a terminal surface), native macOS Notification Center, and Integrations such as Slack / IMAP / HTTP. A [Communicado Species](#communicado-species) explicitly supports whichever Surfaces it can inhabit and may provide a different [Presentation](#communicado-presentation) for each. *(A [UI](#ui) is one kind of Surface, not a synonym for it.)*
 
 **Example:** A Slack message arriving through the Integrator, a user typing in [Elma Chat](#elma-chat), an `arbol-cli session send`, and a Communicado delivered to macOS Notification Center are interactions on different Surfaces.
-
-## Swimlane
-
-The top-level container in [Oaken](#oaken): a workstream that holds one or more [Swimmers](#swimmer) (Oaken tasks). It does not own a start or [Wall](#wall); those belong independently to each Swimmer. **Create swimlane** creates the workstream and adds the selected [Entity](#entity) as its first Swimmer in one operation. A Swimlane may be missing/not-yet-created; the board still shows placeholder slots (currently 8 static placeholders), so the board structure is always visible. *(Earlier code/prose used "Lane"; "Swimlane" is canonical.)*
-
-**Example:** “Payments migration” can be a Swimlane containing swimmers for database changes, API changes, and rollout tasks.
-
-## Swimlane Details
-
-The `Oaken[Swimlane Details]` page: one [Swimlane](#swimlane) expanded full-width into wide [Swimmer](#swimmer) columns on a shared time axis.
-
-**Example:** Clicking the “Payments migration” Swimlane opens Swimlane Details, where each swimmer appears as a wide column on the same timeline.
-
-## Swimlane Pool
-
-The `Oaken[Swimlanes]` page: a vertical-time board of all [Swimlanes](#swimlane). Time runs up the Y-axis, paged by working day.
-
-**Example:** The Swimlane Pool shows all workstreams for today, stacked vertically against the working-day time axis.
-
-## Swimmer
-
-One Oaken task: a track inside a [Swimlane](#swimlane), rooted on any source [Entity](#entity) with a `start`, an optional typed [Wall](#wall), optional `blocked`, and a stream of child Entities. **Create swimmer** asks for an existing Swimlane, then adds the selected Entity there with its start set to creation time. **Create swimlane** creates a new workstream and performs the same addition as its first Swimmer. When the source Entity has an **Arbol final time**, that time and urgency become the Swimmer's Wall. External metadata such as a tracker's due date is only a hint and never creates or changes a Wall. Tickets and [Grafts](#graft) are the first Entity kinds surfaced for these actions, but the root contract is Entity-generic.
-
-**Example:** A ticket “Implement login rate limiting” or a Graft “Review the authentication MR” becomes a Swimmer starting now; if the source has a deadline, that deadline becomes its wall, and later commits/MRs become child Entities.
 
 ## Sync Pass
 
@@ -1360,12 +1365,6 @@ The shared three-row window frame (Header / Viewport / Status Bar) every UI moun
 
 **Example:** The same header/status-bar frame wraps Elma Chat, Oaken, Seqoya Lab, and Willo Station, while each surface fills the viewport differently.
 
-## Wall
-
-A [Swimmer's](#swimmer) deadline line, typed: **estimated** (`≈`, green) · **due** (`⚑`, amber) · **deadline** (`⛔`, red). Drives the remaining-fill colour and live countdown.
-
-**Example:** A swimmer with a hard production launch date uses a red `deadline` wall; a rough engineering estimate uses a green `estimated` wall.
-
 ## Willo Station
 
 The station/control surface [UI](#ui).
@@ -1376,9 +1375,21 @@ The station/control surface [UI](#ui).
 
 The repository folder in which a Chat Session executes commands. It is the first selected repository directory. Existing persisted Arbol/main paths resolve to the standard Arbol folder after migration. Worktree selection is deprecated.
 
+## Velocity
+
+The **rate of token generation**: tokens per second produced by the agents working a unit. A flow — the rate counterpart of [Burn](#burn)'s stock. **Radar Velocity** is the machine-wide total. Scoped per unit and machine-wide (see [Radar](#radar)). *(Planned feature.)*
+
+**Example:** "Writing Specs Saga" runs at ~180 tok/s while its Delegate drafts; the machine totals ~520 tok/s across four Delegates.
+
 ## Visit
 
 A **Visit** occurs when an Entity becomes the current or active Entity because the user is fully focused on that Entity in its own dedicated page or view. Visiting updates Arbol’s most-recently-visited Entity context. Merely expanding, previewing, or selecting an Entity within a list of peer Entities is not a Visit. When the current page has no active Entity of its own, features that need Entity context may use the most recently visited Entity.
+
+## Workload
+
+The umbrella for the agent-work measurements the [Radar](#radar) reports: [Burn](#burn) (accumulated token consumption), [Load](#load) (agents working now and their live [Chat Session](#chat-session) context), and [Velocity](#velocity) (token generation rate) — together with summaries of the work done and estimated progress. A unit's workload and the machine's workload are the same measures at different scopes.
+
+**Example:** "How is the workload?" asks after Burn, Load, and Velocity together — on one Saga or across the machine.
 
 ## Worktree
 
