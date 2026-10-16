@@ -300,10 +300,10 @@ A Trunk, seen from outside:
 |---|---|---|---|
 | ARC-0.18 | run one Chat Exchange in one process, detached when `arbol-root` starts it (RCT-2), with the route it was handed | Changed | contract |
 | ARC-0.19 | keep its record and the arriving answer in the Root's `exchanges/` folder, and take stop and answers there | Changed | contract |
-| ARC-0.20 | write rows into the chat tables of the Root's database, and create or change no table | Changed | contract |
+| ARC-0.20 | write rows into the chat tables of the Root's database, and create or change no table | Changed | contract: RCT-3.1 and RCT-3.2, scenarios R1, R16 and R19 of [RCT-4](../../arbol-root/contract/04-conformance.md) (SYL-171) |
 | ARC-0.21 | finish an Exchange while Arbol, the Root manager or the database is absent | Changed | drill |
 | ARC-0.22 | list in its Build record the versions of the Root Contract it implements (RCT-0.1) | New | unit |
-| ARC-0.24 | make its small text calls as Driver runs without tools on the small-call route it was handed, make its classifications through `arbol-classifier`, and go on when such a call is missing, slow or fails | New | contract: RCT-2.22, scenario R19 of [RCT-4](../../arbol-root/contract/04-conformance.md) |
+| ARC-0.24 | make its small text calls as Driver runs without tools on the small-call route it was handed, make its classifications through `arbol-classifier`, and go on when such a call is missing, slow or fails | New | contract: RCT-2.22, scenario R19 of [RCT-4](../../arbol-root/contract/04-conformance.md) (SYL-171); what the Trivial Trunk does with a title: TRV-0.8 |
 
 ARC-0.23, which had each Trunk state the layout of its chat tables, was withdrawn on 13 October 2026 by [ARC-D48](#decisions): the layout belongs to the Root ([ARC-1.28](01-roots.md#requirements)).
 

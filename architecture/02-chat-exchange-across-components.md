@@ -117,7 +117,7 @@ The backend compatible with each Root reads that Root's database and Exchange fi
 |---|---|---|---|
 | ARC-2.1 | count a message as accepted when the Trunk has its record in the folder and the message in the database, and before that start nothing and keep the Draft | Changed | drill |
 | ARC-2.2 | keep the arriving answer in a file in the Exchange's folder, with a limit of size, and write no database row for a fragment | Changed | unit |
-| ARC-2.3 | write each finished message or tool call to the database when it is finished | Changed | contract |
+| ARC-2.3 | write each finished message or tool call to the database when it is finished | Changed | contract: RCT-3.2, scenario R1 of [RCT-4](../../arbol-root/contract/04-conformance.md) (SYL-171) |
 | ARC-2.4 | show a UI that is opened late, opened again or opened twice the whole answer so far | Changed | journey |
 | ARC-2.5 | take a stop and an answer to the agent's question through the Exchange's folder, and show "stopped" only when the Trunk reports that the agent has stopped | Changed | drill |
 | ARC-2.6 | let a Trunk end its Exchange by itself, with no other component accepting or confirming the end | Changed | drill |
