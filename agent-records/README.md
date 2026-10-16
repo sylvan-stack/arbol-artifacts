@@ -7,14 +7,14 @@ How Arbol sees every agent session on this Mac, whatever tool runs it: Claude Co
 
 For example, when a Codex thread starts a long build, its record says that it waits for a command; when the agent asks the Leather Bag which branch to use, it says that it waits for an answer; when the thread is archived, the record gets its end.
 
-It was decided on 15 October 2026 that Arbol must not lock anyone into its own app, and that the tools' hooks write one shared agent record. Two readers are planned: Arbol's [Radar](../GLOSSARY.md#radar), and the check of holds in the guide [Working in Sagas](../../mycel/operations/sagas.md), which releases the [Beat](../GLOSSARY.md#beat) of an agent that is gone and only shows one that is silent.
+It was decided on 15 October 2026 that Arbol must not lock anyone into its own app, and that the tools' hooks write one shared agent record. The owner answered the chapter's two questions on 16 October 2026 (AGR-D11 and AGR-D12) and accepted both specifications the same day. Two readers are planned: Arbol's [Radar](../GLOSSARY.md#radar), and the check of holds in the guide [Working in Sagas](../../mycel/operations/sagas.md), which releases the [Beat](../GLOSSARY.md#beat) of an agent that is gone and only shows one that is silent.
 
 ## Specifications
 
 | Spec | Title | Status |
 |---|---|---|
-| [AGR-0](00-the-agent-record.md) | The agent record | review |
-| [AGR-1](01-the-hooks.md) | The hooks of Claude Code and Codex | review |
+| [AGR-0](00-the-agent-record.md) | The agent record | accepted |
+| [AGR-1](01-the-hooks.md) | The hooks of Claude Code and Codex | accepted |
 
 ## Conventions
 

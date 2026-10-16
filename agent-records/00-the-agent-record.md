@@ -1,13 +1,13 @@
 ---
 role: authored
 spec: AGR-0
-status: review
+status: accepted
 ---
 # Agent records · 00 The agent record
 
 An *agent record* is a small JSON file that one agent session keeps up to date while it lives, such as `~/Library/Application Support/Arbol/agents/codex-01a1438b-1b0b-78c2-ae38-236d45157af0.json` for one Codex thread. It says who the agent is, which process runs it, what the agent waits for now and since when, and when the session ended. This specification states what counts as one agent session, where the records are kept, the fields of a record and how it is written so that a reader never sees half of it, how the process that owns a record is named, how a reader tells a working, waiting, silent, gone and ended agent apart, and how an Exchange of an Arbol Trunk takes part without a file of its own. It matters because until now only Arbol's own programs kept such a record (a Driver's run, [DRV-6](../driver-contract/06-state-and-simultaneous-calls.md); a Trunk's Exchange, [RCT-1](../../arbol-root/contract/01-the-exchange-folder.md)), so an agent that the Leather Bag ran in Claude Code or Codex was invisible to Arbol.
 
-It follows the conventions of the [Driver Contract](../driver-contract/README.md#conventions) and of this chapter's [README](README.md#conventions). The hooks that write the records are in [AGR-1](01-the-hooks.md).
+It follows the conventions of the [Driver Contract](../driver-contract/README.md#conventions) and of this chapter's [README](README.md#conventions). The hooks that write the records are in [AGR-1](01-the-hooks.md). The owner answered its question on 16 October 2026, and the specification was accepted the same day.
 
 In this chapter the *owner* of a record is always a process, as in DRV-6. The person who works with the agent is the Leather Bag.
 
@@ -179,7 +179,7 @@ The agent view never calls an Exchange silent. Whether an Exchange is stuck is d
 
 A reader outside Arbol, such as the check of holds, reads the Exchange folders `~/Library/Application Support/Arbol/roots/<root>/exchanges/<exchange>/` directly, as RCT-1 says a folder tells a reader, with the same mapping. It lists as unreadable a record whose `rootContract` it does not know.
 
-An Arbol chat has no process between two messages, and Arbol has no closing of a chat yet. A hold for an agent working in an Arbol chat would therefore name the chat and never be released by itself; how such a hold is named and released is open ([AGR-D11](#decisions)). Until it is decided, a Beat is worked in Claude Code or Codex directly, not in an Arbol chat.
+An Arbol chat has no process between two messages, and Arbol has no closing of a chat yet. A hold for an agent working in an Arbol chat therefore names the chat, stays while the chat waits for its next message, and is released only by hand until Arbol can close a chat ([AGR-D11](#decisions)). The agent learns its Root and chat from `ARBOL_ROOT` and `ARBOL_CHAT`, which the Trunk hands to the vendor tool. Until that is built, a Beat is worked in Claude Code or Codex directly, not in an Arbol chat.
 
 <!-- sources:
 arbol-root:contract/01-the-exchange-folder.md#The record
@@ -219,7 +219,7 @@ Once this specification is accepted, three documents follow it. Their changes ar
 |---|---|
 | The guide [Working in Sagas](../../mycel/operations/sagas.md) | A hold names its agent by `tool` and `session` instead of a process and a thread file; its check reads the record and releases a hold whose agent is `gone` or `ended`. *Silent* becomes this specification's: only an agent that works and gives no sign of life, not one that waits for the next message. Its "Not tried yet" is answered: `CODEX_THREAD_ID` is set in the threads of the Codex app and of the codex CLI, and the codex CLI keeps the thread's file open while it runs |
 | [ARC-1](../architecture/01-roots.md) | `arbol-agents` and the folder of agent records join what lies outside every Root |
-| DRV-2, RCT-2 and TRV-0 | Only if AGR-D11 is decided as proposed: the Trunk hands `ARBOL_ROOT` and `ARBOL_CHAT` to the vendor tool's environment |
+| DRV-2, RCT-2 and TRV-0 | As AGR-D11 decides: the Trunk hands `ARBOL_ROOT` and `ARBOL_CHAT` to the vendor tool's environment |
 
 ## Requirements
 
@@ -320,6 +320,6 @@ Version 1 knew only the turns it ran itself. An agent that the Leather Bag ran i
 | AGR-D8 | Which program writes and reads the records? | `arbol-agents`, in the `arbol` repository beside `arbol-roots`, outside every Root, installed like `arbol-builds` and reached through `~/.local/bin/arbol-agents`. The hooks name that path in the tools' settings, so it must not change with an install, and Codex trusts a hook only as long as its command stays the same (AGR-1) | Technical choice, 16 October 2026 |
 | AGR-D9 | Does a reader look into a tool's transcript to learn more, such as that the Leather Bag interrupted Claude Code? | No. It reads only the transcript's change time. The contents are the tool's own format and change without notice | Technical choice, 16 October 2026 |
 | AGR-D10 | When are records removed? | By `arbol-agents list`, 7 days after the last event of a record that ended or whose agent no longer counts as alive. A hold or the Radar can still say what happened to an agent a few days later | Technical choice, 16 October 2026 |
-| AGR-D11 | An agent working in an Arbol chat: what does its hold name, and when is it released? | The chat, not the Exchange. An Exchange ends with every answer, so a hold that named it would be released after each message. A hold that names the chat stays while the chat waits for the next message, and is released only by hand until Arbol can close a chat. For the agent to name its chat, the Trunk would hand `ARBOL_ROOT` and `ARBOL_CHAT` to the vendor tool's environment, which needs a field in the Driver's run request (DRV-2) and a line in RCT-2 and TRV-0: a later Beat | Open |
+| AGR-D11 | An agent working in an Arbol chat: what does its hold name, and when is it released? | The chat, not the Exchange. An Exchange ends with every answer, so a hold that named it would be released after each message. A hold that names the chat stays while the chat waits for the next message, and is released only by hand until Arbol can close a chat. For the agent to name its chat, the Trunk would hand `ARBOL_ROOT` and `ARBOL_CHAT` to the vendor tool's environment, which needs a field in the Driver's run request (DRV-2) and a line in RCT-2 and TRV-0: a later Beat | Decided 16 October 2026 by the owner: the proposed default |
 | AGR-D15 | How do two hooks keep from writing one record at once? | The system's file lock (`flock`) on one lock file for the whole folder, held for a few milliseconds and never removed. DRV-6 uses lock files created exclusively instead, because Node.js had no file locks (DRV-D29); the hooks are Python, which has them, and the system releases such a lock when its process dies, so a killed hook never blocks the next one | Technical choice, 16 October 2026 |
 | AGR-D16 | Does a session that ended count as the same agent when it is continued later? | It is the same record, taken back at the next start, but in between it had ended, and the guide releases its hold at that moment. A Beat held in a Claude Code session that the Leather Bag ends with `/exit` and later resumes, or in a Codex app thread while the app is closed, is released by a check that runs in between, and is taken again after the session resumes. The alternative, keeping a hold through an end, would leave Beats held by sessions that are never continued | Technical choice, 16 October 2026 |

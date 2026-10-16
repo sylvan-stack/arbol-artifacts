@@ -1,13 +1,13 @@
 ---
 role: authored
 spec: AGR-1
-status: review
+status: accepted
 ---
 # Agent records · 01 The hooks of Claude Code and Codex
 
 A *hook* is a command that Claude Code or Codex runs by itself at fixed moments of a session, such as before every tool call, and to which it hands a short JSON description of that moment on its standard input. This specification states which hooks of the two tools keep an [agent record](00-the-agent-record.md) up to date and what each one writes, how the hooks are installed once next to the hooks the Leather Bag already has, what they never do, and what they cannot see. It matters because the hooks are the only way to follow a session that Arbol did not start without changing the tool: Claude Code and Codex keep their full power, and the hooks only watch.
 
-It follows the conventions of the [Driver Contract](../driver-contract/README.md#conventions) and of this chapter's [README](README.md#conventions). What it says about the two tools was seen in live checks on 16 October 2026 with Claude Code 2.1.294 in a terminal, Codex CLI 0.162.1 (`codex exec` and the terminal UI) and the Codex app's own `codex` 0.160.0 run as `codex app-server`, each in a test home ([Live checks](#live-checks-of-16-october-2026)). What was not tried is said where it is used.
+It follows the conventions of the [Driver Contract](../driver-contract/README.md#conventions) and of this chapter's [README](README.md#conventions). What it says about the two tools was seen in live checks on 16 October 2026 with Claude Code 2.1.294 in a terminal, Codex CLI 0.162.1 (`codex exec` and the terminal UI) and the Codex app's own `codex` 0.160.0 run as `codex app-server`, each in a test home ([Live checks](#live-checks-of-16-october-2026)). What was not tried is said where it is used. The owner answered its question on 16 October 2026, and the specification was accepted the same day.
 
 ## Scope
 
@@ -205,6 +205,6 @@ Version 1 used no hooks of either tool. It saw only the turns it ran itself.
 
 | ID | Question | Proposed default | Outcome |
 |---|---|---|---|
-| AGR-D12 | Codex runs a new hook only after the Leather Bag has reviewed and trusted it, for example with `/hooks` in `codex`. Does `arbol-agents install` record that trust itself? | Yes. Installing is the Leather Bag's own act, and the command shows what it adds. It records the trust through Codex's own calls, so Codex computes and stores it. The alternative: `install` adds the hooks, and the Leather Bag trusts them once in `codex` with `/hooks`; until then Codex skips them and `status` says so | Open |
+| AGR-D12 | Codex runs a new hook only after the Leather Bag has reviewed and trusted it, for example with `/hooks` in `codex`. Does `arbol-agents install` record that trust itself? | Yes. Installing is the Leather Bag's own act, and the command shows what it adds. It records the trust through Codex's own calls, so Codex computes and stores it. The alternative: `install` adds the hooks, and the Leather Bag trusts them once in `codex` with `/hooks`; until then Codex skips them and `status` says so | Decided 16 October 2026 by the owner: the proposed default |
 | AGR-D13 | Claude Code sends no hook when the Leather Bag interrupts it. Is anything done about it? | No. The record is corrected by the end of the next turn or of the session, and only the Radar shows it wrong meanwhile. Reading the transcript's last line would tie Arbol to a format Claude Code changes without notice (AGR-D9) | Technical choice, 16 October 2026 |
 | AGR-D14 | Which events are installed? | Every event that changes the record or shows life, as the table says: 17 of Claude Code's and all 12 of Codex's. Events that say nothing about waiting, such as a changed setting or a created task, are left out | Technical choice, 16 October 2026 |
