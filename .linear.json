@@ -97,6 +97,24 @@
       "id": "c1327755-54ec-4cdb-8404-e73f04c5f09f",
       "url": "https://linear.app/sylvan-stack/document/architecture-03-stuck-trunks-af3c035c70b3",
       "published": "2026-10-13"
+    },
+    "agent-records/README.md": {
+      "title": "Agent records · Conventions and index",
+      "id": "3fd3e36c-ddef-474d-8cbc-7b5c89c1ee62",
+      "url": "https://linear.app/sylvan-stack/document/agent-records-conventions-and-index-ea3a09cba87f",
+      "published": "2026-10-16"
+    },
+    "agent-records/00-the-agent-record.md": {
+      "title": "Agent records · 00 The agent record",
+      "id": "ba783001-cd5b-4156-9e1f-bfe4b16fbac3",
+      "url": "https://linear.app/sylvan-stack/document/agent-records-00-the-agent-record-46ef41d6492c",
+      "published": "2026-10-16"
+    },
+    "agent-records/01-the-hooks.md": {
+      "title": "Agent records · 01 The hooks of Claude Code and Codex",
+      "id": "dd4fbc81-ae11-4cf0-b05f-166a4a6a129b",
+      "url": "https://linear.app/sylvan-stack/document/agent-records-01-the-hooks-of-claude-code-and-codex-9916444aeadb",
+      "published": "2026-10-16"
     }
   }
 }

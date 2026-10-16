@@ -23,6 +23,13 @@ The contract shared by `arbol-claude-driver` and `arbol-codex-driver`. Start at 
 
 - [`00-builds-and-versions.md`](builds/00-builds-and-versions.md) (BLD-0): how the Builds of every component are numbered, build numbers and package versions, where Builds are kept, which one runs when none is named, and how a Build is named on the command line.
 
+### `agent-records/`: every agent session on the Mac
+
+One small record per agent session, whatever tool runs it, written by the tools' own hooks. Start at its [README](agent-records/README.md).
+
+- [`00-the-agent-record.md`](agent-records/00-the-agent-record.md) (AGR-0): what one agent session is, where the records are, the record and how it is written, its owner, what an agent waits for, signs of life, telling working, waiting, silent, gone and ended apart, how an Exchange takes part, the program `arbol-agents`.
+- [`01-the-hooks.md`](agent-records/01-the-hooks.md) (AGR-1): which hook of Claude Code and Codex writes what, questions to the Leather Bag, what the hooks never do, installing them and Codex's trust, what they cannot see, the probes of 16 October 2026.
+
 ### `architecture/`: how Arbol 2 is divided
 
 The components, what each owns, and how Arbol lives with breaking changes. Start at its [README](architecture/README.md). The inside of a Trunk is not part of it.
