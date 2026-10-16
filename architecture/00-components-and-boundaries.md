@@ -318,7 +318,7 @@ The database server:
 
 | ID | The database server must… | Origin | Verified by |
 |---|---|---|---|
-| ARC-0.25 | be Arbol's own, installed directly on the Mac, reachable on the loopback address only, with its password in the Keychain and only its address in settings, in the file `~/.arbol/database.json` | Changed | probe |
+| ARC-0.25 | be Arbol's own, installed directly on the Mac, reachable on the loopback address only, with its password in the Keychain and only its address in settings, in the file `~/.arbol/database.json` | Changed | probe: `database/probe_database_server.py --restart` in the `arbol` repository, its checks `programs`, `throwaway-server`, `settings`, `listening`, `role`, `data-folder` and `launch-agent`, passed on 16 October 2026 against the server that `database/install_database_server.py` installed (SYL-156) |
 
 ## Interface
 
