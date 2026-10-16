@@ -72,6 +72,7 @@ Settings are plain files under `~/.arbol`, and state is under the application fo
 
 ~/Library/Application Support/Arbol/      state: written by the programs
   builds/                                 every Build of every component (BLD-0)
+  database/                               the database server: its data folder, its socket and its log (ARC-0, ARC-D64)
   drivers/                                Driver state, shared by all Roots (DRV-6)
   roots/
     sapling/
