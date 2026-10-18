@@ -24,40 +24,40 @@ Not here: Brain Recipes and how a route is chosen (SYL-191), the Arbol Swift App
 | Requirement | Carried by |
 |---|---|
 | ARC-0.4 | The UIs: BKD-2 for Elma Chat's first window; the command line: SYL-193; listeners: not yet (ARC-D52) |
-| ARC-0.8 | BKD-0.6, BKD-0.7 |
-| ARC-0.9 | BKD-0.10 hands down a route and no small-call route; resolving a Brain Recipe: SYL-191 |
-| ARC-0.10 | BKD-0.24, BKD-0.25; BKD-2.15 shows the steps |
+| ARC-0.8 | BKD-0.5, BKD-0.8 |
+| ARC-0.9 | BKD-0.11 hands down a route and no small-call route; resolving a Brain Recipe: SYL-191 |
+| ARC-0.10 | BKD-0.25, BKD-0.26; BKD-2.15 shows the steps |
 | ARC-0.11 | SYL-193 |
-| ARC-0.14 | BKD-0.26, BKD-0.27; BKD-2.16 shows the warning |
-| ARC-1.2 | BKD-0.8 (the backend's own tables and settings), BKD-1.9 (the Bridge) |
-| ARC-1.5 | BKD-0.6 |
+| ARC-0.14 | BKD-0.27, BKD-0.28; BKD-2.16 shows the warning |
+| ARC-1.2 | BKD-0.7 (the backend's own tables and settings), BKD-1.9 (the Bridge) |
+| ARC-1.5 | BKD-0.5, BKD-0.22 |
 | ARC-1.6 | The display name in the header of the window: BKD-2.1; the tray menu: SYL-192 |
 | ARC-1.7 | BKD-0.3 |
 | ARC-1.8 | BKD-0.2, BKD-2.1 |
-| ARC-1.11 | BKD-0.26; BKD-2.16 shows it |
+| ARC-1.11 | BKD-0.27; BKD-2.16 shows it |
 | ARC-1.18 | BKD-2.1 shows a Root that is `preparing`; reporting a failed migration in the tray menu: SYL-192 |
-| ARC-1.25 | BKD-0.21 |
-| ARC-1.26 | BKD-0.20, BKD-0.21 |
-| ARC-1.28 | BKD-0.7, and the Root's own layout of BKD-0's Interface, which `arbol-roots` runs |
-| ARC-2.1 | BKD-0.10, BKD-0.11; BKD-2.6 keeps the Draft in the composer |
-| ARC-2.4 | BKD-0.14; BKD-1.6; BKD-2.4 |
-| ARC-2.5 | BKD-0.15, BKD-0.16; BKD-2.8 |
-| ARC-2.7 | BKD-0.17; BKD-2.10 |
-| ARC-2.8 | BKD-0.12, BKD-0.13 |
-| ARC-2.11 | BKD-0.20; BKD-1.7 |
-| ARC-2.13 | BKD-0.21 |
-| ARC-2.14 | BKD-0.22, BKD-0.23; BKD-2.11, BKD-2.12 |
-| ARC-3.9 | BKD-0.18 |
-| ARC-3.10 | The looks of ARC-3.9: BKD-0.18, counted with `CLOCK_UPTIME_RAW` |
-| ARC-3.11 | BKD-0.19; BKD-2.13 |
-| ARC-3.12 | BKD-0.18; BKD-2.5 |
-| ARC-3.13 | BKD-0.15; BKD-2.8 |
-| ARC-3.14 | BKD-0.19 |
-| RCT-1.8 | The backend's part: BKD-0.16 |
-| RCT-1.9 | The backend's part: BKD-0.14 |
-| RCT-1.10 | The backend's part: BKD-0.14 |
+| ARC-1.25 | BKD-0.22 |
+| ARC-1.26 | BKD-0.21, BKD-0.22 |
+| ARC-1.28 | BKD-0.6, with the backend's own tables in the Root's own layout of BKD-0's Interface, which `arbol-roots` runs |
+| ARC-2.1 | BKD-0.11, BKD-0.12; BKD-2.11 keeps the Draft in the composer |
+| ARC-2.4 | BKD-0.15; BKD-1.6; BKD-2.4 |
+| ARC-2.5 | BKD-0.16, BKD-0.17; BKD-2.8 |
+| ARC-2.7 | BKD-0.18; BKD-2.10 |
+| ARC-2.8 | BKD-0.9, BKD-0.14 |
+| ARC-2.11 | BKD-0.21; BKD-1.7; BKD-2.17 |
+| ARC-2.13 | BKD-0.22 |
+| ARC-2.14 | BKD-0.23, BKD-0.24; BKD-2.10, BKD-2.16 |
+| ARC-3.9 | BKD-0.19 |
+| ARC-3.10 | The looks of ARC-3.9, counted with `CLOCK_UPTIME_RAW`: BKD-0.19 |
+| ARC-3.11 | BKD-0.20; BKD-2.13 |
+| ARC-3.12 | BKD-0.19; BKD-2.5 |
+| ARC-3.13 | BKD-0.16; BKD-2.8 |
+| ARC-3.14 | BKD-0.20 keeps what had arrived through `arbol-root stop --force`; BKD-0.14 takes the chat's next message; BKD-2.13 |
+| RCT-1.8 | The backend's part: BKD-0.17 |
+| RCT-1.9 | The backend's part: BKD-0.15 |
+| RCT-1.10 | The backend's part: BKD-0.15 |
 | RCT-2.16 | BKD-2.8, BKD-2.9 |
-| RCT-3.8 | BKD-0.6, BKD-0.9 |
+| RCT-3.8 | BKD-0.5, BKD-0.8 |
 
 ## Conventions
 
