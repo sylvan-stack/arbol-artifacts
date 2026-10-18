@@ -13,9 +13,9 @@ The architecture says where these parts stand ([ARC-0](../architecture/00-compon
 
 | Spec | Title | Status |
 |---|---|---|
-| [BKD-0](00-the-arbol-backend.md) | The Arbol backend | draft |
-| [BKD-1](01-the-bridge.md) | The Bridge | draft |
-| [BKD-2](02-elma-chat.md) | Elma Chat, its first version | draft |
+| [BKD-0](00-the-arbol-backend.md) | The Arbol backend | review |
+| [BKD-1](01-the-bridge.md) | The Bridge | review |
+| [BKD-2](02-elma-chat.md) | Elma Chat, its first version | review |
 
 Not here: Brain Recipes and how a route is chosen (SYL-191), the Arbol Swift App with the tray menu and the windows (SYL-192), the command line `arbol` (SYL-193), the pages of Seqoya Lab, the Secrets page among them (SYL-194), listeners such as Telegram ([ARC-D52](../architecture/01-roots.md#decisions)), and bringing one chat over again into a newer Root (SYL-195).
 

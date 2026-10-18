@@ -124,6 +124,12 @@ The local, single-user macOS application, consisting of one global [Arbol Swift 
 
 **Example:** Elma Chat opened in First Sapling uses First Sapling's renderer bundle and backend. Its accepted Exchange keeps running in a detached Trunk process when Arbol quits; reopening Arbol discovers the retained Roots and reads First Sapling's database and Exchange records again.
 
+## Arbol Backend
+
+The one process of a Root's `arbol` [Build](#build) that serves the [Leather Bag](#leather-bag)'s windows in that Root: it reads the Root's chat tables, keeps the [Drafts](#draft), sends a message by having `arbol-root` start an [Arbol Trunk](#arbol-trunk), follows the answer as it arrives in the Exchange's folder, and passes stops and answers on. One runs for each Root in use, started by the [Arbol Swift App](#arbol-swift-app). Specified in [BKD-0](backend/00-the-arbol-backend.md).
+
+**Example:** First Sapling's backend listens on `~/Library/Application Support/Arbol/roots/sapling/backend.sock`; an [Elma Chat](#elma-chat) window of First Sapling sends `chat.send` there through the [Bridge](#bridge).
+
 ## Arbol Trunk
 
 A complete, versionable implementation of an Arbol communication strategy, named by a *code name* such as `trivial`. Each distinct implementation is a component `arbol-trunk/<code name>`, kept with every other Trunk in the repository `arbol-trunk`, with its own numbered [Builds](#build). It owns one [Chat Exchange](#chat-exchange) from accepted input to its final state, including its chat data. Each Exchange runs in one process, started from a Trunk Build whose list of [Root Contract](#root-contract) versions holds its [Arbol Root](#arbol-root)'s version, and detached when `arbol-root` starts it. Its record retains the `root` and Trunk Build; changing a default or starting another Root never moves accepted work. The Trunk receives the resolved Driver, Subscription, model and effort, and does not choose another route or require Arbol, its Root manager or the database to finish. The inside of the first Trunk, the [Trivial Trunk](#trivial-trunk), is specified separately; the common boundary is [what any Trunk must offer](architecture/00-components-and-boundaries.md#what-any-trunk-must-offer).
@@ -224,6 +230,12 @@ A recorded verification of some content — an [Artifact](#artifact), a chunk, a
 An attestation **decays**: it is bound to the version it verified, so when the content (or what it was checked against) changes, it no longer applies and the thing is Unattested again — the same mechanism that makes a *derived* chunk go stale against its source, generalised from "still matches its source" to "has been verified". Distinct from approval: an [Effector](#effector) approve/reject grants *permission to act* (run a [Tool Request](#tool-request)); it does not vouch for the *result*. The dangerous, common case is **Leather-Bag-initiated + Unattested** — work a person delegated, an agent did, and nobody competent checked.
 
 **Example:** A [Delegate](#delegate) runs an [Errand](#errand) editing a config file and the changelog. A [Routine](#routine) later runs the test suite — the passing tests are a machine attestation of the config against that commit; the changelog prose, which no test covers, stays Unattested until a competent reader confirms it. Change the config afterwards and its attestation decays to Unattested.
+
+## Attention Item
+
+Something that is not a normal state of a Root and that every window of the Root shows for as long as it lasts, with its cause, such as a database server that does not answer or a disk that is nearly full. The [Arbol Backend](#arbol-backend) opens and closes it and sends it over the [Bridge](#bridge). Specified in [BKD-1](backend/01-the-bridge.md#attention).
+
+**Example:** While the database server restarts, every window of First Sapling shows "The database server does not answer at 127.0.0.1:5433", and the line goes when the server answers again.
 
 ## Authoritative Input
 

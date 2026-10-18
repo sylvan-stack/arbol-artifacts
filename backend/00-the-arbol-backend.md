@@ -1,7 +1,7 @@
 ---
 role: authored
 spec: BKD-0
-status: draft
+status: review
 ---
 # Arbol backend · 00 The Arbol backend
 
@@ -487,7 +487,7 @@ The calls, subscriptions and events the backend answers are in [BKD-1](01-the-br
 
 Not to be reproduced.
 
-- **A resident service that also ran the chats.** The windows talked to Arbol Root, which orchestrated every turn, so a restart of it touched every chat, and one failed turn could hold up all of them.
+- **A resident service that also ran the chats.** The windows talked to version 1's resident service, then called Arbol Root, which orchestrated every turn, so a restart of it touched every chat, and one failed turn could hold up all of them.
 - **"Running" for ever.** When the end of a turn could not be recorded, the chat stayed running, and cancel doubled as repair.
 - **Storage on the path of every chat.** A slow write on the loop that served every chat stalled all of them, for up to nine seconds.
 - **A database nobody could see.** It ran in a container whose disk the application could not see, and filled that disk twice.

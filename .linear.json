@@ -115,6 +115,30 @@
       "id": "dd4fbc81-ae11-4cf0-b05f-166a4a6a129b",
       "url": "https://linear.app/sylvan-stack/document/agent-records-01-the-hooks-of-claude-code-and-codex-9916444aeadb",
       "published": "2026-10-16"
+    },
+    "backend/README.md": {
+      "title": "Arbol backend · Conventions and index",
+      "id": "df3b392e-1a4d-4faa-9478-f3aee1ddf051",
+      "url": "https://linear.app/sylvan-stack/document/arbol-backend-conventions-and-index-2dbff7e33666",
+      "published": "2026-10-18"
+    },
+    "backend/00-the-arbol-backend.md": {
+      "title": "Arbol backend · 00 The Arbol backend",
+      "id": "aa6455d2-f4b3-4e54-a77f-7e88c7162c52",
+      "url": "https://linear.app/sylvan-stack/document/arbol-backend-00-the-arbol-backend-fdb05b8e4fb4",
+      "published": "2026-10-18"
+    },
+    "backend/01-the-bridge.md": {
+      "title": "Arbol backend · 01 The Bridge",
+      "id": "c692acba-2a60-44e6-a051-689cc0200e50",
+      "url": "https://linear.app/sylvan-stack/document/arbol-backend-01-the-bridge-a44243115878",
+      "published": "2026-10-18"
+    },
+    "backend/02-elma-chat.md": {
+      "title": "Arbol backend · 02 Elma Chat, its first version",
+      "id": "7749d1da-f545-4eda-8564-c003c97aa499",
+      "url": "https://linear.app/sylvan-stack/document/arbol-backend-02-elma-chat-its-first-version-11f04670211b",
+      "published": "2026-10-18"
     }
   }
 }

@@ -1,11 +1,11 @@
 ---
 role: authored
 spec: BKD-2
-status: draft
+status: review
 ---
 # Arbol backend · 02 Elma Chat, its first version
 
-[Elma Chat](../GLOSSARY.md#elma-chat) is the [UI](../GLOSSARY.md#ui) in which the [Leather Bag](../GLOSSARY.md#leather-bag) talks with an agent. Its first version is one kind of window: on the left the chats of one [Root](../GLOSSARY.md#arbol-root), newest first; on the right the chat that is open, with the composer below it. Several such windows can be open at once. Each shows a *page* loaded from Elma Chat's *renderer bundle*, the files built from `ui/elma/` of the `arbol` repository into each `arbol` Build. A chat is a list of [Chat Exchanges](../GLOSSARY.md#chat-exchange), *Exchanges* for short: each is one message of the Leather Bag and the agent's answer to it. In it the Leather Bag reads a chat, sends a message, sees the answer arrive, answers a question of the agent, stops the answer, sends a message again, renames a chat, signs in to an account, and opens a chat again later. For example, the Leather Bag opens Elma Chat in First Sapling from the tray menu, picks "New chat", chooses the folder `~/repos/shop`, types "What does build.sh do?" and presses Return: the message appears at once, the answer arrives word by word, the agent's `cat build.sh` shows as one line that opens to its output, and the chat appears at the top of the list, named after its first words until it is given a title. This specification states what the window shows and does; the backend it talks to is [BKD-0](00-the-arbol-backend.md), and the messages they exchange are [BKD-1](01-the-bridge.md). It matters because in version 1 the window showed "Stopped" before anything had stopped, a cancelled answer looked completed when it was opened again, a window opened late missed the text still arriving, Drafts had several owners that overwrote each other, and a placeholder was stored as the title.
+[Elma Chat](../GLOSSARY.md#elma-chat) is the [UI](../GLOSSARY.md#ui) in which the [Leather Bag](../GLOSSARY.md#leather-bag) talks with an agent. Its first version is one kind of window: on the left the chats of one [Root](../GLOSSARY.md#arbol-root), newest first; on the right the chat that is open, with the composer below it. Several such windows can be open at once. Each shows a *page* loaded from Elma Chat's *renderer bundle*, the files built from `ui/elma/` of the `arbol` repository into each `arbol` Build. A chat is a list of [Chat Exchanges](../GLOSSARY.md#chat-exchange), *Exchanges* for short: each is one message of the Leather Bag and the agent's answer to it. In such a window the Leather Bag reads a chat, sends a message, sees the answer arrive, answers a question of the agent, stops the answer, sends a message again, renames a chat, signs in to an account, and opens a chat again later. For example, the Leather Bag opens Elma Chat in First Sapling from the tray menu, picks "New chat", chooses the folder `~/repos/shop`, types "What does build.sh do?" and presses Return: the message appears at once, the answer arrives word by word, the agent's `cat build.sh` shows as one line that opens to its output, and the chat appears at the top of the list, named after its first words until it is given a title. This specification states what the window shows and does; the backend it talks to is [BKD-0](00-the-arbol-backend.md), and the messages they exchange are [BKD-1](01-the-bridge.md). It matters because in version 1 the window showed "Stopped" before anything had stopped, a cancelled answer looked completed when it was opened again, a window opened late missed the text still arriving, Drafts had several owners that overwrote each other, and a placeholder was stored as the title.
 
 It follows the conventions of the [Driver Contract](../driver-contract/README.md#conventions) and the additions in this chapter's [README](README.md#conventions). The forms are technical choices made on 18 October 2026; the questions only the owner can settle are rows of the Decisions table with a proposed answer.
 
@@ -220,7 +220,7 @@ Each window shows a page loaded from Elma Chat's *renderer bundle*, the files bu
 
 ## Requirements
 
-| ID | Elma Chat's first window must… | Origin | Verified by |
+| ID | Elma Chat's first version must… | Origin | Verified by |
 |---|---|---|---|
 | BKD-2.1 | belong to one Root and talk only to its backend, and show in its header the Root's display name and, for a Root that is not `working`, its state, with the reason of a failed one | Changed | journey |
 | BKD-2.2 | list every chat of its Root, the newest activity first, each with its title or else the first line of its first message as a placeholder that is never stored, the last part of its working folder, the state of its last Exchange and whether it has a Draft | Changed | journey |
@@ -235,7 +235,7 @@ Each window shows a page loaded from Elma Chat's *renderer bundle*, the files bu
 | BKD-2.11 | keep a refused message in the composer as it was, with the refusal's cause below it | Changed | drill |
 | BKD-2.12 | while its chat's last Exchange is in progress, replace "Send" with "Stop", go on taking text, and offer "Stop and send" | Kept | journey |
 | BKD-2.13 | show under an Exchange the backend ended because it was stuck "Ended because it was stuck", and that what had arrived is kept | New | drill |
-| BKD-2.14 | offer "Send again" on the chat's last Exchange once it has ended, with the route it ran with, saying that its answer is replaced and changes to files stay; and let the chat be renamed, an empty title taking the title away | Changed | journey |
+| BKD-2.14 | offer "Send again" on the chat's last Exchange once it has ended and is saved, with the route it ran with, saying that its answer is replaced and changes to files stay; and let the chat be renamed, an empty title taking the title away | Changed | journey |
 | BKD-2.15 | list the Subscriptions of every Driver with their state and usage, and sign one in by showing each step of the Driver's `sign-in` as it comes: the address opened in a window that refuses other hosts, a field for a code, and for a key the Keychain item to fill on the Secrets page, taking no key itself | Changed | journey; the host limit with SYL-192 |
 | BKD-2.16 | show every attention item of its Root across the top of the window for as long as it lasts, and in the Root's panel the size of every retained Root's database, the data folder's size, the free space of its disk, whether the server answers, and the Exchanges running in other Roots | New | journey, drill |
 | BKD-2.17 | when the backend goes away, say that it reconnects, keep showing the chat and taking text, and read everything again once it is back | Changed | drill |
@@ -244,7 +244,7 @@ Each window shows a page loaded from Elma Chat's *renderer bundle*, the files bu
 
 ## Interface
 
-The window uses the calls and topics of [BKD-1](01-the-bridge.md#interface) and the app channel's `app.pickFolder` and `app.openSignIn`. Its keys:
+The window uses the calls and topics of [BKD-1](01-the-bridge.md#interface) and the app channel's `app.pickFolder`, `app.openSignIn` and `app.openLink`. Its keys:
 
 | Key | In | Does |
 |---|---|---|

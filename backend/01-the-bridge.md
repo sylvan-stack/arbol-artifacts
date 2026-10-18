@@ -1,7 +1,7 @@
 ---
 role: authored
 spec: BKD-1
-status: draft
+status: review
 ---
 # Arbol backend · 01 The Bridge
 

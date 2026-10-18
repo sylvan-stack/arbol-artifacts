@@ -30,6 +30,14 @@ One small record per agent session, whatever tool runs it, written by the tools'
 - [`00-the-agent-record.md`](agent-records/00-the-agent-record.md) (AGR-0): what one agent session is, where the records are, the record and how it is written, its owner, what an agent waits for, signs of life, telling working, waiting, silent, gone and ended apart, how an Exchange takes part, the program `arbol-agents`.
 - [`01-the-hooks.md`](agent-records/01-the-hooks.md) (AGR-1): which hook of Claude Code and Codex writes what, questions to the Leather Bag, what the hooks never do, installing them and Codex's trust, what they cannot see, the probes of 16 October 2026.
 
+### `backend/`: the Arbol backend, the Bridge and Elma Chat's first window
+
+What Arbol itself does while a chat is read, written and answered. Start at its [README](backend/README.md), which also says which accepted requirements of ARC-0 to ARC-3 and of the Root Contract each of its requirements carries.
+
+- [`00-the-arbol-backend.md`](backend/00-the-arbol-backend.md) (BKD-0): the backend of a Root as a process with its socket, the database and the backend's own tables, Drafts, sending a message and sending it again, an Exchange in progress, stop and answers, settling, stuck Exchanges, restarts and discovery across Roots, a database that cannot be reached, accounts, health and storage, tests.
+- [`01-the-bridge.md`](backend/01-the-bridge.md) (BKD-1): the messages between a window and its backend, calls and subscriptions, how a window keeps the truth, attention items, a backend that goes away, compatibility within a Root, secrets, what the Swift App answers itself, the development relay.
+- [`02-elma-chat.md`](backend/02-elma-chat.md) (BKD-2): Elma Chat's first window: the list of chats, reading a chat, an answer as it arrives, the composer and the Draft, sending and stopping, questions of the agent, a failed Exchange, sending again, accounts, attention, coming back.
+
 ### `architecture/`: how Arbol 2 is divided
 
 The components, what each owns, and how Arbol lives with breaking changes. Start at its [README](architecture/README.md). The inside of a Trunk is not part of it.
