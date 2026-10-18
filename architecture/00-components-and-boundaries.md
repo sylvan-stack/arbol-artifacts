@@ -299,7 +299,7 @@ A Trunk, seen from outside:
 | ID | A Trunk must… | Origin | Verified by |
 |---|---|---|---|
 | ARC-0.18 | run one Chat Exchange in one process, detached when `arbol-root` starts it (RCT-2), with the route it was handed | Changed | contract |
-| ARC-0.19 | keep its record and the arriving answer in the Root's `exchanges/` folder, and take stop and answers there | Changed | contract |
+| ARC-0.19 | keep its record and the arriving answer in the Root's `exchanges/` folder, and take stop and answers there | Changed | contract: RCT-1.1, RCT-1.2 and RCT-1.5, scenario R1 (SYL-171), and RCT-1.7 and RCT-1.11, scenarios R8 and R9 (SYL-173), of [RCT-4](../../arbol-root/contract/04-conformance.md) |
 | ARC-0.20 | write rows into the chat tables of the Root's database, and create or change no table | Changed | contract: RCT-3.1 and RCT-3.2, scenarios R1, R16 and R19 of [RCT-4](../../arbol-root/contract/04-conformance.md) (SYL-171) |
 | ARC-0.21 | finish an Exchange while Arbol, the Root manager or the database is absent | Changed | drill |
 | ARC-0.22 | list in its Build record the versions of the Root Contract it implements (RCT-0.1) | New | unit |
