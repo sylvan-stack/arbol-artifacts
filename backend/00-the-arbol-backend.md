@@ -5,13 +5,13 @@ status: draft
 ---
 # Arbol backend · 00 The Arbol backend
 
-The *Arbol backend* is the one process of a Root's `arbol` [Build](../GLOSSARY.md#build) that serves the Leather Bag's windows in that Root. It reads the chats from the Root's database, keeps the [Drafts](../GLOSSARY.md#draft), sends a message by having `arbol-root` start a Trunk, follows the answer as it arrives in the Exchange's folder, passes stops and answers on, looks every 30 seconds for an Exchange that is stuck, notices a database that cannot be reached, signs the Leather Bag in through the Drivers, and reports how much space the chats take. For example, when the Leather Bag sends "What does build.sh do?" in First Sapling, the backend writes a request file, runs `arbol-root --root sapling start --exchange 2d4f6a8c-… --request …/2d4f6a8c-….json`, reads the acceptance line, and from then on reads `exchanges/2d4f6a8c-…/events.jsonl` line by line and passes each line to every window that shows the chat. This specification states the process and its socket, the database and the backend's own tables, Drafts, sending and sending again, an Exchange in progress, stop and answers, settling, stuck Exchanges, restarts and discovery across Roots, a database that cannot be reached, accounts, health and storage, and tests. It matters because in version 1 every window talked to a resident service that also ran the chats, so one failed turn could hold up every chat, a chat whose end could not be recorded showed "running" for ever, and the database filled its disk twice without anyone seeing it coming.
+The *Arbol backend* is the one process of a [Root](../GLOSSARY.md#arbol-root)'s `arbol` [Build](../GLOSSARY.md#build) that serves the [Leather Bag](../GLOSSARY.md#leather-bag)'s windows in that Root. It reads the chats from the Root's database, keeps the [Drafts](../GLOSSARY.md#draft), sends a message by having `arbol-root` start an [Arbol Trunk](../GLOSSARY.md#arbol-trunk) for a new [Chat Exchange](../GLOSSARY.md#chat-exchange) (*Exchange* for short: the message and the agent's answer to it), follows the answer as it arrives in the Exchange's folder, passes on a stop and the Leather Bag's answers to the agent's questions, looks every 30 seconds for an Exchange that is stuck, notices a database that cannot be reached, signs the Leather Bag in through the [Drivers](../GLOSSARY.md#driver), and reports how much space the chats take. For example, when the Leather Bag sends "What does build.sh do?" in First Sapling, the backend writes a request file, runs `arbol-root --root sapling start --exchange 2d4f6a8c-… --request …/2d4f6a8c-….json`, reads the acceptance line, and from then on reads `exchanges/2d4f6a8c-…/events.jsonl` line by line and passes each line to every window that shows the chat. This specification states the process and its socket, the database and the backend's own tables, Drafts, sending and sending again, an Exchange in progress, stopping and answering the agent's questions, settling, stuck Exchanges, restarts and discovery across Roots, a database that cannot be reached, accounts, health and storage, and tests. It matters because in version 1 every window talked to a resident service that also ran the chats, so one failed turn could hold up every chat, a chat whose end could not be recorded showed "running" for ever, and the database filled its disk twice without anyone seeing it coming.
 
 It follows the conventions of the [Driver Contract](../driver-contract/README.md#conventions) and the additions in this chapter's [README](README.md#conventions). It makes exact what [ARC-0](../architecture/00-components-and-boundaries.md#arbol-the-swift-app-and-the-backend) to [ARC-3](../architecture/03-stuck-trunks.md) say of the backend, and is one party of the [Root Contract](../../arbol-root/contract/README.md), version 1: it reads the Exchange folder of [RCT-1](../../arbol-root/contract/01-the-exchange-folder.md) and the chat tables of [RCT-3](../../arbol-root/contract/03-the-chat-tables.md), and writes answers into `control`. The forms are technical choices made on 18 October 2026; the questions only the owner can settle are rows of the Decisions table with a proposed answer.
 
 ## Scope
 
-Covered: the process, its socket and its lifetime, other programs it starts, the database and the backend's own tables, Drafts, sending a message and sending it again, an Exchange in progress, stop and answers, settling, stuck Exchanges, restarts and discovery across Roots, a database that cannot be reached, accounts, health and storage, the program and its Build, tests.
+Covered: the process, its socket and its lifetime, other programs it starts, the database and the backend's own tables, Drafts, sending a message and sending it again, an Exchange in progress, stopping and answering the agent's questions, settling, stuck Exchanges, restarts and discovery across Roots, a database that cannot be reached, accounts, health and storage, the program and its Build, tests.
 
 Not covered: what crosses the Bridge, in [BKD-1](01-the-bridge.md); what the window shows, in [BKD-2](02-elma-chat.md); Brain Recipes and the small-call route (SYL-191); the command line `arbol` apart from its command `backend` (SYL-193); the tray menu and how the Swift App starts and ends a backend (SYL-192); listeners such as Telegram ([ARC-D52](../architecture/01-roots.md#decisions)); a message that steers a running agent ([ARC-D54](../architecture/02-chat-exchange-across-components.md#decisions)); marking a migrated chat stale and bringing it over again (ARC-1.19, ARC-1.20; SYL-195).
 
@@ -30,16 +30,17 @@ arbol --root sapling backend
 |---|---|
 | Its Root | The one the `root` of its own Build record names, as with `arbol-root` ([RTM-0](../../arbol-root/specs/00-the-commands.md#the-root-of-a-command)); `--root` only outside a Build, as in development, with the build number `0` (BLD-0). The Root's folder is `~/Library/Application Support/Arbol/roots/<root>/` |
 | One for each Root | It takes an exclusive lock on the file `backend.lock` in the Root's folder before anything else. A second backend of the same Root refuses with `already_running`, whose message names the first one's process, and the Swift App connects to the socket of the first |
-| Its socket | `backend.sock` in the Root's folder ([ARC-1](../architecture/01-roots.md#a-root-on-disk)), a Unix socket of the mode 0600, which only the owner can open. Once it holds the lock it removes a socket file left by a backend that died, then listens. A path longer than the 103 bytes a macOS socket address can hold is refused with `invalid_input` |
+| Its socket | `backend.sock` in the Root's folder ([ARC-1](../architecture/01-roots.md#a-root-on-disk)), a Unix socket of the mode 0600, which only the owner can open. Once it holds the lock it removes a socket file left by a backend that died, then listens. A path longer than the 103 bytes a macOS socket address can hold is refused with `invalid_input`; for a home folder such as `/Users/sam` it leaves room for a Root identifier of up to 39 letters |
 | Ready | Once it listens, it prints one line, the *ready line*, and from then on writes nothing more on standard output. Standard error is for a person only |
 | A refusal | One line `{"error":{"code","message"}}` and the exit status 1: `invalid_input`, `unknown_root` for a Root whose folder holds no readable `root.json`, `already_running` |
-| Its end | On SIGTERM or SIGINT, and when the process that started it ends, it closes every connection, removes its socket, releases the lock and ends with the status 0 within 2 seconds. It stops no Exchange (ARC-2) |
+| Its end | On SIGTERM or SIGINT, and when its standard input is a pipe that reaches its end, which happens when the Swift App that started it ends, it closes every connection, removes its socket, releases the lock and ends with the status 0 within 2 seconds. It stops no Exchange (ARC-2) |
+| What it hands on | The lock file and the socket are opened so that no program the backend starts inherits them (close-on-exec), and the socket is made with the file mode mask 077, so that a detached Trunk never holds a later backend out |
 
-The Swift App starts the current Root's backend when Arbol starts and again when it ends, and the backend of another Root when one of that Root's windows opens; it ends that one when the last of its windows closes (ARC-0). How it does so is the Swift App's specification (SYL-192).
+The Swift App starts the current Root's backend when Arbol starts, and starts it again whenever it ends while Arbol runs. It starts another Root's backend when that Root's first window opens, and ends it when the last one closes (ARC-0). How it does so is the Swift App's specification (SYL-192).
 
 A backend starts for a Root in every state, `preparing`, `working` or `failed`, because a Root that is being prepared is tried with its chats, and a failed one is still opened when it is named ([ARC-1](../architecture/01-roots.md#the-states-of-a-root-and-the-current-root)). It serves an older Root for as long as its folder, its database and its Builds exist.
 
-What it does at its start, in this order: the lock, the socket and the ready line; the connection to the database, which may fail without stopping anything else ([below](#when-the-database-cannot-be-reached)); `arbol-root settle` ([below](#settling)); the first look at the Exchanges ([below](#stuck-exchanges)); and the discovery across Roots ([below](#restarts-and-discovery-across-roots)). Windows can connect from the ready line on.
+What it does at its start, in this order: the lock, the socket and the ready line; the removal of request files older than one hour that a start left in `requests/` ([below](#sending-a-message)); the connection to the database, which may fail without stopping anything else ([below](#when-the-database-cannot-be-reached)); `arbol-root settle` ([below](#settling)); the first look at the Exchanges ([below](#stuck-exchanges)); and the discovery across Roots ([below](#restarts-and-discovery-across-roots)). Windows can connect from the ready line on.
 
 ### The current Root and listeners
 
@@ -52,13 +53,23 @@ The backend never stores which Root is current. When it needs to know, at its st
 | `arbol-root` | Starting, listing, stopping and settling Exchanges ([RTM-0](../../arbol-root/specs/00-the-commands.md)) | Its launcher, always with `--root <root>` |
 | `arbol-roots` | The list of Roots ([ARC-1](../architecture/01-roots.md#the-tray-menu-and-arbol-roots)) | Its program on the search path |
 | `arbol-claude-driver`, `arbol-codex-driver` | Account commands only ([below](#accounts)) | Their launchers |
-| `/usr/bin/security` | Storing a secret that a sign-in asks for ([below](#accounts)), and reading the database password, as a Trunk reads it ([RCT-0](../../arbol-root/contract/00-overview.md#how-a-trunk-finds-its-roots-folder-and-database)) | Itself |
+| `/usr/bin/security` | Reading the database password, as a Trunk reads it ([below](#the-database)) | Itself |
 
-The folder of the launchers, `~/.local/bin` unless `--bin-dir` names another, is first on the search path of every program it starts, so that a Trunk that `arbol-root` starts for the backend finds the same Drivers as one started from a shell (RCT-0). Each program is started in a process group of its own, as the system call `setsid` does, so that a start, a stop or a settle that is under way goes on when the backend ends. The backend waits for none without a time limit: 25 seconds for `arbol-root start` (the 20 of RTM-0, and 5 for the launcher), 45 seconds for `arbol-root stop`, which may wait 20 seconds, end by force for 10 and then settle, 60 seconds for `arbol-root settle`, and 10 seconds for `arbol-root list`, `arbol-roots list` and every account command except `sign-in`, which lasts as long as its attempt (DRV-1). A program that has not answered in its time is reported as `no_answer` and left alone.
+The *launchers* are the small programs in `~/.local/bin` that pick the Build to run and start it (BLD-0). The folder of the launchers, `~/.local/bin` unless `--bin-dir` names another, is first on the search path of every program the backend starts, so that a Trunk that `arbol-root` starts for the backend finds the same Drivers as one started from a shell (RCT-0). Each program is started in a process group of its own, as the system call `setsid` does, so that a start, a stop or a settle that is under way goes on when the backend ends. The backend waits for none without a time limit:
+
+| Command | Waited for at most | Because |
+|---|---|---|
+| `arbol-root start` | 25 seconds | The 20 seconds of RTM-0, and 5 for the launcher |
+| `arbol-root stop` | 90 seconds | Up to 15 seconds until the folder is in place, 20 waiting for the end, 10 ending by force, then settling (RTM-0, RCT-2) |
+| `arbol-root settle` | 120 seconds | Each Exchange is settled in turn, and the database may take 10 seconds to answer for the first (RCT-2) |
+| `arbol-root list`, `arbol-roots list`, and every account command except `sign-in` | 10 seconds | They read files, or ask the vendor once |
+| `subscriptions sign-in` | As long as its attempt | DRV-1 |
+
+A program that has not answered in its time is reported as `no_answer`. A `list`, an `arbol-roots list` or an account command other than `sign-in` then gets SIGKILL to its process group. A start, a stop or a settle is left to run, because it may be doing its work, and the backend keeps track of its process: while one runs it starts no second settle of the same Root, no second stop of the same Exchange and no new look ([below](#stuck-exchanges)).
 
 ### The database
 
-The backend connects to the Root's database as a Trunk does: the address in `~/.arbol/database.json`, the password in the Keychain item `com.sylvan-stack.arbol.database`, and the database that `root.json` names (RCT-0, ARC-1). It talks to it with psycopg 3 at a version pinned in the Build, with its own plain SQL, and every call has a time limit of 5 seconds, to connect and for each statement (RCT-3). It never opens the database of another Root (ARC-1).
+The backend connects to the Root's database as a Trunk does ([RCT-0](../../arbol-root/contract/00-overview.md#how-a-trunk-finds-its-roots-folder-and-database)): the address in `~/.arbol/database.json`; the password of the Keychain item with the service `com.sylvan-stack.arbol.database` and, as its account, the role the address names, read with `security find-generic-password -s com.sylvan-stack.arbol.database -a <role> -w` within 2 seconds, where the exit status 44 means that there is no such item and the backend connects without a password; and the database that `root.json` names (ARC-1). It talks to it with psycopg 3 at a version pinned in the Build, with its own plain SQL, and every call has a time limit of 5 seconds, to connect and for each statement (RCT-3). It never opens the database of another Root (ARC-1).
 
 | Tables | The backend |
 |---|---|
@@ -66,13 +77,13 @@ The backend connects to the Root's database as a Trunk does: the address in `~/.
 | Its own tables, `drafts` and `exchange_notes` ([Interface](#interface)) | Reads and writes their rows; nobody else does |
 | `migrated_chats` of a Root that grew from another (RTM-1) | Reads nothing of it in this specification; marking a stale copy is SYL-195 |
 
-It reads a chat as RCT-3 says, without knowing which Trunk wrote it: every Exchange of the chat that was not replaced, in the order of their numbers, and within each its messages and the tool calls the agent made itself in the order of their positions ([RCT-3](../../arbol-root/contract/03-the-chat-tables.md#how-a-chat-is-read)). For an Exchange that is still open it reads the answer from the folder ([below](#an-exchange-in-progress)).
+It reads a chat, a page of the list of chats and every snapshot of BKD-1 in one transaction that is `REPEATABLE READ` and `READ ONLY`, so that what it reads is one moment and a Trunk's end committed meanwhile cannot tear it; every other use of a connection commits each statement at once, so that no connection stays idle inside a transaction. It reads a chat as RCT-3 says, without knowing which Trunk wrote it: every Exchange of the chat that was not replaced, in the order of their numbers, and within each its messages and the tool calls the agent made itself in the order of their positions ([RCT-3](../../arbol-root/contract/03-the-chat-tables.md#how-a-chat-is-read)). For an Exchange that is still open it reads the answer from the folder ([below](#an-exchange-in-progress)).
 
-A title is 1 to 240 characters, as the chat tables check. The backend writes the Leather Bag's text with its spaces at both ends removed, and NULL when nothing is left, and never a placeholder ([RCT-3](../../arbol-root/contract/03-the-chat-tables.md#the-tables)). For example, renaming a chat to "  Build script  " stores `Build script`.
+A title is 1 to 240 characters, counted as PostgreSQL's `char_length` counts them, as the chat tables check. The backend writes the Leather Bag's text with its white space at both ends removed, and NULL when nothing is left, and never a placeholder ([RCT-3](../../arbol-root/contract/03-the-chat-tables.md#the-tables)). For example, renaming a chat to "  Build script  " stores `Build script`.
 
-**Its own tables.** The backend creates, changes and removes no table, column, index or check. Its own two tables are in the Root's own layout, `roots/<root>/layout.sql` in the `arbol-root` repository, which the Root's `arbol-root` Builds carry as `layout/root-tables.sql` and `arbol-roots` runs ([RTM-1](../../arbol-root/specs/01-builds-layouts-and-migration.md#the-roots-own-layout)). Within a Root they change only by additions the Root's older Builds can ignore, as RTM-1 says, and so does the settings file `arbol.json` ([below](#settings)). A Root whose database lacks them is served without Drafts and without notes, and every window says that the Root's layout is incomplete; nothing else stops.
+**Its own tables.** The backend never changes the shape of the database: it creates, changes and removes no table, column, index or check. Its two tables are written into the Root's own layout, `roots/<root>/layout.sql` in the `arbol-root` repository, which the Root's `arbol-root` Builds carry as `layout/root-tables.sql` and `arbol-roots` runs ([RTM-1](../../arbol-root/specs/01-builds-layouts-and-migration.md#the-roots-own-layout)). A later Build of the Root may only add to that file what the Root's older Builds can ignore (RTM-1.5), and the settings file `arbol.json` changes the same way ([below](#settings)). When a Root's database lacks the two tables, the backend still serves its chats, without Drafts and without notes, and every window shows the attention item `layout_incomplete` ([BKD-1](01-the-bridge.md#attention)).
 
-A Root that grew from another gets the rows of both tables from its migration script, copied as they are, as it copies the chat tables (RTM-1).
+A Root that grows from another gets the rows of both tables from its migration script, which copies them as they are, after the chat tables, as the [Interface](#interface) shows. A Root whose layout lacks them gets them with `arbol-roots layout <root>` before another Root grows from it (RTM-1).
 
 ### Settings
 
@@ -91,15 +102,19 @@ A Draft is what the Leather Bag has typed in a chat's composer and not sent ([AR
 | | |
 |---|---|
 | A new chat | Its Draft is kept under the identifier the chat will have, a UUID the window chooses when it opens a new composer; the chat itself exists only once a Trunk accepts its first message (RCT-0) |
-| Saving | The window sends the Draft as the Leather Bag types ([BKD-2](02-elma-chat.md#the-composer)); the backend replaces the row whole and gives it a new `revision`, a number that only grows. A Draft whose text is empty and whose chat does not exist is removed |
-| Two windows | The last Draft sent wins. Every other window of the chat is told of the new revision (BKD-1) |
-| Sent | Once a Trunk accepts the message, the backend removes the Draft when its revision is still the one the window sent with the message; a Draft typed further meanwhile stays |
-| Refused | The Draft stays as it was ([ARC-2](../architecture/02-chat-exchange-across-components.md#the-steps)) |
+| Saving | The window sends the Draft as the Leather Bag types, with the revision it last saw ([BKD-2](02-elma-chat.md#the-composer)). The backend replaces the row whole and gives it a new `revision`, taken from one counter for all Drafts, so that a revision is never given twice, also after a Draft was removed |
+| Two windows | A save over a revision that is no longer the Draft's is refused with `draft_conflict` and the Draft as it is, so no window overwrites text it has not seen. Every window of the chat is told of each new revision (BKD-1) |
+| Sending | `chat.send` names the revision it was sent from. The backend marks that Draft with the Exchange's identifier, `sent_as`, before it starts anything; a save clears the mark, because the Draft then holds new text |
+| Accepted | The backend removes the Draft that is still marked with that Exchange, and tells every window that the chat has no Draft. A Draft typed further meanwhile carries no mark, and stays. Whenever the backend reads a Draft whose mark names an Exchange the chat tables hold, it removes the Draft too, so a removal that a backend which ended never made is made later |
+| Refused | The backend clears the mark, and the Draft stays as it was ([ARC-2](../architecture/02-chat-exchange-across-components.md#the-steps)) |
+| Too large | A Draft or a message of more than 1 MiB is refused with `invalid_input` |
+
+For example, the Leather Bag sends "Add a --clean option" from revision 41 in one window and types "and a --verbose one" in another before the reply: the backend marks revision 41 as sent with the new Exchange, the second window's save makes revision 42 and clears the mark, and the acceptance then removes nothing, so the new text stays.
 
 ### Sending a message
 
 1. The window calls `chat.send` with the chat, the message, the route, the working folder, the Draft's revision and an Exchange identifier it chose ([BKD-1](01-the-bridge.md#sending-and-repeating)).
-2. The backend checks what it can before anything starts and refuses with `invalid_input`: a route that does not name a Driver, a Subscription and a model, because Arbol always hands those three (ARC-0); a working folder that is not an absolute path to a folder that exists (RCT-0); an empty message.
+2. The backend checks what it can before it touches a file or starts a program, and refuses with `invalid_input`: a chat or an Exchange identifier that is not a UUID written in lower case with hyphens (RCT-0); a route that does not name a Driver whose launcher is in the folder of the launchers, a Subscription and a model, because Arbol always hands those three (ARC-0); a working folder that is not an absolute path to a folder that exists (RCT-0); an empty message, and one of more than 1 MiB. It marks the Draft as sent ([above](#drafts)).
 3. It writes the *request file* of [RCT-0](../../arbol-root/contract/00-overview.md#what-is-handed-to-a-trunk) into the folder `requests/` of the Root's folder, of the mode 0700, as `<exchange>.json` of the mode 0600: the chat, the message, the route, the working folder, and no small-call route, because no Brain Recipe exists yet to resolve one (ARC-0, SYL-191).
 4. It runs `arbol-root --root <root> start --exchange <exchange> --request <file>`. Without a code name the Root manager starts the Trivial Trunk ([RTM-0](../../arbol-root/specs/00-the-commands.md#starting-a-trunk)).
 5. It returns what the one line says, and removes the request file when the Root manager has not.
@@ -117,9 +132,9 @@ A Draft is what the Leather Bag has typed in a chat's composer and not sent ([AR
 |---|---|
 | `"accepted": true`, `"duplicate"` either way | The message is accepted ([ARC-2](../architecture/02-chat-exchange-across-components.md#the-steps), RCT-2). It removes the Draft as above, and every window of the chat starts to follow the Exchange |
 | A refusal of the Trunk or the Root manager, such as `chat_busy` or `database_unavailable` | Passes it on with its code and its message. The Draft stays, and nothing was started (RCT-2) |
-| Nothing, `no_answer`, or the backend lost the line because it ended | Starts the same Exchange again with the same identifier and the same request file, 15 seconds after the first start, and again every 15 seconds, for at most 60 seconds. A Trunk that accepted it answers `"duplicate": true` and starts nothing; one still accepting answers `in_progress` (RCT-2). After 60 seconds without an answer the backend passes `no_answer` on, and the Draft stays |
+| Nothing within its 25 seconds, `no_answer`, or `in_progress` | None of these is a refusal: the message may still be accepted. The backend runs the same start again, with the same identifier and a request file written anew, 15 seconds after the previous attempt returned, the longest an acceptance takes (RCT-2), and never while an attempt still runs. A Trunk that accepted it replies `"duplicate": true` and starts nothing (RCT-D17). After 120 seconds without an acceptance or a refusal it replies `no_answer`, and the Draft keeps its mark ([BKD-D9](#decisions)) |
 
-Because the window chose the Exchange's identifier, it sends the same `chat.send` again after a backend that ended came back, and gets the same Exchange, not a second one (RCT-D17).
+Because the window chose the Exchange's identifier, it sends the same `chat.send` again after `no_answer`, and after a backend that ended before it replied has come back, and gets the same Exchange, not a second one (RCT-D17). A second `chat.send` or `exchange.sendAgain` for an Exchange the backend is starting joins the first and gets its reply; a stop of that Exchange waits until the start has returned. A window that opens a chat whose Draft is still marked as sent sends that `chat.send` again with the marked identifier, so a send that a closed window left half done is finished.
 
 A chat takes one Exchange at a time (ARC-D54): a message to a chat whose Exchange is still open is refused by the Trunk with `chat_busy`, which names the open Exchange, and the window offers to stop it and send then ([BKD-2](02-elma-chat.md#sending-and-stopping)). The backend checks nothing of this itself, because only the database can tell two messages at the same moment apart (RCT-3).
 
@@ -133,28 +148,31 @@ The window calls `exchange.sendAgain` with the Exchange, a new Exchange identifi
 
 While an Exchange's folder exists, its answer is read from the folder, which holds all of it so far ([RCT-1](../../arbol-root/contract/01-the-exchange-folder.md#the-answer-as-it-arrives-eventsjsonl)):
 
-1. The backend reads the Exchange's row first. While it is `open`, it reads the folder `exchanges/<exchange>/`.
-2. It reads `events.jsonl` from its first line and then each line as it is appended, at least every 250 milliseconds while a window follows the Exchange. It reads only whole lines: a last line without a newline is left for the next read. It ignores a line, a field and an event type it does not know (RCT-1).
-3. It reads `record.json` with the same reads, for the Exchange's signs of life and its end, and takes the record's process as living only when a process with its `pid` exists and was started at its `startedAt`, give or take two seconds, reading the start time with `/bin/ps` in a clean environment and the C locale, as the Root manager does (RCT-1, RTM-0).
+1. The backend reads the Exchange's row first. While it is `open`, it takes from the tables only the Leather Bag's message at position 0, and the answer only from the folder `exchanges/<exchange>/`, which holds all of it so far (RCT-3).
+2. It reads `events.jsonl` from its first line and then each line as it is appended, at least every 250 milliseconds while a window follows the Exchange, and passes what it has read to each such window at most every 50 milliseconds, as one batch. It reads only whole lines: a last line without a newline is left for the next read. It ignores a line, a field and an event type it does not know (RCT-1).
+3. It reads `record.json` with the same reads, for the Exchange's *signs of life*, a counter the Trunk raises at least every 10 seconds while it works and what it waits for (RCT-1), and for its end. It counts the Exchange's process as alive only when a process with the recorded number runs and was started at the recorded time, give or take two seconds, so that a new program that got the same number is not taken for it (RCT-1). It reads the start time with `/bin/ps` in a clean environment and the C locale, as the Root manager does (RTM-0).
 4. When the folder is gone, the end is in the database, because a Trunk saves the end before it removes its folder (RCT-2). The backend reads the row and the Exchange's rows again, and tells every window that follows the chat that the Exchange is saved.
 
-A folder whose name starts with a dot is skipped (RCT-1). A window opened late, opened again or opened twice gets the lines of `events.jsonl` from the first one on, so it shows the whole answer so far ([ARC-2](../architecture/02-chat-exchange-across-components.md#the-arriving-answer-is-a-file)). The backend keeps no copy of the lines: the file is the copy, so a backend that has just started serves a late window exactly as one that has run for hours.
+A folder whose name starts with a dot is skipped (RCT-1). A window opened late, opened again or opened twice gets the lines of `events.jsonl` from the first one on, so it shows the whole answer so far ([ARC-2](../architecture/02-chat-exchange-across-components.md#the-arriving-answer-is-a-file)). When it catches up this way, the backend leaves out the pieces of a block whose whole block is in the file, the `text_delta` and `thinking_delta` lines before its `text` or `thinking` line, and the `tool_output_delta` lines of a tool call whose `tool_finished` is in the file, keeping the `n` of every line it sends, because the window would only replace them. The backend keeps no copy of the lines: the file is the copy, so a backend that has just started serves a late window exactly as one that has run for hours.
 
-What the window is told of the Exchange's state comes from the record and the listing of `arbol-root` ([RTM-0](../../arbol-root/specs/00-the-commands.md#the-listing)), with two states of the backend's own:
+While any window follows the chats of the Root, the backend reads the names in `exchanges/` and each record there once a second, and checks each record's process once a second, whatever number of windows follow it. So a window learns within a second that an Exchange appeared, whoever started it, the command line included, that it waits for an answer, or that it went.
+
+What the window is told of the Exchange's state comes from the record and the listing of `arbol-root` ([RTM-0](../../arbol-root/specs/00-the-commands.md#the-listing)), with one state of the backend's own, `stopping`:
 
 | State | When |
 |---|---|
 | `accepting`, `running`, `ending` | As the listing says. `running` comes with what the Exchange waits for and since when ([ARC-3](../architecture/03-stuck-trunks.md#long-waits-on-purpose)) |
-| `stopping` | The backend was asked to stop it, and it has not ended yet |
-| `unsaved` | The record has an end, its process is gone, and the database does not have the end yet ([below](#when-the-database-cannot-be-reached)) |
-| `interrupted` | Its process is gone without an end: shown as interrupted until settling has saved it ([below](#settling)) |
+| `stopping` | The backend's own: it was asked to stop the Exchange, which has not ended yet |
+| `unsaved` | As the listing says: the record has an end, its process is gone, and the database does not have the end yet ([below](#when-the-database-cannot-be-reached)) |
+| `gone` | The listing's `interrupted`: its process is gone without an end, and settling has not saved it yet ([below](#settling)). The window shows it as interrupted, but treats the Exchange as ended only once it is saved |
+| `unaccepted` | As the listing says: its process is gone before the database had it. No window shows it; settling removes its folder |
 | `completed`, `failed`, `cancelled`, `interrupted` | The final state, from the database |
 
-### Stop and answers
+### Stopping, and answering the agent's questions
 
-**Stop.** The window calls `exchange.stop`. The backend marks the Exchange `stopping` for every window from that moment until it has ended, and runs `arbol-root --root <root> stop <exchange>` ([RTM-0](../../arbol-root/specs/00-the-commands.md#stopping)). When the command returns, it reads the Exchange's row and reports its true final state: `cancelled` when the Trunk confirmed the stop, `interrupted` when the Root manager had to end it by force, or what it ended with otherwise ([ARC-3](../architecture/03-stuck-trunks.md#a-stop-that-is-not-obeyed)). "Stopped" is shown only once the end says `cancelled` (RCT-2). A stop of an Exchange that has ended already, or that is unknown, succeeds and changes nothing (ARC-3). Two windows that stop the same Exchange start one `arbol-root stop`: the second waits for the first.
+**Stopping.** The window calls `exchange.stop`. The backend marks the Exchange `stopping` for every window from that moment until it has ended, and runs `arbol-root --root <root> stop <exchange>` ([RTM-0](../../arbol-root/specs/00-the-commands.md#stopping)). When the command returns, the backend replies with the `ended` that `arbol-root stop` printed, unchanged: `cancelled` when the Trunk confirmed the stop, `interrupted` when the Root manager had to end it by force, or what it ended with otherwise ([ARC-3](../architecture/03-stuck-trunks.md#a-stop-that-is-not-obeyed)). The final state the database holds reaches the windows as the Exchange is saved. "Stopped" is shown only once the end says `cancelled` (RCT-2). A stop of an Exchange that has ended already, or that is unknown, succeeds and changes nothing (ARC-3). Two windows that stop the same Exchange start one `arbol-root stop`: the second waits for the first.
 
-**Answers.** When the agent asks the Leather Bag a question (DRV-3), the window shows it from the `ask_opened` line and calls `exchange.answer` with the question's `askId` and the answer. The backend checks the answer against the question's form (DRV-3) and refuses a malformed one with `invalid_input`. Then it appends one line to the Exchange's `control` file, the Driver's own control line ([RCT-1](../../arbol-root/contract/01-the-exchange-folder.md#stop-and-answers-control)):
+**Answering.** When the agent asks the Leather Bag a question (DRV-3), the window shows it from the `ask_opened` line and calls `exchange.answer` with the question's `askId` and the answer. The backend checks the Exchange's identifier as above and the answer against the question's form (DRV-3), and refuses a malformed one with `invalid_input`. Then it appends one line to the Exchange's `control` file, the Driver's own control line ([RCT-1](../../arbol-root/contract/01-the-exchange-folder.md#stop-and-answers-control)):
 
 ```json
 {"type":"answer","askId":"ask_1","answer":{"type":"answers","answers":{"branch":["main"]}}}
@@ -175,17 +193,17 @@ An Exchange whose process is gone is shown as interrupted, and is *settled*: a T
 
 - when it starts;
 - when it sees the database return ([below](#when-the-database-cannot-be-reached));
-- after a listing that shows an Exchange in the state `unaccepted`, `unsaved` or `interrupted`.
+- after a listing that shows an Exchange in the state `unaccepted`, `unsaved` or `interrupted`, its own or, in a listing across Roots ([below](#restarts-and-discovery-across-roots)), another Root's: then it runs `arbol-root --root <that Root> settle`.
 
-One settle runs at a time; a reason that arises while one runs runs the next one after it. Once settling has saved an Exchange, the backend reads its rows again and tells every window that follows the chat.
+One settle runs at a time for each Root; a reason that arises while one runs runs the next one after it. None runs while the database is unreachable, because settling needs it; its return is a reason of its own. Once settling has saved an Exchange, the backend reads its rows again and tells every window that follows the chat.
 
 ### Stuck Exchanges
 
 An Exchange is *stuck* when its process is alive and does nothing ([ARC-3](../architecture/03-stuck-trunks.md)). The backend looks from outside, as the second line of defence of ARC-3:
 
-1. Every 30 seconds it runs `arbol-root --root <root> list` and keeps, for each Exchange in the state `running` whose process lives, its heartbeat and the time of the look.
-2. An Exchange is stuck when its heartbeat is the same as at a look at least 90 seconds earlier. For example, looks at 0, 30, 60 and 90 seconds that all find the heartbeat 41 make the Exchange stuck at the fourth.
-3. It ends a stuck Exchange without asking ([ARC-D57](../architecture/03-stuck-trunks.md#decisions)): it writes a note into its table `exchange_notes`, that the Exchange was ended because it was stuck, and runs `arbol-root --root <root> stop --force <exchange>`. The Root manager ends the Trunk's processes and has the Exchange settled as interrupted, with what had arrived (RTM-0). When the note cannot be written within 5 seconds, it stops the Exchange anyway and writes the note once the database is back, keeping it in memory meanwhile.
+1. Every 30 seconds it runs `arbol-root --root <root> list`. For each Exchange whose process lives, in the state `accepting`, `running` or `ending`, it keeps the heartbeat and the time of the first look that found that value. The *heartbeat* is the counter of its signs of life (RCT-1).
+2. An Exchange is stuck when a later look finds the same heartbeat at least 90 seconds after that time. For example, looks at 0, 30, 60 and 90 seconds that all find the heartbeat 41 make the Exchange stuck at the fourth; a look at 60 seconds that finds 42 starts the count again.
+3. It ends a stuck Exchange without asking ([ARC-D57](../architecture/03-stuck-trunks.md#decisions)) with `arbol-root --root <root> stop --force <exchange>`. The Root manager ends the Trunk's processes and has the Exchange settled as interrupted, with what had arrived (RTM-0). When the stop replies `interrupted`, the backend writes a note into its table `exchange_notes` that the Exchange was ended because it was stuck; when the Trunk had written its end just before, that end stands (RCT-2), and no note is written. When the note cannot be written within 5 seconds, the backend keeps it as a file `notes/<exchange>.json` of the mode 0600 in the Root's folder, and writes it into the table, and removes the file, once the database is back, also after a restart.
 4. The window shows the note under the Exchange: "Ended because it was stuck" ([BKD-2](02-elma-chat.md#coming-back)). The chat takes a new message afterwards (ARC-3).
 
 The 30 and the 90 seconds are counted with the clock that macOS calls `CLOCK_UPTIME_RAW`, which stands still while the Mac sleeps, so that waking the Mac makes no Exchange look stuck ([ARC-3](../architecture/03-stuck-trunks.md#two-lines-of-defence)). A heartbeat that goes on is never stuck, whatever the Exchange waits for: an answer of the Leather Bag or a command the agent runs is never ended for taking long, and the window shows what it waits for and for how long (ARC-D61).
@@ -194,28 +212,28 @@ The same listing gives every window the states and the signs of life of its Exch
 
 ### Restarts and discovery across Roots
 
-The backend keeps nothing that a restart would lose, except two marks in memory: which Exchanges it is stopping, and a note it could not yet write. When it ends, no Exchange stops: the Exchanges run detached (RCT-2), and a start, a stop or a settle it began goes on in its own process group. At its next start it settles, lists and reads everything again, so what was produced meanwhile is shown ([ARC-2](../architecture/02-chat-exchange-across-components.md#when-arbol-quits)). A newer Build of the same Root, or a newer Build of `arbol-root`, finds the same Exchanges, because they are known only from their records; no Exchange changes its Root or its Trunk Build ([ARC-1](../architecture/01-roots.md#what-a-root-is)).
+The backend keeps nothing that a restart would lose, except one mark in memory: which Exchanges it is stopping. A note it could not yet write is a file (above). When it ends, no Exchange stops: the Exchanges run detached (RCT-2), and a start, a stop or a settle it began goes on in its own process group. At its next start it settles, lists and reads everything again, so what was produced meanwhile is shown ([ARC-2](../architecture/02-chat-exchange-across-components.md#when-arbol-quits)). A newer Build of the same Root, or a newer Build of `arbol-root`, finds the same Exchanges, because they are known only from their records; no Exchange changes its Root or its Trunk Build ([ARC-1](../architecture/01-roots.md#what-a-root-is)).
 
-**Discovery across Roots.** The current Root's backend finds the running work of every Root, also of a Root that is not current and has no window open, at its start and when a window asks ([ARC-1](../architecture/01-roots.md#discovery-across-roots)):
+**Discovery across Roots.** Every backend finds the running work of every Root, also of a Root that is not current and has no window open, at its start and when a window asks ([ARC-1](../architecture/01-roots.md#discovery-across-roots)):
 
 1. It runs `arbol-roots list` for the records of the retained Roots.
 2. For each, it runs `arbol-root --root <identifier> list`: the launcher picks that Root's newest working Build of `arbol-root` (BLD-0). It never applies its own Root's manager to another Root.
 3. It puts the listings together, because each entry names its Root ([RTM-0](../../arbol-root/specs/00-the-commands.md#the-listing)), and keeps beside each Root what failed: a refusal, no answer, or a listing it could not read. A Root that fails hides no other Root.
 
-The result gives each Root with its state, whether it is current, and its Exchanges in progress with their chat, Trunk, Build, state and signs of life. It holds no chat content: what a chat says is read only by the backend of the chat's own Root, from its own database (ARC-1). A command for an Exchange, such as a stop, goes to the manager of the Root its listing names, `arbol-root --root <that Root> stop <exchange>`.
+The result gives each Root with its state, whether it is current, and its Exchanges in progress with their chat, Trunk, Build, state and signs of life. It holds no chat content: what a chat says is read only by the backend of the chat's own Root, from its own database (ARC-1). A command for an Exchange, such as a stop or a settle, goes to the manager of the Root its listing names, such as `arbol-root --root <that Root> stop <exchange>`.
 
 ### When the database cannot be reached
 
-The database is *unreachable* when a call to it fails to connect or does not answer within its 5 seconds, or the Keychain does not give the password. A database that does not answer is not a normal state ([ARC-D53](../architecture/02-chat-exchange-across-components.md#decisions)):
+The database is *unreachable* when a new connection, or `SELECT 1` on it, does not succeed within 5 seconds, or the Keychain fails otherwise than with the exit status 44 or does not answer within its 2 seconds. A statement that passes its 5 seconds on a server that answers fails only its own call, with `timeout`, and the database is not marked. A database that does not answer is not a normal state ([ARC-D53](../architecture/02-chat-exchange-across-components.md#decisions)):
 
 | | |
 |---|---|
-| Noticing | The first call that fails marks the database unreachable, with the cause in plain words, such as "The database server does not answer at 127.0.0.1:5433" or "The Keychain gave no password for the database". From then on the backend tries to connect every 5 seconds |
+| Noticing | The first call that finds it so marks the database unreachable, with the cause in plain words, such as "The database server does not answer at 127.0.0.1:5433" or "The Keychain did not answer for the database's password". From then on the backend tries to connect every 5 seconds |
 | Attention | For as long as it lasts, every window of the Root shows it with the cause, as an *attention* item ([BKD-1](01-the-bridge.md#attention)) |
 | Sending | A message is refused by the Trunk with `database_unavailable`, and its Draft stays in the composer (RCT-2); saving a Draft fails with `database_unavailable`, and the window keeps it and sends it again later ([BKD-2](02-elma-chat.md#the-composer)) |
 | Reading | A chat the window already shows stays shown. A chat that is opened is refused with `database_unavailable`. Exchanges in progress go on being followed from their folders, which need no database |
 | Not yet saved | An Exchange whose record has an end and whose process is gone ended while the database was away. The backend shows its answer from the folder, marked `unsaved`, until settling has saved it ([ARC-D53](../architecture/02-chat-exchange-across-components.md#decisions)) |
-| Back | At the first call that succeeds, the backend clears the attention item, runs `arbol-root settle`, writes a note it kept in memory, and tells every window to read again |
+| Back | At the first connection that succeeds, the backend clears the attention item, runs `arbol-root settle`, writes the notes it kept as files, and sends a new snapshot on every subscription (BKD-1) |
 
 ### Accounts
 
@@ -230,16 +248,16 @@ The Leather Bag signs in from an Arbol window, and the backend calls the Drivers
 
 These are the only commands of a Driver the backend runs: it never starts a run (ARC-0).
 
-**Signing in** is an exchange in steps (DRV-1). The backend starts `sign-in`, passes each step it prints to the window as it comes, and the window shows it ([BKD-2](02-elma-chat.md#accounts)):
+**Signing in** is an exchange in steps (DRV-1). The window asks for it with `signIn.start` and gets an *attempt*, a name the backend gives it; the backend starts `sign-in`, keeps each step it prints, and passes it to every window that follows the attempt, beginning with the last step so far, so that a window that follows it again misses nothing and changes nothing ([BKD-1](01-the-bridge.md#interface)). The window shows the steps ([BKD-2](02-elma-chat.md#accounts)):
 
 | Step | What happens |
 |---|---|
 | `open_url` | The window shows the address and its code, and asks the Swift App to open the address in a window that refuses every host not in the step's host list ([BKD-1](01-the-bridge.md#what-the-swift-app-answers-itself)). The Driver notices completion itself |
 | `enter_code` | The window collects the code; the backend writes it as one line `{"input": "…"}` on the command's standard input |
-| `store_secret` | The window collects the secret in a concealed field and sends it once. The backend stores it in the Keychain item the step names with `/usr/bin/security`, handing it on the command's standard input, never as an argument, so it appears in no list of processes, and keeps, logs and returns nothing of it. The Driver reads the item and goes on by itself |
+| `store_secret` | The window names the Keychain item the step names and says that the key is stored on the Secrets page of Seqoya Lab, and until that page exists by hand with the system's `security` command ([ARC-0](../architecture/00-components-and-boundaries.md#secrets), [ARC-D62](../architecture/00-components-and-boundaries.md#decisions)). The window never takes the key. The Driver finds the item filled and goes on by itself (DRV-1) |
 | `done`, `failed` | The window shows the Subscription signed in, or the error |
 
-One attempt per Subscription runs at a time, as the Driver allows (DRV-1). The backend ends the command when the window cancels, when the window that started it closes, and when the step's `expiresAt` has passed; ending the command cancels the attempt. A Keychain item that `/usr/bin/security` writes can be read by `/usr/bin/security` without a question to the Leather Bag, which is how a Driver reads it (ARC-0, "Secrets").
+One attempt per Subscription runs at a time, as the Driver allows (DRV-1): a second `signIn.start` for the same Subscription gets the attempt that runs. The backend ends the command, which cancels the attempt, on `signIn.cancel`, when the step's `expiresAt` has passed, 6 minutes after the start at the latest, a minute past the Driver's own five (DRV-1), and 30 seconds after the connection that started it closed, so that a window reloaded meanwhile can follow the attempt again. No secret passes through the backend.
 
 ### Health and storage
 
@@ -304,75 +322,78 @@ The process:
 
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
-| BKD-0.1 | be the command `backend` of a Root's `arbol` Build, work on the Root its Build record names, run once for each Root by an exclusive lock on `backend.lock`, listen on `backend.sock` of the mode 0600 in the Root's folder, print one ready line once it listens, and on SIGTERM, on SIGINT and when its starter ends, close its connections, remove its socket and end within 2 seconds | Changed | unit |
-| BKD-0.2 | start for a Root in any state that is named, and serve its windows for as long as its folder, its database and its Builds exist | New | journey |
+| BKD-0.1 | be the command `backend` of a Root's `arbol` Build, work on the Root its Build record names, refuse a Root whose folder holds no readable `root.json` and a socket path longer than 103 bytes, run once for each Root by an exclusive lock on `backend.lock`, remove a socket file a dead backend left, listen on `backend.sock` of the mode 0600 in the Root's folder, hand neither the lock nor the socket to a program it starts, print one ready line once it listens, and on SIGTERM, on SIGINT and when its standard input is a pipe that reaches its end, close its connections, remove its socket and end within 2 seconds | Changed | unit |
+| BKD-0.2 | start for a Root in any state that is named, a failed one included, and serve its windows for as long as its folder, its database and its Builds exist | New | journey |
 | BKD-0.3 | take the current Root from `arbol-roots list` whenever it needs it, store it nowhere, and run no listener unless its Root is current | New | unit |
-| BKD-0.4 | start `arbol-root`, `arbol-roots` and the Drivers only through their launchers, with the folder of the launchers first on the search path, each in a process group of its own, and wait for none longer than its time limit | New | unit |
+| BKD-0.4 | start `arbol-root`, `arbol-roots` and the Drivers only through their launchers, with the folder of the launchers first on the search path, each in a process group of its own; wait for none longer than its time limit, end a listing or an account command other than `sign-in` at its limit, and start no second settle of a Root, no second stop of an Exchange and no new look while one runs | New | unit |
+| BKD-0.30 | read the settings of `~/.arbol/roots/<root>/arbol.json` at its start, a missing file or a missing field being no error | Changed | unit |
 
 The database:
 
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
-| BKD-0.5 | read the chat tables directly with SQL of its own, as RCT-3 puts a chat together, leaving out every Exchange that was replaced, and open no database but its Root's | Changed | unit |
-| BKD-0.6 | create, change and remove no table, column, index or check, and use for its own rows only the tables of the Root's own layout that `arbol-roots` runs | New | unit |
-| BKD-0.7 | change its own tables and its settings file within a Root only by additions that the Root's older Builds can ignore | New | unit |
+| BKD-0.5 | read the chat tables directly with SQL of its own, as RCT-3 puts a chat together, leaving out every Exchange that was replaced, read a chat, a page of chats and a snapshot each in one `REPEATABLE READ READ ONLY` transaction and commit every other statement at once, and open no database but its Root's | Changed | unit |
+| BKD-0.6 | create, change and remove no table, column, index or check, use for its own rows only the tables of the Root's own layout that `arbol-roots` runs, and serve a Root whose database lacks them without Drafts and notes, with the attention item `layout_incomplete` | New | unit |
+| BKD-0.7 | have its own tables changed within a Root only by additions to the Root's own layout that the Root's older Builds can ignore (RTM-1.5), and its settings file only by fields older Builds can ignore | New | unit |
 | BKD-0.8 | write in the chat tables only `chats.title`, when the Leather Bag gives a chat a title or takes it away: the text without spaces at its ends, NULL when nothing is left, and never a placeholder | Changed | unit |
-| BKD-0.9 | give every call to the database a time limit of 5 seconds, and serve each window and each call in a task of its own, so that no call holds up another | Changed | unit |
+| BKD-0.9 | read the database password as a Trunk does, with the exit status 44 meaning no password, give every call to the database a time limit of 5 seconds, fail a statement that passes it with `timeout`, and serve each window and each call in a task of its own, so that no call holds up another | Changed | unit |
 
 Drafts and sending:
 
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
-| BKD-0.10 | keep one Draft for each chat in its table `drafts`, a new chat's under the identifier the chat will have, replace it whole with a revision that only grows, and remove it once its message is accepted and only when its revision is still the one sent | Changed | unit |
-| BKD-0.11 | send a message by writing a request file with the chat, the message, the route and the working folder, and no small-call route, into `requests/` of the Root's folder, and running `arbol-root --root <root> start --exchange <id> --request <file>` with the Exchange identifier the window chose; refuse with `invalid_input` before starting anything a route without a Driver, a Subscription and a model, a working folder that is not an absolute path to a folder that exists, and an empty message | Changed | unit |
-| BKD-0.12 | count a message as accepted only on its acceptance line, pass every refusal on with its code and message and keep the Draft, and on no answer start the same Exchange again with the same identifier every 15 seconds for at most 60 seconds | Changed | unit, drill |
-| BKD-0.13 | send a message again only with `--replaces`, for the Exchange the window names, with the replaced Exchange's working folder and the route the Leather Bag picks, and pass a refusal `cannot_replace` on | New | unit |
+| BKD-0.10 | keep one Draft for each chat in its table `drafts`, a new chat's under the identifier the chat will have; replace it whole only over the revision the window last saw, with a revision from one counter, and refuse any other save with `draft_conflict`; mark it with the Exchange it is sent as and clear the mark on a save or a refusal; remove it once that Exchange is accepted, or later when it reads a mark the chat tables hold; and refuse a Draft or a message of more than 1 MiB | Changed | unit |
+| BKD-0.11 | send a message by writing a request file with the chat, the message, the route and the working folder, and no small-call route, into `requests/` of the Root's folder, and running `arbol-root --root <root> start --exchange <id> --request <file>` with the Exchange identifier the window chose; refuse with `invalid_input`, before it touches a file or starts a program, an identifier that is not a lower-case UUID, a route without a Driver found among the launchers, a Subscription and a model, a working folder that is not an absolute path to a folder that exists, and an empty message | Changed | unit |
+| BKD-0.12 | count a message as accepted only on its acceptance line, pass every refusal on with its code and message and keep the Draft, take nothing, `no_answer` and `in_progress` as no refusal and run the same start again with a request file written anew 15 seconds after the previous attempt returned, never two at once, until 120 seconds after the first, and join a second call for an Exchange it is starting to the first | Changed | unit, drill |
+| BKD-0.13 | send a message again only with `--replaces`, for the Exchange the window names, with the replaced Exchange's working folder and the route the Leather Bag picks, and pass a refusal `cannot_replace` on | Changed | unit |
 | BKD-0.14 | keep a failed, stuck or cancelled Exchange to its own chat: serve every other chat meanwhile, and take a new message for the chat as soon as its Exchange has ended | Changed | drill |
 
 An Exchange in progress:
 
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
-| BKD-0.15 | read an Exchange's row first and, while it is open, its folder: `events.jsonl` from its first line and each whole line as it is appended, at least every 250 milliseconds while a window follows it, skipping a folder whose name starts with a dot and a last line without a newline, ignoring every field, line and event type it does not know, taking a record's process as living only when its `pid` exists and was started at its `startedAt`, give or take two seconds, and reading the row again once the folder is gone | Changed | unit |
-| BKD-0.16 | on a stop, mark the Exchange `stopping` from the request until it has ended, run `arbol-root --root <root> stop <exchange>`, and then report the final state the database holds | Changed | unit, drill |
-| BKD-0.17 | write an answer to the agent's question only after checking it against the question's form, as one whole line of at most 64 KiB with one write on `control` opened for appending, never create the file, wait up to 15 seconds while only `.<exchange>.new` exists, and refuse with `ended` when neither is there | New | unit |
-| BKD-0.18 | run `arbol-root --root <root> settle` when it starts, when it sees the database return and after a listing that shows an Exchange whose process is gone, one at a time, and show such an Exchange as interrupted until it is settled | Changed | unit, drill |
+| BKD-0.15 | read an Exchange's row first and, while it is open, only its message from the tables and its answer from its folder, as RCT-1.9 and RCT-1.10 say: `events.jsonl` from its first line and each new whole line at least every 250 milliseconds while a window follows it, passed on at most every 50 milliseconds, leaving out when it catches up the pieces of a block or a tool call that is whole in the file, and the row again once the folder is gone; and while a window follows the Root's chats, read the names and records in `exchanges/` and check their processes once a second | Changed | unit |
+| BKD-0.16 | on a stop, mark the Exchange `stopping` from the request until it has ended, run `arbol-root --root <root> stop <exchange>` once however many windows ask, waiting for a start of it under way to return, and reply with the `ended` it printed | Changed | unit, drill |
+| BKD-0.17 | write the Leather Bag's answer to the agent's question only after checking it against the question's form, as one whole line of at most 64 KiB with one write on `control` opened for appending, never create the file, wait up to 15 seconds while only `.<exchange>.new` exists, and refuse with `ended` when neither is there | Changed | unit |
+| BKD-0.18 | run `arbol-root --root <root> settle` when it starts, when it sees the database return and after a listing that shows an Exchange `unaccepted`, `unsaved` or `interrupted`, its own Root's or another's, one at a time for each Root and none while the database is unreachable, and show such an Exchange as `gone` until it is settled | Changed | unit, drill |
 
 Stuck Exchanges:
 
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
-| BKD-0.19 | list its Root's Exchanges every 30 seconds while it runs, call an Exchange stuck when its process lives and its heartbeat did not move between two looks at least 90 seconds apart, count both with `CLOCK_UPTIME_RAW`, and never end an Exchange whose heartbeat goes on, whatever it waits for | New | unit, drill |
-| BKD-0.20 | end a stuck Exchange without asking with `arbol-root --root <root> stop --force <exchange>`, and record in `exchange_notes` that it was ended because it was stuck, writing the note later when the database is away | Changed | drill |
+| BKD-0.19 | list its Root's Exchanges every 30 seconds while it runs, keep for each Exchange whose process lives, in the state `accepting`, `running` or `ending`, its heartbeat and the time of the first look that found it, call it stuck when a look finds the same heartbeat at least 90 seconds later, count both with `CLOCK_UPTIME_RAW`, and never end an Exchange whose heartbeat goes on, whatever it waits for | New | unit, drill |
+| BKD-0.20 | end a stuck Exchange without asking with `arbol-root --root <root> stop --force <exchange>`, and when that replies `interrupted`, record in `exchange_notes` that it was ended because it was stuck, keeping the note as a file in the Root's folder until the database takes it | Changed | drill |
 
 Restarts and discovery:
 
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
-| BKD-0.21 | stop no Exchange when it ends, keep nothing a restart would lose except the marks of a stop under way and of a note not yet written, and at every start settle, list and read again | Kept | drill |
-| BKD-0.22 | in the current Root, find the Exchanges of every retained Root at its start and when a window asks, through `arbol-roots list` and each Root's own `arbol-root --root <identifier> list`, report a Root whose listing fails for that Root alone, read no other Root's database or Exchange files, and send a command for an Exchange to the manager of the Root its listing names | New | unit, drill |
+| BKD-0.21 | stop no Exchange when it ends, keep nothing a restart would lose except the mark of a stop under way, and at every start settle, list and read again | Kept | drill |
+| BKD-0.22 | find the Exchanges of every retained Root at its start and when a window asks, through `arbol-roots list` and each Root's own `arbol-root --root <identifier> list`, report a Root whose listing fails for that Root alone, read no other Root's database or Exchange files, and send a command for an Exchange to the manager of the Root its listing names | New | unit, drill |
 
 A database that cannot be reached:
 
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
-| BKD-0.23 | mark the database unreachable at the first call that fails, with the cause, try to connect every 5 seconds, show an attention item in every window of the Root for as long as it lasts, and on its return clear it, settle and have every window read again | New | drill |
-| BKD-0.24 | follow the Exchanges in progress from their folders while the database is away, and show the answer of an Exchange whose record has an end and whose process is gone from its folder, marked `unsaved`, until it is settled | New | drill |
+| BKD-0.23 | mark the database unreachable when a new connection or `SELECT 1` does not succeed within 5 seconds or the Keychain fails, with the cause, try to connect every 5 seconds, show an attention item in every window of the Root for as long as it lasts, and on its return clear it, settle and send a new snapshot on every subscription | New | drill |
+| BKD-0.24 | follow the Exchanges in progress from their folders while the database is away, keep the Draft of every message refused meanwhile, and show the answer of an Exchange whose record has an end and whose process is gone from its folder, marked `unsaved`, until it is settled | New | drill |
 
 Accounts:
 
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
 | BKD-0.25 | run of a Driver only its account commands `subscriptions list`, `check`, `usage`, `models`, `sign-in` and `sign-out`, through its launcher | Changed | unit |
-| BKD-0.26 | pass each step of `sign-in` to the window as it comes, write the code of an `enter_code` step on the command's standard input, store the secret of a `store_secret` step in the Keychain item the step names through the standard input of `/usr/bin/security`, never keeping, logging or returning it, and end the command when the window cancels or closes or the step has expired | Changed | unit, journey |
+| BKD-0.26 | give each sign-in an attempt that windows can follow again from its last step, pass each step of `sign-in` on as it comes, write the code of an `enter_code` step on the command's standard input, take no key for a `store_secret` step, and end the command on `signIn.cancel`, at the step's `expiresAt`, 6 minutes after its start, and 30 seconds after the connection that started it closed | Changed | unit, journey |
 
 Health and tests:
 
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
-| BKD-0.27 | measure at its start, every 5 minutes and when a window asks, whether the database server answers, the size of each retained Root's database, the size of the data folder and the free space of its disk | New | unit, journey |
+| BKD-0.27 | measure at its start, every 5 minutes and when a window asks, whether the database server answers, the size of each retained Root's database, the size of the data folder and the free space of its disk | Changed | unit, journey |
 | BKD-0.28 | show an attention item in every window when that free space is below 10 GiB, marked urgent below 2 GiB, naming the free space, the data folder's size and the largest database | New | unit, drill |
 | BKD-0.29 | take its Root's folder, the folder of the launchers, its settings folder and its database from `--root-dir`, `--bin-dir`, `--settings-dir` and `--database` when they are given, and refuse `--root-dir` without `--bin-dir` and `--database` | New | unit |
+
+BKD-0.19's clock is checked inside the backend's own process, because no drill makes the Mac sleep, as RTM-0.12's is.
 
 ## Interface
 
@@ -408,12 +429,16 @@ The backend's own tables, added to the Root's own layout `roots/<root>/layout.sq
 ```sql
 -- The Arbol backend's own tables (BKD-0). Written by the Arbol backend alone.
 
+CREATE SEQUENCE IF NOT EXISTS drafts_revision;
+COMMENT ON SEQUENCE drafts_revision IS 'The one counter of the revisions of every Draft, so that no revision is given twice, also after a Draft was removed.';
+
 CREATE TABLE IF NOT EXISTS drafts (
   chat_id         uuid        PRIMARY KEY,
   text            text        NOT NULL,
   working_folder  text        CHECK (working_folder IS NULL OR working_folder LIKE '/%'),
   route           jsonb       CHECK (route IS NULL OR jsonb_typeof(route) = 'object'),
   revision        bigint      NOT NULL CHECK (revision >= 1),
+  sent_as         uuid,
   updated_at      timestamptz NOT NULL
 );
 COMMENT ON TABLE drafts IS 'One Draft for each chat: what the Leather Bag typed in its composer and has not sent. Written by the Arbol backend alone (BKD-0).';
@@ -421,7 +446,8 @@ COMMENT ON COLUMN drafts.chat_id IS 'The chat the Draft belongs to, for example 
 COMMENT ON COLUMN drafts.text IS 'The text as the Leather Bag typed it, exactly.';
 COMMENT ON COLUMN drafts.working_folder IS 'The absolute folder the composer shows for the next message, for example /Users/sam/repos/shop; NULL when none is chosen.';
 COMMENT ON COLUMN drafts.route IS 'The route the composer shows for the next message, in the form of ARC-0, for example {"driver": "claude", "subscription": "anthropic", "model": "sonnet", "effort": "high"}; NULL when none is chosen.';
-COMMENT ON COLUMN drafts.revision IS 'Raised by 1 each time the Draft is saved, starting at 1. A message sent with revision 7 removes the Draft only while it still has revision 7.';
+COMMENT ON COLUMN drafts.revision IS 'A new value of drafts_revision each time the Draft is saved. A save names the revision it was made over and is refused when that is no longer the Draft''s.';
+COMMENT ON COLUMN drafts.sent_as IS 'The Exchange this Draft was sent as and not yet accepted or refused, for example 9b3a2c1e-5c6d-4f70-9a1b-2c3d4e5f6a7b; NULL when it is not being sent. Cleared by a save, which brings new text. The Draft is removed once that Exchange is in the chat tables.';
 COMMENT ON COLUMN drafts.updated_at IS 'When the Draft was last saved.';
 
 CREATE TABLE IF NOT EXISTS exchange_notes (
@@ -436,7 +462,24 @@ COMMENT ON COLUMN exchange_notes.kind IS 'ended_stuck: the backend ended the Exc
 COMMENT ON COLUMN exchange_notes.at IS 'When the backend decided it.';
 ```
 
-`kind` is a check that a later Build may not widen inside a Root (RTM-1). A new kind of note therefore needs a table of its own or a new Root; the first thin path needs only `ended_stuck` ([BKD-D6](#decisions)).
+`kind` is a check that a later Build may not widen inside a Root (RTM-1). A new kind of note therefore needs a table of its own or a new Root; the first thin path, the first version that goes once through every part ([ARC-1](../architecture/01-roots.md#what-is-built-first)), needs only `ended_stuck` ([BKD-D6](#decisions)).
+
+The lines a Root's migration script, `roots/<root>/migrate.sql`, adds for these tables: in its first step, after the chat tables,
+
+```sql
+\copy (SELECT * FROM drafts) TO 'drafts.copy' WITH (FORMAT binary)
+\copy (SELECT * FROM exchange_notes) TO 'exchange_notes.copy' WITH (FORMAT binary)
+```
+
+and in its second step, after `\copy runs FROM …`,
+
+```sql
+\copy drafts FROM 'drafts.copy' WITH (FORMAT binary)
+\copy exchange_notes FROM 'exchange_notes.copy' WITH (FORMAT binary)
+SELECT setval('drafts_revision', (SELECT coalesce(max(revision), 0) + 1 FROM drafts), false);
+```
+
+A Draft of a chat whose Exchange is open at the snapshot comes over too, so the Leather Bag finds the text in the newer Root.
 
 The calls, subscriptions and events the backend answers are in [BKD-1](01-the-bridge.md#interface).
 
@@ -449,6 +492,9 @@ Not to be reproduced.
 - **Storage on the path of every chat.** A slow write on the loop that served every chat stalled all of them, for up to nine seconds.
 - **A database nobody could see.** It ran in a container whose disk the application could not see, and filled that disk twice.
 - **Replay held in memory.** The text not yet sealed lived only in a process's memory, so a window opened late, or after a restart, missed it.
+- **A Draft with several owners.** Windows overwrote each other's Drafts, a late "clear" could delete newer text, and a save that failed was never shown.
+- **A placeholder stored as the title.** A window stored `Elma · <repository>` as the title, so no title was ever made for chats started there.
+- **A sign-in window limited only at its first address.** Only the address the sign-in started at was checked against the vendor's hosts; the window could go anywhere from there, and a ChatGPT credential was copied from the files the vendor tool left.
 
 Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 
@@ -456,20 +502,24 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 - `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#3. Durable bookkeeping on the streaming path`
 - `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#7. Blocking storage calls on the loop that serves every chat`
 - `arbol_deprecated_v1:product-spec/03-turn-execution.md#Stored versus live-only, and how a window reconciles them`
+- `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#9. A draft had more than one owner`
+- `arbol_deprecated_v1:product-spec/02-chat-sessions.md#Known problems and lessons`
+- `arbol_deprecated_v1:app/Arbol/ContentView.swift#ClaudeWeb.openOAuth`
+- `arbol_deprecated_v1:product-spec/05-intelligence-providers.md#Sign-in and sign-out`
 
 ## Decisions
 
 | ID | Question | Proposed default | Outcome |
 |---|---|---|---|
-| BKD-D1 | Where does the specification of Arbol itself live, and which window comes first? | A chapter of its own, `~/Artifacts/arbol/backend/`, numbered `BKD`, with three specifications: the backend, the Bridge, and the first window. The first window is a first version of Elma Chat, the conversation UI: one window that lists the chats of its Root and shows one of them, with sending, stopping, answering, sending again and renaming. Branches, search, tags and the other UIs come later. The alternative: a chapter for each part, or the window inside the Swift App's specification (SYL-192) | Open: a question for the owner |
+| BKD-D1 | Where does the specification of Arbol itself live? | A chapter of its own, `~/Artifacts/arbol/backend/`, numbered `BKD`, with three specifications: the backend, the Bridge, and Elma Chat's first version. What that first version does is [BKD-D22](02-elma-chat.md#decisions). The alternative: a chapter for each part, or the window inside the Swift App's specification (SYL-192) | Decided 18 October 2026, a technical choice: the proposed default, as the Beat SYL-190 proposed it |
 | BKD-D2 | How does the backend start, and how many run? | The command `arbol --root <root> backend`, the same program as the command line (ARC-0), started by the Swift App; one for each Root, by an exclusive lock on a file in the Root's folder; a ready line once its socket listens. A second start finds the first and refuses with `already_running`, and the Swift App connects to the first. The alternative: the Swift App keeps the count itself, which two Swift Apps, or a backend started by hand for development, would break | Decided 18 October 2026, a technical choice: the proposed default |
-| BKD-D3 | Brain Recipes are not specified yet (SYL-191). Which route does a message go with until they are? | The one the Leather Bag picks in the composer: a Driver with one of its Subscriptions, a model and an effort, from the Drivers' own lists. A chat keeps the route of its last message, and a new chat starts with the route of the Root's last message, or with the `route` of `arbol.json` when the Root has none yet. No small-call route is handed, because the Trivial Trunk makes no small call (TRV-0) and nothing yet resolves one. When Brain Recipes come, the picker offers them beside the routes. The alternative: one fixed route in `arbol.json` and no picker, so changing the model means editing a file | Open: a question for the owner |
-| BKD-D4 | In which folder does the agent work? | Each chat has the folder of its last message. A new chat starts in the folder of the Root's last message, and the composer lets the Leather Bag choose another with the Mac's own folder dialog, which the Swift App opens ([BKD-1](01-the-bridge.md#what-the-swift-app-answers-itself)). Changing the folder of a chat that has messages is allowed and is shown, because the agent then starts its own conversation anew (TRV-0). The alternative: one folder for the whole Root in `arbol.json` | Open: a question for the owner |
-| BKD-D5 | Where are Drafts kept, and how? | In the Root's database, as ARC-0 says: one row for each chat in the backend's own table `drafts`, with the text, the folder and the route the composer shows, replaced whole each time it is saved and given a revision, so that a message accepted while the Leather Bag typed on in another window removes only the Draft it was sent from. A new chat's Draft is kept under the identifier the chat will get. The alternative: every revision kept, as the glossary allows; no use of the earlier revisions is specified yet | Decided 18 October 2026, a technical choice: the proposed default |
+| BKD-D3 | Brain Recipes are not specified yet (SYL-191). Which route does a message go with until they are? | The one the Leather Bag picks in the composer: a Driver with one of its Subscriptions, a model and an effort, from the Drivers' own lists. A chat keeps the route of its last message, and a new chat starts with the route of the Root's last message, or with the `route` of `arbol.json` when the Root has none yet. For example, the last message in First Sapling went with `claude · anthropic · sonnet · high`, so a new chat starts with that, and its picker can switch this chat to the Codex Driver's `chatgpt` and one of its models. No small-call route is handed, because the Trivial Trunk makes no small call (TRV-0) and nothing resolves one yet. When Brain Recipes come, the picker offers them beside the routes. The alternative: one fixed route in `arbol.json` and no picker, so that changing the model means editing a file | Open: a question for the owner |
+| BKD-D4 | In which folder does the agent work? | Each chat has the folder of its last message. A new chat starts in the folder of the Root's last message, and the composer lets the Leather Bag choose another with the Mac's own folder dialog, which the Swift App opens ([BKD-1](01-the-bridge.md#what-the-swift-app-answers-itself)), or one of the folders of the Root's recent chats. For example, a chat started in `~/repos/shop` stays there; a new chat opens in `~/repos/shop` too until another folder is chosen. Changing the folder of a chat that has messages is allowed, and the composer says what it costs: the agent still gets every message of the chat, but no longer remembers what it read and ran in the earlier folder, because the Driver builds its conversation anew (TRV-0); the same happens when the Subscription changes. The alternative: one folder for the whole Root in `arbol.json` | Open: a question for the owner |
+| BKD-D5 | Where are Drafts kept, and how? | In the Root's database, as ARC-0 says: one row for each chat in the backend's own table `drafts`, with the text, the folder and the route the composer shows. A save names the revision it was made over and is refused when another window saved meanwhile, so that no window overwrites text it has not seen; revisions come from one counter, so none is given twice. A Draft being sent is marked with its Exchange, and is removed only once that Exchange is in the chat tables, so that a message accepted while the Leather Bag typed on in another window removes no newer text, and a removal a backend could not make is made later. A new chat's Draft is kept under the identifier the chat will get. The alternative: the last save wins, and every revision is kept, as the glossary allows; no use of earlier revisions is specified yet | Decided 18 October 2026, a technical choice: the proposed default |
 | BKD-D6 | Where does Arbol say in a chat that it ended an Exchange because it was stuck (ARC-3)? | A note in a table of the backend's own, `exchange_notes`, which the window shows under the Exchange. The chat tables belong to the Trunks, and Arbol writes only a chat's title there (ARC-0). The alternative: the window infers it from an interrupted Exchange, which cannot tell a stuck one from one whose process was killed | Decided 18 October 2026, a technical choice: the proposed default |
 | BKD-D7 | Who chooses the identifier of a new Exchange? | The window, a UUID it makes before it calls `chat.send`. When the backend ends before it could answer, the window sends the same call again, and the Trunk answers with the Exchange it accepted (RCT-D17), so one message never runs twice. The alternative: the backend chooses it, and a window whose backend ended cannot tell whether its message was accepted | Decided 18 October 2026, a technical choice: the proposed default |
 | BKD-D8 | How does the backend follow `events.jsonl`? | It reads the new bytes of the file at least every 250 milliseconds while a window follows the Exchange, whole lines only, from the first line for each window that starts to follow it, and keeps no copy of the lines: the file is the copy. The alternative: the system's notice of a changed file (kqueue), which saves reads but needs a reading by time anyway for a file replaced while it is watched | Decided 18 October 2026, a technical choice: the proposed default |
-| BKD-D9 | What does the backend do when `arbol-root start` gives no answer? | It starts the same Exchange again with the same identifier every 15 seconds, the longest an acceptance takes (RCT-2), for at most 60 seconds, then passes `no_answer` on and keeps the Draft. A Trunk that accepted it answers as a repeat and starts nothing (RCT-D17) | Decided 18 October 2026, a technical choice: the proposed default |
-| BKD-D10 | Does the backend store a secret that a sign-in asks for, and how? | Yes: the window collects it in a concealed field and sends it once; the backend writes it to the Keychain item the step names with `/usr/bin/security`, on its standard input, so it is in no argument and no log, and keeps nothing. An item written by `/usr/bin/security` is read by `/usr/bin/security` without a question, as the Driver reads it. The alternative: the window asks the Swift App to store it natively, which needs a native call before SYL-192 | Decided 18 October 2026, a technical choice: the proposed default |
+| BKD-D9 | What does the backend do when `arbol-root start` gives no clear reply? | Nothing within its 25 seconds, `no_answer` and `in_progress` are not refusals: the message may still be accepted. The backend runs the same start again, with the same identifier and a request file written anew, 15 seconds after the previous attempt returned, the longest an acceptance takes (RCT-2), never while one still runs, until 120 seconds after the first; then it replies `no_answer`, and the window sends the same call again. A Trunk that accepted the message replies as a repeat and starts nothing (RCT-D17), so the message never runs twice. The alternative: one attempt, after which the Leather Bag cannot tell whether the message runs | Decided 18 October 2026, a technical choice: the proposed default |
+| BKD-D10 | A sign-in step `store_secret` asks for a key. Does the window take it? | No. Every secret is entered on the Secrets page of Seqoya Lab, and until that page exists by hand with the system's `security` command (ARC-0, decided by the owner as [ARC-D62](../architecture/00-components-and-boundaries.md#decisions) on 13 October 2026). The window names the Keychain item the step names and waits; the Driver finds the item filled and goes on (DRV-1). No secret crosses the Bridge | Decided 13 October 2026 by the owner through ARC-D62; applied here on 18 October 2026 |
 | BKD-D11 | When does Arbol warn that space runs out? | When the disk of the database's data folder has less than 10 GiB free, and urgently below 2 GiB, measured every 5 minutes. In version 1 one table grew by about 50 GB a day through a defect; 10 GiB leaves hours to act in such a case and is far above what a day of ordinary chats takes, and 2 GiB is about the room PostgreSQL needs to keep running and vacuum. The alternative: a share of the disk, such as 10 %, which on a large disk warns far too early | Decided 18 October 2026, a technical choice: the proposed default, the values to start with |
 | BKD-D12 | How is a measurement of each Root's database size made without opening another Root's database? | `pg_database_size` of each database named in a retained Root's `root.json`, asked on the backend's own connection, which reads the server's catalogue and opens nothing else (ARC-1). The alternative: each Root's backend measures its own, which leaves out every Root whose backend is not running | Decided 18 October 2026, a technical choice: the proposed default |
