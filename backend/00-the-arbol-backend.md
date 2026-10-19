@@ -541,7 +541,6 @@ Not to be reproduced.
 - **Replay held in memory.** The text not yet sealed lived only in a process's memory, so a window opened late, or after a restart, missed it.
 - **A Draft with several owners.** Windows overwrote each other's Drafts, a late "clear" could delete newer text, and a save that failed was never shown.
 - **A placeholder stored as the title.** A window stored `Elma · <repository>` as the title, so no title was ever made for chats started there.
-- **A sign-in window limited only at its first address.** Only the address the sign-in started at was checked against the vendor's hosts; the window could go anywhere from there, and a ChatGPT credential was copied from the files the vendor tool left.
 
 Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 
@@ -551,8 +550,6 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 - `arbol_deprecated_v1:product-spec/03-turn-execution.md#Stored versus live-only, and how a window reconciles them`
 - `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#9. A draft had more than one owner`
 - `arbol_deprecated_v1:product-spec/02-chat-sessions.md#Known problems and lessons`
-- `arbol_deprecated_v1:app/Arbol/ContentView.swift#ClaudeWeb.openOAuth`
-- `arbol_deprecated_v1:product-spec/05-intelligence-providers.md#Sign-in and sign-out`
 
 ## Decisions
 
