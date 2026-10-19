@@ -19,7 +19,7 @@ Not covered: what a Trunk does inside an Exchange, which each Trunk's own specif
 
 ### The steps
 
-1. The Leather Bag sends a message in a [UI](../GLOSSARY.md#ui). The Arbol backend resolves the [Brain Recipe](../GLOSSARY.md#brain-recipe) to a route and calls `arbol-root` (ARC-0).
+1. The Leather Bag sends a message in a [UI](../GLOSSARY.md#ui). The Arbol backend takes the route the Leather Bag picked, or resolves a [Brain Recipe](../GLOSSARY.md#brain-recipe) to one, and calls `arbol-root` (ARC-0).
 2. A compatible `arbol-root` Build selects a compatible Build of the chosen Trunk implementation and starts it detached, handing it the route and the named Root's identity.
 3. The Trunk makes its folder under that Root's `exchanges/`, records the Root identity and its concrete Trunk component and Build, writes the message to that Root's database and answers that the message is accepted. From here on the Exchange is the Trunk's, within that Root.
 4. While the agent works, the Trunk appends what arrives to a file in its folder, and the Arbol backend follows that file for the UIs. Each finished message or tool call goes to the database.
