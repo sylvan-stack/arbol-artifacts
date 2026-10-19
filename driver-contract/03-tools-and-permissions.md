@@ -1,7 +1,7 @@
 ---
 role: authored
 spec: DRV-3
-status: implemented
+status: accepted
 ---
 # Driver Contract · 03 Tools and permissions
 
@@ -21,7 +21,7 @@ A request says one of two things about tools.
 
 | `tools` | The agent has |
 |---|---|
-| `all` | Every tool the vendor tool offers in the Subscription's home. The Driver names no tool to the vendor tool, neither to allow it nor to forbid it |
+| `all` | Every tool the vendor tool offers with the owner's own setup. The Driver names no tool to the vendor tool, neither to allow it nor to forbid it |
 | `none` | No tools: one prompt in, one text out (DRV-2, A run without tools) |
 
 Nothing in between exists. A request cannot take a single tool away or add one.
@@ -30,11 +30,11 @@ Nothing in between exists. A request cannot take a single tool away or add one.
 
 A Driver switches one part of its vendor tool off: the tool's own memory, the notes a tool writes for itself and reads again in later conversations. Everything else is as the tool ships it. In a run with tools the agent has the tool's tools for files, the terminal and the web, its sub-agents, the services connected to the signed-in account, and whatever the working folder sets up for the tool, such as its instruction file. What all of that is, is the vendor tool's own matter and changes with its version, the account and the model.
 
-The agent also has the owner's own skills and MCP servers: the ones the owner set up for that vendor tool, for the Claude Driver those of `claude` and for the Codex Driver those of `codex`. A Driver takes them from the owner's own setup of the tool, reads nothing else there and changes nothing there.
+The agent also has everything the owner set up for that vendor tool, because the tool runs in its default home, `~/.claude` or `~/.codex` (DRV-0.4, [DRV-D42](00-overview-and-boundary.md#decisions)): its settings, hooks, plug-ins, skills, MCP servers with their sign-ins, and the owner's own instruction files. The Driver changes nothing there.
 
 Two things differ from the same tool started by hand, and neither is a part switched off:
 
-- The tool runs in a home of its own per Subscription (DRV-0.4), not in the owner's `~/.claude` or `~/.codex`. Of what the owner set up there, a run has the skills and the MCP servers and nothing else: no settings and no instruction file of the owner's own. An MCP server that needs a sign-in is signed in once for each Subscription's home.
+- The tool's own memory is off for the run, through an option of that run, not through the owner's settings.
 - The request's system prompt is added to the tool's own (DRV-2).
 
 A setting that concerns the tool's housekeeping and not the agent, such as its check for updates, is the Driver's to make. Its specification lists each one.
@@ -127,7 +127,7 @@ Current records and source/package provenance: `~/Artifacts/arbol-codex-driver/r
 | ID | A Driver must… | Origin | Verified by |
 |---|---|---|---|
 | DRV-3.19 | show every command the agent runs in a terminal as the tool `shell`, with the input and result above, in events, and write a `shell` call of a history back in its own tool's form or, where that form is not known, in a form its tool was seen to accept | New | Claude Python: `C11`, `C35`, `test_runtime.ProtocolTests`; Codex Python: `C11`, `C35`, `Foundation.test_history_native_pairing_shell_fields_and_private_ordered_images`, `Mapper.test_shell_unwrap_preserves_quoting`, `MapperTools.test_generic_tool_failures_preserve_reasons_and_success_false_is_failed` |
-| DRV-3.20 | give a run with tools every tool the vendor tool offers in the Subscription's home, and name no tool to it, neither to allow nor to forbid | Changed | Claude Python: `C35`, `test_runtime.ProtocolTests`; Codex Python: `C35`, `MapperTools.test_patch_kinds_and_vendor_failure_leave_run_completed` |
+| DRV-3.20 | give a run with tools every tool the vendor tool offers with the owner's own setup, and name no tool to it, neither to allow nor to forbid | Changed | contract |
 | DRV-3.21 | start the vendor tool so that it carries out every tool call without asking, with the access of the owner's account | Changed | Claude Python: `C35`, `test_runtime.ProtocolTests`; Codex Python: `C35`, `Continuity.test_resume_overrides_and_delayed_restored_usage_do_not_count_previous_thread` |
 | DRV-3.22 | ask its caller for no permission; answer at once a request for permission that the vendor tool sends nonetheless, approving it where the tool's protocol has an answer that approves and declining it otherwise, and emit a `notice` | Changed | Claude Python: `C25`, `test_runtime.ProtocolTests`; Codex Python: `C25`, `MapperTools.test_child_request_notice_without_turn_replays_after_spawn_discovery` |
 | DRV-3.23 | end a call the vendor tool refused by itself with `tool_finished` as a failure carrying the tool's reason, and let the run go on | Kept | Claude Python: `C35`, `test_runtime.ProtocolTests`; Codex Python: `C35`, `MapperTools.test_generic_tool_failures_preserve_reasons_and_success_false_is_failed` |
@@ -139,7 +139,7 @@ Current records and source/package provenance: `~/Artifacts/arbol-codex-driver/r
 | DRV-3.28 | check an answer before it reaches the vendor tool and deliver it exactly once; treat a second answer as success without effect; refuse a malformed answer with `invalid_input` and an answer to a question that was withdrawn or never opened with `not_found`, each in a `control_refused` event | Kept | Claude Python: `C36`, `test_runtime.ProtocolTests`; Codex not applicable (CDX-3.13): `C25`, `C33`, `C36` (unsupported vendor question rejected, no ask events, unmatched control answer refused) |
 | DRV-3.29 | end the run as `cancelled` when the caller declines a question | Kept | Claude Python: `C36`, `test_runtime.ProtocolTests`; Codex not applicable (CDX-3.13): `C25`, `C33`, `C36` (unsupported vendor question rejected, no ask events, unmatched control answer refused) |
 | DRV-3.30 | in a run without a control input, give the agent no means to ask where the vendor tool allows that, and decline a question that arises nonetheless with a message saying that nobody is there to answer | New | Claude Python: `C33`, `test_runtime.ProtocolTests`; Codex not applicable (CDX-3.13): `C25`, `C33`, `C36` (unsupported vendor question rejected, no ask events, unmatched control answer refused) |
-| DRV-3.31 | give a run with tools the owner's own skills and MCP servers of the vendor tool, taken from the owner's own setup of that tool, and neither read anything else there nor change anything there | New | Claude Python: `C37`, `test_runtime.ProtocolTests`; Codex Python: `C37`, `OwnerDiagnostics.test_transient_owner_payload_keeps_exact_json_values_and_home_unmodified`, `OwnerSetup.test_malformed_unreadable_and_non_json_tables_have_nonsecret_errors`, `OwnerSetup.test_preserves_mcp_tables_and_reads_no_other_owner_file`, `ToolRuns.test_resume_forwards_changed_owner_mcp_in_memory_without_polluting_saved_state` |
+| DRV-3.31 | give a run with tools everything the owner set up for the vendor tool, settings, hooks, plug-ins, skills, MCP servers and instruction files, by starting the tool in its default home, and change nothing there | New | contract |
 
 DRV-3.1 to DRV-3.18 described tool sets, levels of asking and permission questions. They were withdrawn on 6 October 2026 with DRV-D12, and their numbers are not used again.
 
@@ -197,5 +197,5 @@ SYL-95 verification is recorded in the requirement-level `~/Artifacts/arbol/driv
 | DRV-D14 | May an agent start sub-agents in the first release? | No. Their events have not been probed | Decided 6 October 2026 by the owner, against the proposed default: agents are not kept from starting sub-agents. The vendor tools do this by themselves, and a Driver only reports it (SYL-45) |
 | DRV-D25 | Can the agent ask the person a question while it works? | Not in the first release | Decided 6 October 2026 by the owner, against the proposed default: yes. It is the ordinary behaviour of the agent's question tool. The Claude Driver carries such questions. `codex` offers them only in an experimental mode, so the Codex Driver carries none until that changes (SYL-70) |
 | DRV-D26 | Does a Driver switch any part of its vendor tool off? | Yes, what brings something into a run that is neither in the request nor in the saved conversation: the tool's own memory, the services connected to the account, optional parts such as plug-ins | Decided 6 October 2026 by the owner, against the proposed default: no. `claude` and `codex` keep their full power, and nothing is switched off (SYL-71). One exception, named by the owner the same day: the tool's own memory is off |
-| DRV-D27 | Which skills and MCP servers does a run have, beyond those of the working folder and of the account? | None: a Subscription's home starts empty | Decided 6 October 2026 by the owner, against the proposed default: the owner's own, by the Driver in use. The Claude Driver gives a run the skills and MCP servers the owner set up for `claude`, the Codex Driver those set up for `codex`. A Driver reads them and never changes them |
+| DRV-D27 | Which skills and MCP servers does a run have, beyond those of the working folder and of the account? | None: a Subscription's home starts empty | Widened on 19 October 2026 by DRV-D42: a run has the owner's whole setup of the tool, because the tool runs in its default home. Decided 6 October 2026 by the owner, against the proposed default: the owner's own, by the Driver in use. The Claude Driver gives a run the skills and MCP servers the owner set up for `claude`, the Codex Driver those set up for `codex`. A Driver reads them and never changes them |
 | DRV-D34 | The agent leaves a command running in the background and ends what it has to say. Does the run wait for the command? | Yes, as for a sub-agent. The command finishes, its result is reported, and on `claude` the agent is told and goes on. The cost: a command that never ends, such as a development server, keeps the run going until it is stopped, and the stop ends the command. The other choice ends the command the moment the agent has spoken | Decided 6 October 2026 by Claude, on the owner's standing direction that the vendor tools keep their full power (DRV-D26), and confirmed by the owner the same day: a run may wait for a command however long it takes. What Arbol does about a run that waits for long is settled in Arbol, not in a Driver |

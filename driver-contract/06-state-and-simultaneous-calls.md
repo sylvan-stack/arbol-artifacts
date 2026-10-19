@@ -1,7 +1,7 @@
 ---
 role: authored
 spec: DRV-6
-status: implemented
+status: accepted
 ---
 # Driver Contract · 06 State and simultaneous calls
 
@@ -11,7 +11,7 @@ A Driver is started anew for every operation, so everything it knows from one ca
 
 Covered: the layout of the state directory, the format of each file in it, how files are written, the data format number, the map from chat sessions to the vendor tools' saved conversations and how a Driver decides whether a saved conversation still fits, records of runs and sign-ins in progress, locks, stopping a run from another call, replacing a sign-in, leftovers of a killed call, what the Driver remembers about the vendor tool's program.
 
-Not covered: what is inside a Subscription's home, which belongs to the vendor tool (CLD-1, CDX-1); the settings file, which is not in the state directory (DRV-0); the registry of Builds (BLD-0).
+Not covered: what the vendor tool keeps in its own home, which is the tool's ([DRV-0](00-overview-and-boundary.md#the-vendor-tools-home)); the settings file, which is not in the state directory (DRV-0); the registry of Builds (BLD-0).
 
 ## Behaviour
 
@@ -28,7 +28,7 @@ All of a Driver's files are under one folder, by default `~/Library/Application 
       record.json               the Subscription
       lock                      present only while record.json is being rewritten
       sign-in.json              present only while a sign-in is pending
-      home/                     the vendor tool's home for this Subscription
+      home/                     only for a test Subscription: the vendor tool's home for probes and live checks (DRV-D44)
       chats/
         <chat key>.json         one entry of the map per chat session
   runs/
@@ -37,7 +37,7 @@ All of a Driver's files are under one folder, by default `~/Library/Application 
     <run id>/                   files that live as long as one run
 ```
 
-Nothing else is kept. A folder or file that is missing is created when it is first needed, so an empty state directory is a valid one.
+Nothing else is kept. A folder or file that is missing is created when it is first needed, so an empty state directory is a valid one. A `home/` that an earlier Build made for a Subscription that is not a test one is no longer used; the Driver leaves it as it is.
 
 ### Writing a file
 

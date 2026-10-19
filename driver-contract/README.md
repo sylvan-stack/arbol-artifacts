@@ -11,13 +11,13 @@ A Driver in Arbol 2 is a bridge to a vendor's agent. It does two things: it mana
 
 | Spec | Title | Status |
 |---|---|---|
-| [DRV-0](00-overview-and-boundary.md) | Overview and boundary | implemented |
-| [DRV-1](01-subscriptions.md) | Subscriptions | implemented |
-| [DRV-2](02-inference.md) | Inference | implemented |
-| [DRV-3](03-tools-and-permissions.md) | Tools and permissions | implemented |
+| [DRV-0](00-overview-and-boundary.md) | Overview and boundary | accepted |
+| [DRV-1](01-subscriptions.md) | Subscriptions | accepted |
+| [DRV-2](02-inference.md) | Inference | accepted |
+| [DRV-3](03-tools-and-permissions.md) | Tools and permissions | accepted |
 | [DRV-4](04-errors-and-limits.md) | Errors and limits | implemented |
-| [DRV-5](05-conformance.md) | Conformance | implemented |
-| [DRV-6](06-state-and-simultaneous-calls.md) | State and simultaneous calls | implemented |
+| [DRV-5](05-conformance.md) | Conformance | accepted |
+| [DRV-6](06-state-and-simultaneous-calls.md) | State and simultaneous calls | accepted |
 
 Driver specifications: [Claude Driver](../../arbol-claude-driver/specs/README.md) (`CLD`), [Codex Driver](../../arbol-codex-driver/specs/README.md) (`CDX`).
 

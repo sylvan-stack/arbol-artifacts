@@ -33,11 +33,15 @@ Other programs may add hooks of their own to the same files. Arbol neither uses 
 
 A *watching* hook learns what a session does and never changes it: it exits with 0, prints nothing and blocks nothing. A *steering* hook may block a tool call with exit status 2 and a message for the agent. Every hook of Arbol's is a watching hook, except the check from outside's, the only steering hook. Keeping them apart means that a fault in the agent records can never stop a session, and that the one hook that can is small and can be reviewed alone.
 
+### A Driver's run
+
+A Driver starts `claude` and `codex` in their default homes, `~/.claude` and `~/.codex` ([DRV-D42](../../driver-contract/00-overview-and-boundary.md#the-vendor-tools-home), decided 19 October 2026). A run of an Arbol chat therefore runs every hook on this Mac, as any session does. Each hook of Arbol's says what it does in such a run, which it can tell by `ARBOL_ROOT` in its environment once the Driver's caller sets it (SYL-207): the agent records write no record for it, because its Exchange keeps its own ([AGR-D17](../../agent-records/01-the-hooks.md#decisions)), and the check from outside never steers a chat.
+
 ### Sessions that run no hooks of the Leather Bag's
 
 | Session | Why no hooks | Where it is said |
 |---|---|---|
-| A Driver's run | The hooks feature is on in both tools, as DRV-D26 wants. But the run reads the Subscription's own home, and DRV-D27 carries only the owner's skills and MCP servers there, so no hook is configured in it ([PHK-D5](#decisions)). A repository's own hooks in the working folder were not tried; Codex would skip them unless trusted in that home | [CLD-3](../../../arbol-claude-driver/specs/03-tools-and-permissions.md), [CDX-3](../../../arbol-codex-driver/specs/03-tools-and-permissions.md); the conformance scenario checks that the owner's `hooks` never reach the home |
+| A probe or live check of a Driver | It runs in a home created for it ([DRV-D44](../../driver-contract/05-conformance.md#decisions)) | [DRV-5](../../driver-contract/05-conformance.md) |
 | The check from outside's Claude Code reviewer | `claude -p --safe-mode` | [The check from outside](../../../mycel/operations/agent-watch.md) |
 | The check from outside's Codex reviewer | Not yet: `codex exec --ephemeral …` runs in `~/.codex` and will run every hook installed there ([PHK-D2](#decisions)) | — |
 
@@ -89,7 +93,7 @@ A steering hook's block is seen by the watching hooks only as a `PreToolUse` who
 | PHK-1.6 | as a watching hook, always exit with 0, print nothing and never run in the background | New | unit |
 | PHK-1.7 | as a steering hook, block only a `PreToolUse` and print only the message to the agent | New | unit; live |
 | PHK-1.8 | take at most 50 milliseconds in the median on this Mac, keep no part of the conversation, start no lasting process and use no network | New | unit; live |
-| PHK-1.9 | not be run by a session that Arbol or its checks start for their own work, such as a Driver's run or a reviewer of the check from outside | New | contract; unit |
+| PHK-1.9 | not be run by a reviewer of the check from outside, and say what it does in a Driver's run, which runs every hook of the owner's (DRV-D42) | New | unit |
 
 ## Known problems in version 1
 
@@ -102,4 +106,4 @@ Version 1 used no hooks of either tool.
 | PHK-D2 | The check from outside's Codex reviewer runs `codex exec` in `~/.codex`. Once hooks are installed there, each review would create an agent record of its own and could be blocked by the check's own steering hook. Is it run without hooks? | Yes: its command line gets `--disable hooks`, beside `--disable apps` and the others it has. Its Claude Code counterpart already runs with `--safe-mode`. A test of the check asserts both | Open |
 | PHK-D3 | Do the agent records and the check from outside share one installer? | No. Each installer writes only its own entries under the rules above, as the Beats SYL-202 and SYL-221 already plan. One installer would tie the agent records' Builds to the check's | Open |
 | PHK-D4 | What does the steering hook do when it fails on its own, for example when its steering file cannot be read? | It lets the call through and exits with 0. A broken hook that blocked would stop every session on the Mac, the session that could repair it included; a missed steer is caught by the next check five minutes later | Open |
-| PHK-D5 | Does a Driver's run get the owner's hooks, as it gets the owner's skills and MCP servers (DRV-D27)? | Yes. The Driver copies the `hooks` of `~/.claude/settings.json` into the Subscription home's `settings.json`, and `~/.codex/hooks.json` into its home with Codex's trust recorded there, before each run. A hook installed once then reaches every session on the Mac, Arbol's chats included, and Arbol builds on the tools' hooks instead of leaving them out. Each hook of Arbol's must then tell a Driver's run apart where it matters: the agent records already keep an Exchange's own record (AGR-D7), and the check from outside never steers a chat | Open |
+| PHK-D5 | Does a Driver's run get the owner's hooks, as it gets the owner's skills and MCP servers (DRV-D27)? | Yes. The Driver copies the `hooks` of `~/.claude/settings.json` into the Subscription home's `settings.json`, and `~/.codex/hooks.json` into its home with Codex's trust recorded there, before each run. A hook installed once then reaches every session on the Mac, Arbol's chats included, and Arbol builds on the tools' hooks instead of leaving them out. Each hook of Arbol's must then tell a Driver's run apart where it matters: the agent records already keep an Exchange's own record (AGR-D7), and the check from outside never steers a chat | Settled 19 October 2026 by the owner's wider decision DRV-D42: a Driver runs the tools in their default homes, so a run has the owner's hooks without any copy |

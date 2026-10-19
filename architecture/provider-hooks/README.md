@@ -26,7 +26,7 @@ The chapter was taken out of [AGR-1](../../agent-records/01-the-hooks.md) on 19 
   ├─ arbol-agents hook codex         the agent record, 12 events (AGR-1)     accepted, not installed (SYL-202)
   └─ agent-watch-hook                steer or stop, PreToolUse (SYL-221)     planned
 ~/.codex/config.toml  notify = […]   Computer Use, once per finished turn    installed; not a hook
-A Driver's Subscription home                                                 no hooks of the Leather Bag's
+A Driver's run, in ~/.claude or ~/.codex (DRV-D42)                           runs every hook above
 ```
 
 ## Conventions

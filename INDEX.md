@@ -10,7 +10,7 @@
 
 The contract shared by `arbol-claude-driver` and `arbol-codex-driver`. Start at its [README](driver-contract/README.md), which also defines the conventions all Driver specifications follow.
 
-- [`00-overview-and-boundary.md`](driver-contract/00-overview-and-boundary.md) (DRV-0): what a Driver owns in Arbol 2 and what stays with its caller, vendor families, the Driver as a command-line program and the rules of its command line, rules for every operation.
+- [`00-overview-and-boundary.md`](driver-contract/00-overview-and-boundary.md) (DRV-0): what a Driver owns in Arbol 2 and what stays with its caller, vendor families, the Driver as a command-line program, the vendor tool's default home and how each Subscription signs in there (DRV-D42), the rules of its command line, rules for every operation.
 - [`01-subscriptions.md`](driver-contract/01-subscriptions.md) (DRV-1): the Subscription record and states, sign-in exchange, credential rules, usage reports, model catalogs, the commands and their types.
 - [`02-inference.md`](driver-contract/02-inference.md) (DRV-2): the run request, the `run` command and its control input, the event stream and its ordering rules, outcomes, conversation continuity, usage, stopping a run, a run without tools.
 - [`03-tools-and-permissions.md`](driver-contract/03-tools-and-permissions.md) (DRV-3): the agent runs as trusted and with the vendor tool's full power: every tool, nothing switched off, no permission questions; the run without tools; the common form of a terminal command; sub-agents; questions from the agent to the person.

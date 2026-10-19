@@ -1,7 +1,7 @@
 ---
 role: authored
 spec: DRV-2
-status: implemented
+status: accepted
 ---
 # Driver Contract · 02 Inference
 
@@ -90,7 +90,7 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 
 The caller owns the conversation. Chat sessions, their history, branches and edits belong to Arbol and its Trunks, and a Driver keeps none of it. With every run the caller sends the earlier conversation, oldest first, and the new message. The earlier conversation is everything the caller was told about it: the messages, and every tool call the agent made with its result. The caller hands the text of every reply back exactly as the run's `text` events carried it, because the Driver recognises a conversation by that text (DRV-6). A run must work from those alone, so a chat can change Subscription, model or Driver between messages and can branch from any point.
 
-**Continuing the tool's own conversation.** The vendor tools save each conversation themselves, in the Subscription's home, and a saved conversation still holds what the agent read and did. So that the agent keeps this, the caller names its chat session with every run, by an identifier of its own. That is all the caller knows: it never sees a session of the vendor tool.
+**Continuing the tool's own conversation.** The vendor tools save each conversation themselves, in their own home ([DRV-0](00-overview-and-boundary.md#the-vendor-tools-home)), and a saved conversation still holds what the agent read and did. So that the agent keeps this, the caller names its chat session with every run, by an identifier of its own. That is all the caller knows: it never sees a session of the vendor tool.
 
 The Driver keeps a small map (DRV-6). For each chat session and Subscription it says which saved conversation of the tool belongs to it and which messages that conversation covers. The map holds identifiers and a digest, never the messages. A conversation is therefore stored in two places only: the vendor tool's folder and the caller's own store. Of the two, the caller's store is the source of truth. The tool's saved conversation is a working copy that exists for inference only: it may be removed at any time, and the Driver then builds a new one from the messages.
 
@@ -193,7 +193,7 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 
 ### Several runs at once
 
-Any number of runs may be in progress at the same time, on one Subscription or on several. They share nothing but the Subscription's home: each is a process of its own. While a run lasts it keeps a record of itself in the state directory. That record is how another invocation lists the runs in progress, refuses a run identifier that is in use, and stops a run by its identifier.
+Any number of runs may be in progress at the same time, on one Subscription or on several. They share nothing but the vendor tool's home, as sessions started by hand do: each is a process of its own. While a run lasts it keeps a record of itself in the state directory. That record is how another invocation lists the runs in progress, refuses a run identifier that is in use, and stops a run by its identifier.
 
 Finding a run again after the process that started it has gone is not part of this contract: the run ends with its caller. See DRV-D2 in [DRV-0](00-overview-and-boundary.md#decisions).
 
