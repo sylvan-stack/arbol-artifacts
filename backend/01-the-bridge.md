@@ -107,7 +107,7 @@ The window keeps the truth this way:
 | The database returns | The backend sends a new snapshot on every subscription. A window starts again each subscription that ended with `database_unavailable` when the attention item `database_unreachable` closes |
 | No polling | Apart from these, the window reads nothing again on a timer |
 
-The topics are in the [Interface](#interface). For a chat, the snapshot holds the last 20 Exchanges as the chat tables have them, with `more` true when there are older ones, which `chat.exchanges` gives; a tool call's input and result in it are cut to 8 KiB, marked `cut`, and `toolCall.get` gives them whole when the call is opened. A chat that does not exist yet has an empty snapshot, with its Draft when it has one, never `not_found`. For an Exchange that is still open, the snapshot holds only the Leather Bag's message, and the answer comes only as lines: the backend sends every line of its `events.jsonl` from the first one on, whole and unchanged, in order, leaving out when it catches up only the pieces of a block that is whole in the file (BKD-0). So a window opened late, opened again or opened twice shows the whole answer so far (ARC-2). The window ignores a line whose `n` it already has. When the Exchange is saved, an event `saved` brings its rows as the chat tables have them. The backend also sends an event `exchange` for every Exchange of the chat whose folder appears, whoever started it.
+The topics are in the [Interface](#interface). For a chat, the snapshot holds the last 12 Exchanges as the chat tables have them, as version 1 opened a chat, with `more` true when there are older ones, which `chat.exchanges` gives; a tool call's input and result in it are cut to 8 KiB, marked `cut`, and `toolCall.get` gives them whole when the call is opened. A chat that does not exist yet has an empty snapshot, with its Draft when it has one, never `not_found`. For an Exchange that is still open, the snapshot holds only the Leather Bag's message, and the answer comes only as lines: the backend sends every line of its `events.jsonl` from the first one on, whole and unchanged, in order, leaving out when it catches up only the pieces of a block that is whole in the file (BKD-0). So a window opened late, opened again or opened twice shows the whole answer so far (ARC-2). The window ignores a line whose `n` it already has. When the Exchange is saved, an event `saved` brings its rows as the chat tables have them. The backend also sends an event `exchange` for every Exchange of the chat whose folder appears, whoever started it.
 
 One message stays within 16 MiB: the backend splits a batch of lines into several events where needed. A single line of `events.jsonl` larger than that is sent as `{"n", "tooLarge": true, "bytes"}`, and the window says that this part is too large to show here.
 
@@ -116,14 +116,15 @@ One message stays within 16 MiB: the backend splits a batch of lines into severa
 The window chooses the identifier of a new Exchange, a UUID, before it calls `chat.send` or `exchange.sendAgain` ([BKD-D7](00-the-arbol-backend.md#decisions)). When the call fails with `disconnected`, or with `no_answer`, the window sends the same call again, with the same identifier, once the backend is back. The Trunk replies with the Exchange it accepted, marked as a repeat, or accepts it then; the message never runs twice (RCT-2). The window's time limit for these two calls, 150 seconds, is longer than the backend's longest attempt (BKD-0).
 
 ```json
-{"type":"call","id":"c30","method":"chat.send","params":{"chat":"c3d4e5f6-…","exchange":"9b3a2c1e-5c6d-4f70-9a1b-2c3d4e5f6a7b","message":"Add a --clean option to it.","route":{"driver":"claude","subscription":"anthropic","model":"sonnet","effort":"high"},"workingFolder":"/Users/sam/repos/shop","draftRevision":41}}
+{"type":"call","id":"c30","method":"chat.send","params":{"chat":"c3d4e5f6-…","exchange":"9b3a2c1e-5c6d-4f70-9a1b-2c3d4e5f6a7b","message":"Add a --clean option to it.","route":{"driver":"claude","subscription":"anthropic","model":"sonnet","effort":"high"},"workingFolder":"/Users/sam/repos/shop","draft":{"revision":41}}}
 {"type":"reply","id":"c30","result":{"accepted":true,"duplicate":false,"exchange":"9b3a2c1e-…","chat":"c3d4e5f6-…","number":3}}
 ```
 
 | Calls | Sent again after `disconnected` or `no_answer` |
 |---|---|
 | `chat.send`, `exchange.sendAgain` | Yes, with the same Exchange identifier |
-| `root.get`, `roots.list`, `chats.page`, `chat.exchanges`, `toolCall.get`, `subscriptions.check`, `chat.rename`, `exchange.stop`, `accounts.*`, `health.measure`, `signIn.start`, `signIn.cancel` | Yes: they have the same effect when sent twice |
+| `root.get`, `roots.list`, `chats.page`, `chat.exchanges`, `toolCall.get`, `subscriptions.check`, `draft.get`, `chat.rename`, `chat.settings`, `chat.mark`, `exchange.stop`, `accounts.*`, `health.measure`, `signIn.start`, `signIn.cancel` | Yes: they have the same effect when sent twice |
+| `paste.save` | Yes: a second file with the same text does no harm, and the window uses the path of the reply it gets |
 | `draft.save` | Yes, over the same revision, so that a save that was made already is refused with `draft_conflict` and brings the Draft as it is |
 | `exchange.answer` | Only when the lines of the Exchange hold no `answer` line for that `askId`; otherwise the answer arrived |
 | `signIn.enterCode`, `signIn.storeSecret` | Never: the window says that the connection was lost, and the Leather Bag signs in again when the code or the key was not taken; the window keeps no key to send again |
@@ -201,7 +202,7 @@ When `window.webkit` is missing, the page uses that WebSocket instead. The relay
 | BKD-1.3 | begin every connection with `hello`, giving the Bridge's version, the Root and the backend's Build; have a window refuse another version of the Bridge, and, when its page came from another Build, save its Drafts, wait for its sends and reload once for that Build | New | unit |
 | BKD-1.4 | answer every call exactly once, with `result` or with `error` of the form `{code, message}` and, for an error passed on, `source`; refuse with `invalid_input` an identifier that is not of its kind before a file is touched or a program started; have the window give each call a time limit and show a code it does not know with its message | Changed | unit |
 | BKD-1.5 | register a subscription before reading its snapshot, begin it with the snapshot, number its events with `seq` from 1 without gaps, keep one subscription for each topic and params on a connection, end a connection's subscriptions with `slow_reader` above 64 MiB waiting; have the window start a subscription again when it finds a gap, when `subscriptions.check` shows it behind after being hidden, and when the database returns | Changed | unit, journey |
-| BKD-1.6 | give in a chat's snapshot the last 20 Exchanges, tool inputs and results cut to 8 KiB, and for an open Exchange only its message; send every line of `events.jsonl` of each Exchange in progress from the first one on, whole, unchanged and in order, a line larger than 16 MiB as `{n, tooLarge, bytes}`, then its saved rows once it is saved; and announce every Exchange of the chat whose folder appears | Changed | unit, journey |
+| BKD-1.6 | give in a chat's snapshot the last 12 Exchanges, tool inputs and results cut to 8 KiB, the chat's Draft, settings and marks, and for an open Exchange only its message; send every line of `events.jsonl` of each Exchange in progress from the first one on, whole, unchanged and in order, a line larger than 16 MiB as `{n, tooLarge, bytes}`, then its saved rows once it is saved; and announce every Exchange of the chat whose folder appears | Changed | unit, journey |
 | BKD-1.7 | when the connection ends, have the window, told by `lost`, keep showing what it shows and the Drafts typed meanwhile, fail its calls under way with `disconnected`, and after the next `hello` start every subscription again and send its calls again as the table of repeating says, `chat.send` and `exchange.sendAgain` with the same Exchange identifier and never `signIn.enterCode` or `signIn.storeSecret` | Changed | drill |
 | BKD-1.8 | give every attention item open in the Root to every window that subscribes to `attention`, from its opening to its closing, and have a window show a kind it does not know with its message | New | unit, drill |
 | BKD-1.9 | change within a Root only by additions that older Builds can ignore, have the backend and the window ignore every field, event kind and attention kind they do not know, and have the backend reply to a method or topic it does not know with `unknown_method` | New | unit |
@@ -263,15 +264,19 @@ The calls:
 | `root.get` | — | `RootInfo` and `layoutComplete: boolean` | 30 s |
 | `roots.list` | — | `Discovery` | 30 s |
 | `chats.page` | `before?`: `{ activityAt, chat }` of the oldest chat shown; `limit?`, at most 200, 100 by default | `{ chats: ChatSummary[] }`, older than `before`, by `activityAt` and then `chat`, both newest first | 30 s |
-| `chat.exchanges` | `chat`, `beforeNumber`, `limit?`, at most 50, 20 by default | `{ exchanges: SavedExchange[]; more: boolean }` | 30 s |
+| `chat.exchanges` | `chat`, `beforeNumber`, `limit?`, at most 50, 12 by default | `{ exchanges: SavedExchange[]; more: boolean }` | 30 s |
 | `toolCall.get` | `exchange`, `position` | the tool call whole: `{ input, result?, error? }` | 30 s |
 | `subscriptions.check` | — | `{ subscriptions: Array<{ id: string; seq: number }> }`: the last `seq` sent on each | 30 s |
-| `chat.send` | `chat`, `exchange`, `message`, `route`, `workingFolder`, `draftRevision?` | `Accepted` | 150 s |
+| `chat.send` | `chat`, `exchange`, `message`, `route`, `workingFolder`, `draft?`: `{ revision, folder? }`, the Draft it was sent from, the chat's own or, for a new chat, the Draft of the repository folder | `Accepted` | 150 s |
 | `exchange.sendAgain` | `exchange` (the one replaced), `newExchange`, `route` | `Accepted` | 150 s |
 | `exchange.stop` | `exchange` | `{ ended: "completed" \| "failed" \| "cancelled" \| "interrupted" \| "saved" \| "none" }`, as `arbol-root stop` printed it (RTM-0) | 120 s |
 | `exchange.answer` | `exchange`, `askId`, `answer` (DRV-3 `Answer`) | `{}` once the line is in `control` | 30 s |
 | `chat.rename` | `chat`, `title`: a string, or `null` to take the title away | `{ title: string \| null }` | 30 s |
-| `draft.save` | `chat`, `text`, `workingFolder?`, `route?`, `baseRevision`: the revision it was made over, `null` for a chat without a Draft | `{ revision: number }` | 30 s |
+| `draft.get` | `chat`, or `folder` for the Draft of a new chat in that repository | `Draft \| null` | 30 s |
+| `draft.save` | `chat`, or `folder`; `text`; `baseRevision`: the revision it was made over, `null` when there was no Draft | `{ revision: number }`, or `{ removed: true }` for an empty text | 30 s |
+| `chat.settings` | `chat`, `route?`, `workingFolder?` | `{}` once saved for the chat's next message | 30 s |
+| `chat.mark` | `chat`, `ongoing?`, `archived?` | `ChatMarks` | 30 s |
+| `paste.save` | `text`, of 10,000 characters or more | `{ path: string }`, the file it was saved in | 30 s |
 | `accounts.list` | — | `{ drivers: Array<{ driver: string; subscriptions?: Subscription[]; error?: BridgeError }> }` (DRV-1 `Subscription`) | 30 s |
 | `accounts.check`, `accounts.usage`, `accounts.models`, `accounts.signOut` | `driver`, `subscription` | DRV-1's `Subscription`, `UsageReport`, `ModelCatalog`, `Subscription` | 30 s |
 | `signIn.start` | `driver`, `subscription` | `{ attempt: string }`: a new attempt, or the one that runs for that Subscription | 30 s |
@@ -284,8 +289,8 @@ The topics:
 
 | Topic | Params | Snapshot | Events after it |
 |---|---|---|---|
-| `chats` | — | `{ kind: "snapshot", chats: ChatSummary[] }`: the 100 chats with the newest activity, and every new chat that has a Draft | `{ kind: "changed", chats: ChatSummary[] }`: each chat whose summary changed, within a second of the change (BKD-0) |
-| `chat` | `chat` | `{ kind: "snapshot", chat: ChatInfo, exchanges: SavedExchange[], more: boolean, draft: Draft \| null }` | `exchange` (`ExchangeStatus`), `lines` (`LinesEvent`), `saved` (`SavedExchange`), `draft` (`Draft \| null`, null once the Draft is removed), `title`, `note` (`ExchangeNote`) |
+| `chats` | — | `{ kind: "snapshot", chats: ChatSummary[] }`: the 100 chats that are not archived, with the newest activity, for the latest chats | `{ kind: "changed", chats: ChatSummary[] }`: each chat whose summary changed, within a second of the change (BKD-0), an archived one with `archived: true` |
+| `chat` | `chat` | `{ kind: "snapshot", chat: ChatInfo, exchanges: SavedExchange[], more: boolean, draft: Draft \| null, settings: ChatSettings, marks: ChatMarks }` | `exchange` (`ExchangeStatus`), `lines` (`LinesEvent`), `saved` (`SavedExchange`), `draft` (`Draft \| null`, null once the Draft is removed), `settings`, `marks`, `title`, `note` (`ExchangeNote`) |
 | `attention` | — | `{ kind: "snapshot", items: AttentionItem[] }` | `{ kind: "opened", item }`, `{ kind: "closed", id }` |
 | `signIn` | `attempt` | `{ kind: "step", step: SignIn \| null }`: the last step so far | `{ kind: "step", step: SignIn }` (DRV-1); it ends after `done` or `failed`. Ending the subscription changes nothing; `signIn.cancel` cancels |
 
@@ -300,7 +305,13 @@ interface ChatSummary {
   last?: { exchange: string; number: number; state: ExchangeState; error?: BridgeError; waitingFor?: string };
   hasDraft: boolean;
   workingFolder?: string;               // of the last Exchange
+  route?: object;                       // of the last Exchange, for the row of the latest chats
+  ongoing: boolean;
+  archived?: true;                      // only in a changed event, when the chat was archived
 }
+
+interface ChatSettings { route?: object; workingFolder?: string }   // picked for the next message; absent: the last Exchange's (BKD-0)
+interface ChatMarks { ongoing: boolean; archivedAt?: string }
 
 interface ChatInfo { chat: string; title: string | null; createdAt?: string }
 
@@ -337,7 +348,7 @@ interface ExchangeStatus {
 // a batch of lines of events.jsonl, unchanged (RCT-1)
 interface LinesEvent { kind: "lines"; exchange: string; lines: Array<object | { n: number; tooLarge: true; bytes: number }> }
 
-interface Draft { chat: string; text: string; workingFolder?: string; route?: object; revision: number; sentAs?: string; updatedAt: string }
+interface Draft { chat?: string; folder?: string; text: string; revision: number; sentAs?: string; updatedAt: string }   // chat: the Draft of a reply; folder: the Draft of a new chat
 
 interface ExchangeNote { exchange: string; kind: "ended_stuck"; at: string }
 
@@ -395,4 +406,4 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 | BKD-D14 | How does a window know it shows the truth? | Every subscription is registered before its snapshot is read, starts with the snapshot, and numbers its events without gaps. A window that finds a gap, that finds itself behind when it is shown again, or that gets a new `hello` starts its subscriptions again; the backend sends a new snapshot when the database returns. Nothing is read on a timer. The alternative: reading again every few seconds, as version 1 did, which costs work all the time and still shows an old state between two reads | Decided 18 October 2026, a technical choice: the proposed default |
 | BKD-D15 | How does a window ask for the Mac's folder dialog, a sign-in window and a link, which only the Swift App can open? | On a channel of their own, `arbolApp`, which the Swift App answers itself and which never reaches the backend, so the Bridge stays a channel the Swift App does not read; the web view never leaves its page, and only the page's main frame reaches the Bridge. The exact form is SYL-192's. The alternative: the Swift App reads the Bridge and answers some methods itself, against ARC-0 | Decided 18 October 2026, a technical choice: the proposed default |
 | BKD-D16 | How is the window built and checked before the Swift App exists? | Through a development relay in the `arbol` repository that serves the renderer bundle on the loopback address and relays a WebSocket to `backend.sock`, unchanged, letting in only the browser that got its token. It is never for daily use, because its sign-in tab cannot be limited to the vendor's hosts. The alternative: wait for the Swift App (SYL-192), which is blocked by this specification, before the first window can be seen | Decided 18 October 2026, a technical choice: the proposed default |
-| BKD-D23 | How large may a chat's snapshot be? | The last 20 Exchanges, with the input and the result of each tool call cut to 8 KiB, and the rest on request (`chat.exchanges`, `toolCall.get`). A Driver may return up to 200 KiB for one tool call (DRV-2), so a whole chat can pass the 16 MiB of a message; 20 Exchanges fill several screens, and a closed tool call shows one line. The alternative: the whole chat at once, which fails for a long chat | Decided 18 October 2026, a technical choice: the proposed default, the values to start with |
+| BKD-D23 | How large may a chat's snapshot be? | The last 12 Exchanges, as version 1 opened a chat, with the input and the result of each tool call cut to 8 KiB, and the rest on request (`chat.exchanges`, `toolCall.get`). A Driver may return up to 200 KiB for one tool call (DRV-2), so a whole chat can pass the 16 MiB of a message, and a closed tool call shows one line. The alternative: the whole chat at once, which fails for a long chat | Decided 18 October 2026, a technical choice; 12 Exchanges, as version 1 had them, on 19 October 2026 following BKD-D22 |

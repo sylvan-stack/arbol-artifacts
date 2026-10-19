@@ -3,9 +3,9 @@ role: authored
 ---
 # Arbol backend
 
-This chapter specifies three parts of Arbol. The *Arbol backend* is the program that works behind the windows of one [Root](../GLOSSARY.md#arbol-root): it reads the Root's chats, keeps what the [Leather Bag](../GLOSSARY.md#leather-bag) typed and has not sent, the [Drafts](../GLOSSARY.md#draft), and has a Trunk answer each message. The *[Bridge](../GLOSSARY.md#bridge)* is the set of messages a window and its backend send each other. *[Elma Chat](../GLOSSARY.md#elma-chat)'s first version* is one kind of window that lists a Root's chats and shows one of them. For example, the Leather Bag opens Elma Chat in First Sapling, types "What does build.sh do?" and presses Return: the window sends `chat.send` over the Bridge, the backend has `arbol-root start` start the Trivial Trunk, follows the answer as it arrives in the Exchange's folder and passes it on line by line, and when the Leather Bag opens the chat again the next day the backend reads it from the chat tables.
+This chapter specifies three parts of Arbol. The *Arbol backend* is the program that works behind the windows of one [Root](../GLOSSARY.md#arbol-root): it reads the Root's chats, keeps what the [Leather Bag](../GLOSSARY.md#leather-bag) typed and has not sent, the [Drafts](../GLOSSARY.md#draft), and has a Trunk answer each message. The *[Bridge](../GLOSSARY.md#bridge)* is the set of messages a window and its backend send each other. *[Elma Chat](../GLOSSARY.md#elma-chat)'s first version* is the chat window of a Root, as version 1's Elma Chat looked and worked. For example, the Leather Bag opens Elma Chat in First Sapling, types "What does build.sh do?" and presses Return: the window sends `chat.send` over the Bridge, the backend has `arbol-root start` start the Trivial Trunk, follows the answer as it arrives in the Exchange's folder and passes it on line by line, and when the Leather Bag opens the chat again the next day the backend reads it from the chat tables.
 
-Three words are kept apart here. A *window* is one Elma Chat window on the screen; several can be open at once, of one Root or of several. Its *page* is the web page it shows, loaded from Elma Chat's *renderer bundle*, the files of the [UI](../GLOSSARY.md#ui) in each `arbol` Build. Elma Chat is the UI.
+Three words are kept apart here. A *window* is one Elma Chat window on the screen; each Root has one, and windows of several Roots can be open at once. Its *page* is the web page it shows, loaded from Elma Chat's *renderer bundle*, the files of the [UI](../GLOSSARY.md#ui) in each `arbol` Build. Elma Chat is the UI.
 
 The architecture says where these parts stand ([ARC-0](../architecture/00-components-and-boundaries.md#arbol-the-swift-app-and-the-backend), "Arbol: the Swift App and the backend"; [ARC-1](../architecture/01-roots.md) to [ARC-3](../architecture/03-stuck-trunks.md)). The [Root Contract](../../arbol-root/contract/README.md) says what the backend shares with every Trunk, and the [Root manager's specifications](../../arbol-root/specs/README.md) what the commands of `arbol-root` do and print. The specifications here say what the backend does, what crosses the Bridge, and what the first window shows. Written in SYL-190 on 18 October 2026.
 
@@ -30,17 +30,17 @@ In the READMEs of the [Root Contract](../../arbol-root/contract/README.md#where-
 | ARC-0.7 | Keeping the current Root's backend running: SYL-192; no listener outside the current Root: BKD-0.3 |
 | ARC-0.8 | BKD-0.5, BKD-0.8 |
 | ARC-0.9 | Elma Chat resolves no Brain Recipe: its route is the Leather Bag's choice or a default, and its small-call route a default (BKD-0.11, BKD-0.30, BKD-D3); resolving a Brain Recipe where one is used: SYL-191 |
-| ARC-0.10 | BKD-0.25, BKD-0.26; BKD-2.15 shows the steps |
+| ARC-0.10 | BKD-0.25, BKD-0.26; BKD-2.19 shows the steps |
 | ARC-0.11 | SYL-193 |
-| ARC-0.14 | BKD-0.27, BKD-0.28; BKD-2.16 shows the warning |
-| ARC-0.31 | SYL-194; until the Secrets page exists, the key of a Driver's sign-in is stored through the sign-in panel (BKD-0.26, BKD-1.10, BKD-2.15, BKD-D10) |
+| ARC-0.14 | BKD-0.27, BKD-0.28; BKD-2.20 shows the warning |
+| ARC-0.31 | SYL-194; until the Secrets page exists, the key of a Driver's sign-in is stored through the sign-in panel (BKD-0.26, BKD-1.10, BKD-2.19, BKD-D10) |
 | ARC-1.2 | BKD-0.7 (the backend's own tables and settings), BKD-1.9 (the Bridge) |
 | ARC-1.5 | BKD-0.5, BKD-0.22 |
 | ARC-1.6 | The display name in the header of the window: BKD-2.1; the tray menu: SYL-192 |
 | ARC-1.7 | BKD-0.3 |
 | ARC-1.8 | BKD-0.2, BKD-2.1 |
 | ARC-1.10 | BKD-0.30 reads `arbol.json` from `~/.arbol/roots/<root>/` |
-| ARC-1.11 | BKD-0.27; BKD-2.16 shows it |
+| ARC-1.11 | BKD-0.27 measures it; showing it: the tray menu (SYL-192), because version 1's Elma Chat, which BKD-2 keeps, had no place for it |
 | ARC-1.18 | The migration itself: RTM-1.7, RTM-1.8 (SYL-189); a Root that is `preparing` in the header of the window: BKD-2.1; in the tray menu, and a failed migration reported there: SYL-192 |
 | ARC-1.19, ARC-1.20 | SYL-195 |
 | ARC-1.21 | Opening a failed Root that is named: BKD-0.2, BKD-2.1 |
@@ -48,25 +48,25 @@ In the READMEs of the [Root Contract](../../arbol-root/contract/README.md#where-
 | ARC-1.25 | BKD-0.22 |
 | ARC-1.26 | BKD-0.21, BKD-0.22 |
 | ARC-1.28 | That the backend creates or changes no table: BKD-0.6, with its own tables in the Root's own layout of BKD-0's Interface, which `arbol-roots` runs (RTM-1) |
-| ARC-2.1 | BKD-0.11, BKD-0.12; BKD-2.11 keeps the Draft in the composer |
-| ARC-2.4 | BKD-0.15; BKD-1.6; BKD-2.4 |
-| ARC-2.5 | BKD-0.16, BKD-0.17; BKD-2.8, BKD-2.19 |
-| ARC-2.7 | BKD-0.18; BKD-2.10 |
+| ARC-2.1 | BKD-0.11, BKD-0.12; BKD-2.11 puts a refused message back in the composer |
+| ARC-2.4 | BKD-0.15; BKD-1.6; BKD-2.5 |
+| ARC-2.5 | BKD-0.16, BKD-0.17; BKD-2.13, BKD-2.15 |
+| ARC-2.7 | BKD-0.18; BKD-2.16 |
 | ARC-2.8 | BKD-0.9, BKD-0.14 |
 | ARC-2.9 | Arbol's part: BKD-0.24 keeps the Draft of a message refused while the database is away; BKD-2.11 |
-| ARC-2.11 | BKD-0.21; BKD-1.7; BKD-2.17 |
+| ARC-2.11 | BKD-0.21; BKD-1.7; BKD-2.21 |
 | ARC-2.13 | BKD-0.22 |
-| ARC-2.14 | BKD-0.23, BKD-0.24; BKD-2.10, BKD-2.16 |
+| ARC-2.14 | BKD-0.23, BKD-0.24; BKD-2.16, BKD-2.20 |
 | ARC-3.9 | BKD-0.19 |
 | ARC-3.10 | The looks of ARC-3.9, counted with `CLOCK_UPTIME_RAW`: BKD-0.19 |
-| ARC-3.11 | BKD-0.20; BKD-2.13 |
-| ARC-3.12 | BKD-0.19; BKD-2.5 |
-| ARC-3.13 | BKD-0.16; BKD-2.8 |
-| ARC-3.14 | BKD-0.20 keeps what had arrived through `arbol-root stop --force`; BKD-0.14 takes the chat's next message; BKD-2.13 |
+| ARC-3.11 | BKD-0.20; BKD-2.16 |
+| ARC-3.12 | BKD-0.19; BKD-2.6 |
+| ARC-3.13 | BKD-0.16; BKD-2.13 |
+| ARC-3.14 | BKD-0.20 keeps what had arrived through `arbol-root stop --force`; BKD-0.14 takes the chat's next message; BKD-2.16 |
 | RCT-1.8 | The backend's part: BKD-0.17 |
 | RCT-1.9 | The backend's part: BKD-0.15 |
 | RCT-1.10 | The backend's part: BKD-0.15 |
-| RCT-2.16 | BKD-2.8, BKD-2.9 |
+| RCT-2.16 | BKD-2.13, BKD-2.14 |
 | RCT-3.8 | BKD-0.5, BKD-0.8 |
 
 ## Conventions

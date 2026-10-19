@@ -74,43 +74,54 @@ The backend connects to the Root's database as a Trunk does ([RCT-0](../../arbol
 | Tables | The backend |
 |---|---|
 | The chat tables `chats`, `exchanges`, `messages`, `tool_calls`, `runs` (RCT-3) | Reads them directly with SQL, and writes only `chats.title`, when the Leather Bag gives a chat a title or takes it away |
-| Its own tables, `drafts` and `exchange_notes` ([Interface](#interface)) | Reads and writes their rows; nobody else does |
+| Its own tables, `drafts`, `chat_settings`, `chat_marks` and `exchange_notes` ([Interface](#interface)) | Reads and writes their rows; nobody else does |
 | `migrated_chats` of a Root that grew from another (RTM-1) | Reads nothing of it in this specification; marking a stale copy is SYL-195 |
 
 It reads a chat, a page of the list of chats and every snapshot of BKD-1 in one transaction that is `REPEATABLE READ` and `READ ONLY`, so that what it reads is one moment and a Trunk's end committed meanwhile cannot tear it; every other use of a connection commits each statement at once, so that no connection stays idle inside a transaction. It reads a chat as RCT-3 says, without knowing which Trunk wrote it: every Exchange of the chat that was not replaced, in the order of their numbers, and within each its messages and the tool calls the agent made itself in the order of their positions ([RCT-3](../../arbol-root/contract/03-the-chat-tables.md#how-a-chat-is-read)). For an Exchange that is still open it reads the answer from the folder ([below](#an-exchange-in-progress)).
 
 A title is 1 to 240 characters, counted as PostgreSQL's `char_length` counts them, as the chat tables check. The backend writes the Leather Bag's text with its white space at both ends removed, and NULL when nothing is left, and never a placeholder ([RCT-3](../../arbol-root/contract/03-the-chat-tables.md#the-tables)). For example, renaming a chat to "  Build script  " stores `Build script`.
 
-**Its own tables.** The backend never changes the shape of the database: it creates, changes and removes no table, column, index or check. Its two tables are written into the Root's own layout, `roots/<root>/layout.sql` in the `arbol-root` repository, which the Root's `arbol-root` Builds carry as `layout/root-tables.sql` and `arbol-roots` runs ([RTM-1](../../arbol-root/specs/01-builds-layouts-and-migration.md#the-roots-own-layout)). A later Build of the Root may only add to that file what the Root's older Builds can ignore (RTM-1.5), and the settings file `arbol.json` changes the same way ([below](#settings)). When a Root's database lacks the two tables, the backend still serves its chats, without Drafts and without notes, and every window shows the attention item `layout_incomplete` ([BKD-1](01-the-bridge.md#attention)).
+**Its own tables.** The backend never changes the shape of the database: it creates, changes and removes no table, column, index or check. Its four tables are written into the Root's own layout, `roots/<root>/layout.sql` in the `arbol-root` repository, which the Root's `arbol-root` Builds carry as `layout/root-tables.sql` and `arbol-roots` runs ([RTM-1](../../arbol-root/specs/01-builds-layouts-and-migration.md#the-roots-own-layout)). A later Build of the Root may only add to that file what the Root's older Builds can ignore (RTM-1.5), and the settings file `arbol.json` changes the same way ([below](#settings)). When a Root's database lacks them, the backend still serves its chats, without Drafts, settings, marks and notes, and every window shows the attention item `layout_incomplete` ([BKD-1](01-the-bridge.md#attention)).
 
-A Root that grows from another gets the rows of both tables from its migration script, which copies them as they are, after the chat tables, as the [Interface](#interface) shows. A Root whose layout lacks them gets them with `arbol-roots layout <root>` before another Root grows from it (RTM-1).
+A Root that grows from another gets the rows of these tables from its migration script, which copies them as they are, after the chat tables, as the [Interface](#interface) shows. A Root whose layout lacks them gets them with `arbol-roots layout <root>` before another Root grows from it (RTM-1).
 
 ### Settings
 
-The backend's settings are the file `~/.arbol/roots/<root>/arbol.json`, which the owner can edit and the backend reads at its start ([ARC-1](../architecture/01-roots.md#settings)). In this specification it holds the defaults of Elma Chat: the route a new chat starts with until the Leather Bag picks another, and the small-call route a Trunk is handed for small calls such as a title ([BKD-D3](#decisions)):
+The backend's settings are the file `~/.arbol/roots/<root>/arbol.json`, which the owner can edit and the backend reads at its start ([ARC-1](../architecture/01-roots.md#settings)). In this specification it holds the defaults of Elma Chat: the route a new chat starts with, for all repositories and for single ones, until the Leather Bag picks another, and the small-call route a Trunk is handed for small calls such as a title ([BKD-D3](#decisions)):
 
 ```json
 { "route": { "driver": "claude", "subscription": "anthropic", "model": "sonnet", "effort": "high" },
+  "repositories": { "shop": { "route": { "driver": "codex", "subscription": "chatgpt" } } },
   "smallCallRoute": { "driver": "claude", "subscription": "anthropic", "model": "haiku" } }
 ```
 
-A missing file, or one without a field, is no error: a new chat then starts with the route of the Root's last message, the first message of a Root with no route at all has to have one picked, and no small-call route is handed. Elma Chat uses no Brain Recipe: a route is always the Leather Bag's choice or a default ([BKD-D3](#decisions)).
+A missing file, or one without a field, is no error. A new chat's route is then the first that exists of its repository's route, the file's route and the first signed-in Subscription of the first Driver; a route that names no model or effort takes the catalog's defaults ([BKD-2](02-elma-chat.md#the-route)). No small-call route is handed without one. Elma Chat uses no Brain Recipe: a route is always the Leather Bag's choice or a default ([BKD-D3](#decisions)).
 
 ### Drafts
 
-A Draft is what the Leather Bag has typed in a chat's composer and not sent ([ARC-0](../architecture/00-components-and-boundaries.md#who-writes-what)). The backend keeps one Draft for each chat, in its table `drafts`, with the text, the working folder and the route the composer shows ([BKD-D5](#decisions)).
+A Draft is what the Leather Bag has typed in a composer and not sent ([ARC-0](../architecture/00-components-and-boundaries.md#who-writes-what)). As in version 1, each chat has one Draft of its reply, and each repository one Draft of a new chat ([BKD-2](02-elma-chat.md#the-composer)). A Draft holds the text; the route and the folder are the chat's settings ([below](#the-chats-settings-and-marks)). The backend keeps Drafts in its table `drafts` ([BKD-D5](#decisions)).
 
 | | |
 |---|---|
-| A new chat | Its Draft is kept under the identifier the chat will have, a UUID the window chooses when it opens a new composer; the chat itself exists only once a Trunk accepts its first message (RCT-0) |
-| Saving | The window sends the Draft as the Leather Bag types, with the revision it last saw ([BKD-2](02-elma-chat.md#the-composer)). The backend replaces the row whole and gives it a new `revision`, taken from one counter for all Drafts, so that a revision is never given twice, also after a Draft was removed |
+| Saving | The window sends the Draft as the Leather Bag types, with the revision it last saw. The backend replaces the row whole and gives it a new `revision`, taken from one counter for all Drafts, so that a revision is never given twice, also after a Draft was removed. A Draft whose text is empty is removed |
 | Two windows | A save over a revision that is no longer the Draft's is refused with `draft_conflict` and the Draft as it is, so no window overwrites text it has not seen. Every window of the chat is told of each new revision (BKD-1) |
 | Sending | `chat.send` names the revision it was sent from. The backend marks that Draft with the Exchange's identifier, `sent_as`, before it starts anything; a save clears the mark, because the Draft then holds new text |
-| Accepted | The backend removes the Draft that is still marked with that Exchange, and tells every window that the chat has no Draft. A Draft typed further meanwhile carries no mark, and stays. Whenever the backend reads a Draft whose mark names an Exchange the chat tables hold, it removes the Draft too, so a removal that a backend which ended never made is made later |
+| Accepted | The backend removes the Draft that is still marked with that Exchange, and tells every window. A Draft typed further meanwhile carries no mark, and stays. Whenever the backend reads a Draft whose mark names an Exchange the chat tables hold, it removes the Draft too, so a removal that a backend which ended never made is made later |
 | Refused | The backend clears the mark, and the Draft stays as it was ([ARC-2](../architecture/02-chat-exchange-across-components.md#the-steps)) |
 | Too large | A Draft or a message of more than 1 MiB is refused with `invalid_input` |
 
 For example, the Leather Bag sends "Add a --clean option" from revision 41 in one window and types "and a --verbose one" in another before the reply: the backend marks revision 41 as sent with the new Exchange, the second window's save makes revision 42 and clears the mark, and the acceptance then removes nothing, so the new text stays.
+
+### The chat's settings and marks
+
+Observed in version 1, and kept: a choice of the route, the model or the effort is saved for the chat at once, and counts from its next message on, also while its agent works ([BKD-2](02-elma-chat.md#the-route)). The backend keeps, in its own tables:
+
+| Table | For each chat |
+|---|---|
+| `chat_settings` | The route picked for its next message and its working folder, once either differs from its last Exchange's. A new chat's first message names both itself (`chat.send`) |
+| `chat_marks` | Whether the Leather Bag marked it ongoing, and when it was archived. An archived chat leaves the latest chats; nothing archives or deletes a chat by itself |
+
+**A long paste.** Text of 10,000 characters or more pasted into a composer is saved by the backend as a file `pastes/<uuid>.txt` of the mode 0600 in the Root's folder, which the folder `pastes/` of the mode 0700 holds, and the window puts the file's path in the message in its place (`paste.save`, BKD-1), as version 1 did. The files stay with the Root, because the chat names them.
 
 ### Sending a message
 
@@ -249,7 +260,7 @@ The Leather Bag signs in from an Arbol window, and the backend calls the Drivers
 
 These are the only commands of a Driver the backend runs: it never starts a run (ARC-0).
 
-**Signing in** is an exchange in steps (DRV-1). The window asks for it with `signIn.start` and gets an *attempt*, a name the backend gives it; the backend starts `sign-in`, keeps each step it prints, and passes it to every window that follows the attempt, beginning with the last step so far, so that a window that follows it again misses nothing and changes nothing ([BKD-1](01-the-bridge.md#interface)). The window shows the steps ([BKD-2](02-elma-chat.md#accounts)):
+**Signing in** is an exchange in steps (DRV-1). The window asks for it with `signIn.start` and gets an *attempt*, a name the backend gives it; the backend starts `sign-in`, keeps each step it prints, and passes it to every window that follows the attempt, beginning with the last step so far, so that a window that follows it again misses nothing and changes nothing ([BKD-1](01-the-bridge.md#interface)). The window shows the steps ([BKD-2](02-elma-chat.md#signing-in)):
 
 | Step | What happens |
 |---|---|
@@ -327,7 +338,7 @@ The process:
 | BKD-0.2 | start for a Root in any state that is named, a failed one included, and serve its windows for as long as its folder, its database and its Builds exist | New | journey |
 | BKD-0.3 | take the current Root from `arbol-roots list` whenever it needs it, store it nowhere, and run no listener unless its Root is current | New | unit |
 | BKD-0.4 | start `arbol-root`, `arbol-roots` and the Drivers only through their launchers, with the folder of the launchers first on the search path, each in a process group of its own; wait for none longer than its time limit, end a listing or an account command other than `sign-in` at its limit, and start no second settle of a Root, no second stop of an Exchange and no new look while one runs | New | unit |
-| BKD-0.30 | read the defaults of `~/.arbol/roots/<root>/arbol.json` at its start, a missing file or a missing field being no error, and use no Brain Recipe | Changed | unit |
+| BKD-0.30 | read the defaults of `~/.arbol/roots/<root>/arbol.json` at its start, the default route, each repository's default route and the small-call route, a missing file or a missing field being no error, and use no Brain Recipe | Changed | unit |
 
 The database:
 
@@ -343,11 +354,13 @@ Drafts and sending:
 
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
-| BKD-0.10 | keep one Draft for each chat in its table `drafts`, a new chat's under the identifier the chat will have; replace it whole only over the revision the window last saw, with a revision from one counter, and refuse any other save with `draft_conflict`; mark it with the Exchange it is sent as and clear the mark on a save or a refusal; remove it once that Exchange is accepted, or later when it reads a mark the chat tables hold; and refuse a Draft or a message of more than 1 MiB | Changed | unit |
+| BKD-0.10 | keep in its table `drafts` one Draft of the reply for each chat and one Draft of a new chat for each repository folder, holding the text; replace it whole only over the revision the window last saw, with a revision from one counter, and refuse any other save with `draft_conflict`; mark it with the Exchange it is sent as and clear the mark on a save or a refusal; remove it once that Exchange is accepted, or later when it reads a mark the chat tables hold; and refuse a Draft or a message of more than 1 MiB | Changed | unit |
 | BKD-0.11 | send a message by writing a request file with the chat, the message, the route and the working folder, and no small-call route, into `requests/` of the Root's folder, and running `arbol-root --root <root> start --exchange <id> --request <file>` with the Exchange identifier the window chose; refuse with `invalid_input`, before it touches a file or starts a program, an identifier that is not a lower-case UUID, a route without a Driver found among the launchers, a Subscription and a model, a working folder that is not an absolute path to a folder that exists, and an empty message | Changed | unit |
 | BKD-0.12 | count a message as accepted only on its acceptance line, pass every refusal on with its code and message and keep the Draft, take nothing, `no_answer` and `in_progress` as no refusal and run the same start again with a request file written anew 15 seconds after the previous attempt returned, never two at once, until 120 seconds after the first, and join a second call for an Exchange it is starting to the first | Changed | unit, drill |
 | BKD-0.13 | send a message again only with `--replaces`, for the Exchange the window names, with the replaced Exchange's working folder and the route the Leather Bag picks, and pass a refusal `cannot_replace` on | Changed | unit |
 | BKD-0.14 | keep a failed, stuck or cancelled Exchange to its own chat: serve every other chat meanwhile, and take a new message for the chat as soon as its Exchange has ended | Changed | drill |
+| BKD-0.31 | keep for each chat, in its tables `chat_settings` and `chat_marks`, the route and the working folder picked for its next message, whether it is ongoing and when it was archived, saving a choice at once, also while its agent works | Kept | unit |
+| BKD-0.32 | save a pasted text of 10,000 characters or more as a file of the mode 0600 in the folder `pastes/` of the Root's folder, and give the window its path | Kept | unit |
 
 An Exchange in progress:
 
@@ -410,7 +423,9 @@ interface ReadyLine {                  // one line on standard output once it li
 // a refusal: { "error": { "code": "invalid_input" | "unknown_root" | "already_running", "message": string } }, exit status 1
 
 interface BackendSettings {            // ~/.arbol/roots/<root>/arbol.json; every field may be missing
-  route?: Route;                       // the route a new chat starts with (ARC-0 Route)
+  route?: Partial<Route>;              // the route a new chat starts with (ARC-0 Route); model and effort may be left to the catalog
+  repositories?: Record<string, { route?: Partial<Route> }>;   // by the repository's name, as its folder is named: its own default route
+  smallCallRoute?: Route;              // handed to every Trunk for small calls such as a title
 }
 
 interface Measurement {                // the health of the database server (BKD-0.27)
@@ -434,22 +449,47 @@ CREATE SEQUENCE IF NOT EXISTS drafts_revision;
 COMMENT ON SEQUENCE drafts_revision IS 'The one counter of the revisions of every Draft, so that no revision is given twice, also after a Draft was removed.';
 
 CREATE TABLE IF NOT EXISTS drafts (
-  chat_id         uuid        PRIMARY KEY,
+  id              uuid        PRIMARY KEY,
+  chat_id         uuid        UNIQUE REFERENCES chats (id) ON DELETE RESTRICT,
+  folder          text        UNIQUE CHECK (folder IS NULL OR folder LIKE '/%'),
   text            text        NOT NULL,
-  working_folder  text        CHECK (working_folder IS NULL OR working_folder LIKE '/%'),
-  route           jsonb       CHECK (route IS NULL OR jsonb_typeof(route) = 'object'),
   revision        bigint      NOT NULL CHECK (revision >= 1),
   sent_as         uuid,
-  updated_at      timestamptz NOT NULL
+  updated_at      timestamptz NOT NULL,
+  CHECK ((chat_id IS NULL) <> (folder IS NULL))
 );
-COMMENT ON TABLE drafts IS 'One Draft for each chat: what the Leather Bag typed in its composer and has not sent. Written by the Arbol backend alone (BKD-0).';
-COMMENT ON COLUMN drafts.chat_id IS 'The chat the Draft belongs to, for example c3d4e5f6-0718-4293-a4b5-c6d7e8f90a1b. For a new chat, the identifier the chat will have once a Trunk accepts its first message, so there is no reference to chats.';
+COMMENT ON TABLE drafts IS 'What the Leather Bag typed in a composer and has not sent: one Draft of the reply for each chat, and one Draft of a new chat for each repository folder. Written by the Arbol backend alone (BKD-0).';
+COMMENT ON COLUMN drafts.id IS 'The Draft''s own identifier, a UUID the backend gives it.';
+COMMENT ON COLUMN drafts.chat_id IS 'For the Draft of a reply: its chat, for example c3d4e5f6-0718-4293-a4b5-c6d7e8f90a1b; NULL for the Draft of a new chat.';
+COMMENT ON COLUMN drafts.folder IS 'For the Draft of a new chat: the absolute folder of its repository, for example /Users/sam/repos/shop; NULL for the Draft of a reply.';
 COMMENT ON COLUMN drafts.text IS 'The text as the Leather Bag typed it, exactly.';
-COMMENT ON COLUMN drafts.working_folder IS 'The absolute folder the composer shows for the next message, for example /Users/sam/repos/shop; NULL when none is chosen.';
-COMMENT ON COLUMN drafts.route IS 'The route the composer shows for the next message, in the form of ARC-0, for example {"driver": "claude", "subscription": "anthropic", "model": "sonnet", "effort": "high"}; NULL when none is chosen.';
 COMMENT ON COLUMN drafts.revision IS 'A new value of drafts_revision each time the Draft is saved. A save names the revision it was made over and is refused when that is no longer the Draft''s.';
 COMMENT ON COLUMN drafts.sent_as IS 'The Exchange this Draft was sent as and not yet accepted or refused, for example 9b3a2c1e-5c6d-4f70-9a1b-2c3d4e5f6a7b; NULL when it is not being sent. Cleared by a save, which brings new text. The Draft is removed once that Exchange is in the chat tables.';
 COMMENT ON COLUMN drafts.updated_at IS 'When the Draft was last saved.';
+
+CREATE TABLE IF NOT EXISTS chat_settings (
+  chat_id         uuid        PRIMARY KEY REFERENCES chats (id) ON DELETE RESTRICT,
+  route           jsonb       CHECK (route IS NULL OR jsonb_typeof(route) = 'object'),
+  working_folder  text        CHECK (working_folder IS NULL OR working_folder LIKE '/%'),
+  updated_at      timestamptz NOT NULL
+);
+COMMENT ON TABLE chat_settings IS 'What the Leather Bag picked for a chat''s next message, where it differs from the chat''s last Exchange. Written by the Arbol backend alone (BKD-0).';
+COMMENT ON COLUMN chat_settings.chat_id IS 'The chat.';
+COMMENT ON COLUMN chat_settings.route IS 'The route picked for the next message, in the form of ARC-0, for example {"driver": "claude", "subscription": "anthropic", "model": "sonnet", "effort": "high"}; NULL: the route of the last Exchange.';
+COMMENT ON COLUMN chat_settings.working_folder IS 'The absolute folder picked for the next message, for example /Users/sam/repos/shop; NULL: the folder of the last Exchange.';
+COMMENT ON COLUMN chat_settings.updated_at IS 'When a choice was last saved.';
+
+CREATE TABLE IF NOT EXISTS chat_marks (
+  chat_id      uuid        PRIMARY KEY REFERENCES chats (id) ON DELETE RESTRICT,
+  ongoing      boolean     NOT NULL DEFAULT false,
+  archived_at  timestamptz,
+  updated_at   timestamptz NOT NULL
+);
+COMMENT ON TABLE chat_marks IS 'The marks the Leather Bag gives a chat in Elma Chat. Written by the Arbol backend alone (BKD-0).';
+COMMENT ON COLUMN chat_marks.chat_id IS 'The chat.';
+COMMENT ON COLUMN chat_marks.ongoing IS 'true while the Leather Bag marks the chat as one still being worked on (Elma Chat, Ongoing).';
+COMMENT ON COLUMN chat_marks.archived_at IS 'When the Leather Bag archived the chat; NULL while it is not archived. An archived chat leaves the latest chats.';
+COMMENT ON COLUMN chat_marks.updated_at IS 'When a mark was last changed.';
 
 CREATE TABLE IF NOT EXISTS exchange_notes (
   exchange_id  uuid        NOT NULL REFERENCES exchanges (id) ON DELETE RESTRICT,
@@ -469,6 +509,8 @@ The lines a Root's migration script, `roots/<root>/migrate.sql`, adds for these 
 
 ```sql
 \copy (SELECT * FROM drafts) TO 'drafts.copy' WITH (FORMAT binary)
+\copy (SELECT * FROM chat_settings) TO 'chat_settings.copy' WITH (FORMAT binary)
+\copy (SELECT * FROM chat_marks) TO 'chat_marks.copy' WITH (FORMAT binary)
 \copy (SELECT * FROM exchange_notes) TO 'exchange_notes.copy' WITH (FORMAT binary)
 ```
 
@@ -476,6 +518,8 @@ and in its second step, after `\copy runs FROM …`,
 
 ```sql
 \copy drafts FROM 'drafts.copy' WITH (FORMAT binary)
+\copy chat_settings FROM 'chat_settings.copy' WITH (FORMAT binary)
+\copy chat_marks FROM 'chat_marks.copy' WITH (FORMAT binary)
 \copy exchange_notes FROM 'exchange_notes.copy' WITH (FORMAT binary)
 SELECT setval('drafts_revision', (SELECT coalesce(max(revision), 0) + 1 FROM drafts), false);
 ```
@@ -516,7 +560,7 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 | BKD-D2 | How does the backend start, and how many run? | The command `arbol --root <root> backend`, the same program as the command line (ARC-0), started by the Swift App; one for each Root, by an exclusive lock on a file in the Root's folder; a ready line once its socket listens. A second start finds the first and refuses with `already_running`, and the Swift App connects to the first. The alternative: the Swift App keeps the count itself, which two Swift Apps, or a backend started by hand for development, would break | Decided 18 October 2026, a technical choice: the proposed default |
 | BKD-D3 | Brain Recipes are not specified yet (SYL-191). Which route does a message of Elma Chat go with? | The one the Leather Bag picks in the composer: a Driver with one of its Subscriptions, a model and an effort, from the Drivers' own lists. A chat keeps the route of its last message, and a new chat starts with the route of the Root's last message, or with the `route` of `arbol.json` when the Root has none yet. No small-call route is handed, because the Trivial Trunk makes no small call (TRV-0). When Brain Recipes come, the picker offers them beside the routes. The alternative: one fixed route in `arbol.json` and no picker | Decided 19 October 2026 by the owner: "We don't use Brain Recipes when user should specify explicitly or there are default values. Elma Chat should work as previously and it never used Brain Recipes but defaults and user selections." The route of Elma Chat is the Leather Bag's choice or a default, never a Brain Recipe; the defaults are those of version 1's Elma Chat, kept in `arbol.json` (BKD-2), with a default small-call route for the Trunks that make small calls |
 | BKD-D4 | In which folder does the agent work? | Each chat has the folder of its last message. A new chat starts in the folder of the Root's last message, and the composer lets the Leather Bag choose another with the Mac's own folder dialog, which the Swift App opens ([BKD-1](01-the-bridge.md#what-the-swift-app-answers-itself)), or one of the folders of the Root's recent chats. For example, a chat started in `~/repos/shop` stays there; a new chat opens in `~/repos/shop` too until another folder is chosen. Changing the folder of a chat that has messages is allowed, and the composer says what it costs: the agent still gets every message of the chat, but no longer remembers what it read and ran in the earlier folder, because the Driver builds its conversation anew (TRV-0); the same happens when the Subscription changes. The alternative: one folder for the whole Root in `arbol.json` | Open: a question for the owner |
-| BKD-D5 | Where are Drafts kept, and how? | In the Root's database, as ARC-0 says: one row for each chat in the backend's own table `drafts`, with the text, the folder and the route the composer shows. A save names the revision it was made over and is refused when another window saved meanwhile, so that no window overwrites text it has not seen; revisions come from one counter, so none is given twice. A Draft being sent is marked with its Exchange, and is removed only once that Exchange is in the chat tables, so that a message accepted while the Leather Bag typed on in another window removes no newer text, and a removal a backend could not make is made later. A new chat's Draft is kept under the identifier the chat will get. The alternative: the last save wins, and every revision is kept, as the glossary allows; no use of earlier revisions is specified yet | Decided 18 October 2026, a technical choice: the proposed default |
+| BKD-D5 | Where are Drafts kept, and how? | In the Root's database, as ARC-0 says, in the backend's own table `drafts`: as version 1 had them, one Draft of the reply for each chat and one Draft of a new chat for each repository folder, holding the text. A save names the revision it was made over and is refused when another window saved meanwhile, so that no window overwrites text it has not seen; revisions come from one counter, so none is given twice. A Draft being sent is marked with its Exchange, and is removed only once that Exchange is in the chat tables, so that a message accepted while the Leather Bag typed on in another window removes no newer text, and a removal a backend could not make is made later. The alternative: the last save wins, as in version 1, where a late clear deleted newer text | Decided 19 October 2026, a technical choice following BKD-D22 |
 | BKD-D6 | Where does Arbol say in a chat that it ended an Exchange because it was stuck (ARC-3)? | A note in a table of the backend's own, `exchange_notes`, which the window shows under the Exchange. The chat tables belong to the Trunks, and Arbol writes only a chat's title there (ARC-0). The alternative: the window infers it from an interrupted Exchange, which cannot tell a stuck one from one whose process was killed | Decided 18 October 2026, a technical choice: the proposed default |
 | BKD-D7 | Who chooses the identifier of a new Exchange? | The window, a UUID it makes before it calls `chat.send`. When the backend ends before it could answer, the window sends the same call again, and the Trunk answers with the Exchange it accepted (RCT-D17), so one message never runs twice. The alternative: the backend chooses it, and a window whose backend ended cannot tell whether its message was accepted | Decided 18 October 2026, a technical choice: the proposed default |
 | BKD-D8 | How does the backend follow `events.jsonl`? | It reads the new bytes of the file at least every 250 milliseconds while a window follows the Exchange, whole lines only, from the first line for each window that starts to follow it, and keeps no copy of the lines: the file is the copy. The alternative: the system's notice of a changed file (kqueue), which saves reads but needs a reading by time anyway for a file replaced while it is watched | Decided 18 October 2026, a technical choice: the proposed default |
@@ -524,3 +568,5 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 | BKD-D10 | A sign-in step `store_secret` asks for a key. Does the window take it? | No. Every secret is entered on the Secrets page of Seqoya Lab, and until that page exists by hand with the system's `security` command (ARC-D62). The window names the Keychain item the step names and waits; the Driver finds the item filled and goes on (DRV-1) | Decided 19 October 2026 by the owner, against the proposed default: "Before Seqoya Secrets page is implemented we can use Driver own authentication flow." Until the Secrets page exists (SYL-194), the window shows the Driver's `store_secret` step with a concealed field, and the backend stores the key in the item the step names through the standard input of `security -i`, as the Claude Driver does (CLD-D16), and reads it back. Once the page exists, keys are entered there, as ARC-D62 says |
 | BKD-D11 | When does Arbol warn that space runs out? | When the disk of the database's data folder has less than 10 GiB free, and urgently below 2 GiB, measured every 5 minutes. In version 1 one table grew by about 50 GB a day through a defect; 10 GiB leaves hours to act in such a case and is far above what a day of ordinary chats takes, and 2 GiB is about the room PostgreSQL needs to keep running and vacuum. The alternative: a share of the disk, such as 10 %, which on a large disk warns far too early | Decided 18 October 2026, a technical choice: the proposed default, the values to start with |
 | BKD-D12 | How is a measurement of each Root's database size made without opening another Root's database? | `pg_database_size` of each database named in a retained Root's `root.json`, asked on the backend's own connection, which reads the server's catalogue and opens nothing else (ARC-1). The alternative: each Root's backend measures its own, which leaves out every Root whose backend is not running | Decided 18 October 2026, a technical choice: the proposed default |
+| BKD-D24 | Where are a chat's settings and marks kept? | In two tables of the backend's own, `chat_settings` for the route and the folder picked for the next message, and `chat_marks` for ongoing and archived, because the chat tables belong to the Trunks and hold only what an Exchange ran with (ARC-0, RCT-3). Version 1 saved a choice to the chat at once and let it count from the next message on, also while the agent worked; Arbol 2 keeps that. The alternative: the window keeps the choice until the next message, which loses it when the window closes | Decided 19 October 2026, a technical choice following BKD-D22 |
+| BKD-D25 | What becomes of a long paste? | As in version 1: text of 10,000 characters or more is saved as a file and the message names its path, so that a message stays readable and the agent reads the text from the file. The file is kept in the Root's folder, `pastes/`, of the mode 0600, and stays as long as the Root, because the chat names it. The alternative: the text in the message, which a Driver sends whole with every later message of the chat | Decided 19 October 2026, a technical choice following BKD-D22 |
