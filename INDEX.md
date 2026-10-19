@@ -28,7 +28,7 @@ The contract shared by `arbol-claude-driver` and `arbol-codex-driver`. Start at 
 One small record per agent session, whatever tool runs it, written by the tools' own hooks. Start at its [README](agent-records/README.md).
 
 - [`00-the-agent-record.md`](agent-records/00-the-agent-record.md) (AGR-0): what one agent session is, where the records are, the record and how it is written, its owner, what an agent waits for, signs of life, telling working, waiting, silent, gone and ended apart, how an Exchange takes part, the program `arbol-agents`.
-- [`01-the-hooks.md`](agent-records/01-the-hooks.md) (AGR-1): which hook of Claude Code and Codex writes what, questions to the Leather Bag, what the hooks never do, installing them and Codex's trust, what they cannot see, the probes of 16 October 2026.
+- [`01-the-hooks.md`](agent-records/01-the-hooks.md) (AGR-1): which hook of Claude Code and Codex writes what, questions to the Leather Bag, what the hooks never do, installing them, what the record says where they cannot see. What the tools do with hooks is in [`architecture/provider-hooks/`](architecture/provider-hooks/README.md).
 
 ### `backend/`: the Arbol backend, the Bridge and Elma Chat's first window
 
@@ -46,6 +46,13 @@ The components, what each owns, and how Arbol lives with breaking changes. Start
 - [`01-roots.md`](architecture/01-roots.md) (ARC-1): a named Root as a persistent compatibility environment with its own folder, database, settings and compatible Builds; Root identity, manager Builds and invocations; what lies outside every Root; names; Builds and Roots; the tray menu and `arbol-roots`; the current Root; cross-Root discovery and migration.
 - [`02-chat-exchange-across-components.md`](architecture/02-chat-exchange-across-components.md) (ARC-2): one message from sending to its final state: the folder of an Exchange, the arriving answer as a file, stop and answers, the end, an Exchange whose process is gone, a database that cannot be reached.
 - [`03-stuck-trunks.md`](architecture/03-stuck-trunks.md) (ARC-3): when an Exchange counts as stuck, the heartbeat of a Trunk, a Trunk that ends itself, how Arbol notices from outside, a stop that is not obeyed, ending by force, long waits on purpose.
+
+#### `architecture/provider-hooks/`: the hooks of Claude Code and Codex
+
+What the two tools do with a hook, the hooks on this Mac and the rules every hook of Arbol's follows. Start at its [README](architecture/provider-hooks/README.md).
+
+- [`00-hooks-of-claude-code-and-codex.md`](architecture/provider-hooks/00-hooks-of-claude-code-and-codex.md) (PHK-0): where each tool reads its hooks, the events and when each tool sends them, a hook's input, what its exit status and output do, time limits, Codex's trust, when a change takes effect, Codex's `notify`, what no hook sees, the live checks of 16 October 2026.
+- [`01-hooks-on-this-mac.md`](architecture/provider-hooks/01-hooks-on-this-mac.md) (PHK-1): the hooks installed and planned and who owns each, watching and steering hooks, sessions that run no hooks of the Leather Bag's, the rules for installing and running a hook, hooks of different owners side by side.
 
 ## Conventions
 
