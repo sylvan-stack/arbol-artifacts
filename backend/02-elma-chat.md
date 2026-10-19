@@ -5,94 +5,92 @@ status: review
 ---
 # Arbol backend · 02 Elma Chat, its first version
 
-[Elma Chat](../GLOSSARY.md#elma-chat) is the [UI](../GLOSSARY.md#ui) in which the [Leather Bag](../GLOSSARY.md#leather-bag) talks with an agent. Its first version in Arbol 2 looks and works as Elma Chat of version 1 did ([BKD-D22](#decisions)): one window with a navigation panel on the left, the chat on the right showing one [Chat Exchange](../GLOSSARY.md#chat-exchange) at a time (*Exchange* for short: one message of the Leather Bag and the agent's answer to it), the composer below it, and a status bar at the bottom. For example, the Leather Bag presses ⌘1 to start a chat in the first repository, types "What does build.sh do?" and presses ⌘⏎: the message is pinned at the top, "Starting agent…" turns into the answer arriving word by word, the agent's `cat build.sh` shows as one closed line, and once the answer is complete the tool calls stand above a line, the *Answer Threshold*, and the answer below it. The next day ⌃⇧⌘C lists the chat among the latest, and Return opens it again. This specification states what the window shows and does, which parts of version 1 it keeps, which it changes because Arbol 2 works differently, and which come later. The backend it talks to is [BKD-0](00-the-arbol-backend.md), and the messages they exchange are [BKD-1](01-the-bridge.md). It matters because the owner decided that the window keeps version 1's form, and because version 1 showed "Stopped" before anything had stopped, lost the text still arriving in a window opened late, and let Drafts be overwritten by another window.
+[Elma Chat](../GLOSSARY.md#elma-chat) is the [UI](../GLOSSARY.md#ui) in which the [Leather Bag](../GLOSSARY.md#leather-bag) talks with an agent. Its first version in Arbol 2, in First Sapling, looks and works as Elma Chat of version 1 did ([BKD-D22](#decisions)): one window with a navigation panel on the left, the chat on the right showing one [Chat Exchange](../GLOSSARY.md#chat-exchange) at a time (*Exchange* for short: one message of the Leather Bag and the agent's answer to it), the composer below it, and a status bar at the bottom. For example, the Leather Bag presses ⌘2 to start a chat in the second repository, types "What does build.sh do?" and presses ⌘⏎: the message is pinned at the top, "Starting agent…" turns into the answer arriving word by word, the agent's `cat build.sh` shows as one closed line, and once the answer is complete the tool calls stand above a line, the *Answer Threshold*, and the answer below it. The next day ⌃⇧⌘C lists the chat among the latest, and Return opens it again. This specification states what the window shows and does, which parts of version 1 it keeps, which it changes because Arbol 2 works differently, and which are not in First Sapling. The backend it talks to is [BKD-0](00-the-arbol-backend.md), and the messages they exchange are [BKD-1](01-the-bridge.md). It matters because the owner decided that the window keeps version 1's form, and because version 1 showed "Stopped" before anything had stopped, lost the text still arriving in a window opened late, and let Drafts be overwritten.
 
-It follows the conventions of the [Driver Contract](../driver-contract/README.md#conventions) and the additions in this chapter's [README](README.md#conventions). *Observed* below means version 1's Elma Chat as its product specification and its renderer describe it; where nothing else is said, the first version keeps it.
+It follows the conventions of the [Driver Contract](../driver-contract/README.md#conventions) and the additions in this chapter's [README](README.md#conventions). *Observed in version 1* below means version 1's Elma Chat as its product specification and its renderer describe it. Where nothing else is said, the first version keeps it; *Changed* says what differs, and why.
 
 ## Scope
 
-Covered: the window, the navigation panel, the chat and the Exchange shown, the answer as it arrives, the status of an Exchange, the composer and Drafts, the pickers of the route, the repositories, sending and stopping, questions of the agent, a failed Exchange, the chat's own actions, the latest chats, attention, coming back, signing in, the renderer bundle, and what comes later.
+Covered: the window, the navigation panel, the Exchange shown, the answer as it arrives, the status of an Exchange, the composer and Drafts, the route, the repositories, sending and stopping, questions of the agent, a failed Exchange, the chat's own actions, the latest chats, opening a chat from elsewhere, signing in, attention, coming back, the renderer bundle, and what First Sapling leaves out.
 
-Not covered: the tray menu, the global hotkeys and the native panel of the latest chats, which are the Swift App's (SYL-192); Willo Station and Seqoya Lab; which folder on disk a repository gives the agent, which waits for the owner ([BKD-D4](00-the-arbol-backend.md#decisions)); marking a migrated chat stale (SYL-195).
+Not covered: the tray menu, the global hotkeys, resizing the window from its header and the native panel of the latest chats, which are the Swift App's (SYL-192); Willo Station's own side of opening a chat, which is its own specification; the tool with which an agent books a prepared folder ([BKD-D4](00-the-arbol-backend.md#decisions)); marking a migrated chat stale (SYL-195).
 
 ## Behaviour
 
 ### The window
 
-Observed in version 1: one Elma window, which closing did not quit. The first version keeps one Elma Chat window for each Root, opened from the tray menu (SYL-192).
+Observed in version 1: one Elma window, which closing did not quit. Arbol 2 has one Elma Chat window for each Root, opened from the tray menu (SYL-192). There is no list of chats in the window: other chats are reached with the latest chats (⌃⇧⌘C), the repository slots, and from Willo Station.
 
 ```text
-┌ ✦ Elma Chat · First Sapling - What build.sh does ──────────────────────── ↔  A+ A− ┐
-│ What build.sh does           │ What does build.sh do?                        ‹ 2/3 › │
-│ Turn 2 of 3                  │ ───────────────────────────────────────────────────── │
-│ ○ Ongoing   ∑ 11.8k  ↑9.1k ↓2.7k │ Message sent 09:30 · Agent started responding 09:30 · │
-│ Repositories                 │ Agent responded 09:30                                 │
-│  ⌘1 shop                     │ ▸ shell  cat build.sh                             ✓   │
-│  ⌘2 arbol-trunk              │ ─────────────────── Answer ───────────────────────── │
-│  ⌘0 Other…                   │ It compiles the three packages and copies them to     │
-│ History · 3 turns            │ dist/.                                     Completed  │
-│  Older ⌘[  Newer ⌘]  Jump ⌘P │                                                       │
-│ Intelligence                 │ Press Enter to start new message ⏎                    │
-│  Model: sonnet ⌃M            │                                                       │
-│  Thinking: high ⌃⇥           │                                                       │
-│  ⌃1 claude · anthropic       │                                                       │
-│  ⌃2 codex · chatgpt          │                                                       │
-├──────────────────────────────┴───────────────────────────────────────────────────────┤
-│ shop – claude · anthropic – sonnet::high                                             │
-└──────────────────────────────────────────────────────────────────────────────────────┘
+┌ ✦ Elma Chat · First Sapling - What build.sh does ──────────────────── ↔  A+ A−  ◐ ┐
+│ What build.sh does           │ What does build.sh do?                         ‹ 2/3 › │
+│ Turn 2 of 3                  │ ────────────────────────────────────────────────────── │
+│ ○ Ongoing  ∑ 11.8k ↑9.1k ↓2.7k │ Message sent 09:30 · Agent started responding 09:30 · │
+│ + Repositories               │ Agent responded 09:30                                  │
+│ History · 3 turns            │ ▸ shell  cat build.sh                              ✓   │
+│  Older turn ⌘[               │ ──────────────────── Answer ──────────────────────── │
+│  Newer turn ⌘]               │ It compiles the three packages and copies them to      │
+│  Jump to turn… ⌘P            │ dist/.                                      Completed  │
+│  Quick actions… ⇧⏎           │                                                        │
+│ + Intelligence               │ Press Enter to start new message ⏎                     │
+├──────────────────────────────┴────────────────────────────────────────────────────────┤
+│ arbol-trunk – claude · anthropic – sonnet::high                                        │
+└────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 | Part | What it shows |
 |---|---|
-| The header | The Elma glyph and "Elma Chat · <Root's display name> - <the chat's title>", or without the title for a chat that has none. The Root's display name is the one addition to version 1, because every UI shows its Root ([ARC-1](../architecture/01-roots.md#the-tray-menu-and-arbol-roots)); a Root that is not `working` says so beside it, "preparing", or "failed" with its reason. A moving mark while the agent works. On the right, the reading width and the font size (A+, A−) |
-| The navigation panel | On the left, top to bottom: the chat's title, or "New Chat", and "Turn n of N"; the chat's own panel, *the cockpit*, once the chat exists; "Repositories"; "History · N turns"; "Intelligence" ([below](#the-navigation-panel)) |
+| The header | The Elma glyph and "Elma Chat · <Root's display name> - <the chat's title>". The Root's display name is the one addition to version 1, because every UI shows its Root ([ARC-1](../architecture/01-roots.md#the-tray-menu-and-arbol-roots)); a Root that is not `working` says so beside it, "preparing", or "failed" with its reason, and the header follows a change of the Root's state (BKD-1). A moving mark while the agent works. On the right, the reading width, the text size (A+, A−) and the theme, twelve wood themes, Redwood unless another was picked |
+| The navigation panel | On the left, top to bottom: the chat's title and "Turn n of N"; the chat's own panel, *the cockpit*, once the chat exists; "Repositories"; "History · N turns"; "Intelligence" ([below](#the-navigation-panel)) |
 | The chat | On the right: the pinned message, the answer, the questions of the agent above the composer, and the composer ([below](#the-exchange-shown)) |
-| The status bar | At the bottom: "<repository> – <Driver> · <Subscription> – <model>::<effort>", such as "shop – claude · anthropic – sonnet::high" |
+| The status bar | At the bottom: "<repository> – <Driver> · <Subscription> – <model>::<effort>", such as "arbol-trunk – claude · anthropic – sonnet::high" |
 | Attention | A line across the top of the chat for each attention item of the Root ([below](#attention)) |
 
-The window shows what the backend says. Of its own it keeps, in the page's own storage, only conveniences: the chat shown last, the chat last shown for each repository, and the 16 repositories used last. A Draft is never kept there ([BKD-D21](#decisions)).
+The window shows what the backend says. In the page's own storage it keeps only conveniences: the chat shown last, the last chat shown for each repository, the 16 repositories used last, the 100 chats shown last, the reading width, the text size and the theme, and text typed and not yet saved ([below](#the-composer)).
 
-**On opening**, the window shows, in this order of what exists: the chat it is told to open, the chat shown last, the chat last shown in the first repository of the slots, and else an empty chat in that repository with its new-chat Draft.
+**On opening**, the window shows, in this order of what exists: the chat it is asked to open ([below](#opening-a-chat-from-elsewhere)), the chat shown last, the chat last shown in the first repository of the slots, and else an empty chat in that repository with its new-chat Draft.
 
 ### The navigation panel
 
 | Part | What it holds |
 |---|---|
-| The title | The chat's title, or the placeholder of a chat without one ([below](#the-chats-own-actions)), and "Turn n of N": the place of the Exchange shown among the chat's Exchanges |
-| The cockpit | Once the chat exists: the pill "Ongoing" or "Not ongoing", which ⌥0 changes; and the tokens of the chat, ∑ in all, and in and out, with the rate at which they grow while the agent works |
+| The title | The chat's title. A chat without one shows the first line of its first message, at most 80 characters, in a lighter type, here and in the header; "New Chat" before its first message. Below it, "Turn n of N": the place of the Exchange shown among the chat's Exchanges |
+| The cockpit | Once the chat exists: the pill "Ongoing" or "Not ongoing", which ⌥0 changes; and the chat's tokens, ∑ in all, and in and out, with the rate at which they grow while the agent works |
 | Repositories | The slots ⌘1 to ⌘9 and "Other… ⌘0" ([below](#the-repositories)) |
-| History | "Older ⌘[", "Newer ⌘]" and "Jump to turn… ⌘P" when the chat has more than one Exchange, and "Quick actions… ⇧⏎" |
+| History | "Older turn ⌘[", "Newer turn ⌘]" and "Jump to turn… ⌘P" when the chat has more than one Exchange, and "Quick actions… ⇧⏎" |
 | Intelligence | "Model: <model> ⌃M" and "Thinking: <effort> ⌃⇥", and one row for each route, ⌃1 to ⌃9 ([below](#the-route)) |
+
+"Repositories" and "Intelligence" open and close with a click on their header (+, −). Both are open in an empty chat and close once the chat has an Exchange, as in version 1.
 
 ### The Exchange shown
 
-The chat shows one Exchange at a time: its message pinned at the top, and its answer below it. A chat opens on its newest Exchange.
+The chat shows one Exchange at a time: its message pinned at the top, and its answer below it. A chat opens on its newest Exchange, where the Leather Bag last scrolled to in it.
 
 | Part | Detail |
 |---|---|
 | The pinned message | The Leather Bag's message, at most three lines, with "See more"; "Copy prompt"; and, when the chat has more than one Exchange, the stepper "‹ 2/3 ›" |
-| Moving | Older ⌘[ and Newer ⌘] step through the chat's Exchanges in the order of their numbers, leaving out every Exchange a message sent again replaced (RCT-3). The counter, and ⌘P, open the history: the chat's messages, newest first, where digits jump to one and "Search" finds a word in the messages |
-| More of a long chat | A chat opens with its 12 newest Exchanges; stepping older than the first of them brings the 12 before (`chat.exchanges`, BKD-1) |
+| Moving | ⌘[ and ⌘] step through the chat's Exchanges in the order of their numbers, leaving out every Exchange a message sent again replaced (RCT-3). The counter, and ⌘P, open the history: the chat's messages, newest first, where digits jump to one and "Search" finds a word in the messages loaded |
+| More of a long chat | A chat opens with its 12 newest Exchanges; stepping older than the first of them brings the 12 before (`chat.exchanges`, BKD-1). "Turn n of N" and the history count every Exchange of the chat (BKD-1) |
 
 The answer, top to bottom:
 
 | Part | Detail |
 |---|---|
 | The lifecycle line | "Message sent · Agent started responding · Agent responded", each with its time; times within 3 seconds of each other share a line |
-| Thinking | Each block of the model's reasoning, "Thinking 1/2", open, while the answer arrives. The chat tables keep no reasoning (RCT-3), so an Exchange shown again from the database has none ([BKD-D20](#decisions)) |
-| A tool call | One closed line: the tool's name, a mark (… running, ✓ done, ! failed, interrupted), and one line of what it did, such as the command of `shell` or the path of `Read`. Opened: when it started and ended, how long it took, its input, and its output; a running call shows its time after 60 seconds; an output the Driver cut says so (DRV-2); in a long chat, an input or output that was cut for the Bridge loads whole when opened (`toolCall.get`, BKD-1) |
+| Thinking | Each block of the model's reasoning, open: "Thinking", or "Thinking 1/2" when there are several ([BKD-D20](#decisions)) |
+| A tool call | One closed line: the tool's name, a mark (… running, ✓ done, ! failed, interrupted), and one line of what it did, such as the command of `shell` or the path of `Read`; calls that run side by side say "waiting on this call · 2 of 3 running". Opened: when it started and ended, how long it took, its input, and its output. A running call shows its time after 60 seconds; an output the Driver cut says so (DRV-2); in a long chat, an input or output that was cut for the Bridge loads whole when opened (`toolCall.get`, BKD-1) |
 | The Answer Threshold | Once the Exchange is complete: every block of reasoning and every tool call above a line, and the answer's text below it, as Markdown. While the Exchange runs, there is no line and everything stands in the order it came |
 | The status | The status of the Exchange ([below](#the-status-of-an-exchange)), and "Copy answer", which copies the text below the threshold |
 
+Changed from version 1: the chat tables keep no reasoning (RCT-3). When an Exchange is saved, the window keeps the reasoning it showed until the chat is read again, after a reload, a reconnection or a new snapshot; an Exchange read from the database has none.
+
 Markdown in an answer shows headings, lists, emphasis, links, tables and code blocks. Raw HTML in it is shown as text, never run. A link opens in the Mac's default browser through the Swift App (`app.openLink`, BKD-1), and only when it is `http` or `https`; any other link is shown as text, and the window never leaves its own page.
 
-**Scrolling.** An answer that arrives keeps its end in view until the Leather Bag scrolls up. A complete answer opens with the threshold at the top of the view, and while the threshold lies below the view, a small *Answer Beacon* points to it. ⌘⇧⌥8 and ⌘⇧⌥7 jump to the previous and the next reading stop.
-
-**Observed in version 1, and kept**: one Exchange at a time, the pinned message and its stepper, the history on ⌘P, pages of 12 Exchanges, the lifecycle line, reasoning open, tool calls closed, the Answer Threshold, the Answer Beacon and the scroll rules.
+**Scrolling.** An answer that arrives keeps its end in view until the Leather Bag scrolls up. A complete answer opens with the threshold at the top of the view, and while the threshold lies below the view, a small *Answer Beacon* points to it. ⌘⇧⌥8 and ⌘⇧⌥7 jump to the previous and the next reading stop. The window keeps, for each chat, where it was scrolled to while the window lives.
 
 ### The answer as it arrives
 
-While an Exchange is in progress, the window shows the lines of its `events.jsonl` as they come, from the first one on, in every window that shows it, however late the window was opened ([BKD-1](01-the-bridge.md#subscriptions), ARC-2). It reads them by the Driver's events ([DRV-2](../driver-contract/02-inference.md#the-event-stream)):
+While an Exchange is in progress, the window shows the lines of its `events.jsonl` as they come, from the first one on, however late the window was opened ([BKD-1](01-the-bridge.md#subscriptions), ARC-2). It reads them by the Driver's events ([DRV-2](../driver-contract/02-inference.md#the-event-stream)):
 
 | Line | The window |
 |---|---|
@@ -108,23 +106,23 @@ While an Exchange is in progress, the window shows the lines of its `events.json
 
 ### The status of an Exchange
 
-One label at a time, the first that holds of these, as version 1 had them:
+One label at a time, the first that holds, in version 1's order, with "Stopping…" and the times of waiting added (ARC-3.12, ARC-3.13):
 
 | The Exchange | Label |
 |---|---|
 | failed | "Failed" ([below](#a-failed-exchange)) |
+| is being stopped | "Stopping…" |
 | waits for the Leather Bag's answer | "Waiting for your answer since 14:02" |
 | accepted, before the run's `started` event | "Starting agent…" |
 | runs a tool call | "Waiting for tools… 2 h 10 min", the time since it waits, from its signs of life (ARC-3) |
 | writes reasoning | "Thinking…" |
 | writes the answer | "Responding…" |
 | any other moment of the run | "<Driver> · <Subscription> is working…" |
-| is being stopped | "Stopping…" |
 | has ended | "Completed", "Canceled", "Interrupted", or "Ended because it was stuck" |
 
 Arbol never ends an Exchange for waiting, however long it waits (ARC-D61): the Leather Bag stops it when that is wanted. The Trivial Trunk itself ends a run that gives no event for 16 minutes while a command left in the background runs, as failed with `driver_silent` (TRV-0, RCT-D30).
 
-Changed from version 1: there is no label "Routing to …" and no waiting for a rate limit to pass, because a Trunk takes the route it is handed and ends an Exchange that met a rate limit as failed (ARC-2); and there is no waiting for an approval, because no agent asks for permission (DRV-3).
+Changed from version 1: there is no label "Routing to …" and no waiting for a rate limit to pass, because a Trunk takes the route it is handed and ends an Exchange that met a rate limit as failed (ARC-2); no waiting for an approval, because no agent asks for permission (DRV-3); and no "Ready", because a chat without an Exchange shows the empty composer.
 
 | Changed state | The window says |
 |---|---|
@@ -139,18 +137,20 @@ The composer is the field below the answer in which the next message is typed.
 
 | Part | Detail |
 |---|---|
-| An empty chat | A line "<repository> · <Driver> · <Subscription> · <model> · <effort>", then the composer of at least 10 lines, in the middle, with "Message <repository>…" and the hint "⌘⏎ to Send". There are no buttons |
-| A chat with Exchanges | The composer is closed to the line "Press Enter to start new message ⏎", with "Scroll to top" and "Scroll to bottom"; Return opens it, at least 3 lines, and Escape closes it again |
+| An empty chat | The line "<repository> · <Driver> · <Subscription> · model: <model> · thinking: <effort>", then the composer of at least 10 lines, in the middle, with "Message <repository>…" and the hint "⌘⏎ to Send". There are no buttons |
+| A chat with Exchanges | The composer is closed to the line "Press Enter to start new message ⏎", with "Scroll to top" and "Scroll to bottom"; Return opens it, at least 3 lines, with the hint "⌘⏎ to Send · Esc to collapse", and Escape closes it again. A chat whose Draft holds text opens with the composer open and in focus |
 | Keys | ⌘⏎ or ⌃⏎ sends; Return makes a new line; Escape closes the composer |
-| A long paste | Text of 10,000 characters or more that is pasted is saved as a file in the Root's folder `pastes/` and replaced in the message by the file's path (`paste.save`, BKD-1), so that the agent reads it from there |
+| A long paste | Text of 10,000 characters or more that is pasted is saved as a file (`paste.save`, BKD-1), and the composer gets `[Pasted text (12,345 characters)](<path>)` in its place. Meanwhile the hint says "Saving pasted text…", and a ⌘⏎ pressed meanwhile sends once the link is in. Changed from version 1: the file stays in the Root's folder `pastes/`, not in the system's temporary folder, because the chat names it |
 
-**Drafts.** Observed in version 1, and kept: each chat has one Draft of its reply, and each repository has one Draft of a new chat. A Draft holds the text; the pickers are the chat's own settings ([below](#the-route)). The window saves the Draft 350 milliseconds after the Leather Bag stops typing, and at once when the composer loses the focus or another chat is shown (`draft.save`), each time over the revision it last saw ([BKD-0](00-the-arbol-backend.md#drafts)). Changed from version 1:
+**Drafts.** Observed in version 1, and kept: each chat has one Draft of its reply, and each repository one Draft of a new chat. A Draft holds the text; the route and the folder are the chat's settings ([below](#the-route)). The window saves the Draft 350 milliseconds after the Leather Bag stops typing, and at once when the composer loses the focus or another chat is shown (`draft.save`), each time over the revision it last saw ([BKD-0](00-the-arbol-backend.md#drafts)).
+
+Changed from version 1, so that a Draft has one owner, the backend:
 
 | | |
 |---|---|
-| A failed save | Is said below the composer, "Draft not saved: the database does not answer", and the window tries again every 5 seconds while it keeps the text |
-| Another window | When another window saved a newer Draft of the same chat, this window takes it at once while its own composer holds nothing unsaved; otherwise its next save is refused with `draft_conflict`, and the composer shows both texts, "Changed in another window", with "Keep mine" and "Take theirs" |
-| No second copy | The page keeps no copy of a Draft in its own storage, so a Draft has one owner, the backend |
+| A failed save | Is said below the composer, "Draft not saved: the database does not answer", and the window tries again every 5 seconds |
+| Text not yet saved | The page keeps only text not yet saved, with the revision it was typed over. After a reload it offers that text back only while the backend's Draft still has that revision |
+| A conflict | When a save is refused because the Draft was saved from another connection meanwhile, such as the browser tab of the development relay or a page reloaded while its old connection closed (BKD-1), the composer shows both texts, "Changed elsewhere", with "Keep mine" and "Take theirs". A conflict whose Draft holds the composer's own text is taken without asking |
 
 ### The route
 
@@ -158,13 +158,13 @@ The *route* is what answers a message: a Driver with one of its Subscriptions, a
 
 | Picker | Keys | What it offers |
 |---|---|---|
-| The route rows | ⌃1 to ⌃9 | One row for each Subscription of each Driver, such as "claude · anthropic" and "codex · chatgpt" (`accounts.list`). A Subscription that cannot be used is shown with its state, "signed out" or "needs attention", and "Sign in…" ([below](#signing-in)); it cannot be picked |
+| The route rows | ⌃1 to ⌃9 | One row for each Subscription of each Driver, such as "claude · anthropic", "claude · zai" and "codex · chatgpt" (`accounts.list`). A Subscription that cannot be used is shown with its state, "logged out" or "needs attention", and cannot be picked ([below](#signing-in)) |
 | Model | ⌃M | Goes to the next model of the Subscription's catalog (`accounts.models`, DRV-1) |
 | Thinking | ⌃⇥ | Goes to the next effort the model accepts, in the vendor's words (DRV-1) |
 
-A choice is saved for the chat at once (`chat.settings`, BKD-1), counts from the next message on, and may be made while the agent works. Picking another route sets the model and the effort to that route's defaults.
+Observed in version 1: a model or effort picked was saved for the chat at once and counted from its next message on, also while the agent worked, and a route picked counted from the next message. Changed: a chat that exists saves a route picked at once too (`chat.settings`, BKD-1). In an empty chat a choice stays in the window and goes with the first message, as in version 1. Picking another route sets the model and the effort to that route's defaults.
 
-The defaults of a new chat, in this order of what exists ([BKD-0](00-the-arbol-backend.md#settings)):
+The defaults of a new chat, the first of these whose Subscription is signed in, as in version 1 ([BKD-0](00-the-arbol-backend.md#settings)):
 
 | | Default |
 |---|---|
@@ -172,13 +172,13 @@ The defaults of a new chat, in this order of what exists ([BKD-0](00-the-arbol-b
 | The model | The model the route names, else the catalog's default model (DRV-1) |
 | The effort | The effort the route names, else the model's default effort, else `high` where the model accepts it |
 
-Observed in version 1, and changed: version 1 picked an Intelligence Provider, a named route that Seqoya Lab bound to a Subscription, with seven thinking levels of its own. Arbol 2 has no Intelligence Provider yet ([ARC-D22](../architecture/00-components-and-boundaries.md#decisions)), so a row is a Subscription, and the efforts are those the vendor names for the model.
+Changed from version 1: version 1 picked an Intelligence Provider, a named route that Seqoya Lab bound to a Subscription, with settings of its own and seven thinking levels. Arbol 2 keeps the Intelligence Provider ([ARC-D22](../architecture/00-components-and-boundaries.md#decisions)), but its settings come with SYL-191; until then a row is a Subscription, and the efforts are those the vendor names for the model.
 
 ### The repositories
 
-Observed in version 1, and kept: the slots ⌘1 to ⌘9 offer repositories, and "Other… ⌘0" opens the Mac's folder dialog (`app.pickFolder`, BKD-1). A key always starts a new chat in that repository, with the repository's new-chat Draft. A click on a slot while a chat is shown moves that chat to the repository, which is refused while its agent works ("Wait for the current turn to finish before changing Repo") and confirmed with "Repo changed to …"; a click with no chat shown is the same as the key. Changing the repository of a chat that has Exchanges says "The agent still gets every message of this chat, but no longer remembers what it read and ran before", because a Driver continues its saved conversation only in the same folder and otherwise builds it anew from the chat (TRV-0).
+Observed in version 1, and kept: the slots ⌘1 to ⌘9 offer repositories, first the stack's folder itself, then the repositories used last, then the others; "Other… ⌘0" opens the Mac's folder dialog (`app.pickFolder`, BKD-1). A key always starts a new chat in that repository. A click on a slot while a chat is shown moves that chat to the repository, which is refused while its agent works ("Wait for the current turn to finish before changing Repo") and confirmed with "Repo changed to …"; a click with no chat shown is the same as the key. Changing the repository of a chat that has Exchanges says "The agent still gets every message of this chat, but no longer remembers what it read and ran before", because a Driver continues its saved conversation only in the same folder and otherwise builds it anew from the chat (TRV-0).
 
-Which repositories the slots list, in which order, and which folder on disk a repository gives the agent, now that agents work at once in prepared folders, waits for the owner ([BKD-D4](00-the-arbol-backend.md#decisions)).
+Changed from version 1, as the owner decided ([BKD-D4](00-the-arbol-backend.md#decisions)): a slot gives the agent the repository's folder in `~/repos/sylvan-stack/readonly/`, which always holds the last merged `main` and which nobody edits, and the stack's own slot `~/repos/sylvan-stack/readonly/` itself. The slots list the repositories of `readonly/` and never the prepared folders. An agent that has to change files books a prepared folder with its tool when it needs one, and the chat's folder stays as it is. A folder picked with "Other…" is used as it is. Also changed: a key brings back the repository's new-chat Draft, which version 1 did not.
 
 ### Sending and stopping
 
@@ -186,19 +186,19 @@ Which repositories the slots list, in which order, and which folder on disk a re
 
 | The backend replies | The window |
 |---|---|
-| Accepted | Follows the Exchange as it arrives |
+| Accepted | Follows the Exchange as it arrives. The chat is marked ongoing ([below](#the-chats-own-actions)) |
 | Refused | Takes the Exchange out, puts the text back in the composer as it was, and says why below the composer, such as "Not sent: the database does not answer" ([ARC-2](../architecture/02-chat-exchange-across-components.md#the-steps)) |
 | `disconnected` or `no_answer` | Keeps the Exchange as being sent, and sends the same call again, with the same Exchange identifier, at once or once the backend is back, so that the message runs once (BKD-1) |
 
-**A chat that is busy.** Observed in version 1, and kept: sending while the chat's last Exchange runs asks "Stop current response?"; "Confirm" stops it, waits until it is saved, and then sends (ARC-D54). The question comes only when the backend says that the Exchange runs, never on a chat whose Exchange has ended. A message the Trunk refuses with `chat_busy`, because another window sent one at the same moment, goes back into the composer with "Another message of this chat is running".
+**A chat that is busy.** Observed in version 1: sending while the chat's last Exchange runs asks "Stop current response?"; "Confirm" stops it and then sends (ARC-D54). Changed: the question comes only while the backend says that the Exchange runs, never on a chat whose Exchange has ended, and the window sends only once the stopped Exchange is saved. A message refused with `chat_busy`, because a message of the same chat was sent elsewhere at the same moment, such as from the command line (SYL-193), goes back into the composer with "Another message of this chat is running".
 
-**Stopping.** ⌘Esc stops the Exchange in progress (`exchange.stop`). Changed from version 1: from that moment until it has ended, the Exchange shows "Stopping…", in every window that shows it, and "Canceled", with the line "⏹ Stopped", only once its end says `cancelled` ([ARC-3](../architecture/03-stuck-trunks.md#a-stop-that-is-not-obeyed), RCT-2). When the Root manager had to end it by force, it shows "Interrupted"; when it had ended otherwise before the stop reached it, that state. A stopped Exchange shown again later is still "Canceled", because its end is kept.
+**Stopping.** ⌘Esc stops the Exchange in progress (`exchange.stop`). Changed from version 1: from that moment until it has ended, the Exchange shows "Stopping…", and "Canceled", with the line "⏹ Stopped", only once its end says `cancelled` ([ARC-3](../architecture/03-stuck-trunks.md#a-stop-that-is-not-obeyed), RCT-2). When the Root manager had to end it by force, it shows "Interrupted"; when it had ended otherwise before the stop reached it, that state. A stopped Exchange shown again later is still "Canceled", because its end is kept.
 
 The window counts an Exchange as ended, for sending, "Retry" and "Continue from failure point", only once it is saved (BKD-1).
 
 ### Questions of the agent
 
-Observed in version 1, and kept: the questions of the agent stand above the composer, each with its header, its text and its options, one choice or several ("You can pick more than one"). "Submit" can be pressed once every question that has options has a choice; a question without options shows "Continue". There is no answer in free text. "Cancel" declines, which ends the run as cancelled (DRV-3). The window shows the answer as given once its `answer` line is in the file (`exchange.answer`), and the question closed at `ask_closed`; an answer the Driver did not take shows its `control_refused` message, and the question stays.
+Observed in version 1: the questions of the agent stand above the composer, each with its header, its text and its options, one choice or several ("You can pick more than one"). "Submit" can be pressed once every question that has options has a choice; "Continue" shows instead when no question has options. There is no answer in free text. Changed: "Cancel" declines, which ends the run as cancelled (DRV-3), and the window shows the answer as given only once its `answer` line is in the file (`exchange.answer`), and the question closed at `ask_closed`; an answer the Driver did not take shows its `control_refused` message, and the question stays.
 
 ### A failed Exchange
 
@@ -207,10 +207,10 @@ Observed in version 1, and kept: a failed Exchange shows "Failed", "Failed at: <
 | | |
 |---|---|
 | The cause | In plain words, with the code and the message of the error below it, so that nothing of the cause is lost; a code the window does not know is shown with its message ([RCT-2](../../arbol-root/contract/02-starting-stopping-and-settling.md#the-end)) |
-| Retry | Sends the message again in its place: the answer is replaced and changes the agent made to files stay (`exchange.sendAgain`, RCT-2). Only the chat's last Exchange can be sent again; a failed Exchange that is not the last shows no "Retry" |
+| Retry | Sends the message again in its place: the answer is replaced and changes the agent made to files stay (`exchange.sendAgain`, RCT-2). It runs in the folder of the Exchange it replaces, also when the chat was moved since |
 | Continue from failure point | Sends "proceed" as the chat's next message, with the chat's route |
 | `rate_limited` | "The account reached its limit", and with `retryAfterSeconds` "It resets at 15:30". "Retry" goes with the route the rows show, so another route can be picked first ([ARC-2](../architecture/02-chat-exchange-across-components.md#a-rate-limit)) |
-| `not_signed_in`, `credential_rejected` | "The account is not signed in", with "Sign in…" ([below](#signing-in)) |
+| `not_signed_in`, `credential_rejected` | "The account is not signed in", with how to sign it in ([below](#signing-in)) |
 
 | Code | In plain words |
 |---|---|
@@ -222,35 +222,29 @@ Observed in version 1, and kept: a failed Exchange shows "Failed", "Failed at: <
 | `folder_unwritable` | "The Exchange's folder could not be written" |
 | `trunk_failed` | "The Trunk failed" |
 
-Changed from version 1: "Retry" replaced the failed Exchange and everything below it, wherever it stood; in Arbol 2 only the last Exchange can be sent again, until a Root Contract version brings branches (RCT-D21).
+Changed from version 1: "Retry" and "Continue from failure point" show only on the chat's last Exchange. Version 1 retried a failed Exchange wherever it stood and continued from it as a branch; branches come with a later Root ([BKD-D22](#decisions), RCT-D21).
 
 ### The chat's own actions
 
 | Action | Keys | Detail |
 |---|---|---|
-| Rename | ⌘-click the title in the header, or the quick action R | An inline field with "OK" and "Cancel" (`chat.rename`). An empty title takes the title away. A title has at most 240 characters. A chat without a title shows the first line of its first message, at most 80 characters, in a lighter type, and that text is never stored as a title ([BKD-D19](#decisions)) |
-| Ongoing | ⌥0, or the pill in the cockpit | Marks the chat as one the Leather Bag is still busy with, or not (`chat.mark`) |
-| Archive | ⌘⌫, or the quick action A | After a confirmation that says a running answer is stopped first: stops it, then archives the chat, which leaves the latest chats. Nothing archives a chat by itself, and no chat is deleted (`chat.mark`) |
-| Copy the chat's identifier | The quick action C | |
-| Quick actions | ⇧⏎ | A small list of the actions above, each with its letter |
+| Rename | ⌘-click the title in the header, or the quick action R | An inline field with "OK" and "Cancel" (`chat.rename`); before the chat's first message, "Start a chat before renaming". A title has at most 240 characters. Changed from version 1: an empty title takes the title away, where version 1 refused it, and a chat without a title shows a placeholder that is never stored ([BKD-D19](#decisions)) |
+| Ongoing | ⌥0, or the pill in the cockpit | Every accepted message marks the chat ongoing; only ⌥0 or the pill clears it, with "Marked ongoing" or "Cleared ongoing" (`chat.mark`) |
+| Archive | ⌘⌫, or the quick action A | After a confirmation that says a running answer is stopped first: stops it, archives the chat, which leaves the latest chats, forgets it as the chat shown last and as its repository's last chat, and shows an empty chat in the same repository with its new-chat Draft. Nothing archives a chat by itself, and no chat is deleted (`chat.mark`) |
+| Copy session ID | The quick action C | Copies the chat's identifier |
+| Quick actions | ⇧⏎ | "Rename chat session" R, "Archive" A, "Copy session ID" C |
 
 ### The latest chats
 
-Observed in version 1, and kept: ⌃⇧⌘C shows the latest chats, at most 100, without the chat that is shown: first the chats shown in this window, the last shown first, then the others by their latest activity. Each row has the title, the repository, the route, the state of the last Exchange and how long ago. Digits 1 to 0 open the first ten, the arrows and Return any, and Escape closes the list (the `chats` topic, BKD-1). In version 1 the list was a panel of the native shell, and in Arbol 2 it is the Swift App's (SYL-192); until it exists, the window shows the same list over itself, with the same keys.
+Observed in version 1: ⌃⇧⌘C shows the latest chats, at most 100, without the chat that is shown: first the chats shown in Elma, the last shown first, then the others by their latest activity. Each row has the title, the repository, the route, the state of the last Exchange and how long ago. Digits 1 to 0 open the first ten, the arrows and Return any, and Escape closes the list (the `chats` topic, BKD-1). Archived chats are not in it. In version 1 the list was a panel of the native shell, and in Arbol 2 it is the Swift App's (SYL-192); until it exists, the window shows the same list over itself, with the same keys.
+
+### Opening a chat from elsewhere
+
+Observed in version 1: Willo Station, the latest chats and the native shell could ask Elma to open a chat, and the request waited until Elma took it, so that one made while Elma loaded was not lost. Kept: the Swift App keeps such a request, the chat to open and, for a new chat, the repository, until the window takes it (`app.takeOpen`, BKD-1), and tells an open window at once. The window saves the Draft of the chat it shows, then shows the chat asked for, with its Draft. Opening a chat from Willo Station is needed in First Sapling (the owner, 19 October 2026): this is Elma Chat's side of it, and Willo Station's side, which card or result asks for which chat, is Willo Station's own specification.
 
 ### Signing in
 
-A route row of a Subscription that cannot be used, and a failed Exchange whose account is not signed in, offer "Sign in…". It opens a small panel that shows the Driver's own sign-in steps as they come (`signIn.start`, BKD-1; [BKD-D17](#decisions)):
-
-| Step | The panel |
-|---|---|
-| `open_url` | The address and, when the step has one, the code to type on the vendor's page; the address opens through the Swift App in a window that refuses every other host (`app.openSignIn`, BKD-1). It says when the attempt expires |
-| `enter_code` | A field for the code the vendor showed, with the step's prompt |
-| `store_secret` | Until the Secrets page of Seqoya Lab exists, a concealed field for the key, with the step's prompt (`signIn.storeSecret`, [BKD-D10](00-the-arbol-backend.md#decisions)). The key is sent once, and the field is emptied at once |
-| `done` | "Signed in", and the row can be picked |
-| `failed` | The error, with "Try again" |
-
-"Cancel" ends the attempt (`signIn.cancel`); the backend also ends it by itself 30 seconds after the window's connection closed, and a window shown again finds the attempt where it was (BKD-0). Version 1 signed in on the Subscriptions page of Seqoya Lab; when Seqoya Lab has that page, the panel can move there.
+The Leather Bag signs in with the Driver's own command, at the terminal, until Seqoya Lab has a page for it ([BKD-D17](#decisions)). A route row of a Subscription that cannot be used, and a failed Exchange whose account is not signed in, say so and name the command, for example "claude · zai: logged out. Sign in with: arbol-claude-driver subscriptions sign-in zai". The window takes no code and no key, and no secret crosses the Bridge ([BKD-D10](00-the-arbol-backend.md#decisions)). Once the Subscription is signed in, the row can be picked; the window reads the Subscriptions again when it is shown and when a row is clicked (`accounts.list`). Version 1 signed in on the Subscriptions page of Seqoya Lab.
 
 ### Attention
 
@@ -261,7 +255,7 @@ Every attention item of the Root is a line across the top of the chat for as lon
 | When | The window shows |
 |---|---|
 | A chat opened again later | The chat as the chat tables hold it. An Exchange that is still in progress is followed from its first line on, so the whole answer so far is there ([ARC-2](../architecture/02-chat-exchange-across-components.md#the-arriving-answer-is-a-file)) |
-| The same chat in two windows, such as Elma Chat of the same Root opened again | The same chat in both, with the answer arriving in both |
+| The same chat on two connections, such as the window and the browser tab of the development relay, or a page reloaded while its old connection closes | The same chat on both, with the answer arriving on both |
 | The backend goes away | A line "Reconnecting…" across the top. The chat stays as it was shown, the composer still takes text, and when the backend is back the window reads everything again and saves the Draft (BKD-1) |
 | The database cannot be reached | The attention line. The chat shown stays shown, a chat that is opened says that it cannot be read now, a message is refused with its cause and stays in the composer, and answers in progress keep arriving |
 
@@ -269,51 +263,52 @@ Every attention item of the Root is a line across the top of the chat for as lon
 
 Each window shows a page loaded from Elma Chat's *renderer bundle*, the files built from the folder `ui/elma/` of the `arbol` repository into `ui/elma/` of each `arbol` Build, where the Swift App loads them ([BKD-0](00-the-arbol-backend.md#its-program-and-its-build)). It is written in TypeScript with Svelte 5, as version 1's Elma was, from the components of the Arbol design system, the repository `arbol-design-system`, and its pages `elma-new-chat`, `elma-conversation` and `elma-history`. Where a component of the design system differs from version 1, such as a "Send" button, an answer in free text, reasoning shown closed, or another stepper, the window follows version 1, and the design system is brought in line with it, as its own rules ask ([BKD-D18](#decisions)). The bundle holds everything it needs, fonts included, and reaches nothing but the Bridge and the app channel: its content security policy allows no other address.
 
-### What comes later
+### What First Sapling leaves out
 
-Version 1's Elma had more than this first version. These parts come later, each for the reason given:
+Version 1's Elma had more than this first version. These parts are not in First Sapling:
 
-| Part of version 1 | Why later |
+| Part of version 1 | Why |
 |---|---|
-| Branches: the branch switcher, "Branch" mode, editing and removing a message, the remembered branch, the history's branch points | The Root Contract has no branches or edited messages yet (RCT-D21) |
-| Images in a message | A message of the Root Contract is text (RCT-0) |
-| Approvals of tool calls | No agent asks for permission in Arbol 2 (DRV-3); dropped, not later |
-| Entity chips, Chat Notes, Quick Text, a title block in a message, tags | Each needs a specification of its own |
-| The Thread Inspector, the document panel, "What's wrong?", "Finalize" | Each needs a specification of its own |
-| Opening a chat from Willo Station, its Draft cards and its search | Willo Station |
-| The routes' settings: default and allowed models and efforts, repositories where a route is not allowed, fast mode | Seqoya Lab and the Intelligence Providers (ARC-D22) |
+| Branches: the branch switcher, "Branch" mode, editing and removing a message, the remembered branch, the history's branch points, retrying or continuing an Exchange that is not the last | For a more advanced Root (the owner, 19 October 2026); the Root Contract has none (RCT-D21) |
+| Images in a message, entity chips, Chat Notes, Quick Text, a title block in a message, tags | Not in First Sapling (the owner, 19 October 2026) |
+| Approvals of tool calls | No agent asks for permission in Arbol 2 (DRV-3); dropped |
+| Signing in from Elma or Seqoya Lab | The Driver's own command until Seqoya Lab has a page for it (the owner, 19 October 2026) |
+| The routes' settings: a route's default model, which models and efforts it offers, the repositories where it may not be used, full permissions, fast mode | The settings of an Intelligence Provider come with SYL-191 (ARC-D22) |
+| The Thread Inspector, the document panel, "What's wrong?", "Finalize", the search of a repository's documents on ⌘R | Each needs a specification of its own |
+| Unread chats and read receipts | Willo Station shows them, in its own specification |
 | Additional folders of a chat | Version 1 set them from the command line only (SYL-193) |
 
 ## Requirements
 
 | ID | Elma Chat's first version must… | Origin | Verified by |
 |---|---|---|---|
-| BKD-2.1 | be one window for each Root, belong to its Root and talk only to its backend, with the header "Elma Chat · <Root's display name> - <title>", the Root's state when it is not `working`, a moving mark while the agent works, and the reading width and font size | Changed | journey |
-| BKD-2.2 | have version 1's layout: the navigation panel with the title and "Turn n of N", the cockpit, the repositories, the history and the intelligence; the chat; the status bar "<repository> – <Driver> · <Subscription> – <model>::<effort>"; and open on the chat it is told to open, else the chat shown last, else the first repository's last chat, else an empty chat there | Kept | journey |
-| BKD-2.3 | show one Exchange at a time, its message pinned with "See more", "Copy prompt" and the stepper, step with ⌘[ and ⌘], open the history with ⌘P, leave out every replaced Exchange, and bring a long chat 12 Exchanges at a time | Kept | journey |
-| BKD-2.4 | show an answer with its lifecycle line, its reasoning open while it arrives, its tool calls closed to one line with their mark and opened to their times, input and output, and, once complete, the Answer Threshold with "Copy answer", the Answer Beacon and the scroll rules | Kept | journey |
-| BKD-2.5 | show an Exchange in progress from the first line of its `events.jsonl` on, as it arrives, in every window that shows its chat, however late the window was opened | Changed | journey, drill |
-| BKD-2.6 | show one status label at a time in version 1's order, with what the Exchange waits for and for how long, such as "Waiting for tools… 2 h 10 min" or "Waiting for your answer since 14:02", and never end it for waiting | Changed | journey |
-| BKD-2.7 | keep version 1's composer: the empty chat's line and composer, the closed composer of a chat with Exchanges, ⌘⏎ and ⌃⏎ to send, Return for a new line, Escape to close, and a paste of 10,000 characters or more saved as a file whose path takes its place | Kept | journey |
-| BKD-2.8 | keep one Draft of the reply for each chat and one Draft of a new chat for each repository, saved 350 milliseconds after typing stops and at once on losing the focus or showing another chat, over the revision last seen; say when a save failed and try again; show both texts when another window saved meanwhile; and keep no copy of a Draft in the page's own storage | Changed | journey, drill |
-| BKD-2.9 | offer the route as one row for each Subscription of each Driver with ⌃1 to ⌃9, a Subscription that cannot be used marked and offered only for signing in, the model with ⌃M and the effort with ⌃⇥ from the Subscription's catalog, save a choice for the chat at once for the next message, and start a new chat with the defaults of `arbol.json` and the catalog | Changed | journey |
-| BKD-2.10 | offer the repositories with ⌘1 to ⌘9 and "Other… ⌘0", start a new chat with a key, move the chat shown with a click, refused while its agent works, and say what moving a chat that has Exchanges costs | Kept | journey |
-| BKD-2.11 | on sending, show the Exchange at once with "Starting agent…", put a refused message back in the composer with the refusal's cause, and send a call that got no reply again with the same Exchange identifier | Changed | journey, drill |
-| BKD-2.12 | ask "Stop current response?" only while the backend says the chat's Exchange runs, and on "Confirm" stop it, wait until it is saved and send | Kept | journey |
+| BKD-2.1 | be one window for each Root, with no list of chats in it, belong to its Root and talk only to its backend, with the header "Elma Chat · <Root's display name> - <title>", the Root's state when it is not `working` and as it changes, a moving mark while the agent works, and the reading width, text size and theme | Changed | journey |
+| BKD-2.2 | have version 1's layout: the navigation panel with the title and "Turn n of N", the cockpit, "Repositories" and "Intelligence", open in an empty chat and closed once it has an Exchange, and the history; the chat; the status bar "<repository> – <Driver> · <Subscription> – <model>::<effort>"; and open on the chat it is asked to open, else the chat shown last, else the first repository's last chat, else an empty chat there | Kept | journey |
+| BKD-2.3 | show one Exchange at a time, its message pinned with "See more", "Copy prompt" and the stepper, step with ⌘[ and ⌘], open the history with ⌘P, leave out every replaced Exchange, bring a long chat 12 Exchanges at a time, and count every Exchange in "Turn n of N" | Kept | journey |
+| BKD-2.4 | show an answer with its lifecycle line, its reasoning open, its tool calls closed to one line with their mark and opened to their times, input and output, and, once complete, the Answer Threshold with "Copy answer", the Answer Beacon, the scroll rules and each chat's scroll position | Kept | journey |
+| BKD-2.5 | show an Exchange in progress from the first line of its `events.jsonl` on, as it arrives, however late the window was opened, and keep the reasoning it showed once the Exchange is saved until the chat is read again | Changed | journey, drill |
+| BKD-2.6 | show one status label at a time in version 1's order, "Stopping…" right after "Failed", with what the Exchange waits for and for how long, such as "Waiting for tools… 2 h 10 min" or "Waiting for your answer since 14:02", and never end it for waiting | Changed | journey |
+| BKD-2.7 | keep version 1's composer: the empty chat's line and composer, the closed composer of a chat with Exchanges, opened when its Draft holds text, ⌘⏎ and ⌃⏎ to send, Return for a new line, Escape to close, and a paste of 10,000 characters or more saved in the Root's folder and replaced by the link `[Pasted text (n characters)](<path>)` | Changed | journey |
+| BKD-2.8 | keep one Draft of the reply for each chat and one Draft of a new chat for each repository, saved 350 milliseconds after typing stops and at once on losing the focus or showing another chat, over the revision last seen; say when a save failed and try again; keep in the page only text not yet saved, offered back after a reload only while the Draft has the revision it was typed over; and show both texts on a conflict, taking without asking one that holds the composer's own text | Changed | journey, drill |
+| BKD-2.9 | offer the route as one row for each Subscription of each Driver with ⌃1 to ⌃9, a Subscription that cannot be used marked and not pickable, the model with ⌃M and the effort with ⌃⇥ from the Subscription's catalog; save a choice for an existing chat at once for its next message, keep an empty chat's choice for its first message, and start a new chat with the first signed-in of the defaults of `arbol.json` and the catalog | Changed | journey |
+| BKD-2.10 | offer the repositories of `readonly/` and the stack's own folder with ⌘1 to ⌘9 and "Other… ⌘0", start a new chat with a key, bringing back the repository's new-chat Draft, move the chat shown with a click, refused while its agent works, and say what moving a chat that has Exchanges costs | Changed | journey |
+| BKD-2.11 | on sending, show the Exchange at once with "Starting agent…", mark the chat ongoing once it is accepted, put a refused message back in the composer with the refusal's cause, and send a call that got no reply again with the same Exchange identifier | Changed | journey, drill |
+| BKD-2.12 | ask "Stop current response?" only while the backend says the chat's Exchange runs, and on "Confirm" stop it, wait until it is saved and send | Changed | journey |
 | BKD-2.13 | on ⌘Esc, show "Stopping…" from the request until the Exchange has ended, then "Canceled" with "⏹ Stopped" only when its end says `cancelled`, and otherwise its true final state, and count an Exchange as ended only once it is saved | Changed | journey, drill |
-| BKD-2.14 | show a failed Exchange with "Failed", its time and its cause in plain words with its code and message, a code it does not know with its message, "Retry" on the chat's last Exchange and "Continue from failure point", and for `rate_limited` the time it resets | Changed | journey |
-| BKD-2.15 | show the questions of the agent above the composer with their options, "Submit", "Continue" and "Cancel", no answer in free text, the answer only once its `answer` line is in `events.jsonl`, and the question kept after a `control_refused` | Kept | journey |
+| BKD-2.14 | show a failed Exchange with "Failed", its time and its cause in plain words with its code and message, a code it does not know with its message, "Retry" and "Continue from failure point" on the chat's last Exchange, Retry in the replaced Exchange's folder, and for `rate_limited` the time it resets | Changed | journey |
+| BKD-2.15 | show the questions of the agent above the composer with their options, "Submit", "Continue" only when no question has options, and "Cancel" as a decline, no answer in free text, the answer only once its `answer` line is in `events.jsonl`, and the question kept after a `control_refused` | Changed | journey |
 | BKD-2.16 | show an Exchange whose process is gone as interrupted, one that ended while the database was away from its folder marked "Not yet saved", and one the backend ended because it was stuck with "Ended because it was stuck" | New | drill |
-| BKD-2.17 | rename a chat with ⌘-click on its title or R, an empty title taking it away and a placeholder never stored; mark it ongoing with ⌥0; archive it with ⌘⌫ or A after a confirmation, stopping a running answer first; and offer these as quick actions on ⇧⏎ | Kept | journey |
-| BKD-2.18 | list the latest chats on ⌃⇧⌘C, at most 100, without the chat shown, those shown in the window first, each with its title, repository, route, state and age, digits opening the first ten | Kept | journey |
-| BKD-2.19 | offer "Sign in…" on a Subscription that cannot be used and on a failed Exchange whose account is not signed in, and show each step of the Driver's `sign-in` as it comes: the address opened in a window that refuses other hosts, a field for a code, and, until the Secrets page exists, a concealed field for a key that is emptied once sent | Changed | journey; the host limit with SYL-192 |
-| BKD-2.20 | show every attention item of its Root across the top of the chat for as long as it lasts | New | drill |
-| BKD-2.21 | when the backend goes away, say that it reconnects, keep showing the chat and taking text, and read everything again once it is back | Changed | drill |
-| BKD-2.22 | be a renderer bundle in `ui/elma/` of the `arbol` Build, in TypeScript with Svelte 5 from the components of `arbol-design-system`, follow version 1 where they differ, reach nothing but the Bridge and the app channel, never leave its own page, open an `http` or `https` link only through `app.openLink`, and keep in the page's own storage only the chat shown last, the last chat of each repository and the repositories used last | Kept | unit |
+| BKD-2.17 | rename a chat with ⌘-click on its title or R, an empty title taking it away and a placeholder never stored; mark every chat with an accepted message ongoing and clear it with ⌥0; archive it with ⌘⌫ or A after a confirmation, stopping a running answer first and then showing an empty chat in its repository; and offer these as quick actions on ⇧⏎ | Changed | journey |
+| BKD-2.18 | list the latest chats on ⌃⇧⌘C, at most 100 and none archived, without the chat shown, those shown in Elma first, each with its title, repository, route, state and age, digits opening the first ten, over the window until the Swift App has its panel | Changed | journey |
+| BKD-2.19 | open the chat that the Swift App asks it to open, from Willo Station or elsewhere, taking a request made while it loaded, after saving the Draft of the chat it shows | Kept | journey; the Swift App's part with SYL-192 |
+| BKD-2.20 | say on a Subscription that cannot be used, and on a failed Exchange whose account is not signed in, that it is not signed in and which command of its Driver signs it in, and take no code and no key | Changed | journey |
+| BKD-2.21 | show every attention item of its Root across the top of the chat for as long as it lasts | New | drill |
+| BKD-2.22 | when the backend goes away, say that it reconnects, keep showing the chat and taking text, and read everything again once it is back | Changed | drill |
+| BKD-2.23 | be a renderer bundle in `ui/elma/` of the `arbol` Build, in TypeScript with Svelte 5 from the components of `arbol-design-system`, follow version 1 where they differ, reach nothing but the Bridge and the app channel, never leave its own page, open an `http` or `https` link only through `app.openLink`, and keep in the page's own storage only the conveniences of version 1 and text not yet saved | Kept | unit |
 
 ## Interface
 
-The window uses the calls and topics of [BKD-1](01-the-bridge.md#interface) and the app channel's `app.pickFolder`, `app.openSignIn` and `app.openLink`. Its keys, as in version 1:
+The window uses the calls and topics of [BKD-1](01-the-bridge.md#interface) and the app channel's `app.pickFolder`, `app.openLink` and `app.takeOpen`. Its keys, as in version 1:
 
 | Key | Does |
 |---|---|
@@ -341,7 +336,8 @@ Not to be reproduced.
 - **Drafts with several owners.** A copy in the page's storage and the saved Draft could disagree, windows overwrote each other's Drafts, a late "clear" could delete newer text, and a save that failed was never shown.
 - **"Stop current response?" on an idle chat.** The window and the coordinator disagreed on whether the chat ran.
 - **A placeholder stored as the title.** The window stored "Elma · <repository>" as the title, so no title was ever made for chats started there.
-- **A window that stopped listening.** After its first local change, the window stopped rebuilding the chat from the backend, so changes made in another window showed only when the chat was opened again.
+- **A window that stopped listening.** After its first local change, the window stopped rebuilding the chat from the backend, so changes made elsewhere showed only when the chat was opened again.
+- **Two chats in one checkout.** Every chat on a repository worked in its one checkout, so two agents changed the same files.
 
 Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 
@@ -354,16 +350,18 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 - `arbol_deprecated_v1:product-spec/04-composer-drafts-and-branching.md#Moving around inside a chat`
 - `arbol_deprecated_v1:product-spec/05-intelligence-providers.md#The IP of a new chat`
 - `arbol_deprecated_v1:product-spec/07-agent-context.md#Repo slots and choosing a repo in Elma`
+- `arbol_deprecated_v1:product-spec/07-agent-context.md#Working Directory and additional directories`
 - `arbol_deprecated_v1:renderer/apps/elma/src/App.svelte#stopAgent`
-- `arbol_deprecated_v1:renderer/apps/elma/src/pages/ElmaPage.svelte`
+- `arbol_deprecated_v1:renderer/apps/elma/src/nav/NavigationPanel.svelte`
+- `arbol_deprecated_v1:renderer/apps/elma/src/chat/largeTextPaste.ts`
 
 ## Decisions
 
 | ID | Question | Proposed default | Outcome |
 |---|---|---|---|
-| BKD-D17 | Where does the Leather Bag sign in, in the first thin path, the first version that goes once through every part (ARC-1)? | In Elma Chat's window: a panel opened from a Subscription that cannot be used and from a failed Exchange, which shows the Driver's sign-in steps. A key is never typed there; until the Secrets page exists, the panel shows the Keychain item to fill by hand (ARC-D62). The alternative: no sign-in in the first window, and signing in at the terminal | Decided 19 October 2026 by the owner: "Before Seqoya Secrets page is implemented we can use Driver own authentication flow." The panel shows the Driver's own sign-in steps, a key included ([BKD-D10](00-the-arbol-backend.md#decisions)), until the Secrets page of Seqoya Lab exists |
+| BKD-D17 | Where does the Leather Bag sign in, in the first thin path, the first version that goes once through every part (ARC-1)? | In Elma Chat's window: a panel opened from a Subscription that cannot be used and from a failed Exchange, which shows the Driver's sign-in steps. The alternative: no sign-in in the window, and signing in at the terminal | Decided 19 October 2026 by the owner: "Before Seqoya Secrets page is implemented we can use Driver own authentication flow", made exact the same day: "I meant signing in using driver cli command." The Leather Bag signs in with the Driver's own command, such as `arbol-claude-driver subscriptions sign-in zai`; the window names it and takes no code or key |
 | BKD-D18 | In what is the window written? | TypeScript with Svelte 5, as version 1's Elma was, from the components and pages of `arbol-design-system`; where they differ from version 1, the window follows version 1 and the design system is brought in line. The alternative: another framework, which would rebuild those components | Decided 19 October 2026, a technical choice following BKD-D22 |
 | BKD-D19 | What does a chat without a title show? | The first line of its first message, at most 80 characters, in a lighter type, never stored, because a stored placeholder kept titles from being made in version 1 and RCT-3 forbids it. The Trivial Trunk makes no titles (TRV-0), so every chat of the first thin path shows it until it is renamed | Decided 18 October 2026, a technical choice: the proposed default |
-| BKD-D20 | Is the reasoning of the model shown? | Yes, open, as version 1 showed it, while the answer arrives. The chat tables keep none (RCT-3), so an Exchange shown again from the database has none | Decided 19 October 2026, a technical choice following BKD-D22 |
-| BKD-D21 | When is a Draft saved, and what if two windows type in it? | As version 1: 350 milliseconds after typing stops, and at once when the composer loses the focus or another chat is shown. Changed: a failed save is said and tried again every 5 seconds; each save names the revision it was made over, and when another window saved meanwhile, the composer shows both texts with "Keep mine" and "Take theirs"; the page keeps no copy of a Draft, which in version 1 made a second owner of it | Decided 19 October 2026, a technical choice following BKD-D22 |
-| BKD-D22 | What can the first version of Elma Chat do? | One kind of window with the chats of its Root on the left and one chat on the right, in which you start a chat, send, see the answer arrive, answer the agent's questions, stop, send again, rename, sign in and open a chat again later | Decided 19 October 2026 by the owner: "UX/UI should be the same as in deprecated version of Arbol." The first version has version 1's layout, navigation, keys, pickers, states and wording, as above, with the changes Arbol 2 needs and said where they stand; the parts in *What comes later* follow, each for the reason given there |
+| BKD-D20 | Is the reasoning of the model shown? | Yes, open, as version 1 showed it. The chat tables keep none (RCT-3), so the window keeps what it showed until the chat is read again, and an Exchange read from the database has none | Decided 19 October 2026, a technical choice following BKD-D22 |
+| BKD-D21 | When is a Draft saved, and what if it is saved from two connections? | As version 1: 350 milliseconds after typing stops, and at once when the composer loses the focus or another chat is shown. Changed: a failed save is said and tried again every 5 seconds; each save names the revision it was made over, and a conflict shows both texts with "Keep mine" and "Take theirs"; the page keeps only text not yet saved, offered back after a reload only while the Draft still has the revision it was typed over, so the backend stays the Draft's one owner. Version 1 kept a whole copy in the page, which made a second owner | Decided 19 October 2026, a technical choice following BKD-D22 |
+| BKD-D22 | What can the first version of Elma Chat do? | One kind of window with the chats of its Root on the left and one chat on the right, in which you start a chat, send, see the answer arrive, answer the agent's questions, stop, send again, rename, sign in and open a chat again later | Decided 19 October 2026 by the owner: "UX/UI should be the same as in deprecated version of Arbol." The first version has version 1's layout, navigation, keys, pickers, states and wording, with the changes Arbol 2 needs, each said where it stands; it has no list of chats in the window. The same day the owner settled what First Sapling leaves out: branches, editing and removing go to a more advanced Root; images, entity chips, Chat Notes, Quick Text and tags are not in First Sapling; and opening a chat from Willo Station is needed |

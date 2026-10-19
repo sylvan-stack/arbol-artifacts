@@ -123,11 +123,10 @@ The window chooses the identifier of a new Exchange, a UUID, before it calls `ch
 | Calls | Sent again after `disconnected` or `no_answer` |
 |---|---|
 | `chat.send`, `exchange.sendAgain` | Yes, with the same Exchange identifier |
-| `root.get`, `roots.list`, `chats.page`, `chat.exchanges`, `toolCall.get`, `subscriptions.check`, `draft.get`, `chat.rename`, `chat.settings`, `chat.mark`, `exchange.stop`, `accounts.*`, `health.measure`, `signIn.start`, `signIn.cancel` | Yes: they have the same effect when sent twice |
+| `root.get`, `roots.list`, `chats.page`, `chat.exchanges`, `toolCall.get`, `subscriptions.check`, `draft.get`, `chat.rename`, `chat.settings`, `chat.mark`, `exchange.stop`, `accounts.*`, `health.measure` | Yes: they have the same effect when sent twice |
 | `paste.save` | Yes: a second file with the same text does no harm, and the window uses the path of the reply it gets |
-| `draft.save` | Yes, over the same revision, so that a save that was made already is refused with `draft_conflict` and brings the Draft as it is |
+| `draft.save` | Yes, over the same revision, so that a save that was made already is refused with `draft_conflict` and brings the Draft as it is, which the window takes without asking when it holds the composer's own text |
 | `exchange.answer` | Only when the lines of the Exchange hold no `answer` line for that `askId`; otherwise the answer arrived |
-| `signIn.enterCode`, `signIn.storeSecret` | Never: the window says that the connection was lost, and the Leather Bag signs in again when the code or the key was not taken; the window keeps no key to send again |
 
 ### Attention
 
@@ -159,17 +158,18 @@ The renderer bundles and the backend of a Root come from that Root's `arbol` Bui
 
 ### Secrets
 
-Until the Secrets page of Seqoya Lab exists, a key that a Driver's sign-in asks for travels once, from the window to the backend, in the call `signIn.storeSecret`, and the backend stores it in the Keychain item the step names ([BKD-D10](00-the-arbol-backend.md#decisions)). No other secret crosses the Bridge, and none ever goes from the backend to a window: no key of a Subscription, no Jev key and no database password. Neither the backend nor the Swift App writes one to a log (ARC-0, "Secrets").
+No secret crosses the Bridge, in either direction: no key of a Subscription, no Jev key and no database password. The Leather Bag signs in with the Driver's own command at the terminal, which reads a key from its Keychain item (BKD-0, [BKD-D17](02-elma-chat.md#decisions)). Neither the backend nor the Swift App writes a secret to a log (ARC-0, "Secrets").
 
 ### What the Swift App answers itself
 
-A web page cannot open the Mac's folder dialog, cannot open a window that refuses every host but a few, and should not leave its own page to follow a link. The window asks the Swift App for these on a channel of its own, the *app channel*, which is not the Bridge and never reaches the backend: `window.webkit.messageHandlers.arbolApp.postMessage(text)`, answered with `window.arbolApp.receive(text)`, in the form of a call and its reply. The first window needs three requests; their exact form is the Swift App's specification (SYL-192), and the proposal is:
+A web page cannot open the Mac's folder dialog and should not leave its own page to follow a link, and a request to open a chat comes from outside the page. The window and the Swift App speak about these on a channel of their own, the *app channel*, which is not the Bridge and never reaches the backend: `window.webkit.messageHandlers.arbolApp.postMessage(text)`, answered with `window.arbolApp.receive(text)`, in the form of a call and its reply, and one message the Swift App sends by itself. Their exact form is the Swift App's specification (SYL-192), and the proposal is:
 
 | Request | Params | Result |
 |---|---|---|
 | `app.pickFolder` | `start`: the folder the dialog opens in | `{"folder": "/Users/sam/repos/shop"}`, or `{"folder": null}` when the Leather Bag cancelled |
-| `app.openSignIn` | `url`, `allowedHosts` of an `open_url` step (DRV-1) | `{}` once the window is open. The window refuses to load any host not in the list, also after the first address |
 | `app.openLink` | `url`, an `http` or `https` address | `{}` once the Mac's default browser has it. Any other scheme is refused |
+| `app.takeOpen` | — | The request to open a chat that waits for this window, `{"chat": "c3d4e5f6-…"}`, or `{"folder": "/…/readonly/shop"}` for a new chat in a repository, or `{}` when none waits. The Swift App keeps a request from Willo Station, from its latest chats or from its global keys until a window takes it, so that one made while the window loads is not lost |
+| The message `{"type":"open"}` | From the Swift App | Tells a window that is open that a request waits; the window takes it with `app.takeOpen` |
 
 The web view of a window never leaves its page: the Swift App refuses every navigation away from the renderer bundle, so a link in an answer that the agent wrote, such as one a file it read put there, cannot take the window to a page that would then reach the Bridge.
 
@@ -191,7 +191,7 @@ The relay serves the renderer bundle of the Root's newest working `arbol` Build 
 | Every request | Needs that cookie, compared in constant time, and the `Host` `127.0.0.1:<port>`; the WebSocket also needs the `Origin` `http://127.0.0.1:<port>`. Anything else is refused |
 | Its log | Holds no message |
 
-When `window.webkit` is missing, the page uses that WebSocket instead. The relay answers the app channel itself: `app.pickFolder` with a field in which a folder is typed, `app.openSignIn` and `app.openLink` by opening the address in a new tab of the browser, which refuses no host. It is for development and checks only, never for daily use. A check that needs the Swift App itself, such as the host limit of a sign-in window, waits for SYL-192.
+When `window.webkit` is missing, the page uses that WebSocket instead. The relay answers the app channel itself: `app.pickFolder` with a field in which a folder is typed, `app.openLink` by opening the address in a new tab of the browser, and `app.takeOpen` with the chat named by `?open=<chat>` in the address it was opened with. It is for development and checks only, never for daily use. A check that needs the Swift App itself, such as opening a chat from Willo Station, waits for SYL-192.
 
 ## Requirements
 
@@ -203,11 +203,11 @@ When `window.webkit` is missing, the page uses that WebSocket instead. The relay
 | BKD-1.4 | answer every call exactly once, with `result` or with `error` of the form `{code, message}` and, for an error passed on, `source`; refuse with `invalid_input` an identifier that is not of its kind before a file is touched or a program started; have the window give each call a time limit and show a code it does not know with its message | Changed | unit |
 | BKD-1.5 | register a subscription before reading its snapshot, begin it with the snapshot, number its events with `seq` from 1 without gaps, keep one subscription for each topic and params on a connection, end a connection's subscriptions with `slow_reader` above 64 MiB waiting; have the window start a subscription again when it finds a gap, when `subscriptions.check` shows it behind after being hidden, and when the database returns | Changed | unit, journey |
 | BKD-1.6 | give in a chat's snapshot the last 12 Exchanges, tool inputs and results cut to 8 KiB, the chat's Draft, settings and marks, and for an open Exchange only its message; send every line of `events.jsonl` of each Exchange in progress from the first one on, whole, unchanged and in order, a line larger than 16 MiB as `{n, tooLarge, bytes}`, then its saved rows once it is saved; and announce every Exchange of the chat whose folder appears | Changed | unit, journey |
-| BKD-1.7 | when the connection ends, have the window, told by `lost`, keep showing what it shows and the Drafts typed meanwhile, fail its calls under way with `disconnected`, and after the next `hello` start every subscription again and send its calls again as the table of repeating says, `chat.send` and `exchange.sendAgain` with the same Exchange identifier and never `signIn.enterCode` or `signIn.storeSecret` | Changed | drill |
+| BKD-1.7 | when the connection ends, have the window, told by `lost`, keep showing what it shows and the Drafts typed meanwhile, fail its calls under way with `disconnected`, and after the next `hello` start every subscription again and send its calls again as the table of repeating says, `chat.send` and `exchange.sendAgain` with the same Exchange identifier | Changed | drill |
 | BKD-1.8 | give every attention item open in the Root to every window that subscribes to `attention`, from its opening to its closing, and have a window show a kind it does not know with its message | New | unit, drill |
 | BKD-1.9 | change within a Root only by additions that older Builds can ignore, have the backend and the window ignore every field, event kind and attention kind they do not know, and have the backend reply to a method or topic it does not know with `unknown_method` | New | unit |
-| BKD-1.10 | carry a secret only once, from the window to the backend, in `signIn.storeSecret` until the Secrets page exists, and never from the backend to a window | Changed | unit |
-| BKD-1.11 | keep the requests the Swift App answers itself, `app.pickFolder`, `app.openSignIn` and `app.openLink`, on a channel of their own, `arbolApp`, which never reaches the backend, and keep the web view of a window on its own page | New | unit; the Swift App's part with SYL-192 |
+| BKD-1.10 | carry no secret in either direction | Changed | unit |
+| BKD-1.11 | keep the requests between the window and the Swift App, `app.pickFolder`, `app.openLink` and `app.takeOpen`, and the Swift App's message `open`, on a channel of their own, `arbolApp`, which never reaches the backend; keep a request to open a chat until a window takes it; and keep the web view of a window on its own page | New | unit; the Swift App's part with SYL-192 |
 | BKD-1.12 | before the Swift App exists, be relayed by the development relay of the `arbol` repository on the loopback address only, letting in only requests with its cookie, its `Host` and, for the WebSocket, its `Origin`, and logging no message | New | unit |
 
 ## Interface
@@ -263,7 +263,7 @@ The calls:
 |---|---|---|---|
 | `root.get` | — | `RootInfo` and `layoutComplete: boolean` | 30 s |
 | `roots.list` | — | `Discovery` | 30 s |
-| `chats.page` | `before?`: `{ activityAt, chat }` of the oldest chat shown; `limit?`, at most 200, 100 by default | `{ chats: ChatSummary[] }`, older than `before`, by `activityAt` and then `chat`, both newest first | 30 s |
+| `chats.page` | `before?`: `{ activityAt, chat }` of the oldest chat shown; `limit?`, at most 200, 100 by default | `{ chats: ChatSummary[] }`, without archived chats, older than `before`, by `activityAt` and then `chat`, both newest first | 30 s |
 | `chat.exchanges` | `chat`, `beforeNumber`, `limit?`, at most 50, 12 by default | `{ exchanges: SavedExchange[]; more: boolean }` | 30 s |
 | `toolCall.get` | `exchange`, `position` | the tool call whole: `{ input, result?, error? }` | 30 s |
 | `subscriptions.check` | — | `{ subscriptions: Array<{ id: string; seq: number }> }`: the last `seq` sent on each | 30 s |
@@ -278,11 +278,7 @@ The calls:
 | `chat.mark` | `chat`, `ongoing?`, `archived?` | `ChatMarks` | 30 s |
 | `paste.save` | `text`, of 10,000 characters or more | `{ path: string }`, the file it was saved in | 30 s |
 | `accounts.list` | — | `{ drivers: Array<{ driver: string; subscriptions?: Subscription[]; error?: BridgeError }> }` (DRV-1 `Subscription`) | 30 s |
-| `accounts.check`, `accounts.usage`, `accounts.models`, `accounts.signOut` | `driver`, `subscription` | DRV-1's `Subscription`, `UsageReport`, `ModelCatalog`, `Subscription` | 30 s |
-| `signIn.start` | `driver`, `subscription` | `{ attempt: string }`: a new attempt, or the one that runs for that Subscription | 30 s |
-| `signIn.enterCode` | `attempt`, `code` | `{}` | 30 s |
-| `signIn.storeSecret` | `attempt`, `secret` | `{}` once the item is stored and read back | 30 s |
-| `signIn.cancel` | `attempt` | `{}` | 30 s |
+| `accounts.check`, `accounts.usage`, `accounts.models` | `driver`, `subscription` | DRV-1's `Subscription`, `UsageReport`, `ModelCatalog` | 30 s |
 | `health.measure` | — | `Measurement` (BKD-0) | 30 s |
 
 The topics:
@@ -292,7 +288,8 @@ The topics:
 | `chats` | — | `{ kind: "snapshot", chats: ChatSummary[] }`: the 100 chats that are not archived, with the newest activity, for the latest chats | `{ kind: "changed", chats: ChatSummary[] }`: each chat whose summary changed, within a second of the change (BKD-0), an archived one with `archived: true` |
 | `chat` | `chat` | `{ kind: "snapshot", chat: ChatInfo, exchanges: SavedExchange[], more: boolean, draft: Draft \| null, settings: ChatSettings, marks: ChatMarks }` | `exchange` (`ExchangeStatus`), `lines` (`LinesEvent`), `saved` (`SavedExchange`), `draft` (`Draft \| null`, null once the Draft is removed), `settings`, `marks`, `title`, `note` (`ExchangeNote`) |
 | `attention` | — | `{ kind: "snapshot", items: AttentionItem[] }` | `{ kind: "opened", item }`, `{ kind: "closed", id }` |
-| `signIn` | `attempt` | `{ kind: "step", step: SignIn \| null }`: the last step so far | `{ kind: "step", step: SignIn }` (DRV-1); it ends after `done` or `failed`. Ending the subscription changes nothing; `signIn.cancel` cancels |
+| `draft` | `chat`, or `folder` for the Draft of a new chat in that repository | `{ kind: "snapshot", draft: Draft \| null }` | `{ kind: "draft", draft: Draft \| null }`, null once the Draft is removed |
+| `root` | — | `{ kind: "snapshot", root: RootInfo }` | `{ kind: "root", root: RootInfo }` when the Root's state or display name changed |
 
 ```ts
 interface Accepted { accepted: true; duplicate: boolean; exchange: string; chat: string; number: number }
@@ -300,8 +297,8 @@ interface Accepted { accepted: true; duplicate: boolean; exchange: string; chat:
 interface ChatSummary {
   chat: string;
   title: string | null;                 // NULL until the Leather Bag gives one; the Trivial Trunk makes none (TRV-0)
-  firstMessage: string;                 // the first 200 characters of the message at position 0 of the lowest-numbered Exchange that was not replaced; "" for a new chat
-  activityAt: string;                   // the latest of the last Exchange's accepted_at and ended_at, or the Draft's updated_at for a new chat
+  firstMessage: string;                 // the first 200 characters of the message at position 0 of the lowest-numbered Exchange that was not replaced
+  activityAt: string;                   // the latest of the last Exchange's accepted_at and ended_at
   last?: { exchange: string; number: number; state: ExchangeState; error?: BridgeError; waitingFor?: string };
   hasDraft: boolean;
   workingFolder?: string;               // of the last Exchange
@@ -313,7 +310,13 @@ interface ChatSummary {
 interface ChatSettings { route?: object; workingFolder?: string }   // picked for the next message; absent: the last Exchange's (BKD-0)
 interface ChatMarks { ongoing: boolean; archivedAt?: string }
 
-interface ChatInfo { chat: string; title: string | null; createdAt?: string }
+interface ChatInfo {
+  chat: string;
+  title: string | null;
+  createdAt?: string;
+  exchangeCount: number;                // every Exchange of the chat that was not replaced, for "Turn n of N"
+  usage: { inputTokens: number; outputTokens: number };   // the sum over the chat's runs, for the cockpit
+}
 
 interface SavedExchange {               // an Exchange as the chat tables hold it (RCT-3), never a replaced one
   exchange: string;
@@ -348,7 +351,11 @@ interface ExchangeStatus {
 // a batch of lines of events.jsonl, unchanged (RCT-1)
 interface LinesEvent { kind: "lines"; exchange: string; lines: Array<object | { n: number; tooLarge: true; bytes: number }> }
 
-interface Draft { chat?: string; folder?: string; text: string; revision: number; sentAs?: string; updatedAt: string }   // chat: the Draft of a reply; folder: the Draft of a new chat
+interface Draft {                      // chat: the Draft of a reply; folder: the Draft of a new chat
+  chat?: string; folder?: string; text: string; revision: number; updatedAt: string;
+  sentAs?: string;                      // the Exchange it is being sent as
+  sentRequest?: { chat: string; route: object; workingFolder: string };   // what it was sent with, for sending it again
+}
 
 interface ExchangeNote { exchange: string; kind: "ended_stuck"; at: string }
 
@@ -375,8 +382,9 @@ The app channel, which the Swift App answers itself (SYL-192):
 // window.webkit.messageHandlers.arbolApp.postMessage(text); replies come through window.arbolApp.receive(text)
 type AppRequest =
   | { type: "call"; id: string; method: "app.pickFolder"; params: { start?: string } }
-  | { type: "call"; id: string; method: "app.openSignIn"; params: { url: string; allowedHosts: string[] } }
-  | { type: "call"; id: string; method: "app.openLink"; params: { url: string } };
+  | { type: "call"; id: string; method: "app.openLink"; params: { url: string } }
+  | { type: "call"; id: string; method: "app.takeOpen"; params: {} };
+type AppMessage = { type: "open" };     // from the Swift App: a request to open a chat waits
 ```
 
 ## Known problems in version 1
@@ -404,6 +412,6 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 |---|---|---|---|
 | BKD-D13 | In what form do messages cross the Bridge? | One JSON object for each message, of eight kinds, with the id of a call or a subscription chosen by the window; to and from the web page as a JSON string, and on the socket as one line ending with a newline, at most 16 MiB, on one connection for each window. A line is easy to read in a log and to relay, and the JSON of a line holds no newline. The alternative: a frame with its length in front, as version 1 had, which needs no limit but no person can read | Decided 18 October 2026, a technical choice: the proposed default |
 | BKD-D14 | How does a window know it shows the truth? | Every subscription is registered before its snapshot is read, starts with the snapshot, and numbers its events without gaps. A window that finds a gap, that finds itself behind when it is shown again, or that gets a new `hello` starts its subscriptions again; the backend sends a new snapshot when the database returns. Nothing is read on a timer. The alternative: reading again every few seconds, as version 1 did, which costs work all the time and still shows an old state between two reads | Decided 18 October 2026, a technical choice: the proposed default |
-| BKD-D15 | How does a window ask for the Mac's folder dialog, a sign-in window and a link, which only the Swift App can open? | On a channel of their own, `arbolApp`, which the Swift App answers itself and which never reaches the backend, so the Bridge stays a channel the Swift App does not read; the web view never leaves its page, and only the page's main frame reaches the Bridge. The exact form is SYL-192's. The alternative: the Swift App reads the Bridge and answers some methods itself, against ARC-0 | Decided 18 October 2026, a technical choice: the proposed default |
+| BKD-D15 | How does a window ask for the Mac's folder dialog and a link, which only the Swift App can open, and learn of a request to open a chat? | On a channel of their own, `arbolApp`, which the Swift App answers itself and which never reaches the backend, so the Bridge stays a channel the Swift App does not read; the web view never leaves its page, and only the page's main frame reaches the Bridge. The exact form is SYL-192's. The alternative: the Swift App reads the Bridge and answers some methods itself, against ARC-0 | Decided 18 October 2026, a technical choice: the proposed default |
 | BKD-D16 | How is the window built and checked before the Swift App exists? | Through a development relay in the `arbol` repository that serves the renderer bundle on the loopback address and relays a WebSocket to `backend.sock`, unchanged, letting in only the browser that got its token. It is never for daily use, because its sign-in tab cannot be limited to the vendor's hosts. The alternative: wait for the Swift App (SYL-192), which is blocked by this specification, before the first window can be seen | Decided 18 October 2026, a technical choice: the proposed default |
 | BKD-D23 | How large may a chat's snapshot be? | The last 12 Exchanges, as version 1 opened a chat, with the input and the result of each tool call cut to 8 KiB, and the rest on request (`chat.exchanges`, `toolCall.get`). A Driver may return up to 200 KiB for one tool call (DRV-2), so a whole chat can pass the 16 MiB of a message, and a closed tool call shows one line. The alternative: the whole chat at once, which fails for a long chat | Decided 18 October 2026, a technical choice; 12 Exchanges, as version 1 had them, on 19 October 2026 following BKD-D22 |
