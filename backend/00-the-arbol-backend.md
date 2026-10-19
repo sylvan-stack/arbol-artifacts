@@ -1,7 +1,7 @@
 ---
 role: authored
 spec: BKD-0
-status: review
+status: accepted
 ---
 # Arbol backend · 00 The Arbol backend
 

@@ -1,7 +1,7 @@
 ---
 role: authored
 spec: BKD-2
-status: review
+status: accepted
 ---
 # Arbol backend · 02 Elma Chat, its first version
 
@@ -273,7 +273,7 @@ Version 1's Elma had more than this first version. These parts are not in First 
 | Images in a message, entity chips, Chat Notes, Quick Text, a title block in a message, tags | Not in First Sapling (the owner, 19 October 2026) |
 | Approvals of tool calls | No agent asks for permission in Arbol 2 (DRV-3); dropped |
 | Signing in from Elma or Seqoya Lab | The Driver's own command until Seqoya Lab has a page for it (the owner, 19 October 2026) |
-| The routes' settings: a route's default model, which models and efforts it offers, the repositories where it may not be used, full permissions, fast mode | The settings of an Intelligence Provider come with SYL-191 (ARC-D22) |
+| The settings of each Intelligence Provider, version 1's routes: its default model, which models and efforts it offers, the repositories where it may not be used, full permissions, fast mode | They come with SYL-191 (ARC-D22), as the owner agreed on 19 October 2026 |
 | The Thread Inspector, the document panel, "What's wrong?", "Finalize", the search of a repository's documents on ⌘R | Each needs a specification of its own |
 | Unread chats and read receipts | Willo Station shows them, in its own specification |
 | Additional folders of a chat | Version 1 set them from the command line only (SYL-193) |

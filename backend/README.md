@@ -7,15 +7,15 @@ This chapter specifies three parts of Arbol. The *Arbol backend* is the program 
 
 Three words are kept apart here. A *window* is one Elma Chat window on the screen; each Root has one, and windows of several Roots can be open at once. Its *page* is the web page it shows, loaded from Elma Chat's *renderer bundle*, the files of the [UI](../GLOSSARY.md#ui) in each `arbol` Build. Elma Chat is the UI.
 
-The architecture says where these parts stand ([ARC-0](../architecture/00-components-and-boundaries.md#arbol-the-swift-app-and-the-backend), "Arbol: the Swift App and the backend"; [ARC-1](../architecture/01-roots.md) to [ARC-3](../architecture/03-stuck-trunks.md)). The [Root Contract](../../arbol-root/contract/README.md) says what the backend shares with every Trunk, and the [Root manager's specifications](../../arbol-root/specs/README.md) what the commands of `arbol-root` do and print. The specifications here say what the backend does, what crosses the Bridge, and what the first window shows. Written in SYL-190 on 18 October 2026.
+The architecture says where these parts stand ([ARC-0](../architecture/00-components-and-boundaries.md#arbol-the-swift-app-and-the-backend), "Arbol: the Swift App and the backend"; [ARC-1](../architecture/01-roots.md) to [ARC-3](../architecture/03-stuck-trunks.md)). The [Root Contract](../../arbol-root/contract/README.md) says what the backend shares with every Trunk, and the [Root manager's specifications](../../arbol-root/specs/README.md) what the commands of `arbol-root` do and print. The specifications here say what the backend does, what crosses the Bridge, and what the first window shows. Written in SYL-190 on 18 October 2026, and accepted by the owner on 19 October 2026.
 
 ## Specifications
 
 | Spec | Title | Status |
 |---|---|---|
-| [BKD-0](00-the-arbol-backend.md) | The Arbol backend | review |
-| [BKD-1](01-the-bridge.md) | The Bridge | review |
-| [BKD-2](02-elma-chat.md) | Elma Chat, its first version | review |
+| [BKD-0](00-the-arbol-backend.md) | The Arbol backend | accepted |
+| [BKD-1](01-the-bridge.md) | The Bridge | accepted |
+| [BKD-2](02-elma-chat.md) | Elma Chat, its first version | accepted |
 
 Not here: Brain Recipes and how a route is chosen (SYL-191), the Arbol Swift App with the tray menu and the windows (SYL-192), the command line `arbol` (SYL-193), the pages of Seqoya Lab, the Secrets page among them (SYL-194), listeners such as Telegram ([ARC-D52](../architecture/01-roots.md#decisions)), and bringing one chat over again into a newer Root (SYL-195).
 

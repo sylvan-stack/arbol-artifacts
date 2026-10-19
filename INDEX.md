@@ -34,9 +34,9 @@ One small record per agent session, whatever tool runs it, written by the tools'
 
 What Arbol itself does while a chat is read, written and answered. Start at its [README](backend/README.md), which also says which accepted requirements of ARC-0 to ARC-3 and of the Root Contract each of its requirements carries.
 
-- [`00-the-arbol-backend.md`](backend/00-the-arbol-backend.md) (BKD-0): the backend of a Root as a process with its socket, the database and the backend's own tables, Drafts, sending a message and sending it again, an Exchange in progress, stop and answers, settling, stuck Exchanges, restarts and discovery across Roots, a database that cannot be reached, accounts, health and storage, tests.
+- [`00-the-arbol-backend.md`](backend/00-the-arbol-backend.md) (BKD-0): the backend of a Root as a process with its socket, the database and the backend's own tables, Drafts, sending a message and sending it again, an Exchange in progress, stop and answers, settling, stuck Exchanges, restarts and discovery across Roots, a database that cannot be reached, accounts, the working folder of a chat, health and storage, tests.
 - [`01-the-bridge.md`](backend/01-the-bridge.md) (BKD-1): the messages between a window and its backend, calls and subscriptions, how a window keeps the truth, attention items, a backend that goes away, compatibility within a Root, secrets, what the Swift App answers itself, the development relay.
-- [`02-elma-chat.md`](backend/02-elma-chat.md) (BKD-2): Elma Chat's first window: the list of chats, reading a chat, an answer as it arrives, the composer and the Draft, sending and stopping, questions of the agent, a failed Exchange, sending again, accounts, attention, coming back.
+- [`02-elma-chat.md`](backend/02-elma-chat.md) (BKD-2): Elma Chat's first version, as version 1's Elma Chat looked and worked: the window and its navigation panel, one Exchange at a time, an answer as it arrives, the composer and Drafts, the route, the repositories, sending and stopping, questions of the agent, a failed Exchange, the latest chats, opening a chat from elsewhere, signing in with the Driver's command, attention, coming back, and what First Sapling leaves out.
 
 ### `architecture/`: how Arbol 2 is divided
 
