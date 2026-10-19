@@ -29,11 +29,11 @@ In the READMEs of the [Root Contract](../../arbol-root/contract/README.md#where-
 | ARC-0.5, ARC-0.6, ARC-0.26 | SYL-192; what the Bridge needs of the Swift App: BKD-1.2, BKD-1.11 |
 | ARC-0.7 | Keeping the current Root's backend running: SYL-192; no listener outside the current Root: BKD-0.3 |
 | ARC-0.8 | BKD-0.5, BKD-0.8 |
-| ARC-0.9 | BKD-0.11 hands down the route the Leather Bag picked and no small-call route; resolving a Brain Recipe and handing down a small-call route: SYL-191 |
+| ARC-0.9 | Elma Chat resolves no Brain Recipe: its route is the Leather Bag's choice or a default, and its small-call route a default (BKD-0.11, BKD-0.30, BKD-D3); resolving a Brain Recipe where one is used: SYL-191 |
 | ARC-0.10 | BKD-0.25, BKD-0.26; BKD-2.15 shows the steps |
 | ARC-0.11 | SYL-193 |
 | ARC-0.14 | BKD-0.27, BKD-0.28; BKD-2.16 shows the warning |
-| ARC-0.31 | SYL-194; no secret crosses the Bridge: BKD-1.10, and a sign-in names the Keychain item to fill: BKD-0.26, BKD-2.15 |
+| ARC-0.31 | SYL-194; until the Secrets page exists, the key of a Driver's sign-in is stored through the sign-in panel (BKD-0.26, BKD-1.10, BKD-2.15, BKD-D10) |
 | ARC-1.2 | BKD-0.7 (the backend's own tables and settings), BKD-1.9 (the Bridge) |
 | ARC-1.5 | BKD-0.5, BKD-0.22 |
 | ARC-1.6 | The display name in the header of the window: BKD-2.1; the tray menu: SYL-192 |

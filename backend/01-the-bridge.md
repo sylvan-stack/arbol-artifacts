@@ -126,7 +126,7 @@ The window chooses the identifier of a new Exchange, a UUID, before it calls `ch
 | `root.get`, `roots.list`, `chats.page`, `chat.exchanges`, `toolCall.get`, `subscriptions.check`, `chat.rename`, `exchange.stop`, `accounts.*`, `health.measure`, `signIn.start`, `signIn.cancel` | Yes: they have the same effect when sent twice |
 | `draft.save` | Yes, over the same revision, so that a save that was made already is refused with `draft_conflict` and brings the Draft as it is |
 | `exchange.answer` | Only when the lines of the Exchange hold no `answer` line for that `askId`; otherwise the answer arrived |
-| `signIn.enterCode` | Never: the window says that the connection was lost, and the Leather Bag signs in again when the code was not taken |
+| `signIn.enterCode`, `signIn.storeSecret` | Never: the window says that the connection was lost, and the Leather Bag signs in again when the code or the key was not taken; the window keeps no key to send again |
 
 ### Attention
 
@@ -158,7 +158,7 @@ The renderer bundles and the backend of a Root come from that Root's `arbol` Bui
 
 ### Secrets
 
-No secret crosses the Bridge, in either direction: no key of a Subscription, no Jev key and no database password. A sign-in step that asks for a key names the Keychain item it goes into, and the Leather Bag stores it on the Secrets page of Seqoya Lab, or by hand until that page exists (BKD-0, [ARC-D62](../architecture/00-components-and-boundaries.md#decisions)).
+Until the Secrets page of Seqoya Lab exists, a key that a Driver's sign-in asks for travels once, from the window to the backend, in the call `signIn.storeSecret`, and the backend stores it in the Keychain item the step names ([BKD-D10](00-the-arbol-backend.md#decisions)). No other secret crosses the Bridge, and none ever goes from the backend to a window: no key of a Subscription, no Jev key and no database password. Neither the backend nor the Swift App writes one to a log (ARC-0, "Secrets").
 
 ### What the Swift App answers itself
 
@@ -202,10 +202,10 @@ When `window.webkit` is missing, the page uses that WebSocket instead. The relay
 | BKD-1.4 | answer every call exactly once, with `result` or with `error` of the form `{code, message}` and, for an error passed on, `source`; refuse with `invalid_input` an identifier that is not of its kind before a file is touched or a program started; have the window give each call a time limit and show a code it does not know with its message | Changed | unit |
 | BKD-1.5 | register a subscription before reading its snapshot, begin it with the snapshot, number its events with `seq` from 1 without gaps, keep one subscription for each topic and params on a connection, end a connection's subscriptions with `slow_reader` above 64 MiB waiting; have the window start a subscription again when it finds a gap, when `subscriptions.check` shows it behind after being hidden, and when the database returns | Changed | unit, journey |
 | BKD-1.6 | give in a chat's snapshot the last 20 Exchanges, tool inputs and results cut to 8 KiB, and for an open Exchange only its message; send every line of `events.jsonl` of each Exchange in progress from the first one on, whole, unchanged and in order, a line larger than 16 MiB as `{n, tooLarge, bytes}`, then its saved rows once it is saved; and announce every Exchange of the chat whose folder appears | Changed | unit, journey |
-| BKD-1.7 | when the connection ends, have the window, told by `lost`, keep showing what it shows and the Drafts typed meanwhile, fail its calls under way with `disconnected`, and after the next `hello` start every subscription again and send its calls again as the table of repeating says, `chat.send` and `exchange.sendAgain` with the same Exchange identifier and never `signIn.enterCode` | Changed | drill |
+| BKD-1.7 | when the connection ends, have the window, told by `lost`, keep showing what it shows and the Drafts typed meanwhile, fail its calls under way with `disconnected`, and after the next `hello` start every subscription again and send its calls again as the table of repeating says, `chat.send` and `exchange.sendAgain` with the same Exchange identifier and never `signIn.enterCode` or `signIn.storeSecret` | Changed | drill |
 | BKD-1.8 | give every attention item open in the Root to every window that subscribes to `attention`, from its opening to its closing, and have a window show a kind it does not know with its message | New | unit, drill |
 | BKD-1.9 | change within a Root only by additions that older Builds can ignore, have the backend and the window ignore every field, event kind and attention kind they do not know, and have the backend reply to a method or topic it does not know with `unknown_method` | New | unit |
-| BKD-1.10 | carry no secret in either direction | Changed | unit |
+| BKD-1.10 | carry a secret only once, from the window to the backend, in `signIn.storeSecret` until the Secrets page exists, and never from the backend to a window | Changed | unit |
 | BKD-1.11 | keep the requests the Swift App answers itself, `app.pickFolder`, `app.openSignIn` and `app.openLink`, on a channel of their own, `arbolApp`, which never reaches the backend, and keep the web view of a window on its own page | New | unit; the Swift App's part with SYL-192 |
 | BKD-1.12 | before the Swift App exists, be relayed by the development relay of the `arbol` repository on the loopback address only, letting in only requests with its cookie, its `Host` and, for the WebSocket, its `Origin`, and logging no message | New | unit |
 
@@ -276,6 +276,7 @@ The calls:
 | `accounts.check`, `accounts.usage`, `accounts.models`, `accounts.signOut` | `driver`, `subscription` | DRV-1's `Subscription`, `UsageReport`, `ModelCatalog`, `Subscription` | 30 s |
 | `signIn.start` | `driver`, `subscription` | `{ attempt: string }`: a new attempt, or the one that runs for that Subscription | 30 s |
 | `signIn.enterCode` | `attempt`, `code` | `{}` | 30 s |
+| `signIn.storeSecret` | `attempt`, `secret` | `{}` once the item is stored and read back | 30 s |
 | `signIn.cancel` | `attempt` | `{}` | 30 s |
 | `health.measure` | — | `Measurement` (BKD-0) | 30 s |
 
