@@ -23,12 +23,11 @@ As read on 19 October 2026:
 
 | Hook | Owner | Tool and events | Kind | State |
 |---|---|---|---|---|
-| `~/.config/iterm2/cc-status` | iTerm2's integration, not Arbol | Claude Code: `SessionStart`, `UserPromptSubmit`, `PreToolUse`, `PermissionRequest`, `PostToolUse`, `Notification`, `Stop`, `StopFailure`, `SubagentStop`, `SessionEnd`. No time limit set | Watching: shows a session's state on its iTerm2 tab | Installed |
 | `~/.local/bin/arbol-agents hook claude-code` and `… hook codex` | Arbol, the [agent records](../../agent-records/README.md) ([AGR-1](../../agent-records/01-the-hooks.md)) | Claude Code: 17 events. Codex: all 12. Time limit 5 seconds, 3 for Codex's `SessionEnd` | Watching: keeps one record per session | Accepted; built and installed by the Beats SYL-201 and SYL-202 |
 | `~/.local/bin/agent-watch-hook` | The check from outside of the guide [Working in Sagas](../../../mycel/operations/sagas.md) | Claude Code and Codex: `PreToolUse` | Steering: blocks a tool call once (a steer) or until released (a stop) | Planned in the Beat SYL-221 |
 | Codex's `notify` | Computer Use | Codex, once per finished turn | Not a hook ([PHK-0](00-hooks-of-claude-code-and-codex.md#codexs-notify)) | Installed |
 
-`~/.codex/hooks.json` does not exist yet: no hook runs in Codex today. No repository under `~/repos/sylvan-stack` or `~/Artifacts` has a settings file of its own with hooks.
+Other programs may add hooks of their own to the same files. Arbol neither uses nor changes them, and depends on none. `~/.codex/hooks.json` does not exist yet: no hook runs in Codex today. No repository under `~/repos/sylvan-stack` or `~/Artifacts` has a settings file of its own with hooks.
 
 ### Watching and steering hooks
 
@@ -68,11 +67,11 @@ Every installer of a hook of Arbol's (today `arbol-agents install` and the check
 | Foreground | Yes, never a background hook | Yes |
 | Time limit in the tool's settings | 5 seconds; 3 for Codex's `SessionEnd` | The same |
 | Own speed | At most 50 milliseconds in the median on this Mac when it has work to do | At most 50 milliseconds in the median when there is nothing to steer, which is almost always the case |
-| On any fault of its own | Exits with 0 | Not decided ([PHK-D5](#decisions)) |
+| On any fault of its own | Exits with 0 | Not decided ([PHK-D4](#decisions)) |
 | The conversation | Keeps no part of it | Keeps no part of it |
 | Elsewhere | Starts no process that outlives it, uses no network, writes only its own files | The same |
 
-Several hooks on one event add their times. With all of them installed, Claude Code's `PreToolUse` starts three: `cc-status`, `arbol-agents hook` and `agent-watch-hook`.
+Several hooks on one event add their times. With both of Arbol's installed, each tool's `PreToolUse` starts `arbol-agents hook` and `agent-watch-hook`, besides any hook of another program.
 
 ### Hooks of different owners side by side
 
@@ -102,5 +101,4 @@ Version 1 used no hooks of either tool.
 |---|---|---|---|
 | PHK-D2 | The check from outside's Codex reviewer runs `codex exec` in `~/.codex`. Once hooks are installed there, each review would create an agent record of its own and could be blocked by the check's own steering hook. Is it run without hooks? | Yes: its command line gets `--disable hooks`, beside `--disable apps` and the others it has. Its Claude Code counterpart already runs with `--safe-mode`. A test of the check asserts both | Open |
 | PHK-D3 | Do the agent records and the check from outside share one installer? | No. Each installer writes only its own entries under the rules above, as the Beats SYL-202 and SYL-221 already plan. One installer would tie the agent records' Builds to the check's | Open |
-| PHK-D4 | `cc-status` runs on ten Claude Code events with no time limit of its own, so the tool's default applies. Is a limit added to its entries? | No. It is not Arbol's hook, and the installers never change an entry they did not write | Open |
-| PHK-D5 | What does the steering hook do when it fails on its own, for example when its steering file cannot be read? | It lets the call through and exits with 0. A broken hook that blocked would stop every session on the Mac, the session that could repair it included; a missed steer is caught by the next check five minutes later | Open |
+| PHK-D4 | What does the steering hook do when it fails on its own, for example when its steering file cannot be read? | It lets the call through and exits with 0. A broken hook that blocked would stop every session on the Mac, the session that could repair it included; a missed steer is caught by the next check five minutes later | Open |

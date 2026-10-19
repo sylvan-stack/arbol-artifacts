@@ -33,7 +33,7 @@ Both files have the same shape: for each event a list of groups, each with an op
 {
   "hooks": {
     "PreToolUse": [
-      { "hooks": [ { "type": "command", "command": "/Users/sam/.config/iterm2/cc-status" } ] },
+      { "hooks": [ { "type": "command", "command": "<a hook of another program>" } ] },
       { "hooks": [ { "type": "command", "command": "/Users/sam/.local/bin/arbol-agents hook claude-code", "timeout": 5 } ] }
     ]
   }

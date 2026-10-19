@@ -75,22 +75,20 @@ They are watching hooks and follow [PHK-1](../architecture/provider-hooks/01-hoo
 
 A tool waits for its hooks, so a hook adds its time to each event ([PHK-0](../architecture/provider-hooks/00-hooks-of-claude-code-and-codex.md#how-long-a-tool-waits)). Asking `ps` costs a hook little and asking `lsof` much, so the hook asks `ps` only when the process identifier differs from the record's owner, which happens at a session's start, and never asks `lsof`: that is the reader's work ([AGR-0](00-the-agent-record.md#what-a-reader-can-tell)). It must take at most 50 milliseconds in the median on this Mac, and at most 100 when it asks `ps`.
 
-The Leather Bag already runs iTerm2's `cc-status` on ten Claude Code events, so each of those events starts two hooks.
-
 ### Installing the hooks
 
 `arbol-agents install` adds the hooks once, for all sessions of each tool on the Mac:
 
 | Tool | Where | What is added | What else |
 |---|---|---|---|
-| Claude Code | `~/.claude/settings.json`, which the terminal `claude` and the Claude desktop app both read: the app starts each session with `--setting-sources=user,project,local` (seen in the app's own process, version 2.1.299) | For each event of the table above, one more entry in the event's list under `hooks`. The entries already there, such as `cc-status`, stay as they are | Nothing |
+| Claude Code | `~/.claude/settings.json`, which the terminal `claude` and the Claude desktop app both read: the app starts each session with `--setting-sources=user,project,local` (seen in the app's own process, version 2.1.299) | For each event of the table above, one more entry in the event's list under `hooks`. The entries already there, whoever wrote them, stay as they are | Nothing |
 | Codex | `~/.codex/hooks.json`, which `codex` in a terminal and the Codex app both read | The same, with Codex's event names | Codex runs a hook only once it is trusted ([AGR-D12](#decisions)). The installer records the trust through Codex itself, as [PHK-0](../architecture/provider-hooks/00-hooks-of-claude-code-and-codex.md#codexs-trust) describes |
 
 For example, Claude Code's `PreToolUse` list with the entry that was there before and the one added, and the file `~/.codex/hooks.json` with one of its events:
 
 ```json
 "PreToolUse": [
-  { "hooks": [ { "type": "command", "command": "/Users/sam/.config/iterm2/cc-status" } ] },
+  { "hooks": [ { "type": "command", "command": "<a hook of another program>" } ] },
   { "hooks": [ { "type": "command", "command": "/Users/sam/.local/bin/arbol-agents hook claude-code", "timeout": 5 } ] }
 ]
 ```
