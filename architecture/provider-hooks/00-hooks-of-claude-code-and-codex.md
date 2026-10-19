@@ -50,7 +50,7 @@ A command that is a single program with its arguments, without any shell syntax,
 | `UserPromptSubmit` | At each message of the Leather Bag, and at the notice that a command left in the background has ended | At each message |
 | `PreToolUse` | Before each tool call | Before each tool call: a command, `apply_patch`, an MCP tool, starting or waiting for a sub-agent |
 | `PermissionRequest` | When it asks permission for a call; also for `AskUserQuestion`, even with full permissions | When it asks approval for a call |
-| `Notification` | With a `notification_type`: `permission_prompt` (6 seconds after a `PermissionRequest` left unanswered), `idle_prompt` (60 seconds after a turn ended without a new message), `elicitation_dialog`, and others | Yes |
+| `Notification` | With a `notification_type`: `permission_prompt` (6 seconds after a `PermissionRequest` left unanswered), `idle_prompt` (60 seconds after a turn ended without a new message), `elicitation_dialog`, and others | — (Codex 0.162.1 has no such event) |
 | `Elicitation`, `ElicitationResult` | When an MCP server asks the Leather Bag something, and when it is answered | — |
 | `PostToolUse` | After each tool call that succeeded | After each tool call |
 | `PostToolUseFailure`, `PermissionDenied` | After a call that failed, or was denied | — |

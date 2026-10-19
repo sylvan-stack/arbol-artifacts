@@ -47,7 +47,8 @@ When each tool sends each event is in [PHK-0](../architecture/provider-hooks/00-
 | `Stop`, `StopFailure` | Both send `Stop`; `StopFailure` only Claude Code | The turn has ended: the open calls are emptied, `message`. Claude Code: `background` becomes the number of `background_tasks` still running |
 | `Interrupt` | Codex | The turn has ended: the open calls are emptied, `message` |
 | `Notification` with `idle_prompt` | Claude Code | The turn has ended: the open calls are emptied, `message` |
-| `SubagentStart`, `SubagentStop`, `PreCompact`, `PostCompact`, any other `Notification` | Both | Only `lastEvent`: a sign of life |
+| `SubagentStart`, `SubagentStop`, `PreCompact`, `PostCompact` | Both | Only `lastEvent`: a sign of life |
+| Any other `Notification` | Claude Code | Only `lastEvent`: a sign of life |
 | `SessionEnd` | Both | `end`, with the reason the tool gives. Ignored when it comes from another process while the record's owner is alive ([AGR-0](00-the-agent-record.md#the-owner)) |
 
 Every event also sets `lastEvent`. `workingFolder` and `transcript` are taken only from events of the session itself, not of a sub-agent; `transcript` only from `SessionStart` and `UserPromptSubmit`.
