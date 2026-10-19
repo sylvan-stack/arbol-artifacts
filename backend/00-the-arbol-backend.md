@@ -256,7 +256,7 @@ The backend calls the Drivers' account commands directly; Root and Trunk have no
 | Every Subscription of every Driver, with its state and its last usage, for the route rows | `arbol-<driver>-driver subscriptions list` for each Driver |
 | One Subscription checked, its usage, its models | `subscriptions check <id>`, `subscriptions usage <id>`, `subscriptions models <id>` |
 
-These are the only commands of a Driver the backend runs: it never starts a run, and it never signs in or out (ARC-0). Until Seqoya Lab has a page for it, the Leather Bag signs in with the Driver's own command at the terminal, such as `arbol-claude-driver subscriptions sign-in zai`, which shows its steps itself and reads a key from the Keychain item it names ([BKD-D17](#decisions), [BKD-D10](#decisions)). No secret passes through the backend or the Bridge.
+These are the only commands of a Driver the backend runs: it never starts a run, and it never signs in or out (ARC-0). Until Seqoya Lab has a page for it, the Leather Bag signs in with the Driver's own command at the terminal, such as `arbol-claude-driver subscriptions sign-in zai`, which shows its steps itself and reads a key from the Keychain item it names ([BKD-D17](02-elma-chat.md#decisions), [BKD-D10](#decisions)). No secret passes through the backend or the Bridge.
 
 ### The working folder of a chat
 
