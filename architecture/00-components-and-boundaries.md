@@ -162,12 +162,12 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 
 A Brain Recipe belongs to Arbol and to nothing else: it is a shortcut that the Leather Bag picks in a UI or names on the command line. Its logic for choosing a model is free. It may weigh several Subscriptions, for example choose one by repository.
 
-Before an Exchange starts, Arbol resolves the Brain Recipe to a *route*: the Driver, the Subscription, the model and the effort. Only the route goes down, through Root to the Trunk, and with it a *small-call route* of the same form, which Arbol resolves from a Brain Recipe for the Trunk's small text calls ([Small model calls](#small-model-calls)). A Trunk never sees a Brain Recipe.
+Before an Exchange starts, Arbol resolves the Brain Recipe to a *route*: the Driver, the Subscription, the model and the effort. Only the route goes down, through Root to the Trunk, and with it a *small-call route* of the same form, which Arbol resolves from a Brain Recipe for the Trunk's small text calls ([Small model calls](#small-model-calls)). A Trunk never sees a Brain Recipe. Elma Chat uses none: its route is the one the Leather Bag picks or a default, and its small-call route a default, as the owner decided on 19 October 2026 ([BKD-D3](../backend/00-the-arbol-backend.md#decisions)).
 
 | Consequence | Detail |
 |---|---|
 | What ran is known | The route is recorded with the Exchange. A retry or a recovery runs what was accepted, and the UI shows the account and the model that ran |
-| A Trunk cannot change the route | When a run ends with `rate_limited` ([DRV-4](../driver-contract/04-errors-and-limits.md)), the Trunk ends the Exchange as failed with that cause. Arbol then offers to send again with what the recipe logic picks next. There is no automatic failover inside a Trunk |
+| A Trunk cannot change the route | When a run ends with `rate_limited` ([DRV-4](../driver-contract/04-errors-and-limits.md)), the Trunk ends the Exchange as failed with that cause. Arbol then offers to send again with what the recipe logic picks next, and Elma Chat with the route the Leather Bag picks ([BKD-2](../backend/02-elma-chat.md)). There is no automatic failover inside a Trunk |
 | Listeners resolve too | A message that arrives through a listener has its Brain Recipe resolved like any other, because the backend holds that logic whether or not a UI is open |
 
 ### Arbol Root
@@ -274,7 +274,7 @@ Arbol:
 | ARC-0.6 | pass Bridge messages between a UI and its Root's backend without interpreting them in the Swift App, and never open the database from it | Changed | unit |
 | ARC-0.7 | keep the current Root's backend running as long as Arbol runs, start it again when it ends, and run listeners nowhere else | New | drill |
 | ARC-0.8 | read the chat tables directly, and write only its own tables and a chat's title when the Leather Bag changes it | Changed | unit |
-| ARC-0.9 | resolve a Brain Recipe to a route before an Exchange starts, and hand down that route and a small-call route and nothing else of the recipe | Changed | unit |
+| ARC-0.9 | resolve a Brain Recipe, where one is used, to a route before an Exchange starts, and hand down that route and a small-call route and nothing else of the recipe | Changed | unit |
 | ARC-0.10 | call the Drivers directly for account commands and for nothing else, and show what the Driver's `sign-in` asks it to show | Changed | journey |
 | ARC-0.11 | keep its command line to sending a message with a chosen Build, Subscription or Brain Recipe, and let it work while no backend runs | Changed | unit |
 | ARC-0.26 | keep every newer Build of the Arbol Swift App working with every Root that still exists | New | journey |

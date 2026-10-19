@@ -103,7 +103,7 @@ A database that does not answer is not a normal state. For as long as it lasts, 
 
 ### A rate limit
 
-When the Driver's run ends with `rate_limited` ([DRV-4](../driver-contract/04-errors-and-limits.md)), the Trunk ends the Exchange as failed with that cause. It does not take another route by itself. Arbol offers to send again with what the Brain Recipe's logic picks next (ARC-0).
+When the Driver's run ends with `rate_limited` ([DRV-4](../driver-contract/04-errors-and-limits.md)), the Trunk ends the Exchange as failed with that cause. It does not take another route by itself. Arbol offers to send again with what the Brain Recipe's logic picks next (ARC-0); Elma Chat, which uses no Brain Recipe, offers to send again with the route the Leather Bag picks ([BKD-2](../backend/02-elma-chat.md)).
 
 ### When Arbol quits
 
