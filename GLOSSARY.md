@@ -21,19 +21,19 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **A** — [A-Nex](#a-nex) · [Action Item](#action-item) · [Activity](#activity) · [Activity Execution](#activity-execution) · [Activity Graph](#activity-graph) · [Activation Rule](#activation-rule) · [Admission Boundary](#admission-boundary) · [Agent Attempt](#agent-attempt) · [Agent Record](#agent-record) · [Aggregate](#aggregate) · [Answer Beacon](#answer-beacon) · [Answer Threshold](#answer-threshold) · [Arbol](#arbol) · [Arbol Trunk](#arbol-trunk) · [Arbol Component](#arbol-component) · [Arbol Root](#arbol-root) · [Arbol Internals](#arbol-internals) · [Arbol Secret](#arbol-secret) · [Arbol Swift App](#arbol-swift-app) · [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) · [Arc](#arc) · [Artifact](#artifact) · [Artifact Chapter](#artifact-chapter) · [Artifact Corpus](#artifact-corpus) · [Artifact Space](#artifact-space) · [Attestation](#attestation) · [Authoritative Input](#authoritative-input) · [Authority Epoch](#authority-epoch)
 - **B** — [Beat](#beat) · [better-grep](#better-grep) · [Blueprint](#blueprint) · [Blueprint Chain](#blueprint-chain) · [Brain Recipe](#brain-recipe) · [Branch](#branch) · [Branch Overlay](#branch-overlay) · [Bridge](#bridge) · [Build](#build) · [Burn](#burn)
 - **C** — [Cell](#cell) · [Change Walkthrough](#change-walkthrough) · [Chat Exchange](#chat-exchange) · [Chat Note](#chat-note) · [Chat Session](#chat-session) · [Checkpoint](#checkpoint) · [Chunk](#chunk) · [Chunking](#chunking) · [CLI](#cli) · [Code Corpus](#code-corpus) · [Code Map](#code-map) · [Code Scout](#code-scout) · [Command](#command) · [Communicado](#communicado) · [Communicado Action](#communicado-action) · [Communicado Delivery](#communicado-delivery) · [Communicado Descriptor](#communicado-descriptor) · [Communicado Family](#communicado-family) · [Communicado Presentation](#communicado-presentation) · [Communicado Species](#communicado-species) · [Communicado State](#communicado-state) · [Companion](#companion) · [Completion](#completion) · [Corpus](#corpus) · [Corpus Watcher](#corpus-watcher) · [Coupling](#coupling) · [Cue](#cue) · [Cue Channel](#cue-channel) · [Cue Command](#cue-command) · [Cue Detection Catalog](#cue-detection-catalog) · [Cue Target](#cue-target) · [Cue Target Cache](#cue-target-cache)
-- **D** — [Default Arbol Trunk](#default-arbol-trunk) · [Delegate](#delegate) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance)
+- **D** — [Decision](#decision) · [Default Arbol Trunk](#default-arbol-trunk) · [Delegate](#delegate) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance)
 - **E** — [Effector](#effector) · [Email Source Item](#email-source-item) · [Elma Chat](#elma-chat) · [Elma View Page](#elma-view-page) · [Embedder Profile](#embedder-profile) · [Embedding](#embedding) · [Embedding Provider](#embedding-provider) · [Entity](#entity) · [Entity Card](#entity-card) · [Entity Card Content](#entity-card-content) · [Entity Card Resolver](#entity-card-resolver) · [Entity Chip](#entity-chip) · [Entity Context Menu](#entity-context-menu) · [Entity Edge](#entity-edge) · [Entity Kind](#entity-kind) · [Entity Shape](#entity-shape) · [Entity URI](#entity-uri) · [Env Keepers](#env-keepers) · [Errand](#errand) · [Event Log](#event-log) · [Event Log Service](#event-log-service) · [Event Sourcing](#event-sourcing) · [Exchange Assignment](#exchange-assignment)
 - **F** — [Fanout](#fanout) · [Flyer](#flyer) · [Fold / Projection](#fold--projection) · [Font Scale](#font-scale) · [Free-standing](#free-standing)
 - **G** — [Generation](#generation)
 - **H** — [H-Nex](#h-nex) · [Heartwood](#heartwood) · [Hunk Review](#hunk-review)
-- **I** — [Identity Reconciliation](#identity-reconciliation) · [Ignore Rule](#ignore-rule) · [Ingest](#ingest) · [Initiator](#initiator) · [Instructions Hub](#instructions-hub) · [Intelligence Provider (IP)](#intelligence-provider-ip)
+- **I** — [Identity Reconciliation](#identity-reconciliation) · [Ignore Rule](#ignore-rule) · [Index Store](#index-store) · [Ingest](#ingest) · [Initiator](#initiator) · [Instructions Hub](#instructions-hub) · [Intelligence Provider (IP)](#intelligence-provider-ip)
 - **K** — [Knowledge System](#knowledge-system)
 - **L** — [Ladder](#ladder) · [Leather Bag](#leather-bag) · [Living Topic](#living-topic) · [Load](#load)
 - **M** — [Mac OS Communicado](#mac-os-communicado) · [Mandate](#mandate) · [Mycel](#mycel) · [Mycel Operation](#mycel-operation) · [Mycel Skill](#mycel-skill) · [Mycel-enabled](#mycel-enabled) · [Mycel-integrated](#mycel-integrated)
 - **N** — [Native Tool Call](#native-tool-call) · [Nex](#nex) · [Normalizer](#normalizer) · [Now Line](#now-line)
-- **O** — [Oaken](#oaken) · [Objectives](#objectives) · [Organization](#organization)
+- **O** — [Oaken](#oaken) · [Objectives](#objectives) · [Organization](#organization) · [Origin](#origin) · [Origin Coverage](#origin-coverage) · [Origin Link](#origin-link)
 - **P** — [Parse Result](#parse-result) · [Parser](#parser) · [Parser Pipeline](#parser-pipeline) · [Provider](#provider)
-- **R** — [Radar](#radar) · [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Routine](#routine) · [Runbook](#runbook)
+- **R** — [Radar](#radar) · [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Requirement](#requirement) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Routine](#routine) · [Runbook](#runbook)
 - **S** — [Saga](#saga) · [Scan](#scan) · [Signal](#signal) · [Signal Rule](#signal-rule) · [Signal Type](#signal-type) · [Seqoya Lab](#seqoya-lab) · [Source Ref](#source-ref) · [Sparse Retrieval](#sparse-retrieval) · [Spotlight](#spotlight) · [Stale](#stale) · [Stale Summary Regeneration](#stale-summary-regeneration) · [State Runtime Profile](#state-runtime-profile) · [Steward](#steward) · [Stint](#stint) · [Subscription](#subscription) · [Summary Node](#summary-node) · [Surface](#surface) · [Sync Pass](#sync-pass)
 - **T** — [Taproot](#taproot) · [Text Snapshot](#text-snapshot) · [Theme](#theme) · [Tool](#tool) · [Tool Request](#tool-request) · [Tracked Source](#tracked-source) · [Trivial Trunk](#trivial-trunk) · [Trunk Runtime](#trunk-runtime) · [Turn](#turn)
 - **U** — [UI](#ui) · [UIShell / Chrome](#uishell--chrome)
@@ -546,6 +546,12 @@ Use **sparingly**. A reference or link is *not* a Coupling — promote it only w
 
 **Example:** A request-schema [Chunk](#chunk) and a response-schema Chunk that must stay compatible — neither governs, but editing one should open a *re-verify* [Drift](#drift) on the other. Two docs that merely link to each other are **not** coupled.
 
+## Decision
+
+A choice the owner made about a product, recorded as one row of a specification's Decisions table: its human id such as `MYC-D45`, the question, the proposed default and the outcome with its date. A Decision is an [Entity](#entity) (kind `decision`, tag `dec`, shape `note`), keyed by a UUID that stands in the row's first cell in an HTML comment after the human id, invisible to readers and read by [Mycel](#mycel), and addressed by an [Entity URI](#entity-uri) `[dec:<uuid>:<title>]`. Mycel keeps it as a [Chunk](#chunk) of its own beside the section that holds the row, so that code and documents can name it as their [Origin](#origin) through an [Origin Link](#origin-link), and so that editing the row marks what rests on it [Stale](#stale) as a [Derivation](#derivation) does. The human id is its display name and is never edited; the row can move between chapters without changing identity, and a withdrawn id stays reserved. Its Discussion column names the chats in which it was taken, as chat Entity URIs; a discussion never makes the Decision stale. Contrast [Requirement](#requirement), which says what the product must do.
+
+**Example:** `| MYC-D45 <!-- 9b6984cc-db34-4a84-b948-0eaefbea916a --> | What is a requirement or decision in the Index Store? | … | Decided 19 October 2026 by the owner: … |` is one Decision; `mycel read '[dec:9b6984cc-db34-4a84-b948-0eaefbea916a:…]'` returns the row and the content of the chats its Discussion cell names.
+
 ## Default Arbol Trunk
 
 The first [Arbol Trunk](#arbol-trunk), created by behavior-preserving isolation of the chat communication implementation currently centered on `ChatSessionOrchestrator`. It is the compatibility baseline used while Root–Trunk process boundaries, complete Chat Session Event Sourcing, and side-by-side Trunk replacement are introduced. “Default” names this specific Trunk implementation, not a permanently privileged architecture role; later Trunks may be selected for future [Chat Exchanges](#chat-exchange). It is not the [Trivial Trunk](#trivial-trunk), the default Trunk of every Root in Arbol 2.
@@ -700,6 +706,7 @@ Any first-class Arbol citizen — an MR, a commit, a git [Branch](#branch), a ti
 | `chat` | cht | span |
 | `artifact` | arf | note |
 | `requirement` | req | note |
+| `decision` | dec | note |
 | `invariant` | inv | note |
 | `glossary` | glo | note |
 | `secret` | sec | note |
@@ -898,6 +905,12 @@ Mutable user configuration that prevents a matching external source from being r
 
 **Example:** Ignoring domain `com` intentionally suppresses every sender in `.com`; the confirmation previews the impact rather than prohibiting that broad rule.
 
+## Index Store
+
+[Mycel](#mycel)'s own PostgreSQL database with ParadeDB, at the address its settings name, holding the [Chunks](#chunk), their versions and vectors, the edges ([Derivations](#derivation), [Couplings](#coupling) and [Origin Links](#origin-link)), the marks such as [Stale](#stale), the [Requirement](#requirement) and [Decision](#decision) entities, and the record of its work. It is a different database from Arbol's: Mycel reads Arbol's database as data when a decision's discussion is shown, and writes nothing there. Most of the Index Store can be made again from the files; what exists nowhere else is what a person asserted or confirmed in it, such as stated Origin Links.
+
+**Example:** `mycel init` makes the structure of the Index Store at the address in `~/.mycel/config.toml`, and `mycel ingest` fills it from the repository's files.
+
 ## Ingest
 
 The operation that synchronizes one [Corpus](#corpus) into [Mycel](#mycel)'s stored graph. Three steps, in order: **[Scan](#scan)** (read files, hash them, skip the byte-identical ones) → **[Chunking](#chunking)** (split each changed file into chunk candidates) → **[Identity Reconciliation](#identity-reconciliation)** (decide which stored [Chunk](#chunk) each candidate is). After reconciliation, each changed chunk's content hash is recorded and its [Embedding](#embedding) cleared, making it *pending* for the next embed. Mechanical — no model calls; runs per-corpus (an Artifact-Corpus ingest and a Code-Corpus ingest are the same operation over different roots and chunkers).
@@ -1067,6 +1080,24 @@ A named set of [Repos](#repo) belonging to one organizational unit. An Organizat
 
 **Example:** [Euro-Office](https://github.com/Euro-Office) is the Organization rooted at `~/repo/Euro-Office/`. Its name, `Euro-Office` (also accepted as `euro-office`), refers to all member Repos when a request spans repositories or only identifies the Organization. A request naming a specific member Repo uses that Repo's scope instead. New organizations default to `~/repos/<organization-name>/` and can be assigned another folder.
 
+## Origin
+
+The [Chunk](#chunk) at the source end of an [Origin Link](#origin-link): what ordered the chunk at the other end. An Origin is of any kind: a [Requirement](#requirement), a [Decision](#decision), a document section, or a code chunk when nothing better exists, as in an undocumented open-source repository. The word is used for nothing else in [Mycel](#mycel); the former `Origin` column of the requirement tables, which said whether a requirement was kept, changed, new or dropped from version 1, is named `From v1`. An Origin is written as an [Entity URI](#entity-uri) when it has a UUID and as a Mycel source address otherwise.
+
+**Example:** The requirement `MYC-2.13` is the Origin of the function that marks a chunk stale; the Origin Link from that function names the requirement by its Entity URI.
+
+## Origin Coverage
+
+What the command `mycel origins` reports: which [Chunks](#chunk) of a repository have an [Origin Link](#origin-link) and which have none, and which [Requirements](#requirement) and [Decisions](#decision) nothing rests on. It is a report for the agent or person who asks, on demand; no gate, hook or release step depends on it.
+
+**Example:** `mycel origins --changes`, run in a prepared folder after changing `src/mycel/_derive.py`, lists `DeriveStore.apply` as a chunk without Origin.
+
+## Origin Link
+
+A directed link from a [Chunk](#chunk) to its [Origin](#origin): a claim that this chunk exists because of that requirement, decision, section or code chunk, and never a proof. Its fields are the `method` by which it was made (`stated` by a person, `proven` by a check, `inferred` by a model, `recovered` from history), a `confidence_score` from 0 to 1, the `confidence` band the score falls in (`asserted` above 0.9, `proven` 0.8 to 0.9, `inferred` 0.5 to 0.8, `candidate` below 0.5; the thresholds are example values set in one place), who made it and when, and its `review`. A chunk has a list of Origin Links; the score rises by a review or a passing check and falls by a failed conformance check. Origin Links live in the [Index Store](#index-store), never in the code; they are stated with `mycel justify`, listed with `mycel origins`, inferred with `mycel recovery` and disputed with `mycel audit`. Contrast [Derivation](#derivation), which records authority and conformance, and [Reference](#reference), a locator.
+
+**Example:** `mycel justify 'mycel:@code/src/mycel/_derive.py#DeriveStore.apply' '[req:9b6984cc-…:…]'` records an Origin Link with `method: stated` from that method to the requirement.
+
 ## Parse Result
 
 An immutable, durable, typed result of running one versioned [Parser](#parser) against one content hash of an [Email Source Item](#email-source-item). It records `matched`, `not_matched`, `partial`, or `failed`, extracted data, parser/output/pipeline versions, stage provenance, diagnostics, and a private result Artifact. Results are reusable by multiple Signal Rules and cache by source content plus Parser versions.
@@ -1158,6 +1189,12 @@ The standard Git checkout associated with a [Repo](#repo), containing its source
 The UIShell-header dropdown selecting which [Repo](#repo) an app's [Mycel](#mycel) views are scoped to. Lists only [Mycel-enabled](#mycel-enabled) repos. Empty on an app's first run — pages that need a repo ([Seqoya Lab](#seqoya-lab)'s Chunks Viewer, Refresher, Artifacts, Retrieval) stay disabled until one is chosen — after which the selection is persisted **per UI** (each app remembers its own). A lens, not a power switch: [Sync Passes](#sync-pass) keep *all* enabled repos fresh regardless of what any picker shows.
 
 **Example:** Seqoya's picker on "Arbol" scopes every Mycel page to the Arbol corpora; switching to another enabled repo re-scopes the same pages instantly — neither repo's data is touched.
+
+## Requirement
+
+One thing a product must do, recorded as one row of a specification's Requirements table: its human id such as `MYC-2.13`, the text beginning "Mycel must…", whether it is kept, changed or new from version 1 (`From v1`) and the kind of check that verifies it. A Requirement is an [Entity](#entity) (kind `requirement`, tag `req`, shape `note`), keyed by a UUID that stands in the row's first cell in an HTML comment after the human id, invisible to readers and read by [Mycel](#mycel), and addressed by an [Entity URI](#entity-uri) `[req:<uuid>:<title>]`. Mycel keeps it as a [Chunk](#chunk) of its own beside the section that holds the row, so that code and documents can name it as their [Origin](#origin) through an [Origin Link](#origin-link), and so that editing the row marks what rests on it [Stale](#stale) as a [Derivation](#derivation) does. The human id is its display name and is never edited; the row can move between chapters without changing identity, and a withdrawn id stays reserved. Contrast [Decision](#decision), a choice the owner made.
+
+**Example:** `| MYC-2.13 <!-- 9b6984cc-db34-4a84-b948-0eaefbea916a --> | mark a chunk stale when a source of it has a content hash other than the one its edge stores … | Changed | store |` is one Requirement; its Entity URI is `[req:9b6984cc-db34-4a84-b948-0eaefbea916a:<title>]`.
 
 ## Research Trip
 
