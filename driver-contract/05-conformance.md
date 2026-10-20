@@ -7,6 +7,10 @@ status: accepted
 
 How a Driver proves that it meets this contract. One suite of scenarios runs against every Driver, with a scripted stand-in for its vendor tool, and needs no network, no account and no quota. Beside it are probes of the installed vendor tool, which cost nothing, and live checks, which spend quota and run only when asked for. This specification lists the scenarios and the rules for the other two. It matters because version 1's tests ran against a stand-in written for an older tool version and kept passing while the installed tool had moved on, and because probing a real tool on a real machine can damage the owner's own setup, as happened on 5 October 2026.
 
+## Contract 2 credential modes
+
+The accepted [A1/A2 amendments](../../sagas/pi-integration-specs/cutover.md) apply to the scenarios below. Dated contract-1 verification is historical. C3 keeps its Keychain deletion case and adds native-owned rejection without deletion. C5/C39 require bound native-owned sign-out/removal refusal even with force. C7 inspects private child transport boundaries without exposing secrets. C9/C37 include Pi's real discovery and append-prompt preservation. C32 tests native key attachment without `store_secret` or public export. No mode may skip credential isolation checks. Pi release additionally needs independent z.ai and DeepSeek gates; Claude contract 2 needs Anthropic regression and refusal of every stale z.ai route/default/import/settings branch (PI-M2/M2).
+
 ## Scope
 
 Covered: the stand-ins, the scenarios of the shared suite and the requirements each covers, the rules for probes and live checks.

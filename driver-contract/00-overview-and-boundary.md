@@ -7,13 +7,9 @@ status: accepted
 
 A [Driver](../GLOSSARY.md#driver) is the only part of Arbol 2 that knows a vendor's command-line tool. This specification fixes what a Driver owns, what it leaves to its caller, and how it is packaged. It matters because version 1 split the same work across three processes, and most defects listed in the Product Specification for accounts and routes sit on those seams.
 
-## Next-release Pi routing amendment — in review
+## Contract 2 amendment — accepted 20 October 2026
 
-The owner selected Pi on 20 October 2026 and renamed the work **Pi Integration Specs Saga**. The first `arbol-pi-driver` must support z.ai Coding Plan and DeepSeek using the API keys already managed by OpenCode. Claude's target is the Anthropic subscription family only. OpenCode is the credential owner, not the new execution engine.
-
-The [Pi specification set](../../sagas/pi-integration-specs/overview.md) and [coordinated A1/A2 amendments](../../sagas/pi-integration-specs/cutover.md) define the exact target: contract 2 for the breaking Claude-family removal; native-managed key attachment and authenticated non-inference checks; no key migration or deletion; private in-memory Pi key override; normal Pi home/discovery; and explicit refusal of stale Claude z.ai/default/gateway settings before inference. No automatic fallback to Anthropic or the retired route is permitted.
-
-**Version boundary:** the accepted text and dated verification below describe the pre-cutover contract-1 Builds. For target contract 2, A1/A2 explicitly supersede the z.ai-on-Claude family, key injection, sign-in, catalog, usage and run branches. Native-login and Keychain modes retain their existing semantics except the retired family. The target amendment remains in review alongside PI-0–PI-6; it does not claim that existing code or installed settings have changed. Final acceptance waits for P5 normal-resource compatibility qualification and SYL-267 review. Implementation then coordinates caller/default/model migration, Pi history rebuilding, Anthropic regression and crash-safe cutover/recovery.
+The accepted [Pi specifications](../../sagas/pi-integration-specs/overview.md) and [A1/A2 cutover](../../sagas/pi-integration-specs/cutover.md) add Pi for z.ai Coding Plan and DeepSeek using existing OpenCode-owned keys. Claude serves Anthropic subscriptions only. P5 compatibility qualification is complete. The operative requirements below target contract 2; dated probes, legacy maps, decisions and Build verification remain historical evidence of their stated versions, not contract-2 verification. Installed routes change only after the coordinated release and migration gates. No automatic fallback or key migration.
 
 ## Scope
 
@@ -54,10 +50,10 @@ A [Provider](../GLOSSARY.md#provider) value has two meanings that must stay apar
 | Driver | Transport | Vendor families it serves | How the family signs in |
 |---|---|---|---|
 | Claude Driver | The `claude` command-line tool | `anthropic` | The vendor tool's own login |
-| | | `zai` | A static key for z.ai's Anthropic-compatible gateway |
 | Codex Driver | The `codex` command-line tool, through its app-server | `chatgpt` | The vendor tool's own login |
+| Pi Driver | The installed Pi public CLI entry point, RPC mode | `zai`, `deepseek` | Attach existing OpenCode-managed keys; authenticated non-inference validation |
 
-Not served in the first version: the direct ChatGPT backend route (`universe`, retired in version 1), a Cursor route (historical), key-billed API accounts of either vendor.
+Not served in the first version: the direct ChatGPT backend route (`universe`, retired in version 1), a Cursor route (historical), key-billed Anthropic or OpenAI API accounts. Pi's required z.ai Coding Plan and DeepSeek key families are served as specified in PI-1.
 
 Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 
@@ -77,7 +73,7 @@ Proposed.
 
 ### The vendor tool's home
 
-Decided by the owner on 19 October 2026 ([DRV-D42](#decisions)). A Driver starts `claude` and `codex` with their default homes, `~/.claude` and `~/.codex`, as the Leather Bag starts them by hand. Arbol builds on the two tools and replaces none of their features, so a run has everything the owner set up for the tool: its settings, hooks, plug-ins, skills, MCP servers and instruction files ([DRV-3](03-tools-and-permissions.md#the-vendor-tools-full-power)). A run also shows up where the tool keeps its own history, such as `~/.claude/projects`, `~/.codex/sessions` and the Codex app's list of threads, and the tool's hooks see it as they see any other session ([PHK-1](../architecture/provider-hooks/01-hooks-on-this-mac.md)).
+Decided by the owner on 19 October 2026 ([DRV-D42](#decisions)). A Driver starts `claude`, `codex` and Pi with their default homes, `~/.claude`, `~/.codex` and `~/.pi/agent`, as the Leather Bag starts them by hand. Arbol builds on these tools and replaces none of their features, so a run has everything the owner set up for the tool: its settings, hooks, plug-ins, skills, MCP servers and instruction files ([DRV-3](03-tools-and-permissions.md#the-vendor-tools-full-power)). A run also shows up where the tool keeps its own history, such as `~/.claude/projects`, `~/.codex/sessions` and the Codex app's list of threads, and the tool's hooks see it as they see any other session ([PHK-1](../architecture/provider-hooks/01-hooks-on-this-mac.md)).
 
 For example, a run of `arbol-claude-driver run --subscription anthropic …` starts `claude` without `CLAUDE_CONFIG_DIR`. It reads `~/.claude/settings.json`, runs the hooks set there, has the owner's plug-ins and `CLAUDE.md`, and is signed in with the owner's own sign-in of `claude`.
 
@@ -85,7 +81,7 @@ For example, a run of `arbol-claude-driver run --subscription anthropic …` sta
 |---|---|---|
 | `anthropic`, which the Claude Driver has from the start | The owner's own sign-in of `claude`, which `claude` keeps and renews itself | Nothing is added: `claude` uses it |
 | A further Subscription of the Anthropic family | A long-lived token made by `claude setup-token` at the Subscription's sign-in, kept in the Subscription's Keychain item like a key (DRV-1) | `CLAUDE_CODE_OAUTH_TOKEN` in the environment of that run's `claude` only (not tried yet) |
-| `zai`, and any further one of its family | Its key, in the Subscription's Keychain item or from the owner's command | `ANTHROPIC_BASE_URL` and `ANTHROPIC_AUTH_TOKEN` in the environment of that run's `claude` only, as the alias `claude-zai` does |
+| `zai` and `deepseek` on Pi | A pinned OpenCode-owned key, privately resolved through its targeted native command | In-memory runtime override in the owned Pi child; never OS argv or saved Pi auth |
 | `chatgpt`, which the Codex Driver has from the start | The owner's own sign-in of `codex` in `~/.codex/auth.json`, which `codex` keeps and renews itself | Nothing is added: `codex` uses it |
 | A further Subscription of the ChatGPT family | None: not offered. `codex` has no tested way to run as another account than the one signed in to `~/.codex`, and changing `auth.json` would change the account of every other `codex` on the Mac | `subscriptions create` refuses it with `invalid_input` |
 
@@ -104,7 +100,7 @@ Observed until 19 October 2026: each Subscription had a home of its own in the s
 Proposed. The rules below hold for every command. The commands themselves are listed with their subject: Subscriptions in [DRV-1](01-subscriptions.md), runs in DRV-2, tools in DRV-3.
 
 ```sh
-arbol-claude-driver run --subscription zai --model glm-5.3-flash --effort high "say hi"
+arbol-pi-driver run --subscription zai --model glm-5.3-flash --effort high "say hi"
 arbol-claude-driver subscriptions list
 arbol-codex-driver info
 arbol-codex-driver -v a3 info
@@ -141,17 +137,13 @@ interface DriverInfo {
 
 ## The settings file
 
-Proposed. Every Arbol component keeps its settings in the folder `~/.arbol`, one plain file per component, named after it. A Driver's file is `~/.arbol/arbol-claude-driver.json` or `~/.arbol/arbol-codex-driver.json`. It says which Subscription a run uses when it names none, which model and effort a Subscription uses when a run names none, the settings its vendor family defines for a Subscription (DRV-1), and where a Subscription's key comes from when that is not the Keychain. The file belongs to the Driver, and it is only a file: Arbol, or a person with any editor, reads and changes it directly. There is no command for it.
+Proposed. Every Arbol component keeps its settings in the folder `~/.arbol`, one plain file per component, named after it. A Driver's file is `~/.arbol/arbol-claude-driver.json`, `~/.arbol/arbol-codex-driver.json` or `~/.arbol/arbol-pi-driver.json`. It says which Subscription a run uses when it names none, which model and effort a Subscription uses when a run names none, the settings its vendor family defines for a Subscription (DRV-1), and where a Subscription's key comes from when that is not the Keychain. The file belongs to the Driver, and it is only a file: Arbol, or a person with any editor, reads and changes it directly. There is no command for it.
 
 ```json
 {
   "defaultSubscription": "anthropic",
   "subscriptions": {
-    "anthropic": { "defaultModel": "opus", "defaultEffort": "high" },
-    "zai": {
-      "defaultModel": "glm-5.3-flash",
-      "settings": { "baseUrl": "https://api.z.ai/api/anthropic" }
-    }
+    "anthropic": { "defaultModel": "opus", "defaultEffort": "high" }
   }
 }
 ```
@@ -168,7 +160,7 @@ arbol-claude-driver run "hello"     # the anthropic Subscription, its default mo
 | A default that does not fit | A `defaultEffort` that the model of a run does not take is left out, and the run says so in a `notice`. An effort the run itself names and the model does not take fails the run |
 | What was used | The `started` event of a run names the Subscription, the model and the effort it runs with |
 | A faulty file | A file that cannot be read as below refuses the run with `invalid_input`, naming the file and the fault. A key the Driver does not know is a fault too, and the message names it. For a command with one JSON result, notices are an optional `notices` array on that result; each has `code` and `message`. Settings must be a JSON object, and every known field must have the type in `DriverSettings`. A faulty field is named without printing its value |
-| Who writes it | The Driver never does, except in an import the owner starts (CLD-1.17) |
+| Who writes it | The Driver never does, except an explicitly supported import the owner starts; Claude gateway import is retired in contract 2 |
 
 ```ts
 interface DriverSettings {                 // ~/.arbol/<component>.json
@@ -199,8 +191,8 @@ Current records and source/package provenance: `~/Artifacts/arbol-codex-driver/r
 |---|---|---|---|
 | DRV-0.1 | offer the commands of DRV-1 to DRV-4 with the same names, options, inputs, outputs and error codes as every other Driver. Family-specific data travels in fields this contract marks as family-specific | New | Claude Python: `C32`, `test_runtime.CompatibilityTests`, `test_runtime.TransportTests`; Codex Python: `C32`, `Foundation.test_arguments_settings_environment_and_error_sanitization` |
 | DRV-0.2 | run with the Subscription, model and effort a request names, and with the defaults of its settings file for what the request leaves out. It never puts another model or another account in place of one that was named and cannot be used | Changed | Claude Python: `C10`, `test_runtime.CompatibilityTests`, `test_runtime.TransportTests`; Codex Python: `C10`, `Requests.test_request_defaults_and_ignored_settings_effort_provenance` |
-| DRV-0.3 | keep a credential value only in the macOS Keychain or wherever the owner's own command keeps it (DRV-0.14), in the vendor tool's own credential store in its default home, and in the environment of the one child process that needs it. Never in a state file, log, event, error, command-line argument or address | Kept | contract |
-| DRV-0.4 | start the vendor tool with its default home (`~/.claude`, `~/.codex`), set no variable that names another home, and write nothing there itself, except what a Driver's specification names, such as a new session file to continue a conversation: a setting the Driver needs for a run is given on that run's command line or in its environment. Only probes and live checks use homes created for them (DRV-5) | Changed | contract; probe |
+| DRV-0.3 | keep a credential value only in the macOS Keychain or wherever the owner's own command keeps it (DRV-0.14), in the vendor tool's own credential store in its default home, and transiently in private memory/pipes or the environment of the one owned child that needs it. Native-managed keys are resolved only by a targeted supported command, with no public export or durable copy. Never in a state file, log, event, error, command-line argument or address | Kept | contract |
+| DRV-0.4 | start the vendor tool with its default home (`~/.claude`, `~/.codex`, `~/.pi/agent`), set no variable that names another home, and write nothing there itself, except what a Driver's specification names, such as a new session file to continue a conversation: a setting the Driver needs for a run is given through per-process arguments, environment or a documented public native hook; a secret is never an OS argument. Pi rebuilt SessionManager history is an allowed home write. Only probes and live checks use homes created for them (DRV-5) | Changed | contract; probe |
 | DRV-0.5 | build the environment of every child process from a short allow-list, then apply exactly one account. Inherited variables that select an account or configure the vendor tool never reach the child | Changed | Claude Python: `C8`, `test_runtime.CompatibilityTests`, `test_runtime.TransportTests`; Codex Python: `C8`, `AppServerTests.test_private_home_configuration_clean_environment_and_owner_cleanup`, `Foundation.test_arguments_settings_environment_and_error_sanitization` |
 | DRV-0.6 | report the vendor tool it found: path, version and whether that version is supported. With a missing or unsupported tool every operation that needs it fails with a typed error naming the tool and the version | New | Claude Python: `C31`, `test_runtime.CompatibilityTests`, `test_runtime.TransportTests`; Codex Python: `C31`, `AppServerTests.test_handshake_version_and_effective_configuration_are_enforced`, `DevChecks.test_probe_missing_and_old_tools_preserve_public_version_refusal_details` |
 | DRV-0.7 | report every failure as one error object with a code from the closed list of DRV-4, a message a Leather Bag can act on, and whether a retry can succeed. A caller never has to match error text | Changed | Claude Python: `C25`, `test_runtime.CompatibilityTests`, `test_runtime.TransportTests`; Codex Python: `C25`, `RunErrors.test_every_structured_class_and_exact_retry_policy` |

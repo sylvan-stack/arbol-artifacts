@@ -3,7 +3,7 @@ role: authored
 ---
 # Driver Contract
 
-What every Arbol 2 [Driver](../GLOSSARY.md#driver) does, written once. The two Drivers, `arbol-claude-driver` and `arbol-codex-driver`, each carry their own specifications that mirror the numbering here and say how the contract is met with one vendor tool.
+What every Arbol 2 [Driver](../GLOSSARY.md#driver) does, written once. The Drivers `arbol-claude-driver`, `arbol-codex-driver` and the accepted Pi design, `arbol-pi-driver`, each carry their own specifications that mirror the numbering here and say how the contract is met with one vendor tool.
 
 A Driver in Arbol 2 is a bridge to a vendor's agent. It does two things: it manages [Subscriptions](../GLOSSARY.md#subscription) (sign-in, credential, status, usage, model list), and it runs inference with a Subscription, a model and model settings that the caller names. It decides nothing else and keeps no conversation: chat sessions and their history belong to Arbol and its Trunks. Each Driver is a command-line program of its own: Arbol starts it once per operation and holds none of its code.
 
@@ -19,7 +19,7 @@ A Driver in Arbol 2 is a bridge to a vendor's agent. It does two things: it mana
 | [DRV-5](05-conformance.md) | Conformance | accepted |
 | [DRV-6](06-state-and-simultaneous-calls.md) | State and simultaneous calls | accepted |
 
-Driver specifications: [Claude Driver](../../arbol-claude-driver/specs/README.md) (`CLD`), [Codex Driver](../../arbol-codex-driver/specs/README.md) (`CDX`).
+Driver specifications: [Claude Driver](../../arbol-claude-driver/specs/README.md) (`CLD`), [Codex Driver](../../arbol-codex-driver/specs/README.md) (`CDX`), [Pi Driver specifications](../../sagas/pi-integration-specs/overview.md) (`PI`, accepted contract-2 target).
 
 ## Conventions
 
