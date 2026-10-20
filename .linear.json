@@ -1,143 +1,143 @@
 {
-  "workspace": "https://linear.app/sylvan-stack",
+  "workspace": "https://linear.app/amorphius",
   "team": "Sylvan Stack",
   "project": {
     "name": "Arbol",
-    "url": "https://linear.app/sylvan-stack/project/arbol-e2185acd2538",
-    "id": "P-SYL-1"
+    "url": "https://linear.app/amorphius/project/arbol-07c500bc9d0a",
+    "id": "P-SYL-4"
   },
   "note": "Local files are the originals. Linear documents are copies republished from them.",
   "documents": {
     "driver-contract/README.md": {
       "title": "Driver Contract · Conventions and index",
-      "id": "3b865e8f-1fed-4318-aecd-6121bfabc5d2",
-      "url": "https://linear.app/sylvan-stack/document/driver-contract-conventions-and-index-31b9bf676427",
+      "id": "af2209e6-a985-45ca-997c-8422d7afb3ef",
+      "url": "https://linear.app/amorphius/document/driver-contract-conventions-and-index-1d57a3a58f22",
       "published": "2026-10-08"
     },
     "driver-contract/00-overview-and-boundary.md": {
       "title": "Driver Contract · 00 Overview and boundary",
-      "id": "589ae07e-9aac-4ae5-8248-6a782bb07487",
-      "url": "https://linear.app/sylvan-stack/document/driver-contract-00-overview-and-boundary-53753bc16b67",
+      "id": "63903eca-c4c1-4aa1-83de-db80179c8223",
+      "url": "https://linear.app/amorphius/document/driver-contract-00-overview-and-boundary-1033d737cd03",
       "published": "2026-10-08"
     },
     "driver-contract/01-subscriptions.md": {
       "title": "Driver Contract · 01 Subscriptions",
-      "id": "f014150e-bce8-430f-a30f-08d035019e6b",
-      "url": "https://linear.app/sylvan-stack/document/driver-contract-01-subscriptions-4191256562f0",
+      "id": "16bd76c0-7c54-43bc-baa7-53e3d77d4d13",
+      "url": "https://linear.app/amorphius/document/driver-contract-01-subscriptions-57cde6c6ac64",
       "published": "2026-10-08"
     },
     "driver-contract/02-inference.md": {
       "title": "Driver Contract · 02 Inference",
-      "id": "6e636599-3910-4aa4-adde-453ad91d83b1",
-      "url": "https://linear.app/sylvan-stack/document/driver-contract-02-inference-03e3b5d5aa8e",
+      "id": "969f5ca7-6dd0-403a-8feb-ec5fd2bf5d55",
+      "url": "https://linear.app/amorphius/document/driver-contract-02-inference-3d2e5fc54225",
       "published": "2026-10-08"
     },
     "driver-contract/03-tools-and-permissions.md": {
       "title": "Driver Contract · 03 Tools and permissions",
-      "id": "3d8b672f-0b8b-43c4-8875-3f5147698e30",
-      "url": "https://linear.app/sylvan-stack/document/driver-contract-03-tools-and-permissions-54e712a1ff5e",
+      "id": "105070b9-3859-48b6-890c-44d3991e6792",
+      "url": "https://linear.app/amorphius/document/driver-contract-03-tools-and-permissions-1382ad93be99",
       "published": "2026-10-08"
     },
     "driver-contract/04-errors-and-limits.md": {
       "title": "Driver Contract · 04 Errors and limits",
-      "id": "42718e8f-c3fc-4aeb-ad7d-fba36d5032ff",
-      "url": "https://linear.app/sylvan-stack/document/driver-contract-04-errors-and-limits-a9a43a08c1e5",
+      "id": "b4bde2ab-4c61-4830-aa28-f8602c7b758d",
+      "url": "https://linear.app/amorphius/document/driver-contract-04-errors-and-limits-6ce6c132a497",
       "published": "2026-10-08"
     },
     "driver-contract/05-conformance.md": {
       "title": "Driver Contract · 05 Conformance",
-      "id": "aa8487bc-c7b6-4646-861d-f02c39af781d",
-      "url": "https://linear.app/sylvan-stack/document/driver-contract-05-conformance-ee03d09a297d",
+      "id": "3a465896-7f81-4d2a-84d9-95bfe624f9af",
+      "url": "https://linear.app/amorphius/document/driver-contract-05-conformance-34932d51618d",
       "published": "2026-10-08"
     },
     "builds/00-builds-and-versions.md": {
       "title": "Builds · 00 Builds and versions",
-      "id": "7956994f-dbe8-4ea0-b255-95750c8bb8f4",
-      "url": "https://linear.app/sylvan-stack/document/builds-00-builds-and-versions-d9da4af9b7e9",
+      "id": "a6cfe5a8-7ad7-41dc-85c5-2d33e4292220",
+      "url": "https://linear.app/amorphius/document/builds-00-builds-and-versions-08bf00dd79a4",
       "published": "2026-10-13"
     },
     "driver-contract/06-state-and-simultaneous-calls.md": {
       "title": "Driver Contract · 06 State and simultaneous calls",
-      "id": "04ca3274-7aeb-4ebb-b03a-44553f310f17",
-      "url": "https://linear.app/sylvan-stack/document/driver-contract-06-state-and-simultaneous-calls-5cfd1ee0d701",
+      "id": "d5376584-952a-474a-bac4-6f2cc24264ed",
+      "url": "https://linear.app/amorphius/document/driver-contract-06-state-and-simultaneous-calls-0862c11a65fa",
       "published": "2026-10-08"
     },
     "driver-contract/python-migration-plan-2026-10-07.md": {
       "title": "Arbol Driver migration to Python implementation plan",
-      "id": "98ff7204-94aa-458d-89a3-66c83230332c",
-      "url": "https://linear.app/sylvan-stack/document/arbol-driver-migration-to-python-implementation-plan-4577a76c0c13",
+      "id": "31b8011a-af0e-4cc7-92db-55fe7b91f09a",
+      "url": "https://linear.app/amorphius/document/arbol-driver-migration-to-python-implementation-plan-5803669e7c83",
       "published": "2026-10-07"
     },
     "architecture/README.md": {
       "title": "Architecture · Conventions and index",
-      "id": "e81a21af-8f07-45aa-bc39-fcfe11f394b4",
-      "url": "https://linear.app/sylvan-stack/document/architecture-conventions-and-index-ba6987a22987",
+      "id": "0d088fb2-9f3d-4e89-bed9-2f43d42e23d2",
+      "url": "https://linear.app/amorphius/document/architecture-conventions-and-index-24067dd1b0dc",
       "published": "2026-10-13"
     },
     "architecture/00-components-and-boundaries.md": {
       "title": "Architecture · 00 Components and boundaries",
-      "id": "07cb7f04-9fa2-4c72-a851-19030adab774",
-      "url": "https://linear.app/sylvan-stack/document/architecture-00-components-and-boundaries-189b959d02e0",
+      "id": "670dfc55-945a-451e-9cca-b06272f97a64",
+      "url": "https://linear.app/amorphius/document/architecture-00-components-and-boundaries-e67bcb265d88",
       "published": "2026-10-19"
     },
     "architecture/01-roots.md": {
       "title": "Architecture · 01 Roots",
-      "id": "d7dfbf62-ab7b-4854-a3d7-702558ba87d6",
-      "url": "https://linear.app/sylvan-stack/document/architecture-01-roots-42bd5a875282",
+      "id": "9464a8b2-aa5f-4584-b63b-e686342d393d",
+      "url": "https://linear.app/amorphius/document/architecture-01-roots-25b32a4a44c1",
       "published": "2026-10-13"
     },
     "architecture/02-chat-exchange-across-components.md": {
       "title": "Architecture · 02 A Chat Exchange across the components",
-      "id": "3ecfac19-084a-4414-af72-56ddf22de213",
-      "url": "https://linear.app/sylvan-stack/document/architecture-02-a-chat-exchange-across-the-components-31ff36731c9c",
+      "id": "f44fc5ed-6ba3-4923-98de-33cf4f600da4",
+      "url": "https://linear.app/amorphius/document/architecture-02-a-chat-exchange-across-the-components-431e4c5fe16f",
       "published": "2026-10-19"
     },
     "architecture/03-stuck-trunks.md": {
       "title": "Architecture · 03 Stuck Trunks",
-      "id": "c1327755-54ec-4cdb-8404-e73f04c5f09f",
-      "url": "https://linear.app/sylvan-stack/document/architecture-03-stuck-trunks-af3c035c70b3",
+      "id": "9a2d934b-177f-4d07-835a-2e366904de21",
+      "url": "https://linear.app/amorphius/document/architecture-03-stuck-trunks-4eda4d2c2acd",
       "published": "2026-10-13"
     },
     "agent-records/README.md": {
       "title": "Agent records · Conventions and index",
-      "id": "3fd3e36c-ddef-474d-8cbc-7b5c89c1ee62",
-      "url": "https://linear.app/sylvan-stack/document/agent-records-conventions-and-index-ea3a09cba87f",
+      "id": "8932f30b-7d3a-4257-a647-40cb0eb3036e",
+      "url": "https://linear.app/amorphius/document/agent-records-conventions-and-index-5e497455f6f1",
       "published": "2026-10-16"
     },
     "agent-records/00-the-agent-record.md": {
       "title": "Agent records · 00 The agent record",
-      "id": "ba783001-cd5b-4156-9e1f-bfe4b16fbac3",
-      "url": "https://linear.app/sylvan-stack/document/agent-records-00-the-agent-record-46ef41d6492c",
+      "id": "c93a852f-4e40-41b4-b127-50890a146382",
+      "url": "https://linear.app/amorphius/document/agent-records-00-the-agent-record-fa47b2ed21fb",
       "published": "2026-10-16"
     },
     "agent-records/01-the-hooks.md": {
       "title": "Agent records · 01 The hooks of Claude Code and Codex",
-      "id": "dd4fbc81-ae11-4cf0-b05f-166a4a6a129b",
-      "url": "https://linear.app/sylvan-stack/document/agent-records-01-the-hooks-of-claude-code-and-codex-9916444aeadb",
+      "id": "c54dd40e-398a-4929-a379-c897c7355211",
+      "url": "https://linear.app/amorphius/document/agent-records-01-the-hooks-of-claude-code-and-codex-b22ce1f97af2",
       "published": "2026-10-16"
     },
     "backend/README.md": {
       "title": "Arbol backend · Conventions and index",
-      "id": "df3b392e-1a4d-4faa-9478-f3aee1ddf051",
-      "url": "https://linear.app/sylvan-stack/document/arbol-backend-conventions-and-index-2dbff7e33666",
+      "id": "a1dd6c78-1131-4f7f-9b5f-b40616d829ec",
+      "url": "https://linear.app/amorphius/document/arbol-backend-conventions-and-index-d63c181a76f1",
       "published": "2026-10-19"
     },
     "backend/00-the-arbol-backend.md": {
       "title": "Arbol backend · 00 The Arbol backend",
-      "id": "aa6455d2-f4b3-4e54-a77f-7e88c7162c52",
-      "url": "https://linear.app/sylvan-stack/document/arbol-backend-00-the-arbol-backend-fdb05b8e4fb4",
+      "id": "a0df8b67-a193-4c22-bece-796ca39d797b",
+      "url": "https://linear.app/amorphius/document/arbol-backend-00-the-arbol-backend-36e8cab579b3",
       "published": "2026-10-19"
     },
     "backend/01-the-bridge.md": {
       "title": "Arbol backend · 01 The Bridge",
-      "id": "c692acba-2a60-44e6-a051-689cc0200e50",
-      "url": "https://linear.app/sylvan-stack/document/arbol-backend-01-the-bridge-a44243115878",
+      "id": "421f32af-c2ee-4937-9626-4f01f465e982",
+      "url": "https://linear.app/amorphius/document/arbol-backend-01-the-bridge-2eddfa809026",
       "published": "2026-10-19"
     },
     "backend/02-elma-chat.md": {
       "title": "Arbol backend · 02 Elma Chat, its first version",
-      "id": "7749d1da-f545-4eda-8564-c003c97aa499",
-      "url": "https://linear.app/sylvan-stack/document/arbol-backend-02-elma-chat-its-first-version-11f04670211b",
+      "id": "a09980ae-37e4-4ec5-af91-5095bffe6a9d",
+      "url": "https://linear.app/amorphius/document/arbol-backend-02-elma-chat-its-first-version-c5f59a1bfb69",
       "published": "2026-10-19"
     }
   }

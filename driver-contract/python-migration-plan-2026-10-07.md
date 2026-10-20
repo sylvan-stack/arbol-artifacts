@@ -5,7 +5,7 @@ role: authored
 
 Replace the TypeScript implementations of `arbol-claude-driver` and `arbol-codex-driver` with typed Python in their existing repositories. Python is the owner's preferred language for long-term maintenance. The migration preserves the accepted Driver architecture and public behavior, with contract version 1 and state format 1 where compatibility checks prove that they remain valid.
 
-The scope is the code already implemented. Claude has a complete implementation and a historical working Build. Codex has implemented its base, Subscriptions, fresh runs, continuity, and stopping/recovery; its remaining feature and delivery issues continue after the port. The implementation work is tracked in [SYL-95](https://linear.app/sylvan-stack/issue/SYL-95/migrate-the-implemented-claude-and-codex-drivers-from-typescript-to), under [SYL-74](https://linear.app/sylvan-stack/issue/SYL-74/build-the-two-drivers).
+The scope is the code already implemented. Claude has a complete implementation and a historical working Build. Codex has implemented its base, Subscriptions, fresh runs, continuity, and stopping/recovery; its remaining feature and delivery issues continue after the port. The implementation work is tracked in [SYL-95](https://linear.app/amorphius/issue/SYL-95/migrate-the-implemented-claude-and-codex-drivers-from-typescript-to), under [SYL-74](https://linear.app/amorphius/issue/SYL-74/build-the-two-drivers).
 
 ## Language and tooling
 
@@ -100,19 +100,19 @@ The migration task is complete when all of the following are recorded with curre
 6. Claude's numbered Build/launcher/failure/rollback checks pass. Codex's candidate remains explicitly partial until SYL-90 through SYL-94 complete.
 7. Requirement tables, delivery instructions, and Linear copies agree with the Python implementation, without presenting unsupported or historically unobserved vendor failures as verified.
 
-Follow the [existing working instructions](https://linear.app/sylvan-stack/document/driver-implementation-how-to-work-on-a-task-and-the-order-of-tasks-31aaf9f2a1ef) for test accounts, clean environments, quota, small commits, and publication. Additional live checks run only within the existing authorization rules; the unit and conformance suites remain offline and credential-free, while the separately named Build live check uses the designated test Subscription.
+Follow the [existing working instructions](https://linear.app/amorphius/document/driver-implementation-how-to-work-on-a-task-and-the-order-of-tasks-2e262fb1d277) for test accounts, clean environments, quota, small commits, and publication. Additional live checks run only within the existing authorization rules; the unit and conformance suites remain offline and credential-free, while the separately named Build live check uses the designated test Subscription.
 
 ## Existing task order
 
-Insert the migration issue under [SYL-74](https://linear.app/sylvan-stack/issue/SYL-74/build-the-two-drivers), before the remaining Codex tasks. The migration issue blocks SYL-90 and SYL-91; their existing dependencies then lead to SYL-92 and SYL-94. Do not reopen completed implementation issues or duplicate the unfinished features inside the port.
+Insert the migration issue under [SYL-74](https://linear.app/amorphius/issue/SYL-74/build-the-two-drivers), before the remaining Codex tasks. The migration issue blocks SYL-90 and SYL-91; their existing dependencies then lead to SYL-92 and SYL-94. Do not reopen completed implementation issues or duplicate the unfinished features inside the port.
 
 Mycel, Arbol UI/caller rewrites, a shared Driver runtime library, vendor SDK adoption, and new account/tool features are outside this migration.
 
 ## References
 
-- [Driver Contract overview and boundary](https://linear.app/sylvan-stack/document/driver-contract-00-overview-and-boundary-53753bc16b67)
-- [State and simultaneous calls](https://linear.app/sylvan-stack/document/driver-contract-06-state-and-simultaneous-calls-5cfd1ee0d701)
-- [Conformance](https://linear.app/sylvan-stack/document/driver-contract-05-conformance-ee03d09a297d)
-- [Builds and versions](https://linear.app/sylvan-stack/document/builds-00-builds-and-versions-d9da4af9b7e9)
+- [Driver Contract overview and boundary](https://linear.app/amorphius/document/driver-contract-00-overview-and-boundary-1033d737cd03)
+- [State and simultaneous calls](https://linear.app/amorphius/document/driver-contract-06-state-and-simultaneous-calls-0862c11a65fa)
+- [Conformance](https://linear.app/amorphius/document/driver-contract-05-conformance-34932d51618d)
+- [Builds and versions](https://linear.app/amorphius/document/builds-00-builds-and-versions-08bf00dd79a4)
 - [uv managed Python distributions](https://docs.astral.sh/uv/concepts/python-versions/#cpython-distributions)
 - [Python virtual environment portability](https://docs.python.org/3/library/venv.html)
