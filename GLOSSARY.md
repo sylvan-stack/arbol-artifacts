@@ -30,7 +30,7 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **K** — [Knowledge System](#knowledge-system)
 - **L** — [Ladder](#ladder) · [Leather Bag](#leather-bag) · [Living Topic](#living-topic) · [Load](#load)
 - **M** — [Mac OS Communicado](#mac-os-communicado) · [Mandate](#mandate) · [Mycel](#mycel) · [Mycel Operation](#mycel-operation) · [Mycel Skill](#mycel-skill) · [Mycel-enabled](#mycel-enabled) · [Mycel-integrated](#mycel-integrated)
-- **N** — [Native Tool Call](#native-tool-call) · [Nex](#nex) · [Normalizer](#normalizer) · [Now Line](#now-line)
+- **N** — [Native Tool Call](#native-tool-call) · [Nex](#nex) · [Nex Colab](#nex-colab) · [Nex Knowledge Map](#nex-knowledge-map) · [Normalizer](#normalizer) · [Now Line](#now-line)
 - **O** — [Oaken](#oaken) · [Objectives](#objectives) · [Organization](#organization) · [Origin](#origin) · [Origin Coverage](#origin-coverage) · [Origin Link](#origin-link)
 - **P** — [Parse Result](#parse-result) · [Parser](#parser) · [Parser Pipeline](#parser-pipeline) · [Provider](#provider)
 - **R** — [Radar](#radar) · [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Requirement](#requirement) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Routine](#routine) · [Runbook](#runbook)
@@ -893,7 +893,7 @@ The shared component that displays a selected **Diff** as changed files, code ch
 
 **Human nex**: the human participant in a continuing [Nex](#nex) partnership, with their own experience, knowledge, goals, judgment, and responsibilities. The `H-` prefix identifies the kind of participant; it does not assign a permanently supervisory or student role. An H-Nex may understand one domain more deeply than an [A-Nex](#a-nex) while relying on it in another. Technical contribution can include architectural reasoning, decisions, evaluation, and accountability even when the H-Nex rarely writes code.
 
-An H-Nex's knowledge varies by domain and develops over time. A knowledge map describing it should be a revisable estimate across projects and conversations. General domain familiarity and understanding the reasoning behind a particular piece of agent work are distinct. One H-Nex may collaborate with several A-Nexes. [Leather Bag](#leather-bag) remains the operational term for the person driving Arbol; H-Nex names that person's role in the partnership.
+An H-Nex's knowledge varies by domain and develops over time. The [Nex Knowledge Map](#nex-knowledge-map) describing it is a revisable estimate across projects and conversations. General domain familiarity and understanding the reasoning behind a particular piece of agent work are distinct. One H-Nex may collaborate with several A-Nexes. [Leather Bag](#leather-bag) remains the operational term for the person driving Arbol; H-Nex names that person's role in the partnership.
 
 **Example:** An H-Nex joining a company knows software architecture but is unfamiliar with its systems. Their A-Nex explains the missing organizational context, while the H-Nex contributes architectural judgment and later helps the A-Nex understand newly learned domain constraints.
 
@@ -1059,6 +1059,18 @@ A Nex names the participant, not the pair, a conversation, or a project. The par
 **Usage:** Use **Nex**, **H-Nex**, and **A-Nex** in glossary entries, diagrams, and interfaces; ordinary prose may use *nex* when the distinction is clear. Plurals are *nexes*, *H-Nexes*, and *A-Nexes*.
 
 **Example:** The H-Nex explains a project's history to an A-Nex, the A-Nex contributes implementation expertise, and they work through the resulting design together. Each is the other's nex.
+
+## Nex Colab
+
+An exchange in which an [H-Nex](#h-nex) asks to learn something and an [A-Nex](#a-nex) answers at the depth the H-Nex's [Nex Knowledge Map](#nex-knowledge-map) says is missing. The A-Nex explains only what the map shows as not yet known and says in one line what it skipped; when there is more than one way to go deeper, it offers them as numbered options and the H-Nex picks by number; it logs every learning attempt, and raises a level in the map when the H-Nex's questions show understanding. Started with the skill `/colab "prompt"`, about a question in general or about something in the current [Chat Session](#chat-session). The map is specified in CLB-0 and the exchange in CLB-1, in `~/Artifacts/colab/specs/`.
+
+**Example:** The H-Nex asks why a lock taken inside a transaction is gone at commit. The map shows transactions as *practical* and advisory locks as *ignorant*, so the A-Nex explains advisory locks only, pitched for someone who uses transactions every day, logs the attempt, and offers two ways deeper as options 1 and 2.
+
+## Nex Knowledge Map
+
+A revisable estimate of what an [H-Nex](#h-nex) knows, kept as files in the private corpus `~/Artifacts/colab/`: a tree of nested topics, each with one of five levels, *ignorant*, *superficial*, *practical*, *advanced* and *design*, with free links between related topics anywhere in the tree, and in each topic the list of its children with their levels, because a level says nothing about the children. It describes general knowledge, as a software developer first and in any other field the H-Nex adds, and never knowledge of a repository, a project or a product. An [A-Nex](#a-nex) writes it in [Nex Colab](#nex-colab) exchanges, with its evidence in a learning log; the H-Nex writes it through showup, `/colab showup "prompt"`. Specified in CLB-0, `~/Artifacts/colab/specs/00-the-nex-knowledge-map.md`.
+
+**Example:** Under `software-development/swift/concurrency/` the topic is *practical*, its child `actors/` is *ignorant*, and it links to `software-development/python/asyncio` as related.
 
 ## Normalizer
 
