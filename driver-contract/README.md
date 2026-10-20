@@ -52,3 +52,5 @@ Driver specifications: [Claude Driver](../../arbol-claude-driver/specs/README.md
 **Decisions.** A question the old code cannot settle is a row in the specification's *Decisions* table with a proposed default. Work proceeds on the default. When the owner decides, the row records the outcome and the date, and the requirements are updated in the same change.
 
 **Wording.** *Observed* means read in the version 1 source or seen in a probe recorded here. *Proposed* means a design for Arbol 2. Requirements are Proposed by nature; their origin column says what they rest on. Examples are fictional: no credentials, account names or conversation content.
+
+Permanent Pi originals: [Pi Driver corpus](../../arbol-pi-driver/specs/README.md), relocated by SYL-273 on 20 October 2026; accepted identifiers and Linear copies retained.

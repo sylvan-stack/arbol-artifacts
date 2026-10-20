@@ -59,3 +59,5 @@ What the two tools do with a hook, the hooks on this Mac and the rules every hoo
 - Every artifact goes into a chapter folder, never directly into the corpus root. `README.md`, `INDEX.md` and a `GLOSSARY.md` are the exceptions.
 - List a chapter here when it is created.
 - Tasks are tracked in Linear, not in this corpus: project [Arbol](https://linear.app/sylvan-stack/project/arbol-e2185acd2538) in the Sylvan Stack workspace. Specifications are copied there as documents; `.linear.json` maps each file to its copy. The files here are the originals.
+
+- [Pi Driver specifications](../arbol-pi-driver/specs/README.md): accepted PI-0–PI-6 and independent provider/cutover qualification gates in their permanent corpus.
