@@ -7,6 +7,12 @@ status: accepted
 
 A [Driver](../GLOSSARY.md#driver) is the only part of Arbol 2 that knows a vendor's command-line tool. This specification fixes what a Driver owns, what it leaves to its caller, and how it is packaged. It matters because version 1 split the same work across three processes, and most defects listed in the Product Specification for accounts and routes sit on those seams.
 
+## Next-release routing decision
+
+Decided by the owner on 20 October 2026: the first OpenCode Driver must support z.ai and DeepSeek using the API keys already stored in OpenCode; the target Claude Driver serves only the Anthropic subscription family. The saved OpenCode connections are Z.AI Coding Plan and DeepSeek. The [OpenCode Integration Specs Saga](https://linear.app/sylvan-stack/project/opencode-integration-specs-saga-f1bdce69e9da) specifies the change, including [OPC-0's routing and cutover requirements](https://linear.app/sylvan-stack/document/opc-0-opencode-driver-overview-and-boundary-de78a2d90e10).
+
+This decision supersedes the older routing scope below for the next release. The z.ai-on-Claude behaviour and its verification below describe the pre-cutover contract. SYL-265 must reconcile the detailed family, credential and capability requirements, and SYL-267 must review their compatibility and cutover checks before implementation. The new OpenCode specification set is still draft. No installed route or credential is changed by this notice; after cutover, a stale Claude z.ai request must fail before inference rather than run as Anthropic.
+
 ## Scope
 
 Covered: the responsibility boundary, the Subscription families each Driver serves, packaging and hosting, the rules of the command line, the settings file, the rules that hold for every operation.

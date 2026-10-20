@@ -7,6 +7,12 @@ status: accepted
 
 A [Subscription](../GLOSSARY.md#subscription) is one signed-in account with a vendor. This specification states what every Driver offers for managing Subscriptions: creating them, signing in and out, telling whether an account still works, reading its usage and listing its models. It matters because a Subscription is the unit that gets billed and rate-limited, and because an account that Arbol believes is signed in but is not produces failures that look like vendor outages.
 
+## Next-release routing decision
+
+Decided by the owner on 20 October 2026: the first OpenCode Driver must support z.ai and DeepSeek using the API keys already stored in OpenCode; the target Claude Driver serves only the Anthropic subscription family. The saved OpenCode connections are Z.AI Coding Plan and DeepSeek. The [OpenCode Integration Specs Saga](https://linear.app/sylvan-stack/project/opencode-integration-specs-saga-f1bdce69e9da) specifies the change, including [OPC-0's routing and cutover requirements](https://linear.app/sylvan-stack/document/opc-0-opencode-driver-overview-and-boundary-de78a2d90e10).
+
+This decision supersedes the older routing scope below for the next release. The z.ai-on-Claude behaviour and its verification below describe the pre-cutover contract. SYL-265 must reconcile the detailed family, credential and capability requirements, and SYL-267 must review their compatibility and cutover checks before implementation. The new OpenCode specification set is still draft. No installed route or credential is changed by this notice; after cutover, a stale Claude z.ai request must fail before inference rather than run as Anthropic.
+
 ## Scope
 
 Covered: the Subscription record and its states, every Subscription operation, the sign-in exchange with the caller, credential rules, usage reports, model catalogs.
