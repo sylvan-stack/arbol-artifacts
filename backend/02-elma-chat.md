@@ -13,7 +13,7 @@ It follows the conventions of the [Driver Contract](../driver-contract/README.md
 
 Covered: the window, the navigation panel, the Exchange shown, the answer as it arrives, the status of an Exchange, the composer and Drafts, the route, the repositories, sending and stopping, questions of the agent, a failed Exchange, the chat's own actions, the latest chats, opening a chat from elsewhere, signing in, attention, coming back, the renderer bundle, and what First Sapling leaves out.
 
-Not covered: the tray menu, the global hotkeys, resizing the window from its header and the native panel of the latest chats, which are the Swift App's (SYL-192); Willo Station's own side of opening a chat, which is its own specification; the tool with which an agent books a prepared folder ([BKD-D4](00-the-arbol-backend.md#decisions)); marking a migrated chat stale (SYL-195).
+Not covered: the tray menu, the global hotkeys, resizing the window from its header and the native panel of the latest chats, which are the Swift App's (SYL-192); Willo Station's own side of opening a chat, which is its own specification; the tool with which an agent books an Environment ([BKD-D4](00-the-arbol-backend.md#decisions)); marking a migrated chat stale (SYL-195).
 
 ## Behaviour
 
@@ -178,7 +178,7 @@ Changed from version 1: version 1 picked an Intelligence Provider, a named route
 
 Observed in version 1, and kept: the slots ⌘1 to ⌘9 offer repositories, first the stack's folder itself, then the repositories used last, then the others; "Other… ⌘0" opens the Mac's folder dialog (`app.pickFolder`, BKD-1). A key always starts a new chat in that repository. A click on a slot while a chat is shown moves that chat to the repository, which is refused while its agent works ("Wait for the current turn to finish before changing Repo") and confirmed with "Repo changed to …"; a click with no chat shown is the same as the key. Changing the repository of a chat that has Exchanges says "The agent still gets every message of this chat, but no longer remembers what it read and ran before", because a Driver continues its saved conversation only in the same folder and otherwise builds it anew from the chat (TRV-0).
 
-Changed from version 1, as the owner decided ([BKD-D4](00-the-arbol-backend.md#decisions)): a slot gives the agent the repository's folder in `~/repos/sylvan-stack/readonly/`, which always holds the last merged `main` and which nobody edits, and the stack's own slot `~/repos/sylvan-stack/readonly/` itself. The slots list the repositories of `readonly/` and never the prepared folders. An agent that has to change files books a prepared folder with its tool when it needs one, and the chat's folder stays as it is. A folder picked with "Other…" is used as it is. Also changed: a key brings back the repository's new-chat Draft, which version 1 did not.
+Changed from version 1, as the owner decided ([BKD-D4](00-the-arbol-backend.md#decisions)): a slot gives the agent the repository's folder in `~/repos/sylvan-stack/readonly/`, which always holds the last merged `main` and which nobody edits, and the stack's own slot `~/repos/sylvan-stack/readonly/` itself. The slots list the repositories of `readonly/` and never the Environments. An agent that has to change files books an Environment with its tool when it needs one, and the chat's folder stays as it is. A folder picked with "Other…" is used as it is. Also changed: a key brings back the repository's new-chat Draft, which version 1 did not.
 
 ### Sending and stopping
 

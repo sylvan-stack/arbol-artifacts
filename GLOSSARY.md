@@ -22,7 +22,7 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **B** — [Beat](#beat) · [better-grep](#better-grep) · [Blueprint](#blueprint) · [Blueprint Chain](#blueprint-chain) · [Brain Recipe](#brain-recipe) · [Branch](#branch) · [Branch Overlay](#branch-overlay) · [Bridge](#bridge) · [Build](#build) · [Burn](#burn)
 - **C** — [Cell](#cell) · [Change Walkthrough](#change-walkthrough) · [Chat Exchange](#chat-exchange) · [Chat Note](#chat-note) · [Chat Session](#chat-session) · [Checkpoint](#checkpoint) · [Chunk](#chunk) · [Chunking](#chunking) · [CLI](#cli) · [Code Corpus](#code-corpus) · [Code Map](#code-map) · [Code Scout](#code-scout) · [Command](#command) · [Communicado](#communicado) · [Communicado Action](#communicado-action) · [Communicado Delivery](#communicado-delivery) · [Communicado Descriptor](#communicado-descriptor) · [Communicado Family](#communicado-family) · [Communicado Presentation](#communicado-presentation) · [Communicado Species](#communicado-species) · [Communicado State](#communicado-state) · [Companion](#companion) · [Completion](#completion) · [Corpus](#corpus) · [Corpus Watcher](#corpus-watcher) · [Coupling](#coupling) · [Cue](#cue) · [Cue Channel](#cue-channel) · [Cue Command](#cue-command) · [Cue Detection Catalog](#cue-detection-catalog) · [Cue Target](#cue-target) · [Cue Target Cache](#cue-target-cache)
 - **D** — [Decision](#decision) · [Default Arbol Trunk](#default-arbol-trunk) · [Delegate](#delegate) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance)
-- **E** — [Effector](#effector) · [Email Source Item](#email-source-item) · [Elma Chat](#elma-chat) · [Elma View Page](#elma-view-page) · [Embedder Profile](#embedder-profile) · [Embedding](#embedding) · [Embedding Provider](#embedding-provider) · [Entity](#entity) · [Entity Card](#entity-card) · [Entity Card Content](#entity-card-content) · [Entity Card Resolver](#entity-card-resolver) · [Entity Chip](#entity-chip) · [Entity Context Menu](#entity-context-menu) · [Entity Edge](#entity-edge) · [Entity Kind](#entity-kind) · [Entity Shape](#entity-shape) · [Entity URI](#entity-uri) · [Env Keepers](#env-keepers) · [Errand](#errand) · [Event Log](#event-log) · [Event Log Service](#event-log-service) · [Event Sourcing](#event-sourcing) · [Exchange Assignment](#exchange-assignment)
+- **E** — [Effector](#effector) · [Email Source Item](#email-source-item) · [Elma Chat](#elma-chat) · [Elma View Page](#elma-view-page) · [Embedder Profile](#embedder-profile) · [Embedding](#embedding) · [Embedding Provider](#embedding-provider) · [Entity](#entity) · [Entity Card](#entity-card) · [Entity Card Content](#entity-card-content) · [Entity Card Resolver](#entity-card-resolver) · [Entity Chip](#entity-chip) · [Entity Context Menu](#entity-context-menu) · [Entity Edge](#entity-edge) · [Entity Kind](#entity-kind) · [Entity Shape](#entity-shape) · [Entity URI](#entity-uri) · [Env Keepers](#env-keepers) · [Environment](#environment) · [Errand](#errand) · [Event Log](#event-log) · [Event Log Service](#event-log-service) · [Event Sourcing](#event-sourcing) · [Exchange Assignment](#exchange-assignment)
 - **F** — [Fanout](#fanout) · [Flyer](#flyer) · [Fold / Projection](#fold--projection) · [Font Scale](#font-scale) · [Free-standing](#free-standing)
 - **G** — [Generation](#generation)
 - **H** — [H-Nex](#h-nex) · [Heartwood](#heartwood) · [Hunk Review](#hunk-review)
@@ -789,6 +789,23 @@ The **gitignored-but-precious files** a fresh checkout or worktree needs but git
 
 **Example:** a service repo's per-service `.env.*.local` files land in every new task or review worktree automatically; without the seed, half the services fail to boot locally.
 
+## Environment
+
+A reusable working area for parallel agent work, with one clone of every
+repository and its development dependencies installed. The ten Environments
+are **Blue, Green, Amber, Red, Violet, Orange, Teal, Silver, Gold and White**,
+in lowercase folders under `~/repos/sylvan-stack/`. A hold reserves one color
+for a Beat or an Arbol chat; the repositories in it stay together. The owner's
+own checkouts and `readonly/` are outside this pool.
+
+**Repository Color Environment** names a repository's copy within the
+area: **Mycel Blue Environment** is `~/repos/sylvan-stack/blue/mycel`.
+**Blue Environment** means the complete `blue/` area. This replaces the term
+*prepared folder* and the five numbered names by the owner's decision of
+20 October 2026. Numbered paths retained as aliases are the same copies,
+never extra bookable Environments. See [Working in Sagas](../mycel/operations/sagas.md#environments)
+for booking, branches, setup and return.
+
 ## Errand
 
 An [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) for one-off background work the dispatching agent could have done itself but delegates — usually to run tasks in parallel. Run by a [Delegate](#delegate). Distinct from a [Research Trip](#research-trip) (which only gathers and reports back) and a [Routine](#routine) (which recurs): an Errand does a discrete piece of work, **once**.
@@ -1090,7 +1107,7 @@ The [Chunk](#chunk) at the source end of an [Origin Link](#origin-link): what or
 
 What the command `mycel origins` reports: which [Chunks](#chunk) of a repository have an [Origin Link](#origin-link) and which have none, and which [Requirements](#requirement) and [Decisions](#decision) nothing rests on. It is a report for the agent or person who asks, on demand; no gate, hook or release step depends on it.
 
-**Example:** `mycel origins --changes`, run in a prepared folder after changing `src/mycel/_derive.py`, lists `DeriveStore.apply` as a chunk without Origin.
+**Example:** `mycel origins --changes`, run in an Environment after changing `src/mycel/_derive.py`, lists `DeriveStore.apply` as a chunk without Origin.
 
 ## Origin Link
 
