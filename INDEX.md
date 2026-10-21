@@ -6,6 +6,12 @@
 
 ## Chapters
 
+### `sagas/`: work priorities and attention
+
+The metrics used to compare sibling work and identify the owner's next action. Start at its [README](sagas/README.md).
+
+- [`00-metrics.md`](sagas/00-metrics.md) (SGM-0, draft): Priority, Need Attention, Readiness and Momentum; evidence and assessment rubrics, candidate formulas, uncertainty, aggregation, calibration and open decisions.
+
 ### `driver-contract/`: what every Driver does
 
 The contract shared by `arbol-claude-driver` and `arbol-codex-driver`. Start at its [README](driver-contract/README.md), which also defines the conventions all Driver specifications follow.
