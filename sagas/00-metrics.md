@@ -18,9 +18,11 @@ general direction of action-based attention, readiness checks and combined
 Momentum. Exact estimates, coefficients and thresholds remain proposals.
 The owner subsequently added Volume: the amount of work or attention required
 from the owner, with greater required effort reducing Momentum when the other
-inputs are equal. Its scope, units and estimation method remain to be settled.
-The Priority labels and sibling comparison rule, and this meaning and
-direction of Volume, are settled here.
+inputs are equal. The owner then clarified its scope: the effort required
+from the owner right now to unblock the agent; Volume is low when the agent
+can proceed independently. Its units and estimation method remain open.
+The Priority labels and sibling comparison rule, and this meaning, scope
+and direction of Volume, are settled here.
 The [Decisions](#decisions) table distinguishes that agreement from open choices.
 
 ## Scope
@@ -312,12 +314,18 @@ own hold. Readiness is a snapshot, not a reservation: recheck before taking work
 
 ### Volume
 
-Volume is the amount of work or attention required **from the owner** to move
-the work forward. An important Saga can have high Volume and therefore low
-Momentum: the owner cannot readily move it, or can move it only slowly.
-Agent execution time, token consumption and passive waiting are not by
-themselves owner effort. Reading, recovering context, making a difficult
-decision, doing work and reviewing the result can all require owner effort.
+Volume is the effort required **from the owner right now to unblock the
+agent**. The owner settled this scope in SGM-D12. When the agent can proceed
+without owner involvement, Volume is low. When it is completely stuck and
+needs many owner answers before it can continue, Volume is high. This is
+current unblocking effort, not total remaining work in the Saga, elapsed
+waiting time, agent execution time or token consumption.
+
+Include owner preparation, context recovery, thinking, required work and
+follow-through necessary to remove the current block. Exclude questions
+that can wait while the agent proceeds, optional reviews, and work the
+agent can legitimately perform itself. Do not reduce the count by pretending
+the agent can make a decision reserved to the owner.
 
 Greater Volume reduces Momentum when Priority, Need Attention and Readiness
 are equal. It does not reduce Priority or Need Attention: expensive work can
@@ -325,37 +333,77 @@ still be important or urgently require intervention. Being difficult is not
 by itself a failure of Readiness; work can be fully specified and ready while
 requiring substantial effort.
 
-**First decision: effort to reach what result?** SGM-D12 asks whether Volume
-means the owner's effort to finish the remaining Saga, or effort to reach
-the next meaningful point of progress. The proposed answer is the next
-meaningful point of progress, using the same action and result that Momentum
-recommends. A large Saga might need only one short decision before an agent
-can make substantial progress; its total size should not make that decision
-look difficult to take now.
+#### Proposed responsibility for the estimate
 
-Under that proposal, name the result before estimating effort: a decision
-that actually releases work, an accepted review or a completed useful step.
-Include the necessary owner preparation, context recovery and follow-through
-to reach it. Do not select an isolated click or arbitrary substep to claim
-low Volume when the useful result still requires a long chain of owner work.
-If effort is shared across several requests, identify the shared preparation
-rather than charging it repeatedly within one proposed action.
+The agent doing the work prepares the initial assessment because it knows
+where it stopped and what would let it continue. The shared scorer checks
+the required evidence, applies the same rubric across agents, deduplicates
+requests and calculates the result. The owner can correct an estimate but
+is not asked to estimate every task. This division is a proposal in SGM-D13,
+not an accepted automation rule. No additional agent is required for every
+estimate; the scorer validates structure and arithmetic, not the truth of
+unverifiable semantic judgments.
 
-An estimate must name its scope, the owner activities included, assumptions,
-evidence and uncertainty. Prior similar owner actions or an explicit owner
-estimate can support it; document length, token count or an agent's own
-speed cannot establish the owner's effort on their own. Unclear effort is
-unknown, never zero. A result achieved mostly by an agent can still require
-owner preparation or review; record those activities.
+The working agent supplies:
 
-The measurement method remains open: elapsed active minutes alone may miss
-how demanding those minutes are, while broad effort categories need a clear
-rubric. Units, category boundaries, the use of ranges, aggregation of total
-remaining effort and the conversion into a Momentum factor will be settled
-after the scope decision. No new numerical defaults are introduced here.
-If next-action Volume is adopted, a parent displays the Volume of its
-recommended action with that action's label; it does not silently sum all
-descendants' effort or combine one action's low Volume with another's benefit.
+1. The held work, the current blocking point, its source evidence and the
+   concrete next work it will perform after the owner responds.
+2. Each distinct owner input required to reach that continuation point,
+   why it cannot be obtained from available sources or delegated authority,
+   and which other inputs it depends on.
+3. The preparation already done by the agent, the facts/options presented
+   to the owner, and the owner effort that still remains.
+4. A proposed effort category for each input, shared context or preparation
+   across inputs, and what is unknown about the owner's required effort.
+
+First resolve what can be resolved from existing evidence within the agent's
+authority. Merge duplicate questions and separate required-now inputs from
+questions that can wait. Do not make the owner pay for missing preparation
+the agent can do itself. An input is not cheaply actionable merely because
+the agent wrote it as one short sentence.
+
+Count the complete set of inputs needed for the stated continuation point.
+Answering one of twenty jointly necessary questions does not unblock the
+agent. If only two questions prevent real work from resuming and eighteen
+can wait, the current unblock estimate includes those two and says why the
+others are deferred. Do not select a trivial substep that leaves the same
+block in place. Alternative unblocking paths must each identify a genuine
+continuation, rather than silently choosing the shortest-looking answer.
+
+#### Proposed effort rubric
+
+Start with explainable categories, not precise predicted minutes. These
+categories and their eventual weights remain open under SGM-D13:
+
+| Candidate category | Owner work remaining | Evidence the assessment should show |
+|---|---|---|
+| Direct answer | Recall a known fact or state a preference, with the necessary context already supplied | The exact question, why no new investigation is required, and whether the owner's familiarity is known |
+| Considered decision | Read prepared material and compare alternatives or trade-offs | The material, options, unresolved trade-offs and the decision required |
+| Investigation or substantial work | Find missing information, learn unfamiliar material, create a missing specification or carry out work before an answer is possible | The missing input or work product, why the agent cannot provide it, and the work the owner must perform |
+
+Number of inputs, shared preparation, distinct contexts and assessed
+categories are evidence for Volume. Question count alone is not Volume:
+twenty short factual answers can differ greatly from twenty design decisions,
+and one question may require substantial work. Importance or risk alone does
+not establish effort. The agent cannot assume the owner knows an answer or
+finds a topic easy based on the agent's own knowledge or speed.
+
+Prior comparable owner work and explicit owner corrections can support an
+estimate. Missing knowledge of the owner's familiarity is recorded as an
+uncertainty. Document length and token count do not establish owner effort
+by themselves. Unclear effort stays unknown, never zero. The time between
+asking a question and receiving an answer does not measure active owner
+effort; calibration needs explicit feedback or appropriately recorded active
+work, rather than treating time away as effort.
+
+The numerical scale, aggregation of categories, treatment of shared effort
+and conversion to a Momentum factor remain open. Verified absence of current
+owner blockers can be represented as zero effort under the proposed scale;
+an incomplete blocker inventory cannot. For a Saga with several agents,
+retain the estimates by blocked agent and continuation point, and deduplicate
+shared owner requests. One progressing agent must not hide another blocked
+agent, and the cheapest input must not stand in for all jointly required
+inputs. The single parent-volume aggregation rule still needs agreement.
 
 ### Momentum
 
@@ -377,6 +425,12 @@ arbitrary missing estimate. Until that rule and the relevant Volume are
 known, a positive `M0` does not establish an exact final Momentum score.
 A known zero `M0` still establishes zero Momentum. Existing zero-attention
 and readiness gates therefore continue to apply.
+
+The clarified Volume scope directly supports effort estimates for current
+unblocking actions. Its use for optional reviews or other nonblocking owner
+actions in the wider Momentum candidate set still needs resolution. Do not
+interpret low current unblocking Volume as proof that an optional review is
+cheap. The final mapping cannot be accepted while that mismatch is unresolved.
 
 Candidate Priority weights: `low = 0.4`, `medium = 0.6`, `high = 0.8`,
 `critical = 1.0` (SGM-D7). These encode a proposed preference strength, not
@@ -474,6 +528,9 @@ Volume cases must compare equal-benefit actions with different owner effort,
 a large Saga needing only a small useful intervention, a seemingly small
 action with substantial required preparation, and unknown owner effort.
 Higher Volume must not hide an item from the Need Attention view.
+Also cover a completely blocked agent requiring twenty inputs, two current
+blocking questions among twenty open questions, several requests sharing one
+preparation step, and a Saga with both progressing and owner-blocked agents.
 
 ## Requirements
 
@@ -498,8 +555,9 @@ it is not a vendor live test or a claim of statistical accuracy.
 | SGM-0.12 | Keep the scorer advisory; do not convert a draft profile or high score into permission to execute or change priorities | New | unit, scenario |
 | SGM-0.13 | Preserve request identity and waiting intervals across edits, duplicates, reassignment, deferral and reopening | New | unit |
 | SGM-0.14 | Calibrate categorical assessments and ranking choices independently before accepting an operational profile | New | scenario |
-| SGM-0.15 | Record Volume as owner effort with its scope, included activities, evidence and uncertainty; unknown effort must not appear as zero | New | unit, scenario |
+| SGM-0.15 | Record Volume as the owner's current effort to unblock an agent, including required preparation and the complete set of inputs for a stated continuation point; retain evidence and uncertainty, never treating unknown effort as zero | New | unit, scenario |
 | SGM-0.16 | Under the accepted effort mapping, reduce Momentum for greater owner effort with other inputs equal, while preserving Priority and Need Attention | New | unit |
+| SGM-0.17 | Separate current blocking inputs from deferred questions and agent-solvable work, deduplicate shared owner requests, and retain which agents and continuation points each estimate covers | New | unit, scenario |
 
 ## Interface
 
@@ -511,7 +569,7 @@ are outside this draft. The existing work records remain authoritative.
 | Unit | Stable id, tier, parent, lifecycle, Priority with owner/source, sibling order, declared scope, applicable requirements and child-inventory coverage |
 | Action | Stable request and occurrence ids, source unit and linked units, type, intended result, next actor, source request, current state, owner-wait intervals, deadline if present, deferral if present, possible outcomes and their dependency edges |
 | Input assessment | Input name, known/unknown/conflicting/stale status, observed/assessed method, category or factual value, source locators and revisions, observation time, assessor, rule/profile version, rationale, unresolved facts and superseded assessment id |
-| Volume assessment | Action and intended useful result, scope, owner activities including preparation and follow-through, estimate and units once agreed, uncertainty, assumptions, evidence and assessment version |
+| Volume assessment | Blocked agent and work ids, blocking evidence, continuation point, jointly required owner inputs and their dependencies, deferred questions, agent preparation, proposed input categories, shared owner effort, estimate and units once agreed, uncertainty, assumptions, evidence and assessment version |
 | Profile | Version, approval state, Impact category map, Attention weights, Priority weights, positive warning/response intervals by supported action type, positive integer Unlock cap, Volume rubric and effort mapping once agreed |
 | Result | Unit and action ids, observation time, profile version, input contributions, readiness gate results, Volume assessment, effort factor, pre-Volume score, exact final score or null, lower bound if partial, coverage, winning action(s), missing facts and explanation |
 
@@ -577,5 +635,6 @@ specification accepted or approve the numerical values for operation.
 | SGM-D8 | Can a Saga have positive Momentum for a prepared decision while implementation is blocked? | Yes: compute per action, show the action, and keep implementation Readiness separate | Open |
 | SGM-D9 | What validation makes a scoring profile ready to adopt? | Review classification disagreements and the owner's pairwise action choices separately; agree sample coverage and acceptance criteria before production | Open |
 | SGM-D10 | Should the first operational profile include all four Attention terms? | Keep the full model documented; consider beginning with Impact and verified deadlines while the data for Unlock and Waiting is established, using a separately approved profile | Open |
-| SGM-D11 | What does Volume mean, and how does it affect Momentum? | The amount of work or attention required from the owner; greater required effort lowers Momentum when other inputs are equal | Decided by the owner, 2026-10-21; scope and numerical method remain open |
-| SGM-D12 | Does Volume measure effort to complete the remaining Saga or to achieve the next meaningful progress? | Use the owner's effort to achieve the useful result of the recommended next action, including preparation and follow-through; do not penalize that action for unrelated future work | Open; discuss first, before the estimation scale or effort formula |
+| SGM-D11 | What does Volume mean, and how does it affect Momentum? | The amount of work or attention required from the owner; greater required effort lowers Momentum when other inputs are equal | Decided by the owner, 2026-10-21; current-unblocking scope settled in SGM-D12, numerical method remains open |
+| SGM-D12 | Does Volume measure total remaining effort, general next-action effort or the effort required to unblock the agent now? | Count the owner's effort required right now to unblock the agent, including necessary preparation and answers | Decided by the owner, 2026-10-21: low when the agent can proceed independently; high when completely stuck awaiting substantial owner input |
+| SGM-D13 | Who estimates current unblocking Volume, and how is that estimate made consistently? | The working agent identifies current owner-only blockers, the complete inputs for a real continuation and evidence-backed effort categories; the shared scorer validates, deduplicates and calculates; the owner can correct it without rating every input. Numeric weights and parent aggregation follow after this division is settled | Open; discuss next |
