@@ -3,26 +3,31 @@ role: authored
 spec: SGM-0
 status: draft
 ---
-# Sagas · 00 Priority, Need Attention, Readiness and Momentum
+# Sagas · 00 Priority, Need Attention, Readiness, Volume and Momentum
 
 ## Purpose
 
 Specify how the Radar explains which work is important, which work needs the
-owner now, which work can begin, and which next action is worth taking.
+owner now, which work can begin, how much effort it asks of the owner, and
+which next action is worth taking.
 The specification defines evidence and agent assessment before arithmetic:
 an exact formula is useful only when its inputs have an agreed meaning.
 
-On 21 October 2026 the owner requested these four metrics and agreed with the
+On 21 October 2026 the owner requested the initial four metrics and agreed with the
 general direction of action-based attention, readiness checks and combined
 Momentum. Exact estimates, coefficients and thresholds remain proposals.
-Only the priority labels and sibling comparison rule are settled here.
+The owner subsequently added Volume: the amount of work or attention required
+from the owner, with greater required effort reducing Momentum when the other
+inputs are equal. Its scope, units and estimation method remain to be settled.
+The Priority labels and sibling comparison rule, and this meaning and
+direction of Volume, are settled here.
 The [Decisions](#decisions) table distinguishes that agreement from open choices.
 
 ## Scope
 
 The same rules apply to Sagas, sibling Arcs and sibling Beats. This document
 owns the proposed calculations, assessment rubric, aggregation, uncertainty
-and explanations of these four metrics. It does not replace the existing
+and explanations of these five metrics. It does not replace the existing
 [Radar statistics](../../mycel/operations/radar-stats.md), change the
 [rules for taking work](../../mycel/operations/sagas.md#taking-the-next-beat),
 or authorize an action merely because it has a high score.
@@ -34,7 +39,7 @@ or a claim about economic value. Existing progress and Velocity remain
 separate observations.
 
 **Contents:** evidence and assessments · Priority · action discovery · Need
-Attention and its inputs · Readiness · Momentum · aggregation and updates ·
+Attention and its inputs · Readiness · Volume · Momentum · aggregation and updates ·
 examples · requirements · interface · limitations · decisions.
 
 ## Behaviour
@@ -305,14 +310,73 @@ An already-held execution action is unavailable for a new worker; continuing
 it by its holder is a different action and does not require releasing its
 own hold. Readiness is a snapshot, not a reservation: recheck before taking work.
 
+### Volume
+
+Volume is the amount of work or attention required **from the owner** to move
+the work forward. An important Saga can have high Volume and therefore low
+Momentum: the owner cannot readily move it, or can move it only slowly.
+Agent execution time, token consumption and passive waiting are not by
+themselves owner effort. Reading, recovering context, making a difficult
+decision, doing work and reviewing the result can all require owner effort.
+
+Greater Volume reduces Momentum when Priority, Need Attention and Readiness
+are equal. It does not reduce Priority or Need Attention: expensive work can
+still be important or urgently require intervention. Being difficult is not
+by itself a failure of Readiness; work can be fully specified and ready while
+requiring substantial effort.
+
+**First decision: effort to reach what result?** SGM-D12 asks whether Volume
+means the owner's effort to finish the remaining Saga, or effort to reach
+the next meaningful point of progress. The proposed answer is the next
+meaningful point of progress, using the same action and result that Momentum
+recommends. A large Saga might need only one short decision before an agent
+can make substantial progress; its total size should not make that decision
+look difficult to take now.
+
+Under that proposal, name the result before estimating effort: a decision
+that actually releases work, an accepted review or a completed useful step.
+Include the necessary owner preparation, context recovery and follow-through
+to reach it. Do not select an isolated click or arbitrary substep to claim
+low Volume when the useful result still requires a long chain of owner work.
+If effort is shared across several requests, identify the shared preparation
+rather than charging it repeatedly within one proposed action.
+
+An estimate must name its scope, the owner activities included, assumptions,
+evidence and uncertainty. Prior similar owner actions or an explicit owner
+estimate can support it; document length, token count or an agent's own
+speed cannot establish the owner's effort on their own. Unclear effort is
+unknown, never zero. A result achieved mostly by an agent can still require
+owner preparation or review; record those activities.
+
+The measurement method remains open: elapsed active minutes alone may miss
+how demanding those minutes are, while broad effort categories need a clear
+rubric. Units, category boundaries, the use of ranges, aggregation of total
+remaining effort and the conversion into a Momentum factor will be settled
+after the scope decision. No new numerical defaults are introduced here.
+If next-action Volume is adopted, a parent displays the Volume of its
+recommended action with that action's label; it does not silently sum all
+descendants' effort or combine one action's low Volume with another's benefit.
+
 ### Momentum
 
 For unit `u` and each of its outstanding owner actions `a`:
 
 ```text
-M(u, a) = p(priority(u)) × N(a) × R(a) / 100
+M0(u, a) = p(priority(u)) × N(a) × R(a) / 100
+M(u, a) = M0(u, a) × effortFactor(Volume for the same action and result)
 Momentum(u) = max M(u, a)
 ```
+
+`M0` is the earlier candidate score before accounting for owner effort.
+`effortFactor` is a proposed way to incorporate Volume, not a specified
+numerical function yet. It lies in `(0, 1]` and is nonincreasing as Volume
+increases; higher recognized effort levels must lower the factor. Its units,
+calibration and relationship to the owner's available attention depend on
+the Volume decisions. Do not divide directly by minutes or assume an
+arbitrary missing estimate. Until that rule and the relevant Volume are
+known, a positive `M0` does not establish an exact final Momentum score.
+A known zero `M0` still establishes zero Momentum. Existing zero-attention
+and readiness gates therefore continue to apply.
 
 Candidate Priority weights: `low = 0.4`, `medium = 0.6`, `high = 0.8`,
 `critical = 1.0` (SGM-D7). These encode a proposed preference strength, not
@@ -327,11 +391,12 @@ priorities. A flat action list must retain its Saga and Arc grouping; there
 is no cross-parent comparison of local weights.
 
 The action that supplies the maximum is displayed with Momentum. Never
-multiply the highest Attention from one action by the Readiness of another.
+multiply the highest Attention from one action by the Readiness or lower
+Volume of another.
 A Saga can have implementation Readiness 0 and positive Momentum for an
 answer or review that is ready. This action-based interpretation, rather
-than a literal product of the three Saga-level display fields, is open in
-SGM-D8. It must be clear to the user before adoption.
+than a literal combination of independently aggregated Saga-level fields, is
+open in SGM-D8. It must be clear to the user before adoption.
 
 Existing progress does not add a Momentum bonus. A healthy running Saga
 may need no owner action. If the owner wants delivery progress to enter the
@@ -358,15 +423,16 @@ describe a score as a probability. No relative normalization against the
 current list: removing another Saga must not change this one's score.
 
 Recompute on a changed action, answer, priority, scope, requirement,
-dependency, hold, resource, deferral or scoring profile. Time-based inputs
-are recomputed at observation time. Retain assessments while their referenced
+dependency, hold, resource, deferral, Volume estimate or scoring profile.
+Time-based inputs are recomputed at observation time. Retain assessments while their referenced
 facts are unchanged; do not ask a model to rerate unchanged text on each
 refresh. Re-read current evidence when a change invalidates it. A failed
 refresh marks affected inputs stale instead of preserving an exact live score.
 Every result records its observation time and profile version.
 
 Show the selected action, the four Attention contributions, Priority weight,
-readiness checks, sources, unresolved facts and why the score changed. Keep
+readiness checks, Volume scope and estimate, effort factor, sources,
+unresolved facts and why the score changed. Keep
 the UI explanation short, with details available on request. Assessments
 can be corrected without changing the underlying source facts; both versions
 remain attributable. Owner corrections govern later matching assessments.
@@ -376,8 +442,10 @@ remain attributable. Owner corrections govern later matching assessments.
 These are fictional calculations under the candidate coefficients, not
 operational measurements or an approved response-time policy. All named
 inputs in the table are assumed verified; `R` is readiness of the action.
+The last column is `M0`, the score before Volume. It is not final Momentum;
+the Volume estimation and conversion rules have not yet been agreed.
 
-| Case | Priority | NeedsYou | I | U | L | W | R | N | M |
+| Case | Priority | NeedsYou | I | U | L | W | R | N | M0 |
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|
 | Healthy autonomous work; no owner request | critical | 0 | — | — | — | — | — | 0 | 0 |
 | Ready work needs a launch decision; newly requested | low | 1 | 0.25 | 0 | 0 | 0 | 100 | 12.5 | 5 |
@@ -402,6 +470,10 @@ answered questions; an occupied territory; several outcomes with different
 unlock sets; mutually overlapping Beats; a partially known parent; a
 high-Attention blocked action beside an unrelated ready action; terminal
 execution with an outstanding follow-up; and an explicit deferral.
+Volume cases must compare equal-benefit actions with different owner effort,
+a large Saga needing only a small useful intervention, a seemingly small
+action with substantial required preparation, and unknown owner effort.
+Higher Volume must not hide an item from the Need Attention view.
 
 ## Requirements
 
@@ -419,13 +491,15 @@ it is not a vendor live test or a claim of statistical accuracy.
 | SGM-0.5 | Calculate Urgency, Unlock and Waiting exactly from the defined facts and a versioned, complete profile | New | unit |
 | SGM-0.6 | Preserve unknown, conflicting and stale inputs; never substitute zero or renormalize around missing evidence | New | unit |
 | SGM-0.7 | Evaluate action Readiness and parent readiness with the defined gates, scope and three-valued rules | New | unit, scenario |
-| SGM-0.8 | Calculate Momentum using the same action's Attention and Readiness and only the compared unit's Priority | New | unit |
+| SGM-0.8 | Calculate Momentum using the same action and result's Attention, Readiness and Volume, and only the compared unit's Priority; retain the pre-Volume value separately | New | unit |
 | SGM-0.9 | Aggregate by maximum, expose partial lower bounds and retain unknown candidates visibly | New | unit |
 | SGM-0.10 | Explain the selected action and contributing evidence; retain profile versions, corrections and change reasons | New | unit, scenario |
 | SGM-0.11 | Recompute changed facts and time inputs, invalidate stale assessments, and preserve unchanged assessments | New | unit |
 | SGM-0.12 | Keep the scorer advisory; do not convert a draft profile or high score into permission to execute or change priorities | New | unit, scenario |
 | SGM-0.13 | Preserve request identity and waiting intervals across edits, duplicates, reassignment, deferral and reopening | New | unit |
 | SGM-0.14 | Calibrate categorical assessments and ranking choices independently before accepting an operational profile | New | scenario |
+| SGM-0.15 | Record Volume as owner effort with its scope, included activities, evidence and uncertainty; unknown effort must not appear as zero | New | unit, scenario |
+| SGM-0.16 | Under the accepted effort mapping, reduce Momentum for greater owner effort with other inputs equal, while preserving Priority and Need Attention | New | unit |
 
 ## Interface
 
@@ -437,8 +511,9 @@ are outside this draft. The existing work records remain authoritative.
 | Unit | Stable id, tier, parent, lifecycle, Priority with owner/source, sibling order, declared scope, applicable requirements and child-inventory coverage |
 | Action | Stable request and occurrence ids, source unit and linked units, type, intended result, next actor, source request, current state, owner-wait intervals, deadline if present, deferral if present, possible outcomes and their dependency edges |
 | Input assessment | Input name, known/unknown/conflicting/stale status, observed/assessed method, category or factual value, source locators and revisions, observation time, assessor, rule/profile version, rationale, unresolved facts and superseded assessment id |
-| Profile | Version, approval state, Impact category map, Attention weights, Priority weights, positive warning/response intervals by supported action type, positive integer Unlock cap |
-| Result | Unit and action ids, observation time, profile version, input contributions, readiness gate results, exact score or null, lower bound if partial, coverage, winning action(s), missing facts and explanation |
+| Volume assessment | Action and intended useful result, scope, owner activities including preparation and follow-through, estimate and units once agreed, uncertainty, assumptions, evidence and assessment version |
+| Profile | Version, approval state, Impact category map, Attention weights, Priority weights, positive warning/response intervals by supported action type, positive integer Unlock cap, Volume rubric and effort mapping once agreed |
+| Result | Unit and action ids, observation time, profile version, input contributions, readiness gate results, Volume assessment, effort factor, pre-Volume score, exact final score or null, lower bound if partial, coverage, winning action(s), missing facts and explanation |
 
 Reject negative/out-of-range weights, an Attention weight sum other than 1,
 nonpositive intervals, a nonpositive/noninteger cap, unknown categories and
@@ -447,12 +522,17 @@ increasing from low to critical, with critical equal to 1. An unknown action
 type requiring an interval produces an unconfigured input. Do not invent
 intervals or silently enable omitted terms. Review-only profiles may run
 labelled examples but cannot be presented as an approved operational score.
+A missing Volume rule does not silently select `effortFactor = 1`; only the
+pre-Volume score is available until a final score can be calculated.
 
 ## Known problems and calibration
 
-No automated scorer for these four metrics is claimed here. Current sources
+No automated scorer for these five metrics is claimed here. Current sources
 do not necessarily record action ownership, exact waiting intervals, response
 deadlines, complete outcome sets or requirement coverage in structured form.
+They also may not establish how much preparation or cognitive effort an
+action requires from the owner. An agent's estimate is not a measurement of
+the owner's personal capacity, and must remain correctable.
 Extracting them is work whose gaps must stay visible.
 
 Two agents may disagree about whether a requirement is sufficiently defined
@@ -475,6 +555,10 @@ so show the checklist. Action Momentum differs from implementation Readiness
 and requires an explicit action label. The owner may prefer a simpler initial
 profile with fewer terms; disabling a term is an explicit profile decision,
 not a response to missing data (SGM-D10).
+An effort discount may repeatedly favor small actions over consequential
+work requiring sustained attention. Keep such work visible through Priority
+and Need Attention, and include it in calibration examples. Do not adopt an
+effort mapping solely because it makes easy tasks rise to the top.
 
 ## Decisions
 
@@ -493,3 +577,5 @@ specification accepted or approve the numerical values for operation.
 | SGM-D8 | Can a Saga have positive Momentum for a prepared decision while implementation is blocked? | Yes: compute per action, show the action, and keep implementation Readiness separate | Open |
 | SGM-D9 | What validation makes a scoring profile ready to adopt? | Review classification disagreements and the owner's pairwise action choices separately; agree sample coverage and acceptance criteria before production | Open |
 | SGM-D10 | Should the first operational profile include all four Attention terms? | Keep the full model documented; consider beginning with Impact and verified deadlines while the data for Unlock and Waiting is established, using a separately approved profile | Open |
+| SGM-D11 | What does Volume mean, and how does it affect Momentum? | The amount of work or attention required from the owner; greater required effort lowers Momentum when other inputs are equal | Decided by the owner, 2026-10-21; scope and numerical method remain open |
+| SGM-D12 | Does Volume measure effort to complete the remaining Saga or to achieve the next meaningful progress? | Use the owner's effort to achieve the useful result of the recommended next action, including preparation and follow-through; do not penalize that action for unrelated future work | Open; discuss first, before the estimation scale or effort formula |

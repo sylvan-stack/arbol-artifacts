@@ -10,7 +10,7 @@
 
 The metrics used to compare sibling work and identify the owner's next action. Start at its [README](sagas/README.md).
 
-- [`00-metrics.md`](sagas/00-metrics.md) (SGM-0, draft): Priority, Need Attention, Readiness and Momentum; evidence and assessment rubrics, candidate formulas, uncertainty, aggregation, calibration and open decisions.
+- [`00-metrics.md`](sagas/00-metrics.md) (SGM-0, draft): Priority, Need Attention, Readiness, Volume and Momentum; evidence and assessment rubrics, candidate formulas, owner effort, uncertainty, aggregation, calibration and open decisions.
 
 ### `driver-contract/`: what every Driver does
 
