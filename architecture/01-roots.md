@@ -385,6 +385,12 @@ arbol-root:scripts/check_migration.py#judge
 arbol-root:scripts/migration_protocol.py#protocol
 arbol-root:scripts/migration_fixtures.py#seed
 arbol-root:tests/test_migration_check.py
+arbol:src/arbol_roots/sql.py#selected_sql
+arbol:src/arbol_roots/sql.py#migrate
+arbol:src/arbol_roots/sql.py#layout
+arbol:src/arbol_roots/database.py#Database.file
+arbol:tests/test_roots_sql.py
+arbol:scripts/roots_sql_drill.py#drill
 -->
 
 ### Settings
@@ -456,7 +462,7 @@ Roots:
 | ARC-1.24 | support all working Trunk implementations and Builds whose Build records list the Root's Root Contract version, and expose them through `arbol-root trunks` | New | unit: `root.trunks`, `root.trunks-refusal`; private `root.private-build` (SYL-181), plus `builds.trunk-list`/selection checks (SYL-179) |
 | ARC-1.25 | rediscover Exchanges across retained Roots through the shared Root catalogue and each Root's matching manager, isolate a failing Root's listing, and route management to the recorded owning Root | New | Root manager listing/combinability part: unit `root.list-combined`, `root.list-form`, `root.list-states`, `root.list-boundary` (SYL-182). Catalogue discovery, asking every retained Root, failure isolation and routing are specified by accepted BKD-0.22 and remain backend implementation/drill work |
 | ARC-1.26 | keep a Root's identity independent of its manager invocation and compatible Build replacements, and change no established Exchange ownership when the App or backend restarts | New | drill |
-| ARC-1.28 | create and change every table of a Root's database from the table layout that the Root's `arbol-root` Builds carry, apply to a Root in use only additions that its older Builds can ignore, for the chat tables as their Root Contract version allows (RCT-D24), and let no Trunk and no backend create or change a table | New | unit |
+| ARC-1.28 | create and change every table of a Root's database from the table layout that the Root's `arbol-root` Builds carry, apply to a Root in use only additions that its older Builds can ignore, for the chat tables as their Root Contract version allows (RCT-D24), and let no Trunk and no backend create or change a table | New | Root-owned copied layouts: `roots.sql-selection`, `roots.sql-preflight`, `roots.sql-pruning`, `roots.layout`, `roots.layout-cli`; explicit installed-server `roots.runtime-sql` proves additive/repeated layouts and earlier rows unchanged (SYL-185). Compatibility is qualified by the SYL-184 layout check; contract v1 permits no additions (RCT-D24). The backend no-DDL part is accepted BKD-0.6 and remains backend implementation work |
 
 Builds:
 
@@ -471,13 +477,13 @@ Moving chats:
 | ID | A migration must… | Origin | Verified by |
 |---|---|---|---|
 | ARC-1.15 | read the database of the older Root without changing or removing anything there, and be the only program of the newer Root that knows the older tables | Changed | Migration check part: `root.migration-whole`, `root.migration-protocol`, `root.migration-protocol-refusal`, source rows/schema unchanged and READ ONLY write refusal (SYL-184). arbol-roots execution is SYL-185; real-Root drill is SYL-189 |
-| ARC-1.16 | go in one direction, from the Root a Root grew from, and be repeatable: for the whole database while the Root is `preparing`, and for one chat afterwards (one chat is not in the first thin path: RTM-D12) | New | unit |
+| ARC-1.16 | go in one direction, from the Root a Root grew from, and be repeatable: for the whole database while the Root is `preparing`, and for one chat afterwards (one chat is not in the first thin path: RTM-D12) | New | Whole-database preparing-only/repeatable path: `roots.migrate`, `roots.migrate-refusal`, `roots.migrate-failure`, `roots.migrate-interruption`; explicit installed-server `roots.runtime-sql` proves recreated destination, exact rows and unchanged source (SYL-185). One chat is not in the first thin path (RTM-D12), remains SYL-195; real-Root drill is SYL-189 |
 | ARC-1.17 | copy a table that did not change as it is, convert the rows of a table that changed, keep the text of every message exactly as it was, and transfer no running Exchange or process | Changed | Unchanged-table copy part: `root.migration-whole`, `root.migration-text-fault`, `root.migration-open-fault`, `root.migration-snapshot-fault`, all five tables and exact text/JSON (SYL-184). Converting a changed table waits for the first Root that changes one; original process/folder ownership is a SYL-189 drill |
 | ARC-1.18 | leave the Root in use current and untouched while it runs and when it fails, and name what failed without cutting or skipping anything silently | Changed | drill |
 | ARC-1.19 | mark a migrated chat stale when its original has gone further, checking when the Arbol backend of the newer Root starts and when its chat list is opened, and offer to bring it over again (not in the first thin path: RTM-D12) | New | journey |
 | ARC-1.20 | replace a copy only when the copy was not continued in the newer Root, and otherwise bring the original in as a second chat (not in the first thin path: RTM-D12) | New | unit |
 | ARC-1.27 | leave an original running Exchange and its process untouched in the older Root, and write only its target history copy as interrupted when that Exchange was open at the migration snapshot | New | drill |
-| ARC-1.29 | be carried, together with the Root's table layout, by the `arbol-root` Builds of the Root it fills, and be run on a Root's database by `arbol-roots` alone, and otherwise only by the checks of an `arbol-root` Build on a database server of the check's own (RTM-1) | New | unit |
+| ARC-1.29 | be carried, together with the Root's table layout, by the `arbol-root` Builds of the Root it fills, and be run on a Root's database by `arbol-roots` alone, and otherwise only by the checks of an `arbol-root` Build on a database server of the check's own (RTM-1) | New | Copied-file selection and psql execution: `roots.sql-selection`, `roots.sql-preflight`, `roots.sql-databases`, `roots.layout`, `roots.migrate`, `roots.sql-failure`, `roots.sql-timeout`; explicit installed-server `roots.runtime-sql` (SYL-185). Build checks use their own server (SYL-184); Root manager commands never connect (SYL-181–183) |
 
 ## Interface
 
