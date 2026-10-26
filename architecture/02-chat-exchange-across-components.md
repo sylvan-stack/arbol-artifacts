@@ -105,6 +105,12 @@ A database that does not answer is not a normal state. For as long as it lasts, 
 
 When the Driver's run ends with `rate_limited` ([DRV-4](../driver-contract/04-errors-and-limits.md)), the Trunk ends the Exchange as failed with that cause. It does not take another route by itself. Arbol offers to send again with what the Brain Recipe's logic picks next (ARC-0); Elma Chat, which uses no Brain Recipe, offers to send again with the route the Leather Bag picks ([BKD-2](../backend/02-elma-chat.md)).
 
+<!-- sources:
+arbol-trunk:trunks/trivial/src/arbol_trunk_trivial/end.py#end_of_run
+arbol-trunk:trunks/trivial/tests/test_run.py#WholeExchange.test_a_failed_run_keeps_the_drivers_error_whole
+arbol-root:contract/conformance/rct_conformance/scenarios/r11.py#driver_failures
+-->
+
 ### When Arbol quits
 
 Quitting Arbol, closing every UI or losing the Arbol backend stops no Exchange. On App or backend restart, Arbol enumerates every retained Root through `arbol-roots`, selects a compatible manager Build for each, and asks it to list its Exchanges. Each reply identifies the Root, Exchange, concrete Trunk component and Build, chat, process and state. Arbol combines this execution metadata to rediscover running agents across different Trunks and Roots; an unavailable Root is reported separately and does not prevent discovery of the others.
@@ -124,7 +130,7 @@ The backend compatible with each Root reads that Root's database and Exchange fi
 | ARC-2.7 | show an Exchange whose process is gone as interrupted, settle it without a script that names it, keep what the agent had produced, and save a finished result that is still in its folder with its own final state | Changed | drill |
 | ARC-2.8 | keep a failed, stuck or cancelled Exchange to its own chat: other chats go on and new chats start, and after a failed or a cancelled Exchange the same chat takes a new message | Changed | drill |
 | ARC-2.9 | refuse a new message while the database cannot be reached, and lose no result of an Exchange in progress | Changed | drill |
-| ARC-2.10 | end an Exchange as failed with the cause `rate_limited` when its run met a rate limit, and take no other route inside the Trunk | Changed | contract |
+| ARC-2.10 | end an Exchange as failed with the cause `rate_limited` when its run met a rate limit, and take no other route inside the Trunk | Changed | contract: R11 (SYL-177); unit: `WholeExchange.test_a_failed_run_keeps_the_drivers_error_whole` and `WholeExchange.test_a_refusal_can_be_the_only_event_and_no_other_route_is_tried` in `trunks/trivial/tests/test_run.py` of `arbol-trunk` |
 | ARC-2.11 | stop no Exchange when Arbol quits, every UI closes or the Arbol backend ends, and show on return what was produced meanwhile | Kept | drill |
 | ARC-2.12 | record each accepted Exchange's persistent Root identity and concrete Trunk component and Build, retain them through compatible updates and restarts, and leave the original process with its Root when another Root is created or history is migrated | New | contract |
 | ARC-2.13 | rediscover Exchanges across every retained Root on App or backend restart through the common Root catalogue and matching manager replies, isolate discovery failures by Root, and delegate detailed reads and controls to the owning Root's compatible components | New | drill |
