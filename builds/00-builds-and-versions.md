@@ -163,6 +163,10 @@ arbol:src/arbol_builds/root_launcher.py#read_root_call
 arbol:src/arbol_builds/root_launcher.py#launch_root
 arbol:scripts/install_builds.py#served
 arbol:tests/launcher_benchmark.py
+arbol:src/arbol_builds/launcher.py#open_use_guard
+arbol:src/arbol_builds/launcher.py#hold_build_use
+arbol:src/arbol_builds/launcher.py#close_build_use
+arbol:tests/test_unused.py#UseGuards
 -->
 
 ### Building, withdrawing, pruning
@@ -223,6 +227,9 @@ arbol:src/arbol_builds/pruning.py#retained_record
 arbol:src/arbol_builds/service.py#prune_protections
 arbol:src/arbol_builds/service.py#prune_builds
 arbol:tests/test_builds.py#PruningRoots
+arbol:src/arbol_builds/service.py#remove_build_payload
+arbol:src/arbol_builds/unused.py#prune_unused
+arbol:tests/test_unused.py#UseGuards
 -->
 
 ### Unused Builds and Locked Builds
@@ -284,6 +291,9 @@ A missing timestamp means no start was recorded: older Builds may have run
 before recording was installed. Both fields remain available after pruning,
 because `last-start` is retained with the record and log.
 
+
+Seqoya Lab, the administration UI, has a page *Builds*. It lists the Builds of each component with their last start, has a Locked switch for each Build and one field for the time; an empty field means that no Build is removed for being unused. The page calls `arbol-builds` and writes the setting, and removes nothing itself. Until Seqoya Lab exists, the same is done with `arbol-builds lock`, `arbol-builds unlock` and the settings file.
+
 <!-- sources:
 arbol:src/arbol_builds/launcher.py#record_start
 arbol:src/arbol_builds/launcher.py#launch
@@ -299,9 +309,23 @@ arbol:src/arbol_builds/service.py#lock_build
 arbol:src/arbol_builds/service.py#save_record
 arbol:src/arbol_builds/launcher.py#valid_record
 arbol:tests/test_builds.py#Locking
+arbol:src/arbol_builds/unused.py#read_days
+arbol:src/arbol_builds/unused.py#old_enough
+arbol:src/arbol_builds/unused.py#usage_snapshot
+arbol:src/arbol_builds/unused.py#listed_exchanges
+arbol:src/arbol_builds/unused.py#shared_runtime
+arbol:src/arbol_builds/unused.py#prune_unused
+arbol:src/arbol_builds/launcher.py#open_use_guard
+arbol:src/arbol_builds/service.py#remove_build_payload
+arbol:tests/test_unused.py#UseGuards
+arbol:tests/test_unused.py#Settings
+arbol:tests/test_unused.py#ManagerSnapshots
+arbol:tests/test_unused.py#AgedRemoval
+arbol:tests/test_unused.py#MixedRegistry
+arbol:scripts/unused_drill.py#drill
+arbol:tests/launcher_benchmark.py#baseline_launcher
+arbol:builds/README.md
 -->
-
-Seqoya Lab, the administration UI, has a page *Builds*. It lists the Builds of each component with their last start, has a Locked switch for each Build and one field for the time; an empty field means that no Build is removed for being unused. The page calls `arbol-builds` and writes the setting, and removes nothing itself. Until Seqoya Lab exists, the same is done with `arbol-builds lock`, `arbol-builds unlock` and the settings file.
 
 ### What a repository says about its build
 
@@ -350,7 +374,7 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 
 ## Requirements
 
-The existing check names below verify the Driver and shared build-tool behaviour recorded on 5–8 October 2026. Root-specific selection, metadata and pruning are accepted extensions from [ARC-D47](../architecture/01-roots.md#decisions), recorded on 12 October 2026. Those extensions have separate checks, rather than relying on the earlier Driver checks. Since SYL-155, on 16 October 2026, BLD-0.17 and 0.21 to 0.23 are implemented and their checks are named; since SYL-179, the same day, the launcher `arbol-trunk` is, and its checks are named under BLD-0.9, 0.16 and 0.22; since SYL-158, on 26 October 2026, Root-component default selection and selectors are implemented under BLD-0.18 and 0.19, with inventory that agrees. SYL-159 implements BLD-0.20 on 26 October 2026, with retained-Root/version pruning and conservative damaged-record handling. Unused-Build pruning and the Seqoya Lab page remain pending.
+The existing check names below verify the Driver and shared build-tool behaviour recorded on 5–8 October 2026. Root-specific selection, metadata and pruning are accepted extensions from [ARC-D47](../architecture/01-roots.md#decisions), recorded on 12 October 2026. Those extensions have separate checks, rather than relying on the earlier Driver checks. Since SYL-155, on 16 October 2026, BLD-0.17 and 0.21 to 0.23 are implemented and their checks are named; since SYL-179, the same day, the launcher `arbol-trunk` is, and its checks are named under BLD-0.9, 0.16 and 0.22; since SYL-158, on 26 October 2026, Root-component default selection and selectors are implemented under BLD-0.18 and 0.19, with inventory that agrees. SYL-159 implements BLD-0.20 on 26 October 2026, with retained-Root/version pruning and conservative damaged-record handling. SYL-163 implements BLD-0.26 on 26 October 2026, including conservative manager snapshots and nonblocking process-use protection. The Seqoya Lab page and scheduled invocation (BLD-0.27) remain pending.
 
 | ID | The registry, its tool and the launchers must… | Origin | Verified by |
 |---|---|---|---|
@@ -364,7 +388,7 @@ The existing check names below verify the Driver and shared build-tool behaviour
 | BLD-0.8 | for a component outside Roots, run the named Build when the launcher's first argument is `-v <build number>`, refuse a Build that cannot be run, and list those that can | New | SYL-95 Python: `build.relocated-unit`, `build.folder-alone`, `build.launcher-default-and-named`, `build.failed-check-preserves-default`, `build.withdrawal-rollback`; production `build.unit`, `build.contract`, `dev.build-check` and launcher records; Codex was a candidate at SYL-95; current numbered verification is below; prior verification: `builds.launch-refusal`, `builds.prune`; Codex SYL-94 Build 1: `build.launcher-named`, `build.failed-check-preserves-default`; a named `failed` Build (BLD-D13): `builds.failed-check`, passed 14 October 2026 |
 | BLD-0.9 | pass arguments, standard input and output, signals and the exit status through the launcher unchanged, except that the launcher `arbol-trunk` hands the Build `--root <root>` before the command (RCT-0.8) | New | SYL-95 Python: `build.relocated-unit`, `build.folder-alone`, `build.launcher-default-and-named`, `build.failed-check-preserves-default`, `build.withdrawal-rollback`; production `build.unit`, `build.contract`, `dev.build-check` and launcher records; Codex was a candidate at SYL-95; current numbered verification is below; prior verification: `builds.streams`, `builds.signals`; the launcher `arbol-trunk`, which hands the Build `--root <root>` (SYL-179): `builds.trunk-launch`, `builds.trunk-selection`, `builds.trunk-pass-through`, `builds.trunk-first-build` |
 | BLD-0.10 | let a damaged or missing record take only its own Build out of use | New | SYL-95 Python: `build.relocated-unit`, `build.folder-alone`, `build.launcher-default-and-named`, `build.failed-check-preserves-default`, `build.withdrawal-rollback`; production `build.unit`, `build.contract`, `dev.build-check` and launcher records; Codex was a candidate at SYL-95; current numbered verification is below; prior verification: `builds.damaged-record` |
-| BLD-0.11 | prune only on command or by the time the owner set (BLD-0.26), keep every record, and never remove the default Build | Kept | SYL-95 Python: `build.relocated-unit`, `build.folder-alone`, `build.launcher-default-and-named`, `build.failed-check-preserves-default`, `build.withdrawal-rollback`; production `build.unit`, `build.contract`, `dev.build-check` and launcher records; Codex was a candidate at SYL-95; current numbered verification is below; prior verification: `builds.prune`, `builds.concurrent-prune`, `builds.concurrent-mutations` |
+| BLD-0.11 | prune only on command or by the time the owner set (BLD-0.26), keep every record, and never remove the default Build | Kept | SYL-95 Python: `build.relocated-unit`, `build.folder-alone`, `build.launcher-default-and-named`, `build.failed-check-preserves-default`, `build.withdrawal-rollback`; production `build.unit`, `build.contract`, `dev.build-check` and launcher records; Codex was a candidate at SYL-95; current numbered verification is below; prior verification: `builds.prune`, `builds.concurrent-prune`, `builds.concurrent-mutations`; shared active-use guard: `builds.use-guard-exec`, `builds.use-guard-pruning`, `builds.use-guard-unverifiable`; unused-mode protections: `builds.unused-drill` (SYL-163) |
 | BLD-0.15 | build a component as its repository's `arbol-build.json` says, hand the build commands and the checks the Build's folder and number in `ARBOL_BUILD_DIR` and `ARBOL_BUILD_NUMBER`, and run the checks against the Build's own program, not through the launcher | New | SYL-95 Python: `build.relocated-unit`, `build.folder-alone`, `build.launcher-default-and-named`, `build.failed-check-preserves-default`, `build.withdrawal-rollback`; production `build.unit`, `build.contract`, `dev.build-check` and launcher records; Codex was a candidate at SYL-95; current numbered verification is below; prior verification: `builds.description`, `builds.driver-checks`, `builds.invalid-description`; Claude: `build.clean-working`, `build.checks` (81 unit tests and 38 conformance scenarios from the numbered Build); Codex SYL-94 Build 1: `build.checks`, `build.source-and-runtime` |
 | BLD-0.16 | write a component's launcher, a Python program that uses only the standard library, into `~/.local/bin` or the folder named with `--bin-dir` when the component is first built | New | SYL-95 Python: `build.relocated-unit`, `build.folder-alone`, `build.launcher-default-and-named`, `build.failed-check-preserves-default`, `build.withdrawal-rollback`; production `build.unit`, `build.contract`, `dev.build-check` and launcher records; Codex was a candidate at SYL-95; current numbered verification is below; prior verification: `builds.paths`, `builds.install`; Codex SYL-94 Build 1: `build.launcher-default`, `build.launcher-named`; the launcher `arbol-trunk`, written by the build of any Trunk and rewritten by installing again (SYL-179): `builds.trunk-components`, `builds.trunk-first-build`, `builds.trunk-launcher-text`, `builds.install-refreshes-launchers` |
 
@@ -375,18 +399,18 @@ Root-specific extensions:
 | BLD-0.17 | associate each Build of `arbol` and `arbol-root` with exactly one Root, named with `arbol-builds build --root`, and number Builds per component across all Roots | New | `builds.root-of-build` |
 | BLD-0.18 | choose for `arbol` and `arbol-root` the newest runnable working Build of the named Root, or of the current Root when none is named, and refuse rather than choose another Root when that Build is absent | Changed | unit: `builds.root-default`, `builds.root-refusals`, `builds.root-inventory` |
 | BLD-0.19 | accept `[--root <identifier>] [-v <build number>]` as the selection prefix of `arbol` and `arbol-root`, take a named Build's Root from its record and refuse conflicting selectors, while keeping Driver and App launchers independent of Roots | New | unit: `builds.root-named`, `builds.root-pass-through`, `builds.root-launcher-text`, `builds.install-refreshes-launchers`; existing plain Driver/App and Trunk checks |
-| BLD-0.20 | preserve the newest working Build of `arbol` and `arbol-root` for every retained Root when pruning, and of each Trunk the newest working Build that fits each Root Contract version a retained Root uses, even if this keeps more than the requested count | Changed | unit: `builds.prune-catalogue`, `builds.prune-catalogue-failure`, `builds.prune-roots`, `builds.prune-root-retention`, `builds.prune-root-catalogue-refusal`, `builds.prune-versions`, `builds.prune-version-fallback`, `builds.prune-version-refusal`, `builds.prune-outside-roots` (SYL-159); existing prune/locking checks |
+| BLD-0.20 | preserve the newest working Build of `arbol` and `arbol-root` for every retained Root when pruning, and of each Trunk the newest working Build that fits each Root Contract version a retained Root uses, even if this keeps more than the requested count | Changed | unit: `builds.prune-catalogue`, `builds.prune-catalogue-failure`, `builds.prune-roots`, `builds.prune-root-retention`, `builds.prune-root-catalogue-refusal`, `builds.prune-versions`, `builds.prune-version-fallback`, `builds.prune-version-refusal`, `builds.prune-outside-roots` (SYL-159); existing prune/locking checks; shared active-use guard: `builds.use-guard-exec`, `builds.use-guard-pruning`, `builds.use-guard-unverifiable`; unused-mode protections: `builds.unused-drill` (SYL-163) |
 | BLD-0.21 | record each Trunk Build's list of Root Contract versions, without assigning the Build to one Root, so one Build serves every Root of those versions | New | `builds.trunk-root-contracts` |
 | BLD-0.22 | keep distinct Trunk implementations as distinct components with independent numbering, and never use build numbers across components to choose an implementation | New | `builds.trunk-components`; `arbol-trunk` never takes a Build of another Trunk (SYL-179): `builds.trunk-no-fit`, `builds.trunk-selection` |
 | BLD-0.23 | keep the registry, launchers and `arbol-builds` outside every Root, and hold no Root's backend, UI code, migration script or table layout in them | New | `builds.outside-roots` |
 
-Last-start recording and locking, accepted on 13 October 2026 ([BLD-D12](#decisions)), are implemented by SYL-153 and SYL-154. Removing unused Builds and the Seqoya Lab page remain pending. *journey* is the check of that name in the [Architecture](../architecture/README.md#conventions):
+Last-start recording and locking, accepted on 13 October 2026 ([BLD-D12](#decisions)), are implemented by SYL-153 and SYL-154. SYL-163 implements unused-Build pruning; the Seqoya Lab page and its scheduled invocation remain pending. *journey* is the check of that name in the [Architecture](../architecture/README.md#conventions):
 
 | ID | The registry, its tool, the launchers and Arbol must… | Origin | Verified by |
 |---|---|---|---|
 | BLD-0.24 | record the time of each start of a Build in its folder, without delaying the start or failing it | New | `builds.last-start`, `builds.last-start-write-failure`, `builds.last-start-disk-full`, `builds.last-start-refusal`, `builds.trunk-last-start`, `builds.last-start-inventory`, `builds.last-start-fallback`, `builds.install-refreshes-launchers` |
 | BLD-0.25 | let a Build be marked Locked and unmarked, and never remove the files of a Locked Build | New | `builds.locked-record`, `builds.lock-unlock`, `builds.lock-states`, `builds.lock-refusal`, `builds.lock-building`, `builds.locked-prune`, `builds.lock-prune-race`, in `Locking` of `tests/test_builds.py` (SYL-154) |
-| BLD-0.26 | remove, when the owner has set a time and only then, the files of the Builds that were not started for longer than that time, keep their records, and never remove a default Build, a Locked Build, a Trunk Build that a retained Root would run or a Build that an Exchange in progress runs on | New | unit (pending) |
+| BLD-0.26 | remove, when the owner has set a time and only then, the files of the Builds that were not started for longer than that time, keep their records, and never remove a default Build, a Locked Build, a Trunk Build that a retained Root would run or a Build that an Exchange in progress runs on | New | unit: `builds.unused-settings`, `builds.unused-settings-nonregular`, `builds.unused-disabled`, `builds.unused-input`, `builds.unused-manager-snapshot`, `builds.unused-manager-missing`, `builds.unused-manager-invalid`, `builds.unused-manager-timeout`, `builds.unused-catalogue`, `builds.unused-age`, `builds.unused-statuses`, `builds.unused-building-damaged`, `builds.unused-active-process`, `builds.unused-recent-start`, `builds.unused-removal-failure`, `builds.use-guard-exec`, `builds.use-guard-pruning`, `builds.use-guard-unverifiable`, `builds.use-guard-nonregular`, `builds.unused-drill` (SYL-163); `builds.unused-drill` also qualifies the installed tool in a private mixed registry |
 | BLD-0.27 | offer in Seqoya Lab a page that lists the Builds of each component with their last start, a Locked switch for each and the field for the time, and run the removal when Arbol starts and once a day while it runs | New | journey (pending) |
 
 Every component must:
@@ -495,7 +519,7 @@ The tool was installed again into `~/.local/bin` the same day, from a clean logi
 
 ## Root extension verification, 12 October 2026
 
-BLD-0.17–23 were then accepted requirements with pending unit checks. The installed `arbol-builds` tool and launchers did not yet implement Root association, `--root`, current-Root defaults, per-Root pruning protection or Trunk compatibility inventory. The Driver build and launcher checks below verify the existing global Driver path only. They do not establish that any Root-aware path works, and no Root-aware requirement is marked implemented by this edit. `arbol-app`, `arbol`, the Root manager and the first Trunk need their own Build checks before those components can be described as implemented. At that date BLD-0.24–27, accepted on 13 October 2026, were not implemented either. SYL-153 now implements BLD-0.24 as described in “Unused Builds and Locked Builds”; SYL-154 implements `lock`, `unlock` and Locked pruning protection (BLD-0.25). `prune --unused` and the Seqoya Lab page remain pending.
+BLD-0.17–23 were then accepted requirements with pending unit checks. The installed `arbol-builds` tool and launchers did not yet implement Root association, `--root`, current-Root defaults, per-Root pruning protection or Trunk compatibility inventory. The Driver build and launcher checks below verify the existing global Driver path only. They do not establish that any Root-aware path works, and no Root-aware requirement is marked implemented by this edit. `arbol-app`, `arbol`, the Root manager and the first Trunk need their own Build checks before those components can be described as implemented. At that date BLD-0.24–27, accepted on 13 October 2026, were not implemented either. SYL-153 now implements BLD-0.24 as described in “Unused Builds and Locked Builds”; SYL-154 implements `lock`, `unlock` and Locked pruning protection (BLD-0.25). SYL-163 now implements `prune --unused` (BLD-0.26); the Seqoya Lab page and scheduled invocation (BLD-0.27) remain pending.
 
 The existing source was checked on 12 October 2026: `arbol:builds/records.ts#BuildRecord` has no Root or chat-table association; `#launch` recognises `-v` and selects a global default; `arbol:builds/cli.ts#main` has no `--root` option; and `arbol:builds/service.ts#pruneBuilds` protects the global default. These are the implementation gaps, not verification of the new requirements. Since the port to Python on 14 October 2026 the same gaps are in `arbol:src/arbol_builds/launcher.py#valid_record` and `#launch`, `arbol:src/arbol_builds/cli.py#main` and `arbol:src/arbol_builds/service.py#prune_builds`; the TypeScript locators refer to commit `037468f`.
 
