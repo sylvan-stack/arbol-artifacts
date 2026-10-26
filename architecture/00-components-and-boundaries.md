@@ -198,6 +198,12 @@ Every listing reads this Root's Exchange records anew and checks their processes
 
 The `arbol-root` manager never reads chat content or opens a database. It knows an Exchange only through its ownership and execution metadata. The Root environment owns a database; its backend and Trunks open it, and its migration script is invoked by `arbol-roots`. Environment ownership changes none of the table writers below.
 
+<!-- sources:
+arbol-root:src/arbol_root/cli.py#trunks
+arbol-root:tests/test_commands.py#Commands
+arbol-root:scripts/verify_build.py#qualify
+-->
+
 ### What any Trunk must offer
 
 This is everything the rest of Arbol needs from a Trunk. The owner confirmed the seven points on 9 October 2026. Point 6 then read "It can export a chat to the file form and import one"; the owner replaced that the same day by a migration script for each Root (ARC-D34). On 13 October 2026 the owner gave the layout of the chat tables to the Root, which changed points 3 and 6 ([ARC-D48](#decisions)), and replaced the helper commands of point 7 ([ARC-D56](#decisions)).
@@ -309,7 +315,7 @@ The Root manager:
 | ARC-0.15 | consist of commands that end, keep nothing between two of them except files, and know the Exchanges in progress from the records in the Root's folder alone | Changed | drill |
 | ARC-0.16 | pick for a new Exchange the newest working compatible Build of the caller's named Trunk component or the Trivial Trunk, unless the caller names a compatible Build; refuse a Build that does not fit as the launcher `arbol-trunk` refuses it (RCT-0.9) | Changed | unit |
 | ARC-0.17 | never read chat content, never open the database, and build nothing | Changed | unit |
-| ARC-0.27 | expose every working Trunk implementation and Build whose Build record lists the named Root's Root Contract version, and manage Exchanges of different compatible implementations in that Root | New | unit: RTM-0.3 |
+| ARC-0.27 | expose every working Trunk implementation and Build whose Build record lists the named Root's Root Contract version, and manage Exchanges of different compatible implementations in that Root | New | inventory part: unit `root.trunks`, `root.trunks-refusal`, private `root.private-build` (SYL-181), plus `builds.trunk-list`/selection checks; Exchange management remains SYL-182/SYL-183 |
 | ARC-0.28 | distinguish the persistent Root identity from its manager Build and invocation, and keep that identity unchanged across compatible Build updates and restarts | New | drill |
 
 A Trunk, seen from outside:

@@ -404,6 +404,9 @@ arbol:scripts/roots_drill.py#drill
 arbol:tests/test_roots.py#real_server_example
 arbol:tests/test_roots.py#Commands.test_roots_default_state_and_settings_paths_stay_inside_the_callers_private_home
 arbol:pyproject.toml
+arbol-root:scripts/verify_build.py#qualify
+arbol-root:tests/test_commands.py#Commands
+arbol-root:tests/test_layout_copy.py#LayoutCopy
 -->
 
 ### What is built first
@@ -437,7 +440,7 @@ Roots:
 | ARC-1.21 | let the owner mark a working Root `failed` with a reason, never take a failed Root as current, and still open it when it is named | New | catalogue part: unit `roots.states`, `roots.catalogue`; explicit failed-Root launch: `builds.root-refusals` (SYL-158). Backend/UI opening remains pending |
 | ARC-1.23 | name in each Root's record the oldest Build of `arbol-app` the Root works with, and offer in the tray menu only the Roots the running Swift App is new enough for | New | record/minimum part: unit `roots.create`, `roots.app` with bootstrap sentinel 0 (SYL-160). Swift App tray filtering remains pending |
 | ARC-1.22 | run a test with the Builds of the Root under test on a folder and a database of the test's own, and a test of a Trunk Build in a separate test folder of its own, a temporary home, except its live checks (RCT-4, RCT-D29), so that it cannot reach the chats of a Root in use | Changed | catalogue part: unit `roots.default-paths`, `roots.create`, `roots.damaged-drill`, and real-server acceptance using only unique disposable database names (SYL-160). Trunk Build isolation is RCT-4.1; Root Build checks remain SYL-181/SYL-184 |
-| ARC-1.24 | support all working Trunk implementations and Builds whose Build records list the Root's Root Contract version, and expose them through `arbol-root trunks` | New | unit |
+| ARC-1.24 | support all working Trunk implementations and Builds whose Build records list the Root's Root Contract version, and expose them through `arbol-root trunks` | New | unit: `root.trunks`, `root.trunks-refusal`; private `root.private-build` (SYL-181), plus `builds.trunk-list`/selection checks (SYL-179) |
 | ARC-1.25 | rediscover Exchanges across retained Roots through the shared Root catalogue and each Root's matching manager, isolate a failing Root's listing, and route management to the recorded owning Root | New | drill |
 | ARC-1.26 | keep a Root's identity independent of its manager invocation and compatible Build replacements, and change no established Exchange ownership when the App or backend restarts | New | drill |
 | ARC-1.28 | create and change every table of a Root's database from the table layout that the Root's `arbol-root` Builds carry, apply to a Root in use only additions that its older Builds can ignore, for the chat tables as their Root Contract version allows (RCT-D24), and let no Trunk and no backend create or change a table | New | unit |
