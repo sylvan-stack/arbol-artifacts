@@ -349,9 +349,12 @@ dropped with the Driver's browser (see the Claude Driver's
 cheap run would refresh the report at the cost of allowance; whether to offer
 that is not decided here.
 
-The Claude Driver maps the five-hour and seven-day windows only. If the
-stream reports model-specific weekly windows, they are not in the report and
-not in Vigor; whether the stream carries them was not verified (SGM-D26).
+The Claude Driver maps the five-hour and seven-day windows only. The stream
+carries no model-specific weekly window: probed on 26 October 2026 with the
+test account on the `max` plan and Claude Code 2.1.304, `unifiedWindows` holds
+`five_hour` and `seven_day` and nothing else (SGM-D26). Should the tool add a
+model-scoped key, the Driver maps it as a further `weekly` window scoped by
+model with `tokens`, and Vigor takes it like any other token window.
 
 The placeholder weight `0.1` is a guess from one vendor's published limits
 applied to every gate of every family. Calibration needs report pairs with no
@@ -382,4 +385,4 @@ profile for operation.
 | SGM-D23 | Where does Kimi Code's report come from? | `GET https://api.kimi.com/coding/v1/usages` through the Pi Driver with the token it already holds; the Console gateway and hidden-browser page reading are not used | Decided by the owner, 2026-10-26; adopted the same day in SYL-288 and installed as Pi Build 5 |
 | SGM-D24 | Which windows take part, and how does the calculation know? | Only tokens and credits; `resource` on the Driver Contract's window says which. Until every Driver reports it, exclude the Claude Driver's z.ai window labelled `MCP` and treat the rest as tokens | Decided by the owner, 2026-10-26: added to the contract as DRV-1.27 and DRV-D46; the Drivers report it in their next Builds |
 | SGM-D25 | Which of several equal-length longest windows is the store? | The one scoped to the coding product the Subscription serves; the others of that length are shown and not summed | Open; proposed default in use |
-| SGM-D26 | Do model-specific weekly windows of the Anthropic family enter the report? | Add them scoped by model if the stream reports them; not verified | Open; needs a Claude Driver probe |
+| SGM-D26 | Do model-specific weekly windows of the Anthropic family enter the report? | Add them scoped by model if the stream reports them; not verified | Settled by a probe, 2026-10-26 (SYL-290): the stream reports none; `unifiedWindows` carries `five_hour` and `seven_day` only, for the test account on the `max` plan with Claude Code 2.1.304, so nothing enters the report today. The proposal stands for a tool version that adds a model-scoped key: the Claude Driver maps it as a further `weekly` window with `tokens`. Record: `~/Artifacts/arbol-claude-driver/research/anthropic-rate-limit-windows-probe-2026-10-26.md` |
