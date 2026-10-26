@@ -206,6 +206,11 @@ arbol-root:src/arbol_root/start.py#start
 arbol-root:src/arbol_root/listing.py#listing
 arbol-root:tests/test_start.py#Starting
 arbol-root:tests/test_listing.py#Listing
+arbol-root:src/arbol_root/stop.py#stop
+arbol-root:src/arbol_root/settle.py#settle
+arbol-root:src/arbol_root/groups.py#force_group
+arbol-root:tests/test_management_boundary.py#Boundary
+arbol-root:tests/test_groups.py#NativeForce
 -->
 
 ### What any Trunk must offer
@@ -318,8 +323,8 @@ The Root manager:
 |---|---|---|---|
 | ARC-0.15 | consist of commands that end, keep nothing between two of them except files, and know the Exchanges in progress from the records in the Root's folder alone | Changed | drill |
 | ARC-0.16 | pick for a new Exchange the newest working compatible Build of the caller's named Trunk component or the Trivial Trunk, unless the caller names a compatible Build; refuse a Build that does not fit as the launcher `arbol-trunk` refuses it (RCT-0.9) | Changed | unit: `root.start-named`, `root.start-chosen`, `root.start-no-fit`, `root.start-launch`, `root.start-selection-refusal`; private `root.private-build` (SYL-182), with launcher fit/explicit-version checks from SYL-179 |
-| ARC-0.17 | never read chat content, never open the database, and build nothing | Changed | unit |
-| ARC-0.27 | expose every working Trunk implementation and Build whose Build record lists the named Root's Root Contract version, and manage Exchanges of different compatible implementations in that Root | New | trunks/start/list: unit `root.trunks`, `root.start-launch`, `root.list-states`, `root.list-form`, private `root.private-build` (SYL-181/SYL-182), and launcher selection checks; stop/settle remain SYL-183 |
+| ARC-0.17 | never read chat content, never open the database, and build nothing | Changed | unit `root.no-settings`, `root.start-no-request-read`, `root.list-boundary`, `root.management-boundary`, `root.stop-control`, `root.cleanup-paths` (SYL-181/182/183); SQL-file packaging: RTM-1.1, with files run only by arbol-roots |
+| ARC-0.27 | expose every working Trunk implementation and Build whose Build record lists the named Root's Root Contract version, and manage Exchanges of different compatible implementations in that Root | New | unit `root.trunks`, `root.start-launch`, `root.list-states`, `root.list-form`, `root.management-boundary`, `root.stop-control`, `root.stop-force-kill`, `root.stop-orphaned-child`, `root.settle-named`, `root.settle-all`; private `root.private-build` (SYL-181/182/183) |
 | ARC-0.28 | distinguish the persistent Root identity from its manager Build and invocation, and keep that identity unchanged across compatible Build updates and restarts | New | drill |
 
 A Trunk, seen from outside:

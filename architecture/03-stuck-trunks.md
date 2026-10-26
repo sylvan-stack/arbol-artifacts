@@ -71,6 +71,12 @@ arbol-trunk:trunks/trivial/src/arbol_trunk_trivial/watch.py#Watch
 arbol-trunk:trunks/trivial/src/arbol_trunk_trivial/run.py#run_exchange
 arbol-trunk:trunks/trivial/src/arbol_trunk_trivial/termination.py#end_group
 arbol-root:contract/conformance/rct_conformance/scenarios/r7.py
+arbol-root:src/arbol_root/clock.py#awake
+arbol-root:tests/test_groups.py#GroupIdentity
+arbol-trunk:trunks/trivial/tests/test_loop.py#StoppingTheRun
+arbol-trunk:trunks/trivial/tests/test_loop.py#SilentRuns
+arbol-trunk:trunks/trivial/tests/test_watch.py#Watching
+arbol-trunk:trunks/trivial/tests/test_time_scale.py#TimeScaledWaits
 -->
 
 ### Ending a stuck Exchange
@@ -91,6 +97,13 @@ The Driver's run ends with its caller (DRV-2), and the next call of that Driver 
 | Not undone | Changes the agent made to files, and commands it had completed |
 | Afterwards | The chat takes a new message (ARC-2) |
 
+<!-- sources:
+arbol-root:src/arbol_root/stop.py#stop
+arbol-root:src/arbol_root/groups.py#force_group
+arbol-root:src/arbol_root/settle.py#settle_after_stop
+arbol-root:tests/test_groups.py#NativeForce
+-->
+
 ### A stop that is not obeyed
 
 A stop is a line in the `control` file of the Exchange (ARC-2). The Trunk stops the Driver's run, which may take 15 seconds (DRV-2), and ends the Exchange as cancelled.
@@ -98,6 +111,13 @@ A stop is a line in the `control` file of the Exchange (ARC-2). The Trunk stops 
 `arbol-root stop <exchange>` writes that line and waits. When the Exchange has not ended after 20 seconds, the same command ends it by force, as above ([ARC-D60](#decisions)). The Exchange is then interrupted and not cancelled, because the Trunk never confirmed the stop, unless its end was already written ([RCT-2](../../arbol-root/contract/02-starting-stopping-and-settling.md)).
 
 A UI shows "stopping" from the request until the Exchange has ended, and then its true final state. Stopping an Exchange that has ended already, or that is unknown, succeeds and changes nothing, as with a run (DRV-2). The Leather Bag can therefore always use stop to bring a chat back to a state in which it takes a message.
+
+<!-- sources:
+arbol-root:src/arbol_root/stop.py#stop
+arbol-root:src/arbol_root/clock.py#awake
+arbol-root:tests/test_stop.py#Stopping.test_graceful_deadline_calls_escalation_after_twenty_awake_seconds
+arbol-root:tests/test_groups.py#GroupIdentity.test_complete_stop_uses_20_5_5_with_an_in_process_moved_clock
+-->
 
 ### A Driver that falls silent
 
@@ -142,16 +162,16 @@ The Root manager:
 | ID | The Root manager must… | Origin | Verified by |
 |---|---|---|---|
 | ARC-3.5 | give in every listing each Exchange's heartbeat and what it is waiting for | New | unit: `root.list-states`, `root.list-form`, `root.list-forward-compatible` (SYL-182), RTM-0.6 |
-| ARC-3.6 | on `stop`, write the stop and wait, end the Trunk's processes by force when the Exchange has not ended after 20 seconds, and have it settled as interrupted, unless its end was already written (RCT-2) | Changed | drill |
-| ARC-3.7 | on `stop --force`, send the Trunk's processes the signal to end, end by force after 5 seconds what is still alive, leave none of them alive, and have the Exchange settled as interrupted, unless its end was already written (RCT-2) | Changed | drill |
-| ARC-3.8 | treat the stop of an Exchange that has ended or is unknown as success | Kept | unit |
+| ARC-3.6 | on `stop`, write the stop and wait, end the Trunk's processes by force when the Exchange has not ended after 20 seconds, and have it settled as interrupted, unless its end was already written (RCT-2) | Changed | Root manager unit `root.stop-control`, `root.stop-grace-clock`, `root.stop-complete-clock`, `root.stop-dead`, `root.stop-settle-refusal` (SYL-183); real-Root drill SYL-188 pending |
+| ARC-3.7 | on `stop --force`, send the Trunk's processes the signal to end, end by force after 5 seconds what is still alive, leave none of them alive, and have the Exchange settled as interrupted, unless its end was already written (RCT-2) | Changed | Root manager unit `root.stop-force-term`, `root.stop-force-kill`, `root.stop-orphaned-child`, `root.stop-group-identity`, `root.stop-complete-clock` (SYL-183); real-Root drill SYL-188 pending |
+| ARC-3.8 | treat the stop of an Exchange that has ended or is unknown as success | Kept | unit `root.stop-none`, `root.stop-ended`, `root.stop-dead`, `root.stop-disappearance`, `root.stop-settle-refusal` (SYL-183) |
 
 Arbol:
 
 | ID | Arbol must… | Origin | Verified by |
 |---|---|---|---|
-| ARC-3.9 | look at the Exchanges of every Root whose backend runs every 30 seconds, and call an Exchange stuck when its process lives and its heartbeat did not move between two looks at least 90 seconds apart | New | drill |
-| ARC-3.10 | never count time during which the Mac slept towards any limit of this specification | New | drill |
+| ARC-3.9 | look at the Exchanges of every Root whose backend runs every 30 seconds, and call an Exchange stuck when its process lives and its heartbeat did not move between two looks at least 90 seconds apart | New | Backend implementation/drill pending under accepted BKD-0.19; Root manager record-only listing is verified by RTM-0.6 |
+| ARC-3.10 | never count time during which the Mac slept towards any limit of this specification | New | Trunk moved-clock unit: StoppingTheRun.test_a_driver_still_alive_16_seconds_after_its_stop_line_is_killed_then_and_not_later (SYL-173), Watching.test_only_sixty_awake_seconds_without_a_raise_trigger_the_end and test_a_wall_clock_jump_does_not_count_as_awake_time (SYL-176), SilentRuns.test_sixteen_minutes_without_a_first_event_uses_the_awake_clock_and_the_scaled_duration and test_a_mac_asleep_for_an_hour_does_not_add_an_hour_to_silence (SYL-178), TimeScaledWaits; Root manager unit `root.stop-awake-clock`, `root.stop-complete-clock` (SYL-183). Actual Mac-sleep drill and backend looks remain pending implementation/qualification under accepted BKD-0.19 |
 | ARC-3.11 | end a stuck Exchange by force without asking, and say in its chat that it was ended because it was stuck | Changed | drill |
 | ARC-3.12 | never end an Exchange because it waits for an answer or for a command the agent runs, and show what it waits for and for how long | Changed | journey |
 | ARC-3.13 | show "stopping" from a stop request until the Exchange has ended, and then its true final state | Changed | journey |
