@@ -302,7 +302,7 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 
 ## Requirements
 
-The existing check names below verify the Driver and shared build-tool behaviour recorded on 5–8 October 2026. Root-specific selection, metadata and pruning are accepted extensions from [ARC-D47](../architecture/01-roots.md#decisions), recorded on 12 October 2026. They are not implemented or covered by those Driver checks; their checks are listed separately. Since SYL-155, on 16 October 2026, BLD-0.17 and 0.21 to 0.23 are implemented and their checks are named; since SYL-179, the same day, the launcher `arbol-trunk` is, and its checks are named under BLD-0.9, 0.16 and 0.22; since SYL-158, on 26 October 2026, Root-component default selection and selectors are implemented under BLD-0.18 and 0.19, with inventory that agrees. The remaining extension checks are pending.
+The existing check names below verify the Driver and shared build-tool behaviour recorded on 5–8 October 2026. Root-specific selection, metadata and pruning are accepted extensions from [ARC-D47](../architecture/01-roots.md#decisions), recorded on 12 October 2026. Those extensions have separate checks, rather than relying on the earlier Driver checks. Since SYL-155, on 16 October 2026, BLD-0.17 and 0.21 to 0.23 are implemented and their checks are named; since SYL-179, the same day, the launcher `arbol-trunk` is, and its checks are named under BLD-0.9, 0.16 and 0.22; since SYL-158, on 26 October 2026, Root-component default selection and selectors are implemented under BLD-0.18 and 0.19, with inventory that agrees. The remaining extension checks are pending.
 
 | ID | The registry, its tool and the launchers must… | Origin | Verified by |
 |---|---|---|---|
