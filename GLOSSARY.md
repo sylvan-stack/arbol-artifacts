@@ -1543,10 +1543,14 @@ for each closed booking, and `history.jsonl` for the area's lifecycle index
 with links to its bookings. This replaces the initial single-file working
 name `ledger.jsonl` by the owner's direction of 26 October 2026.
 
-It passively records participating agents' tool activity and observed file
-changes inside the named area. Agents retain unrestricted filesystem access;
-logging does not gate tool execution. Capture gaps and uncertain attribution
-remain explicit. When identifying one particular ledger, say **Workspace
+Its primary record is the exact net file-content change across a booking,
+using retained opening and closing snapshots, including uncommitted and
+untracked files, with associated Git history. Intermediate tool and watcher
+events provide a supplementary timeline and approximate attribution to Chat
+Sessions, Arcs and Beats. The owner accepts that an edit undone between
+snapshots may leave no record. Agents retain unrestricted filesystem access;
+logging does not gate tool execution. Result completeness and activity gaps
+are reported separately. When identifying one particular ledger, say **Workspace
 Ledger for Beaver Workspace**. The
 [format and logging design](../mycel/operations/workspace-ledger.md) describes
 the mechanisms still to build and their coverage limits.
