@@ -121,13 +121,17 @@ Opening the First Sapling has to start Build 6, not Build 8. The selection rules
 
 Within a Root, `arbol-root trunks` lists every Trunk and its Builds, marking those that list the Root's Root Contract version and the one `run` would start (ARC-0, RCT-0). Compatibility is evaluated for every Trunk component in the registry, not just for versions of a single implementation. For new work, `arbol-root` chooses the named Trunk or else the Trivial Trunk, then the Build `arbol-trunk list` marks chosen, which it starts with an exact `-v` ([RTM-0](../../arbol-root/specs/00-the-commands.md#starting-a-trunk)). It never compares independent components' Build numbers to choose an implementation. An accepted Exchange keeps its recorded concrete Build. The inventory and selection build nothing: `arbol-builds` remains the only build tool.
 
-Since SYL-155, on 16 October 2026, a Build record names its Root or its Trunk Root Contract versions. SYL-179 added the shared Root reader and compatible Trunk selection. Since SYL-158, on 26 October 2026, the launchers of `arbol` and `arbol-root` select only Builds of the named/current Root, and `arbol-builds list` and `show` agree with them. The 5/6 versus 7/8 example above is an actual build-to-launch check. Root creation and lifecycle commands, pruning per Root and backend/UI behavior remain the work of their own Beats; the specification alone does not supply them.
+Since SYL-155, on 16 October 2026, a Build record names its Root or its Trunk Root Contract versions. SYL-179 added the shared Root reader and compatible Trunk selection. Since SYL-158, on 26 October 2026, the launchers of `arbol` and `arbol-root` select only Builds of the named/current Root, and `arbol-builds list` and `show` agree with them. The 5/6 versus 7/8 example above is an actual build-to-launch check. SYL-159 adds count-based pruning that retains a runnable working Build per retained Root and per required Trunk Root Contract version, including preparing/failed Roots and conservative treatment of damaged records (BLD-D22). Root creation/lifecycle, unused-Build pruning and backend/UI behavior remain the work of their own Beats; the specification alone does not supply them.
 
 <!-- sources:
 arbol:src/arbol_builds/root_launcher.py#select_root_build
 arbol:src/arbol_builds/service.py#list_builds
 arbol:src/arbol_builds/service.py#show_build
 arbol:tests/test_builds.py#RootComponents
+arbol:src/arbol_builds/pruning.py#retained_roots
+arbol:src/arbol_builds/service.py#prune_protections
+arbol:src/arbol_builds/service.py#prune_builds
+arbol:tests/test_builds.py#PruningRoots
 -->
 
 ### The tray menu and `arbol-roots`
@@ -306,7 +310,7 @@ Builds:
 |---|---|---|---|
 | ARC-1.12 | record for a Build of `arbol` or `arbol-root` the Root it was made for | New | unit: `builds.root-of-build` |
 | ARC-1.13 | take as the default the working Build with the highest build number among the Builds of the Root asked for, and the current Root when none is named | Changed | unit: `builds.root-default`, `builds.root-refusals`, `builds.root-inventory` (SYL-158) |
-| ARC-1.14 | keep the newest working Build of every existing Root when pruning | Changed | unit |
+| ARC-1.14 | keep the newest working Build of every existing Root when pruning | Changed | unit: `builds.prune-roots`, `builds.prune-root-retention`, `builds.prune-root-catalogue-refusal`, `builds.prune-catalogue`, `builds.prune-catalogue-failure` (SYL-159); Trunk version protection: `builds.prune-versions`, `builds.prune-version-fallback`, `builds.prune-version-refusal` |
 
 Moving chats:
 

@@ -217,6 +217,14 @@ prune's view. Nonregular records are not opened as blocking streams. These
 pruning-only reads do not change the embedded launcher readers or their
 selection rules (BLD-D22).
 
+<!-- sources:
+arbol:src/arbol_builds/pruning.py#retained_roots
+arbol:src/arbol_builds/pruning.py#retained_record
+arbol:src/arbol_builds/service.py#prune_protections
+arbol:src/arbol_builds/service.py#prune_builds
+arbol:tests/test_builds.py#PruningRoots
+-->
+
 ### Unused Builds and Locked Builds
 
 The owner decides how long an unused Build is kept, and can keep any Build for good ([BLD-D12](#decisions)).
@@ -336,7 +344,7 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 
 ## Requirements
 
-The existing check names below verify the Driver and shared build-tool behaviour recorded on 5–8 October 2026. Root-specific selection, metadata and pruning are accepted extensions from [ARC-D47](../architecture/01-roots.md#decisions), recorded on 12 October 2026. Those extensions have separate checks, rather than relying on the earlier Driver checks. Since SYL-155, on 16 October 2026, BLD-0.17 and 0.21 to 0.23 are implemented and their checks are named; since SYL-179, the same day, the launcher `arbol-trunk` is, and its checks are named under BLD-0.9, 0.16 and 0.22; since SYL-158, on 26 October 2026, Root-component default selection and selectors are implemented under BLD-0.18 and 0.19, with inventory that agrees. The remaining extension checks are pending.
+The existing check names below verify the Driver and shared build-tool behaviour recorded on 5–8 October 2026. Root-specific selection, metadata and pruning are accepted extensions from [ARC-D47](../architecture/01-roots.md#decisions), recorded on 12 October 2026. Those extensions have separate checks, rather than relying on the earlier Driver checks. Since SYL-155, on 16 October 2026, BLD-0.17 and 0.21 to 0.23 are implemented and their checks are named; since SYL-179, the same day, the launcher `arbol-trunk` is, and its checks are named under BLD-0.9, 0.16 and 0.22; since SYL-158, on 26 October 2026, Root-component default selection and selectors are implemented under BLD-0.18 and 0.19, with inventory that agrees. SYL-159 implements BLD-0.20 on 26 October 2026, with retained-Root/version pruning and conservative damaged-record handling. Unused-Build pruning and the Seqoya Lab page remain pending.
 
 | ID | The registry, its tool and the launchers must… | Origin | Verified by |
 |---|---|---|---|
@@ -361,7 +369,7 @@ Root-specific extensions:
 | BLD-0.17 | associate each Build of `arbol` and `arbol-root` with exactly one Root, named with `arbol-builds build --root`, and number Builds per component across all Roots | New | `builds.root-of-build` |
 | BLD-0.18 | choose for `arbol` and `arbol-root` the newest runnable working Build of the named Root, or of the current Root when none is named, and refuse rather than choose another Root when that Build is absent | Changed | unit: `builds.root-default`, `builds.root-refusals`, `builds.root-inventory` |
 | BLD-0.19 | accept `[--root <identifier>] [-v <build number>]` as the selection prefix of `arbol` and `arbol-root`, take a named Build's Root from its record and refuse conflicting selectors, while keeping Driver and App launchers independent of Roots | New | unit: `builds.root-named`, `builds.root-pass-through`, `builds.root-launcher-text`, `builds.install-refreshes-launchers`; existing plain Driver/App and Trunk checks |
-| BLD-0.20 | preserve the newest working Build of `arbol` and `arbol-root` for every retained Root when pruning, and of each Trunk the newest working Build that fits each Root Contract version a retained Root uses, even if this keeps more than the requested count | Changed | unit (pending) |
+| BLD-0.20 | preserve the newest working Build of `arbol` and `arbol-root` for every retained Root when pruning, and of each Trunk the newest working Build that fits each Root Contract version a retained Root uses, even if this keeps more than the requested count | Changed | unit: `builds.prune-catalogue`, `builds.prune-catalogue-failure`, `builds.prune-roots`, `builds.prune-root-retention`, `builds.prune-root-catalogue-refusal`, `builds.prune-versions`, `builds.prune-version-fallback`, `builds.prune-version-refusal`, `builds.prune-outside-roots` (SYL-159); existing prune/locking checks |
 | BLD-0.21 | record each Trunk Build's list of Root Contract versions, without assigning the Build to one Root, so one Build serves every Root of those versions | New | `builds.trunk-root-contracts` |
 | BLD-0.22 | keep distinct Trunk implementations as distinct components with independent numbering, and never use build numbers across components to choose an implementation | New | `builds.trunk-components`; `arbol-trunk` never takes a Build of another Trunk (SYL-179): `builds.trunk-no-fit`, `builds.trunk-selection` |
 | BLD-0.23 | keep the registry, launchers and `arbol-builds` outside every Root, and hold no Root's backend, UI code, migration script or table layout in them | New | `builds.outside-roots` |
