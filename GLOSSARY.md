@@ -19,13 +19,13 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 **Table of Contents**
 
 - **A** — [A-Nex](#a-nex) · [Action Item](#action-item) · [Activity](#activity) · [Activity Execution](#activity-execution) · [Activity Graph](#activity-graph) · [Activation Rule](#activation-rule) · [Admission Boundary](#admission-boundary) · [Agent Attempt](#agent-attempt) · [Agent Record](#agent-record) · [Aggregate](#aggregate) · [Answer Beacon](#answer-beacon) · [Answer Threshold](#answer-threshold) · [Arbol](#arbol) · [Arbol Trunk](#arbol-trunk) · [Arbol Component](#arbol-component) · [Arbol Root](#arbol-root) · [Arbol Internals](#arbol-internals) · [Arbol Secret](#arbol-secret) · [Arbol Swift App](#arbol-swift-app) · [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) · [Arc](#arc) · [Artifact](#artifact) · [Artifact Chapter](#artifact-chapter) · [Artifact Corpus](#artifact-corpus) · [Artifact Space](#artifact-space) · [Attestation](#attestation) · [Authoritative Input](#authoritative-input) · [Authority Epoch](#authority-epoch)
-- **B** — [Beat](#beat) · [better-grep](#better-grep) · [Blueprint](#blueprint) · [Blueprint Chain](#blueprint-chain) · [Brain Recipe](#brain-recipe) · [Branch](#branch) · [Branch Overlay](#branch-overlay) · [Bridge](#bridge) · [Build](#build) · [Burn](#burn)
+- **B** — [Beat](#beat) · [better-grep](#better-grep) · [Blueprint](#blueprint) · [Blueprint Chain](#blueprint-chain) · [Book](#book) · [Brain Recipe](#brain-recipe) · [Branch](#branch) · [Branch Overlay](#branch-overlay) · [Bridge](#bridge) · [Build](#build) · [Burn](#burn)
 - **C** — [Cell](#cell) · [Change Walkthrough](#change-walkthrough) · [Chat Exchange](#chat-exchange) · [Chat Note](#chat-note) · [Chat Session](#chat-session) · [Checkpoint](#checkpoint) · [Chunk](#chunk) · [Chunking](#chunking) · [CLI](#cli) · [Code Corpus](#code-corpus) · [Code Map](#code-map) · [Code Scout](#code-scout) · [Command](#command) · [Communicado](#communicado) · [Communicado Action](#communicado-action) · [Communicado Delivery](#communicado-delivery) · [Communicado Descriptor](#communicado-descriptor) · [Communicado Family](#communicado-family) · [Communicado Presentation](#communicado-presentation) · [Communicado Species](#communicado-species) · [Communicado State](#communicado-state) · [Companion](#companion) · [Completion](#completion) · [Corpus](#corpus) · [Corpus Watcher](#corpus-watcher) · [Coupling](#coupling) · [Cue](#cue) · [Cue Channel](#cue-channel) · [Cue Command](#cue-command) · [Cue Detection Catalog](#cue-detection-catalog) · [Cue Target](#cue-target) · [Cue Target Cache](#cue-target-cache)
 - **D** — [Decision](#decision) · [Default Arbol Trunk](#default-arbol-trunk) · [Delegate](#delegate) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance)
 - **E** — [Effector](#effector) · [Email Source Item](#email-source-item) · [Elma Chat](#elma-chat) · [Elma View Page](#elma-view-page) · [Embedder Profile](#embedder-profile) · [Embedding](#embedding) · [Embedding Provider](#embedding-provider) · [Entity](#entity) · [Entity Card](#entity-card) · [Entity Card Content](#entity-card-content) · [Entity Card Resolver](#entity-card-resolver) · [Entity Chip](#entity-chip) · [Entity Context Menu](#entity-context-menu) · [Entity Edge](#entity-edge) · [Entity Kind](#entity-kind) · [Entity Shape](#entity-shape) · [Entity URI](#entity-uri) · [Env Keepers](#env-keepers) · [Errand](#errand) · [Event Log](#event-log) · [Event Log Service](#event-log-service) · [Event Sourcing](#event-sourcing) · [Exchange Assignment](#exchange-assignment)
 - **F** — [Fanout](#fanout) · [Flyer](#flyer) · [Fold / Projection](#fold--projection) · [Font Scale](#font-scale) · [Free-standing](#free-standing)
 - **G** — [Generation](#generation)
-- **H** — [H-Nex](#h-nex) · [Heartwood](#heartwood) · [Hunk Review](#hunk-review)
+- **H** — [H-Nex](#h-nex) · [Heartwood](#heartwood) · [Hold](#hold) · [Hunk Review](#hunk-review)
 - **I** — [Identity Reconciliation](#identity-reconciliation) · [Ignore Rule](#ignore-rule) · [Index Store](#index-store) · [Ingest](#ingest) · [Initiator](#initiator) · [Instructions Hub](#instructions-hub) · [Intelligence Provider (IP)](#intelligence-provider-ip)
 - **K** — [Knowledge System](#knowledge-system)
 - **L** — [Ladder](#ladder) · [Leather Bag](#leather-bag) · [Living Topic](#living-topic) · [Load](#load)
@@ -33,12 +33,12 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **N** — [Native Tool Call](#native-tool-call) · [Nex](#nex) · [Nex Colab](#nex-colab) · [Nex Knowledge Map](#nex-knowledge-map) · [Normalizer](#normalizer) · [Now Line](#now-line)
 - **O** — [Oaken](#oaken) · [Objectives](#objectives) · [Organization](#organization) · [Origin](#origin) · [Origin Coverage](#origin-coverage) · [Origin Link](#origin-link)
 - **P** — [Parse Result](#parse-result) · [Parser](#parser) · [Parser Pipeline](#parser-pipeline) · [Provider](#provider)
-- **R** — [Radar](#radar) · [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Requirement](#requirement) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Routine](#routine) · [Runbook](#runbook)
+- **R** — [Radar](#radar) · [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Release](#release) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Requirement](#requirement) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Routine](#routine) · [Runbook](#runbook)
 - **S** — [Saga](#saga) · [Scan](#scan) · [Signal](#signal) · [Signal Rule](#signal-rule) · [Signal Type](#signal-type) · [Seqoya Lab](#seqoya-lab) · [Source Ref](#source-ref) · [Sparse Retrieval](#sparse-retrieval) · [Spotlight](#spotlight) · [Stale](#stale) · [Stale Summary Regeneration](#stale-summary-regeneration) · [State Runtime Profile](#state-runtime-profile) · [Steward](#steward) · [Stint](#stint) · [Subscription](#subscription) · [Summary Node](#summary-node) · [Surface](#surface) · [Sync Pass](#sync-pass)
 - **T** — [Taproot](#taproot) · [Text Snapshot](#text-snapshot) · [Theme](#theme) · [Tool](#tool) · [Tool Request](#tool-request) · [Tracked Source](#tracked-source) · [Trivial Trunk](#trivial-trunk) · [Trunk Runtime](#trunk-runtime) · [Turn](#turn)
 - **U** — [UI](#ui) · [UIShell / Chrome](#uishell--chrome)
 - **V** — [Velocity](#velocity) · [Visit](#visit)
-- **W** — [Willo Station](#willo-station) · [Working Directory](#working-directory) · [Workload](#workload) · [Workspace](#workspace) · [Worktree](#worktree) · [Worktree Container](#worktree-container)
+- **W** — [Willo Station](#willo-station) · [Working Directory](#working-directory) · [Workload](#workload) · [Workspace](#workspace) · [Workspace Ledger](#workspace-ledger) · [Worktree](#worktree) · [Worktree Container](#worktree-container)
 
 ---
 
@@ -270,6 +270,12 @@ A **deterministic composition of [Blueprint](#blueprint) runs** — the *program
 
 **Example:** A chain script runs a research Blueprint, aborts when its `done_when` is unmet, and only then starts a planning Blueprint in a fresh Chat Session; a second chain that needs the same first steps duplicates them rather than sharing a sub-chain — chains evolve independently and each reads whole.
 
+
+## Book
+
+A synonym of [Hold](#hold): to **book Beaver Workspace** means an agent has
+started working in **Beaver Workspace**, reserving it for that work.
+**Booking** and **holding** name the same operation and reservation.
 
 ## Brain Recipe
 
@@ -866,6 +872,17 @@ The umbrella for [Mycel](#mycel)'s **productive** side: *producing or regenerati
 
 **Example:** A [Routine](#routine) could regenerate a stale "API reference" [Chunk](#chunk) from the code it derives from, then leave it Unattested for a competent reviewer — that's Generation; the [Detection](#detection) that flagged it stale is not.
 
+## Hold
+
+To **hold** or **book** **Beaver Workspace** means an agent has started
+working there and reserved the complete area for that work. The verbs are
+synonyms; a **hold** or **booking** is the resulting reservation. Ending it
+is [Release](#release). Existing ownership and territory rules remain those
+of [Working in Sagas](../mycel/operations/sagas.md#holds).
+
+**Example:** "Hold Beaver Workspace" and "Book Beaver Workspace" mean the
+same operation.
+
 ## Hunk Review
 
 The shared component that displays a selected **Diff** as changed files, code changes, and the commit information relevant to its current [Diff View](#diff-view). Hunk Review does not create or persist views: its host selects the Diff View and supplies the constructed Diff.
@@ -1186,6 +1203,14 @@ Relation to its siblings: a Refresh is the Artifact-Corpus step *inside* a [Sync
 
 **Example:** After editing `GLOSSARY.md` by hand, a Refresh re-chunks it, clears the edited chunks' [Embeddings](#embedding), and [Detection](#detection) marks the [Summary Node](#summary-node) derived from them [Stale](#stale) — the badge updates; regeneration waits for a person.
 
+## Release
+
+To **release Beaver Workspace** means ending the agent's hold or booking of
+**Beaver Workspace**. **Unhold** and **unbook** are synonyms; **release** is
+the standard operation name. The existing rules for
+[returning the booked area](../mycel/operations/sagas.md#stopping-and-finishing)
+still apply.
+
 ## Repo
 
 A git repository, identified by a short **code name**—not by a path, checkout, branch, or origin URL. It is the stable identity to which the work graph and policy bind: a [Branch](#branch) and every [Worktree](#worktree) belong to a Repo, while [Intelligence Providers](#intelligence-provider-ip) carry default/prohibited rules per Repo ([Seqoya Lab](#seqoya-lab)-configured). A Repo may belong to an [Organization](#organization). A Repo's configured filesystem location is its standard Git checkout folder. Known code names: `Arbol`, `Slack Bridge`, `BroPulse`, `hyperkey`, `AppRecorder`.
@@ -1485,6 +1510,14 @@ Color and numbered paths still name the same ten areas; existing holds keep
 their recorded paths. The legacy `#environment` link remains an alias to
 this definition. See [Working in Sagas](../mycel/operations/sagas.md#named-work-areas)
 for the name mapping, booking, branches, setup and return.
+
+## Workspace Ledger
+
+The `ledger.jsonl` file that records a history of work items while an agent
+works in a named area, such as **Beaver Workspace**. When identifying one
+particular ledger, say **Workspace Ledger for Beaver Workspace**.
+
+The file's function and behavior will be described later.
 
 ## Worktree
 
