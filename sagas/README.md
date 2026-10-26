@@ -3,8 +3,8 @@ role: authored
 ---
 # Sagas
 
-Specifications for the [Saga](../GLOSSARY.md#saga) family and its presentation
-in the [Radar](../GLOSSARY.md#radar). A Saga contains Arcs, and an Arc contains
+Specifications for the [Saga](../GLOSSARY.md#saga) family, its presentation
+in the [Radar](../GLOSSARY.md#radar), and the Radar's Subscription metrics. A Saga contains Arcs, and an Arc contains
 Beats. The existing workflow remains in [Working in Sagas](../../mycel/operations/sagas.md).
 
 ## Specifications
@@ -12,6 +12,7 @@ Beats. The existing workflow remains in [Working in Sagas](../../mycel/operation
 | Spec | Title | Status |
 |---|---|---|
 | [SGM-0](00-metrics.md) | Priority, Need Attention, Readiness, Volume and Momentum | draft |
+| [SGM-1](01-subscriptions-vigor.md) | Subscriptions Vigor | draft |
 
 ## Conventions
 

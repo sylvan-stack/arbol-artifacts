@@ -34,10 +34,10 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **O** — [Oaken](#oaken) · [Objectives](#objectives) · [Organization](#organization) · [Origin](#origin) · [Origin Coverage](#origin-coverage) · [Origin Link](#origin-link)
 - **P** — [Parse Result](#parse-result) · [Parser](#parser) · [Parser Pipeline](#parser-pipeline) · [Provider](#provider)
 - **R** — [Radar](#radar) · [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Release](#release) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Requirement](#requirement) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Routine](#routine) · [Runbook](#runbook)
-- **S** — [Saga](#saga) · [Scan](#scan) · [Signal](#signal) · [Signal Rule](#signal-rule) · [Signal Type](#signal-type) · [Seqoya Lab](#seqoya-lab) · [Source Ref](#source-ref) · [Sparse Retrieval](#sparse-retrieval) · [Spotlight](#spotlight) · [Stale](#stale) · [Stale Summary Regeneration](#stale-summary-regeneration) · [State Runtime Profile](#state-runtime-profile) · [Steward](#steward) · [Stint](#stint) · [Subscription](#subscription) · [Summary Node](#summary-node) · [Surface](#surface) · [Sync Pass](#sync-pass)
+- **S** — [Saga](#saga) · [Scan](#scan) · [Signal](#signal) · [Signal Rule](#signal-rule) · [Signal Type](#signal-type) · [Seqoya Lab](#seqoya-lab) · [Source Ref](#source-ref) · [Sparse Retrieval](#sparse-retrieval) · [Spotlight](#spotlight) · [Stale](#stale) · [Stale Summary Regeneration](#stale-summary-regeneration) · [State Runtime Profile](#state-runtime-profile) · [Steward](#steward) · [Stint](#stint) · [Subscription](#subscription) · [Subscriptions Vigor](#subscriptions-vigor) · [Summary Node](#summary-node) · [Surface](#surface) · [Sync Pass](#sync-pass)
 - **T** — [Taproot](#taproot) · [Text Snapshot](#text-snapshot) · [Theme](#theme) · [Tool](#tool) · [Tool Request](#tool-request) · [Tracked Source](#tracked-source) · [Trivial Trunk](#trivial-trunk) · [Trunk Runtime](#trunk-runtime) · [Turn](#turn)
 - **U** — [UI](#ui) · [UIShell / Chrome](#uishell--chrome)
-- **V** — [Velocity](#velocity) · [Visit](#visit)
+- **V** — [Velocity](#velocity) · [Vigor](#vigor) · [Visit](#visit)
 - **W** — [Willo Station](#willo-station) · [Working Directory](#working-directory) · [Workload](#workload) · [Workspace](#workspace) · [Workspace Booking](#workspace-booking) · [Workspace Ledger](#workspace-ledger) · [Worktree](#worktree) · [Worktree Container](#worktree-container)
 
 ---
@@ -1369,6 +1369,12 @@ An authenticated account with a provider vendor family (login state + usage/limi
 
 **Example:** Alex’s logged-in Claude account is a subscription; `safe-claude` can be bound to it so turns run using that account’s token. The `glm` subscription is Z.AI’s GLM Coding Plan (family `zai`, auth_mode `api_key`): a static z.ai key whose usage Arbol reads from z.ai’s quota API.
 
+## Subscriptions Vigor
+
+The [Radar](#radar)'s view of [Vigor](#vigor) across every [Subscription](#subscription) on this computer: each Subscription's Vigor, the moment and value of its next change, and its stale or unknown state with the reason, sorted by Vigor. The headline is the highest value named with its Subscription, never a sum across vendors. A Subscription, not an [Intelligence Provider](#intelligence-provider-ip), is the unit. Specified in [SGM-1](sagas/01-subscriptions-vigor.md). *(Planned feature: the first version computes and logs, and displays nothing in radar-stats.)*
+
+**Example:** "Subscriptions Vigor: 0.48, Kimi Code" with Alex's Claude at 0.37, Codex at 0.16, and a fourth Subscription shown as unknown, allowance not supported for its family.
+
 ## Summary Node
 
 One node of a [RAPTOR Tree](#raptor-tree): a `derived` [Chunk](#chunk) holding the summary of one cluster, at a given **tier** (1 = summarises corpus leaves; 2 = summarises tier-1 summaries; …). Joined to every member it summarises by a **generation edge** ([Derivation](#derivation)) pinning that member's hash — which is exactly what lets [Detection](#detection) mark the summary [Stale](#stale) when a member changes. A Summary Node is a full citizen: it has an [Embedding](#embedding) (so [Retrieval](#retrieval) finds it), stable identity, and appears in the Chunks Viewer under the RAPTOR toggle.
@@ -1476,6 +1482,12 @@ The repository folder in which a Chat Session executes commands. It is the first
 The **rate of token generation**: tokens per second produced by the agents working a unit. A flow — the rate counterpart of [Burn](#burn)'s stock. **Radar Velocity** is the machine-wide total. Scoped per unit and machine-wide (see [Radar](#radar)). *(Planned feature.)*
 
 **Example:** "Writing Specs Saga" runs at ~180 tok/s while its Delegate drafts; the machine totals ~520 tok/s across four Delegates.
+
+## Vigor
+
+How urgent it is to use a [Subscription](#subscription) now, from 0 to 1: the share of its allowance that will expire unused at a coming reset if spending continues at the window's even pace, summed over its token windows with the longest window weighted 1 and each shorter one by its share of that window's allowance, capped at 1, and 0 while a reached window blocks spending. Computed by Arbol from the [Driver](#driver)'s last usage report and the clock; Drivers deliver windows, never a Vigor. The owner's term. Specified in [SGM-1](sagas/01-subscriptions-vigor.md). *(Planned feature.)*
+
+**Example:** 80 % of the week unspent with 43 % of the week left loses 0.37 at even pace: Vigor 0.37. The same account with its five-hour window used up shows 0 now and 0.39 at that window's reset.
 
 ## Visit
 
