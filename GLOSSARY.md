@@ -1515,7 +1515,11 @@ stay in place for running agents, saved sessions and installed dependencies.
 Color and numbered paths still name the same ten areas; existing holds keep
 their recorded paths. The legacy `#environment` link remains an alias to
 this definition. See [Working in Sagas](../mycel/operations/sagas.md#named-work-areas)
-for the name mapping, booking, branches, setup and return.
+for the name mapping, booking, branches, setup and return. The new
+`workspace-ledger` component reads names, stable IDs, paths and aliases from a
+Git-ignored local configuration instead of a compiled inventory. Its
+[configuration specification](../sylvan-stack/repos/workspace-ledger/specs/00-scope-and-configuration.md)
+is draft; existing booking scripts retain their live behavior until migration.
 
 ## Workspace Booking
 
@@ -1553,7 +1557,10 @@ logging does not gate tool execution. Result completeness and activity gaps
 are reported separately. When identifying one particular ledger, say **Workspace
 Ledger for Beaver Workspace**. The
 [format and logging design](../mycel/operations/workspace-ledger.md) describes
-the mechanisms still to build and their coverage limits.
+the mechanisms still to build and their coverage limits. The independent
+`workspace-ledger` component has its own
+[draft specifications](../sylvan-stack/repos/workspace-ledger/specs/README.md),
+including private configuration, snapshot capture, passive watching and recovery.
 
 ## Worktree
 
