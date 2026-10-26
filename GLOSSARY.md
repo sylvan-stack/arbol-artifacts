@@ -1543,11 +1543,13 @@ for each closed booking, and `history.jsonl` for the area's lifecycle index
 with links to its bookings. This replaces the initial single-file working
 name `ledger.jsonl` by the owner's direction of 26 October 2026.
 
-The required capture covers every tool call and file change, including
-participating subagents. When identifying one particular ledger, say
-**Workspace Ledger for Beaver Workspace**. The
-[format and enforcement design](../mycel/operations/workspace-ledger.md)
-distinguishes that requirement from the capture mechanisms still to build.
+It passively records participating agents' tool activity and observed file
+changes inside the named area. Agents retain unrestricted filesystem access;
+logging does not gate tool execution. Capture gaps and uncertain attribution
+remain explicit. When identifying one particular ledger, say **Workspace
+Ledger for Beaver Workspace**. The
+[format and logging design](../mycel/operations/workspace-ledger.md) describes
+the mechanisms still to build and their coverage limits.
 
 ## Worktree
 
