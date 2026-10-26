@@ -96,6 +96,59 @@ Owning a database is an environment property. The `arbol-root` manager never ope
 
 Inside a Root a table changes only by additions that older Builds can ignore. Any other change makes a new Root. An addition is made by the Root: a later `arbol-root` Build of the same Root carries the layout with the addition, and `arbol-roots layout` applies it. A Trunk or a backend that needs a new table or column gets it this way and adds none itself. For the chat tables, an addition belongs to a Root Contract version; how one is made is decided with the first ([RCT-D24](../../arbol-root/contract/03-the-chat-tables.md#decisions)).
 
+`arbol-roots` creates and drops databases through `psql` connected to the
+maintenance database `postgres`, as the role in the configured address, never
+by opening a Root's database for these commands. Creation uses `CREATE
+DATABASE` with `TEMPLATE template0` and UTF-8, so it starts without user
+tables; removal uses `DROP DATABASE IF EXISTS`, without `FORCE`. Names are
+quoted SQL identifiers, not shell text. The default name is `arbol_<root>`;
+when that exceeds PostgreSQL's 63-byte identifier limit it uses `arbol_`,
+the first 40 identifier characters, `_` and 16 SHA-256 hex characters. A
+create-only `--database-name` selects a different name. Empty, NUL-containing,
+overlong, maintenance and template names are refused; no two retained Roots
+may claim the same database (ARC-D65).
+
+The address comes from `~/.arbol/database.json`, which names no database or
+password. The tool connects to `postgres` by adding that database to the
+address. It reads the password with `security find-generic-password -w`,
+service `com.sylvan-stack.arbol.database` and the address's role as account,
+with a two-second limit. Status 44 means no item and no `PGPASSWORD`; another
+failure or timeout is `database_unavailable` naming the Keychain. The psql
+environment has only `HOME`, `PATH`, `LANG` and, when found, `PGPASSWORD`.
+It disables psql startup files and password prompts, stops on SQL errors,
+uses a 30-second limit and never returns a password in a diagnostic.
+[PostgreSQL 17 CREATE DATABASE](https://www.postgresql.org/docs/17/sql-createdatabase.html),
+[DROP DATABASE](https://www.postgresql.org/docs/17/sql-dropdatabase.html) and
+[psql](https://www.postgresql.org/docs/17/app-psql.html) define these commands
+and their maintenance-connection and transaction restrictions.
+
+The catalogue commands take `--roots-dir`, `--settings-dir`,
+`--registry-dir` and `--database-config` overrides. Defaults are the Roots
+folder, `~/.arbol/roots/`, the Build registry and `~/.arbol/database.json`.
+`--psql` and `--security` select executable stand-ins for isolated tests;
+normal calls use psql on the search path and `/usr/bin/security`. These
+settings belong to this invocation and change no stored defaults. Only
+create accepts `--database-name`, `--from`, `--root-contract` and `--name`;
+only fail accepts `--reason`. migrate and layout remain SYL-185.
+
+Mutations hold one nonblocking advisory catalogue lock, in
+`.catalogue.lock` under the selected Roots folder, through their preflight,
+SQL and file changes. A concurrent mutation is `busy`; list/show read atomic
+records without this lock. Create refuses existing state/settings targets
+before SQL, reserves new folders exclusively, copies settings without
+following symlinks, and publishes `root.json` atomically only after confirmed
+database creation. It records a private `.creating.json` receipt while doing
+so. A later local failure rolls back a confirmed database creation and the
+new folders. If database creation has an uncertain outcome, or rollback
+itself fails, the receipt and reserved folders remain and the JSON failure
+names the recovery location; it does not claim a complete rollback or risk
+dropping an existing database. A hard process loss can leave the same receipt.
+Remove refuses the current Root under the same lock and refuses duplicate
+database claims or symlinked target folders. It drops the database before
+removing the named folders; a failed DROP leaves the files intact. A later
+filesystem failure is reported truthfully, and remove can be retried because
+DROP uses IF EXISTS. No command force-terminates database connections.
+
 ### Builds and Roots
 
 Root-aware selection in BLD-0 qualifies a component's default Build by the Root. Picking the newest Build across all Roots would start a manager made for a different environment:
@@ -153,6 +206,39 @@ One tool, `arbol-roots`, creates and changes Roots. It lies beside `arbol-builds
 | `arbol-roots remove <identifier>` | Removes a Root's folder, settings and database. Never the current Root |
 
 This global tool can list the catalogue and create the first Root without selecting a Root Build first. The per-Root `arbol-root` program manages compatible Trunks and Exchanges inside an existing Root. They are separate entry points with different scopes.
+
+The catalogue and the launchers share Root header validation and the
+current-Root function: identifier, state, creation time and Root Contract
+version decide whether a record can participate. Catalogue reading safely
+ignores unreadable/nonregular records and preserves extra fields; metadata
+such as database and App minimum is additionally validated when a command
+uses it. Thus minimal compatible records remain readable without a second
+current-Root rule. New records contain the complete shared form. A default
+show with no current Root is `unknown_root`. list still succeeds with no
+current Root, marking none.
+
+Before any runnable working `arbol-app` Build exists, create records `app:
+"0"`, a bootstrap sentinel meaning no released App minimum has yet been
+chosen. Otherwise it records the newest runnable working App Build. The app
+command takes an available runnable working App Build and may raise the
+minimum or repeat it unchanged; it never lowers it. This sentinel changes
+no real Build numbering and is replaced when a minimum is chosen (ARC-D66).
+
+ready requires a runnable working Trivial Trunk Build whose rootContracts
+include the Root's version on every call, including repeated ready. It may
+make a preparing or failed Root working, clearing an old failure. fail takes
+only a working Root and a nonblank reason. It records the failure time and
+reason and preserves creation time, lineage, database, App minimum and Root
+Contract. Catalogue order is newest created first, with descending identifier
+as the tie breaker, the same tie rule as current selection. No change of
+state rewrites the Root Contract.
+
+CLI refusals use `invalid_input`, `unknown_root`, `already_exists`,
+`build_unavailable`, `no_fit`, `current_root`, `database_unavailable`, `busy`
+or `operation_failed`, always with the shared error code/message envelope
+and exit 1. Success is one record, except list's array; remove returns the
+removed record. Root creation builds nothing and runs no Root SQL script.
+These are technical command and failure choices for SYL-160 (ARC-D67).
 
 ### Discovery across Roots
 
@@ -337,7 +423,7 @@ interface RootRecord {                 // root.json
   createdAt: string;                   // ISO 8601, UTC; the newest working Root is the current one
   grewFrom?: string;                   // the identifier of the Root it grew from; absent for the first Root
   database: string;                    // the name of its database, "arbol_sapling"
-  app: string;                         // the oldest Build of arbol-app this Root works with, "7"
+  app: string;                         // the oldest Build of arbol-app this Root works with, "7"; "0" before any App Build (ARC-D66)
   rootContract: number;                // the one version of the Root Contract this Root uses, 1; never changes (RCT-0)
   failed?: { at: string; reason: string };
 }
@@ -412,3 +498,6 @@ The entries below retain the terminology and outcomes recorded on 9 October 2026
 | ARC-D50 | When does a newer Root check whether a chat went on in the older Root? | When the Arbol backend of the newer Root starts and when its chat list is opened. The check only compares and marks | Decided 13 October 2026 by the owner, for now: "Not sure yet. Let's implement your suggestion first and we'll see how it works." To be looked at again once it is in use. Changed 15 October 2026 by [RTM-D12](../../arbol-root/specs/01-builds-layouts-and-migration.md#decisions): not built in the first thin path; the owner left the choice to the agent |
 | ARC-D51 | In which file is the address of the database server, and under which name is its password in the Keychain? | `~/.arbol/database.json`, with the address and nothing else. The Keychain item has the service `com.sylvan-stack.arbol.database` and the role of the address as its account | Decided 13 October 2026 by the owner: the agent chooses the file. Chosen: the proposed default. The owner confirmed the direct install of ARC-D11 the same day |
 | ARC-D52 | How does a running Arbol hand the listeners over when another Root becomes current? | The Arbol Swift App watches the Root records. When the current Root changes, it stops the listeners of the old backend and then starts the new backend | Decided 13 October 2026 by the owner: Telegram is postponed. It is the only listener so far, so the hand-over is specified when Telegram is built, and the proposed default is not adopted |
+| ARC-D65 | How does arbol-roots make and remove a Root database? | psql on postgres as the configured role, minimal environment plus a Keychain password read within two seconds; CREATE DATABASE from template0 in UTF-8, DROP DATABASE IF EXISTS without FORCE, quoted/validated names and a 30-second limit. Serialize catalogue mutations; reserve folders exclusively and publish the record after creation. Roll back confirmed creation failures; preserve a private receipt when an outcome or rollback is uncertain. DROP failure leaves files intact, and later filesystem failure permits a truthful retry | Chosen 26 October 2026 as a technical choice for SYL-160, before implementation |
+| ARC-D66 | What App minimum is recorded before an arbol-app Build exists? | app is the string 0 as a bootstrap sentinel; otherwise create uses the newest runnable working App Build. The app command names an available runnable working Build and raises or repeats the minimum without lowering it; the sentinel is no real Build | Chosen 26 October 2026 as a technical choice for SYL-160, before implementation |
+| ARC-D67 | What are the catalogue command, record and failure boundaries? | Shared header validation/current selection with the launchers, atomic writes preserving compatible fields, command-specific metadata validation, newest-created order and identifier tie break. Invocation overrides isolate roots/settings/registry/database and executable stand-ins; mutations use a nonblocking catalogue lock. ready checks a runnable working compatible Trivial Trunk each time; fail takes only working Roots; remove never takes current or a shared database claim. Refusals use the documented code/message envelope. Creation neither builds nor runs Root SQL | Chosen 26 October 2026 as a technical choice for SYL-160, before implementation |
