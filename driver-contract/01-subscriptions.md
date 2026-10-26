@@ -126,6 +126,8 @@ A usage report answers "how much of this account's allowance is used and when do
 
 The Driver keeps the last `ok` report with the Subscription so a caller can show it at once on start-up and replace it when a fresh one arrives.
 
+Each window says what it counts: `tokens`, `credits` or `calls`, the last for an allowance such as z.ai's monthly MCP calls. A caller that sums allowance, such as Subscriptions Vigor ([SGM-1](../sagas/01-subscriptions-vigor.md)), takes only token and credit windows. A Driver leaves the field absent when the vendor does not say, never guessing (DRV-1.27).
+
 Observed in version 1: usage was fetched when the accounts page opened, after sign-in and on Refresh; nothing polled. The last good Anthropic reading was cached. Three different sources were in use, one of them a web page read in a hidden browser session.
 
 Historical evidence (frozen version 1; ordinary locators, not Source Refs):
@@ -184,6 +186,7 @@ Current records and source/package provenance: `~/Artifacts/arbol-codex-driver/r
 | DRV-1.24 | treat a Subscription recorded as `signing_in` whose `sign-in` command no longer runs as `signed_out` | New | Claude Python: `C6`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C6`, `Accounts.test_live_progress_dead_and_reused_owner_recovery` |
 | DRV-1.25 | carry a sign-in attempt in one `sign-in` command: steps as lines on standard output, the code of an `enter_code` step as a line on standard input, and the attempt cancelled when the command is ended | New | Claude Python: `C2`, `C6`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C2`, `C6`, `Accounts.test_login_replacement_cancels_pending_and_sign_out_clears_credentials` |
 | DRV-1.26 | read a key only from the source its settings file names for the Subscription. For the Keychain, which is the default: name the Subscription's item in the `store_secret` step, go on by itself once the item is filled, and remove from it a key that fails the check of DRV-1.4 or that the vendor rejects at sign-in. For a command: run it whenever the key is needed, keep what it prints only transiently in private operation memory/pipes, and fail sign-in on a refused key. For a bound native-managed key, attach/check its pinned ID without store_secret and never delete the native key | Changed | Claude Python: `C3`, `C32`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C3`, `C32` |
+| DRV-1.27 | say on each usage window what it counts, `tokens`, `credits` or `calls`, and leave the field absent rather than guess | New | contract: `C41`, to be extended to assert the field; Driver checks follow in CLD-1, CDX-1 and PI-1 |
 
 DRV-1.9 had a Driver renew a credential. It was withdrawn on 6 October 2026: the vendor tools renew their own logins and a key is never renewed, so no family has a credential a Driver could renew. Its number is not used again.
 
@@ -229,6 +232,7 @@ interface UsageReport {
   windows: Array<{
     kind: "session" | "weekly" | "other";
     label: string;
+    resource?: "tokens" | "credits" | "calls";   // what the window counts; absent when the vendor does not say
     usedPercent?: number;           // 0 to 100
     resetsAt?: string;
     windowMinutes?: number;
@@ -306,3 +310,4 @@ SYL-95 verification is recorded in the requirement-level `~/Artifacts/arbol/driv
 | DRV-D8 | Should per-run token and cost records be kept by the Driver? | No. A run reports its usage in its final event (DRV-2) and the caller keeps the history | Decided 6 October 2026 by the owner: the proposed default (SYL-40) |
 | DRV-D37 | How do the local Subscription commands choose identifiers and dates? | Identifiers use the safe file-name form of DRV-6: 1 to 128 ASCII letters, digits, underscores, dots or hyphens, starting with a letter or digit. An automatic identifier takes the first available family-number name, starting at 2, and is reserved while its record is written under its own lock. The implicit family records use the creation time of the state format file for their dates until their first change. A partial update with no fields returns the unchanged record | Decided 6 October 2026 during SYL-78, a technical choice |
 | DRV-D21 | What does a caller type to name a Subscription on the command line? | Its identifier, which is a short readable name. The Subscription a Driver has from the start is named after its family (`anthropic`, `zai`, `chatgpt`). A further one gets the name given with `--id`, otherwise the family's name with a number (`anthropic-2`). It never changes; the label can | Decided 6 October 2026, together with the Subscriptions a Driver has from the start (DRV-D24) |
+| DRV-D46 | Does a usage window say what it counts? | Yes: `resource` is `tokens`, `credits` or `calls`, absent when the vendor does not say. Subscriptions Vigor (SGM-1, SGM-D24) needs it to keep a count of MCP calls out of a sum of token allowance | Decided 26 October 2026 by the owner, deciding SGM-D24; Drivers report it in their next Builds |

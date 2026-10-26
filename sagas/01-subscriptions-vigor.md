@@ -19,8 +19,9 @@ that drafted this chapter, where it is computed, that shorter windows count
 with less weight, the pace assumption, that the Radar owns the rollup, that
 unknown is always shown with its reason, that every calculation is logged, and
 the allowance source for Kimi Code, and that a blocked Subscription shows
-zero with its recovery. The contract field for a window's resource, the weight
-placeholder's value and the first operational profile remain proposals. The [Decisions](#decisions) table distinguishes them.
+zero with its recovery, and that the contract's window says what it counts.
+The weight placeholder's value and the first operational profile remain
+proposals. The [Decisions](#decisions) table distinguishes them.
 
 ## Scope
 
@@ -323,10 +324,12 @@ calculation does not know. A window of an unknown resource is shown and not
 summed. A used share outside 0 to 100 marks the window unknown with the field
 named.
 
-The Driver Contract needs one addition for SGM-1.2: a `resource` on each
-window, `tokens`, `credits` or `calls` (SGM-D24). Until it exists, the only
+The Driver Contract's window carries `resource`, `tokens`, `credits` or
+`calls`, since DRV-1.27 (SGM-D24). Until every Driver reports it, the only
 non-token window a current Driver reports is z.ai's MCP count, which the
-Claude Driver labels `MCP` with kind `other`.
+Claude Driver labels `MCP` with kind `other`; the calculation excludes that
+window by its label and treats every other window without the field as
+tokens, and says so on the result.
 
 ## Known problems and calibration
 
@@ -377,6 +380,6 @@ profile for operation.
 | SGM-D21 | Where does this specification live? | As SGM-1 beside SGM-0 in the sagas folder, with glossary entries Vigor and Subscriptions Vigor | Decided by the owner, 2026-10-26 |
 | SGM-D22 | What is logged? | Every calculation and every report arrival, with full inputs and outputs, in Arbol's database | Decided by the owner, 2026-10-26 |
 | SGM-D23 | Where does Kimi Code's report come from? | `GET https://api.kimi.com/coding/v1/usages` through the Pi Driver with the token it already holds; the Console gateway and hidden-browser page reading are not used | Decided by the owner, 2026-10-26; adopted the same day in SYL-288 and installed as Pi Build 5 |
-| SGM-D24 | Which windows take part, and how does the calculation know? | Only tokens and credits; add `resource` to the Driver Contract's window. Until then, exclude the Claude Driver's z.ai window labelled `MCP` | Open; proposed default in use |
+| SGM-D24 | Which windows take part, and how does the calculation know? | Only tokens and credits; `resource` on the Driver Contract's window says which. Until every Driver reports it, exclude the Claude Driver's z.ai window labelled `MCP` and treat the rest as tokens | Decided by the owner, 2026-10-26: added to the contract as DRV-1.27 and DRV-D46; the Drivers report it in their next Builds |
 | SGM-D25 | Which of several equal-length longest windows is the store? | The one scoped to the coding product the Subscription serves; the others of that length are shown and not summed | Open; proposed default in use |
 | SGM-D26 | Do model-specific weekly windows of the Anthropic family enter the report? | Add them scoped by model if the stream reports them; not verified | Open; needs a Claude Driver probe |
