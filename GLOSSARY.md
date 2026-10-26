@@ -22,7 +22,7 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **B** — [Beat](#beat) · [better-grep](#better-grep) · [Blueprint](#blueprint) · [Blueprint Chain](#blueprint-chain) · [Brain Recipe](#brain-recipe) · [Branch](#branch) · [Branch Overlay](#branch-overlay) · [Bridge](#bridge) · [Build](#build) · [Burn](#burn)
 - **C** — [Cell](#cell) · [Change Walkthrough](#change-walkthrough) · [Chat Exchange](#chat-exchange) · [Chat Note](#chat-note) · [Chat Session](#chat-session) · [Checkpoint](#checkpoint) · [Chunk](#chunk) · [Chunking](#chunking) · [CLI](#cli) · [Code Corpus](#code-corpus) · [Code Map](#code-map) · [Code Scout](#code-scout) · [Command](#command) · [Communicado](#communicado) · [Communicado Action](#communicado-action) · [Communicado Delivery](#communicado-delivery) · [Communicado Descriptor](#communicado-descriptor) · [Communicado Family](#communicado-family) · [Communicado Presentation](#communicado-presentation) · [Communicado Species](#communicado-species) · [Communicado State](#communicado-state) · [Companion](#companion) · [Completion](#completion) · [Corpus](#corpus) · [Corpus Watcher](#corpus-watcher) · [Coupling](#coupling) · [Cue](#cue) · [Cue Channel](#cue-channel) · [Cue Command](#cue-command) · [Cue Detection Catalog](#cue-detection-catalog) · [Cue Target](#cue-target) · [Cue Target Cache](#cue-target-cache)
 - **D** — [Decision](#decision) · [Default Arbol Trunk](#default-arbol-trunk) · [Delegate](#delegate) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance)
-- **E** — [Effector](#effector) · [Email Source Item](#email-source-item) · [Elma Chat](#elma-chat) · [Elma View Page](#elma-view-page) · [Embedder Profile](#embedder-profile) · [Embedding](#embedding) · [Embedding Provider](#embedding-provider) · [Entity](#entity) · [Entity Card](#entity-card) · [Entity Card Content](#entity-card-content) · [Entity Card Resolver](#entity-card-resolver) · [Entity Chip](#entity-chip) · [Entity Context Menu](#entity-context-menu) · [Entity Edge](#entity-edge) · [Entity Kind](#entity-kind) · [Entity Shape](#entity-shape) · [Entity URI](#entity-uri) · [Env Keepers](#env-keepers) · [Environment](#environment) · [Errand](#errand) · [Event Log](#event-log) · [Event Log Service](#event-log-service) · [Event Sourcing](#event-sourcing) · [Exchange Assignment](#exchange-assignment)
+- **E** — [Effector](#effector) · [Email Source Item](#email-source-item) · [Elma Chat](#elma-chat) · [Elma View Page](#elma-view-page) · [Embedder Profile](#embedder-profile) · [Embedding](#embedding) · [Embedding Provider](#embedding-provider) · [Entity](#entity) · [Entity Card](#entity-card) · [Entity Card Content](#entity-card-content) · [Entity Card Resolver](#entity-card-resolver) · [Entity Chip](#entity-chip) · [Entity Context Menu](#entity-context-menu) · [Entity Edge](#entity-edge) · [Entity Kind](#entity-kind) · [Entity Shape](#entity-shape) · [Entity URI](#entity-uri) · [Env Keepers](#env-keepers) · [Errand](#errand) · [Event Log](#event-log) · [Event Log Service](#event-log-service) · [Event Sourcing](#event-sourcing) · [Exchange Assignment](#exchange-assignment)
 - **F** — [Fanout](#fanout) · [Flyer](#flyer) · [Fold / Projection](#fold--projection) · [Font Scale](#font-scale) · [Free-standing](#free-standing)
 - **G** — [Generation](#generation)
 - **H** — [H-Nex](#h-nex) · [Heartwood](#heartwood) · [Hunk Review](#hunk-review)
@@ -38,7 +38,7 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **T** — [Taproot](#taproot) · [Text Snapshot](#text-snapshot) · [Theme](#theme) · [Tool](#tool) · [Tool Request](#tool-request) · [Tracked Source](#tracked-source) · [Trivial Trunk](#trivial-trunk) · [Trunk Runtime](#trunk-runtime) · [Turn](#turn)
 - **U** — [UI](#ui) · [UIShell / Chrome](#uishell--chrome)
 - **V** — [Velocity](#velocity) · [Visit](#visit)
-- **W** — [Willo Station](#willo-station) · [Working Directory](#working-directory) · [Workload](#workload) · [Worktree](#worktree) · [Worktree Container](#worktree-container)
+- **W** — [Willo Station](#willo-station) · [Working Directory](#working-directory) · [Workload](#workload) · [Workspace](#workspace) · [Worktree](#worktree) · [Worktree Container](#worktree-container)
 
 ---
 
@@ -789,28 +789,6 @@ The **gitignored-but-precious files** a fresh checkout or worktree needs but git
 
 **Example:** a service repo's per-service `.env.*.local` files land in every new task or review worktree automatically; without the seed, half the services fail to boot locally.
 
-## Environment
-
-A reusable working area for parallel agent work, with one clone of every
-repository and its development dependencies installed. The ten Environments,
-in booking order, are **Badger, Beaver, Fox, Hare, Lynx, Otter, Owl, Panda,
-Raven and Wolf**, reached through lowercase paths under
-`~/repos/sylvan-stack/`. A hold reserves one Environment for a Beat or an
-Arbol chat; the repositories in it stay together. The owner's own checkouts
-and `readonly/` are outside this pool.
-
-**Repository Animal Environment** names a repository's copy within the
-area: **Mycel Badger Environment** is `~/repos/sylvan-stack/badger/mycel`.
-**Badger Environment** means the complete `badger/` area. The owner replaced
-*prepared folder* with *Environment* on 20 October 2026 and chose animal
-names instead of colors on 26 October 2026. The animal paths are aliases to
-the existing physical color folders, which stay in place for running agents,
-saved sessions and installed dependencies. Color and numbered paths remain
-valid names for the same ten areas, never extra bookable Environments;
-existing holds keep their recorded paths. See
-[Working in Sagas](../mycel/operations/sagas.md#environments) for the name
-mapping, booking, branches, setup and return.
-
 ## Errand
 
 An [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) for one-off background work the dispatching agent could have done itself but delegates — usually to run tasks in parallel. Run by a [Delegate](#delegate). Distinct from a [Research Trip](#research-trip) (which only gathers and reports back) and a [Routine](#routine) (which recurs): an Errand does a discrete piece of work, **once**.
@@ -1124,7 +1102,7 @@ The [Chunk](#chunk) at the source end of an [Origin Link](#origin-link): what or
 
 What the command `mycel origins` reports: which [Chunks](#chunk) of a repository have an [Origin Link](#origin-link) and which have none, and which [Requirements](#requirement) and [Decisions](#decision) nothing rests on. It is a report for the agent or person who asks, on demand; no gate, hook or release step depends on it.
 
-**Example:** `mycel origins --changes`, run in an Environment after changing `src/mycel/_derive.py`, lists `DeriveStore.apply` as a chunk without Origin.
+**Example:** `mycel origins --changes`, run in Beaver Workspace after changing `src/mycel/_derive.py`, lists `DeriveStore.apply` as a chunk without Origin.
 
 ## Origin Link
 
@@ -1479,6 +1457,34 @@ A **Visit** occurs when an Entity becomes the current or active Entity because t
 The umbrella for the agent-work measurements the [Radar](#radar) reports: [Burn](#burn) (accumulated token consumption), [Load](#load) (agents working now and their live [Chat Session](#chat-session) context), and [Velocity](#velocity) (token generation rate) — together with summaries of the work done and estimated progress. A unit's workload and the machine's workload are the same measures at different scopes.
 
 **Example:** "How is the workload?" asks after Burn, Load, and Velocity together — on one Saga or across the machine.
+
+<a id="environment"></a>
+
+## Workspace
+
+A reusable working area for parallel agent work, with one clone of every
+repository and its development dependencies installed. Always use the full
+animal name with the term: **Badger Workspace**, **Beaver Workspace**,
+**Fox Workspace**, **Hare Workspace**, **Lynx Workspace**, **Otter Workspace**,
+**Owl Workspace**, **Panda Workspace**, **Raven Workspace** and
+**Wolf Workspace**, in that booking order. Do not shorten an individual name
+to the animal alone or use the term without its name. Generic instructions
+can refer to the booked area or the pool.
+
+**Beaver Workspace** is reached at `~/repos/sylvan-stack/beaver/`. The Mycel
+repository in **Beaver Workspace** is `~/repos/sylvan-stack/beaver/mycel`;
+name the repository separately from the area's full name. A hold reserves
+one complete area for a Beat or an Arbol chat, keeping its repositories
+together. The owner's own checkouts and `readonly/` are outside the pool.
+
+The owner chose the animal names and this term on 26 October 2026,
+replacing the former term *Environment* and the earlier *prepared folder*.
+Animal paths remain aliases to the existing physical color folders, which
+stay in place for running agents, saved sessions and installed dependencies.
+Color and numbered paths still name the same ten areas; existing holds keep
+their recorded paths. The legacy `#environment` link remains an alias to
+this definition. See [Working in Sagas](../mycel/operations/sagas.md#named-work-areas)
+for the name mapping, booking, branches, setup and return.
 
 ## Worktree
 
