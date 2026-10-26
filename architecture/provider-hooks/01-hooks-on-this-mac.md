@@ -77,6 +77,13 @@ Every installer of a hook of Arbol's (today `arbol-agents install` and the check
 
 Several hooks on one event add their times. With both of Arbol's installed, each tool's `PreToolUse` starts `arbol-agents hook` and `agent-watch-hook`, besides any hook of another program.
 
+<!-- sources:
+sagas:@code/tools/agent-watch/agent_hook.py#main
+sagas:@code/tools/agent-watch/agent_hook.py#launcher
+sagas:@code/tools/agent-watch/agent_control.py#fresh_owner
+sagas:@code/tools/agent-watch/test_agent_hook.py#Hook
+-->
+
 ### Hooks of different owners side by side
 
 A steering hook's block is seen by the watching hooks only as a `PreToolUse` whose call never comes back ([PHK-D1](00-hooks-of-claude-code-and-codex.md#decisions)). The agent records then keep that call open until the end of the turn, which the next `Stop` corrects. Neither hook reads the other's files.
@@ -91,8 +98,8 @@ A steering hook's block is seen by the watching hooks only as a `PreToolUse` who
 | PHK-1.4 | record Codex's trust only through `codex app-server`'s `hooks/list` and `config/batchWrite` | New | probe |
 | PHK-1.5 | on `uninstall`, remove exactly its own entries and their trust entries; on `status`, say for each tool whether each entry is in place and trusted, and the tool's version | New | unit; probe |
 | PHK-1.6 | as a watching hook, always exit with 0, print nothing and never run in the background | New | unit |
-| PHK-1.7 | as a steering hook, block only a `PreToolUse` and print only the message to the agent | New | unit; live |
-| PHK-1.8 | take at most 50 milliseconds in the median on this Mac, keep no part of the conversation, start no lasting process and use no network | New | unit; live |
+| PHK-1.7 | as a steering hook, block only a `PreToolUse` and print only the message to the agent | New | agent-watch hook part: `Hook.test_each_provider_blocks_a_steer_once_and_records_actual_delivery_only`, `Hook.test_stop_persists_for_mutations_while_reads_git_and_own_wrap_up_pass`, `Policy` in sagas:tools/agent-watch/test_agent_hook.py (SYL-221); provider live checks remain pending |
+| PHK-1.8 | take at most 50 milliseconds in the median on this Mac, keep no part of the conversation, start no lasting process and use no network | New | agent-watch hook part: `Hook.test_no_action_and_disabled_control_allow_without_output_or_side_effects`, `Hook.test_faults_malformed_actions_and_unverifiable_transcripts_fail_open_silently`, `Hook.test_a_new_owner_message_after_the_check_suppresses_each_provider_without_consuming`; speed and provider live checks remain SYL-221 |
 | PHK-1.9 | not be run by a reviewer of the check from outside, and say what it does in a Driver's run, which runs every hook of the owner's (DRV-D42) | New | unit |
 
 ## Known problems in version 1
