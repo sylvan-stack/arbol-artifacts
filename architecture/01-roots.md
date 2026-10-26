@@ -86,6 +86,15 @@ Settings are plain files under `~/.arbol`, and state is under the application fo
 
 The list of Roots is nothing more than the `root.json` files. These records have a small shared form that the catalogue can read without loading a Root's code, settings or chat tables. A record that is damaged or missing takes only its own Root out of use, as with a Build's record (BLD-0.10).
 
+<!-- sources:
+arbol:src/arbol_roots/model.py#Places
+arbol:src/arbol_roots/model.py#catalogue
+arbol:src/arbol_roots/model.py#save_record
+arbol:src/arbol_roots/model.py#validate_record
+arbol:src/arbol_builds/roots.py#valid_root
+arbol:tests/test_roots.py#Catalogue
+-->
+
 ### The database of a Root
 
 Each Root has one database on the one PostgreSQL server (ARC-0), named in its `root.json`, for example `arbol_sapling`. A chat has no column that names a Root, because its database is the Root. A program of one Root never opens the database of another: a UI Build reads the tables it was made for and no others. The one exception is a Root's migration script, which reads the database of the Root it grew from ([below](#moving-chats-between-roots)).
@@ -149,6 +158,15 @@ removing the named folders; a failed DROP leaves the files intact. A later
 filesystem failure is reported truthfully, and remove can be retried because
 DROP uses IF EXISTS. No command force-terminates database connections.
 
+<!-- sources:
+arbol:src/arbol_roots/database.py#connection
+arbol:src/arbol_roots/database.py#keychain_password
+arbol:src/arbol_roots/database.py#Database
+arbol:src/arbol_roots/operations.py#Creation
+arbol:tests/test_roots.py#DatabaseAccess
+arbol:tests/test_roots.py#real_server_example
+-->
+
 ### Builds and Roots
 
 Root-aware selection in BLD-0 qualifies a component's default Build by the Root. Picking the newest Build across all Roots would start a manager made for a different environment:
@@ -174,7 +192,7 @@ Opening the First Sapling has to start Build 6, not Build 8. The selection rules
 
 Within a Root, `arbol-root trunks` lists every Trunk and its Builds, marking those that list the Root's Root Contract version and the one `run` would start (ARC-0, RCT-0). Compatibility is evaluated for every Trunk component in the registry, not just for versions of a single implementation. For new work, `arbol-root` chooses the named Trunk or else the Trivial Trunk, then the Build `arbol-trunk list` marks chosen, which it starts with an exact `-v` ([RTM-0](../../arbol-root/specs/00-the-commands.md#starting-a-trunk)). It never compares independent components' Build numbers to choose an implementation. An accepted Exchange keeps its recorded concrete Build. The inventory and selection build nothing: `arbol-builds` remains the only build tool.
 
-Since SYL-155, on 16 October 2026, a Build record names its Root or its Trunk Root Contract versions. SYL-179 added the shared Root reader and compatible Trunk selection. Since SYL-158, on 26 October 2026, the launchers of `arbol` and `arbol-root` select only Builds of the named/current Root, and `arbol-builds list` and `show` agree with them. The 5/6 versus 7/8 example above is an actual build-to-launch check. SYL-159 adds count-based pruning that retains a runnable working Build per retained Root and per required Trunk Root Contract version, including preparing/failed Roots and conservative treatment of damaged records (BLD-D22). Root creation/lifecycle, unused-Build pruning and backend/UI behavior remain the work of their own Beats; the specification alone does not supply them.
+Since SYL-155, on 16 October 2026, a Build record names its Root or its Trunk Root Contract versions. SYL-179 added the shared Root reader and compatible Trunk selection. Since SYL-158, on 26 October 2026, the launchers of `arbol` and `arbol-root` select only Builds of the named/current Root, and `arbol-builds list` and `show` agree with them. The 5/6 versus 7/8 example above is an actual build-to-launch check. SYL-159 adds count-based pruning that retains a runnable working Build per retained Root and per required Trunk Root Contract version, including preparing/failed Roots and conservative treatment of damaged records (BLD-D22). SYL-160 adds the global catalogue lifecycle, empty database creation/removal, copied settings, readiness and App minimum records. Unused-Build pruning, the per-Root manager and backend/UI behavior remain the work of their own Beats; the specification alone does not supply them.
 
 <!-- sources:
 arbol:src/arbol_builds/root_launcher.py#select_root_build
@@ -206,6 +224,8 @@ One tool, `arbol-roots`, creates and changes Roots. It lies beside `arbol-builds
 | `arbol-roots remove <identifier>` | Removes a Root's folder, settings and database. Never the current Root |
 
 This global tool can list the catalogue and create the first Root without selecting a Root Build first. The per-Root `arbol-root` program manages compatible Trunks and Exchanges inside an existing Root. They are separate entry points with different scopes.
+
+Since SYL-160, on 26 October 2026, create/list/show/ready/fail/app/remove are implemented by typed Python in `arbol:src/arbol_roots/`. `scripts/install_builds.py` installs `arbol-roots` beside `arbol-builds` on the same pinned interpreter, with package staging/rollback and existing launcher refresh retained. The repeatable private drill and explicit disposable-database acceptance are in `scripts/roots_drill.py` and `tests/test_roots.py`. migrate/layout remain SYL-185, the per-Root manager remains SYL-181 onward, and the tray menu remains UI work.
 
 The catalogue and the launchers share Root header validation and the
 current-Root function: identifier, state, creation time and Root Contract
@@ -239,6 +259,23 @@ or `operation_failed`, always with the shared error code/message envelope
 and exit 1. Success is one record, except list's array; remove returns the
 removed record. Root creation builds nothing and runs no Root SQL script.
 These are technical command and failure choices for SYL-160 (ARC-D67).
+
+<!-- sources:
+arbol:src/arbol_roots/cli.py#main
+arbol:src/arbol_roots/operations.py#catalogue_lock
+arbol:src/arbol_roots/operations.py#create
+arbol:src/arbol_roots/operations.py#ready
+arbol:src/arbol_roots/operations.py#fail
+arbol:src/arbol_roots/operations.py#app
+arbol:src/arbol_roots/operations.py#remove
+arbol:src/arbol_roots/model.py#list_roots
+arbol:src/arbol_roots/model.py#selected
+arbol:scripts/install_builds.py#install
+arbol:scripts/install_builds.py#install_package
+arbol:bin/arbol-roots
+arbol:bin/roots_entry.py
+arbol:tests/test_roots.py#Commands
+-->
 
 ### Discovery across Roots
 
@@ -274,6 +311,9 @@ An older Root can run agents only as long as the Drivers still serve the version
 arbol:src/arbol_builds/roots.py#current_root
 arbol:src/arbol_builds/roots.py#read_roots
 arbol:tests/test_builds.py#Roots
+arbol:src/arbol_roots/operations.py#ready
+arbol:src/arbol_roots/operations.py#fail
+arbol:src/arbol_roots/model.py#list_roots
 -->
 
 ### Moving chats between Roots
@@ -340,6 +380,11 @@ The settings of `arbol`, Brain Recipes among them, are kept for each Root in `~/
 
 The settings are copied once from the Root a new Root grows from, when it is created ([ARC-D33](#decisions)). After that the two sets are separate.
 
+<!-- sources:
+arbol:src/arbol_roots/operations.py#create
+arbol:tests/test_roots.py#Commands.test_roots_create_from_records_lineage_inherits_or_overrides_contract_and_copies_settings_once
+-->
+
 ### Storage
 
 Every Root holds a full copy of the chats that were migrated into it. Arbol shows the size of each Root's database (ARC-0). A Root is removed only by `arbol-roots remove`, and nothing removes one by itself.
@@ -353,6 +398,13 @@ Observed in version 1: a test fixture dropped every schema with a test name in w
 Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 
 - `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#Validation practice`
+
+<!-- sources:
+arbol:scripts/roots_drill.py#drill
+arbol:tests/test_roots.py#real_server_example
+arbol:tests/test_roots.py#Commands.test_roots_default_state_and_settings_paths_stay_inside_the_callers_private_home
+arbol:pyproject.toml
+-->
 
 ### What is built first
 
@@ -371,20 +423,20 @@ Roots:
 
 | ID | Arbol must… | Origin | Verified by |
 |---|---|---|---|
-| ARC-1.1 | give every Root an identifier, a display name, a folder, a database, settings and its own Builds of `arbol` and `arbol-root` | New | unit |
+| ARC-1.1 | give every Root an identifier, a display name, a folder, a database, settings and its own Builds of `arbol` and `arbol-root` | New | catalogue part: unit `roots.create`, `roots.create-from`, `roots.default-paths`; real-server `real_server_example` in `arbol:tests/test_roots.py` (SYL-160). The Root components’ own programs/Build qualification remain SYL-181 and later backend work |
 | ARC-1.2 | keep inside a Root only changes that the older Builds of that Root can ignore, and make a new Root for any other change | Changed | unit |
-| ARC-1.3 | hold no code and no table layout of any Root in the launchers, the build registry, `arbol-builds` and `arbol-roots` | New | unit |
-| ARC-1.4 | take the `root.json` files as the whole list of Roots, and let a damaged or missing record take only its own Root out of use | New | drill |
-| ARC-1.5 | keep the chats of each Root in a database of its own, and never open one Root's database from a program of another, except from the migration script of the Root that grows from it | New | unit |
+| ARC-1.3 | hold no code and no table layout of any Root in the launchers, the build registry, `arbol-builds` and `arbol-roots` | New | unit: `roots.boundary` (SYL-160), `builds.outside-roots` (SYL-155); global catalogue/Build tools hold no Root implementation or table layout |
+| ARC-1.4 | take the `root.json` files as the whole list of Roots, and let a damaged or missing record take only its own Root out of use | New | drill: `arbol:scripts/roots_drill.py`, checked by `roots.damaged-drill`; unit: `roots.catalogue-damaged`, `roots.catalogue` (SYL-160); existing launcher record checks |
+| ARC-1.5 | keep the chats of each Root in a database of its own, and never open one Root's database from a program of another, except from the migration script of the Root that grows from it | New | catalogue lifecycle part: unit `roots.database-access`, `roots.database-ddl`, `roots.boundary`; real-server acceptance proves separate empty databases (SYL-160). Root data readers, backend and migration isolation remain their own components/Beats |
 | ARC-1.6 | list the Roots in the tray menu, mark the current one, open the UIs of the Root that is picked, and show the Root's display name in the header of every UI | New | journey |
-| ARC-1.7 | take as the current Root the newest Root in the state `working`, worked out from the records at every start with no stored setting, send a command without a named Root to it, and run listeners in its backend alone | New | unit for record reading/current selection: `builds.current-root`, `builds.root-records` (SYL-179), `builds.root-refusals` (SYL-158); backend listeners and their hand-over remain pending |
+| ARC-1.7 | take as the current Root the newest Root in the state `working`, worked out from the records at every start with no stored setting, send a command without a named Root to it, and run listeners in its backend alone | New | catalogue/current part: unit `roots.catalogue`, `roots.states`, `roots.damaged-drill` (SYL-160); shared reader/launchers: `builds.current-root`, `builds.root-records`, `builds.root-refusals`. Backend listeners and hand-over remain pending |
 | ARC-1.8 | keep an older Root usable, for reading and for continuing chats, as long as its folder, database and Builds exist | New | journey |
-| ARC-1.9 | create Roots, mark them ready or failed, and remove them through `arbol-roots` alone, and remove one only on command and never the current one | New | unit |
-| ARC-1.10 | keep the settings of `arbol` for each Root in `~/.arbol/roots/<root>/` (`arbol-root` reads none: RTM-D3) | Changed | unit |
+| ARC-1.9 | create Roots, mark them ready or failed, and remove them through `arbol-roots` alone, and remove one only on command and never the current one | New | unit: `roots.create`, `roots.ready`, `roots.states`, `roots.remove`, `roots.remove-refusal`, `roots.remove-retry`, `roots.state-busy`, `roots.catalogue-lock`, `roots.creation-rollback`, `roots.creation-recovery`, `roots.creation-identity`, `roots.sqlstate`; real-server `real_server_example` (SYL-160) |
+| ARC-1.10 | keep the settings of `arbol` for each Root in `~/.arbol/roots/<root>/` (`arbol-root` reads none: RTM-D3) | Changed | unit: `roots.default-paths`, `roots.create-from`, `roots.create-from-failure`; real-server settings-copy acceptance (SYL-160). The per-Root manager still reads no settings (RTM-0) |
 | ARC-1.11 | show the size of each Root's database | New | journey |
-| ARC-1.21 | let the owner mark a working Root `failed` with a reason, never take a failed Root as current, and still open it when it is named | New | unit |
-| ARC-1.23 | name in each Root's record the oldest Build of `arbol-app` the Root works with, and offer in the tray menu only the Roots the running Swift App is new enough for | New | unit |
-| ARC-1.22 | run a test with the Builds of the Root under test on a folder and a database of the test's own, and a test of a Trunk Build in a separate test folder of its own, a temporary home, except its live checks (RCT-4, RCT-D29), so that it cannot reach the chats of a Root in use | Changed | unit |
+| ARC-1.21 | let the owner mark a working Root `failed` with a reason, never take a failed Root as current, and still open it when it is named | New | catalogue part: unit `roots.states`, `roots.catalogue`; explicit failed-Root launch: `builds.root-refusals` (SYL-158). Backend/UI opening remains pending |
+| ARC-1.23 | name in each Root's record the oldest Build of `arbol-app` the Root works with, and offer in the tray menu only the Roots the running Swift App is new enough for | New | record/minimum part: unit `roots.create`, `roots.app` with bootstrap sentinel 0 (SYL-160). Swift App tray filtering remains pending |
+| ARC-1.22 | run a test with the Builds of the Root under test on a folder and a database of the test's own, and a test of a Trunk Build in a separate test folder of its own, a temporary home, except its live checks (RCT-4, RCT-D29), so that it cannot reach the chats of a Root in use | Changed | catalogue part: unit `roots.default-paths`, `roots.create`, `roots.damaged-drill`, and real-server acceptance using only unique disposable database names (SYL-160). Trunk Build isolation is RCT-4.1; Root Build checks remain SYL-181/SYL-184 |
 | ARC-1.24 | support all working Trunk implementations and Builds whose Build records list the Root's Root Contract version, and expose them through `arbol-root trunks` | New | unit |
 | ARC-1.25 | rediscover Exchanges across retained Roots through the shared Root catalogue and each Root's matching manager, isolate a failing Root's listing, and route management to the recorded owning Root | New | drill |
 | ARC-1.26 | keep a Root's identity independent of its manager invocation and compatible Build replacements, and change no established Exchange ownership when the App or backend restarts | New | drill |
