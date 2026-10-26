@@ -168,6 +168,8 @@ A missing timestamp means no start was recorded: older Builds may have run
 before recording was installed. Both fields remain available after pruning,
 because `last-start` is retained with the record and log.
 
+<!-- sources: arbol:src/arbol_builds/launcher.py#record_start arbol:src/arbol_builds/launcher.py#launch arbol:src/arbol_builds/trunk_launcher.py#launch_trunk arbol:src/arbol_builds/service.py#last_start arbol:src/arbol_builds/service.py#build_details arbol:src/arbol_builds/service.py#list_builds arbol:src/arbol_builds/service.py#prune_builds arbol:src/arbol_builds/cli.py#main arbol:tests/test_builds.py#StartRecords arbol:tests/test_builds.py#Install -->
+
 Seqoya Lab, the administration UI, has a page *Builds*. It lists the Builds of each component with their last start, has a Locked switch for each Build and one field for the time; an empty field means that no Build is removed for being unused. The page calls `arbol-builds` and writes the setting, and removes nothing itself. Until Seqoya Lab exists, the same is done with `arbol-builds lock`, `arbol-builds unlock` and the settings file.
 
 ### What a repository says about its build
@@ -251,7 +253,7 @@ Removing unused Builds and locking, accepted on 13 October 2026 ([BLD-D12](#deci
 
 | ID | The registry, its tool, the launchers and Arbol must… | Origin | Verified by |
 |---|---|---|---|
-| BLD-0.24 | record the time of each start of a Build in its folder, without delaying the start or failing it | New | unit (pending) |
+| BLD-0.24 | record the time of each start of a Build in its folder, without delaying the start or failing it | New | `builds.last-start`, `builds.last-start-write-failure`, `builds.last-start-disk-full`, `builds.last-start-refusal`, `builds.trunk-last-start`, `builds.last-start-inventory`, `builds.last-start-fallback`, `builds.install-refreshes-launchers` |
 | BLD-0.25 | let a Build be marked Locked and unmarked, and never remove the files of a Locked Build | New | unit (pending) |
 | BLD-0.26 | remove, when the owner has set a time and only then, the files of the Builds that were not started for longer than that time, keep their records, and never remove a default Build, a Locked Build, a Trunk Build that a retained Root would run or a Build that an Exchange in progress runs on | New | unit (pending) |
 | BLD-0.27 | offer in Seqoya Lab a page that lists the Builds of each component with their last start, a Locked switch for each and the field for the time, and run the removal when Arbol starts and once a day while it runs | New | journey (pending) |
@@ -362,7 +364,7 @@ The tool was installed again into `~/.local/bin` the same day, from a clean logi
 
 ## Root extension verification, 12 October 2026
 
-BLD-0.17–23 were then accepted requirements with pending unit checks. The installed `arbol-builds` tool and launchers did not yet implement Root association, `--root`, current-Root defaults, per-Root pruning protection or Trunk compatibility inventory. The Driver build and launcher checks below verify the existing global Driver path only. They do not establish that any Root-aware path works, and no Root-aware requirement is marked implemented by this edit. `arbol-app`, `arbol`, the Root manager and the first Trunk need their own Build checks before those components can be described as implemented. BLD-0.24–27, accepted on 13 October 2026, are not implemented either: the launchers record no start, and `arbol-builds` has no `lock`, `unlock` or `prune --unused`.
+BLD-0.17–23 were then accepted requirements with pending unit checks. The installed `arbol-builds` tool and launchers did not yet implement Root association, `--root`, current-Root defaults, per-Root pruning protection or Trunk compatibility inventory. The Driver build and launcher checks below verify the existing global Driver path only. They do not establish that any Root-aware path works, and no Root-aware requirement is marked implemented by this edit. `arbol-app`, `arbol`, the Root manager and the first Trunk need their own Build checks before those components can be described as implemented. At that date BLD-0.24–27, accepted on 13 October 2026, were not implemented either. SYL-153 now implements BLD-0.24 as described in “Unused Builds and Locked Builds”; `lock`, `unlock` and `prune --unused` remain pending.
 
 The existing source was checked on 12 October 2026: `arbol:builds/records.ts#BuildRecord` has no Root or chat-table association; `#launch` recognises `-v` and selects a global default; `arbol:builds/cli.ts#main` has no `--root` option; and `arbol:builds/service.ts#pruneBuilds` protects the global default. These are the implementation gaps, not verification of the new requirements. Since the port to Python on 14 October 2026 the same gaps are in `arbol:src/arbol_builds/launcher.py#valid_record` and `#launch`, `arbol:src/arbol_builds/cli.py#main` and `arbol:src/arbol_builds/service.py#prune_builds`; the TypeScript locators refer to commit `037468f`.
 
