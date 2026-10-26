@@ -102,6 +102,12 @@ A Driver ends a silent vendor tool by itself (DRV-4). The Driver's own process c
 
 This is ordinary work of a Trunk whose heartbeat goes on. It needs nothing from outside.
 
+<!-- sources:
+arbol-trunk:trunks/trivial/src/arbol_trunk_trivial/run.py#drive
+arbol-trunk:trunks/trivial/tests/test_loop.py#SilentRuns
+arbol-root:contract/conformance/rct_conformance/scenarios/r18.py
+-->
+
 ### Long waits on purpose
 
 A command the agent runs is never ended for being slow, and a question waits for its answer without limit (DRV-4, DRV-3). On 6 October 2026 the owner left to Arbol what is done about runs that wait for long.
@@ -126,7 +132,7 @@ A Trunk:
 | ARC-3.1 | raise a heartbeat in the folder of its Exchange from the loop that does its work, at least every 10 seconds, whatever it is waiting for | New | contract: R6 (SYL-176); unit: `Heartbeat`, `RoundsWithLife` and `TimeScaledWaits` in `trunks/trivial/tests/` of `arbol-trunk` |
 | ARC-3.2 | state in that folder what it is waiting for and since when: the Driver, a tool call or command, an answer, the database or a small model call | New | contract: R6 for Driver, tool and answer waits (SYL-176); unit: `Waiting` for all five values, priority and `since`, in `trunks/trivial/tests/test_life.py` of `arbol-trunk` |
 | ARC-3.3 | end its own process and everything it started when its work has not raised the heartbeat for 60 seconds | New | drill |
-| ARC-3.4 | end a Driver run that gave no event for one minute longer than its idle limit while no tool call or question was open, nor a command left in the background where its own specification says how it tells one, and end the Exchange as failed with that cause | New | contract: RCT-2.21, scenario R18 of [RCT-4](../../arbol-root/contract/04-conformance.md) ([RCT-D30](../../arbol-root/contract/02-starting-stopping-and-settling.md#decisions)) |
+| ARC-3.4 | end a Driver run that gave no event for one minute longer than its idle limit while no tool call or question was open, nor a command left in the background where its own specification says how it tells one, and end the Exchange as failed with that cause | New | contract: R18 (SYL-178), through RCT-2.21, including a background command that the Trivial Trunk does not distinguish; unit: `SilentRuns` and `WholeExchange.test_a_silent_run_is_stopped_and_the_exchange_fails_with_its_own_cause` in `trunks/trivial/tests/` of `arbol-trunk` |
 
 The Root manager:
 

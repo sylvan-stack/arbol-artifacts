@@ -64,6 +64,13 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 - `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#3. Durable bookkeeping on the streaming path`
 - `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#7. Blocking storage calls on the loop that serves every chat`
 
+<!-- sources:
+arbol-trunk:trunks/trivial/src/arbol_trunk_trivial/events.py#EventsFile
+arbol-trunk:trunks/trivial/src/arbol_trunk_trivial/rows.py#RowMaker
+arbol-trunk:trunks/trivial/tests/test_events.py#Events
+arbol-root:contract/conformance/rct_conformance/scenarios/r15.py
+-->
+
 ### Stop, and answers
 
 A stop is a line in `control`. The Trunk stops the Driver's run (DRV-2) and ends the Exchange as cancelled. A UI shows "stopped" when the Trunk reports that the agent has stopped, and not before.
@@ -122,7 +129,7 @@ The backend compatible with each Root reads that Root's database and Exchange fi
 | ID | The components together must… | Origin | Verified by |
 |---|---|---|---|
 | ARC-2.1 | count a message as accepted when the Trunk has its record in the folder and the message in the database, and before that start nothing and keep the Draft | Changed | drill |
-| ARC-2.2 | keep the arriving answer in a file in the Exchange's folder, with a limit of size, and write no database row for a fragment | Changed | unit |
+| ARC-2.2 | keep the arriving answer in a file in the Exchange's folder, with a limit of size, and write no database row for a fragment | Changed | unit: `Events`, `Rows` and `WholeExchange.test_a_full_file_fails_the_exchange_and_keeps_only_rows_from_written_lines` in `trunks/trivial/tests/` of `arbol-trunk`; contract: R15 (SYL-178), with tool-output and whole-file limits |
 | ARC-2.3 | write each finished message or tool call to the database when it is finished | Changed | contract: RCT-3.2, scenario R1 of [RCT-4](../../arbol-root/contract/04-conformance.md) (SYL-171) |
 | ARC-2.4 | show a UI that is opened late, opened again or opened twice the whole answer so far | Changed | journey |
 | ARC-2.5 | take a stop and an answer to the agent's question through the Exchange's folder, and show "stopped" only when the Trunk reports that the agent has stopped | Changed | drill |
