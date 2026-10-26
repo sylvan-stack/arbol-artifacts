@@ -43,6 +43,14 @@ A heartbeat that goes on means that the Trunk works or waits on purpose, and the
 
 A Trunk is therefore written so that no single step of its work takes longer than a few seconds: every wait in it has a time limit, after which the loop comes round again.
 
+<!-- sources:
+arbol-trunk:trunks/trivial/src/arbol_trunk_trivial/life.py#SignsOfLife
+arbol-trunk:trunks/trivial/src/arbol_trunk_trivial/life.py#waiting_for
+arbol-trunk:trunks/trivial/src/arbol_trunk_trivial/run.py#drive
+arbol-trunk:trunks/trivial/tests/test_life.py
+arbol-root:contract/conformance/rct_conformance/scenarios/r6.py
+-->
+
 ### Two lines of defence
 
 Nothing stays running except Arbol. A stuck Trunk is therefore caught in two ways.
@@ -54,6 +62,13 @@ Nothing stays running except Arbol. A stuck Trunk is therefore caught in two way
 Time during which the Mac slept does not count. Both lines measure with a clock that stands still during sleep, so that waking the Mac does not make every Exchange look stuck.
 
 While no Arbol backend of a Root runs, only the first line works for that Root. A Trunk that is frozen as a whole then stays until a backend of its Root runs again. It calls no model and writes nothing meanwhile.
+
+<!-- sources:
+arbol-trunk:trunks/trivial/src/arbol_trunk_trivial/watch.py#Watch
+arbol-trunk:trunks/trivial/src/arbol_trunk_trivial/run.py#run_exchange
+arbol-trunk:trunks/trivial/src/arbol_trunk_trivial/termination.py#end_group
+arbol-root:contract/conformance/rct_conformance/scenarios/r7.py
+-->
 
 ### Ending a stuck Exchange
 
@@ -108,8 +123,8 @@ A Trunk:
 
 | ID | A Trunk must… | Origin | Verified by |
 |---|---|---|---|
-| ARC-3.1 | raise a heartbeat in the folder of its Exchange from the loop that does its work, at least every 10 seconds, whatever it is waiting for | New | contract |
-| ARC-3.2 | state in that folder what it is waiting for and since when: the Driver, a tool call or command, an answer, the database or a small model call | New | contract |
+| ARC-3.1 | raise a heartbeat in the folder of its Exchange from the loop that does its work, at least every 10 seconds, whatever it is waiting for | New | contract: R6 (SYL-176); unit: `Heartbeat`, `RoundsWithLife` and `TimeScaledWaits` in `trunks/trivial/tests/` of `arbol-trunk` |
+| ARC-3.2 | state in that folder what it is waiting for and since when: the Driver, a tool call or command, an answer, the database or a small model call | New | contract: R6 for Driver, tool and answer waits (SYL-176); unit: `Waiting` for all five values, priority and `since`, in `trunks/trivial/tests/test_life.py` of `arbol-trunk` |
 | ARC-3.3 | end its own process and everything it started when its work has not raised the heartbeat for 60 seconds | New | drill |
 | ARC-3.4 | end a Driver run that gave no event for one minute longer than its idle limit while no tool call or question was open, nor a command left in the background where its own specification says how it tells one, and end the Exchange as failed with that cause | New | contract: RCT-2.21, scenario R18 of [RCT-4](../../arbol-root/contract/04-conformance.md) ([RCT-D30](../../arbol-root/contract/02-starting-stopping-and-settling.md#decisions)) |
 
