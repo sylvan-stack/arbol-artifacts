@@ -93,6 +93,41 @@ For a component outside Roots, except the Trunks (below), `-v <build number>` is
 
 The launchers of `arbol` and `arbol-root` additionally recognise `--root <identifier>` before `-v`. Their selection prefix is `[--root <identifier>] [-v <build number>]`; all later arguments are passed unchanged. With `--root` alone they start that Root's default Build. With neither option they start the current Root's default Build. A Build named by `-v` supplies its own Root from its record and needs no `--root`; if both are supplied and disagree, the launcher refuses the call. The Driver and `arbol-app` launchers keep the existing `-v` form and accept no Root selector. The launcher `arbol-trunk` takes `[--root <identifier>] [<code name>] [-v <build number>]` before the command, hands the Build `--root <root>` before it, refuses with `unknown_root`, `unknown_trunk` and `no_fit`, and answers `list` itself (RCT-0.7 to RCT-0.10).
 
+For the Root-component launchers, the selectors are only the ordered prefix
+`[--root <identifier>] [-v <build>]`. An empty command after that prefix is
+passed to the Build too. The Root record is read on every start with the same
+reader and current-Root choice as `arbol-trunk`. An explicitly selected Root
+may be preparing or failed; an implicit current Root must be working. A named
+Build supplies its own Root, whose record must still be readable; it never
+uses the current Root instead. The launcher adds no `--root` argument to the
+Build: the Build reads its Root from its own record (BLD-D21).
+
+| Root-component refusal | When |
+|---|---|
+| `unknown_root` | A Root selector has no valid identifier, the selected Root has no readable valid record, or no Root/Build was named and no working Root exists |
+| `build_unavailable` | The named Build cannot run, or the selected Root has no runnable working Build; the message names the component and Root when known |
+| `invalid_input` | A Root selector contradicts the Root of the named Build |
+
+These refusals keep the component launcher's form: exit 1 and one
+`{ "error": { "code", "message", "available" } }` line. `available` lists only
+runnable Builds of the selected Root when it is known, newest first, and is
+empty when no Root can be selected. Named failed and withdrawn Builds keep
+the existing warning and runnable rules. Root-specific selection filters the
+records before the existing global default chooser; plain component and
+Trunk launcher text and selection stay unchanged.
+
+`arbol-builds list --root <identifier>` chooses defaults for that Root in the
+Root components and keeps global defaults for other components. With no
+selector and no current Root, inventory still succeeds: Root components have
+no default, while other components retain theirs. A named Root selector must
+resolve to a valid record. `show` of a Root component without a Build number
+requires a selected/current Root and returns its default; named `show` keeps
+record introspection even after that Root's record is gone, and only checks
+that an explicit Root selector agrees with the Build's stored Root. An
+explicit non-Root component's `list` or `show` refuses `--root` as inapplicable.
+Tool refusals keep their existing `builds_failed` wrapper and explain the
+selection problem (BLD-D21).
+
 How `arbol-trunk` reads a call and the Roots ([BLD-D17](#decisions)). `--root` counts only as the first argument. The next argument is the code name, unless it is `-v`, a command word of the Root Contract (`run`, `settle`, `list`) or begins with `-`. A Root's record is `root.json` in its folder `~/Library/Application Support/Arbol/roots/<root>/`, reached from the home folder and read at every start, as the Build records are; a record that is missing or damaged takes only its own Root out of use. Without `--root` the launcher reads the record of every Root and takes the current Root, the one created last among those in the state `working` (ARC-1). Except `list`, which it answers itself, every command, `run` and `settle` and any that a later version of the Root Contract adds, goes to the Build with everything after it, and the Build refuses what it does not know. It checks the call, then the Root, then the Trunk, then the Build, and refuses:
 
 | Code | When |
@@ -466,3 +501,4 @@ The 6–7 October decisions below remain as recorded. The Root-specific extensio
 | BLD-D18 | Where does `arbol-builds build` take a repository from when `--repo` names none, and where does a Build's check take the suite of another repository from? | From `~/repos/sylvan-stack/readonly/<repo>`, the clone of each repository that always holds the last merged `main` and that nobody edits, and for a Trunk from its folder `trunks/<code name>/` in `readonly/arbol-trunk`. A check that runs the suite of another repository takes it from there too: for a Trunk, the Root Contract's suite from `readonly/arbol-root` ([RCT-4](../../arbol-root/contract/04-conformance.md#how-a-trunk-builds-check-runs-it)); for a Driver, the Driver Contract's suite from `readonly/arbol`, unless `ARBOL_CONFORMANCE_REPO` names another checkout. `arbol-builds` itself is installed from `readonly/arbol`. The repositories' own folders `~/repos/sylvan-stack/<repo>` belong to the owner and to the agents started there, and can hold unmerged edits or another branch; `--repo` still builds from any checkout | Decided 16 October 2026 by the owner, together with the named work areas of the guide Working in Sagas, in which every Beat is merged into `main`; written for SYL-209 |
 | BLD-D19 | How are Build starts recorded and shown? | One UTC millisecond timestamp and newline in `last-start`; an atomic best-effort replacement without locks, retries or flushing before the launchers hand over. `list` and `show` derive `lastStart` and `unusedSince` without changing `build.json`, using the regular file’s modification time if its contents cannot be read and the build time if no start is recoverable. Pruning keeps `last-start` | Chosen 26 October 2026 as a technical choice for SYL-153, carrying forward the earlier hand-over and keeping BLD-D12’s start-failure rule |
 | BLD-D20 | What do repeated lock/unlock calls do, which Build states can be locked, and how do they race with building and pruning? | Both commands accept every known unpruned Build, including building, failed and withdrawn, and refuse unknown or pruned records. Lock is idempotent and preserves its original lockedAt; unlock is idempotent and removes it. Both print the stored record. Validate lockedAt like other record times. Serialize mutations per component; an in-flight Build preserves the current mark or its absence at each record write. Prune keeps the newest requested working Builds plus any older Locked Builds, with lock-first retaining files and prune-first making lock fail. The alternative of refusing building records would narrow the owner’s ability to keep any Build | Chosen 26 October 2026 as a technical choice for SYL-154, before implementation |
+| BLD-D21 | How do Root-component launchers and inventory select or refuse a Root? | Parse only [--root id] [-v build] before passing every later argument unchanged, including an empty command; add no Root argument to the Build. Reuse the Root reader, allow explicit preparing/failed Roots and require a working implicit current Root. A named Build takes its own retained Root; contradictory selectors are invalid_input, missing/unreadable Roots unknown_root, and unavailable Builds build_unavailable, with scoped available and component/Root diagnostics. Inventory with no current Root still lists records with no Root-component default; explicit Root selectors must resolve, except named show preserves stored-record introspection and only checks agreement. A non-Root component’s explicit list/show rejects --root; global inventory keeps its global defaults. Tool errors keep builds_failed. Filter records for the selected Root before the unchanged global chooser, keeping plain and Trunk launchers unchanged | Chosen 26 October 2026 as a technical choice for SYL-158, before implementation |
