@@ -260,7 +260,7 @@ These are the only commands of a Driver the backend runs: it never starts a run,
 
 ### The working folder of a chat
 
-Version 1 gave a chat the repository's own checkout, so two chats on one repository changed the same files. Now `~/repos/sylvan-stack/<repository>/` is the owner's own folder, the ten color-named Environments such as `~/repos/sylvan-stack/blue/` each hold a clone of every repository and are taken by a hold, and `~/repos/sylvan-stack/readonly/` holds the last merged `main` of every repository and is never edited (the guide Working in Sagas). As the owner decided ([BKD-D4](#decisions)):
+Version 1 gave a chat the repository's own checkout, so two chats on one repository changed the same files. Now `~/repos/sylvan-stack/<repository>/` is the owner's own folder, the ten animal-named Environments such as `~/repos/sylvan-stack/badger/` each hold a clone of every repository and are taken by a hold, and `~/repos/sylvan-stack/readonly/` holds the last merged `main` of every repository and is never edited (the guide Working in Sagas). The animal paths are aliases to the existing color folders; running agents and existing holds keep their paths (the owner's decision of 26 October 2026). As the owner decided ([BKD-D4](#decisions)):
 
 | | |
 |---|---|
@@ -268,7 +268,7 @@ Version 1 gave a chat the repository's own checkout, so two chats on one reposit
 | An agent that has to change files | Books an Environment with the booking tool, when it needs one, and works there; the hold names the chat (AGR-D11), so that the agent finds its folder again at the chat's next message. The tool is not part of Arbol: it belongs with the holds and the Environments of the guide Working in Sagas, and is built in a task of its own |
 | The chat's folder | Stays as it is for every message, also after the agent booked an Environment, because a Driver continues its saved conversation only in the same folder (TRV-0). The agent learns its Root and chat from `ARBOL_ROOT` and `ARBOL_CHAT` (AGR-D11, SYL-207) |
 
-For example, a chat started with ⌘2 on `arbol-trunk` reads `~/repos/sylvan-stack/readonly/arbol-trunk`. Asked to fix a test, its agent books `~/repos/sylvan-stack/amber/` for the chat, works in `amber/arbol-trunk` on a branch of its own, and a second chat on `arbol-trunk` that only answers questions books nothing. More chats than Environments can be open at once, because only the chats that change files take one.
+For example, a chat started with ⌘2 on `arbol-trunk` reads `~/repos/sylvan-stack/readonly/arbol-trunk`. Asked to fix a test, its agent books `~/repos/sylvan-stack/fox/` for the chat, works in `fox/arbol-trunk` on a branch of its own, and a second chat on `arbol-trunk` that only answers questions books nothing. More chats than Environments can be open at once, because only the chats that change files take one.
 
 ### Health and storage
 

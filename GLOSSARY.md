@@ -792,19 +792,24 @@ The **gitignored-but-precious files** a fresh checkout or worktree needs but git
 ## Environment
 
 A reusable working area for parallel agent work, with one clone of every
-repository and its development dependencies installed. The ten Environments
-are **Blue, Green, Amber, Red, Violet, Orange, Teal, Silver, Gold and White**,
-in lowercase folders under `~/repos/sylvan-stack/`. A hold reserves one color
-for a Beat or an Arbol chat; the repositories in it stay together. The owner's
-own checkouts and `readonly/` are outside this pool.
+repository and its development dependencies installed. The ten Environments,
+in booking order, are **Badger, Beaver, Fox, Hare, Lynx, Otter, Owl, Panda,
+Raven and Wolf**, reached through lowercase paths under
+`~/repos/sylvan-stack/`. A hold reserves one Environment for a Beat or an
+Arbol chat; the repositories in it stay together. The owner's own checkouts
+and `readonly/` are outside this pool.
 
-**Repository Color Environment** names a repository's copy within the
-area: **Mycel Blue Environment** is `~/repos/sylvan-stack/blue/mycel`.
-**Blue Environment** means the complete `blue/` area. This replaces the term
-*prepared folder* and the five numbered names by the owner's decision of
-20 October 2026. Numbered paths retained as aliases are the same copies,
-never extra bookable Environments. See [Working in Sagas](../mycel/operations/sagas.md#environments)
-for booking, branches, setup and return.
+**Repository Animal Environment** names a repository's copy within the
+area: **Mycel Badger Environment** is `~/repos/sylvan-stack/badger/mycel`.
+**Badger Environment** means the complete `badger/` area. The owner replaced
+*prepared folder* with *Environment* on 20 October 2026 and chose animal
+names instead of colors on 26 October 2026. The animal paths are aliases to
+the existing physical color folders, which stay in place for running agents,
+saved sessions and installed dependencies. Color and numbered paths remain
+valid names for the same ten areas, never extra bookable Environments;
+existing holds keep their recorded paths. See
+[Working in Sagas](../mycel/operations/sagas.md#environments) for the name
+mapping, booking, branches, setup and return.
 
 ## Errand
 
