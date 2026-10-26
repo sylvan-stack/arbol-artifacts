@@ -18,9 +18,9 @@ The owner asked for the metric on 26 October 2026 and settled, in the session
 that drafted this chapter, where it is computed, that shorter windows count
 with less weight, the pace assumption, that the Radar owns the rollup, that
 unknown is always shown with its reason, that every calculation is logged, and
-the allowance source for Kimi Code. Blocked display, the contract field for a
-window's resource, the weight placeholder's value and the first operational
-profile remain proposals. The [Decisions](#decisions) table distinguishes them.
+the allowance source for Kimi Code, and that a blocked Subscription shows
+zero with its recovery. The contract field for a window's resource, the weight
+placeholder's value and the first operational profile remain proposals. The [Decisions](#decisions) table distinguishes them.
 
 ## Scope
 
@@ -158,12 +158,11 @@ fields in `extra`. A reached window's own loss is zero in either case, because
 nothing is left in it.
 
 Vigor measures the urge to use the Subscription now. While it cannot be used,
-that urge is zero. The proposed display is therefore `0` now, with the
-**next change** beside it: the earliest reset among the windows, and the Vigor
+that urge is zero. A blocked Subscription therefore shows `0`, with its
+**recovery** beside it, the next change: the earliest reset among the windows, and the Vigor
 the Subscription will have at that moment, computed on the predicted windows
 below. "0 now, 0.39 at 13:20" tells the Radar when a blocked Subscription is
-worth using again. The owner may prefer a reduced number to a zero; that
-choice is SGM-D16.
+worth using again (SGM-D16).
 
 Every result carries its next change, blocked or not, since Vigor also jumps
 when a store resets and its unspent share is lost.
@@ -293,7 +292,7 @@ belong to the Drivers' own specifications for the reports they deliver.
 | SGM-1.2 | Take into the sum only windows whose resource is tokens or credits and whose used share, length and reset time are known; show the others | New | unit |
 | SGM-1.3 | Compute each window's loss as the share expiring unused at the window's even pace, never below zero | New | unit |
 | SGM-1.4 | Combine losses as the sum capped at 1, with the longest window weighted 1 and each shorter window by its share of the longest window's allowance, using the placeholder until a learned weight is approved | New | unit |
-| SGM-1.5 | Treat a Subscription with a reached token window and no overage as blocked; report its Vigor as the blocked value of the approved profile and carry the next change | New | unit |
+| SGM-1.5 | Treat a Subscription with a reached token window and no overage as blocked; report its Vigor as 0 and carry its recovery: the next change's moment and value | New | unit |
 | SGM-1.6 | Carry with every result the earliest reset among the windows and the Vigor at that moment, computed on the predicted windows | New | unit |
 | SGM-1.7 | After a reset passes without a newer report, predict a fresh window, mark the prediction on the window and the result, and drop every prediction when a report arrives | New | unit |
 | SGM-1.8 | Mark a result stale when its report is older than the Subscription's shortest token window, and show the report's age | New | unit |
@@ -314,7 +313,7 @@ layout are outside this draft. The usage report stays the Driver Contract's.
 |---|---|
 | Window | Kind, label, resource, used share, reset time, length, reached flag, predicted flag, source report id |
 | Report | Subscription, outcome, fetched time, windows as delivered, `extra` as delivered, arrival time, producing run if any |
-| Profile | Version, approval state, pace assumption, gate weights per family and window with placeholder or learned marking, blocked value, stale rule |
+| Profile | Version, approval state, pace assumption, gate weights per family and window with placeholder or learned marking, stale rule |
 | Result | Subscription, moment, report id, profile version, per-window loss and contribution, Vigor or null, blocked, stale with report age, unknown with reason, next change moment and value |
 | Rollup | Moment, every Subscription's result, headline value and Subscription |
 
@@ -370,7 +369,7 @@ profile for operation.
 |---|---|---|---|
 | SGM-D14 | Where is Vigor computed? | In Arbol's Radar layer, from the Driver Contract's usage report and the clock; Drivers deliver complete windows and never a Vigor | Decided by the owner, 2026-10-26 |
 | SGM-D15 | Do shorter windows count, and how much? | Yes: every token window's loss counts, weighted by its share of the longest window's allowance; placeholder `0.1` for every gate until a learned weight is approved | Decided by the owner, 2026-10-26; the placeholder's value is a placeholder, calibration open |
-| SGM-D16 | What does a blocked Subscription show? | `0` now, with the next change's moment and value beside it; the alternative is a reduced rather than zero value | Open; the owner has not chosen between zero and a reduced value |
+| SGM-D16 | What does a blocked Subscription show? | `0`, with its recovery beside it: the moment the reached window resets and the Vigor at that moment | Decided by the owner, 2026-10-26: zero, with the information when it recovers |
 | SGM-D17 | What pace does the loss assume? | The window's even pace first; learn the gate-to-store ratio from recorded report pairs as the second step, for the weight and for an "unavoidable even at full tilt" figure | Decided by the owner, 2026-10-26 |
 | SGM-D18 | Who owns the cross-Subscription view, and what is its headline? | The Radar; the headline is the highest Vigor named with its Subscription, the list beneath; never a sum. The first version computes, logs and answers a read, and displays nothing in radar-stats | Decided by the owner, 2026-10-26 |
 | SGM-D19 | How is unknown shown? | Always visibly with its reason; a missing field is named as a Driver defect, an unsupported family as a known gap | Decided by the owner, 2026-10-26 |
