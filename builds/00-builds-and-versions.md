@@ -183,6 +183,40 @@ Nothing is pruned unless one of these commands is run. Arbol runs `prune --unuse
 
 The protection for retained Roots applies to `arbol` and `arbol-root`, even when a retained Root is `preparing` or `failed`; it may keep more than *n* Builds. It does not create a per-Root count for Trunks or Drivers: a Trunk is kept by Root Contract version, as above, and the Driver Build that an older Root needs is kept by locking it. The build tool and launchers may read Root identities, states and compatibility records, but hold no backend, UI code, migration script or table layout of a Root. `arbol-roots` owns Root catalogue changes.
 
+For count-based pruning, a retained Root is a folder with a valid Root
+identifier that still has a `root.json` directory entry, in any state. A
+missing record protects nothing. A damaged, unreadable, dangling or
+nonregular record still protects that folder identifier's newest runnable
+working Build of `arbol` or `arbol-root`: unreadable content does not make
+the Root cease to exist. The identifier comes from the folder, so a damaged
+record cannot protect some other identifier instead (BLD-D22).
+
+For a Trunk, every retained Root must have a readable valid record before
+anything is removed, because an unknown `rootContract` could need any old
+Build. One unresolved record therefore refuses the whole component's prune,
+names the affected Root identifiers and changes no Build record or file.
+An absent Roots catalogue means no retained Roots; another error listing it
+refuses Root-component and Trunk pruning before any change. Components
+outside Roots do not read that catalogue at all.
+
+The existing newest-*n*, Locked and global-default protections remain; the
+Root and version protections are additional. For each retained identifier or
+version the tool protects the newest **runnable working** Build, as the
+launchers do. A higher working record whose executable has disappeared does
+not replace protection of the older runnable one. A single Trunk Build can
+protect several versions; Build numbers from different components are never
+compared. Failed, withdrawn, building and already pruned records keep their
+existing treatment. Retained records, logs and `last-start` files are kept
+when payloads are pruned.
+
+The tool reads one catalogue snapshot inside the component's existing
+mutation reservation, before marking or removing anything. It reads the
+catalogue anew on the next prune. It holds no catalogue lock and changes no
+Root record; a Root catalogue change after that snapshot belongs to the next
+prune's view. Nonregular records are not opened as blocking streams. These
+pruning-only reads do not change the embedded launcher readers or their
+selection rules (BLD-D22).
+
 ### Unused Builds and Locked Builds
 
 The owner decides how long an unused Build is kept, and can keep any Build for good ([BLD-D12](#decisions)).
@@ -517,3 +551,4 @@ The 6–7 October decisions below remain as recorded. The Root-specific extensio
 | BLD-D19 | How are Build starts recorded and shown? | One UTC millisecond timestamp and newline in `last-start`; an atomic best-effort replacement without locks, retries or flushing before the launchers hand over. `list` and `show` derive `lastStart` and `unusedSince` without changing `build.json`, using the regular file’s modification time if its contents cannot be read and the build time if no start is recoverable. Pruning keeps `last-start` | Chosen 26 October 2026 as a technical choice for SYL-153, carrying forward the earlier hand-over and keeping BLD-D12’s start-failure rule |
 | BLD-D20 | What do repeated lock/unlock calls do, which Build states can be locked, and how do they race with building and pruning? | Both commands accept every known unpruned Build, including building, failed and withdrawn, and refuse unknown or pruned records. Lock is idempotent and preserves its original lockedAt; unlock is idempotent and removes it. Both print the stored record. Validate lockedAt like other record times. Serialize mutations per component; an in-flight Build preserves the current mark or its absence at each record write. Prune keeps the newest requested working Builds plus any older Locked Builds, with lock-first retaining files and prune-first making lock fail. The alternative of refusing building records would narrow the owner’s ability to keep any Build | Chosen 26 October 2026 as a technical choice for SYL-154, before implementation |
 | BLD-D21 | How do Root-component launchers and inventory select or refuse a Root? | Parse only [--root id] [-v build] before passing every later argument unchanged, including an empty command; add no Root argument to the Build. Reuse the Root reader, allow explicit preparing/failed Roots and require a working implicit current Root. A named Build takes its own retained Root; contradictory selectors are invalid_input, missing/unreadable Roots unknown_root, and unavailable Builds build_unavailable, with scoped available and component/Root diagnostics. Inventory with no current Root still lists records with no Root-component default; explicit Root selectors must resolve, except named show preserves stored-record introspection and only checks agreement. A non-Root component’s explicit list/show rejects --root; global inventory keeps its global defaults. Tool errors keep builds_failed. Filter records for the selected Root before the unchanged global chooser, keeping plain and Trunk launchers unchanged | Chosen 26 October 2026 as a technical choice for SYL-158, before implementation |
+| BLD-D22 | What does count-based pruning retain when a Root record is unreadable or damaged? | A valid identifier folder with a root.json directory entry is retained in any state, including a damaged, unreadable, dangling or nonregular record. Root components protect that folder identifier’s newest runnable working Build. Trunks refuse the whole prune before mutation when any retained Root lacks a readable valid record, since its required version is unknown. A missing catalogue means no Roots; other listing failures refuse Root/Trunk pruning, while outside components never read it. Add these protections to newest-n, Locked and existing global-default retention. Read one snapshot under the component reservation, without a catalogue lock; later catalogue changes enter the next prune’s view. Use a pruning-only reader with shared Root validation, leaving embedded launcher readers unchanged | Chosen 26 October 2026 as a technical choice for SYL-159, before implementation |
