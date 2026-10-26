@@ -379,6 +379,14 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 - `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#5. Everyday operations cost in proportion to total history`
 - `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#Anti-goals`
 
+<!-- sources:
+arbol-root:scripts/check_migration.py#run_migration
+arbol-root:scripts/check_migration.py#judge
+arbol-root:scripts/migration_protocol.py#protocol
+arbol-root:scripts/migration_fixtures.py#seed
+arbol-root:tests/test_migration_check.py
+-->
+
 ### Settings
 
 The settings of `arbol`, Brain Recipes among them, are kept for each Root in `~/.arbol/roots/<root>/`; `arbol-root` reads no settings file ([RTM-D3](../../arbol-root/specs/00-the-commands.md#decisions)). Otherwise the programs of an older Root would have to read a file whose shape a newer Root had changed. `~/.arbol` itself keeps only the settings of what lies outside every Root: the Drivers, each Trunk that has settings in `arbol-trunk/<code name>.json` ([RCT-0](../../arbol-root/contract/00-overview.md)), `arbol-classifier`, the address of the database server in `database.json` ([ARC-D51](#decisions)) and the rule for removing unused Builds in `arbol-builds.json` (BLD-0). This narrows DRV-D24, which gave every component one file in `~/.arbol`.
@@ -432,7 +440,7 @@ Roots:
 | ID | Arbol must… | Origin | Verified by |
 |---|---|---|---|
 | ARC-1.1 | give every Root an identifier, a display name, a folder, a database, settings and its own Builds of `arbol` and `arbol-root` | New | catalogue part: unit `roots.create`, `roots.create-from`, `roots.default-paths`; real-server `real_server_example` in `arbol:tests/test_roots.py` (SYL-160). The Root components’ own programs/Build qualification remain SYL-181 and later backend work |
-| ARC-1.2 | keep inside a Root only changes that the older Builds of that Root can ignore, and make a new Root for any other change | Changed | unit |
+| ARC-1.2 | keep inside a Root only changes that the older Builds of that Root can ignore, and make a new Root for any other change | Changed | Root own-table part: unit check `layout`, `root.layout-compatible-additions`, `root.layout-edited-statement`, `root.layout-required-column`, `root.layout-new-constraints`, `root.layout-baseline`; private `root.private-sql-builds` (SYL-184). Contract v1 has no chat-table additions (RCT-D24); settings, backend and windows wait for Arbol's own specification |
 | ARC-1.3 | hold no code and no table layout of any Root in the launchers, the build registry, `arbol-builds` and `arbol-roots` | New | unit: `roots.boundary` (SYL-160), `builds.outside-roots` (SYL-155); global catalogue/Build tools hold no Root implementation or table layout |
 | ARC-1.4 | take the `root.json` files as the whole list of Roots, and let a damaged or missing record take only its own Root out of use | New | drill: `arbol:scripts/roots_drill.py`, checked by `roots.damaged-drill`; unit: `roots.catalogue-damaged`, `roots.catalogue` (SYL-160); existing launcher record checks |
 | ARC-1.5 | keep the chats of each Root in a database of its own, and never open one Root's database from a program of another, except from the migration script of the Root that grows from it | New | catalogue lifecycle part: unit `roots.database-access`, `roots.database-ddl`, `roots.boundary`; real-server acceptance proves separate empty databases (SYL-160). Root data readers, backend and migration isolation remain their own components/Beats |
@@ -462,9 +470,9 @@ Moving chats:
 
 | ID | A migration must… | Origin | Verified by |
 |---|---|---|---|
-| ARC-1.15 | read the database of the older Root without changing or removing anything there, and be the only program of the newer Root that knows the older tables | Changed | unit |
+| ARC-1.15 | read the database of the older Root without changing or removing anything there, and be the only program of the newer Root that knows the older tables | Changed | Migration check part: `root.migration-whole`, `root.migration-protocol`, `root.migration-protocol-refusal`, source rows/schema unchanged and READ ONLY write refusal (SYL-184). arbol-roots execution is SYL-185; real-Root drill is SYL-189 |
 | ARC-1.16 | go in one direction, from the Root a Root grew from, and be repeatable: for the whole database while the Root is `preparing`, and for one chat afterwards (one chat is not in the first thin path: RTM-D12) | New | unit |
-| ARC-1.17 | copy a table that did not change as it is, convert the rows of a table that changed, keep the text of every message exactly as it was, and transfer no running Exchange or process | Changed | unit |
+| ARC-1.17 | copy a table that did not change as it is, convert the rows of a table that changed, keep the text of every message exactly as it was, and transfer no running Exchange or process | Changed | Unchanged-table copy part: `root.migration-whole`, `root.migration-text-fault`, `root.migration-open-fault`, `root.migration-snapshot-fault`, all five tables and exact text/JSON (SYL-184). Converting a changed table waits for the first Root that changes one; original process/folder ownership is a SYL-189 drill |
 | ARC-1.18 | leave the Root in use current and untouched while it runs and when it fails, and name what failed without cutting or skipping anything silently | Changed | drill |
 | ARC-1.19 | mark a migrated chat stale when its original has gone further, checking when the Arbol backend of the newer Root starts and when its chat list is opened, and offer to bring it over again (not in the first thin path: RTM-D12) | New | journey |
 | ARC-1.20 | replace a copy only when the copy was not continued in the newer Root, and otherwise bring the original in as a second chat (not in the first thin path: RTM-D12) | New | unit |

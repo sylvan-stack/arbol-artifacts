@@ -44,6 +44,11 @@ Every Exchange record identifies the persistent Root and the concrete Trunk comp
 
 A folder exists only while its Exchange is in progress, or until what is left of an Exchange has been settled.
 
+<!-- sources:
+arbol-root:scripts/check_migration.py#judge
+arbol-root:tests/test_migration_check.py#MigrationCheck
+-->
+
 ### The arriving answer is a file
 
 `events.jsonl` holds every event of the answer as it arrives, finished parts too; finished parts also go to the database, and no row is written for a fragment (RCT-1, [RCT-D9](../../arbol-root/contract/01-the-exchange-folder.md#decisions)).
@@ -139,7 +144,7 @@ The backend compatible with each Root reads that Root's database and Exchange fi
 | ARC-2.9 | refuse a new message while the database cannot be reached, and lose no result of an Exchange in progress | Changed | drill |
 | ARC-2.10 | end an Exchange as failed with the cause `rate_limited` when its run met a rate limit, and take no other route inside the Trunk | Changed | contract: R11 (SYL-177); unit: `WholeExchange.test_a_failed_run_keeps_the_drivers_error_whole` and `WholeExchange.test_a_refusal_can_be_the_only_event_and_no_other_route_is_tried` in `trunks/trivial/tests/test_run.py` of `arbol-trunk` |
 | ARC-2.11 | stop no Exchange when Arbol quits, every UI closes or the Arbol backend ends, and show on return what was produced meanwhile | Kept | drill |
-| ARC-2.12 | record each accepted Exchange's persistent Root identity and concrete Trunk component and Build, retain them through compatible updates and restarts, and leave the original process with its Root when another Root is created or history is migrated | New | contract |
+| ARC-2.12 | record each accepted Exchange's persistent Root identity and concrete Trunk component and Build, retain them through compatible updates and restarts, and leave the original process with its Root when another Root is created or history is migrated | New | Migration-copy part: `root.migration-whole`, `root.migration-open-fault`, `root.migration-snapshot-fault` preserve Trunk/Build rows, record the source Root and leave source data untouched (SYL-184). Existing contract R1/R16 and manager identity checks cover acceptance/listing; compatible updates/restarts and original process ownership across real migration remain SYL-187/SYL-189 and backend drills |
 | ARC-2.13 | rediscover Exchanges across every retained Root on App or backend restart through the common Root catalogue and matching manager replies, isolate discovery failures by Root, and delegate detailed reads and controls to the owning Root's compatible components | New | drill |
 | ARC-2.14 | call the Leather Bag's attention to a database that cannot be reached for as long as it lasts, and show a finished answer that is not yet saved from its folder, marked as such | New | drill |
 
