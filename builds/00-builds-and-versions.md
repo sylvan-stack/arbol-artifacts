@@ -143,8 +143,30 @@ The owner decides how long an unused Build is kept, and can keep any Build for g
 | A time the owner sets | `removeUnusedAfterDays` in `~/.arbol/arbol-builds.json`. `arbol-builds prune --unused` removes the files of the Builds that were not started for longer. While no time is set, no Build is removed for being unused; that is the default |
 | Locked | A Build marked with `arbol-builds lock` is never removed, neither by `prune --keep` nor by `prune --unused`, until it is unlocked |
 | Never removed for being unused | A Locked Build; the default Build of a component, and for `arbol` and `arbol-root` the default of every retained Root; a Trunk Build that a retained Root would run; a Build that an Exchange in progress runs on, as the managers of the Roots list them ([ARC-0](../architecture/00-components-and-boundaries.md#arbol-root)) |
-| The record stays | As with `prune --keep`, the record and the log remain, with `prunedAt` |
+| The record stays | As with `prune --keep`, the record, the log and `last-start` remain, with `prunedAt` |
 | When it runs | Arbol runs `arbol-builds prune --unused` when it starts and once a day while it runs |
+
+The file `last-start` holds one UTC timestamp and a newline, in the same
+millisecond form as a Build record, for example `2026-10-26T10:00:00.123Z`.
+A component launcher and `arbol-trunk` record it immediately before handing
+over to the selected Build, including a failed or withdrawn Build named with
+`-v`. A refused selection and `arbol-trunk list` record nothing. The launcher
+writes a private temporary file beside it and replaces `last-start` atomically.
+It takes no lock, retries nothing and requests no disk flush. Every recording
+error is ignored; a failed write leaves the previous timestamp intact, and
+the launcher removes its temporary file when it can. The launcher restores
+SIGXFSZ to its normal launch behaviour only after this attempt, so a file-size
+limit does not kill it while recording (BLD-D19).
+
+`arbol-builds list` and `show` add two derived fields; neither is saved in
+`build.json`. `lastStart` is the recorded timestamp, or `null` when none can
+be recovered. If a regular `last-start` file is damaged or cannot be read,
+its modification time is used; a non-regular file is ignored, and unreadable
+metadata does not fail the command. `unusedSince` is `lastStart` when present,
+otherwise the build's `finishedAt`, or `startedAt` while the build is unfinished.
+A missing timestamp means no start was recorded: older Builds may have run
+before recording was installed. Both fields remain available after pruning,
+because `last-start` is retained with the record and log.
 
 Seqoya Lab, the administration UI, has a page *Builds*. It lists the Builds of each component with their last start, has a Locked switch for each Build and one field for the time; an empty field means that no Build is removed for being unused. The page calls `arbol-builds` and writes the setting, and removes nothing itself. Until Seqoya Lab exists, the same is done with `arbol-builds lock`, `arbol-builds unlock` and the settings file.
 
@@ -260,7 +282,7 @@ interface BuildRecord {                // build.json
   rootContracts?: number[];            // required for a Trunk: the versions of the Root Contract it implements, [1]
   dataFormat?: number;                 // the format number of the data it reads and writes
   withdrawn?: { at: string; reason: string };
-  prunedAt?: string;                   // files removed; the record and log remain
+  prunedAt?: string;                   // files removed; the record, log and last-start remain
   lockedAt?: string;                   // Locked: the files are never removed
   failure?: { stage: "build" | "entry" | "check" | "launcher"; name: string; message: string };
 }
@@ -277,6 +299,11 @@ The commands of `arbol-builds` are in the table above. Each prints JSON on stand
 For `arbol` and `arbol-root`, `list` retains the full inventory but marks `default` only for the selected Root; `show` without a build number uses that same selection. A named record supplies its own Root, and a conflicting `--root` is refused. Trunk compatibility fields are inventory metadata; the launcher `arbol-trunk` chooses the Build, and `arbol-root` names the Trunk and the exact Build it starts (RCT-0.7, [RCT-2](../../arbol-root/contract/02-starting-stopping-and-settling.md#how-the-root-manager-uses-a-trunk)). A Build that does not fit is reported with the Builds that fit (RCT-0.9), not a comparison of build numbers across components.
 
 The global `--registry-dir <folder>` option selects another registry, and `--bin-dir <folder>` selects the launcher destination. Defaults remain those above. `build` finds the repository at `~/repos/sylvan-stack/readonly/<component>`, and `arbol-trunk/<code name>` in `~/repos/sylvan-stack/readonly/arbol-trunk/trunks/<code name>/`: the clones that always hold the last merged `main` and that nobody edits ([BLD-D18](#decisions)); `--repo <folder>` overrides that location for this build, and `--root <identifier>` names the Root of a Build of `arbol` or `arbol-root` (RTM-D9). These options accept both `--name value` and `--name=value`, before or after the command. A launcher remembers the registry selected when it was written.
+
+`list` returns Build records with `default: boolean`, `lastStart: string | null`
+and `unusedSince: string`. `show` returns one Build record with `lastStart`
+and `unusedSince`. These are output fields, not stored Build-record fields;
+[Unused Builds and Locked Builds](#unused-builds-and-locked-builds) defines their fallback.
 
 ```ts
 interface BuildDescription {           // arbol-build.json
@@ -402,3 +429,5 @@ The 6–7 October decisions below remain as recorded. The Root-specific extensio
 | BLD-D16 | What does `arbol-builds` accept as a Root identifier and as a Trunk's `rootContracts`? | A Root identifier is one lower-case word of the letters `a` to `z` and the digits, as RCT-0 refuses any other; nothing checks that the Root exists, since `arbol-roots` comes later and a build only records the Root. `rootContracts` is a list of at least one positive whole number, each named once; a Trunk lists no `contract`, and no other component lists `rootContracts`. A description that breaks this is refused before a number is reserved, and a record that breaks it counts as damaged | Chosen 16 October 2026 as a technical choice, for SYL-155 |
 | BLD-D17 | How does `arbol-trunk` read a call and the Roots, and what does it answer for a Root identifier that is not one lower-case word, when no Root is named and none is working, and for a call it cannot read? | `--root` only first; the next argument is the code name unless it is `-v`, a command word or begins with `-`. The launcher reads `root.json` of the Root named, or of every Root to find the current one, at every start. A record counts as damaged unless `root` is its folder's name, `status` is `preparing`, `working` or `failed`, `createdAt` is a time in the form of the Build records and `rootContract` is a positive whole number; it reads no other field. The current Root is the working Root with the latest `createdAt`, and of two created at the same millisecond the one whose identifier sorts last. `unknown_root` for a Root identifier that is not one, for a Root without a readable record, and when no Root is named and none is working, with a message that says which; `unknown_trunk` for a code name that is not one or has no folder in the registry; `no_fit` for every call that leaves no Build to start; `invalid_input` for a call without a command, and for `list` after `-v` or with more arguments. Only `list` is answered by the launcher: any other command goes to the Build, so a later Root Contract version can add one without a new launcher. `available` stands beside `error`, as RCT-0's `Refusal` gives it | Chosen 16 October 2026 as a technical choice, for SYL-179. The Known gaps of the Arbol 2 Foundation Saga asked to settle the first two points in RCT-0; RCT-0 was held by another task that day, and the launcher's refusals are listed here in BLD-0 already, so they are settled here |
 | BLD-D18 | Where does `arbol-builds build` take a repository from when `--repo` names none, and where does a Build's check take the suite of another repository from? | From `~/repos/sylvan-stack/readonly/<repo>`, the clone of each repository that always holds the last merged `main` and that nobody edits, and for a Trunk from its folder `trunks/<code name>/` in `readonly/arbol-trunk`. A check that runs the suite of another repository takes it from there too: for a Trunk, the Root Contract's suite from `readonly/arbol-root` ([RCT-4](../../arbol-root/contract/04-conformance.md#how-a-trunk-builds-check-runs-it)); for a Driver, the Driver Contract's suite from `readonly/arbol`, unless `ARBOL_CONFORMANCE_REPO` names another checkout. `arbol-builds` itself is installed from `readonly/arbol`. The repositories' own folders `~/repos/sylvan-stack/<repo>` belong to the owner and to the agents started there, and can hold unmerged edits or another branch; `--repo` still builds from any checkout | Decided 16 October 2026 by the owner, together with the Environments of the guide Working in Sagas, in which every Beat is merged into `main`; written for SYL-209 |
+
+| BLD-D19 | How are Build starts recorded and shown? | One UTC millisecond timestamp and newline in `last-start`; an atomic best-effort replacement without locks, retries or flushing before the launchers hand over. `list` and `show` derive `lastStart` and `unusedSince` without changing `build.json`, using the regular file’s modification time if its contents cannot be read and the build time if no start is recoverable. Pruning keeps `last-start` | Chosen 26 October 2026 as a technical choice for SYL-153, carrying forward the earlier hand-over and keeping BLD-D12’s start-failure rule |
