@@ -285,6 +285,11 @@ The shared listing envelope identifies the Root, Exchange, concrete Trunk compon
 
 This catalogue is an operational view, not a shared chat database. Detailed chat content is opened through the `arbol` backend and UI Builds made for the owning Root. An older Root's backend may have ended when its last UI closed; its detached Exchanges still run and appear in the global listing without starting that backend. Only the current Root's backend runs listeners.
 
+<!-- sources:
+arbol-root:src/arbol_root/listing.py#listing
+arbol-root:tests/test_listing_form.py#ListingForm.test_two_root_listings_combine_by_their_exchange_entries
+-->
+
 ### The states of a Root and the current Root
 
 | State | Meaning | Can be current |
@@ -441,7 +446,7 @@ Roots:
 | ARC-1.23 | name in each Root's record the oldest Build of `arbol-app` the Root works with, and offer in the tray menu only the Roots the running Swift App is new enough for | New | record/minimum part: unit `roots.create`, `roots.app` with bootstrap sentinel 0 (SYL-160). Swift App tray filtering remains pending |
 | ARC-1.22 | run a test with the Builds of the Root under test on a folder and a database of the test's own, and a test of a Trunk Build in a separate test folder of its own, a temporary home, except its live checks (RCT-4, RCT-D29), so that it cannot reach the chats of a Root in use | Changed | catalogue part: unit `roots.default-paths`, `roots.create`, `roots.damaged-drill`, and real-server acceptance using only unique disposable database names (SYL-160). Trunk Build isolation is RCT-4.1; Root Build checks remain SYL-181/SYL-184 |
 | ARC-1.24 | support all working Trunk implementations and Builds whose Build records list the Root's Root Contract version, and expose them through `arbol-root trunks` | New | unit: `root.trunks`, `root.trunks-refusal`; private `root.private-build` (SYL-181), plus `builds.trunk-list`/selection checks (SYL-179) |
-| ARC-1.25 | rediscover Exchanges across retained Roots through the shared Root catalogue and each Root's matching manager, isolate a failing Root's listing, and route management to the recorded owning Root | New | drill |
+| ARC-1.25 | rediscover Exchanges across retained Roots through the shared Root catalogue and each Root's matching manager, isolate a failing Root's listing, and route management to the recorded owning Root | New | Root manager listing/combinability part: unit `root.list-combined`, `root.list-form`, `root.list-states`, `root.list-boundary` (SYL-182). Catalogue discovery, asking every retained Root, failure isolation and routing are specified by accepted BKD-0.22 and remain backend implementation/drill work |
 | ARC-1.26 | keep a Root's identity independent of its manager invocation and compatible Build replacements, and change no established Exchange ownership when the App or backend restarts | New | drill |
 | ARC-1.28 | create and change every table of a Root's database from the table layout that the Root's `arbol-root` Builds carry, apply to a Root in use only additions that its older Builds can ignore, for the chat tables as their Root Contract version allows (RCT-D24), and let no Trunk and no backend create or change a table | New | unit |
 

@@ -49,6 +49,9 @@ arbol-trunk:trunks/trivial/src/arbol_trunk_trivial/life.py#waiting_for
 arbol-trunk:trunks/trivial/src/arbol_trunk_trivial/run.py#drive
 arbol-trunk:trunks/trivial/tests/test_life.py
 arbol-root:contract/conformance/rct_conformance/scenarios/r6.py
+arbol-root:src/arbol_root/listing.py#project
+arbol-root:tests/test_listing.py#Listing.test_all_six_states_are_read_from_records_alone_in_deterministic_order
+arbol-root:tests/fixtures/listing-v1.json
 -->
 
 ### Two lines of defence
@@ -138,7 +141,7 @@ The Root manager:
 
 | ID | The Root manager must… | Origin | Verified by |
 |---|---|---|---|
-| ARC-3.5 | give in every listing each Exchange's heartbeat and what it is waiting for | New | unit: RTM-0.6 |
+| ARC-3.5 | give in every listing each Exchange's heartbeat and what it is waiting for | New | unit: `root.list-states`, `root.list-form`, `root.list-forward-compatible` (SYL-182), RTM-0.6 |
 | ARC-3.6 | on `stop`, write the stop and wait, end the Trunk's processes by force when the Exchange has not ended after 20 seconds, and have it settled as interrupted, unless its end was already written (RCT-2) | Changed | drill |
 | ARC-3.7 | on `stop --force`, send the Trunk's processes the signal to end, end by force after 5 seconds what is still alive, leave none of them alive, and have the Exchange settled as interrupted, unless its end was already written (RCT-2) | Changed | drill |
 | ARC-3.8 | treat the stop of an Exchange that has ended or is unknown as success | Kept | unit |
