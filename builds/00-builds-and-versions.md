@@ -80,6 +80,14 @@ For `arbol` and `arbol-root`, the default is the working Build with the highest 
 
 Trunk Builds belong to no Root and are numbered independently per implementation. For a new Exchange the caller names a Trunk by its code name, or gets the Trivial Trunk, the default Trunk of every Root. The launcher `arbol-trunk` then chooses the newest working Build of that Trunk whose `rootContracts` hold the Root's `rootContract`; an explicitly named Build must also fit (RCT-0.7). Build numbers of different Trunk implementations are never compared to choose an implementation. If the selected Trunk has no runnable working Build that fits, the launcher refuses the call with `no_fit` (RCT-0.9). `arbol-trunk list`, which `arbol-root trunks` prints, lists the Trunks and their Builds. Roots that use the same Root Contract version share every Trunk Build that fits one of them, so one Trunk Build can serve both without being rebuilt. Compatibility comes from records, not from the Trunk's build number ([ARC-0](../architecture/00-components-and-boundaries.md#arbol-root), [ARC-1](../architecture/01-roots.md#builds-and-roots)).
 
+<!-- sources:
+arbol:src/arbol_builds/root_launcher.py#select_root_build
+arbol:src/arbol_builds/root_launcher.py#root_default_record
+arbol:src/arbol_builds/service.py#list_builds
+arbol:src/arbol_builds/service.py#show_build
+arbol:tests/test_builds.py#RootComponents
+-->
+
 ### Running a Build
 
 Each component has one small *launcher* on the search path, named after the component, except the Trunks, which share the launcher `arbol-trunk` (RCT-0). The launcher does one thing: it picks the Build and starts it.
@@ -149,6 +157,13 @@ arbol-root --root sapling -v a3 list          # only if Build a3 belongs to Firs
 A named Build that is still `building`, pruned or unknown, or `failed` without its program, is refused, and the refusal lists the Builds that can be run. A named Build that is `withdrawn` runs, with a line on standard error that says so and gives the reason. A named Build that is `failed` and has its program runs too, with a line on standard error that says so and names the step that failed ([BLD-D13](#decisions)). For example, `arbol-classifier -v 3 add-key` runs Build 3 before any Build of the classifier has passed its real question to Jev.
 
 The launcher is the only part of a component that is not chosen by build number. It is kept to the behaviour of this section so that it rarely has to change.
+
+<!-- sources:
+arbol:src/arbol_builds/root_launcher.py#read_root_call
+arbol:src/arbol_builds/root_launcher.py#launch_root
+arbol:scripts/install_builds.py#served
+arbol:tests/launcher_benchmark.py
+-->
 
 ### Building, withdrawing, pruning
 
@@ -287,7 +302,7 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 
 ## Requirements
 
-The existing check names below verify the Driver and shared build-tool behaviour recorded on 5–8 October 2026. Root-specific selection, metadata and pruning are accepted extensions from [ARC-D47](../architecture/01-roots.md#decisions), recorded on 12 October 2026. They are not implemented or covered by those Driver checks; their checks are listed separately. Since SYL-155, on 16 October 2026, BLD-0.17 and 0.21 to 0.23 are implemented and their checks are named; since SYL-179, the same day, the launcher `arbol-trunk` is, and its checks are named under BLD-0.9, 0.16 and 0.22; the other checks are still pending.
+The existing check names below verify the Driver and shared build-tool behaviour recorded on 5–8 October 2026. Root-specific selection, metadata and pruning are accepted extensions from [ARC-D47](../architecture/01-roots.md#decisions), recorded on 12 October 2026. They are not implemented or covered by those Driver checks; their checks are listed separately. Since SYL-155, on 16 October 2026, BLD-0.17 and 0.21 to 0.23 are implemented and their checks are named; since SYL-179, the same day, the launcher `arbol-trunk` is, and its checks are named under BLD-0.9, 0.16 and 0.22; since SYL-158, on 26 October 2026, Root-component default selection and selectors are implemented under BLD-0.18 and 0.19, with inventory that agrees. The remaining extension checks are pending.
 
 | ID | The registry, its tool and the launchers must… | Origin | Verified by |
 |---|---|---|---|
@@ -310,8 +325,8 @@ Root-specific extensions:
 | ID | The registry, its tool and the launchers must… | Origin | Verified by |
 |---|---|---|---|
 | BLD-0.17 | associate each Build of `arbol` and `arbol-root` with exactly one Root, named with `arbol-builds build --root`, and number Builds per component across all Roots | New | `builds.root-of-build` |
-| BLD-0.18 | choose for `arbol` and `arbol-root` the newest runnable working Build of the named Root, or of the current Root when none is named, and refuse rather than choose another Root when that Build is absent | Changed | unit (pending) |
-| BLD-0.19 | accept `[--root <identifier>] [-v <build number>]` as the selection prefix of `arbol` and `arbol-root`, take a named Build's Root from its record and refuse conflicting selectors, while keeping Driver and App launchers independent of Roots | New | unit (pending) |
+| BLD-0.18 | choose for `arbol` and `arbol-root` the newest runnable working Build of the named Root, or of the current Root when none is named, and refuse rather than choose another Root when that Build is absent | Changed | unit: `builds.root-default`, `builds.root-refusals`, `builds.root-inventory` |
+| BLD-0.19 | accept `[--root <identifier>] [-v <build number>]` as the selection prefix of `arbol` and `arbol-root`, take a named Build's Root from its record and refuse conflicting selectors, while keeping Driver and App launchers independent of Roots | New | unit: `builds.root-named`, `builds.root-pass-through`, `builds.root-launcher-text`, `builds.install-refreshes-launchers`; existing plain Driver/App and Trunk checks |
 | BLD-0.20 | preserve the newest working Build of `arbol` and `arbol-root` for every retained Root when pruning, and of each Trunk the newest working Build that fits each Root Contract version a retained Root uses, even if this keeps more than the requested count | Changed | unit (pending) |
 | BLD-0.21 | record each Trunk Build's list of Root Contract versions, without assigning the Build to one Root, so one Build serves every Root of those versions | New | `builds.trunk-root-contracts` |
 | BLD-0.22 | keep distinct Trunk implementations as distinct components with independent numbering, and never use build numbers across components to choose an implementation | New | `builds.trunk-components`; `arbol-trunk` never takes a Build of another Trunk (SYL-179): `builds.trunk-no-fit`, `builds.trunk-selection` |

@@ -121,7 +121,14 @@ Opening the First Sapling has to start Build 6, not Build 8. The selection rules
 
 Within a Root, `arbol-root trunks` lists every Trunk and its Builds, marking those that list the Root's Root Contract version and the one `run` would start (ARC-0, RCT-0). Compatibility is evaluated for every Trunk component in the registry, not just for versions of a single implementation. For new work, `arbol-root` chooses the named Trunk or else the Trivial Trunk, then the Build `arbol-trunk list` marks chosen, which it starts with an exact `-v` ([RTM-0](../../arbol-root/specs/00-the-commands.md#starting-a-trunk)). It never compares independent components' Build numbers to choose an implementation. An accepted Exchange keeps its recorded concrete Build. The inventory and selection build nothing: `arbol-builds` remains the only build tool.
 
-Since SYL-155, on 16 October 2026, the record of a Build of `arbol` or `arbol-root` names its Root and a Trunk Build's record its Root Contract versions; the launchers and the default Build still choose without the Root until that work is completed. The rules here and in BLD-0 specify the target behaviour; changing the specification alone does not add runtime support.
+Since SYL-155, on 16 October 2026, a Build record names its Root or its Trunk Root Contract versions. SYL-179 added the shared Root reader and compatible Trunk selection. Since SYL-158, on 26 October 2026, the launchers of `arbol` and `arbol-root` select only Builds of the named/current Root, and `arbol-builds list` and `show` agree with them. The 5/6 versus 7/8 example above is an actual build-to-launch check. Root creation and lifecycle commands, pruning per Root and backend/UI behavior remain the work of their own Beats; the specification alone does not supply them.
+
+<!-- sources:
+arbol:src/arbol_builds/root_launcher.py#select_root_build
+arbol:src/arbol_builds/service.py#list_builds
+arbol:src/arbol_builds/service.py#show_build
+arbol:tests/test_builds.py#RootComponents
+-->
 
 ### The tray menu and `arbol-roots`
 
@@ -172,6 +179,12 @@ An older Root stays usable for as long as its folder, its database and its Build
 A Root leaves `preparing` only by `arbol-roots ready`, never by a build that succeeds ([ARC-D36](#decisions)). Becoming current moves the listeners, and a new Root should be tried with its migrated chats before it is used.
 
 An older Root can run agents only as long as the Drivers still serve the version of the Driver Contract its Trunks speak. It stays readable for as long as it is kept.
+
+<!-- sources:
+arbol:src/arbol_builds/roots.py#current_root
+arbol:src/arbol_builds/roots.py#read_roots
+arbol:tests/test_builds.py#Roots
+-->
 
 ### Moving chats between Roots
 
@@ -274,7 +287,7 @@ Roots:
 | ARC-1.4 | take the `root.json` files as the whole list of Roots, and let a damaged or missing record take only its own Root out of use | New | drill |
 | ARC-1.5 | keep the chats of each Root in a database of its own, and never open one Root's database from a program of another, except from the migration script of the Root that grows from it | New | unit |
 | ARC-1.6 | list the Roots in the tray menu, mark the current one, open the UIs of the Root that is picked, and show the Root's display name in the header of every UI | New | journey |
-| ARC-1.7 | take as the current Root the newest Root in the state `working`, worked out from the records at every start with no stored setting, send a command without a named Root to it, and run listeners in its backend alone | New | unit |
+| ARC-1.7 | take as the current Root the newest Root in the state `working`, worked out from the records at every start with no stored setting, send a command without a named Root to it, and run listeners in its backend alone | New | unit for record reading/current selection: `builds.current-root`, `builds.root-records` (SYL-179), `builds.root-refusals` (SYL-158); backend listeners and their hand-over remain pending |
 | ARC-1.8 | keep an older Root usable, for reading and for continuing chats, as long as its folder, database and Builds exist | New | journey |
 | ARC-1.9 | create Roots, mark them ready or failed, and remove them through `arbol-roots` alone, and remove one only on command and never the current one | New | unit |
 | ARC-1.10 | keep the settings of `arbol` for each Root in `~/.arbol/roots/<root>/` (`arbol-root` reads none: RTM-D3) | Changed | unit |
@@ -292,7 +305,7 @@ Builds:
 | ID | The registry, its tool and the launchers must… | Origin | Verified by |
 |---|---|---|---|
 | ARC-1.12 | record for a Build of `arbol` or `arbol-root` the Root it was made for | New | unit: `builds.root-of-build` |
-| ARC-1.13 | take as the default the working Build with the highest build number among the Builds of the Root asked for, and the current Root when none is named | Changed | unit |
+| ARC-1.13 | take as the default the working Build with the highest build number among the Builds of the Root asked for, and the current Root when none is named | Changed | unit: `builds.root-default`, `builds.root-refusals`, `builds.root-inventory` (SYL-158) |
 | ARC-1.14 | keep the newest working Build of every existing Root when pruning | Changed | unit |
 
 Moving chats:
