@@ -57,7 +57,7 @@ Observed on 26 October 2026, where each family's report comes from:
 | Anthropic | Claude | `rate_limit_info.unifiedWindows` in the tool's stream during a run. `usage` on demand returns the stored report and `unsupported` before the first run | five hours (`session`, 300 min), seven days (`weekly`, 10,080 min) |
 | z.ai | Claude | the quota API, on demand and after a run | five hours, a weekly window where the plan has one, and a monthly count of MCP calls (`other`, label `MCP`) |
 | ChatGPT | Codex | the app server's rate-limit read on demand and its notifications during a run | five hours, weekly |
-| Kimi Code | Pi | `GET https://api.kimi.com/coding/v1/usages` on the coding API with the Bearer token Pi already holds. Probed 26 October 2026; adoption in the Pi Driver is in progress | five hours; the month's Kimi Code share; the month's total across all Kimi products (30-day cycle) |
+| Kimi Code | Pi | `GET https://api.kimi.com/coding/v1/usages` on the coding API with the Bearer token Pi already holds. Probed and adopted 26 October 2026 (SYL-288, Pi Build 5) | five hours; the month's Kimi Code share; the month's total across all Kimi products (30-day cycle) |
 
 <!-- sources:
 arbol:driver-contract/01-subscriptions.md#Usage
@@ -78,8 +78,8 @@ when fresh, with a signing-method error: the Console needs the web session's
 token, which no Driver holds. Reading the Console page in a hidden browser,
 which version 1 did for Anthropic, is therefore not adopted (SGM-D23). The Pi
 Driver's own specification records the adopted endpoint, its negative controls
-and its requirement row once the adoption lands
-([PI-1 Subscriptions](../../arbol-pi-driver/specs/subscriptions.md)).
+and its requirement row
+([PI-1 Subscriptions](../../arbol-pi-driver/specs/subscriptions.md), SYL-288).
 
 Two facts about reports shape everything below. A report is a floor on the
 used share: every logged-in device and key of the same account spends from
@@ -377,7 +377,7 @@ profile for operation.
 | SGM-D20 | How does the owner recalculate by hand, and what happens after a reset with no report? | An explicit `usage` fetch replaces predicted windows; after a reset without a report the window is predicted fresh and marked predicted | Decided by the owner, 2026-10-26 |
 | SGM-D21 | Where does this specification live? | As SGM-1 beside SGM-0 in the sagas folder, with glossary entries Vigor and Subscriptions Vigor | Decided by the owner, 2026-10-26 |
 | SGM-D22 | What is logged? | Every calculation and every report arrival, with full inputs and outputs, in Arbol's database | Decided by the owner, 2026-10-26 |
-| SGM-D23 | Where does Kimi Code's report come from? | `GET https://api.kimi.com/coding/v1/usages` through the Pi Driver with the token it already holds; the Console gateway and hidden-browser page reading are not used | Decided by the owner, 2026-10-26: the Pi Driver adoption was started the same day |
+| SGM-D23 | Where does Kimi Code's report come from? | `GET https://api.kimi.com/coding/v1/usages` through the Pi Driver with the token it already holds; the Console gateway and hidden-browser page reading are not used | Decided by the owner, 2026-10-26; adopted the same day in SYL-288 and installed as Pi Build 5 |
 | SGM-D24 | Which windows take part, and how does the calculation know? | Only tokens and credits; add `resource` to the Driver Contract's window. Until then, exclude the Claude Driver's z.ai window labelled `MCP` | Open; proposed default in use |
 | SGM-D25 | Which of several equal-length longest windows is the store? | The one scoped to the coding product the Subscription serves; the others of that length are shown and not summed | Open; proposed default in use |
 | SGM-D26 | Do model-specific weekly windows of the Anthropic family enter the report? | Add them scoped by model if the stream reports them; not verified | Open; needs a Claude Driver probe |
