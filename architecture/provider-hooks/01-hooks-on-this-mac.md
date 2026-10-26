@@ -43,7 +43,7 @@ A Driver starts `claude` and `codex` in their default homes, `~/.claude` and `~/
 |---|---|---|
 | A probe or live check of a Driver | It runs in a home created for it ([DRV-D44](../../driver-contract/05-conformance.md#decisions)) | [DRV-5](../../driver-contract/05-conformance.md) |
 | The check from outside's Claude Code reviewer | `claude -p --safe-mode` | [The check from outside](../../../mycel/operations/agent-watch.md) |
-| The check from outside's Codex reviewer | Not yet: `codex exec --ephemeral …` runs in `~/.codex` and will run every hook installed there ([PHK-D2](#decisions)) | — |
+| The check from outside's Codex reviewer | `codex exec --ephemeral … --disable hooks`, to keep it outside its own steering hook ([PHK-D2](#decisions)); implementation/qualification in SYL-221 | — |
 
 ### The rules for installing a hook
 
@@ -71,7 +71,7 @@ Every installer of a hook of Arbol's (today `arbol-agents install` and the check
 | Foreground | Yes, never a background hook | Yes |
 | Time limit in the tool's settings | 5 seconds; 3 for Codex's `SessionEnd` | The same |
 | Own speed | At most 50 milliseconds in the median on this Mac when it has work to do | At most 50 milliseconds in the median when there is nothing to steer, which is almost always the case |
-| On any fault of its own | Exits with 0 | Not decided ([PHK-D4](#decisions)) |
+| On any fault of its own | Exits with 0 | Exits with 0 silently ([PHK-D4](#decisions)) |
 | The conversation | Keeps no part of it | Keeps no part of it |
 | Elsewhere | Starts no process that outlives it, uses no network, writes only its own files | The same |
 
@@ -103,7 +103,8 @@ Version 1 used no hooks of either tool.
 
 | ID | Question | Proposed default | Outcome |
 |---|---|---|---|
-| PHK-D2 | The check from outside's Codex reviewer runs `codex exec` in `~/.codex`. Once hooks are installed there, each review would create an agent record of its own and could be blocked by the check's own steering hook. Is it run without hooks? | Yes: its command line gets `--disable hooks`, beside `--disable apps` and the others it has. Its Claude Code counterpart already runs with `--safe-mode`. A test of the check asserts both | Open |
-| PHK-D3 | Do the agent records and the check from outside share one installer? | No. Each installer writes only its own entries under the rules above, as the Beats SYL-202 and SYL-221 already plan. One installer would tie the agent records' Builds to the check's | Open |
-| PHK-D4 | What does the steering hook do when it fails on its own, for example when its steering file cannot be read? | It lets the call through and exits with 0. A broken hook that blocked would stop every session on the Mac, the session that could repair it included; a missed steer is caught by the next check five minutes later | Open |
+| PHK-D2 | The check from outside's Codex reviewer runs `codex exec` in `~/.codex`. Once hooks are installed there, each review would create an agent record of its own and could be blocked by the check's own steering hook. Is it run without hooks? | Yes: its command line gets `--disable hooks`, beside `--disable apps` and the others it has. Its Claude Code counterpart already runs with `--safe-mode`. A test of the check asserts both | Decided 26 October 2026 for SYL-221: disable hooks explicitly in Codex reviewers before installing the steering hook; the independent reviewer must not observe or block itself |
+| PHK-D3 | Do the agent records and the check from outside share one installer? | No. Each installer writes only its own entries under the rules above, as the Beats SYL-202 and SYL-221 already plan. One installer would tie the agent records' Builds to the check's | Decided 26 October 2026 for SYL-221: separate installers with exact command ownership, as both accepted Beats already require |
+| PHK-D4 | What does the steering hook do when it fails on its own, for example when its steering file cannot be read? | It lets the call through and exits with 0. A broken hook that blocked would stop every session on the Mac, the session that could repair it included; a missed steer is caught by the next check five minutes later | Decided 26 October 2026 for SYL-221: fail open silently on every hook fault; only an intended block exits 2 |
 | PHK-D5 | Does a Driver's run get the owner's hooks, as it gets the owner's skills and MCP servers (DRV-D27)? | Yes. The Driver copies the `hooks` of `~/.claude/settings.json` into the Subscription home's `settings.json`, and `~/.codex/hooks.json` into its home with Codex's trust recorded there, before each run. A hook installed once then reaches every session on the Mac, Arbol's chats included, and Arbol builds on the tools' hooks instead of leaving them out. Each hook of Arbol's must then tell a Driver's run apart where it matters: the agent records already keep an Exchange's own record (AGR-D7), and the check from outside never steers a chat | Settled 19 October 2026 by the owner's wider decision DRV-D42: a Driver runs the tools in their default homes, so a run has the owner's hooks without any copy |
+| PHK-D6 | How does the steering hook preserve a repair path and avoid treating old dry-run verdicts as live orders? | Fixed provider-qualified command, explicitly disabled until qualified installation; exact-run action files, actual delivery records, fresh owner-message cursors, lift watermarks and a conservative wrap-up allowlist. The owning guide states the protocol and provider coverage limits | Decided 26 October 2026 before implementation in SYL-221; no historical review is replayed and no process is killed |

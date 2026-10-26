@@ -139,6 +139,24 @@
       "id": "a09980ae-37e4-4ec5-af91-5095bffe6a9d",
       "url": "https://linear.app/amorphius/document/arbol-backend-02-elma-chat-its-first-version-c5f59a1bfb69",
       "published": "2026-10-19"
+    },
+    "architecture/provider-hooks/README.md": {
+      "title": "Provider hooks · Conventions and index",
+      "id": "4f1615c6-df42-40bd-b553-f3a011ecfeee",
+      "url": "https://linear.app/amorphius/document/provider-hooks-conventions-and-index-ef0ace329498",
+      "published": "2026-10-26"
+    },
+    "architecture/provider-hooks/00-hooks-of-claude-code-and-codex.md": {
+      "title": "Provider hooks · 00 The hooks of Claude Code and Codex",
+      "id": "475a79ab-5101-44f2-8e6d-b7437e9b5ce6",
+      "url": "https://linear.app/amorphius/document/provider-hooks-00-the-hooks-of-claude-code-and-codex-c0b19f70c8e0",
+      "published": "2026-10-26"
+    },
+    "architecture/provider-hooks/01-hooks-on-this-mac.md": {
+      "title": "Provider hooks · 01 The hooks on this Mac, and the rules for installing one",
+      "id": "7a1a7a3c-1aa2-4fa5-a71f-fd8d72c10e20",
+      "url": "https://linear.app/amorphius/document/provider-hooks-01-the-hooks-on-this-mac-and-the-rules-for-installing-00b779c83dab",
+      "published": "2026-10-26"
     }
   }
 }
