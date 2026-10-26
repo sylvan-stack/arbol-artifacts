@@ -93,6 +93,8 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 
 ### Native-managed key bindings
 
+Pi's `kimi-coding` family extends this attachment mechanism to an existing Pi-managed OAuth login (owner request, 26 October 2026; PI-1.7). It advertises `vendor_login`, pins the native account identity and local revision, and delegates refresh to Pi's normal locked credential store. The Driver does not store or delete OAuth tokens, initiate a replacement login, or fall back to an API key. Its sign-in attaches the current account after a qualified non-inference check; account changes require explicit reattachment. Existing native-managed-key families retain their rules below.
+
 A native-managed-key family attaches a specific credential ID/revision in its native owner's store and validates it without inference. It never offers `store_secret`, migrates the key or deletes a rejected native credential. Its supported targeted export is captured in a private pipe; the Driver's public interface never exports it. Resolve once for a run, with no fallback to another ID/account. Transient private memory/pipes are allowed, OS arguments and durable copies are not. Bound records refuse sign-out/removal even with force; unbound additional records remain removable. These mode-specific rules refine the generic key rules below; Keychain-managed and native-login modes keep their existing behaviour. PI-1 specifies OpenCode/Pi binding and rotation.
 
 ### Credentials
