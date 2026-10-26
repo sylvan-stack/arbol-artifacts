@@ -38,7 +38,7 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **T** — [Taproot](#taproot) · [Text Snapshot](#text-snapshot) · [Theme](#theme) · [Tool](#tool) · [Tool Request](#tool-request) · [Tracked Source](#tracked-source) · [Trivial Trunk](#trivial-trunk) · [Trunk Runtime](#trunk-runtime) · [Turn](#turn)
 - **U** — [UI](#ui) · [UIShell / Chrome](#uishell--chrome)
 - **V** — [Velocity](#velocity) · [Visit](#visit)
-- **W** — [Willo Station](#willo-station) · [Working Directory](#working-directory) · [Workload](#workload) · [Workspace](#workspace) · [Workspace Ledger](#workspace-ledger) · [Worktree](#worktree) · [Worktree Container](#worktree-container)
+- **W** — [Willo Station](#willo-station) · [Working Directory](#working-directory) · [Workload](#workload) · [Workspace](#workspace) · [Workspace Booking](#workspace-booking) · [Workspace Ledger](#workspace-ledger) · [Worktree](#worktree) · [Worktree Container](#worktree-container)
 
 ---
 
@@ -274,7 +274,7 @@ A **deterministic composition of [Blueprint](#blueprint) runs** — the *program
 ## Book
 
 A synonym of [Hold](#hold): to **book Beaver Workspace** means an agent has
-started working in **Beaver Workspace**, reserving it for that work.
+started a [Workspace Booking](#workspace-booking) for work in **Beaver Workspace**.
 **Booking** and **holding** name the same operation and reservation.
 
 ## Brain Recipe
@@ -876,9 +876,11 @@ The umbrella for [Mycel](#mycel)'s **productive** side: *producing or regenerati
 
 To **hold** or **book** **Beaver Workspace** means an agent has started
 working there and reserved the complete area for that work. The verbs are
-synonyms; a **hold** or **booking** is the resulting reservation. Ending it
-is [Release](#release). Existing ownership and territory rules remain those
-of [Working in Sagas](../mycel/operations/sagas.md#holds).
+synonyms; the reservation period is a [Workspace Booking](#workspace-booking).
+Several participating Chat Sessions can share that booking. Ending it is
+[Release](#release). Live ownership and territory procedures remain those
+of [Working in Sagas](../mycel/operations/sagas.md#holds) until the ledger
+design's coordinated migration is implemented.
 
 **Example:** "Hold Beaver Workspace" and "Book Beaver Workspace" mean the
 same operation.
@@ -1205,9 +1207,11 @@ Relation to its siblings: a Refresh is the Artifact-Corpus step *inside* a [Sync
 
 ## Release
 
-To **release Beaver Workspace** means ending the agent's hold or booking of
-**Beaver Workspace**. **Unhold** and **unbook** are synonyms; **release** is
-the standard operation name. The existing rules for
+To **release Beaver Workspace** means ending its
+[Workspace Booking](#workspace-booking). One participating Chat Session
+leaving or handing work to another does not end that booking. **Unhold**
+and **unbook** are synonyms; **release** is the standard operation name.
+The existing rules for
 [returning the booked area](../mycel/operations/sagas.md#stopping-and-finishing)
 still apply.
 
@@ -1498,9 +1502,11 @@ can refer to the booked area or the pool.
 
 **Beaver Workspace** is reached at `~/repos/sylvan-stack/beaver/`. The Mycel
 repository in **Beaver Workspace** is `~/repos/sylvan-stack/beaver/mycel`;
-name the repository separately from the area's full name. A hold reserves
-one complete area for a Beat or an Arbol chat, keeping its repositories
-together. The owner's own checkouts and `readonly/` are outside the pool.
+name the repository separately from the area's full name. A
+[Workspace Booking](#workspace-booking) reserves the complete area for
+work, normally a Saga, keeping its repositories together. Chat Sessions
+and subagents participate in that work; they are not the identity of the
+reservation. The owner's own checkouts and `readonly/` are outside the pool.
 
 The owner chose the animal names and this term on 26 October 2026,
 replacing the former term *Environment* and the earlier *prepared folder*.
@@ -1511,13 +1517,37 @@ their recorded paths. The legacy `#environment` link remains an alias to
 this definition. See [Working in Sagas](../mycel/operations/sagas.md#named-work-areas)
 for the name mapping, booking, branches, setup and return.
 
+## Workspace Booking
+
+A period from holding or booking a named area, such as **Beaver Workspace**,
+until releasing it. It belongs to the work, normally a Saga, and has an
+identity independent of any [Chat Session](#chat-session). Named ad-hoc work
+can also have a booking. Several Chat Sessions and their subagents may
+participate, and replacement Chat Sessions may continue the same booking.
+Its history stays together in the [Workspace Ledger](#workspace-ledger).
+
+**Example:** A Chat Session and two subagents work on a Saga in **Beaver
+Workspace**. A replacement Chat Session takes over that work without
+releasing **Beaver Workspace**: the same Workspace Booking continues.
+
+The lifecycle and capture design is in
+[Workspace Booking and Workspace Ledger](../mycel/operations/workspace-ledger.md).
+Its new controller and capture mechanisms are not yet activated.
+
 ## Workspace Ledger
 
-The `ledger.jsonl` file that records a history of work items while an agent
-works in a named area, such as **Beaver Workspace**. When identifying one
-particular ledger, say **Workspace Ledger for Beaver Workspace**.
+The Git-ignored `.ledger/` directory for a named area, such as **Beaver
+Workspace**, containing its work history: `current.jsonl` for the open
+[Workspace Booking](#workspace-booking), timestamped `booking-*.jsonl` archives
+for each closed booking, and `history.jsonl` for the area's lifecycle index
+with links to its bookings. This replaces the initial single-file working
+name `ledger.jsonl` by the owner's direction of 26 October 2026.
 
-The file's function and behavior will be described later.
+The required capture covers every tool call and file change, including
+participating subagents. When identifying one particular ledger, say
+**Workspace Ledger for Beaver Workspace**. The
+[format and enforcement design](../mycel/operations/workspace-ledger.md)
+distinguishes that requirement from the capture mechanisms still to build.
 
 ## Worktree
 
