@@ -335,6 +335,8 @@ Unsaved text/revision and one unconfirmed send intent use session storage scoped
 
 The normal First Sapling composer has no Send or attachment buttons. Its controlled presentation emits actions; application controllers perform them, and design fixtures supply local fictional callbacks. While a send is unconfirmed that composition stays closed/read-only with its captured text retained, until acceptance or refusal; other compositions remain usable. The existing pre-reload barrier flushes Drafts and waits for unconfirmed sends. A stopped Exchange enables a queued message only after saved terminal data, even when exchange.stop already returned. Agent answers become visible as given only from their file line; a control reply alone is not that acknowledgement. Pasted-character counts use Unicode codepoints, matching the backend, and a queued send waits for every outstanding paste-save insertion.
 
+While a long paste is being saved, its raw text remains in the controlled editor and unsaved-text recovery. Draft flushing waits for all pending paste operations, so it captures the resulting links. Edits outside a pending pasted range preserve that range through the edit. An overlapping edit is kept as typed and cancels the queued send rather than replacing those edits with an older file. A failed paste save reports the failure, retains the raw text and cancels a queued send. Repeated send shortcuts while files are pending queue one send after all successful insertions.
+
 ### What First Sapling leaves out
 
 Version 1's Elma had more than this first version. These parts are not in First Sapling:
