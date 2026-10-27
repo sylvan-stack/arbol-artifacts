@@ -12,7 +12,7 @@ Beats. The existing workflow remains in [Working in Sagas](../../mycel/operation
 | Spec | Title | Status |
 |---|---|---|
 | [SGM-0](00-metrics.md) | Priority, Need Attention, Readiness, Volume and Momentum | draft |
-| [SGM-1](01-subscriptions-vigor.md) | Subscriptions Vigor | draft |
+| [SGM-1](01-subscriptions-vigor.md) | Subscriptions Vigor | implemented |
 
 ## Conventions
 

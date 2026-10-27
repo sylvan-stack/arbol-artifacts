@@ -1,7 +1,7 @@
 ---
 role: authored
 spec: SGM-1
-status: draft
+status: implemented
 ---
 # Sagas · 01 Subscriptions Vigor
 
@@ -417,7 +417,7 @@ arbol:tests/radar/test_change.py#TheNextChange
 
 ## Requirements
 
-All requirements are proposed and New. `unit` denotes deterministic tests with
+All requirements are New and implemented (SYL-295 to SYL-299). `unit` denotes deterministic tests with
 fixed reports, clock and profile. `scenario` denotes reviewed cases comparing
 computed values and rankings with the owner's choices. `probe` and `live`
 belong to the Drivers' own specifications for the reports they deliver.
