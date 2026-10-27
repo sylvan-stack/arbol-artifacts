@@ -407,6 +407,27 @@ In-use comparison remains stale-only: every backend row and counter is unchanged
 
 The [PostgreSQL sequence functions](https://www.postgresql.org/docs/17/functions-sequence.html) and [ALTER SEQUENCE](https://www.postgresql.org/docs/17/sql-altersequence.html) define the counter behavior. Tests use only check-owned clusters, layouts and fictional data. Actual installed work makes new merged-source manager Builds for Sapling and Jensen and applies additive layouts only, proving all older data/current selection unchanged; no whole production migration or vendor call is needed.
 
+<!-- sources:
+arbol-root:roots/sapling/layout.sql
+arbol-root:roots/jensen/layout.sql
+arbol-root:roots/jensen/migrate.sql
+arbol-root:scripts/backend_tables.py#rows
+arbol-root:scripts/backend_tables.py#seed
+arbol-root:scripts/backend_tables.py#next_draft
+arbol-root:scripts/check_layout.py#run_layout
+arbol-root:scripts/check_migration.py#run_migration
+arbol-root:scripts/chat_migration_check.py#backend_modes
+arbol-root:scripts/migration_protocol.py#mode_protocol
+arbol-root:scripts/sql_statements.py#layout_statements
+arbol-root:tests/test_backend_tables.py#BackendTables
+arbol-root:tests/test_backend_tables.py#OperationalBoundary
+arbol-root:tests/test_layout_check.py#LayoutCheck.test_a_sequence_requires_its_comment_and_a_repeatable_create
+arbol-root:roots/sapling/drills/backend_layout_drills.py#state
+arbol-root:roots/sapling/drills/backend_layout_drills.py#preserved
+arbol-root:roots/sapling/drills/backend_layout_drills.py#run
+arbol-root:roots/sapling/drills/drill-backend-layouts.py
+-->
+
 ## Requirements
 
 The process:
@@ -424,8 +445,8 @@ The database:
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
 | BKD-0.5 | read the chat tables directly with SQL of its own, as RCT-3 puts a chat together, leaving out every Exchange that was replaced, read a chat, a page of chats and a snapshot each in one `REPEATABLE READ READ ONLY` transaction and commit every other statement at once, and open no database but its Root's | Changed | unit |
-| BKD-0.6 | create, change and remove no table, column, index or check, use for its own rows only the tables of the Root's own layout that `arbol-roots` runs, and serve a Root whose database lacks them without Drafts and notes, with the attention item `layout_incomplete` | New | unit |
-| BKD-0.7 | have its own tables changed within a Root only by additions to the Root's own layout that the Root's older Builds can ignore (RTM-1.5), and its settings file only by fields older Builds can ignore | New | unit |
+| BKD-0.6 | create, change and remove no table, column, index or check, use for its own rows only the tables of the Root's own layout that `arbol-roots` runs, and serve a Root whose database lacks them without Drafts and notes, with the attention item `layout_incomplete` | New | layout/migration part: `root.backend-layouts`, `root.backend-whole`, `root.backend-counter-rollback`, `root.backend-counter-lock`, `root.backend-empty-counter`, `root.backend-chat-state`; installed additive check `sapling.backend-layouts` (SYL-247). Backend missing-layout serving/read/write behavior remains SYL-249/250/252 |
+| BKD-0.7 | have its own tables changed within a Root only by additions to the Root's own layout that the Root's older Builds can ignore (RTM-1.5), and its settings file only by fields older Builds can ignore | New | layout/migration part: `root.backend-layouts`, `root.backend-whole`, `root.backend-counter-rollback`, `root.backend-counter-lock`, `root.backend-empty-counter`, `root.backend-chat-state`; installed additive check `sapling.backend-layouts` (SYL-247). Backend missing-layout serving/read/write behavior remains SYL-249/250/252 |
 | BKD-0.8 | write in the chat tables only `chats.title`, when the Leather Bag gives a chat a title or takes it away: the text without spaces at its ends, NULL when nothing is left, and never a placeholder | Changed | unit |
 | BKD-0.9 | read the database password as a Trunk does, with the exit status 44 meaning no password, give every call to the database a time limit of 5 seconds, fail a statement that passes it with `timeout`, and serve each window and each call in a task of its own, so that no call holds up another | Changed | unit `backend.keychain`, `backend.database-identity`, `backend.connect-timeout`, `backend.database-deadlines`, `backend.database-away-start`; per-window Bridge dispatch remains SYL-248 |
 
