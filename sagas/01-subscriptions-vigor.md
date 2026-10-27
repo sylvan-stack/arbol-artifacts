@@ -21,8 +21,10 @@ unknown is always shown with its reason, that every calculation is logged, and
 the allowance source for Kimi Code, and that an exhausted Subscription shows
 zero with its recovery, and that the contract's window says what it counts.
 On 27 October they decided that a reached window of calls exhausts the
-Subscription like a token window. The weight placeholder's value and the
-first operational profile remain proposals. The [Decisions](#decisions) table distinguishes them.
+Subscription like a token window, and that among longest windows of equal
+length the one scoped to the coding product is the store. The weight
+placeholder's value and the first operational profile remain proposals. The
+[Decisions](#decisions) table distinguishes them.
 
 ## Scope
 
@@ -391,6 +393,6 @@ profile for operation.
 | SGM-D22 | What is logged? | Every calculation and every report arrival, with full inputs and outputs, in Arbol's database | Decided by the owner, 2026-10-26 |
 | SGM-D23 | Where does Kimi Code's report come from? | `GET https://api.kimi.com/coding/v1/usages` through the Pi Driver with the token it already holds; the Console gateway and hidden-browser page reading are not used | Decided by the owner, 2026-10-26; adopted the same day in SYL-288 and installed as Pi Build 5 |
 | SGM-D24 | Which windows take part, and how does the calculation know? | Only tokens and credits; `resource` on the Driver Contract's window says which. Until every Driver reports it, exclude the Claude Driver's z.ai window labelled `MCP` and treat the rest as tokens | Decided by the owner, 2026-10-26: added to the contract as DRV-1.27 and DRV-D46; reported since Claude Build `d`, Codex Build `9` (absent, no unit) and Pi Build `6` (SYL-290 to SYL-292, 27 October 2026) |
-| SGM-D25 | Which of several equal-length longest windows is the store? | The one scoped to the coding product the Subscription serves; the others of that length are shown and not summed | Open; proposed default in use |
+| SGM-D25 | Which of several equal-length longest windows is the store? | The one scoped to the coding product the Subscription serves; the others of that length are shown and not summed | Decided by the owner, 2026-10-27: the window scoped to the coding product the Subscription serves is the store; the others of that length are shown and not summed |
 | SGM-D26 | Do model-specific weekly windows of the Anthropic family enter the report? | Add them scoped by model if the stream reports them; not verified | Settled by a probe, 2026-10-26 (SYL-290): the stream reports none; `unifiedWindows` carries `five_hour` and `seven_day` only, for the test account on the `max` plan with Claude Code 2.1.304, so nothing enters the report today. The proposal stands for a tool version that adds a model-scoped key: the Claude Driver maps it as a further `weekly` window with `tokens`. Record: `~/Artifacts/arbol-claude-driver/research/anthropic-rate-limit-windows-probe-2026-10-26.md` |
 | SGM-D27 | Which reached windows exhaust a Subscription? | Every window that gates inference, whatever it counts, so Kimi's five-hour window of calls exhausts it; a window scoped to one tool, such as z.ai's MCP count, does not | Decided by the owner, 2026-10-27: a reached window of calls that gates inference exhausts the Subscription; a window scoped to one tool does not |
