@@ -520,6 +520,47 @@ The data directory is the connected server's reported data_directory, not a gues
 
 The space_low item uses the measured free space strictly below10*1024^3 bytes, severity urgent strictly below2*1024^3. When available its message names free space, data-folder size and the largest measured Root database, with honest unavailable wording for missing sizes. Since is preserved across warning/urgent changes; other attention items remain independent. Only a fresh confirmed free value at least10GiB clears an existing low-space item. An unsuccessful measurement never fabricates zero, silently clears an earlier warning or marks the disk healthy. These are private unit/packaged/socket qualifications; actual installed Backend/Root/vendor/Swift/renderer journeys remain SYL-257. No owner installation, DB/DB Keychain, native Driver/vendor, inference or Mycel index operation is needed by the implementation checks.
 
+<!-- sources:
+arbol:src/arbol_backend/account_data.py#Public
+arbol:src/arbol_backend/accounts.py#Accounts
+arbol:src/arbol_backend/accounts.py#Accounts.raw_outcome
+arbol:src/arbol_backend/accounts.py#Accounts.target
+arbol:src/arbol_backend/accounts.py#Accounts.action
+arbol:src/arbol_backend/process.py#Programs.find_drivers
+arbol:src/arbol_backend/process.py#Programs.call
+arbol:src/arbol_backend/process.py#Programs.current_root
+arbol:src/arbol_backend/validation.py#Catalogues.route
+arbol:src/arbol_backend/dispatch.py#Dispatch.send_params
+arbol:src/arbol_backend/dispatch.py#Dispatch.again_params
+arbol:src/arbol_backend/requests.py#Requests.write
+arbol:src/arbol_backend/roots.py#Catalogue
+arbol:src/arbol_backend/roots.py#Roots.database_records
+arbol:src/arbol_backend/health.py#Health.probe
+arbol:src/arbol_backend/health.py#Health.probe_once
+arbol:src/arbol_backend/storage.py#LocalDisk
+arbol:src/arbol_backend/storage.py#LocalDisk.size
+arbol:src/arbol_backend/measurements.py#Measurements
+arbol:src/arbol_backend/measurements.py#Measurements.collect
+arbol:src/arbol_backend/measurements.py#Measurements.mark
+arbol:src/arbol_backend/measurements.py#Measurements.watch
+arbol:src/arbol_backend/measurements.py#Measurements.refresh_after_return
+arbol:src/arbol_backend/metadata.py#Attention.open
+arbol:src/arbol_backend/recovery.py#Recovery.returned
+arbol:src/arbol_backend/server.py#Backend.run
+arbol:tests/backend/account_support.py#subscription
+arbol:tests/backend/account_support.py#usage
+arbol:tests/backend/account_support.py#models
+arbol:tests/backend/account_support.py#install
+arbol:tests/backend/test_account_data.py#Projection
+arbol:tests/backend/test_accounts.py#Listing
+arbol:tests/backend/test_account_actions.py#Actions
+arbol:tests/backend/test_working_folders.py#Folders
+arbol:tests/backend/test_measurements.py#Storage
+arbol:tests/backend/test_space_watch.py#Watching
+-->
+
+Backend portions of ARC-0.10/0.14 are qualified by the account and measurement checks below; the actual sign-in/page/tray/window journeys remain SYL-194/SYL-192/SYL-257. The unrelated uncommitted ARC-0 working copy is preserved; this Beat maps its Backend implementation through these BKD requirements.
+
 ### Accounts
 
 The backend calls the Drivers' account commands directly; Root and Trunk have no part in it ([ARC-0](../architecture/00-components-and-boundaries.md#accounts), [DRV-1](../driver-contract/01-subscriptions.md)). The Drivers are those whose launcher `arbol-<driver>-driver` is in the folder of the launchers: `claude`, `codex` and the accepted `pi` Driver; the `driver` of a route names one of them (TRV-0).
@@ -729,15 +770,15 @@ Accounts and the working folder:
 
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
-| BKD-0.25 | run of a Driver only its account commands `subscriptions list`, `check`, `usage` and `models`, through its launcher, and never sign in, sign out or pass a secret | Changed | unit |
-| BKD-0.26 | give a chat the folder its repository slot names in `~/repos/sylvan-stack/readonly/`, or the folder picked with "Other…", keep it for every message of the chat, and take no work area itself | Changed | unit, journey |
+| BKD-0.25 | run of a Driver only its account commands `subscriptions list`, `check`, `usage` and `models`, through its launcher, and never sign in, sign out or pass a secret | Changed | unit `accounts.public-records`, `accounts.forward-metadata`, `accounts.last-usage`, `accounts.private-projection`, `accounts.no-diagnostic-excerpt`, `accounts.unknown-usage`, `accounts.usage-units`, `accounts.safe-url`, `accounts.public-validation`, `accounts.public-bound`, `accounts.launcher-inventory`, `accounts.list-only`, `accounts.driver-records`, `accounts.driver-isolation`, `accounts.safe-refusal`, `accounts.no-raw-fields`, `accounts.shared-list`, `accounts.fresh-list`, `accounts.no-vendor-poll`, `accounts.caller-shield`, `accounts.cancel-isolation`, `accounts.total-bound`, `accounts.topic-isolation`, `accounts.global-capacity`, `accounts.reply-bound`, `accounts.oversized-driver-isolation`, `accounts.allowed-actions`, `accounts.driver-authority`, `accounts.no-inference`, `accounts.identifier-before-effects`, `accounts.fresh-membership`, `accounts.deleted-subscription`, `accounts.no-stale-action`, `accounts.public-membership-proof`, `accounts.shared-action`, `accounts.fresh-action`, `accounts.action-caller-shield`, `accounts.action-owner`, `accounts.command-bound`, `accounts.action-driver-isolation`, `accounts.check-identity`, `accounts.action-result`, `accounts.unknown-driver-code`, `accounts.process-privacy`, `accounts.no-secret-argv-log` (SYL-253; actual private PostgreSQL/filesystem, private launchers/contract request stand-ins and socket clients; no owner installation/native Driver/vendor). Actual installed Backend/Root/vendor/Swift/renderer journeys remain SYL-257. |
+| BKD-0.26 | give a chat the folder its repository slot names in `~/repos/sylvan-stack/readonly/`, or the folder picked with "Other…", keep it for every message of the chat, and take no work area itself | Changed | unit `folders.readonly-slot`, `folders.repeat`, `folders.booking-does-not-move-chat`, `folders.no-booking`, `folders.other-choice`, `folders.explicit-move`, `folders.history-preserved`, `folders.retry-original`, `folders.retry-after-move`, `folders.no-folder-substitution`; existing `sending.send-again`, `sending.cannot-replace` (SYL-253; actual private PostgreSQL/filesystem, private launchers/contract request stand-ins and socket clients; no owner installation/native Driver/vendor). Actual installed Backend/Root/vendor/Swift/renderer journeys remain SYL-257. Repository-slot selection/move UI remains SYL-254–256; no booking tool is implemented here. |
 
 Health and tests:
 
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
-| BKD-0.27 | measure at its start, every 5 minutes and when a window asks, whether the database server answers, the size of each retained Root's database, the size of the data folder and the free space of its disk | Changed | unit, journey |
-| BKD-0.28 | show an attention item in every window when that free space is below 10 GiB, marked urgent below 2 GiB, naming the free space, the data folder's size and the largest database | New | unit, drill |
+| BKD-0.27 | measure at its start, every 5 minutes and when a window asks, whether the database server answers, the size of each retained Root's database, the size of the data folder and the free space of its disk | Changed | unit `measurement.own-connection`, `measurement.actual-sizes`, `measurement.local-disk`, `measurement.no-foreign-files`, `measurement.permission-partial`, `measurement.no-escalation`, `measurement.data-directory-permission`, `measurement.catalogue-partial`, `measurement.safe-problems`, `measurement.database-away`, `measurement.no-zero-facts`, `measurement.shared`, `measurement.fresh`, `measurement.shared-health-probe`, `measurement.total-bound`, `measurement.partial-deadline`, `measurement.disk-independent-of-size`, `measurement.remote-refused`, `measurement.disk-path`, `measurement.utility-failure`, `measurement.utility-bound`, `measurement.utility-whole-reply`, `measurement.utility-output-bound`, `measurement.catalogue-namespace`, `measurement.valid-root-name`; `measurement.thresholds`, `measurement.space-windows`, `measurement.urgent`, `measurement.warning-clear`, `measurement.partial-attention`, `measurement.no-false-clear`, `measurement.awake-300`, `measurement.sleep-excluded`, `measurement.wall-clock`, `measurement.request-keeps-schedule`, `measurement.return-refresh`, `measurement.return-snapshot-isolation`, `measurement.callback-composition`, `measurement.return-after-old-read`, `measurement.return-epoch`, `measurement.return-coalescing`, `measurement.shutdown`, `measurement.utility-reaped`, `measurement.no-trunk-signal` (SYL-253; actual private PostgreSQL/filesystem, private launchers/contract request stand-ins and socket clients; no owner installation/native Driver/vendor). Actual installed Backend/Root/vendor/Swift/renderer journeys remain SYL-257. |
+| BKD-0.28 | show an attention item in every window when that free space is below 10 GiB, marked urgent below 2 GiB, naming the free space, the data folder's size and the largest database | New | unit `measurement.thresholds`, `measurement.space-windows`, `measurement.urgent`, `measurement.warning-clear`, `measurement.partial-attention`, `measurement.no-false-clear`, `measurement.awake-300`, `measurement.sleep-excluded`, `measurement.wall-clock`, `measurement.request-keeps-schedule`, `measurement.return-refresh`, `measurement.return-snapshot-isolation`, `measurement.callback-composition`, `measurement.return-after-old-read`, `measurement.return-epoch`, `measurement.return-coalescing`, `measurement.shutdown`, `measurement.utility-reaped`, `measurement.no-trunk-signal` (SYL-253; actual private PostgreSQL/filesystem, private launchers/contract request stand-ins and socket clients; no owner installation/native Driver/vendor). Actual installed Backend/Root/vendor/Swift/renderer journeys remain SYL-257. |
 | BKD-0.29 | take its Root's folder, the folder of the launchers, its settings folder and its database from `--root-dir`, `--bin-dir`, `--settings-dir` and `--database` when they are given, and refuse `--root-dir` without `--bin-dir` and `--database` | New | unit `backend.identity-isolation`, `backend.database-identity`; packaged `backend.name-only-build` |
 
 BKD-0.19's clock is checked inside the backend's own process, because no drill makes the Mac sleep, as RTM-0.12's is.
