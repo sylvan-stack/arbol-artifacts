@@ -243,6 +243,8 @@ When the connection to the backend ends, because the backend ended or was restar
 
 So a missed update never leaves a window stale: the window reads the truth again ([ARC-2](../architecture/02-chat-exchange-across-components.md#when-arbol-quits)). No Exchange stops because the backend went away (BKD-0).
 
+Accounts and storage measurements follow BKD-D34: allowlisted public Driver projections and safe driver-scoped errors, fresh shared reads, no credential/sign-in channel, and bounded partial Measurement replies with optional catalogueProblem/diskProblem. A failed Root size or unconfirmed local disk has no fabricated zero. Account and storage work never delays another topic or overwrites database-return/replay ownership.
+
 ### Compatibility within a Root
 
 The renderer bundles and the backend of a Root come from that Root's `arbol` Builds, and a window and its backend may come from different Builds of the same Root, for example after a new Build while a window stayed open. Within a Root the Bridge therefore changes only by additions that older Builds can ignore: a new method, topic, event kind, field or error code. Nothing is removed, and nothing changes its meaning (ARC-1). Both sides ignore a field, an event kind and an attention kind they do not know; the backend replies to a method or a topic it does not know with `unknown_method`, and the window says that this needs a newer Build.
