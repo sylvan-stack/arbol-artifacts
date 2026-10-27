@@ -303,6 +303,8 @@ arbol:tests/backend/test_bridge.py#Diagnostics.test_private_process_never_logs_i
 arbol:tests/backend/test_bridge.py#RootWire.test_cancelled_catalogue_does_not_log_a_late_failure
 -->
 
+The renderer action/open integration follows BKD-D38: it saves its visible Draft and waits for unconfirmed sends before consuming app.takeOpen, serializes native open notices, retains the returned routing target through a failed read, and includes the transition in its Build reload barrier. This adds no backend app-channel message and no credential entry.
+
 ### What the Swift App answers itself
 
 A web page cannot open the Mac's folder dialog and should not leave its own page to follow a link, and a request to open a chat comes from outside the page. The window and the Swift App speak about these on a channel of their own, the *app channel*, which is not the Bridge and never reaches the backend: `window.webkit.messageHandlers.arbolApp.postMessage(text)`, answered with `window.arbolApp.receive(text)`, in the form of a call and its reply, and one message the Swift App sends by itself. Their exact form is the Swift App's specification (SYL-192), and the proposal is:
