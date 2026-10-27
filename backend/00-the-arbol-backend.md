@@ -199,6 +199,21 @@ A Draft is what the Leather Bag has typed in a composer and not sent ([ARC-0](..
 
 For example, the Leather Bag sends "Add a --clean option" from revision 41 in one window and types "and a --verbose one" in another before the reply: the backend marks revision 41 as sent with the new Exchange, the second window's save makes revision 42 and clears the mark, and the acceptance then removes nothing, so the new text stays.
 
+<!-- sources:
+arbol:src/arbol_backend/drafts.py#Drafts
+arbol:src/arbol_backend/drafts.py#Drafts.save
+arbol:src/arbol_backend/drafts.py#Drafts.mark
+arbol:src/arbol_backend/drafts.py#Drafts.finish
+arbol:src/arbol_backend/drafts.py#Drafts.reconcile
+arbol:src/arbol_backend/drafts.py#Drafts.recover_captured
+arbol:src/arbol_backend/drafts.py#Conflict
+arbol:src/arbol_backend/drafts.py#scope
+arbol:src/arbol_backend/drafts.py#save_params
+arbol:src/arbol_backend/drafts.py#content
+arbol:src/arbol_backend/drafts.py#folder
+arbol:tests/backend/test_drafts.py#Drafts
+-->
+
 ### Draft and dispatch choices (BKD-D31)
 
 SYL-250 settles these details before implementation. A Draft scope contains exactly one canonical chat UUID or one absolute, normalized repository-folder path; folder keys remain readable when the folder disappears. A chat Draft requires an existing chat; no backend operation creates chat history. Text is preserved exactly, is valid Unicode without NUL, and is at most1MiB of UTF-8; empty means exactly the empty string. A message must also contain non-whitespace text. Revisions/base revisions are exact positive integers within PostgreSQL bigint, never booleans/fractions; null base means absence. Conditional SQL insert/update/delete arbitrates competing windows; failed CAS returns draft_conflict with the current Draft or explicit null. Revisions use nextval(drafts_revision), may have gaps, and never reuse a removed revision. Every successful text save clears both send fields. No DDL is issued.
@@ -262,11 +277,31 @@ Because the window chose the Exchange's identifier, it sends the same `chat.send
 
 A chat takes one Exchange at a time (ARC-D54): a message to a chat whose Exchange is still open is refused by the Trunk with `chat_busy`, which names the open Exchange. The window asks "Stop current response?" while it knows the chat busy, and puts a message refused with `chat_busy` back in the composer ([BKD-2](02-elma-chat.md#sending-and-stopping)). The backend checks nothing of this itself, because only the database can tell two messages at the same moment apart (RCT-3).
 
+<!-- sources:
+arbol:src/arbol_backend/dispatch.py#Dispatch
+arbol:src/arbol_backend/dispatch.py#Dispatch.send
+arbol:src/arbol_backend/dispatch.py#Dispatch.run
+arbol:src/arbol_backend/dispatch.py#Dispatch.result
+arbol:src/arbol_backend/dispatch.py#Dispatch.send_params
+arbol:src/arbol_backend/dispatch.py#Dispatch.close
+arbol:src/arbol_backend/requests.py#Requests
+arbol:src/arbol_backend/requests.py#Requests.write
+arbol:src/arbol_backend/requests.py#Requests.clean
+arbol:src/arbol_backend/requests.py#Request.remove
+arbol:tests/backend/test_dispatch.py#Sending
+arbol:tests/backend/test_request_files.py#Files
+-->
+
 ### Sending a message again
 
 The Leather Bag can send the message of a chat's last Exchange again once that Exchange has ended, for example after a failure or a rate limit: the previous answer and its tool calls are discarded, and everything runs again from the same message ([RCT-2](../../arbol-root/contract/02-starting-stopping-and-settling.md#sending-a-message-again), RCT-D15, RCT-D16).
 
 The window calls `exchange.sendAgain` with the Exchange, a new Exchange identifier and the route; the backend writes a request file with the chat, the route and the working folder of the replaced Exchange and no message, and runs `arbol-root --root <root> start --exchange <new> --request <file> --replaces <old>`. The route is the one the Leather Bag picks, by default the one the replaced Exchange ran with. The Trunk refuses with `cannot_replace` an Exchange that is not the last of its chat, has not ended or was replaced already (RCT-2), and the backend passes that on.
+
+<!-- sources:
+arbol:src/arbol_backend/dispatch.py#Dispatch.again_params
+arbol:tests/backend/test_dispatch.py#Sending.test_send_again_uses_old_chat_folder_no_message_and_passes_cannot_replace
+-->
 
 ### An Exchange in progress
 
@@ -516,8 +551,8 @@ The database:
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
 | BKD-0.5 | read the chat tables directly with SQL of its own, as RCT-3 puts a chat together, leaving out every Exchange that was replaced, read a chat, a page of chats and a snapshot each in one `REPEATABLE READ READ ONLY` transaction and commit every other statement at once, and open no database but its Root's | Changed | unit `chats.contract-assembly`, `chats.consistent-snapshot`, `chats.exchange-pages`, `chats.page-cursor`, `chats.own-root-provenance`, `chats.read-only-contract` |
-| BKD-0.6 | create, change and remove no table, column, index or check, use for its own rows only the tables of the Root's own layout that `arbol-roots` runs, and serve a Root whose database lacks them without Drafts and notes, with the attention item `layout_incomplete` | New | layout/migration: SYL-247 checks and installed `sapling.backend-layouts`; backend: unit `chats.no-ddl`, `chats.layout-inspection`, `chats.layout-degraded`, `chats.layout-wire`, `chats.provenance-layout`; Draft mutations and database recovery remain SYL-250/SYL-252 |
-| BKD-0.7 | have its own tables changed within a Root only by additions to the Root's own layout that the Root's older Builds can ignore (RTM-1.5), and its settings file only by fields older Builds can ignore | New | layout/migration part: `root.backend-layouts`, `root.backend-whole`, `root.backend-counter-rollback`, `root.backend-counter-lock`, `root.backend-empty-counter`, `root.backend-chat-state`; installed additive check `sapling.backend-layouts` (SYL-247). Backend missing-layout serving/read/write behavior remains SYL-249/250/252 |
+| BKD-0.6 | create, change and remove no table, column, index or check, use for its own rows only the tables of the Root's own layout that `arbol-roots` runs, and serve a Root whose database lacks them without Drafts and notes, with the attention item `layout_incomplete` | New | layout/migration: SYL-247 checks and installed `sapling.backend-layouts`; backend: unit `chats.no-ddl`, `chats.layout-inspection`, `chats.layout-degraded`, `chats.layout-wire`, `chats.provenance-layout`; Draft mutation unit `sending.no-ddl-history-writes`, `drafts.validation`; database recovery remains SYL-252 |
+| BKD-0.7 | have its own tables changed within a Root only by additions to the Root's own layout that the Root's older Builds can ignore (RTM-1.5), and its settings file only by fields older Builds can ignore | New | layout/migration part: `root.backend-layouts`, `root.backend-whole`, `root.backend-counter-rollback`, `root.backend-counter-lock`, `root.backend-empty-counter`, `root.backend-chat-state`; installed additive check `sapling.backend-layouts` (SYL-247). Backend missing-layout serving/read/write behavior is checked by `chats.layout-wire`, `sending.no-ddl-history-writes`; database recovery remains SYL-252 |
 | BKD-0.8 | write in the chat tables only `chats.title`, when the Leather Bag gives a chat a title or takes it away: the text without spaces at its ends, NULL when nothing is left, and never a placeholder | Changed | unit `chats.title-windows`, `chats.read-only-contract`, `chats.input-types` |
 | BKD-0.9 | read the database password as a Trunk does, with the exit status 44 meaning no password, give every call to the database a time limit of 5 seconds, fail a statement that passes it with `timeout`, and serve each window and each call in a task of its own, so that no call holds up another | Changed | unit `backend.keychain`, `backend.database-identity`, `backend.connect-timeout`, `backend.database-deadlines`, `backend.database-away-start`, `bridge.calls`, `chats.observer-isolation`, `chats.migration-check-coalescing` |
 
@@ -525,12 +560,12 @@ Drafts and sending:
 
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
-| BKD-0.10 | keep in its table `drafts` one Draft of the reply for each chat and one Draft of a new chat for each repository folder, holding the text; replace it whole only over the revision the window last saw, with a revision from one counter, and refuse any other save with `draft_conflict`; mark it with the Exchange it is sent as and clear the mark on a save or a refusal; remove it once that Exchange is accepted, or later when it reads a mark the chat tables hold; and refuse a Draft or a message of more than 1 MiB | Changed | unit |
-| BKD-0.11 | send a message by writing a request file with the chat, the message, the route, the working folder and the small-call route of `arbol.json` when it names one, into `requests/` of the Root's folder, and running `arbol-root --root <root> start --exchange <id> --request <file>` with the Exchange identifier the window chose; refuse with `invalid_input`, before it touches a file or starts a program, an identifier that is not a lower-case UUID, a route without a Driver found among the launchers, a Subscription and a model, a working folder that is not an absolute path to a folder that exists, and an empty message | Changed | unit |
-| BKD-0.12 | count a message as accepted only on its acceptance line, pass every refusal on with its code and message and keep the Draft, take nothing, `no_answer` and `in_progress` as no refusal and run the same start again with a request file written anew 15 seconds after the previous attempt returned, never two at once, until 120 seconds after the first, and join a second call for an Exchange it is starting to the first | Changed | unit, drill |
-| BKD-0.13 | send a message again only with `--replaces`, for the Exchange the window names, with the replaced Exchange's working folder and the route the Leather Bag picks, and pass a refusal `cannot_replace` on | Changed | unit |
-| BKD-0.14 | keep a failed, stuck or cancelled Exchange to its own chat: serve every other chat meanwhile, and take a new message for the chat as soon as its Exchange has ended | Changed | drill |
-| BKD-0.31 | keep for each chat, in its tables `chat_settings` and `chat_marks`, the route and the working folder picked for its next message, whether it is ongoing and when it was archived, saving a choice at once, also while its agent works, and mark a chat ongoing whenever a message of it is accepted | Changed | choice/marks part: unit `chats.atomic-settings`, `chats.atomic-marks`, `chats.mutation-publication-order`, `chats.title-windows`, `chats.archive-list`, `chats.identifier-catalogues`, `chats.additive-driver-catalogue`; marking ongoing on acceptance remains SYL-250 |
+| BKD-0.10 | keep in its table `drafts` one Draft of the reply for each chat and one Draft of a new chat for each repository folder, holding the text; replace it whole only over the revision the window last saw, with a revision from one counter, and refuse any other save with `draft_conflict`; mark it with the Exchange it is sent as and clear the mark on a save or a refusal; remove it once that Exchange is accepted, or later when it reads a mark the chat tables hold; and refuse a Draft or a message of more than 1 MiB | Changed | unit `drafts.scope-counter`, `drafts.cas-races`, `drafts.conflict-null`, `drafts.validation`, `drafts.utf8-boundary`, `drafts.subscriptions`, `drafts.sent-mark`, `drafts.accepted-recovery`, `drafts.newer-text`, `drafts.cleanup-cas`, `drafts.capture-acceptance-race`, `sending.repository-draft`, `sending.refusal`, `sending.database-cleanup-recovery` |
+| BKD-0.11 | send a message by writing a request file with the chat, the message, the route, the working folder and the small-call route of `arbol.json` when it names one, into `requests/` of the Root's folder, and running `arbol-root --root <root> start --exchange <id> --request <file>` with the Exchange identifier the window chose; refuse with `invalid_input`, before it touches a file or starts a program, an identifier that is not a lower-case UUID, a route without a Driver found among the launchers, a Subscription and a model, a working folder that is not an absolute path to a folder that exists, and an empty message | Changed | unit `sending.validate-before-effects`, `sending.ownership`, `sending.mark-before-start`, `sending.accepted`, `sending.private-request`, `sending.request-path-safety`, `sending.request-inode`, `sending.request-write-failure`, `sending.request-startup-cleanup` |
+| BKD-0.12 | count a message as accepted only on its acceptance line, pass every refusal on with its code and message and keep the Draft, take nothing, `no_answer` and `in_progress` as no refusal and run the same start again with a request file written anew 15 seconds after the previous attempt returned, never two at once, until 120 seconds after the first, and join a second call for an Exchange it is starting to the first | Changed | unit `sending.acceptance-shape`, `sending.error-shape`, `sending.result-validation`, `sending.refusal`, `sending.safe-errors`, `sending.repeat`, `sending.shared-dispatch`, `sending.retry-schedule`, `sending.no-concurrent-start`, `sending.total-bound`, `sending.uncertain-mark`, `sending.disconnect`, `sending.detached-shutdown`; actual production25/15sec private-process check `sending.production-25-15`. Root/Trunk/vendor/UI journey remains SYL-257 |
+| BKD-0.13 | send a message again only with `--replaces`, for the Exchange the window names, with the replaced Exchange's working folder and the route the Leather Bag picks, and pass a refusal `cannot_replace` on | Changed | unit `sending.send-again`, `sending.cannot-replace`; Root/Trunk replacement eligibility already belongs to RCT-2; real backend journey remains SYL-257 |
+| BKD-0.14 | keep a failed, stuck or cancelled Exchange to its own chat: serve every other chat meanwhile, and take a new message for the chat as soon as its Exchange has ended | Changed | unit `sending.chat-isolation`, `sending.after-ended-exchange`; actual live folder following/stuck presentation remains SYL-251/SYL-252/SYL-257 |
+| BKD-0.31 | keep for each chat, in its tables `chat_settings` and `chat_marks`, the route and the working folder picked for its next message, whether it is ongoing and when it was archived, saving a choice at once, also while its agent works, and mark a chat ongoing whenever a message of it is accepted | Changed | choice/marks part: unit `chats.atomic-settings`, `chats.atomic-marks`, `chats.mutation-publication-order`, `chats.title-windows`, `chats.archive-list`, `chats.identifier-catalogues`, `chats.additive-driver-catalogue`; ongoing-on-acceptance unit `sending.accepted`, `sending.repository-draft`, `drafts.accepted-recovery` |
 | BKD-0.32 | save a pasted text of 10,000 characters or more as a file of the mode 0600 in the folder `pastes/` of the Root's folder, and give the window its path | Kept | unit `chats.paste-private`, `chats.paste-paths`, `chats.paste-wire` |
 | BKD-0.33 | compare migrated copies through the owning Root’s supported global command at startup/list opening, serve local data and expose truthful provenance/stale/failure state, and delegate one-chat reimport without direct cross-Root SQL or an automatic ambiguous retry | New | backend unit `chats.migration-check-coalescing`, `chats.migration-unavailable`, `chats.own-root-provenance`, `chats.provenance-layout`, `chats.reimport-results`, `chats.reimport-local-input`, `chats.reimport-coalescing`, `chats.reimport-validation`, `chats.reimport-uncertain`, `chats.migration-errors`; core SQL/CLI SYL-195/SYL-247; UI drill remains SYL-257 |
 
