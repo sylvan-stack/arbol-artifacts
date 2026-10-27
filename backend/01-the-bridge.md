@@ -56,6 +56,14 @@ page                  ◀──receive(text)─────  Arbol Swift App  �
 
 The Swift App passes every message on unchanged, in the order it came, and reads none of them; it adds only `lost` ([below](#when-the-backend-goes-away)). It passes a message from a page on only when it comes from the main frame of the page that it loaded from the renderer bundle, so that nothing else that might be shown in the web view reaches the backend. A window belongs to one Root, and its connection goes to that Root's backend only. The connection itself says which window a message comes from, so when a window closes, its connection closes, and the backend ends its subscriptions. What the Bridge needs of the Swift App, here and below, is stated so that its specification (SYL-192) can take it over, and is checked with it.
 
+<!-- sources:
+arbol:src/arbol_backend/bridge.py#encode
+arbol:src/arbol_backend/bridge.py#decode
+arbol:src/arbol_backend/bridge.py#Connection.run
+arbol:tests/backend/test_bridge.py#Wire.test_complete_line_boundary_and_hello_first
+arbol:tests/backend/test_bridge.py#Wire.test_malformed_frames_close_privately
+-->
+
 ### Hello
 
 ```json
@@ -84,6 +92,16 @@ The backend's own codes are in the [Interface](#interface). A code passed on is 
 
 The backend checks every identifier a call names before it touches a file or starts a program: a chat or an Exchange is a UUID written in lower case with hyphens (RCT-0), a Driver is one whose launcher is in the folder of the launchers, and a Subscription is one the Driver gave. Anything else is refused with `invalid_input`. For example, `"exchange":"../../x"` reaches no file.
 
+<!-- sources:
+arbol:src/arbol_backend/bridge.py#Registry
+arbol:src/arbol_backend/bridge.py#Connection.call
+arbol:src/arbol_backend/bridge.py#uuid_id
+arbol:src/arbol_backend/bridge.py#driver_id
+arbol:src/arbol_backend/bridge.py#subscription_id
+arbol:tests/backend/test_bridge.py#Wire.test_calls_independent_one_reply_and_additive_fields
+arbol:tests/backend/test_bridge.py#Wire.test_identifiers_before_effects_and_reused_id
+-->
+
 ### Subscriptions
 
 A subscription starts with one event that holds the present state of its topic, the *snapshot*, and goes on with the changes. Every event of a subscription carries `seq`, which counts from 1 without gaps:
@@ -111,6 +129,19 @@ The topics are in the [Interface](#interface). For a chat, the snapshot holds th
 
 One message stays within 16 MiB: the backend splits a batch of lines into several events where needed. A single line of `events.jsonl` larger than that is sent as `{"n", "tooLarge": true, "bytes"}`, and the window says that this part is too large to show here.
 
+<!-- sources:
+arbol:src/arbol_backend/bridge.py#Snapshot
+arbol:src/arbol_backend/bridge.py#Topic
+arbol:src/arbol_backend/bridge.py#Subscription.begin
+arbol:src/arbol_backend/bridge.py#Connection.subscribe
+arbol:src/arbol_backend/bridge.py#Connection.check_waiting
+arbol:src/arbol_backend/bridge.py#Connection.send
+arbol:tests/backend/test_bridge.py#Wire.test_registered_snapshot_race_and_cutoff
+arbol:tests/backend/test_bridge.py#Wire.test_exact_backlog_boundary_includes_transport_and_pending
+arbol:tests/backend/test_bridge.py#Wire.test_real_slow_socket_isolated_and_buffered_snapshot_bounded
+arbol:tests/backend/test_bridge.py#Wire.test_receipt_counts_handoff_not_queue
+-->
+
 ### Backend protocol details (BKD-D29)
 
 The 16 MiB limit counts the complete encoded line, including its final LF, in both directions. Only UTF-8 JSON objects are accepted; duplicate keys, non-finite numbers, invalid UTF-8, malformed JSON and an unfinished line at EOF close that connection without reflecting the input. Unknown fields and unknown message kinds are ignored. A call or subscription id is a nonempty string of at most 128 UTF-8 bytes without control characters, unique across calls and subscriptions for the lifetime of the connection. Reuse, an uncorrelatable envelope, or more than 65,536 ids closes the connection: no duplicate reply or side effect is possible. With a valid fresh id, a malformed known request gets `invalid_input` (`reply` for a call, `ended` for a subscription). Unknown methods/topics get `unknown_method`. An unsubscribe references an existing subscription id and does not allocate a new one. Unknown unsubscribe ids are harmless.
@@ -122,6 +153,15 @@ A topic snapshot returns its publication version with the state read at that ver
 The connection owns a single writer and counts stored encoded frames, buffered publication payload bytes and the transport's write buffer. More than 64 MiB triggers `slow_reader` for all its subscriptions; queued data is discarded to make room for those terminal notices. If those notices cannot drain in one second, that connection closes. No other connection is affected. A frame that cannot fit in 16 MiB ends its subscription with `invalid_input`, or gives a call a fixed `invalid_input` reply; it is never split as arbitrary JSON. Topic-specific batching of Exchange lines belongs to SYL-251.
 
 `root.get` returns `{root: RootInfo, layoutComplete: boolean}`. Completeness means that the four BKD-0 backend tables and `drafts_revision` sequence exist in `public`, not that every future migration has been applied; a database failure gives an error, never `false` or a healthy result. `roots.list` returns `{roots: [{root: RootInfo}, ...]}` at this stage; SYL-252 adds Exchange discovery. Each catalogue access re-runs `arbol-roots list`; simultaneous accesses share only the same in-flight call, never a persisted current selection. `hello` waits for that bounded catalogue read and is always the first frame; if no valid Root header can be obtained the connection closes without an invented current flag. The root observer starts while windows are connected, reads local metadata and the current catalogue independently of calls, and publishes name/state/current changes on a four-second cycle with a catalogue deadline of 0.8 seconds, within five seconds. A failed observation ends affected root subscriptions with a safe error; the window can resubscribe. Neither database reads nor a slow window hold up metadata observation or other calls.
+
+<!-- sources:
+arbol:src/arbol_backend/roots.py#Roots
+arbol:src/arbol_backend/server.py#Backend.monitor
+arbol:src/arbol_backend/process.py#Programs.kill
+arbol:tests/backend/test_bridge.py#RootWire
+arbol:tests/backend/test_bridge.py#Diagnostics
+arbol:scripts/check_backend.py#main
+-->
 
 ### Sending and repeating
 
@@ -174,6 +214,14 @@ The renderer bundles and the backend of a Root come from that Root's `arbol` Bui
 
 No secret crosses the Bridge, in either direction: no key of a Subscription, no Jev key and no database password. The Leather Bag signs in with the Driver's own command at the terminal, which reads a key from its Keychain item (BKD-0, [BKD-D17](02-elma-chat.md#decisions)). Neither the backend nor the Swift App writes a secret to a log (ARC-0, "Secrets").
 
+<!-- sources:
+arbol:src/arbol_backend/bridge.py#safe_error
+arbol:src/arbol_backend/roots.py#Roots.info
+arbol:src/arbol_backend/roots.py#Roots.catalogue_outcome
+arbol:tests/backend/test_bridge.py#Diagnostics.test_private_process_never_logs_input_or_root_diagnostics
+arbol:tests/backend/test_bridge.py#RootWire.test_cancelled_catalogue_does_not_log_a_late_failure
+-->
+
 ### What the Swift App answers itself
 
 A web page cannot open the Mac's folder dialog and should not leave its own page to follow a link, and a request to open a chat comes from outside the page. The window and the Swift App speak about these on a channel of their own, the *app channel*, which is not the Bridge and never reaches the backend: `window.webkit.messageHandlers.arbolApp.postMessage(text)`, answered with `window.arbolApp.receive(text)`, in the form of a call and its reply, and one message the Swift App sends by itself. Their exact form is the Swift App's specification (SYL-192), and the proposal is:
@@ -211,16 +259,16 @@ When `window.webkit` is missing, the page uses that WebSocket instead. The relay
 
 | ID | The Bridge must… | Origin | Verified by |
 |---|---|---|---|
-| BKD-1.1 | carry only the messages `hello`, `call`, `reply`, `subscribe`, `event`, `unsubscribe`, `ended` and `lost`, each one JSON object, with the `id` of a call or a subscription chosen by the window and unique within its connection | Changed | unit |
-| BKD-1.2 | travel from the page as a JSON string through `window.webkit.messageHandlers.arbol`, to the page through `window.arbolBridge.receive`, and between the Swift App and the backend as one line of UTF-8 JSON of at most 16 MiB on one connection to the Root's `backend.sock` for each window, a longer line closing the connection; and reach the backend only from the main frame of the page loaded from the renderer bundle | Changed | unit; the Swift App's part with SYL-192 |
-| BKD-1.3 | begin every connection with `hello`, giving the Bridge's version, the Root and the backend's Build; have a window refuse another version of the Bridge, and, when its page came from another Build, save its Drafts, wait for its sends and reload once for that Build | New | unit |
-| BKD-1.4 | answer every call exactly once, with `result` or with `error` of the form `{code, message}` and, for an error passed on, `source`; refuse with `invalid_input` an identifier that is not of its kind before a file is touched or a program started; have the window give each call a time limit and show a code it does not know with its message | Changed | unit |
-| BKD-1.5 | register a subscription before reading its snapshot, begin it with the snapshot, number its events with `seq` from 1 without gaps, keep one subscription for each topic and params on a connection, end a connection's subscriptions with `slow_reader` above 64 MiB waiting; have the window start a subscription again when it finds a gap, when `subscriptions.check` shows it behind after being hidden, and when the database returns | Changed | unit, journey |
+| BKD-1.1 | carry only the messages `hello`, `call`, `reply`, `subscribe`, `event`, `unsubscribe`, `ended` and `lost`, each one JSON object, with the `id` of a call or a subscription chosen by the window and unique within its connection | Changed | unit `bridge.frames`, `bridge.calls`, `bridge.correlation`, `bridge.subscription-end`; Swift `lost` remains SYL-192 |
+| BKD-1.2 | travel from the page as a JSON string through `window.webkit.messageHandlers.arbol`, to the page through `window.arbolBridge.receive`, and between the Swift App and the backend as one line of UTF-8 JSON of at most 16 MiB on one connection to the Root's `backend.sock` for each window, a longer line closing the connection; and reach the backend only from the main frame of the page loaded from the renderer bundle | Changed | backend unit `bridge.frames`, `bridge.malformed`, `bridge.output-boundary`; Swift/main-frame relay remains SYL-192 |
+| BKD-1.3 | begin every connection with `hello`, giving the Bridge's version, the Root and the backend's Build; have a window refuse another version of the Bridge, and, when its page came from another Build, save its Drafts, wait for its sends and reload once for that Build | New | backend unit `bridge.frames`, `bridge.root-observation`; Build reload/version refusal in the window remains SYL-254/SYL-192 |
+| BKD-1.4 | answer every call exactly once, with `result` or with `error` of the form `{code, message}` and, for an error passed on, `source`; refuse with `invalid_input` an identifier that is not of its kind before a file is touched or a program started; have the window give each call a time limit and show a code it does not know with its message | Changed | backend unit `bridge.calls`, `bridge.errors`, `bridge.identifiers`, `bridge.correlation`, `bridge.root-get`; window deadlines/error display remain SYL-254 |
+| BKD-1.5 | register a subscription before reading its snapshot, begin it with the snapshot, number its events with `seq` from 1 without gaps, keep one subscription for each topic and params on a connection, end a connection's subscriptions with `slow_reader` above 64 MiB waiting; have the window start a subscription again when it finds a gap, when `subscriptions.check` shows it behind after being hidden, and when the database returns | Changed | backend unit `bridge.snapshot-race`, `bridge.subscription-end`, `bridge.topic-params`, `bridge.receipts`, `bridge.backlog-boundary`, `bridge.slow-reader`, `bridge.disconnect`; database-return snapshots remain SYL-252 and window recovery journey SYL-254/SYL-257 |
 | BKD-1.6 | give in a chat's snapshot the last 12 Exchanges, tool inputs and results cut to 8 KiB, the chat's Draft, settings and marks, and for an open Exchange only its message; send every line of `events.jsonl` of each Exchange in progress from the first one on, whole, unchanged and in order, a line larger than 16 MiB as `{n, tooLarge, bytes}`, then its saved rows once it is saved; and announce every Exchange of the chat whose folder appears | Changed | unit, journey |
 | BKD-1.7 | when the connection ends, have the window, told by `lost`, keep showing what it shows and the Drafts typed meanwhile, fail its calls under way with `disconnected`, and after the next `hello` start every subscription again and send its calls again as the table of repeating says, `chat.send` and `exchange.sendAgain` with the same Exchange identifier | Changed | drill |
 | BKD-1.8 | give every attention item open in the Root to every window that subscribes to `attention`, from its opening to its closing, and have a window show a kind it does not know with its message | New | unit, drill |
-| BKD-1.9 | change within a Root only by additions that older Builds can ignore, have the backend and the window ignore every field, event kind and attention kind they do not know, and have the backend reply to a method or topic it does not know with `unknown_method` | New | unit |
-| BKD-1.10 | carry no secret in either direction | Changed | unit |
+| BKD-1.9 | change within a Root only by additions that older Builds can ignore, have the backend and the window ignore every field, event kind and attention kind they do not know, and have the backend reply to a method or topic it does not know with `unknown_method` | New | backend unit `bridge.compatibility`, `bridge.topic-params`, `bridge.calls`; window event/attention compatibility remains SYL-254 |
+| BKD-1.10 | carry no secret in either direction | Changed | backend unit `bridge.privacy`, `bridge.private-diagnostics`, `bridge.catalogue-cancel-privacy`, `backend.child-cancel-race`; Swift/window secrecy remains their checks |
 | BKD-1.11 | keep the requests between the window and the Swift App, `app.pickFolder`, `app.openLink` and `app.takeOpen`, and the Swift App's message `open`, on a channel of their own, `arbolApp`, which never reaches the backend; keep a request to open a chat until a window takes it; and keep the web view of a window on its own page | New | unit; the Swift App's part with SYL-192 |
 | BKD-1.12 | before the Swift App exists, be relayed by the development relay of the `arbol` repository on the loopback address only, letting in only requests with its cookie, its `Host` and, for the WebSocket, its `Origin`, and logging no message | New | unit |
 | BKD-1.13 | carry optional own-Root migration metadata and the bounded chat.reimport call/result, pass structured errors without secrets, and never repeat that mutation automatically after an ambiguous reply | New | pending Backend Arc SYL-249/SYL-257; Root core is SYL-195 |
@@ -276,7 +324,7 @@ The calls:
 
 | Method | Params | Result | Time limit of the window |
 |---|---|---|---|
-| `root.get` | — | `RootInfo` and `layoutComplete: boolean` | 30 s |
+| `root.get` | — | `{ root: RootInfo, layoutComplete: boolean }` | 30 s |
 | `roots.list` | — | `Discovery` | 30 s |
 | `chats.page` | `before?`: `{ activityAt, chat }` of the oldest chat shown; `limit?`, at most 200, 100 by default | `{ chats: ChatSummary[] }`, without archived chats, older than `before`, by `activityAt` and then `chat`, both newest first | 30 s |
 | `chat.exchanges` | `chat`, `beforeNumber`, `limit?`, at most 50, 12 by default | `{ exchanges: SavedExchange[]; more: boolean }` | 30 s |

@@ -52,10 +52,13 @@ arbol:tests/test_backend.py#Process
 
 ### The current Root and listeners
 
-The backend never stores which Root is current. When it needs to know, at its start and when a window asks, it runs `arbol-roots list` and takes the record marked `current` ([ARC-1](../architecture/01-roots.md#the-states-of-a-root-and-the-current-root)). Listeners run only in the current Root's backend; this specification has none, because Telegram, the only listener so far, is postponed (ARC-D52). It reads its own Root's `root.json` again every 5 seconds while a window is connected, and tells every window when the Root's state or display name changed (the topic `root`, BKD-1), so that a header never shows a state the Root has left.
+The backend never stores which Root is current. When it needs to know, at its start and when a window asks, it runs `arbol-roots list` and takes the record marked `current` ([ARC-1](../architecture/01-roots.md#the-states-of-a-root-and-the-current-root)). Listeners run only in the current Root's backend; this specification has none, because Telegram, the only listener so far, is postponed (ARC-D52). While a window is connected it observes its own Root's `root.json` and the current catalogue on the bounded cycle in BKD-D29, and tells every window within 5 seconds when the Root's state, display name or current flag changed (the topic `root`, BKD-1), so that a header never shows a state the Root has left.
 
 <!-- sources:
 arbol:src/arbol_backend/process.py#Programs.current_root
+arbol:src/arbol_backend/roots.py#Roots.refresh
+arbol:src/arbol_backend/roots.py#Roots.get
+arbol:tests/backend/test_bridge.py#RootWire
 arbol:src/arbol_backend/server.py#Backend.monitor
 arbol:tests/test_backend.py#AsyncFoundation.test_current_root_is_read_each_time_and_metadata_refreshes
 -->
@@ -436,7 +439,7 @@ The process:
 |---|---|---|---|
 | BKD-0.1 | be the command `backend` of a Root's `arbol` Build, work on the Root its Build record names, refuse a Root whose folder holds no readable `root.json` and a socket path longer than 103 bytes, run once for each Root by an exclusive lock on `backend.lock`, remove a socket file a dead backend left, listen on `backend.sock` of the mode 0600 in the Root's folder, hand neither the lock nor the socket to a program it starts, print one ready line once it listens, and on SIGTERM, on SIGINT and when its standard input is a pipe that reaches its end, close its connections, remove its socket and end within 2 seconds | Changed | unit `backend.process-lock`, `backend.shutdown`, `backend.identity-isolation`, `backend.socket-path`, `backend.descriptor-ownership`, `backend.build-identity`; private Build `backend.name-only-build` |
 | BKD-0.2 | start for a Root in any state that is named, a failed one included, and serve its windows for as long as its folder, its database and its Builds exist | New | unit `backend.identity-isolation` starts preparing/working/failed; private Root-scoped Build `backend.name-only-build`; UI journey remains SYL-257 |
-| BKD-0.3 | take the current Root from `arbol-roots list` whenever it needs it, store it nowhere, run no listener unless its Root is current, and tell every window within 5 seconds when its own Root's state or display name changed | New | reading: unit `backend.root-observation`; Bridge change publication remains SYL-248; no listener is implemented |
+| BKD-0.3 | take the current Root from `arbol-roots list` whenever it needs it, store it nowhere, run no listener unless its Root is current, and tell every window within 5 seconds when its own Root's state or display name changed | New | unit `backend.root-observation`, `bridge.root-observation`, `bridge.root-catalogue`, `bridge.root-get`; no listener is implemented |
 | BKD-0.4 | start `arbol-root`, `arbol-roots` and the Drivers only through their launchers, with the folder of the launchers first on the search path, each in a process group of its own; wait for none longer than its time limit, end a listing or an account command at its limit, and start no second settle of a Root, no second stop of an Exchange and no new look while one runs | New | unit `backend.launcher-boundaries`, `backend.child-deadlines` (exact production limit table plus private shorter injected waits) |
 | BKD-0.30 | read the defaults of `~/.arbol/roots/<root>/arbol.json` at its start, the default route, each repository's default route and the small-call route, a missing file or a missing field being no error, and use no Brain Recipe | Changed | unit `backend.settings` |
 
