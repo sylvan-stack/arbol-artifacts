@@ -447,7 +447,11 @@ own recent pace are the two refinements on record; neither replaces the even
 pace before calibration against the owner's choices.
 
 The report is a floor. Other devices on the same account spend between
-reports, so a stale result can show more allowance than exists. An Anthropic
+reports, so a stale result can show more allowance than exists. While no
+backend runs on this computer, nothing ticks: Vigor is kept current by hand
+with `arbol vigor --refresh` until the Arbol Swift App runs the backend
+(SGM-D35), and the records, the learner's report pairs among them, grow only
+with each refresh and each run. An Anthropic
 report refreshes only through a run; version 1 read the vendor's usage page
 in a hidden browser session for this, and that reading was deliberately
 dropped with the Driver's browser (see the Claude Driver's
@@ -500,3 +504,4 @@ profile for operation.
 | SGM-D32 | How does the calculation know which window is scoped to the coding product the Subscription serves (SGM-D25) and which to one tool (SGM-D27), when the contract's window carries no scope? | A table in the Radar layer's code, by family and the window's label as its Driver reports it: Kimi Code's `Monthly, Kimi Code` is the coding product's window, z.ai's `MCP` window is scoped to one tool, and every other window is scoped to the Subscription. Among equal-length longest windows with none scoped to the coding product, the first delivered is the store and the others are shown. A new family or label is added to the table with the Driver that reports it | Decided 2026-10-27 during SYL-295, a technical choice |
 | SGM-D33 | What is shown when an `ok` report gives no Vigor for a reason the table of unknown does not name: no window counts tokens or credits, or a token window lacks a field while another window is reached? | Unknown, never zero. An `ok` report without a token or credit window reads `unknown: no token or credit window in the <family> report`. A missing field keeps the result unknown with the field named even while a reached window makes the Subscription exhausted, so the Driver defect stays visible; the exhausted flag is still set and the next change is empty | Decided 2026-10-27 during SYL-296, a technical choice; accepted as written by the owner the same day |
 | SGM-D34 | Which reset is an exhausted Subscription's next change when a reached window and an unreached shorter window both have one? | An exhausted Subscription's next change is the moment its last reached inference-gating window resets, with the Vigor at that moment; the earliest reset stays the rule for a Subscription that is not exhausted | Decided by the owner, 2026-10-27, after SYL-296 was merged; applied in SYL-297 |
+| SGM-D35 | How does Vigor stay current while no backend runs? | By hand: `arbol vigor --refresh` fetches and records a fresh report of every Subscription and recomputes, until the Arbol Swift App keeps the backend running (ARC-0.7) and its tick recomputes every three minutes | Decided by the owner, 2026-10-27: "Yes, keep Vigor current by hand with arbol vigor --refresh until the Arbol Swift App runs the backend." |
