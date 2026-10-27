@@ -325,7 +325,7 @@ Arbol:
 | ARC-0.26 | keep every newer Build of the Arbol Swift App working with every Root that still exists | New | journey |
 | ARC-0.14 | report the health of the database server and the size of each Root's database, and warn before space runs out | Changed | journey |
 | ARC-0.31 | let the Leather Bag enter, replace and remove every secret of every component on the Secrets page of Seqoya Lab, store each as the Keychain item its component names, show it only as set or not set, and never display, log or hand on its value | Changed | journey |
-| ARC-0.32 | be started by its name alone, without a path, in any newly opened terminal window, as must the tools `arbol-builds` and `arbol-roots` | New | global tools part: installed clean-login-shell probe of arbol-roots/arbol-builds; unit `builds.install`, `roots.install-rollback` (SYL-160). Other command-line programs are qualified by their own Beats |
+| ARC-0.32 | be started by its name alone, without a path, in any newly opened terminal window, as must the tools `arbol-builds` and `arbol-roots` | New | global tools part: installed clean-login-shell probe of arbol-roots/arbol-builds; unit `builds.install`, `roots.install-rollback` (SYL-160). Other command-line programs are qualified by their own Beats Backend command: private Root-scoped packaged `backend.name-only-build`, clean login shell and bounded shutdown (SYL-246). |
 
 ARC-0.12 and ARC-0.13, on the helper commands `ask` and `jev`, were withdrawn on 13 October 2026 by [ARC-D56](#decisions): a Trunk makes its small model calls itself (ARC-0.24, ARC-0.29, ARC-0.30).
 

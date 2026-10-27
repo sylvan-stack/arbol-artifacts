@@ -42,9 +42,23 @@ A backend starts for a Root in every state, `preparing`, `working` or `failed`, 
 
 What it does at its start, in this order: the lock, the socket and the ready line; the removal of request files older than one hour that a start left in `requests/` ([below](#sending-a-message)); the connection to the database, which may fail without stopping anything else ([below](#when-the-database-cannot-be-reached)); `arbol-root settle` ([below](#settling)); the first look at the Exchanges ([below](#stuck-exchanges)); and the discovery across Roots ([below](#restarts-and-discovery-across-roots)). Windows can connect from the ready line on.
 
+<!-- sources:
+arbol:src/arbol_backend/model.py#identity
+arbol:src/arbol_backend/lifetime.py#Lifetime
+arbol:src/arbol_backend/server.py#Backend.run
+arbol:src/arbol_backend/cli.py#main
+arbol:tests/test_backend.py#Process
+-->
+
 ### The current Root and listeners
 
 The backend never stores which Root is current. When it needs to know, at its start and when a window asks, it runs `arbol-roots list` and takes the record marked `current` ([ARC-1](../architecture/01-roots.md#the-states-of-a-root-and-the-current-root)). Listeners run only in the current Root's backend; this specification has none, because Telegram, the only listener so far, is postponed (ARC-D52). It reads its own Root's `root.json` again every 5 seconds while a window is connected, and tells every window when the Root's state or display name changed (the topic `root`, BKD-1), so that a header never shows a state the Root has left.
+
+<!-- sources:
+arbol:src/arbol_backend/process.py#Programs.current_root
+arbol:src/arbol_backend/server.py#Backend.monitor
+arbol:tests/test_backend.py#AsyncFoundation.test_current_root_is_read_each_time_and_metadata_refreshes
+-->
 
 ### Other programs it starts
 
@@ -65,6 +79,13 @@ The *launchers* are the small programs in `~/.local/bin` that pick the Build to 
 | `arbol-root list`, `arbol-roots list`, and every account command | 10 seconds | They read files, or ask the vendor once |
 
 A program that has not answered in its time is reported as `no_answer`. A `list`, an `arbol-roots list` or an account command then gets SIGKILL to its process group. A start, a stop or a settle is left to run, because it may be doing its work, and the backend keeps track of its process: while one runs it starts no second settle of the same Root, no second stop of the same Exchange and no new look ([below](#stuck-exchanges)).
+
+<!-- sources:
+arbol:src/arbol_backend/process.py#Programs.call
+arbol:src/arbol_backend/process.py#Programs.close
+arbol:tests/test_backend.py#AsyncFoundation.test_listing_group_killed_and_mutation_tracked
+arbol:tests/test_backend.py#AsyncFoundation.test_launcher_path_groups_and_no_inference
+-->
 
 ### Copies whose original went on
 
@@ -90,6 +111,14 @@ A title is 1 to 240 characters, counted as PostgreSQL's `char_length` counts the
 
 A Root that grows from another gets the rows of these tables from its migration script, which copies them as they are, after the chat tables, as the [Interface](#interface) shows. A Root whose layout lacks them gets them with `arbol-roots layout <root>` before another Root grows from it (RTM-1).
 
+<!-- sources:
+arbol:src/arbol_backend/database.py#credentials
+arbol:src/arbol_backend/database.py#password
+arbol:src/arbol_backend/database.py#Database
+arbol:src/arbol_backend/database.py#Session.execute
+arbol:tests/test_backend.py#SQL
+-->
+
 ### Settings
 
 The backend's settings are the file `~/.arbol/roots/<root>/arbol.json`, which the owner can edit and the backend reads at its start ([ARC-1](../architecture/01-roots.md#settings)). In this specification it holds the defaults of Elma Chat: the route a new chat starts with, for all repositories and for single ones, until the Leather Bag picks another, and the small-call route a Trunk is handed for small calls such as a title ([BKD-D3](#decisions)):
@@ -101,6 +130,12 @@ The backend's settings are the file `~/.arbol/roots/<root>/arbol.json`, which th
 ```
 
 A missing file, or one without a field, is no error. A new chat's route is then the first that exists of its repository's route, the file's route and the first signed-in Subscription of the first Driver; a route that names no model or effort takes the catalog's defaults ([BKD-2](02-elma-chat.md#the-route)). No small-call route is handed without one. Elma Chat uses no Brain Recipe: a route is always the Leather Bag's choice or a default ([BKD-D3](#decisions)).
+
+<!-- sources:
+arbol:src/arbol_backend/model.py#settings
+arbol:src/arbol_backend/model.py#Settings
+arbol:tests/test_backend.py#Process.test_optional_settings_and_routes
+-->
 
 ### Drafts
 
@@ -255,7 +290,7 @@ The database is *unreachable* when a new connection, or `SELECT 1` on it, does n
 
 ### Accounts
 
-The backend calls the Drivers' account commands directly; Root and Trunk have no part in it ([ARC-0](../architecture/00-components-and-boundaries.md#accounts), [DRV-1](../driver-contract/01-subscriptions.md)). The Drivers are those whose launcher `arbol-<driver>-driver` is in the folder of the launchers, `claude` and `codex` today, and the `driver` of a route names one of them (TRV-0).
+The backend calls the Drivers' account commands directly; Root and Trunk have no part in it ([ARC-0](../architecture/00-components-and-boundaries.md#accounts), [DRV-1](../driver-contract/01-subscriptions.md)). The Drivers are those whose launcher `arbol-<driver>-driver` is in the folder of the launchers: `claude`, `codex` and the accepted `pi` Driver; the `driver` of a route names one of them (TRV-0).
 
 | The window asks for | The backend runs |
 |---|---|
@@ -320,6 +355,15 @@ The backend is typed Python in the repository `arbol`, beside `arbol-builds` and
 
 It serves its Bridge with one task for each window and for each call, so no call to the database or to another program holds up another (ARC-2). Each window's connection and each call can fail on its own without ending the backend.
 
+<!-- sources:
+arbol:arbol-build.json
+arbol:scripts/package_backend.py#package
+arbol:scripts/backend_package.py#verify
+arbol:scripts/check_backend.py#main
+arbol:bin/arbol
+arbol:bin/arbol_entry.py
+-->
+
 ### Process foundation choices
 
 SYL-246 settles these technical details before implementation (BKD-D27). The backend is an asyncio process. Each socket connection owns a task; the Bridge will supply its wire handling in SYL-248. This foundation keeps accepted connections alive and monitors Root metadata while they exist, without inventing a second wire protocol. Startup prints ready before launching background database/current-Root/settle work. Stuck/discovery/attention and Bridge publication stay in their named later Beats.
@@ -345,17 +389,23 @@ A test runs the Builds of the Root it tests on a folder and a database of its ow
 
 `--root-dir` is refused without `--bin-dir` and `--database`, so that a test that names another Root folder cannot start a real Trunk or reach the chats of a Root in use, as RTM-0 refuses it for the Root manager.
 
+<!-- sources:
+arbol:tests/backend/support.py#Frame
+arbol:tests/backend/support.py#Cluster
+arbol:tests/test_backend.py#SQL.test_connect_deadline_and_shutdown_during_handshake
+-->
+
 ## Requirements
 
 The process:
 
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
-| BKD-0.1 | be the command `backend` of a Root's `arbol` Build, work on the Root its Build record names, refuse a Root whose folder holds no readable `root.json` and a socket path longer than 103 bytes, run once for each Root by an exclusive lock on `backend.lock`, remove a socket file a dead backend left, listen on `backend.sock` of the mode 0600 in the Root's folder, hand neither the lock nor the socket to a program it starts, print one ready line once it listens, and on SIGTERM, on SIGINT and when its standard input is a pipe that reaches its end, close its connections, remove its socket and end within 2 seconds | Changed | unit |
-| BKD-0.2 | start for a Root in any state that is named, a failed one included, and serve its windows for as long as its folder, its database and its Builds exist | New | journey |
-| BKD-0.3 | take the current Root from `arbol-roots list` whenever it needs it, store it nowhere, run no listener unless its Root is current, and tell every window within 5 seconds when its own Root's state or display name changed | New | unit |
-| BKD-0.4 | start `arbol-root`, `arbol-roots` and the Drivers only through their launchers, with the folder of the launchers first on the search path, each in a process group of its own; wait for none longer than its time limit, end a listing or an account command at its limit, and start no second settle of a Root, no second stop of an Exchange and no new look while one runs | New | unit |
-| BKD-0.30 | read the defaults of `~/.arbol/roots/<root>/arbol.json` at its start, the default route, each repository's default route and the small-call route, a missing file or a missing field being no error, and use no Brain Recipe | Changed | unit |
+| BKD-0.1 | be the command `backend` of a Root's `arbol` Build, work on the Root its Build record names, refuse a Root whose folder holds no readable `root.json` and a socket path longer than 103 bytes, run once for each Root by an exclusive lock on `backend.lock`, remove a socket file a dead backend left, listen on `backend.sock` of the mode 0600 in the Root's folder, hand neither the lock nor the socket to a program it starts, print one ready line once it listens, and on SIGTERM, on SIGINT and when its standard input is a pipe that reaches its end, close its connections, remove its socket and end within 2 seconds | Changed | unit `backend.process-lock`, `backend.shutdown`, `backend.identity-isolation`, `backend.socket-path`, `backend.descriptor-ownership`, `backend.build-identity`; private Build `backend.name-only-build` |
+| BKD-0.2 | start for a Root in any state that is named, a failed one included, and serve its windows for as long as its folder, its database and its Builds exist | New | unit `backend.identity-isolation` starts preparing/working/failed; private Root-scoped Build `backend.name-only-build`; UI journey remains SYL-257 |
+| BKD-0.3 | take the current Root from `arbol-roots list` whenever it needs it, store it nowhere, run no listener unless its Root is current, and tell every window within 5 seconds when its own Root's state or display name changed | New | reading: unit `backend.root-observation`; Bridge change publication remains SYL-248; no listener is implemented |
+| BKD-0.4 | start `arbol-root`, `arbol-roots` and the Drivers only through their launchers, with the folder of the launchers first on the search path, each in a process group of its own; wait for none longer than its time limit, end a listing or an account command at its limit, and start no second settle of a Root, no second stop of an Exchange and no new look while one runs | New | unit `backend.launcher-boundaries`, `backend.child-deadlines` (exact production limit table plus private shorter injected waits) |
+| BKD-0.30 | read the defaults of `~/.arbol/roots/<root>/arbol.json` at its start, the default route, each repository's default route and the small-call route, a missing file or a missing field being no error, and use no Brain Recipe | Changed | unit `backend.settings` |
 
 The database:
 
@@ -365,7 +415,7 @@ The database:
 | BKD-0.6 | create, change and remove no table, column, index or check, use for its own rows only the tables of the Root's own layout that `arbol-roots` runs, and serve a Root whose database lacks them without Drafts and notes, with the attention item `layout_incomplete` | New | unit |
 | BKD-0.7 | have its own tables changed within a Root only by additions to the Root's own layout that the Root's older Builds can ignore (RTM-1.5), and its settings file only by fields older Builds can ignore | New | unit |
 | BKD-0.8 | write in the chat tables only `chats.title`, when the Leather Bag gives a chat a title or takes it away: the text without spaces at its ends, NULL when nothing is left, and never a placeholder | Changed | unit |
-| BKD-0.9 | read the database password as a Trunk does, with the exit status 44 meaning no password, give every call to the database a time limit of 5 seconds, fail a statement that passes it with `timeout`, and serve each window and each call in a task of its own, so that no call holds up another | Changed | unit |
+| BKD-0.9 | read the database password as a Trunk does, with the exit status 44 meaning no password, give every call to the database a time limit of 5 seconds, fail a statement that passes it with `timeout`, and serve each window and each call in a task of its own, so that no call holds up another | Changed | unit `backend.keychain`, `backend.database-identity`, `backend.connect-timeout`, `backend.database-deadlines`, `backend.database-away-start`; per-window Bridge dispatch remains SYL-248 |
 
 Drafts and sending:
 
@@ -423,7 +473,7 @@ Health and tests:
 |---|---|---|---|
 | BKD-0.27 | measure at its start, every 5 minutes and when a window asks, whether the database server answers, the size of each retained Root's database, the size of the data folder and the free space of its disk | Changed | unit, journey |
 | BKD-0.28 | show an attention item in every window when that free space is below 10 GiB, marked urgent below 2 GiB, naming the free space, the data folder's size and the largest database | New | unit, drill |
-| BKD-0.29 | take its Root's folder, the folder of the launchers, its settings folder and its database from `--root-dir`, `--bin-dir`, `--settings-dir` and `--database` when they are given, and refuse `--root-dir` without `--bin-dir` and `--database` | New | unit |
+| BKD-0.29 | take its Root's folder, the folder of the launchers, its settings folder and its database from `--root-dir`, `--bin-dir`, `--settings-dir` and `--database` when they are given, and refuse `--root-dir` without `--bin-dir` and `--database` | New | unit `backend.identity-isolation`, `backend.database-identity`; packaged `backend.name-only-build` |
 
 BKD-0.19's clock is checked inside the backend's own process, because no drill makes the Mac sleep, as RTM-0.12's is.
 
