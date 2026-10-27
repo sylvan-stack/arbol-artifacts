@@ -165,6 +165,8 @@ arbol:scripts/check_backend.py#main
 
 ### Sending and repeating
 
+Draft scope, exact bigint revisions, conflict null, send ownership, accepted-mark reconciliation, shared dispatch/request lifetime and result/refusal validation follow BKD-D31. A folder key is normalized absolute and can still be read after its repository disappears; sending separately requires an existing workingFolder. A stale or differently marked Draft cannot be overwritten or stolen by a fresh dispatch. Equivalent in-flight callers join, and a known accepted identifier can be replayed after its Draft is gone.
+
 The window chooses the identifier of a new Exchange, a UUID, before it calls `chat.send` or `exchange.sendAgain` ([BKD-D7](00-the-arbol-backend.md#decisions)). When the call fails with `disconnected`, or with `no_answer`, the window sends the same call again, with the same identifier, once the backend is back. The Trunk replies with the Exchange it accepted, marked as a repeat, or accepts it then; the message never runs twice (RCT-2). The window's time limit for these two calls, 150 seconds, is longer than the backend's longest attempt (BKD-0).
 
 ```json
@@ -292,7 +294,7 @@ interface BridgeError {
   message: string;
   source?: "trunk" | "root-manager" | "roots" | "driver";
   retryAfterSeconds?: number;           // passed on from a Driver's error (DRV-4)
-  draft?: Draft;                        // with draft_conflict: the Draft as it is
+  draft?: Draft | null;                 // with draft_conflict: current Draft, or explicit null after removal
 }
 
 interface RootInfo {
