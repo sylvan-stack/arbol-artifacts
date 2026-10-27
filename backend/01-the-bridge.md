@@ -280,7 +280,12 @@ arbol:ui/elma/src/window.svelte.ts
 arbol:tests/ui/live_browser.mjs
 -->
 
-On development-relay shutdown, stop accepting new connections, close browser writers and cancel/join their handlers, then wait for the listener to close. This ordering includes still-open WebSockets: waiting for server closure before closing its active clients can deadlock on the pinned Python runtime. The relay must exit quietly with a connected browser.
+On development-relay shutdown, stop accepting new connections, close browser writers and cancel/join their handlers, then wait for the listener to close. This ordering includes still-open WebSockets: waiting for server closure before closing its active clients can deadlock on the pinned Python runtime. The relay must exit quietly with a connected browser. The regression is `RelayChecks.test_process_prints_only_bootstrap_and_quiet_shutdown`: it keeps an authenticated WebSocket and its private backend connection open during SIGTERM and requires quiet exit plus EOF within two seconds.
+
+<!-- sources:
+arbol:tools/bridge_relay.py#Relay.close
+arbol:tests/ui/test_relay.py#RelayChecks.test_process_prints_only_bootstrap_and_quiet_shutdown
+-->
 
 ### Compatibility within a Root
 
