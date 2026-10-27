@@ -783,6 +783,8 @@ Health and tests:
 
 BKD-0.19's clock is checked inside the backend's own process, because no drill makes the Mac sleep, as RTM-0.12's is.
 
+The read-only workspace.get bootstrap and additive ChatInfo.firstMessage of BKD-D36 supply the window's repository/default/title inputs through the Bridge. They expose only lexical readonly repository paths and public route fields and read the first unreplaced prompt in the chat snapshot; no booking, filesystem mutation or extra component is introduced.
+
 ## Interface
 
 ```ts

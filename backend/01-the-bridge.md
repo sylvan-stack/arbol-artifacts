@@ -283,6 +283,12 @@ A web page cannot open the Mac's folder dialog and should not leave its own page
 
 The web view of a window never leaves its page: the Swift App refuses every navigation away from the renderer bundle, so a link in an answer that the agent wrote, such as one a file it read put there, cannot take the window to a page that would then reach the Bridge.
 
+### Window bootstrap additions (BKD-D36)
+
+The read-only call workspace.get gives the window repository slots and safe route defaults without exposing the settings file or requiring a filesystem channel in the page. It returns `{repositories: [{name, folder, route}], route}`, with the stack's readonly folder first, then actual Git repository directories immediately under readonly, in name order. Symlinked entries and hidden/non-repository directories are excluded so a slot cannot redirect to a named work area. The window puts its16 recently used repository names ahead of the others after the stack's own slot and chooses its first nine. Every folder is the absolute lexical readonly path; a missing/unreadable readonly directory is an honest fixed no_answer. A fresh call observes added/removed repositories; it creates, changes and books nothing. Only the validated Driver/Subscription/model/effort route fields are returned, from the existing per-repository/default settings, never the original settings object or small-call configuration. The page calls this on opening/hello, not on a timer. Its window deadline is30 seconds.
+
+ChatInfo additionally has firstMessage, the first200 characters of the position-zero message of the first unreplaced Exchange, or an empty string. It is read in the same consistent snapshot as the chat. This makes the80-character first-line title placeholder available even when that Exchange lies outside the newest12; the placeholder is never written back as a title.
+
 ### Before the Swift App exists
 
 Until the Arbol Swift App exists (SYL-192), the window runs in a browser on this Mac, through a small *development relay* in the `arbol` repository, so that the window can be built and its journeys checked:
@@ -373,6 +379,7 @@ The calls:
 | Method | Params | Result | Time limit of the window |
 |---|---|---|---|
 | `root.get` | — | `{ root: RootInfo, layoutComplete: boolean }` | 30 s |
+| `workspace.get` | — | `{ repositories: Array<{name: string; folder: string; route: object}>; route: object }`, read-only slots/defaults as above | 30 s |
 | `roots.list` | — | `Discovery` | 30 s |
 | `chats.page` | `before?`: `{ activityAt, chat }` of the oldest chat shown; `limit?`, at most 200, 100 by default | `{ chats: ChatSummary[] }`, without archived chats, older than `before`, by `activityAt` and then `chat`, both newest first | 30 s |
 | `chat.exchanges` | `chat`, `beforeNumber`, `limit?`, at most 50, 12 by default | `{ exchanges: SavedExchange[]; more: boolean }` | 30 s |
@@ -447,6 +454,7 @@ interface ChatInfo {
   chat: string;
   title: string | null;
   createdAt?: string;
+  firstMessage?: string;                // first200 characters of the first unreplaced prompt; additive BKD-D36
   migration?: { fromRoot: string; fromChat: string; stale: boolean }; // the same own-Root provenance as ChatSummary
   exchangeCount: number;                // every Exchange of the chat that was not replaced, for "Turn n of N"
   usage: { inputTokens: number; outputTokens: number };   // the sum over the chat's runs, for the cockpit
@@ -550,3 +558,4 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 | BKD-D16 | How is the window built and checked before the Swift App exists? | Through a development relay in the `arbol` repository that serves the renderer bundle on the loopback address and relays a WebSocket to `backend.sock`, unchanged, letting in only the browser that got its token. It is for development and checks only, never for daily use. The alternative: wait for the Swift App (SYL-192), which is blocked by this specification, before the first window can be seen | Decided 18 October 2026, a technical choice: the proposed default |
 | BKD-D23 | How large may a chat's snapshot be? | The last 12 Exchanges, as version 1 opened a chat, with the input and the result of each tool call cut to 8 KiB, and the rest on request (`chat.exchanges`, `toolCall.get`). A Driver may return up to 200 KiB for one tool call (DRV-2), so a whole chat can pass the 16 MiB of a message, and a closed tool call shows one line. The alternative: the whole chat at once, which fails for a long chat | Decided 18 October 2026, a technical choice; 12 Exchanges, as version 1 had them, on 19 October 2026 following BKD-D22 |
 | BKD-D29 | How are the protocol boundaries, snapshot races and Root observations made precise for implementation? | The Backend protocol details above: complete-line byte limits, correlated validation, versioned snapshots, bounded per-window queues, receipts on transport handoff, explicit root.get wrapper and fresh bounded catalogue observation | Decided 27 October 2026, a technical choice in SYL-248; the stated details |
+| BKD-D36 | How does the page obtain readonly repository slots/defaults and an untitled chat first prompt outside its newest12? | The Window bootstrap additions above: read-only workspace.get and additive ChatInfo.firstMessage in the same snapshot | Decided27 October2026, technical choice in SYL-254, closing a previously missing renderer input without giving the page filesystem access |
