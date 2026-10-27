@@ -370,6 +370,35 @@ Both Roots can be written. A chat can therefore go on in the older Root after th
 
 For this each migrated chat records the Root and the chat it came from, and how far that original had got, in the table `migrated_chats` of the Root's own layout (RTM-1).
 
+<!-- sources:
+arbol-root:roots/jensen/migration-modes.json
+arbol-root:roots/jensen/layout.sql
+arbol-root:roots/jensen/migrate.sql
+arbol-root:scripts/migration_modes.py#read_modes
+arbol-root:scripts/migration_modes.py#branch
+arbol-root:scripts/migration_protocol.py#mode_protocol
+arbol-root:scripts/sql_support.py#BuildInput
+arbol-root:scripts/chat_migration_check.py#check_modes
+arbol-root:scripts/chat_migration_check.py#copied
+arbol-root:scripts/check_migration.py#check_migration
+arbol-root:scripts/verify_sql_build.py#qualify
+arbol-root:tests/test_layout_copy.py#LayoutCopy.test_optional_modes_copy_exactly_and_bad_or_lineageless_capabilities_write_nothing
+arbol-root:tests/test_chat_migration.py#Capabilities
+arbol-root:tests/test_chat_migration.py#ChatModes
+arbol-root:roots/sapling/drills/chat_reimport_drills.py#upgrade
+arbol-root:roots/sapling/drills/chat_reimport_drills.py#replace
+arbol-root:roots/sapling/drills/chat_reimport_drills.py#diverged
+arbol-root:roots/sapling/drills/chat_reimport_drills.py#copied
+arbol-root:roots/sapling/drills/chat_reimport_drills.py#run
+arbol-root:tests/test_migration_drills.py#ReimportJudgment
+arbol:src/arbol_roots/cli.py#main
+arbol:src/arbol_roots/sql.py#selected_sql
+arbol:src/arbol_roots/sql.py#migrate
+arbol:src/arbol_roots/sql.py#mode_result
+arbol:src/arbol_roots/database.py#Database
+arbol:tests/test_roots_sql.py#InUseModes
+-->
+
 Only the migration script may look into the older database, so it also makes this comparison. The Arbol backend of the newer Root runs `arbol-roots migrate <identifier> --check` when it starts and when a UI of that Root opens its chat list. The check changes nothing in the older Root and nothing in the newer one except the stale marks. This timing is the proposed default: the owner was not sure of it on 13 October 2026 and had it built first, to see how it works ([ARC-D50](#decisions)). The check is not in the first thin path (RTM-D12).
 
 The same script brings one chat over again ([ARC-D41](#decisions)). A migration is therefore written so that it can run for all chats or for one; the form for one chat is not in the first thin path (RTM-D12). No file form is used: the older tables are read directly, by this script alone.
