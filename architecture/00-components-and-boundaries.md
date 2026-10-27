@@ -288,6 +288,11 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 | One Driver's state, or a vendor | That Subscription, in every Root |
 | `arbol-classifier`, or Jev | Classifications. No Exchange: a Trunk goes on without the result |
 
+<!-- sources:
+arbol-root:roots/sapling/drills/trunk_drills.py#starter_gone
+arbol-root:roots/sapling/drills/trunk_drills.py#database_through_end
+-->
+
 ## Requirements
 
 Every component:
@@ -334,7 +339,7 @@ A Trunk, seen from outside:
 | ARC-0.18 | run one Chat Exchange in one process, detached when `arbol-root` starts it (RCT-2), with the route it was handed | Changed | contract: R1 (SYL-171), R11 (SYL-177), R15 and R18 (SYL-178), covering the handed route and Exchange ends; unit: `WholeExchange`, `StoppingTheRun` and `SilentRuns` in `trunks/trivial/tests/` of `arbol-trunk` |
 | ARC-0.19 | keep its record and the arriving answer in the Root's `exchanges/` folder, and take stop and answers there | Changed | contract: RCT-1.1, RCT-1.2 and RCT-1.5, scenario R1 (SYL-171), and RCT-1.7 and RCT-1.11, scenarios R8 and R9 (SYL-173), of [RCT-4](../../arbol-root/contract/04-conformance.md) |
 | ARC-0.20 | write rows into the chat tables of the Root's database, and create or change no table | Changed | contract: RCT-3.1 and RCT-3.2, scenarios R1, R16 and R19 of [RCT-4](../../arbol-root/contract/04-conformance.md) (SYL-171) |
-| ARC-0.21 | finish an Exchange while Arbol, the Root manager or the database is absent | Changed | drill |
+| ARC-0.21 | finish an Exchange while Arbol, the Root manager or the database is absent | Changed | installed `sapling.starter-gone` and `sapling.database-away-through-end` in roots/sapling/drills/ (SYL-187): owned terminal/starter disappears; with the server fully stopped beyond sixty seconds a completed unsaved result survives and is settled after restoration |
 | ARC-0.22 | list in its Build record the versions of the Root Contract it implements (RCT-0.1) | New | unit: `program_policy` and `PackageChecks` in the Trivial Trunk; installed Build 3 lists rootContracts [1], passes contract-1, and is chosen for a private Root of version 1 (SYL-180) |
 | ARC-0.24 | make its small text calls as Driver runs without tools on the small-call route it was handed, make its classifications through `arbol-classifier`, and go on when such a call is missing, slow or fails | New | contract: RCT-2.22, scenario R19 of [RCT-4](../../arbol-root/contract/04-conformance.md) (SYL-171); what the Trivial Trunk does with a title: TRV-0.8 |
 

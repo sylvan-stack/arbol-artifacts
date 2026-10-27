@@ -144,6 +144,14 @@ Quitting Arbol, closing every UI or losing the Arbol backend stops no Exchange. 
 
 The backend compatible with each Root reads that Root's database and Exchange files to show what was produced meanwhile. Cross-Root discovery grants no access to another Root's chat tables or Trunk-specific formats. No running Exchange is reassigned to the current Root or a newer Trunk Build. A missed live update never leaves a chat stale: a UI recovers the truth by reading again.
 
+<!-- sources:
+arbol-root:roots/sapling/drills/trunk_drills.py#killed
+arbol-root:roots/sapling/drills/trunk_drills.py#judge_real_interrupted
+arbol-root:roots/sapling/drills/trunk_drills.py#database_mid_run
+arbol-root:roots/sapling/drills/trunk_drills.py#database_through_end
+arbol-root:roots/sapling/drills/trunk_drills.py#failed_or_cancelled
+-->
+
 ## Requirements
 
 | ID | The components together must… | Origin | Verified by |
@@ -153,10 +161,10 @@ The backend compatible with each Root reads that Root's database and Exchange fi
 | ARC-2.3 | write each finished message or tool call to the database when it is finished | Changed | contract: RCT-3.2, scenario R1 of [RCT-4](../../arbol-root/contract/04-conformance.md) (SYL-171) |
 | ARC-2.4 | show a UI that is opened late, opened again or opened twice the whole answer so far | Changed | journey |
 | ARC-2.5 | take a stop and an answer to the agent's question through the Exchange's folder, and show "stopped" only when the Trunk reports that the agent has stopped | Changed | drill |
-| ARC-2.6 | let a Trunk end its Exchange by itself, with no other component accepting or confirming the end | Changed | drill |
-| ARC-2.7 | show an Exchange whose process is gone as interrupted, settle it without a script that names it, keep what the agent had produced, and save a finished result that is still in its folder with its own final state | Changed | drill |
-| ARC-2.8 | keep a failed, stuck or cancelled Exchange to its own chat: other chats go on and new chats start, and after a failed or a cancelled Exchange the same chat takes a new message | Changed | drill |
-| ARC-2.9 | refuse a new message while the database cannot be reached, and lose no result of an Exchange in progress | Changed | new-message refusal: installed `sapling.database-away` (SYL-186), bounded database_unavailable, no Exchange folder/Driver run, unchanged rows and restored service. Losing no result of an Exchange already in progress remains the SYL-187 drill |
+| ARC-2.6 | let a Trunk end its Exchange by itself, with no other component accepting or confirming the end | Changed | installed deterministic `sapling.starter-gone`, `sapling.failed-exchange`, `sapling.cancelled-exchange` and `sapling.database-away-through-end` (SYL-187), with exactly one file end matching the persisted state and unchanged accepted Root/Trunk/Build identity |
+| ARC-2.7 | show an Exchange whose process is gone as interrupted, settle it without a script that names it, keep what the agent had produced, and save a finished result that is still in its folder with its own final state | Changed | Root/Trunk part: installed `sapling.trunk-killed` (stand-in and one real Haiku run), `sapling.trunk-hangs` and `sapling.database-away-through-end` (SYL-187), interrupted/unsaved listing and exact settled rows; whole text blocks/open calls/runs follow RCT-3, fragments are not message rows. Backend/UI recovery and display remain BKD-0 implementation, outside these drills |
+| ARC-2.8 | keep a failed, stuck or cancelled Exchange to its own chat: other chats go on and new chats start, and after a failed or a cancelled Exchange the same chat takes a new message | Changed | Root/Trunk part: installed `sapling.failed-exchange` and `sapling.cancelled-exchange` (SYL-187), same-chat next Exchange while another held chat stays running and later completes; `sapling.trunk-killed` resumes an interrupted chat. Backend/UI presentation remains BKD-0 implementation |
+| ARC-2.9 | refuse a new message while the database cannot be reached, and lose no result of an Exchange in progress | Changed | new-message refusal: installed `sapling.database-away` (SYL-186), bounded database_unavailable with no folder/Driver run/row changes. Existing Exchange: `sapling.database-away-mid-run` and `sapling.database-away-through-end` (SYL-187) after complete connected-server shutdown, ordered whole blocks/tool/run usage retried or settled, actual sixty-second retry and healthy service restored |
 | ARC-2.10 | end an Exchange as failed with the cause `rate_limited` when its run met a rate limit, and take no other route inside the Trunk | Changed | contract: R11 (SYL-177); unit: `WholeExchange.test_a_failed_run_keeps_the_drivers_error_whole` and `WholeExchange.test_a_refusal_can_be_the_only_event_and_no_other_route_is_tried` in `trunks/trivial/tests/test_run.py` of `arbol-trunk` |
 | ARC-2.11 | stop no Exchange when Arbol quits, every UI closes or the Arbol backend ends, and show on return what was produced meanwhile | Kept | drill |
 | ARC-2.12 | record each accepted Exchange's persistent Root identity and concrete Trunk component and Build, retain them through compatible updates and restarts, and leave the original process with its Root when another Root is created or history is migrated | New | Migration-copy part: `root.migration-whole`, `root.migration-open-fault`, `root.migration-snapshot-fault` preserve Trunk/Build rows, record the source Root and leave source data untouched (SYL-184). Existing contract R1/R16 and manager identity checks cover acceptance/listing; compatible updates/restarts and original process ownership across real migration remain SYL-187/SYL-189 and backend drills |

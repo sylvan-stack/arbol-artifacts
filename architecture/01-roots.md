@@ -452,6 +452,27 @@ arbol-root:roots/sapling/drills/drill_support.py#Budget
 arbol-root:tests/test_sapling_drills.py#Creation
 -->
 
+<!-- sources:
+arbol-root:roots/sapling/drills/trunk_drill_support.py#Frame
+arbol-root:roots/sapling/drills/trunk_drill_support.py#StandinHome
+arbol-root:roots/sapling/drills/trunk_drill_support.py#existing_rows_unchanged
+arbol-root:roots/sapling/drills/trunk_drill_support.py#processes
+arbol-root:roots/sapling/drills/trunk_drills.py#entry
+arbol-root:roots/sapling/drills/trunk_drills.py#run_drill
+arbol-root:roots/sapling/drills/run-trunk-drills.py
+arbol-root:roots/sapling/drills/drill-trunk-killed.py
+arbol-root:roots/sapling/drills/drill-trunk-hangs.py
+arbol-root:roots/sapling/drills/drill-starter-gone.py
+arbol-root:roots/sapling/drills/drill-database-away-mid-run.py
+arbol-root:roots/sapling/drills/drill-database-away-through-end.py
+arbol-root:roots/sapling/drills/drill-folder-unwritable.py
+arbol-root:roots/sapling/drills/drill-failed-exchange.py
+arbol-root:roots/sapling/drills/drill-cancelled-exchange.py
+arbol-root:tests/test_trunk_drills.py#PrivateDriver
+arbol-root:tests/test_trunk_drills.py#ProcessAndRows
+arbol-root:tests/test_sapling_drills.py#Outage.test_installed_stop_completes_smart_shutdown_with_an_established_private_connection
+-->
+
 ## Requirements
 
 Roots:

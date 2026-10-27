@@ -146,6 +146,12 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 - `arbol_deprecated_v1:product-spec/03-turn-execution.md#States and transitions`
 - `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#2. One turn's failure could block everything else`
 
+<!-- sources:
+arbol-root:roots/sapling/drills/trunk_drills.py#hangs
+arbol-root:roots/sapling/drills/trunk_drill_support.py#Exchange.capture_processes
+arbol-root:roots/sapling/drills/trunk_drill_support.py#Exchange.gone
+-->
+
 ## Requirements
 
 A Trunk:
@@ -154,7 +160,7 @@ A Trunk:
 |---|---|---|---|
 | ARC-3.1 | raise a heartbeat in the folder of its Exchange from the loop that does its work, at least every 10 seconds, whatever it is waiting for | New | contract: R6 (SYL-176); unit: `Heartbeat`, `RoundsWithLife` and `TimeScaledWaits` in `trunks/trivial/tests/` of `arbol-trunk` |
 | ARC-3.2 | state in that folder what it is waiting for and since when: the Driver, a tool call or command, an answer, the database or a small model call | New | contract: R6 for Driver, tool and answer waits (SYL-176); unit: `Waiting` for all five values, priority and `since`, in `trunks/trivial/tests/test_life.py` of `arbol-trunk` |
-| ARC-3.3 | end its own process and everything it started when its work has not raised the heartbeat for 60 seconds | New | drill |
+| ARC-3.3 | end its own process and everything it started when its work has not raised the heartbeat for 60 seconds | New | installed real-scale `sapling.trunk-hangs` in roots/sapling/drills/drill-trunk-hangs.py (SYL-187): unchanged heartbeat, no forged end, own watch ends the Trunk/Driver and separate stand-in child after sixty seconds plus group grace; listing/settling recover interrupted |
 | ARC-3.4 | end a Driver run that gave no event for one minute longer than its idle limit while no tool call or question was open, nor a command left in the background where its own specification says how it tells one, and end the Exchange as failed with that cause | New | contract: R18 (SYL-178), through RCT-2.21, including a background command that the Trivial Trunk does not distinguish; unit: `SilentRuns` and `WholeExchange.test_a_silent_run_is_stopped_and_the_exchange_fails_with_its_own_cause` in `trunks/trivial/tests/` of `arbol-trunk` |
 
 The Root manager:
