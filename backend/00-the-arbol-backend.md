@@ -595,16 +595,56 @@ The lines a Root's migration script, `roots/<root>/migrate.sql`, adds for these 
 \copy (SELECT * FROM chat_settings) TO 'chat_settings.copy' WITH (FORMAT binary)
 \copy (SELECT * FROM chat_marks) TO 'chat_marks.copy' WITH (FORMAT binary)
 \copy (SELECT * FROM exchange_notes) TO 'exchange_notes.copy' WITH (FORMAT binary)
+\copy (SELECT d.last_value,d.is_called,(s.seqtypid='bigint'::regtype AND s.seqincrement=1 AND s.seqmin=1 AND s.seqmax=9223372036854775807 AND s.seqcache=1 AND NOT s.seqcycle) AS valid_definition FROM drafts_revision d JOIN pg_sequence s ON s.seqrelid='drafts_revision'::regclass) TO 'drafts_revision.copy' WITH (FORMAT binary)
 ```
 
-and in its second step, after `\copy runs FROM …`,
+and in its second step, validate the counter before importing rows, copy the four tables after `\copy runs FROM …`, and restart the sequence last before COMMIT, as the full RTM-1 script shows:
 
 ```sql
+SET LOCAL lock_timeout='2s';
+DO $$
+BEGIN
+  IF to_regclass('drafts') IS NULL OR to_regclass('chat_settings') IS NULL
+     OR to_regclass('chat_marks') IS NULL OR to_regclass('exchange_notes') IS NULL
+     OR to_regclass('drafts_revision') IS NULL THEN
+    RAISE EXCEPTION 'The target backend layout is incomplete';
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_sequence WHERE seqrelid='drafts_revision'::regclass
+      AND seqtypid='bigint'::regtype AND seqincrement=1 AND seqmin=1
+      AND seqmax=9223372036854775807 AND seqcache=1 AND NOT seqcycle) THEN
+    RAISE EXCEPTION 'The target Draft revision counter is incompatible';
+  END IF;
+END $$;
+CREATE TEMP TABLE incoming_drafts_revision (
+  last_value bigint NOT NULL, is_called boolean NOT NULL, valid_definition boolean NOT NULL
+) ON COMMIT DROP;
+\copy incoming_drafts_revision FROM 'drafts_revision.copy' WITH (FORMAT binary)
+DO $$
+BEGIN
+  IF (SELECT count(*) FROM incoming_drafts_revision)<>1
+     OR EXISTS (SELECT 1 FROM incoming_drafts_revision WHERE last_value<1 OR NOT valid_definition) THEN
+    RAISE EXCEPTION 'The source Draft revision counter is incompatible';
+  END IF;
+END $$;
 \copy drafts FROM 'drafts.copy' WITH (FORMAT binary)
 \copy chat_settings FROM 'chat_settings.copy' WITH (FORMAT binary)
 \copy chat_marks FROM 'chat_marks.copy' WITH (FORMAT binary)
 \copy exchange_notes FROM 'exchange_notes.copy' WITH (FORMAT binary)
-SELECT setval('drafts_revision', (SELECT coalesce(max(revision), 0) + 1 FROM drafts), false);
+
+-- A transactionally locked restart neither reuses a consumed/deleted revision nor survives rollback.
+DO $$
+DECLARE following numeric;
+BEGIN
+  ALTER SEQUENCE drafts_revision CACHE 1;
+  SELECT greatest(1::numeric,
+    (SELECT last_value::numeric+is_called::integer FROM incoming_drafts_revision),
+    (SELECT last_value::numeric+is_called::integer FROM drafts_revision),
+    (SELECT coalesce(max(revision)::numeric,0)+1 FROM drafts)) INTO following;
+  IF following>9223372036854775807 THEN
+    RAISE EXCEPTION 'The Draft revision counter is exhausted';
+  END IF;
+  EXECUTE format('ALTER SEQUENCE drafts_revision RESTART WITH %s',following);
+END $$;
 ```
 
 A Draft of a chat whose Exchange is open at the snapshot comes over too, so the Leather Bag finds the text in the newer Root.
