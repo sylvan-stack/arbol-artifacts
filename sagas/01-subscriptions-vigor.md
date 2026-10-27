@@ -23,8 +23,9 @@ zero with its recovery, and that the contract's window says what it counts.
 On 27 October they decided that a reached window of calls exhausts the
 Subscription like a token window, that among longest windows of equal
 length the one scoped to the coding product is the store, where the records
-live, that Vigor is recomputed every few minutes and no faster, and which
-window sets the stale rule. The weight placeholder's value and the first
+live, that Vigor is recomputed every few minutes and no faster, which
+window sets the stale rule, and which reset is an exhausted Subscription's
+next change. The weight placeholder's value and the first
 operational profile remain proposals. The [Decisions](#decisions) table
 distinguishes them.
 
@@ -187,16 +188,22 @@ loss is zero in either case, because nothing is left in it.
 
 Vigor measures the urge to use the Subscription now. While it cannot be used,
 that urge is zero. An exhausted Subscription therefore shows `0`, with its
-**recovery** beside it, the next change: the earliest reset among the windows,
-and the Vigor the Subscription will have at that moment, computed on the
-predicted windows below. "0 now, 0.39 at 13:20" tells the Radar when an
-exhausted Subscription is worth using again (SGM-D16).
+**recovery** beside it, its next change: the moment its last reached
+inference-gating window resets, the latest reset among them, and the Vigor the
+Subscription will have at that moment, computed on the predicted windows below.
+"0 now, 0.39 at 13:20" tells the Radar when an exhausted Subscription is worth
+using again (SGM-D16). A reached week with an unreached five-hour window
+recovers at the week's reset, not at 13:20, since nothing can be spent before
+(SGM-D34).
 
 Every result carries its next change, exhausted or not, since Vigor also jumps
-when a store resets and its unspent share is lost.
+when a store resets and its unspent share is lost: for a Subscription that is
+not exhausted it is the earliest reset among the windows, and the Vigor at that
+moment.
 
 <!-- sources:
 arbol:src/arbol_radar/vigor.py#compute
+arbol:src/arbol_radar/vigor.py#exhausted_by
 arbol:src/arbol_radar/vigor.py#next_change
 arbol:src/arbol_radar/model.py#Report.overage
 -->
@@ -345,7 +352,7 @@ belong to the Drivers' own specifications for the reports they deliver.
 | SGM-1.3 | Compute each window's loss as the share expiring unused at the window's even pace, never below zero | New | unit `radar.loss-rows`, `radar.loss-bounds`, `radar.loss-unknown`, `radar.used-share-above-hundred` |
 | SGM-1.4 | Combine losses as the sum capped at 1, with the longest window weighted 1 and each shorter window by its share of the longest window's allowance, using the placeholder until a learned weight is approved | New | unit `radar.gate-weights`, `radar.sum-cap`, `radar.first-profile`, `radar.example-13-20`, `radar.reject-weight`, `radar.reject-store-weight`, `radar.reject-profile-version` |
 | SGM-1.5 | Treat a Subscription with a reached inference-gating window and no overage as exhausted, whatever that window counts, a tool-scoped window excepted; report its Vigor as 0 and carry its recovery: the next change's moment and value | New | unit `radar.exhausted-reached`, `radar.exhausted-overage`, `radar.exhausted-calls`, `radar.exhausted-shown-window`, `radar.exhausted-tool-scoped`, `radar.used-share-in-the-sum` (the exhausted state and Vigor 0); the recovery: `radar.recovery-claude`, `radar.next-change-exhausted-still` |
-| SGM-1.6 | Carry with every result the earliest reset among the windows and the Vigor at that moment, computed on the predicted windows | New | unit `radar.next-change-claude`, `radar.recovery-claude`, `radar.next-change-earliest`, `radar.next-change-exhausted-still`, `radar.next-change-predicted`, `radar.next-change-store-reset`, `radar.next-change-none` |
+| SGM-1.6 | Carry with every result its next change and the Vigor at that moment, computed on the predicted windows: the earliest reset among the windows, or, while the Subscription is exhausted, the moment its last reached inference-gating window resets | Changed | unit `radar.next-change-claude`, `radar.recovery-claude`, `radar.next-change-earliest`, `radar.next-change-exhausted-still`, `radar.next-change-reached-store`, `radar.next-change-predicted`, `radar.next-change-store-reset`, `radar.next-change-none` |
 | SGM-1.7 | After a reset passes without a newer report, predict a fresh window, mark the prediction on the window and the result, and drop every prediction when a report arrives | New | unit `radar.predict-fresh`, `radar.predict-two-resets`, `radar.predict-at-the-reset`, `radar.predict-reached-cleared`, `radar.predict-unknown-kept`, `radar.predict-newer-report` |
 | SGM-1.8 | Mark a result stale when its report is older than the Subscription's shortest window that is summed or can exhaust it, and show the report's age | New | unit `radar.stale-claude-five-hours`, `radar.stale-boundary`, `radar.stale-kimi-calls`, `radar.stale-rule-profile` |
 | SGM-1.9 | Show unknown with its reason, telling a missing field in an `ok` report apart from an unsupported family, a sign-in need, an unreachable vendor and no report yet; never substitute zero | New | unit `radar.unknown-missing-field`, `radar.unknown-below-zero`, `radar.unknown-unsupported`, `radar.unknown-outcome-message`, `radar.unknown-no-report`, `radar.unknown-never-zero`, `radar.unknown-no-summed-window`, `radar.unknown-exhausted`, `radar.outcome-not-ok` |
@@ -452,3 +459,4 @@ profile for operation.
 | SGM-D31 | Which window sets the stale rule? | The Subscription's shortest window that takes part in the sum or can exhaust it, five hours for every family today; Kimi's token and credit windows alone would make its report stale only after a month | Decided by the owner, 2026-10-27 |
 | SGM-D32 | How does the calculation know which window is scoped to the coding product the Subscription serves (SGM-D25) and which to one tool (SGM-D27), when the contract's window carries no scope? | A table in the Radar layer's code, by family and the window's label as its Driver reports it: Kimi Code's `Monthly, Kimi Code` is the coding product's window, z.ai's `MCP` window is scoped to one tool, and every other window is scoped to the Subscription. Among equal-length longest windows with none scoped to the coding product, the first delivered is the store and the others are shown. A new family or label is added to the table with the Driver that reports it | Decided 2026-10-27 during SYL-295, a technical choice |
 | SGM-D33 | What is shown when an `ok` report gives no Vigor for a reason the table of unknown does not name: no window counts tokens or credits, or a token window lacks a field while another window is reached? | Unknown, never zero. An `ok` report without a token or credit window reads `unknown: no token or credit window in the <family> report`. A missing field keeps the result unknown with the field named even while a reached window makes the Subscription exhausted, so the Driver defect stays visible; the exhausted flag is still set and the next change is empty | Decided 2026-10-27 during SYL-296, a technical choice; accepted as written by the owner the same day |
+| SGM-D34 | Which reset is an exhausted Subscription's next change when a reached window and an unreached shorter window both have one? | An exhausted Subscription's next change is the moment its last reached inference-gating window resets, with the Vigor at that moment; the earliest reset stays the rule for a Subscription that is not exhausted | Decided by the owner, 2026-10-27, after SYL-296 was merged; applied in SYL-297 |
