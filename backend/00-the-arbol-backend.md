@@ -771,7 +771,7 @@ Accounts and the working folder:
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
 | BKD-0.25 | run of a Driver only its account commands `subscriptions list`, `check`, `usage` and `models`, through its launcher, and never sign in, sign out or pass a secret | Changed | unit `accounts.public-records`, `accounts.forward-metadata`, `accounts.last-usage`, `accounts.private-projection`, `accounts.no-diagnostic-excerpt`, `accounts.unknown-usage`, `accounts.usage-units`, `accounts.safe-url`, `accounts.public-validation`, `accounts.public-bound`, `accounts.launcher-inventory`, `accounts.list-only`, `accounts.driver-records`, `accounts.driver-isolation`, `accounts.safe-refusal`, `accounts.no-raw-fields`, `accounts.shared-list`, `accounts.fresh-list`, `accounts.no-vendor-poll`, `accounts.caller-shield`, `accounts.cancel-isolation`, `accounts.total-bound`, `accounts.topic-isolation`, `accounts.global-capacity`, `accounts.reply-bound`, `accounts.oversized-driver-isolation`, `accounts.allowed-actions`, `accounts.driver-authority`, `accounts.no-inference`, `accounts.identifier-before-effects`, `accounts.fresh-membership`, `accounts.deleted-subscription`, `accounts.no-stale-action`, `accounts.public-membership-proof`, `accounts.shared-action`, `accounts.fresh-action`, `accounts.action-caller-shield`, `accounts.action-owner`, `accounts.command-bound`, `accounts.action-driver-isolation`, `accounts.check-identity`, `accounts.action-result`, `accounts.unknown-driver-code`, `accounts.process-privacy`, `accounts.no-secret-argv-log` (SYL-253; actual private PostgreSQL/filesystem, private launchers/contract request stand-ins and socket clients; no owner installation/native Driver/vendor). Actual installed Backend/Root/vendor/Swift/renderer journeys remain SYL-257. |
-| BKD-0.26 | give a chat the folder its repository slot names in `~/repos/sylvan-stack/readonly/`, or the folder picked with "Other…", keep it for every message of the chat, and take no work area itself | Changed | unit `folders.readonly-slot`, `folders.repeat`, `folders.booking-does-not-move-chat`, `folders.no-booking`, `folders.other-choice`, `folders.explicit-move`, `folders.history-preserved`, `folders.retry-original`, `folders.retry-after-move`, `folders.no-folder-substitution`; existing `sending.send-again`, `sending.cannot-replace` (SYL-253; actual private PostgreSQL/filesystem, private launchers/contract request stand-ins and socket clients; no owner installation/native Driver/vendor). Actual installed Backend/Root/vendor/Swift/renderer journeys remain SYL-257. Repository-slot selection/move UI remains SYL-254–256; no booking tool is implemented here. |
+| BKD-0.26 | give a chat the folder its repository slot names in `~/repos/sylvan-stack/readonly/`, or the folder picked with "Other…", keep it for every message of the chat, and take no work area itself | Changed | unit `folders.readonly-slot`, `folders.repeat`, `folders.booking-does-not-move-chat`, `folders.no-booking`, `folders.other-choice`, `folders.explicit-move`, `folders.history-preserved`, `folders.retry-original`, `folders.retry-after-move`, `folders.no-folder-substitution`; existing `sending.send-again`, `sending.cannot-replace` (SYL-253; actual private PostgreSQL/filesystem, private launchers/contract request stand-ins and socket clients; no owner installation/native Driver/vendor). Actual installed Backend/Root/vendor/Swift/renderer journeys remain SYL-257. Repository-slot selection/move UI remains SYL-254–256; no booking tool is implemented here. Readonly slots/public defaults and first unreplaced prompt outside the newest12: `tests/backend/test_workspace.py#Bootstrap` (2 actual private PostgreSQL/socket checks); `tests/ui/frame.mjs` consumes them. (SYL-254; real Chromium/loopback HTTP-WebSocket/private Unix backend stand-in; native Swift host, installed Root/Trunk/vendor journeys remain SYL-192/SYL-257). |
 
 Health and tests:
 
@@ -784,6 +784,14 @@ Health and tests:
 BKD-0.19's clock is checked inside the backend's own process, because no drill makes the Mac sleep, as RTM-0.12's is.
 
 The read-only workspace.get bootstrap and additive ChatInfo.firstMessage of BKD-D36 supply the window's repository/default/title inputs through the Bridge. They expose only lexical readonly repository paths and public route fields and read the first unreplaced prompt in the chat snapshot; no booking, filesystem mutation or extra component is introduced.
+
+<!-- sources:
+arbol:src/arbol_backend/workspace.py#Workspace
+arbol:src/arbol_backend/chat_data.py#Reader.chat
+arbol:tests/backend/test_workspace.py#Bootstrap
+arbol:tools/elma_bundle.py
+arbol:scripts/package_backend.py#package
+-->
 
 ## Interface
 

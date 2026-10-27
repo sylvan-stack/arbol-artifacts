@@ -50,6 +50,14 @@ The window shows what the backend says. In the page's own storage it keeps only 
 
 **On opening**, the window shows, in this order of what exists: the chat it is asked to open ([below](#opening-a-chat-from-elsewhere)), the chat shown last, the chat last shown in the first repository of the slots, and else an empty chat in that repository with its new-chat Draft.
 
+<!-- sources:
+arbol:ui/elma/src/App.svelte
+arbol:ui/elma/src/window.svelte.ts
+arbol:ui/elma/src/preferences.ts
+arbol:ui/elma/design-system/src/sections/ElmaFrame.svelte
+arbol:tests/ui/frame.mjs
+-->
+
 ### The navigation panel
 
 | Part | What it holds |
@@ -92,6 +100,19 @@ Markdown in an answer shows headings, lists, emphasis, links, tables and code bl
 
 **Scrolling.** An answer that arrives keeps its end in view until the Leather Bag scrolls up. A complete answer opens with the threshold at the top of the view, and while the threshold lies below the view, a small *Answer Beacon* points to it. ⌘⇧⌥8 and ⌘⇧⌥7 jump to the previous and the next reading stop. The window keeps, for each chat, where it was scrolled to while the window lives.
 
+<!-- sources:
+arbol:ui/elma/design-system/src/sections/PinnedMessage.svelte
+arbol:ui/elma/design-system/src/sections/Response.svelte
+arbol:ui/elma/design-system/src/sections/ResponseReader.svelte
+arbol:ui/elma/design-system/src/sections/ToolCall.svelte
+arbol:ui/elma/design-system/src/components/SafeMarkdown.svelte
+arbol:ui/elma/design-system/src/markdown.ts
+arbol:ui/elma/design-system/src/sections/HistoryTree.svelte
+arbol:tests/ui/navigation.mjs
+arbol:tests/ui/response.mjs
+arbol:tests/ui/reading.mjs
+-->
+
 ### The answer as it arrives
 
 While an Exchange is in progress, the window shows the lines of its `events.jsonl` as they come, from the first one on, however late the window was opened ([BKD-1](01-the-bridge.md#subscriptions), ARC-2). It reads them by the Driver's events ([DRV-2](../driver-contract/02-inference.md#the-event-stream)):
@@ -107,6 +128,13 @@ While an Exchange is in progress, the window shows the lines of its `events.json
 | `usage` | The tokens in the cockpit |
 | `control_refused` | "The answer was not taken: …", with the Driver's message |
 | The end | The Exchange's final state ([below](#the-status-of-an-exchange)) |
+
+<!-- sources:
+arbol:ui/elma/src/live.ts
+arbol:ui/elma/src/window.svelte.ts
+arbol:tests/ui/live.mjs
+arbol:tests/ui/live_browser.mjs
+-->
 
 ### The status of an Exchange
 
@@ -134,6 +162,13 @@ Changed from version 1: there is no label "Routing to …" and no waiting for a 
 | `interrupted`, with the note `ended_stuck` | "Ended because it was stuck. What had arrived is kept." ([ARC-3](../architecture/03-stuck-trunks.md#ending-a-stuck-exchange)) |
 | `unsaved` | The answer from its folder, marked "Not yet saved", until the backend has had it settled ([ARC-D53](../architecture/02-chat-exchange-across-components.md#decisions)) |
 | `gone` | "Interrupted", until it is settled and then as saved ([ARC-2](../architecture/02-chat-exchange-across-components.md#an-exchange-whose-process-is-gone)) |
+
+<!-- sources:
+arbol:ui/elma/src/live.ts
+arbol:ui/elma/design-system/src/sections/elma-response.ts
+arbol:tests/ui/live.mjs
+arbol:tests/ui/live_browser.mjs
+-->
 
 ### The composer
 
@@ -267,6 +302,19 @@ Every attention item of the Root is a line across the top of the chat for as lon
 
 Each window shows a page loaded from Elma Chat's *renderer bundle*, the files built from the folder `ui/elma/` of the `arbol` repository into `ui/elma/` of each `arbol` Build, where the Swift App loads them ([BKD-0](00-the-arbol-backend.md#its-program-and-its-build)). It is written in TypeScript with Svelte 5, as version 1's Elma was, from the components of the Arbol design system, the repository `arbol-design-system`, and its pages `elma-new-chat`, `elma-conversation` and `elma-history`. Where a component of the design system differs from version 1, such as a "Send" button, an answer in free text, reasoning shown closed, or another stepper, the window follows version 1, and the design system is brought in line with it, as its own rules ask ([BKD-D18](#decisions)). The bundle holds everything it needs, fonts included, and reaches nothing but the Bridge and the app channel: its content security policy allows no other address.
 
+<!-- sources:
+arbol:ui/elma/package.json
+arbol:ui/elma/vite.config.ts
+arbol:ui/elma/index.html
+arbol:tools/elma_bundle.py
+arbol:scripts/package_backend.py#package
+arbol:scripts/backend_package.py#verify
+arbol:tools/sync_elma_design.py
+arbol:tools/bridge_relay.py
+arbol:tests/ui/test_bundle.py#Bundle
+arbol:tests/ui/relay_browser.mjs
+-->
+
 ### Renderer implementation boundaries (BKD-D35)
 
 The application imports a checked source snapshot of the maintained design system: only the used successor components, their type/style/theme files and locally licensed fonts, never heritage code. Its manifest binds the design-system commit and each copied file hash; an explicit sync/check command fails on divergence. The Arbol source therefore builds independently of any sibling checkout. The design-system source stays the maintained reference and is changed and qualified in the same Beat. Package versions and npm integrity lockfiles are pinned. The renderer CSP allows only its bundled scripts/styles/fonts and its same-origin development WebSocket, with no network Markdown resources, frames, forms, object embedding or inline scripts. A native file-loaded bundle needs no socket address beyond its app/Bridge adapters.
@@ -296,12 +344,12 @@ Version 1's Elma had more than this first version. These parts are not in First 
 
 | ID | Elma Chat's first version must… | Origin | Verified by |
 |---|---|---|---|
-| BKD-2.1 | be one window for each Root, with no list of chats in it, belong to its Root and talk only to its backend, with the header "Elma Chat · <Root's display name> - <title>", the Root's state when it is not `working` and as it changes, a moving mark while the agent works, and the reading width, text size and theme | Changed | journey |
-| BKD-2.2 | have version 1's layout: the navigation panel with the title and "Turn n of N", the cockpit, "Repositories" and "Intelligence", open in an empty chat and closed once it has an Exchange, and the history; the chat; the status bar "<repository> – <Driver> · <Subscription> – <model>::<effort>"; and open on the chat it is asked to open, else the chat shown last, else the first repository's last chat, else an empty chat there | Kept | journey |
-| BKD-2.3 | show one Exchange at a time, its message pinned with "See more", "Copy prompt" and the stepper, step with ⌘[ and ⌘], open the history with ⌘P, leave out every replaced Exchange, bring a long chat 12 Exchanges at a time, and count every Exchange in "Turn n of N" | Kept | journey |
-| BKD-2.4 | show an answer with its lifecycle line, its reasoning open, its tool calls closed to one line with their mark and opened to their times, input and output, and, once complete, the Answer Threshold with "Copy answer", the Answer Beacon, the scroll rules and each chat's scroll position | Kept | journey |
-| BKD-2.5 | show an Exchange in progress from the first line of its `events.jsonl` on, as it arrives, however late the window was opened, and keep the reasoning it showed once the Exchange is saved until the chat is read again | Changed | journey, drill |
-| BKD-2.6 | show one status label at a time in version 1's order, "Stopping…" right after "Failed", with what the Exchange waits for and for how long, such as "Waiting for tools… 2 h 10 min" or "Waiting for your answer since 14:02", and never end it for waiting | Changed | journey |
+| BKD-2.1 | be one window for each Root, with no list of chats in it, belong to its Root and talk only to its backend, with the header "Elma Chat · <Root's display name> - <title>", the Root's state when it is not `working` and as it changes, a moving mark while the agent works, and the reading width, text size and theme | Changed | `tests/ui/frame.mjs` (Root/name/status changes, first-open priority/ghost fallback/Unicode title); `tests/ui/bridge.mjs` (native adapter protocol/lifecycle), `tests/ui/relay_browser.mjs` (real transport) (SYL-254; real Chromium/loopback HTTP-WebSocket/private Unix backend stand-in; native Swift host, installed Root/Trunk/vendor journeys remain SYL-192/SYL-257). |
+| BKD-2.2 | have version 1's layout: the navigation panel with the title and "Turn n of N", the cockpit, "Repositories" and "Intelligence", open in an empty chat and closed once it has an Exchange, and the history; the chat; the status bar "<repository> – <Driver> · <Subscription> – <model>::<effort>"; and open on the chat it is asked to open, else the chat shown last, else the first repository's last chat, else an empty chat there | Kept | `tests/ui/frame.mjs`; shared `scripts/check-elma.mjs` (empty/first Exchange panels, controls, history/focus); `tests/ui/reading.mjs` and shared `scripts/check-elma-reading.mjs` (12 actual theme canvases, contrast, densities/narrow/scaling) (SYL-254; real Chromium/loopback HTTP-WebSocket/private Unix backend stand-in; native Swift host, installed Root/Trunk/vendor journeys remain SYL-192/SYL-257). |
+| BKD-2.3 | show one Exchange at a time, its message pinned with "See more", "Copy prompt" and the stepper, step with ⌘[ and ⌘], open the history with ⌘P, leave out every replaced Exchange, bring a long chat 12 Exchanges at a time, and count every Exchange in "Turn n of N" | Kept | `tests/ui/navigation.mjs` (one Exchange/prompt/copy/expand, full unreplaced counts, shortcuts/history/digits/search, exact12 paging, stale reply rejection); `tests/ui/reading.mjs` (fresh paging restores older selection) (SYL-254; real Chromium/loopback HTTP-WebSocket/private Unix backend stand-in; native Swift host, installed Root/Trunk/vendor journeys remain SYL-192/SYL-257). |
+| BKD-2.4 | show an answer with its lifecycle line, its reasoning open, its tool calls closed to one line with their mark and opened to their times, input and output, and, once complete, the Answer Threshold with "Copy answer", the Answer Beacon, the scroll rules and each chat's scroll position | Kept | `tests/ui/response.mjs`, shared `scripts/check-elma-response.mjs` (lifecycle, reasoning/tools, lazy whole details/error/retry, null/false, Markdown safety/copy/app links); `tests/ui/reading.mjs` and shared `scripts/check-elma-reading.mjs` (threshold/Beacon/three reading stops, tail/user release, in-memory offsets, snapshot/tool restoration) (SYL-254; real Chromium/loopback HTTP-WebSocket/private Unix backend stand-in; native Swift host, installed Root/Trunk/vendor journeys remain SYL-192/SYL-257). |
+| BKD-2.5 | show an Exchange in progress from the first line of its `events.jsonl` on, as it arrives, however late the window was opened, and keep the reasoning it showed once the Exchange is saved until the chat is read again | Changed | `tests/ui/live.mjs`, `tests/ui/live_browser.mjs` (all line kinds, late replay, authoritative whole blocks, nested activity, usage totals, duplicate/unknown/oversized lines, saved reasoning/timing retention, snapshot reset, actual seq gap and reconnect) (SYL-254; real Chromium/loopback HTTP-WebSocket/private Unix backend stand-in; native Swift host, installed Root/Trunk/vendor journeys remain SYL-192/SYL-257). |
+| BKD-2.6 | show one status label at a time in version 1's order, "Stopping…" right after "Failed", with what the Exchange waits for and for how long, such as "Waiting for tools… 2 h 10 min" or "Waiting for your answer since 14:02", and never end it for waiting | Changed | `tests/ui/live.mjs`, `tests/ui/live_browser.mjs` (exact status priorities, real wait timestamps, very long waits remain active, saved terminal boundary) (SYL-254; real Chromium/loopback HTTP-WebSocket/private Unix backend stand-in; native Swift host, installed Root/Trunk/vendor journeys remain SYL-192/SYL-257). |
 | BKD-2.7 | keep version 1's composer: the empty chat's line and composer, the closed composer of a chat with Exchanges, opened when its Draft holds text, ⌘⏎ and ⌃⏎ to send, Return for a new line, Escape to close, and a paste of 10,000 characters or more saved in the Root's folder and replaced by the link `[Pasted text (n characters)](<path>)` | Changed | journey |
 | BKD-2.8 | keep one Draft of the reply for each chat and one Draft of a new chat for each repository, saved 350 milliseconds after typing stops and at once on losing the focus or showing another chat, over the revision last seen; say when a save failed and try again; keep in the page only text not yet saved, offered back after a reload only while the Draft has the revision it was typed over; and show both texts on a conflict, taking without asking one that holds the composer's own text | Changed | journey, drill |
 | BKD-2.9 | offer the route as one row for each Subscription of each Driver with ⌃1 to ⌃9, a Subscription that cannot be used marked and not pickable, the model with ⌃M and the effort with ⌃⇥ from the Subscription's catalog; save a choice for an existing chat at once for its next message, keep an empty chat's choice for its first message, and start a new chat with the first signed-in of the defaults of `arbol.json` and the catalog | Changed | journey |
@@ -311,14 +359,14 @@ Version 1's Elma had more than this first version. These parts are not in First 
 | BKD-2.13 | on ⌘Esc, show "Stopping…" from the request until the Exchange has ended, then "Canceled" with "⏹ Stopped" only when its end says `cancelled`, and otherwise its true final state, and count an Exchange as ended only once it is saved | Changed | journey, drill |
 | BKD-2.14 | show a failed Exchange with "Failed", its time and its cause in plain words with its code and message, a code it does not know with its message, "Retry" and "Continue from failure point" on the chat's last Exchange, Retry in the replaced Exchange's folder, and for `rate_limited` the time it resets | Changed | journey |
 | BKD-2.15 | show the questions of the agent above the composer with their options, "Submit", "Continue" only when no question has options, and "Cancel" as a decline, no answer in free text, the answer only once its `answer` line is in `events.jsonl`, and the question kept after a `control_refused` | Changed | journey |
-| BKD-2.16 | show an Exchange whose process is gone as interrupted, one that ended while the database was away from its folder marked "Not yet saved", and one the backend ended because it was stuck with "Ended because it was stuck" | New | drill |
+| BKD-2.16 | show an Exchange whose process is gone as interrupted, one that ended while the database was away from its folder marked "Not yet saved", and one the backend ended because it was stuck with "Ended because it was stuck" | New | drill Renderer projection/status: `tests/ui/live.mjs`, `tests/ui/live_browser.mjs`, shared Response Interrupted/NotSaved stories. (SYL-254; real Chromium/loopback HTTP-WebSocket/private Unix backend stand-in; native Swift host, installed Root/Trunk/vendor journeys remain SYL-192/SYL-257). Actual installed failure drill remains SYL-257. |
 | BKD-2.17 | rename a chat with ⌘-click on its title or R, an empty title taking it away and a placeholder never stored; mark every chat with an accepted message ongoing and clear it with ⌥0; archive it with ⌘⌫ or A after a confirmation, stopping a running answer first and then showing an empty chat in its repository; and offer these as quick actions on ⇧⏎ | Changed | journey |
 | BKD-2.18 | list the latest chats on ⌃⇧⌘C, at most 100 and none archived, without the chat shown, those shown in Elma first, each with its title, repository, route, state and age, digits opening the first ten, over the window until the Swift App has its panel | Changed | journey |
 | BKD-2.19 | open the chat that the Swift App asks it to open, from Willo Station or elsewhere, taking a request made while it loaded, after saving the Draft of the chat it shows | Kept | journey; the Swift App's part with SYL-192 |
 | BKD-2.20 | say on a Subscription that cannot be used, and on a failed Exchange whose account is not signed in, that it is not signed in and which command of its Driver signs it in, and take no code and no key | Changed | journey |
 | BKD-2.21 | show every attention item of its Root across the top of the chat for as long as it lasts | New | drill |
 | BKD-2.22 | when the backend goes away, say that it reconnects, keep showing the chat and taking text, and read everything again once it is back | Changed | drill |
-| BKD-2.23 | be a renderer bundle in `ui/elma/` of the `arbol` Build, in TypeScript with Svelte 5 from the components of `arbol-design-system`, follow version 1 where they differ, reach nothing but the Bridge and the app channel, never leave its own page, open an `http` or `https` link only through `app.openLink`, and keep in the page's own storage only the conveniences of version 1 and text not yet saved | Kept | unit |
+| BKD-2.23 | be a renderer bundle in `ui/elma/` of the `arbol` Build, in TypeScript with Svelte 5 from the components of `arbol-design-system`, follow version 1 where they differ, reach nothing but the Bridge and the app channel, never leave its own page, open an `http` or `https` link only through `app.openLink`, and keep in the page's own storage only the conveniences of version 1 and text not yet saved | Kept | `ui/elma` check/build, `tools/sync_elma_design.py --check`, `tests/ui/test_bundle.py` (`elma.package-relocation`, `elma.package-identity`, `elma.package-hashes`, `elma.package-csp`, `elma.package-fonts`, `elma.package-paths`), `tests/ui/test_relay.py`, `tests/ui/relay_browser.mjs`; private numbered image/packaged Python/relay/browser and113-file independent payload reproducibility; paired maintained design check/build/catalog/affected browser checks (SYL-254; real Chromium/loopback HTTP-WebSocket/private Unix backend stand-in; native Swift host, installed Root/Trunk/vendor journeys remain SYL-192/SYL-257). |
 | BKD-2.24 | show truthful stale-copy metadata and a Bring over again action, save the Draft, call reimport once and open its actual result chat while retaining divergent content, and expose comparison/ambiguous-result failures without automatic retry | New | pending Backend Arc SYL-256/SYL-257; Root core is SYL-195 |
 
 ## Interface
