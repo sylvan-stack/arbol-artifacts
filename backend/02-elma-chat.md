@@ -343,6 +343,8 @@ A click that moves an existing chat with Exchanges first shows the stated contin
 
 A send stores its exact Root/composition, method, identifiers, text/route/folder and Draft revision before dispatch; if that recovery record cannot be kept, it retains the Draft and does not start the send. One per-Root identifier remembers which unconfirmed send was visible, while other unconfirmed sends can finish independently. Recovery repeats the stored call or a valid backend Draft sentAs/sentRequest with the same identity. A provisional Exchange has no invented backend acceptance time. The reload barrier waits through its definitive receipt and view reconciliation. Before dispatch, changing composition cancels a queued paste/send or stop/send and leaves its text in the original Draft; after dispatch, changing composition does not cancel its receipt recovery. A stop/send queue waits for a saved terminal Exchange from the chat subscription, never the stop reply or a folder end line.
 
+Question selections remain local until submitted. A successful exchange.answer reply keeps a waiting state; only a new answer file position confirms that submission, and ask_closed closes the question. A control_refused file position or a refused call keeps the question available for another valid choice. File positions distinguish a new submission’s receipt from an earlier answer already displayed. A malformed or future Ask is shown as literal data with no fabricated choice or free-text answer; Cancel can still decline its known askId. Closed questions with recorded answers remain readable, including the ask/answer data kept with a saved tool call.
+
 ### What First Sapling leaves out
 
 Version 1's Elma had more than this first version. These parts are not in First Sapling:
