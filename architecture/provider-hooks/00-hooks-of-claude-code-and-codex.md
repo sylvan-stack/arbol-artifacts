@@ -81,7 +81,7 @@ From the environment, a Claude Code hook can read `CLAUDE_PID`, the `claude` pro
 | exits with another status | Not tried | Not tried |
 | answers with a JSON decision on standard output | Not tried | Not tried |
 
-The private Codex CLI 0.162.1 live check of SYL-221 saw no PostToolUse for either call blocked by the hook; a successful retry and allowed wrap-up calls did have PostToolUse. Claude’s corresponding check is still pending ([PHK-D1](#decisions)).
+The private live checks of SYL-221 saw no PostToolUse after a hook-blocked call in Codex CLI 0.162.1 or Claude Code 2.1.304. Claude also sent no PostToolUseFailure or PermissionDenied for those calls. A successful retry and allowed wrap-up calls had PostToolUse. A watching hook cannot rely on a matching post event for every pre event; it must reconcile with the next call or session-state event ([PHK-D1](#decisions)).
 
 ### How long a tool waits
 
@@ -185,4 +185,4 @@ Version 1 used no hooks of either tool. It saw only the turns it ran itself.
 
 | ID | Question | Proposed default | Outcome |
 |---|---|---|---|
-| PHK-D1 | When a `PreToolUse` hook blocks a call with exit status 2, does either tool send `PostToolUse`, `PostToolUseFailure` or nothing for that call? A watching hook that saw the `PreToolUse` keeps the call open until it learns | Codex CLI 0.162.1: no PostToolUse for the hook-blocked call; successful retry/allowed wrap-up have it. Claude’s live check remains pending in SYL-221 | Open |
+| PHK-D1 | When a `PreToolUse` hook blocks a call with exit status 2, does either tool send `PostToolUse`, `PostToolUseFailure` or nothing for that call? A watching hook that saw the `PreToolUse` keeps the call open until it learns | Both tools emit no matching post event for a hook-blocked call; Claude also emits neither PostToolUseFailure nor PermissionDenied. Successful retry and allowed wrap-up calls do emit PostToolUse. Watching hooks must reconcile on the next call or session-state event | Decided 27 October 2026 by SYL-221 private live checks: Claude Code 2.1.304 and Codex CLI 0.162.1 |
