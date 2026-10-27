@@ -62,6 +62,15 @@ Every installer of a hook of Arbol's (today `arbol-agents install` and the check
 | Removing | `uninstall` removes exactly the entries with its own command and their trust entries |
 | Status | `status` says for each tool whether every entry is in place, whether Codex trusts each one, and the tool's version |
 
+<!-- sources:
+sagas:@code/tools/agent-watch/hook_install.py#install
+sagas:@code/tools/agent-watch/hook_install.py#uninstall
+sagas:@code/tools/agent-watch/hook_install.py#status
+sagas:@code/tools/agent-watch/hook_codex.py#Codex
+sagas:@code/tools/agent-watch/test_hook_install.py#Installation
+sagas:@code/tools/agent-watch/test_hook_codex.py#Protocol
+-->
+
 ### The rules for running a hook
 
 | Rule | Watching hook | Steering hook |
@@ -82,6 +91,10 @@ sagas:@code/tools/agent-watch/agent_hook.py#main
 sagas:@code/tools/agent-watch/agent_hook.py#launcher
 sagas:@code/tools/agent-watch/agent_control.py#fresh_owner
 sagas:@code/tools/agent-watch/test_agent_hook.py#Hook
+sagas:@code/tools/agent-watch/agent_actions.py#observe
+sagas:@code/tools/agent-watch/test_agent_actions.py#Actions
+sagas:@code/tools/agent-watch/hook_live.py#live
+sagas:@code/tools/agent-watch/hook_live_controller.py#main
 -->
 
 ### Hooks of different owners side by side
@@ -92,15 +105,15 @@ A steering hook's block is seen by the watching hooks only as a `PreToolUse` who
 
 | ID | Every hook of Arbol's and its installer must… | Origin | Verified by |
 |---|---|---|---|
-| PHK-1.1 | be installed only into `~/.claude/settings.json`, `~/.codex/hooks.json` and `hooks.state` of `~/.codex/config.toml`, as a group of its own per event, leaving every other entry and setting as it is | New | unit |
-| PHK-1.2 | run a command at a fixed path under `~/.local/bin`, without shell syntax, that never changes across Builds | New | unit |
-| PHK-1.3 | write each file whole, keep a copy before its own first change and never overwrite it, refuse a file it cannot read, and add nothing twice | New | unit |
-| PHK-1.4 | record Codex's trust only through `codex app-server`'s `hooks/list` and `config/batchWrite` | New | probe |
-| PHK-1.5 | on `uninstall`, remove exactly its own entries and their trust entries; on `status`, say for each tool whether each entry is in place and trusted, and the tool's version | New | unit; probe |
+| PHK-1.1 | be installed only into `~/.claude/settings.json`, `~/.codex/hooks.json` and `hooks.state` of `~/.codex/config.toml`, as a group of its own per event, leaving every other entry and setting as it is | New | agent-watch part: private `Installation` in test_hook_install.py, including unrelated entries and failed trust; actual private app-server lifecycle in SYL-221. Normal installation and the agent-record hook remain pending |
+| PHK-1.2 | run a command at a fixed path under `~/.local/bin`, without shell syntax, that never changes across Builds | New | agent-watch part: `Hook.test_wrapper_has_an_empty_fast_path_arbol_chat_bypass_and_silent_missing_runtime`, `Installation`; fixed foreground launcher source is agent_hook.launcher. Agent-record hook remains SYL-202 |
+| PHK-1.3 | write each file whole, keep a copy before its own first change and never overwrite it, refuse a file it cannot read, and add nothing twice | New | agent-watch part: `Installation` covers first backups/absence, idempotence, malformed/duplicate JSON, symlinks, disabled providers, changed launchers and preserved foreign trust indices; actual private lifecycle (SYL-221) |
+| PHK-1.4 | record Codex's trust only through `codex app-server`'s `hooks/list` and `config/batchWrite` | New | agent-watch part: `Protocol` in test_hook_codex.py plus actual private local Codex app-server install/reinstall/uninstall probe (SYL-221), with unrelated trust key/hash unchanged; normal install remains pending |
+| PHK-1.5 | on `uninstall`, remove exactly its own entries and their trust entries; on `status`, say for each tool whether each entry is in place and trusted, and the tool's version | New | agent-watch part: `Installation`/`Protocol` and actual private lifecycle prove exact uninstall and status; normal install/installed status remain pending SYL-221. Agent-record hook remains SYL-202 |
 | PHK-1.6 | as a watching hook, always exit with 0, print nothing and never run in the background | New | unit |
-| PHK-1.7 | as a steering hook, block only a `PreToolUse` and print only the message to the agent | New | agent-watch hook part: `Hook.test_each_provider_blocks_a_steer_once_and_records_actual_delivery_only`, `Hook.test_stop_persists_for_mutations_while_reads_git_and_own_wrap_up_pass`, `Policy` in sagas:tools/agent-watch/test_agent_hook.py (SYL-221); provider live checks remain pending |
-| PHK-1.8 | take at most 50 milliseconds in the median on this Mac, keep no part of the conversation, start no lasting process and use no network | New | agent-watch hook part: `Hook.test_no_action_and_disabled_control_allow_without_output_or_side_effects`, `Hook.test_faults_malformed_actions_and_unverifiable_transcripts_fail_open_silently`, `Hook.test_a_new_owner_message_after_the_check_suppresses_each_provider_without_consuming`; speed and provider live checks remain SYL-221 |
-| PHK-1.9 | not be run by a reviewer of the check from outside, and say what it does in a Driver's run, which runs every hook of the owner's (DRV-D42) | New | unit |
+| PHK-1.7 | as a steering hook, block only a `PreToolUse` and print only the message to the agent | New | agent-watch part: `Hook`, `Policy`, `Actions`; actual private Codex live check (SYL-221) proves one-use steer, persistent stop and allowed wrap-up/release. The corresponding Claude live check remains pending the account’s session reset |
+| PHK-1.8 | take at most 50 milliseconds in the median on this Mac, keep no part of the conversation, start no lasting process and use no network | New | agent-watch part: `Hook.test_twenty_no_action_calls_stay_below_the_fifty_millisecond_median`, silent missing-script/runtime regression, fail-open/action-owner tests; explicit twenty-run speed check passes. The policy hook uses no network or lasting process; provider live qualification is separate |
+| PHK-1.9 | not be run by a reviewer of the check from outside, and say what it does in a Driver's run, which runs every hook of the owner's (DRV-D42) | New | agent-watch reviewer exclusion: ReviewerTests.test_codex_reviews_a_claude_code_agent_and_claude_code_a_codex_agent requires --disable hooks for Codex, and Claude keeps --safe-mode. Normal Driver-run hooks follow DRV-D42; the agent-record hook remains SYL-202 |
 
 ## Known problems in version 1
 
