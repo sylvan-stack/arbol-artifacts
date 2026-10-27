@@ -17,7 +17,7 @@ The architecture says where these parts stand ([ARC-0](../architecture/00-compon
 | [BKD-1](01-the-bridge.md) | The Bridge | accepted |
 | [BKD-2](02-elma-chat.md) | Elma Chat, its first version | accepted |
 
-Not here: Brain Recipes and how a route is chosen (SYL-191), the Arbol Swift App with the tray menu and the windows (SYL-192), the command line `arbol` (SYL-193), the pages of Seqoya Lab, the Secrets page among them (SYL-194), listeners such as Telegram ([ARC-D52](../architecture/01-roots.md#decisions)), and bringing one chat over again into a newer Root (SYL-195).
+Not here: Brain Recipes and how a route is chosen (SYL-191), the Arbol Swift App with the tray menu and the windows (SYL-192), the command line `arbol` (SYL-193), the pages of Seqoya Lab, the Secrets page among them (SYL-194), listeners such as Telegram ([ARC-D52](../architecture/01-roots.md#decisions)), and the Root-owned SQL/global commands for bringing one chat over again (SYL-195); the backend/Bridge/renderer binding of that path is included in the additive requirements below.
 
 ## Where the architecture's and the Root Contract's requirements of Arbol are carried
 
@@ -42,7 +42,7 @@ In the READMEs of the [Root Contract](../../arbol-root/contract/README.md#where-
 | ARC-1.10 | BKD-0.30 reads `arbol.json` from `~/.arbol/roots/<root>/` |
 | ARC-1.11 | BKD-0.27 measures it; showing it: the tray menu (SYL-192), because version 1's Elma Chat, which BKD-2 keeps, had no place for it |
 | ARC-1.18 | The migration itself: RTM-1.7, RTM-1.8 (SYL-189); a Root that is `preparing` in the header of the window: BKD-2.1; in the tray menu, and a failed migration reported there: SYL-192 |
-| ARC-1.19, ARC-1.20 | SYL-195 |
+| ARC-1.19, ARC-1.20 | Core SQL/CLI: SYL-195. Backend/Bridge/UI binding: BKD-0.33, BKD-1.13, BKD-2.24, implemented by SYL-249/SYL-256 and qualified by SYL-257 |
 | ARC-1.21 | Opening a failed Root that is named: BKD-0.2, BKD-2.1 |
 | ARC-1.22 | For the backend's Builds: BKD-0.29 |
 | ARC-1.25 | BKD-0.22 |
