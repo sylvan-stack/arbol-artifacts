@@ -51,14 +51,15 @@ when the run ends (DRV-4.13). The last `ok` report is stored with the
 Subscription and returned with its record (DRV-1.18). An unknown value is
 absent, never zero (DRV-1.17).
 
-Observed on 26 October 2026, where each family's report comes from:
+Observed on 27 October 2026 on the installed Builds, Claude `d`, Codex `9`
+and Pi `6`, where each family's report comes from and what each window counts:
 
 | Family | Driver | Source of the report | Windows |
 |---|---|---|---|
-| Anthropic | Claude | `rate_limit_info.unifiedWindows` in the tool's stream during a run. `usage` on demand returns the stored report and `unsupported` before the first run | five hours (`session`, 300 min), seven days (`weekly`, 10,080 min) |
-| z.ai | Claude | the quota API, on demand and after a run | five hours, a weekly window where the plan has one, and a monthly count of MCP calls (`other`, label `MCP`) |
-| ChatGPT | Codex | the app server's rate-limit read on demand and its notifications during a run | five hours, weekly |
-| Kimi Code | Pi | `GET https://api.kimi.com/coding/v1/usages` on the coding API with the Bearer token Pi already holds. Probed and adopted 26 October 2026 (SYL-288, Pi Build 5) | five hours; the month's Kimi Code share; the month's total across all Kimi products (30-day cycle) |
+| Anthropic | Claude | `rate_limit_info.unifiedWindows` in the tool's stream during a run. `usage` on demand returns the stored report and `unsupported` before the first run | five hours (`session`, 300 min) and seven days (`weekly`, 10,080 min), both `tokens`; a used share above 100 % is reported as such when the account spends overage |
+| ChatGPT | Codex | the app server's rate-limit read on demand and its notifications during a run | five hours and weekly as the app server reports them, with no `resource`, since the app server names no unit |
+| Kimi Code | Pi | `GET https://api.kimi.com/coding/v1/usages` on the coding API with the Bearer token Pi already holds. Probed and adopted 26 October 2026 (SYL-288, Pi Build 5) | five hours, `calls`; the month's Kimi Code share and the month's total across all Kimi products, both `credits`, on a 30-day cycle |
+| z.ai, DeepSeek | Pi | none: `usage` answers `unsupported`, a known gap since the cutover moved both families from the Claude Driver to Pi. The Claude Driver's reading of z.ai's quota API, which gave a five-hour window, a weekly window where the plan has one and a monthly count of MCP calls, is the candidate for qualification in Pi | none |
 
 <!-- sources:
 arbol:driver-contract/01-subscriptions.md#Usage
@@ -99,9 +100,10 @@ Subscription is its **store**, where the allowance of consequence expires, and
 every shorter token window is a **gate**, which bounds how fast the store can
 be spent and, when reached, stops spending altogether until it resets.
 
-Only windows whose resource is tokens or credits take part. A window that
-counts something else, such as z.ai's monthly MCP calls, is shown but not
-summed (SGM-D24). When several windows share the longest length, as Kimi's
+Only windows whose resource is tokens or credits take part in the sum. A
+window that counts something else, such as Kimi's five-hour window of calls
+or z.ai's monthly MCP calls, is shown but not summed (SGM-D24); it can still
+block, see below. When several windows share the longest length, as Kimi's
 monthly code share and monthly total do, the store is the one scoped to the
 coding product the Subscription serves; the others of that length are shown
 and not summed (SGM-D25).
@@ -150,9 +152,12 @@ blocks spending right now.
 
 ### Blocked Subscriptions and the next change
 
-A Subscription is **blocked** while any of its token windows is reached: the
-vendor refuses every request until that window resets. The report marks this
-per window with `limitReached`. A reached window with paid overage switched on
+A Subscription is **blocked** while any window that gates inference is
+reached, whatever it counts: the vendor refuses every request until that
+window resets, and Kimi's five-hour window of calls blocks exactly as a token
+window does. A window scoped to one tool, such as z.ai's MCP count, gates only
+that tool and does not block (SGM-D27). The report marks a reached window with
+`limitReached`. A reached window with paid overage switched on
 is not a block, since the account keeps spending; the Claude report says so in
 `extra.isUsingOverage`, and the Codex report keeps the vendor's related
 fields in `extra`. A reached window's own loss is zero in either case, because
@@ -269,16 +274,17 @@ Kimi Code share used, its five-hour window 70 % used with an hour to go:
 
 | Window | r | t / T | loss | weight | contribution |
 |---|---|---|---|---|---|
-| Five hours | 0.30 | 0.20 | 0.10 | 0.1 | 0.01 |
+| Five hours, calls | 0.30 | 0.20 | 0.10 | not summed | shown only |
 | Month, Kimi Code share | 0.60 | 0.13 | 0.47 | 1 | 0.47 |
 
-Vigor `0.48`: most of a month's coding allowance expires in four days. The
-month's total across all products has the same length and is shown, not
-summed.
+Vigor `0.47`: most of a month's coding allowance expires in four days. The
+five-hour window counts calls, so it is shown and not summed, though reaching
+it would block. The month's total across all products has the same length
+and is shown, not summed.
 
-The Radar then reads, highest first: Kimi Code `0.48`, Claude `0.37`, Codex
+The Radar then reads, highest first: Kimi Code `0.47`, Claude `0.37`, Codex
 `0.16`. With the five-hour window of the Claude account reached instead:
-Kimi Code `0.48`, Codex `0.16`, Claude `0` now and `0.39` at 13:20.
+Kimi Code `0.47`, Codex `0.16`, Claude `0` now and `0.39` at 13:20.
 
 ## Requirements
 
@@ -293,7 +299,7 @@ belong to the Drivers' own specifications for the reports they deliver.
 | SGM-1.2 | Take into the sum only windows whose resource is tokens or credits and whose used share, length and reset time are known; show the others | New | unit |
 | SGM-1.3 | Compute each window's loss as the share expiring unused at the window's even pace, never below zero | New | unit |
 | SGM-1.4 | Combine losses as the sum capped at 1, with the longest window weighted 1 and each shorter window by its share of the longest window's allowance, using the placeholder until a learned weight is approved | New | unit |
-| SGM-1.5 | Treat a Subscription with a reached token window and no overage as blocked; report its Vigor as 0 and carry its recovery: the next change's moment and value | New | unit |
+| SGM-1.5 | Treat a Subscription with a reached inference-gating window and no overage as blocked, whatever that window counts, a tool-scoped window excepted; report its Vigor as 0 and carry its recovery: the next change's moment and value | New | unit |
 | SGM-1.6 | Carry with every result the earliest reset among the windows and the Vigor at that moment, computed on the predicted windows | New | unit |
 | SGM-1.7 | After a reset passes without a newer report, predict a fresh window, mark the prediction on the window and the result, and drop every prediction when a report arrives | New | unit |
 | SGM-1.8 | Mark a result stale when its report is older than the Subscription's shortest token window, and show the report's age | New | unit |
@@ -321,15 +327,15 @@ layout are outside this draft. The usage report stays the Driver Contract's.
 Reject a weight outside `[0, 1]`, a store weight other than 1, a nonpositive
 length, a reset time before the report's fetch time, and a profile version the
 calculation does not know. A window of an unknown resource is shown and not
-summed. A used share outside 0 to 100 marks the window unknown with the field
-named.
+summed. A used share below 0 marks the window unknown with the field named; one
+above 100, which Claude reports when an account spends overage, counts as
+100 with the raw value kept.
 
 The Driver Contract's window carries `resource`, `tokens`, `credits` or
-`calls`, since DRV-1.27 (SGM-D24). Until every Driver reports it, the only
-non-token window a current Driver reports is z.ai's MCP count, which the
-Claude Driver labels `MCP` with kind `other`; the calculation excludes that
-window by its label and treats every other window without the field as
-tokens, and says so on the result.
+`calls`, since DRV-1.27 (SGM-D24), and every installed Driver reports it
+where its vendor states a unit. Codex leaves it absent, since the app server
+names none; the calculation treats a window without the field as tokens and
+says so on the result.
 
 ## Known problems and calibration
 
@@ -383,6 +389,7 @@ profile for operation.
 | SGM-D21 | Where does this specification live? | As SGM-1 beside SGM-0 in the sagas folder, with glossary entries Vigor and Subscriptions Vigor | Decided by the owner, 2026-10-26 |
 | SGM-D22 | What is logged? | Every calculation and every report arrival, with full inputs and outputs, in Arbol's database | Decided by the owner, 2026-10-26 |
 | SGM-D23 | Where does Kimi Code's report come from? | `GET https://api.kimi.com/coding/v1/usages` through the Pi Driver with the token it already holds; the Console gateway and hidden-browser page reading are not used | Decided by the owner, 2026-10-26; adopted the same day in SYL-288 and installed as Pi Build 5 |
-| SGM-D24 | Which windows take part, and how does the calculation know? | Only tokens and credits; `resource` on the Driver Contract's window says which. Until every Driver reports it, exclude the Claude Driver's z.ai window labelled `MCP` and treat the rest as tokens | Decided by the owner, 2026-10-26: added to the contract as DRV-1.27 and DRV-D46; the Drivers report it in their next Builds |
+| SGM-D24 | Which windows take part, and how does the calculation know? | Only tokens and credits; `resource` on the Driver Contract's window says which. Until every Driver reports it, exclude the Claude Driver's z.ai window labelled `MCP` and treat the rest as tokens | Decided by the owner, 2026-10-26: added to the contract as DRV-1.27 and DRV-D46; reported since Claude Build `d`, Codex Build `9` (absent, no unit) and Pi Build `6` (SYL-290 to SYL-292, 27 October 2026) |
 | SGM-D25 | Which of several equal-length longest windows is the store? | The one scoped to the coding product the Subscription serves; the others of that length are shown and not summed | Open; proposed default in use |
 | SGM-D26 | Do model-specific weekly windows of the Anthropic family enter the report? | Add them scoped by model if the stream reports them; not verified | Settled by a probe, 2026-10-26 (SYL-290): the stream reports none; `unifiedWindows` carries `five_hour` and `seven_day` only, for the test account on the `max` plan with Claude Code 2.1.304, so nothing enters the report today. The proposal stands for a tool version that adds a model-scoped key: the Claude Driver maps it as a further `weekly` window with `tokens`. Record: `~/Artifacts/arbol-claude-driver/research/anthropic-rate-limit-windows-probe-2026-10-26.md` |
+| SGM-D27 | Which reached windows block a Subscription? | Every window that gates inference, whatever it counts, so Kimi's five-hour window of calls blocks; a window scoped to one tool, such as z.ai's MCP count, does not | Open; proposed default in use |

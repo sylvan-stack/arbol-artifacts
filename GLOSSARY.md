@@ -1373,7 +1373,7 @@ An authenticated account with a provider vendor family (login state + usage/limi
 
 The [Radar](#radar)'s view of [Vigor](#vigor) across every [Subscription](#subscription) on this computer: each Subscription's Vigor, the moment and value of its next change, and its stale or unknown state with the reason, sorted by Vigor. The headline is the highest value named with its Subscription, never a sum across vendors. A Subscription, not an [Intelligence Provider](#intelligence-provider-ip), is the unit. Specified in [SGM-1](sagas/01-subscriptions-vigor.md). *(Planned feature: the first version computes and logs, and displays nothing in radar-stats.)*
 
-**Example:** "Subscriptions Vigor: 0.48, Kimi Code" with Alex's Claude at 0.37, Codex at 0.16, and a fourth Subscription shown as unknown, allowance not supported for its family.
+**Example:** "Subscriptions Vigor: 0.47, Kimi Code" with Alex's Claude at 0.37, Codex at 0.16, and a fourth Subscription shown as unknown, allowance not supported for its family.
 
 ## Summary Node
 
@@ -1485,7 +1485,7 @@ The **rate of token generation**: tokens per second produced by the agents worki
 
 ## Vigor
 
-How urgent it is to use a [Subscription](#subscription) now, from 0 to 1: the share of its allowance that will expire unused at a coming reset if spending continues at the window's even pace, summed over its token windows with the longest window weighted 1 and each shorter one by its share of that window's allowance, capped at 1, and 0 while a reached window blocks spending. Computed by Arbol from the [Driver](#driver)'s last usage report and the clock; Drivers deliver windows, never a Vigor. The owner's term. Specified in [SGM-1](sagas/01-subscriptions-vigor.md). *(Planned feature.)*
+How urgent it is to use a [Subscription](#subscription) now, from 0 to 1: the share of its allowance that will expire unused at a coming reset if spending continues at the window's even pace, summed over its token and credit windows with the longest window weighted 1 and each shorter one by its share of that window's allowance, capped at 1, and 0 while a reached window blocks requests. Computed by Arbol from the [Driver](#driver)'s last usage report and the clock; Drivers deliver windows, never a Vigor. The owner's term. Specified in [SGM-1](sagas/01-subscriptions-vigor.md). *(Planned feature.)*
 
 **Example:** 80 % of the week unspent with 43 % of the week left loses 0.37 at even pace: Vigor 0.37. The same account with its five-hour window used up shows 0 now and 0.39 at that window's reset.
 
