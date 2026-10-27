@@ -135,6 +135,12 @@ gateway cannot be the cleanup mechanism for one Arbol run. A separate Hermes
 home per production run would also violate the current normal-home rule and
 would lose the owner's ordinary setup unless an explicit design changed it.
 
+A vendor-owned gateway is not itself a Driver daemon. Its existence alone
+does not prove nonconformance: the investigation must establish whether scoped
+native controls can meet the invocation, cancellation, isolation and cleanup
+requirements. An owner decision is needed only if the resulting design changes
+those guarantees, rather than merely choosing a different wire protocol.
+
 Current source's canonical-store documentation identifies the gateway as the
 only canonical session writer, including managed workers. An integration must
 respect that ownership. A private wrapper needs a supported execution/store
