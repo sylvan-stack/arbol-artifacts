@@ -559,7 +559,7 @@ arbol:tests/backend/test_measurements.py#Storage
 arbol:tests/backend/test_space_watch.py#Watching
 -->
 
-Backend portions of ARC-0.10/0.14 are qualified by the account and measurement checks below; the actual sign-in/page/tray/window journeys remain SYL-194/SYL-192/SYL-257. The unrelated uncommitted ARC-0 working copy is preserved; this Beat maps its Backend implementation through these BKD requirements.
+Backend portions of ARC-0.10/0.14 are qualified by the account and measurement checks below; the actual sign-in/page/tray/window journeys remain SYL-194/SYL-192/SYL-257.
 
 ### Accounts
 
