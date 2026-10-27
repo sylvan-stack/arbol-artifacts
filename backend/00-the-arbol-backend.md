@@ -351,7 +351,7 @@ For an answer, scan the complete live file prefix for the most recent still-open
 
 Append the bounded UTF-8 JSON control line including LF with exactly one os.write on an existing private regular control opened append-only/nonblocking/no-follow, never O_CREAT. Recheck directory/file identity and current end before writing. When only the matching .<UUID>.new directory exists, wait at most15 seconds for publication; neither directory means ended. A short/failed write is a safe uncertain error and is never automatically repeated by the backend. Writing is not an answer-accepted event: the window learns that only from answer/ask_closed/control_refused lines.
 
-Settling is an own-Root coalesced work queue. Startup and a validated listing with unaccepted/unsaved/interrupted request it; a reason arriving while one runs schedules one further pass after it. Probe the own database before launching, and launch none while it is unavailable. Each actual settle waits at most120 seconds and is retained, never killed, after no_answer. A pending reason cannot launch another while that manager runs; without a new reason no automatic retry is invented. Validate structured results/refusals, then invalidate relevant committed chat views; saved is still driven by actual rows/folder state. Full database-return attention/recovery, stuck detection and cross-Root discovery remain SYL-252. Real Root/Trunk/vendor/window journeys and Swift/renderer work remain their named later Beats. Timing injection exists only in private checks, never as wire/settings input.
+Settling is an own-Root coalesced work queue. Startup and a validated listing with unaccepted/unsaved/interrupted request it; a reason arriving while one runs schedules one further pass after it. Probe the own database before launching, and launch none while it is unavailable. Each actual settle waits at most120 seconds and is retained, never killed, after no_answer. A pending reason cannot launch another while that manager runs; without a new reason no automatic retry is invented. Validate structured results/refusals, then invalidate relevant committed chat views; saved is still driven by actual rows/folder state. SYL-252 extends this queue with the database-return, stuck and per-Root recovery choices below. Real Root/Trunk/vendor/window journeys and Swift/renderer work remain their named later Beats. Timing injection exists only in private checks, never as wire/settings input.
 
 ### An Exchange in progress
 
@@ -423,6 +423,44 @@ Discovery runs at startup and on roots.list. It shares one in-flight listing per
 Root command process identities include their explicit Root as well as kind and Exchange key; own-Root existing keys remain compatible and foreign keys carry an unambiguous Root prefix. Programs permits an explicit different Root only for list/stop/settle and never accepts a --root argument smuggled through args. Other commands remain own-Root. exchange.stop gains an optional root parameter: omission means this backend's Root; a different Root must be present in a fresh valid catalogue and is sent to that Root's manager. Concurrent stops/retained children coalesce by Root and Exchange, even if two Roots contain the same UUID. Foreign stops publish no own-chat status and read no foreign history. exchange.answer/send remain own-Root. A deleted or unknown explicit Root is a safe refusal, never a fallback to current Root.
 
 Settling queues are per explicit Root. Valid unaccepted/unsaved/interrupted discovery entries request that listed Root's queue; startup and database return request the own queue. Each queue has one mutation and at most one pending further pass, respects the120-second actual command bound, and waits for a retained manager's real exit. No queue launches while the backend's own database is unreachable; the foreign manager/Trunk remains responsible for its own database outcome, which this backend cannot inspect. There is no timer retry absent a new reason. Stuck detection remains own-Root only; discovery does not authorize automatic force in another Root. All recovery/force/settle tasks are owned by the backend, safe on caller cancellation and bounded shutdown. Real retained-Root/vendor/Swift/renderer journeys remain SYL-257.
+
+<!-- sources:
+arbol:src/arbol_backend/health.py#Health
+arbol:src/arbol_backend/health.py#Health.probe
+arbol:src/arbol_backend/database.py#Unavailable
+arbol:src/arbol_backend/database.py#Session.execute
+arbol:src/arbol_backend/database.py#Database.session
+arbol:src/arbol_backend/chats.py#Chats.observe
+arbol:src/arbol_backend/live.py#Live.observe_rows
+arbol:src/arbol_backend/live.py#Live.observe_saved
+arbol:src/arbol_backend/live.py#Live.step
+arbol:src/arbol_backend/live.py#Live.note
+arbol:src/arbol_backend/note_files.py#NoteFiles
+arbol:src/arbol_backend/notes.py#Notes
+arbol:src/arbol_backend/listings.py#Listings
+arbol:src/arbol_backend/discovery.py#Discovery
+arbol:src/arbol_backend/process.py#Programs.command_key
+arbol:src/arbol_backend/process.py#Programs.call
+arbol:src/arbol_backend/controls.py#Controls.run_force
+arbol:src/arbol_backend/controls.py#Controls.force
+arbol:src/arbol_backend/controls.py#ForceCancelled
+arbol:src/arbol_backend/stuck.py#Stuck
+arbol:src/arbol_backend/stuck.py#awake
+arbol:src/arbol_backend/recovery.py#Recovery
+arbol:src/arbol_backend/settling.py#Settling
+arbol:src/arbol_backend/server.py#Backend.__init__
+arbol:src/arbol_backend/server.py#Backend.run
+arbol:tests/backend/test_health.py#Availability
+arbol:tests/backend/test_offline_live.py#Offline
+arbol:tests/backend/test_note_files.py#Files
+arbol:tests/backend/test_notes.py#Recovery
+arbol:tests/backend/test_discovery.py#AcrossRoots
+arbol:tests/backend/test_stuck.py#Watching
+arbol:tests/backend/test_return.py#Returned
+arbol:tests/backend/recovery_support.py#offline
+arbol:tests/backend/recovery_support.py#online
+arbol:tests/backend/discovery_support.py#install
+-->
 
 ### Stuck Exchanges
 
@@ -650,22 +688,22 @@ Stuck Exchanges:
 
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
-| BKD-0.19 | list its Root's Exchanges every 30 seconds while it runs, keep for each Exchange whose process lives, in the state `accepting`, `running` or `ending`, its heartbeat and the time of the first look that found it, call it stuck when a look finds the same heartbeat at least 90 seconds later, count both with `CLOCK_UPTIME_RAW`, and never end an Exchange whose heartbeat goes on, whatever it waits for | New | unit, drill |
-| BKD-0.20 | end a stuck Exchange without asking with `arbol-root --root <root> stop --force <exchange>`, and when that replies `interrupted`, record in `exchange_notes` that it was ended because it was stuck, keeping the note as a file in the Root's folder until the database takes it | Changed | drill |
+| BKD-0.19 | list its Root's Exchanges every 30 seconds while it runs, keep for each Exchange whose process lives, in the state `accepting`, `running` or `ending`, its heartbeat and the time of the first look that found it, call it stuck when a look finds the same heartbeat at least 90 seconds later, count both with `CLOCK_UPTIME_RAW`, and never end an Exchange whose heartbeat goes on, whatever it waits for | New | unit `stuck.awake-30-90`, `stuck.heartbeat-progress`, `stuck.waiting-is-not-stuck`, `stuck.reset`, `stuck.identity`, `stuck.failed-look`, `stuck.unreadable`, `stuck.sleep-excluded`, `stuck.scheduler`, `stuck.native-clock`, `stuck.candidate-states`, `stuck.own-root-only` (SYL-252; private PostgreSQL, contract files and manager stand-ins). Actual Root/Trunk/vendor/Swift/renderer and Mac-sleep journeys remain SYL-257. |
+| BKD-0.20 | end a stuck Exchange without asking with `arbol-root --root <root> stop --force <exchange>`, and when that replies `interrupted`, record in `exchange_notes` that it was ended because it was stuck, keeping the note as a file in the Root's folder until the database takes it | Changed | unit `stuck.force-route`, `stuck.decision-time`, `stuck.note`, `stuck.revalidate-after-stop`, `stuck.healthy-queue-cancel`, `stuck.manual-stop-cause`, `stuck.no-false-note`, `stuck.user-stop-after-force-cancel`, `stuck.refusal-is-not-internal-cancel`, `stuck.true-force-end`, `stuck.cancelled-caller`, `stuck.retained-force`, `stuck.force-serial`, `stuck.shutdown`; `notes.private-file`, `notes.atomic-publication`, `notes.first-timestamp`, `notes.crash-publication`, `notes.verified-temp-recovery`, `notes.short-write`, `notes.no-overwrite`, `notes.file-boundaries`, `notes.invalid-file`, `notes.conditional-removal`, `notes.directory-identity`, `notes.unknown-hardlink`, `notes.directory-no-follow`, `notes.sql-commit`, `notes.note-event`, `notes.idempotent`, `notes.database-away`, `notes.restart-recovery`, `notes.pending-row`, `notes.uncertain-sql`, `notes.retry-after-commit`, `notes.true-end`, `notes.chat-identity`, `notes.sql-file-race`, `notes.sql-deadline` (SYL-252; private PostgreSQL, contract files and manager stand-ins). Actual Root/Trunk/vendor/Swift/renderer and Mac-sleep journeys remain SYL-257. |
 
 Restarts and discovery:
 
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
-| BKD-0.21 | stop no Exchange when it ends, keep nothing a restart would lose except the mark of a stop under way, and at every start settle, list and read again | Kept | drill |
-| BKD-0.22 | find the Exchanges of every retained Root at its start and when a window asks, through `arbol-roots list` and each Root's own `arbol-root --root <identifier> list`, report a Root whose listing fails for that Root alone, read no other Root's database or Exchange files, and send a command for an Exchange to the manager of the Root its listing names | New | unit, drill |
+| BKD-0.21 | stop no Exchange when it ends, keep nothing a restart would lose except the mark of a stop under way, and at every start settle, list and read again | Kept | unit `stuck.shutdown`, `recovery.backend-restart`, `recovery.pending-note-snapshot`, `discovery.shared`, `stop.shutdown`, `settle.startup` (SYL-252; private PostgreSQL, contract files and manager stand-ins). Actual Root/Trunk/vendor/Swift/renderer and Mac-sleep journeys remain SYL-257. |
+| BKD-0.22 | find the Exchanges of every retained Root at its start and when a window asks, through `arbol-roots list` and each Root's own `arbol-root --root <identifier> list`, report a Root whose listing fails for that Root alone, read no other Root's database or Exchange files, and send a command for an Exchange to the manager of the Root its listing names | New | unit `discovery.shared`, `discovery.metadata-only`, `discovery.root-manager-route`, `discovery.root-error-isolation`, `discovery.partial`, `discovery.safe-refusal`, `discovery.stop-root-identity`, `discovery.same-uuid`, `discovery.foreign-no-chat-read`, `discovery.deleted-root`, `discovery.validate-root-before-effects`, `discovery.stop-result-root`, `discovery.settle-root`, `discovery.settle-coalescing`, `discovery.settle-database-gate`, `discovery.retained-root-mutation`, `discovery.independent-roots`, `discovery.caller-shield`, `discovery.shared-look`, `discovery.total-bound`, `discovery.capacity`, `discovery.reply-bound`, `discovery.oversized-root-isolation` (SYL-252; private PostgreSQL, contract files and manager stand-ins). Actual Root/Trunk/vendor/Swift/renderer and Mac-sleep journeys remain SYL-257. |
 
 A database that cannot be reached:
 
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
-| BKD-0.23 | mark the database unreachable when a new connection or `SELECT 1` does not succeed within 5 seconds or the Keychain fails, with the cause, try to connect every 5 seconds, show an attention item in every window of the Root for as long as it lasts, and on its return clear it, settle and send a new snapshot on every subscription | New | drill |
-| BKD-0.24 | follow the Exchanges in progress from their folders while the database is away, keep the Draft of every message refused meanwhile, and show the answer of an Exchange whose record has an end and whose process is gone from its folder, marked `unsaved`, until it is settled | New | drill |
+| BKD-0.23 | mark the database unreachable when a new connection or `SELECT 1` does not succeed within 5 seconds or the Keychain fails, with the cause, try to connect every 5 seconds, show an attention item in every window of the Root for as long as it lasts, and on its return clear it, settle and send a new snapshot on every subscription | New | unit `recovery.database-loss`, `recovery.attention`, `recovery.return`, `recovery.statement-timeout`, `recovery.sql-error-is-not-loss`, `recovery.connection-deadline`, `recovery.probe-bound`, `recovery.keychain-classification`, `recovery.safe-cause`, `recovery.credentials-refresh`, `recovery.retry-cadence`, `recovery.whole-probe-confirmation`, `recovery.renew-lock-bound`, `recovery.credential-lock-race`; `recovery.all-topic-snapshots`, `recovery.repeated-return`, `recovery.draft-preserved`, `recovery.draft-snapshot-race`, `recovery.saved-snapshot-race`, `recovery.epoch-race`, `recovery.live-stream-survives-return`, `recovery.independent-discovery`, `recovery.settled-note-retry`, `recovery.backend-restart`, `recovery.pending-note-snapshot`, `recovery.transient-snapshot-retry` (SYL-252; private PostgreSQL, contract files and manager stand-ins). Actual Root/Trunk/vendor/Swift/renderer and Mac-sleep journeys remain SYL-257. |
+| BKD-0.24 | follow the Exchanges in progress from their folders while the database is away, keep the Draft of every message refused meanwhile, and show the answer of an Exchange whose record has an end and whose process is gone from its folder, marked `unsaved`, until it is settled | New | unit `recovery.offline-lines`, `recovery.open-chat-retained`, `recovery.unsaved`, `recovery.new-chat-refused`, `recovery.slow-sql-file-isolation`, `recovery.slow-refresh-preserves-subscription`, `recovery.offline-partial`, `recovery.offline-replay-generation`, `recovery.row-proof-before-stream`, `recovery.draft-refusal`; `notes.no-history-writes`, `recovery.settled-note-retry` (SYL-252; private PostgreSQL, contract files and manager stand-ins). Actual Root/Trunk/vendor/Swift/renderer and Mac-sleep journeys remain SYL-257. |
 
 Accounts and the working folder:
 
