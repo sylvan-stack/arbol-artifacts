@@ -447,6 +447,7 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 <!-- sources:
 arbol-root:roots/sapling/drills/sapling_creation.py#make_sapling
 arbol-root:roots/sapling/drills/sapling_messages.py#real_messages
+arbol-root:roots/sapling/drills/sapling_messages.py#usage_available
 arbol-root:roots/sapling/drills/drill_support.py#Budget
 arbol-root:tests/test_sapling_drills.py#Creation
 -->
