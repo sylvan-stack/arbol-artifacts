@@ -280,6 +280,8 @@ arbol:ui/elma/src/window.svelte.ts
 arbol:tests/ui/live_browser.mjs
 -->
 
+On development-relay shutdown, stop accepting new connections, close browser writers and cancel/join their handlers, then wait for the listener to close. This ordering includes still-open WebSockets: waiting for server closure before closing its active clients can deadlock on the pinned Python runtime. The relay must exit quietly with a connected browser.
+
 ### Compatibility within a Root
 
 The renderer bundles and the backend of a Root come from that Root's `arbol` Builds, and a window and its backend may come from different Builds of the same Root, for example after a new Build while a window stayed open. Within a Root the Bridge therefore changes only by additions that older Builds can ignore: a new method, topic, event kind, field or error code. Nothing is removed, and nothing changes its meaning (ARC-1). Both sides ignore a field, an event kind and an attention kind they do not know; the backend replies to a method or a topic it does not know with `unknown_method`, and the window says that this needs a newer Build.
