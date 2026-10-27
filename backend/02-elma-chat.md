@@ -345,6 +345,8 @@ A send stores its exact Root/composition, method, identifiers, text/route/folder
 
 Question selections remain local until submitted. A successful exchange.answer reply keeps a waiting state; only a new answer file position confirms that submission, and ask_closed closes the question. A control_refused file position or a refused call keeps the question available for another valid choice. File positions distinguish a new submission’s receipt from an earlier answer already displayed. A malformed or future Ask is shown as literal data with no fabricated choice or free-text answer; Cancel can still decline its known askId. Closed questions with recorded answers remain readable, including the ask/answer data kept with a saved tool call.
 
+Failure actions use only the last saved failed Exchange and recheck that identity after pending route/Draft saves. Retry retains the replaced Exchange’s original folder as recovery metadata, sends only exchange/newExchange/route, and presents the replacement at the same number until the canonical chat arrives. Continue sends the literal message "proceed" in the chat’s current folder and route, without a draft selector; it preserves any independently composed Draft rather than replacing or consuming it. Both actions use the same persisted UUID/receipt/reload barrier as ordinary sends. A refusal restores the canonical failed view and keeps the existing Draft. A limit reset time is calculated once from the recorded end time plus retryAfterSeconds, never from the viewer’s changing clock; missing time stays unrecorded. Sign-in guidance names the Driver’s command and never executes it.
+
 ### What First Sapling leaves out
 
 Version 1's Elma had more than this first version. These parts are not in First Sapling:
