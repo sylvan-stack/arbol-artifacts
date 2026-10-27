@@ -213,6 +213,13 @@ arbol-root:tests/test_management_boundary.py#Boundary
 arbol-root:tests/test_groups.py#NativeForce
 -->
 
+<!-- sources:
+arbol-root:roots/sapling/drills/stopping_drills.py#newer_build
+arbol-root:roots/sapling/drills/stopping_drills.py#reuse_build
+arbol-root:roots/sapling/drills/stopping_drills.py#killed_while_waiting
+arbol-root:roots/sapling/drills/stopping_drills.py#killed_while_forcing
+-->
+
 ### What any Trunk must offer
 
 This is everything the rest of Arbol needs from a Trunk. The owner confirmed the seven points on 9 October 2026. Point 6 then read "It can export a chat to the file form and import one"; the owner replaced that the same day by a migration script for each Root (ARC-D34). On 13 October 2026 the owner gave the layout of the chat tables to the Root, which changed points 3 and 6 ([ARC-D48](#decisions)), and replaced the helper commands of point 7 ([ARC-D56](#decisions)).
@@ -326,11 +333,11 @@ The Root manager:
 
 | ID | The Root manager must… | Origin | Verified by |
 |---|---|---|---|
-| ARC-0.15 | consist of commands that end, keep nothing between two of them except files, and know the Exchanges in progress from the records in the Root's folder alone | Changed | drill |
+| ARC-0.15 | consist of commands that end, keep nothing between two of them except files, and know the Exchanges in progress from the records in the Root's folder alone | Changed | Root manager: installed `sapling.root-killed-while-waiting` and `sapling.root-killed-while-forcing` recover through fresh commands from unchanged records; `sapling.newer-build` lists/stops/settles earlier accepted work (SYL-188). Other components remain in their own checks |
 | ARC-0.16 | pick for a new Exchange the newest working compatible Build of the caller's named Trunk component or the Trivial Trunk, unless the caller names a compatible Build; refuse a Build that does not fit as the launcher `arbol-trunk` refuses it (RCT-0.9) | Changed | unit: `root.start-named`, `root.start-chosen`, `root.start-no-fit`, `root.start-launch`, `root.start-selection-refusal`; private `root.private-build` (SYL-182), with launcher fit/explicit-version checks from SYL-179 |
 | ARC-0.17 | never read chat content, never open the database, and build nothing | Changed | unit `root.no-settings`, `root.start-no-request-read`, `root.list-boundary`, `root.management-boundary`, `root.stop-control`, `root.cleanup-paths` (SYL-181/182/183); SQL-file packaging: RTM-1.1, with files run only by arbol-roots |
 | ARC-0.27 | expose every working Trunk implementation and Build whose Build record lists the named Root's Root Contract version, and manage Exchanges of different compatible implementations in that Root | New | unit `root.trunks`, `root.start-launch`, `root.list-states`, `root.list-form`, `root.management-boundary`, `root.stop-control`, `root.stop-force-kill`, `root.stop-orphaned-child`, `root.settle-named`, `root.settle-all`; private `root.private-build` (SYL-181/182/183) |
-| ARC-0.28 | distinguish the persistent Root identity from its manager Build and invocation, and keep that identity unchanged across compatible Build updates and restarts | New | drill |
+| ARC-0.28 | distinguish the persistent Root identity from its manager Build and invocation, and keep that identity unchanged across compatible Build updates and restarts | New | Root manager: installed `sapling.newer-build` replaces manager Build 1 with 3 from clean merged source, preserves Root record/catalogue/current selection and accepted Root/Exchange/chat/Trunk/Build identity, then stops and settles (SYL-188). App/backend restarts remain their drills |
 
 A Trunk, seen from outside:
 

@@ -104,6 +104,13 @@ arbol-root:src/arbol_root/settle.py#settle_after_stop
 arbol-root:tests/test_groups.py#NativeForce
 -->
 
+<!-- sources:
+arbol-root:roots/sapling/drills/stopping_drills.py#force
+arbol-root:roots/sapling/drills/stopping_drills.py#killed_while_forcing
+arbol-root:roots/sapling/drills/stopping_support.py#ignored_child
+arbol-root:roots/sapling/drills/stopping_child.py#main
+-->
+
 ### A stop that is not obeyed
 
 A stop is a line in the `control` file of the Exchange (ARC-2). The Trunk stops the Driver's run, which may take 15 seconds (DRV-2), and ends the Exchange as cancelled.
@@ -117,6 +124,13 @@ arbol-root:src/arbol_root/stop.py#stop
 arbol-root:src/arbol_root/clock.py#awake
 arbol-root:tests/test_stop.py#Stopping.test_graceful_deadline_calls_escalation_after_twenty_awake_seconds
 arbol-root:tests/test_groups.py#GroupIdentity.test_complete_stop_uses_20_5_5_with_an_in_process_moved_clock
+-->
+
+<!-- sources:
+arbol-root:roots/sapling/drills/stopping_drills.py#obeyed
+arbol-root:roots/sapling/drills/stopping_drills.py#not_obeyed
+arbol-root:roots/sapling/drills/stopping_drills.py#end_already_written
+arbol-root:roots/sapling/drills/stopping_drills.py#killed_while_waiting
 -->
 
 ### A Driver that falls silent
@@ -168,8 +182,8 @@ The Root manager:
 | ID | The Root manager must… | Origin | Verified by |
 |---|---|---|---|
 | ARC-3.5 | give in every listing each Exchange's heartbeat and what it is waiting for | New | unit: `root.list-states`, `root.list-form`, `root.list-forward-compatible` (SYL-182), RTM-0.6 |
-| ARC-3.6 | on `stop`, write the stop and wait, end the Trunk's processes by force when the Exchange has not ended after 20 seconds, and have it settled as interrupted, unless its end was already written (RCT-2) | Changed | Root manager unit `root.stop-control`, `root.stop-grace-clock`, `root.stop-complete-clock`, `root.stop-dead`, `root.stop-settle-refusal` (SYL-183); real-Root drill SYL-188 pending |
-| ARC-3.7 | on `stop --force`, send the Trunk's processes the signal to end, end by force after 5 seconds what is still alive, leave none of them alive, and have the Exchange settled as interrupted, unless its end was already written (RCT-2) | Changed | Root manager unit `root.stop-force-term`, `root.stop-force-kill`, `root.stop-orphaned-child`, `root.stop-group-identity`, `root.stop-complete-clock` (SYL-183); real-Root drill SYL-188 pending |
+| ARC-3.6 | on `stop`, write the stop and wait, end the Trunk's processes by force when the Exchange has not ended after 20 seconds, and have it settled as interrupted, unless its end was already written (RCT-2) | Changed | Root manager unit `root.stop-control`, `root.stop-grace-clock`, `root.stop-complete-clock`, `root.stop-dead`, `root.stop-settle-refusal` (SYL-183); installed real-scale `sapling.stop-obeyed`, `sapling.stop-not-obeyed` (actual twenty seconds), `sapling.stop-end-already-written` (known end/no force) and `sapling.root-killed-while-waiting`, all in `sapling.stopping-drills` (SYL-188). UI presentation remains backend/UI work |
+| ARC-3.7 | on `stop --force`, send the Trunk's processes the signal to end, end by force after 5 seconds what is still alive, leave none of them alive, and have the Exchange settled as interrupted, unless its end was already written (RCT-2) | Changed | Root manager unit `root.stop-force-term`, `root.stop-force-kill`, `root.stop-orphaned-child`, `root.stop-group-identity`, `root.stop-complete-clock` (SYL-183); installed `sapling.stop-force`, `sapling.stop-force-ignored-term` (actual five-second grace and no survivor), `sapling.root-killed-while-forcing` and known-end refusal to force, all in `sapling.stopping-drills` (SYL-188) |
 | ARC-3.8 | treat the stop of an Exchange that has ended or is unknown as success | Kept | unit `root.stop-none`, `root.stop-ended`, `root.stop-dead`, `root.stop-disappearance`, `root.stop-settle-refusal` (SYL-183) |
 
 Arbol:

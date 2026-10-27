@@ -473,6 +473,30 @@ arbol-root:tests/test_trunk_drills.py#ProcessAndRows
 arbol-root:tests/test_sapling_drills.py#Outage.test_installed_stop_completes_smart_shutdown_with_an_established_private_connection
 -->
 
+<!-- sources:
+arbol-root:roots/sapling/drills/stopping_drills.py#newer_build
+arbol-root:roots/sapling/drills/stopping_drills.py#reuse_build
+arbol-root:roots/sapling/drills/stopping_drills.py#build_journal
+arbol-root:roots/sapling/drills/stopping_drills.py#run_drill
+arbol-root:roots/sapling/drills/stopping_drills.py#entry
+arbol-root:roots/sapling/drills/stopping_support.py#frozen
+arbol-root:roots/sapling/drills/stopping_support.py#Manager
+arbol-root:roots/sapling/drills/stopping_child.py#main
+arbol-root:roots/sapling/drills/stopping_wrapper.py#main
+arbol-root:tests/test_stopping_drills.py#Freeze
+arbol-root:tests/test_stopping_drills.py#IgnoredChild
+arbol-root:tests/test_stopping_drills.py#StoppingJudgment
+arbol-root:roots/sapling/drills/drill-stop-obeyed.py
+arbol-root:roots/sapling/drills/drill-stop-not-obeyed.py
+arbol-root:roots/sapling/drills/drill-stop-end-already-written.py
+arbol-root:roots/sapling/drills/drill-stop-force.py
+arbol-root:roots/sapling/drills/drill-stop-force-ignored-term.py
+arbol-root:roots/sapling/drills/drill-root-killed-while-waiting.py
+arbol-root:roots/sapling/drills/drill-root-killed-while-forcing.py
+arbol-root:roots/sapling/drills/drill-newer-build.py
+arbol-root:roots/sapling/drills/run-stopping-drills.py
+-->
+
 ## Requirements
 
 Roots:
@@ -495,7 +519,7 @@ Roots:
 | ARC-1.22 | run a test with the Builds of the Root under test on a folder and a database of the test's own, and a test of a Trunk Build in a separate test folder of its own, a temporary home, except its live checks (RCT-4, RCT-D29), so that it cannot reach the chats of a Root in use | Changed | catalogue part: unit `roots.default-paths`, `roots.create`, `roots.damaged-drill`, and real-server acceptance using only unique disposable database names (SYL-160). Trunk Build isolation is RCT-4.1; Root Build checks remain SYL-181/SYL-184 |
 | ARC-1.24 | support all working Trunk implementations and Builds whose Build records list the Root's Root Contract version, and expose them through `arbol-root trunks` | New | unit: `root.trunks`, `root.trunks-refusal`; private `root.private-build` (SYL-181), plus `builds.trunk-list`/selection checks (SYL-179) |
 | ARC-1.25 | rediscover Exchanges across retained Roots through the shared Root catalogue and each Root's matching manager, isolate a failing Root's listing, and route management to the recorded owning Root | New | Root manager listing/combinability part: unit `root.list-combined`, `root.list-form`, `root.list-states`, `root.list-boundary` (SYL-182). Catalogue discovery, asking every retained Root, failure isolation and routing are specified by accepted BKD-0.22 and remain backend implementation/drill work |
-| ARC-1.26 | keep a Root's identity independent of its manager invocation and compatible Build replacements, and change no established Exchange ownership when the App or backend restarts | New | drill |
+| ARC-1.26 | keep a Root's identity independent of its manager invocation and compatible Build replacements, and change no established Exchange ownership when the App or backend restarts | New | Root manager part: installed `sapling.newer-build` qualifies compatible manager replacement with all three packaged checks, unchanged Root/catalogue/current and accepted Exchange ownership, stop and settle; `sapling.root-killed-while-waiting`/`sapling.root-killed-while-forcing` recover command restarts (SYL-188). App/backend restart part remains their drills |
 | ARC-1.28 | create and change every table of a Root's database from the table layout that the Root's `arbol-root` Builds carry, apply to a Root in use only additions that its older Builds can ignore, for the chat tables as their Root Contract version allows (RCT-D24), and let no Trunk and no backend create or change a table | New | Root-owned copied layouts: `roots.sql-selection`, `roots.sql-preflight`, `roots.sql-pruning`, `roots.layout`, `roots.layout-cli`; explicit installed-server `roots.runtime-sql` proves additive/repeated layouts and earlier rows unchanged (SYL-185). Compatibility is qualified by the SYL-184 layout check; contract v1 permits no additions (RCT-D24). The backend no-DDL part is accepted BKD-0.6 and remains backend implementation work |
 
 Builds:
