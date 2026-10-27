@@ -114,6 +114,12 @@ length, as Kimi's monthly code share and monthly total do, the store is the
 one scoped to the coding product the Subscription serves; the others of that
 length are shown and not summed (SGM-D25).
 
+<!-- sources:
+arbol:src/arbol_radar/vigor.py#counted_as
+arbol:src/arbol_radar/vigor.py#store_of
+arbol:src/arbol_radar/model.py#SCOPES
+-->
+
 ### The loss of one window
 
 To say how much of a window will be left at its reset, the calculation
@@ -135,6 +141,10 @@ A window on or ahead of its even pace loses nothing. A window at its start
 loses nothing, however full. A window minutes from its reset loses almost all
 of what is unspent.
 
+<!-- sources:
+arbol:src/arbol_radar/vigor.py#loss
+-->
+
 ### Vigor of a Subscription
 
 ```text
@@ -155,6 +165,12 @@ five-hour windows; it is a placeholder, not a measured value (SGM-D15).
 Vigor is near 1 only when most of the store is unspent and its reset is near.
 It is 0 when the reset is far, when the store is mostly spent, or when the
 Subscription is exhausted.
+
+<!-- sources:
+arbol:src/arbol_radar/vigor.py#compute
+arbol:src/arbol_radar/model.py#Profile
+arbol:src/arbol_radar/model.py#FIRST_PROFILE
+-->
 
 ### Exhausted Subscriptions and the next change
 
@@ -178,6 +194,11 @@ exhausted Subscription is worth using again (SGM-D16).
 
 Every result carries its next change, exhausted or not, since Vigor also jumps
 when a store resets and its unspent share is lost.
+
+<!-- sources:
+arbol:src/arbol_radar/vigor.py#compute
+arbol:src/arbol_radar/model.py#Report.overage
+-->
 
 ### After a reset without a report
 
@@ -294,6 +315,10 @@ The Radar then reads, highest first: Kimi Code `0.47`, Claude `0.37`, Codex
 `0.16`. With the five-hour window of the Claude account reached instead:
 Kimi Code `0.47`, Codex `0.16`, Claude `0` now and `0.39` at 13:20.
 
+<!-- sources:
+arbol:tests/radar/test_vigor.py#WorkedExamples
+-->
+
 ## Requirements
 
 All requirements are proposed and New. `unit` denotes deterministic tests with
@@ -303,11 +328,11 @@ belong to the Drivers' own specifications for the reports they deliver.
 
 | ID | Requirement | Origin | Verified by |
 |---|---|---|---|
-| SGM-1.1 | Compute Vigor in Arbol from a Subscription's last usage report and the clock; Drivers deliver windows and never a Vigor | New | unit |
-| SGM-1.2 | Take into the sum only windows whose resource is tokens or credits and whose used share, length and reset time are known; show the others | New | unit |
-| SGM-1.3 | Compute each window's loss as the share expiring unused at the window's even pace, never below zero | New | unit |
-| SGM-1.4 | Combine losses as the sum capped at 1, with the longest window weighted 1 and each shorter window by its share of the longest window's allowance, using the placeholder until a learned weight is approved | New | unit |
-| SGM-1.5 | Treat a Subscription with a reached inference-gating window and no overage as exhausted, whatever that window counts, a tool-scoped window excepted; report its Vigor as 0 and carry its recovery: the next change's moment and value | New | unit |
+| SGM-1.1 | Compute Vigor in Arbol from a Subscription's last usage report and the clock; Drivers deliver windows and never a Vigor | New | unit `radar.example-claude`, `radar.example-codex`, `radar.example-kimi`, `radar.example-ranking`, `radar.clock-argument`; the report read as delivered: `radar.report-as-delivered`, `radar.reject-malformed`, `radar.reject-length`, `radar.reject-reset-before-fetch`, `radar.records-frozen` |
+| SGM-1.2 | Take into the sum only windows whose resource is tokens or credits and whose used share, length and reset time are known; show the others | New | unit `radar.take-part-resource`, `radar.take-part-known`, `radar.used-share-below-zero`, `radar.store-longest`, `radar.store-coding-product`, `radar.store-equal-fallback`, `radar.outcome-not-ok` |
+| SGM-1.3 | Compute each window's loss as the share expiring unused at the window's even pace, never below zero | New | unit `radar.loss-rows`, `radar.loss-bounds`, `radar.loss-unknown`, `radar.used-share-above-hundred` |
+| SGM-1.4 | Combine losses as the sum capped at 1, with the longest window weighted 1 and each shorter window by its share of the longest window's allowance, using the placeholder until a learned weight is approved | New | unit `radar.gate-weights`, `radar.sum-cap`, `radar.first-profile`, `radar.example-13-20`, `radar.reject-weight`, `radar.reject-store-weight`, `radar.reject-profile-version` |
+| SGM-1.5 | Treat a Subscription with a reached inference-gating window and no overage as exhausted, whatever that window counts, a tool-scoped window excepted; report its Vigor as 0 and carry its recovery: the next change's moment and value | New | unit `radar.exhausted-reached`, `radar.exhausted-overage`, `radar.exhausted-calls`, `radar.exhausted-shown-window`, `radar.exhausted-tool-scoped`, `radar.used-share-in-the-sum` (the exhausted state and Vigor 0; the recovery is checked with SGM-1.6) |
 | SGM-1.6 | Carry with every result the earliest reset among the windows and the Vigor at that moment, computed on the predicted windows | New | unit |
 | SGM-1.7 | After a reset passes without a newer report, predict a fresh window, mark the prediction on the window and the result, and drop every prediction when a report arrives | New | unit |
 | SGM-1.8 | Mark a result stale when its report is older than the Subscription's shortest window that is summed or can exhaust it, and show the report's age | New | unit |
@@ -317,7 +342,7 @@ belong to the Drivers' own specifications for the reports they deliver.
 | SGM-1.12 | Roll up per Subscription, sorted by Vigor, with unknown Subscriptions kept visible; the headline is the maximum named with its Subscription; never sum across Subscriptions | New | unit |
 | SGM-1.13 | Answer a read of every Subscription's current Vigor without contacting any vendor | New | unit |
 | SGM-1.14 | Recompute every three minutes while the backend runs, a profile value, and when a report arrives, a passed reset taking effect at the next tick; replay a changed formula over recorded reports | New | unit |
-| SGM-1.15 | Keep Vigor advisory: it never routes a Turn, changes a binding or spends allowance | New | unit |
+| SGM-1.15 | Keep Vigor advisory: it never routes a Turn, changes a binding or spends allowance | New | unit `radar.advisory-imports`, `radar.advisory-pure` |
 
 ## Interface
 
@@ -344,6 +369,14 @@ The Driver Contract's window carries `resource`, `tokens`, `credits` or
 where its vendor states a unit. Codex leaves it absent, since the app server
 names none; the calculation treats a window without the field as tokens and
 says so on the result.
+
+<!-- sources:
+arbol:src/arbol_radar/model.py#Window
+arbol:src/arbol_radar/model.py#Report.from_contract
+arbol:src/arbol_radar/model.py#Profile
+arbol:src/arbol_radar/model.py#Result
+arbol:src/arbol_radar/model.py#Loss
+-->
 
 ## Known problems and calibration
 
@@ -405,3 +438,4 @@ profile for operation.
 | SGM-D29 | Where do the report and calculation records live? | In the tables of each Root's own layout, written by Arbol in the current Root's database and not copied when the Root changes, so a Root change starts the history afresh | Decided by the owner, 2026-10-27 |
 | SGM-D30 | How often is Vigor recomputed while nothing displays it? | Every three minutes while the backend runs, a profile value inside the owner's two to three minutes, and when a report arrives; a passed reset takes effect at the next tick; no faster schedule and no recompute on a plain read | Decided by the owner, 2026-10-27: once in two to three minutes and nothing more; Vigor is not a metric to track every ten seconds |
 | SGM-D31 | Which window sets the stale rule? | The Subscription's shortest window that takes part in the sum or can exhaust it, five hours for every family today; Kimi's token and credit windows alone would make its report stale only after a month | Decided by the owner, 2026-10-27 |
+| SGM-D32 | How does the calculation know which window is scoped to the coding product the Subscription serves (SGM-D25) and which to one tool (SGM-D27), when the contract's window carries no scope? | A table in the Radar layer's code, by family and the window's label as its Driver reports it: Kimi Code's `Monthly, Kimi Code` is the coding product's window, z.ai's `MCP` window is scoped to one tool, and every other window is scoped to the Subscription. Among equal-length longest windows with none scoped to the coding product, the first delivered is the store and the others are shown. A new family or label is added to the table with the Driver that reports it | Decided 2026-10-27 during SYL-295, a technical choice |
