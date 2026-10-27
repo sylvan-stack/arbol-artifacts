@@ -325,7 +325,7 @@ arbol:src/arbol_backend/answers.py#validate
 arbol:src/arbol_backend/settling.py#Settling
 arbol:src/arbol_backend/settling.py#listing
 arbol:tests/backend/live_support.py#Trunk
-arbol:tests/backend/test_event_file.py#Events
+arbol:tests/backend/test_event_file.py#Files
 arbol:tests/backend/test_exchange_files.py#Files
 arbol:tests/backend/test_live.py#Windows
 arbol:tests/backend/test_controls.py#Stopping
