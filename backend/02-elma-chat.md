@@ -337,6 +337,8 @@ The normal First Sapling composer has no Send or attachment buttons. Its control
 
 While a long paste is being saved, its raw text remains in the controlled editor and unsaved-text recovery. Draft flushing waits for all pending paste operations, so it captures the resulting links. Edits outside a pending pasted range preserve that range through the edit. An overlapping edit is kept as typed and cancels the queued send rather than replacing those edits with an older file. A failed paste save reports the failure, retains the raw text and cancels a queued send. Repeated send shortcuts while files are pending queue one send after all successful insertions.
 
+Route defaults are resolved only from configured routes and the public signed-in Subscription/model catalog. A configured model remains the configured choice even when an incomplete catalog does not list it. If neither configuration nor the catalog names a default model, the UI leaves the model unselected and explains that the Leather Bag can pick one with the model control; it does not invent a default. An explicit next-model action starts with the first catalog row when no current row matches. Settings writes for a chat are ordered, and an older reply/publication cannot replace a newer local choice; failures remain visible.
+
 ### What First Sapling leaves out
 
 Version 1's Elma had more than this first version. These parts are not in First Sapling:
