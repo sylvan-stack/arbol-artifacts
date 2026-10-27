@@ -379,6 +379,7 @@ interface ChatInfo {
   chat: string;
   title: string | null;
   createdAt?: string;
+  migration?: { fromRoot: string; fromChat: string; stale: boolean }; // the same own-Root provenance as ChatSummary
   exchangeCount: number;                // every Exchange of the chat that was not replaced, for "Turn n of N"
   usage: { inputTokens: number; outputTokens: number };   // the sum over the chat's runs, for the cockpit
 }
