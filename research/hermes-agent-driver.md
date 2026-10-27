@@ -10,6 +10,26 @@ Research bindings: `repo=arbol`, `topic=new Driver supporting Hermes Agent`,
 `depth=standard`. Investigated 27 October 2026. This prepares specifications;
 it does not accept a design or implement a Driver.
 
+## Compatibility prototype follow-on
+
+The [executable prototype](hermes-compatibility/README.md) now exercises the
+three compatibility questions using the unmodified installed Hermes release,
+disposable profiles and a loopback model. It includes scoped cancellation and
+an EOF lifetime helper, canonical tool/image import and history rebuilding,
+and positive/negative memory controls with instruction/skill/MCP sentinels.
+
+The initial investigation and its evidence limits below are retained as the
+baseline for this work. The subsequent experiment records are local and
+ignored by Git, following the corpus policy for probe results. Read the
+[local compatibility report](../generated/hermes-compatibility-2026-10-27/compatibility-report.md)
+for the observed per-area verdicts, exact scope, native/source/runtime
+provenance and raw evidence links. An experiment completing is not a claim
+that the Driver Contract passed, and this work creates no accepted specs.
+
+<!-- sources:
+arbol:research/hermes-compatibility/README.md
+-->
+
 ## What the spec writer needs first
 
 Hermes Agent means the Nous Research agent application, rather than a Hermes

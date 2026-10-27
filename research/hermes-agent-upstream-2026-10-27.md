@@ -1418,6 +1418,494 @@ def _claim_launch_home():
 ~~~~
 
 
+## Release interface details used by the prototype
+
+The following additional source excerpts are from release v0.22.5, commit
+`bf0203a794a07aac3ff764972ab9087baa4e4f4e`. These are source snapshots, not runtime results. The prototype
+README owns the experiment scope and links its ignored local observations.
+
+
+### R01 Installed runtime launcher boundary
+
+File: [`hermes_cli/_launchers.py`](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/hermes_cli/_launchers.py).
+
+SHA-256: `f45dbb4bcf1582e82d90b7425bb1480756f85234defe9269785603735546c9b4`.
+
+
+[Lines 85–95](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/hermes_cli/_launchers.py#L85-L95):
+
+~~~~python
+
+
+def installation_command(repo_root: Path, args=(), *, module: str = "hermes_cli.main",
+                         python: str | Path | None = None, home: str | Path | None = None) -> list[str]:
+    """Persist a source launcher, never the versioned tool it currently uses.
+
+    External/Nix installs retain their externally owned interpreter contract.
+    Source installation/update publication refreshes the local launcher when
+    the managed Python pin changes.
+    """
+    root = Path(repo_root)
+~~~~
+
+
+### R02 Session-scoped process stop
+
+File: [`gateway/session_ancillary.py`](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/gateway/session_ancillary.py).
+
+SHA-256: `dd64266347ef6ee8354e817b4a45551e89b768f1b569f874ca955678207ecccd`.
+
+
+[Lines 353–367](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/gateway/session_ancillary.py#L353-L367):
+
+~~~~python
+        return 'busy'
+
+
+async def stop_processes(connection, ref, params):
+    """Ink ``/stop``: kill the background processes this session owns (what ``process.list``
+    shows), never the registry-wide ``kill_all`` the legacy sidecar ran, which on the shared owner
+    reached every chat, Desktop window and served profile (dokterdok N2). An explicit stop, so a
+    ``persist_on_release`` job of THIS session is still reached (#41225)."""
+    if set(params) - {'session_id', 'profile'} or not isinstance(ref.session_id, str) or not ref.session_id:
+        raise RuntimeStoreError('invalid_params')
+    registry, targets = _owned_targets(connection, ref, params,
+                                       select=lambda p: not p.exited or p._scope_stop_pending)
+
+    def kill():
+        results = [registry.kill_process(pid, source='process.stop', consume_output=False) for pid in targets]
+~~~~
+
+
+[Lines 368–369](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/gateway/session_ancillary.py#L368-L369):
+
+~~~~python
+        return sum(r.get('status') in {'killed', 'already_exited'} and 'scope_stop_failed' not in r
+                   for r in results)
+~~~~
+
+
+### R03 Session-scoped resource ownership
+
+File: [`gateway/session_ancillary.py`](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/gateway/session_ancillary.py).
+
+SHA-256: `dd64266347ef6ee8354e817b4a45551e89b768f1b569f874ca955678207ecccd`.
+
+
+[Lines 220–234](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/gateway/session_ancillary.py#L220-L234):
+
+~~~~python
+def _owned_targets(connection, ref, params, *, select):
+    """``(registry, ids)``: the session's own processes (what ``process.list`` shows) that
+    ``select(process)`` keeps; ``(None, [])`` when no process was ever registered here."""
+    authority = connection.authority
+    if ref.session_id not in authority.sessions:
+        raise RuntimeStoreError('not_found')
+    authorize(connection, ref, params, 'session:control')
+    live = authority.sessions[ref.session_id]
+    with live.event_stream.lock:
+        _require_current_route(authority, ref)
+        agent, records = _owner_objects(authority, ref)
+        module = sys.modules.get('tools.process_registry')
+        if module is None:
+            return None, []
+        registry = module.process_registry
+~~~~
+
+
+[Lines 235–239](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/gateway/session_ancillary.py#L235-L239):
+
+~~~~python
+        keys, owners = _ownership(authority, ref, agent, records)
+        with registry._lock:
+            return registry, [p.id for p in _owned_locked(registry, keys, owners) if select(p)]
+
+
+~~~~
+
+
+### R04 Queued cancellation and generation-fenced interrupt
+
+File: [`gateway/session_controls.py`](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/gateway/session_controls.py).
+
+SHA-256: `0def0802a475405223ac88f864ac29d5d8049dc870aa4d247787bf9f5cd680af`.
+
+
+[Lines 809–823](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/gateway/session_controls.py#L809-L823):
+
+~~~~python
+    async def cancel(self, ref, params):
+        admission_id = params.get('admission_id')
+        if (await self.authority.receipt(self.actor, ref, admission_id)).status != 'queued':
+            return asdict(await self.authority.cancel_queued(self.actor, ref, admission_id))  # started: unaffected
+        # Queued at this read, claimed by the drain before the cancel commit: Stop that exact claim (as
+        # API and ACP do) instead of refusing while the withdrawn prompt runs.
+        row = await self.authority.cancel_or_claimed(self.actor, ref, admission_id)
+        if row is not None:
+            await self.interrupt(ref, {'execution_generation': row['generation']})
+        return asdict(await self.authority.receipt(self.actor, ref, admission_id))
+
+    async def resolve_unknown(self, ref, params):
+        if set(params) != {'session_id', 'admission_id', 'execution_generation'}:
+            raise RuntimeStoreError('invalid_params')
+        return asdict(await self.authority.resolve_unknown(
+~~~~
+
+
+[Lines 824–830](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/gateway/session_controls.py#L824-L830):
+
+~~~~python
+            self.actor, ref, params['admission_id'], params['execution_generation']))
+
+    async def interrupt(self, ref, params):
+        from gateway.session_managed_worker import interrupt_managed
+        if interrupt_managed(self.authority, self.actor, ref, params.get('execution_generation')):
+            return asdict(self.authority._handle(ref))
+        return asdict(await self.authority.interrupt(self.actor, ref, params.get('execution_generation')))
+~~~~
+
+
+### R05 Memory and context construction
+
+File: [`gateway/session_execution.py`](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/gateway/session_execution.py).
+
+SHA-256: `7c1e294795003b329cc9639fe27e9b8b8fdfbd9b1e3106fcfbd6c8e06f670a60`.
+
+
+[Lines 174–188](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/gateway/session_execution.py#L174-L188):
+
+~~~~python
+            user_id=src.user_id, user_id_alt=src.user_id_alt, user_name=src.user_name,
+            chat_id=src.chat_id, chat_name=src.chat_name, chat_type=src.chat_type, thread_id=src.thread_id,
+            gateway_session_key=ctx.session_key,
+            session_db=getattr(runner._session_db, "_db", runner._session_db),
+            # Reload from disk — do not reuse the startup snapshot.
+            # See #60955.
+            fallback_model=None if api_runtime_locked() else self._runner._refresh_fallback_model(),
+            skip_context_files=skip_context_files,
+            # Keep the persona even with minimal context: soul identity is one small file.
+            load_soul_identity=not bool(policy and policy.ignore_rules),
+            skip_memory=bool(policy and policy.ignore_rules),
+            pass_session_id=bool(policy and policy.pass_session_id),
+            # A local session's frozen budget (`--run-budget` / its profile's agent.run_budget_seconds);
+            # None leaves the agent reading the owner's config, as before.
+            run_budget_seconds=policy.run_budget_seconds if policy else None,
+~~~~
+
+
+[Lines 189–189](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/gateway/session_execution.py#L189-L189):
+
+~~~~python
+        )
+~~~~
+
+
+### R06 Built-in memory when explicitly requested
+
+File: [`agent/agent_init.py`](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/agent/agent_init.py).
+
+SHA-256: `1e29225039534583ef0f3e7ae0d7a02b091e03792f8170c880ba83fff9c977cd`.
+
+
+[Lines 1310–1324](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/agent/agent_init.py#L1310-L1324):
+
+~~~~python
+        agent._memory_manager = None
+        return
+    # skip_memory skips the external *provider*; enabled_toolsets=["memory"] still gets the
+    # built-in store so the memory tool never sees store=None.
+    # Flush/background agents can still pass enabled_toolsets=["memory"] so the built-in file store exists
+    # and the memory tool does not fail with store=None (#65429). A toolset on disabled_toolsets is not a
+    # request: a caller that denylists memory while its default toolset still names it must not get
+    # MEMORY.md loaded by an enabled-only check. (Cron agents now run with skip_memory=False and take the
+    # normal path here.)
+    _memory_toolset_requested = (
+        "memory" in (agent.enabled_toolsets or [])
+        and "memory" not in (agent.disabled_toolsets or [])
+    )
+    if not skip_memory or _memory_toolset_requested:
+        # Memory is optional — don't break agent init
+~~~~
+
+
+[Lines 1325–1325](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/agent/agent_init.py#L1325-L1325):
+
+~~~~python
+        with suppress(Exception):
+~~~~
+
+
+### R07 Session creation fields
+
+File: [`tui_gateway/contracts/canonical_sessions.py`](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/tui_gateway/contracts/canonical_sessions.py).
+
+SHA-256: `e9f8e8b4e9b15d6b747a09a12acc297531b03f45772fd1b32b2028d312fde039`.
+
+
+[Lines 21–35](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/tui_gateway/contracts/canonical_sessions.py#L21-L35):
+
+~~~~python
+class CanonicalCreateParams(ProfileParams):
+    request_id: str | None = None
+    source: Literal['cli', 'tui', 'gui', 'acp', 'tool', 'oneshot'] = 'cli'
+    cwd: str | None = None
+    # The sessions-row ``cwd`` when it differs from the execution ``cwd`` (the classic CLI records
+    # main's stamp: the launch dir, ``""`` = none); ``cwd`` stays where the tools run.
+    row_cwd: str | None = None
+    model: str | None = None
+    provider: str | None = None
+    base_url: str | None = None
+    api_key: str | None = None
+    toolsets: list[str] | None = None
+    reasoning: str | None = None
+    max_turns: int | str | None = None
+    ignore_rules: bool = False
+~~~~
+
+
+[Lines 36–49](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/tui_gateway/contracts/canonical_sessions.py#L36-L49):
+
+~~~~python
+    yolo: bool = False
+    safe_mode: bool = False
+    ignore_user_config: bool = False
+    skills: list[str] | None = None
+    checkpoints: bool = False
+    accept_hooks: bool = False
+    pass_session_id: bool = False
+    editor: dict[str, JsonValue] | None = None
+    title: str | None = None
+    hidden: bool = False
+    follow_profile_config: bool | None = None
+    service_tier: str | None = None
+    cwd_explicit: bool | None = None
+    # Wall-clock budget per run in seconds (the classic CLI's `--run-budget`).
+~~~~
+
+
+### R08 Native import authority
+
+File: [`gateway/session_mutations.py`](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/gateway/session_mutations.py).
+
+SHA-256: `49fdba1016286553dcdc36b1a9256553c7bf5540ab336bffb9d230fddcefff2e`.
+
+
+[Lines 26–37](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/gateway/session_mutations.py#L26-L37):
+
+~~~~python
+def _authorize_import(authority, actor, ref, params):
+    """Import authorization; returns the imported session ids the write must claim."""
+    if actor.profile_id != authority.profile_id or ref.profile_id != authority.profile_id:
+        raise RuntimeStoreError('profile_mismatch')
+    if 'session:create' not in actor.capabilities:
+        raise RuntimeStoreError('permission_denied')
+    from hermes_state_mutations import validate_action
+    validate_action('import', params['payload'])
+    normalized, errors = authority.db._validate_import_payload(params['payload']['sessions'])
+    if errors:
+        raise RuntimeStoreError('invalid_params')
+    return tuple(item['session']['id'] for item in normalized)
+~~~~
+
+
+### R09 MCP deferred-tool invocation
+
+File: [`tools/tool_search.py`](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/tools/tool_search.py).
+
+SHA-256: `67b73b46a1a4e7d8aae04f2a171f044c737c7346aa813818a8850166d1a4478c`.
+
+
+[Lines 305–319](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/tools/tool_search.py#L305-L319):
+
+~~~~python
+        ),
+        _bridge_schema(
+            TOOL_CALL_NAME,
+            "Invoke deferred tools: `calls` is an array of {name, arguments}, one entry per "
+            "invocation (batch independent calls; results come back in order). Arguments match "
+            f"the schema from `{TOOL_DESCRIBE_NAME}`; approvals and hooks apply as usual.",
+            {
+                "calls": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {"type": "string", "description": "Exact tool name to invoke."},
+                            "arguments": {"type": "object", "description": "Arguments matching the tool schema."},
+                        },
+~~~~
+
+
+[Lines 320–325](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/tools/tool_search.py#L320-L325):
+
+~~~~python
+                        "required": ["name", "arguments"],
+                    },
+                    "description": "One or more independent deferred tool invocations.",
+                },
+            },
+            ["calls"],
+~~~~
+
+
+### R10 Native process termination windows
+
+File: [`tools/process_registry_termination.py`](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/tools/process_registry_termination.py).
+
+SHA-256: `55b13dc215a52958f0dd8a631c892a4240e4bc7548a6b94074aa833de3a38d04`.
+
+
+[Lines 33–45](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/tools/process_registry_termination.py#L33-L45):
+
+~~~~python
+    def _terminate_host_pid(cls, pid: int, expected_start: Optional[int] = None) -> None:
+        """Terminate a host-visible PID and its descendants.
+        ``expected_start`` (kernel start time at spawn) is re-validated first: a mismatch
+        or dead PID means the number was recycled onto a stranger and we refuse to touch
+        it — a leaked orphan beats tree-killing someone's browser. POSIX: snapshot descendants,
+        SIGTERM the parent alone so it can perform an orderly shutdown, then clean up snapshot
+        descendants that survive its grace window. Survivors are SIGKILLed after a second
+        ``terminal.daemon_term_grace_seconds`` window. Windows:
+        ``taskkill /T /F`` (psutil's stale PPID links miss orphans there); ``os.kill``
+        is the fallback."""
+        from tools.process_registry import _IS_WINDOWS
+
+        if expected_start is not None and not cls._host_pid_is_ours(pid, expected_start):
+~~~~
+
+
+[Lines 91–105](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/tools/process_registry_termination.py#L91-L105):
+
+~~~~python
+            while time.monotonic() < deadline and any(cls._proc_alive(p) for p in targets):
+                time.sleep(0.05)
+
+        # Preserve descendants during the parent's configured shutdown window.
+        _wait_for_exit([parent])
+
+        # The snapshot is an anti-orphan guarantee: only descendants still alive
+        # after the parent had its chance are asked to terminate themselves.
+        remaining = descendants if grace <= 0 else [
+            proc for proc in descendants if cls._proc_alive(proc)
+        ]
+        for proc in remaining:
+            with suppress(gone):
+                proc.terminate()
+
+~~~~
+
+
+[Lines 106–112](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/tools/process_registry_termination.py#L106-L112):
+
+~~~~python
+        # Preserve the existing SIGKILL escalation semantics for every owned
+        # process that remains after its SIGTERM grace window. The parent is
+        # included in case it ignored the first signal.
+        targets = [parent, *remaining]
+        # Escalate to SIGKILL for anything that ignored SIGTERM within the grace window.
+        # ``psutil.wait_procs``' gone/alive partition is deliberately NOT trusted: it
+        # reaps via ``Process.wait()`` and mis-partitions across zombie transitions in a
+~~~~
+
+
+[Lines 113–127](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/tools/process_registry_termination.py#L113-L127):
+
+~~~~python
+        # parent/child tree, leaving survivors un-killed. Re-probing every target is
+        # deterministic.
+        if grace <= 0:
+            return
+        _wait_for_exit(targets)
+        # A parent that ignored SIGTERM (the interactive ``bash -lic`` wrapper does) keeps
+        # running its script through both grace windows and can spawn children the first
+        # snapshot never saw. Re-snapshot while it is still alive: once it is SIGKILLed
+        # they reparent to init and nothing can find them again.
+        with suppress(gone):
+            if cls._proc_alive(parent):
+                known = {proc.pid for proc in targets}
+                targets.extend(p for p in parent.children(recursive=True) if p.pid not in known)
+        for proc in targets:
+            with suppress(gone):
+~~~~
+
+
+[Lines 128–139](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/tools/process_registry_termination.py#L128-L139):
+
+~~~~python
+                if cls._proc_alive(proc):
+                    proc.kill()  # SIGKILL on POSIX
+                    logger.info("Escalated to SIGKILL for pid %d (ignored SIGTERM within %.1fs grace)", proc.pid, grace)
+
+    @staticmethod
+    def _live_descendants(pid: int) -> list[int]:
+        """PIDs of living non-zombie descendants of host PID ``pid`` (best-effort)."""
+        try:
+            import psutil
+            children = psutil.Process(pid).children(recursive=True)
+        except Exception:
+            logger.debug("Could not list descendants of pid %s", pid, exc_info=True)
+~~~~
+
+
+### R11 Default termination grace
+
+File: [`tools/process_registry.py`](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/tools/process_registry.py).
+
+SHA-256: `491b6fe7110eeb480d07a501e5a4a3865debd411aefef3ab2ffa93967e2235f2`.
+
+
+[Lines 1061–1075](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/tools/process_registry.py#L1061-L1075):
+
+~~~~python
+    def _config_value(section: str, key: str, fallback):
+        """``config.yaml`` value for ``section.key``, else the DEFAULT_CONFIG value.
+        Raises if config is unreadable; callers wrap with their own hard fallback so
+        registry code paths never crash on a broken config file."""
+        from hermes_cli.config import DEFAULT_CONFIG, cfg_get, read_raw_config
+
+        val = cfg_get(read_raw_config(), section, key)
+        return DEFAULT_CONFIG[section][key] if val is None else val
+
+    @staticmethod
+    def _config_seconds(key: str, fallback: float) -> float:
+        """``terminal.<key>`` as a non-negative float (0 disables); *fallback* if unreadable."""
+        try:
+            return max(float(ProcessRegistry._config_value("terminal", key, fallback)), 0.0)
+        except Exception:
+~~~~
+
+
+[Lines 1076–1082](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/tools/process_registry.py#L1076-L1082):
+
+~~~~python
+            return fallback
+
+    @staticmethod
+    def _daemon_term_grace_seconds() -> float:
+        """Grace (s) between SIGTERM and escalated SIGKILL; 0 disables escalation."""
+        return ProcessRegistry._config_seconds("daemon_term_grace_seconds", 2.0)
+
+~~~~
+
+### R12 Native terminal working-directory argument
+
+File: [`tools/terminal_tool.py`](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/tools/terminal_tool.py).
+
+SHA-256: `1d52232332139e26d005bcf0c2e42cf8a3caea72a9d498a1abf0585739b12f28`.
+
+[Lines 1600–1607](https://github.com/NousResearch/hermes-agent/blob/bf0203a794a07aac3ff764972ab9087baa4e4f4e/tools/terminal_tool.py#L1600-L1607):
+
+~~~~python
+            "workdir": {
+                "type": "string",
+                "description": "Absolute working directory for this command only."
+            },
+            "pty": {
+                "type": "boolean",
+                "description": "With background=true: pseudo-terminal for interactive CLIs (REPLs, coding agents); drive it with process_manage write/submit. Local backend only.",
+                "default": False
+~~~~
+
 ## License
 
 Upstream excerpts are reproduced under the following upstream license.

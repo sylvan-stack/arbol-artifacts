@@ -20,3 +20,6 @@ topic before creating another document and list new topics in
   choices, current contract gaps and the evidence needed before writing specs.
 - [Hermes upstream source snapshot, 27 October 2026](hermes-agent-upstream-2026-10-27.md):
   the pinned excerpts on which that investigation rests.
+- [Hermes compatibility prototype](hermes-compatibility/README.md): executable
+  run-ownership, tool/image-history and memory-control probes against the
+  installed native release; runtime results stay in ignored local output.
