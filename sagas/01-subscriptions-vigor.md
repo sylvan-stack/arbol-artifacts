@@ -259,7 +259,12 @@ The record is for learning, not for display: it is what teaches the gate
 weights, checks predictions against later reports and lets a changed formula
 be replayed over history. Records live in the tables of each Root's own
 layout, written in the current Root's database and not copied when the Root
-changes (SGM-D29), never in a corpus or in git.
+changes (SGM-D29), never in a corpus or in git. In the Root's own layout they
+are the tables `vigor_profiles`, `vigor_reports` and `vigor_results`, appended
+after the backend's tables (RTM-1), which the Arbol process writes and never
+creates (BKD-0.6); it reads the reports through each Driver's `subscriptions
+list` (DRV-1.14, DRV-1.18) and records a report when its `fetchedAt` is newer
+than the last recorded one of its Subscription.
 
 A calculation record holds the Subscription, the moment, the report used with
 every window's used share, reset time, length and reached flag, which windows
@@ -276,6 +281,17 @@ as a share of the store's. Single observations are noisy, since other devices
 share the account; the learned weight is a calibrated estimate over many
 pairs, versioned like a profile of SGM-0, and replaces the placeholder only
 when approved (SGM-D17).
+
+<!-- sources:
+arbol:src/arbol_radar/records.py#Records
+arbol:src/arbol_radar/records.py#Records.record_report
+arbol:src/arbol_radar/records.py#Records.record_result
+arbol:src/arbol_radar/records.py#Records.replay
+arbol:src/arbol_radar/drivers.py#list_subscriptions
+arbol-root:roots/sapling/layout.sql
+arbol-root:roots/jensen/layout.sql
+arbol-root:scripts/vigor_tables.py#run
+-->
 
 ### Subscriptions Vigor on the Radar
 
@@ -356,11 +372,11 @@ belong to the Drivers' own specifications for the reports they deliver.
 | SGM-1.7 | After a reset passes without a newer report, predict a fresh window, mark the prediction on the window and the result, and drop every prediction when a report arrives | New | unit `radar.predict-fresh`, `radar.predict-two-resets`, `radar.predict-at-the-reset`, `radar.predict-reached-cleared`, `radar.predict-unknown-kept`, `radar.predict-newer-report` |
 | SGM-1.8 | Mark a result stale when its report is older than the Subscription's shortest window that is summed or can exhaust it, and show the report's age | New | unit `radar.stale-claude-five-hours`, `radar.stale-boundary`, `radar.stale-kimi-calls`, `radar.stale-rule-profile` |
 | SGM-1.9 | Show unknown with its reason, telling a missing field in an `ok` report apart from an unsupported family, a sign-in need, an unreachable vendor and no report yet; never substitute zero | New | unit `radar.unknown-missing-field`, `radar.unknown-below-zero`, `radar.unknown-unsupported`, `radar.unknown-outcome-message`, `radar.unknown-no-report`, `radar.unknown-never-zero`, `radar.unknown-no-summed-window`, `radar.unknown-exhausted`, `radar.outcome-not-ok` |
-| SGM-1.10 | Record every calculation with its inputs, weights, profile version, per-window losses, result, state and next change, and every report as it arrives with its run | New | unit |
+| SGM-1.10 | Record every calculation with its inputs, weights, profile version, per-window losses, result, state and next change, and every report as it arrives with its run | New | unit `radar.record-report-once`, `radar.record-profile`, `radar.record-result`, `radar.record-no-secret`, `radar.record-layout-incomplete`, `radar.layout-copy`, `radar.layout-database`; the Drivers' reports: `radar.drivers-list`, `radar.drivers-failure`, `radar.drivers-launchers`; the tables in both Roots' layouts: `root.vigor-layouts`, `root.vigor-rows`, `root.vigor-constraints`, `root.vigor-migration`, `root.vigor-preview`, `root.vigor-preservation`; installed `sapling.vigor-layouts` (SYL-297) |
 | SGM-1.11 | Learn gate weights from consecutive report pairs around one run, version them as a profile, and replace the placeholder only after calibration is approved | New | unit, scenario |
 | SGM-1.12 | Roll up per Subscription, sorted by Vigor, with unknown Subscriptions kept visible; the headline is the maximum named with its Subscription; never sum across Subscriptions | New | unit |
 | SGM-1.13 | Answer a read of every Subscription's current Vigor without contacting any vendor | New | unit |
-| SGM-1.14 | Recompute every three minutes while the backend runs, a profile value, and when a report arrives, a passed reset taking effect at the next tick; replay a changed formula over recorded reports | New | unit |
+| SGM-1.14 | Recompute every three minutes while the backend runs, a profile value, and when a report arrives, a passed reset taking effect at the next tick; replay a changed formula over recorded reports | New | unit; the replay: `radar.replay` (SYL-297) |
 | SGM-1.15 | Keep Vigor advisory: it never routes a Turn, changes a binding or spends allowance | New | unit `radar.advisory-imports`, `radar.advisory-pure` |
 
 ## Interface
@@ -395,6 +411,9 @@ arbol:src/arbol_radar/model.py#Report.from_contract
 arbol:src/arbol_radar/model.py#Profile
 arbol:src/arbol_radar/model.py#Result
 arbol:src/arbol_radar/model.py#Loss
+arbol:src/arbol_radar/records.py#loss_row
+arbol:src/arbol_radar/records.py#profile_row
+arbol:src/arbol_radar/drivers.py#Listed
 -->
 
 ## Known problems and calibration
