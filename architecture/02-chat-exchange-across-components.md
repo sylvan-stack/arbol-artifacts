@@ -28,6 +28,13 @@ Not covered: what a Trunk does inside an Exchange, which each Trunk's own specif
 
 A message that is not accepted starts nothing, and its [Draft](../GLOSSARY.md#draft) stays in the composer.
 
+<!-- sources:
+arbol-root:roots/sapling/drills/sapling_messages.py#real_messages
+arbol-root:roots/sapling/drills/sapling_messages.py#judge
+arbol-root:roots/sapling/drills/drill_support.py#Inspector
+arbol-root:tests/test_sapling_drills.py#Messages
+-->
+
 ### The folder of an Exchange
 
 ```text
@@ -113,6 +120,14 @@ A Trunk never needs the database in order to finish, and what an agent produced 
 
 A database that does not answer is not a normal state. For as long as it lasts, Arbol calls the Leather Bag's attention to it and names the cause ([ARC-D53](#decisions)).
 
+<!-- sources:
+arbol-root:roots/sapling/drills/sapling_outage.py#database_away
+arbol-root:roots/sapling/drills/sapling_outage.py#stopped
+arbol-root:roots/sapling/drills/sapling_outage.py#Installed
+arbol-root:roots/sapling/drills/sapling_outage.py#DirectoryWatch
+arbol-root:tests/test_sapling_drills.py#Outage
+-->
+
 ### A rate limit
 
 When the Driver's run ends with `rate_limited` ([DRV-4](../driver-contract/04-errors-and-limits.md)), the Trunk ends the Exchange as failed with that cause. It does not take another route by itself. Arbol offers to send again with what the Brain Recipe's logic picks next (ARC-0); Elma Chat, which uses no Brain Recipe, offers to send again with the route the Leather Bag picks ([BKD-2](../backend/02-elma-chat.md)).
@@ -133,7 +148,7 @@ The backend compatible with each Root reads that Root's database and Exchange fi
 
 | ID | The components together must… | Origin | Verified by |
 |---|---|---|---|
-| ARC-2.1 | count a message as accepted when the Trunk has its record in the folder and the message in the database, and before that start nothing and keep the Draft | Changed | drill |
+| ARC-2.1 | count a message as accepted when the Trunk has its record in the folder and the message in the database, and before that start nothing and keep the Draft | Changed | Root/Trunk acceptance refusal: installed drill `sapling.database-away` in roots/sapling/drills/database-away.py (SYL-186), private `sapling.restore`, `sapling.restore-failure`, `sapling.no-driver-run`. The real two-message `sapling.real-messages` check is scripted/private-tested but awaits successful replies after the normal Subscription’s rate limit. Keeping the Draft is backend BKD-0.10/BKD-0.12 and remains pending backend implementation; this drill does not close that UI part |
 | ARC-2.2 | keep the arriving answer in a file in the Exchange's folder, with a limit of size, and write no database row for a fragment | Changed | unit: `Events`, `Rows` and `WholeExchange.test_a_full_file_fails_the_exchange_and_keeps_only_rows_from_written_lines` in `trunks/trivial/tests/` of `arbol-trunk`; contract: R15 (SYL-178), with tool-output and whole-file limits |
 | ARC-2.3 | write each finished message or tool call to the database when it is finished | Changed | contract: RCT-3.2, scenario R1 of [RCT-4](../../arbol-root/contract/04-conformance.md) (SYL-171) |
 | ARC-2.4 | show a UI that is opened late, opened again or opened twice the whole answer so far | Changed | journey |
@@ -141,7 +156,7 @@ The backend compatible with each Root reads that Root's database and Exchange fi
 | ARC-2.6 | let a Trunk end its Exchange by itself, with no other component accepting or confirming the end | Changed | drill |
 | ARC-2.7 | show an Exchange whose process is gone as interrupted, settle it without a script that names it, keep what the agent had produced, and save a finished result that is still in its folder with its own final state | Changed | drill |
 | ARC-2.8 | keep a failed, stuck or cancelled Exchange to its own chat: other chats go on and new chats start, and after a failed or a cancelled Exchange the same chat takes a new message | Changed | drill |
-| ARC-2.9 | refuse a new message while the database cannot be reached, and lose no result of an Exchange in progress | Changed | drill |
+| ARC-2.9 | refuse a new message while the database cannot be reached, and lose no result of an Exchange in progress | Changed | new-message refusal: installed `sapling.database-away` (SYL-186), bounded database_unavailable, no Exchange folder/Driver run, unchanged rows and restored service. Losing no result of an Exchange already in progress remains the SYL-187 drill |
 | ARC-2.10 | end an Exchange as failed with the cause `rate_limited` when its run met a rate limit, and take no other route inside the Trunk | Changed | contract: R11 (SYL-177); unit: `WholeExchange.test_a_failed_run_keeps_the_drivers_error_whole` and `WholeExchange.test_a_refusal_can_be_the_only_event_and_no_other_route_is_tried` in `trunks/trivial/tests/test_run.py` of `arbol-trunk` |
 | ARC-2.11 | stop no Exchange when Arbol quits, every UI closes or the Arbol backend ends, and show on return what was produced meanwhile | Kept | drill |
 | ARC-2.12 | record each accepted Exchange's persistent Root identity and concrete Trunk component and Build, retain them through compatible updates and restarts, and leave the original process with its Root when another Root is created or history is migrated | New | Migration-copy part: `root.migration-whole`, `root.migration-open-fault`, `root.migration-snapshot-fault` preserve Trunk/Build rows, record the source Root and leave source data untouched (SYL-184). Existing contract R1/R16 and manager identity checks cover acceptance/listing; compatible updates/restarts and original process ownership across real migration remain SYL-187/SYL-189 and backend drills |
