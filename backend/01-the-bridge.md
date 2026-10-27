@@ -203,6 +203,8 @@ arbol:src/arbol_backend/answers.py#Answers.write
 arbol:src/arbol_backend/settling.py#Settling.work
 -->
 
+Database-outage attention, retained existing chat streams, fresh recovery snapshots and metadata-only Discovery follow BKD-D33. An optional explicit root on exchange.stop routes only to a catalogue Root's own manager; omission remains own-Root and no UUID lookup changes it. Foreign stop status never appears as this Root's chat content. Unknown Root/refusal codes remain safe errors with their source. New SQL chat subscriptions and Draft writes while away fail database_unavailable; existing chat subscriptions stay alive and receive no fabricated saved end. Recovery snapshots reset each subscription's replay generation.
+
 ### Attention
 
 An *attention item* is something that is not a normal state and that every window of the Root shows for as long as it lasts ([ARC-D53](../architecture/02-chat-exchange-across-components.md#decisions)). The topic `attention` gives them: a snapshot of every item open now, and then each item as it opens and as it closes.
@@ -354,7 +356,7 @@ The calls:
 | `subscriptions.check` | — | `{ subscriptions: Array<{ id: string; seq: number }> }`: the last `seq` sent on each | 30 s |
 | `chat.send` | `chat`, `exchange`, `message`, `route`, `workingFolder`, `draft?`: `{ revision, folder? }`, the Draft it was sent from, the chat's own or, for a new chat, the Draft of the repository folder | `Accepted` | 150 s |
 | `exchange.sendAgain` | `exchange` (the one replaced), `newExchange`, `route` | `Accepted` | 150 s |
-| `exchange.stop` | `exchange` | `{ ended: "completed" \| "failed" \| "cancelled" \| "interrupted" \| "saved" \| "none" }`, as `arbol-root stop` printed it (RTM-0) | 120 s |
+| `exchange.stop` | `exchange`, optional `root` (omitted: this backend's Root; explicit other Root validated through the catalogue) | `{ ended: "completed" \| "failed" \| "cancelled" \| "interrupted" \| "saved" \| "none" }`, as `arbol-root stop` printed it (RTM-0) | 120 s |
 | `exchange.answer` | `exchange`, `askId`, `answer` (DRV-3 `Answer`) | `{}` once the line is in `control` | 30 s |
 | `chat.rename` | `chat`, `title`: a string, or `null` to take the title away | `{ title: string \| null }` | 30 s |
 | `chat.reimport` | `chat`: canonical target copy UUID | `{ chat: resultChat, previousChat, action: "replaced" or "copied", fromRoot, fromChat }`; the global Root command owns the mutation | 120 s |
