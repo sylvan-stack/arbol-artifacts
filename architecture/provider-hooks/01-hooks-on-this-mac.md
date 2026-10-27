@@ -19,15 +19,15 @@ Not covered: what each tool does with a hook ([PHK-0](00-hooks-of-claude-code-an
 
 ### The hooks on this Mac
 
-As read on 19 October 2026:
+As qualified on 27 October 2026 after SYL-221 installation:
 
 | Hook | Owner | Tool and events | Kind | State |
 |---|---|---|---|---|
-| `~/.local/bin/arbol-agents hook claude-code` and `… hook codex` | Arbol, the [agent records](../../agent-records/README.md) ([AGR-1](../../agent-records/01-the-hooks.md)) | Claude Code: 17 events. Codex: all 12. Time limit 5 seconds, 3 for Codex's `SessionEnd` | Watching: keeps one record per session | Accepted; built and installed by the Beats SYL-201 and SYL-202 |
-| `~/.local/bin/agent-watch-hook` | The check from outside of the guide [Working in Sagas](../../../mycel/operations/sagas.md) | Claude Code and Codex: `PreToolUse` | Steering: blocks a tool call once (a steer) or until released (a stop) | Planned in the Beat SYL-221 |
+| `~/.local/bin/arbol-agents hook claude-code` and `… hook codex` | Arbol, the [agent records](../../agent-records/README.md) ([AGR-1](../../agent-records/01-the-hooks.md)) | Claude Code: 17 events. Codex: all 12. Time limit 5 seconds, 3 for Codex's `SessionEnd` | Watching: keeps one record per session | Accepted; implementation and installation remain SYL-201 and SYL-202 |
+| `~/.local/bin/agent-watch-hook` | The check from outside of the guide [Working in Sagas](../../../mycel/operations/sagas.md) | Claude Code and Codex: `PreToolUse` | Steering: blocks a tool call once (a steer) or until released (a stop) | Installed, activated and trusted by SYL-221; live private checks pass in Claude Code 2.1.304 and Codex CLI 0.162.1 |
 | Codex's `notify` | Computer Use | Codex, once per finished turn | Not a hook ([PHK-0](00-hooks-of-claude-code-and-codex.md#codexs-notify)) | Installed |
 
-Other programs may add hooks of their own to the same files. Arbol neither uses nor changes them, and depends on none. `~/.codex/hooks.json` does not exist yet: no hook runs in Codex today. No repository under `~/repos/sylvan-stack` or `~/Artifacts` has a settings file of its own with hooks.
+Other programs may add hooks of their own to the same files. Arbol neither uses nor changes them, and depends on none. `~/.codex/hooks.json` now holds the check’s PreToolUse group, with trust obtained from Codex itself. New Claude sessions load their group; the Codex desktop app must be reopened to load newly installed hooks. SYL-221 installs no repository-local hook settings.
 
 ### Watching and steering hooks
 
@@ -105,11 +105,11 @@ A steering hook's block is seen by the watching hooks only as a `PreToolUse` who
 
 | ID | Every hook of Arbol's and its installer must… | Origin | Verified by |
 |---|---|---|---|
-| PHK-1.1 | be installed only into `~/.claude/settings.json`, `~/.codex/hooks.json` and `hooks.state` of `~/.codex/config.toml`, as a group of its own per event, leaving every other entry and setting as it is | New | agent-watch part: private `Installation` in test_hook_install.py, including unrelated entries and failed trust; actual private app-server lifecycle in SYL-221. Normal installation and the agent-record hook remain pending |
+| PHK-1.1 | be installed only into `~/.claude/settings.json`, `~/.codex/hooks.json` and `hooks.state` of `~/.codex/config.toml`, as a group of its own per event, leaving every other entry and setting as it is | New | agent-watch part: private `Installation`, actual private lifecycle and normal installed proof in SYL-221 preserve unrelated JSON/TOML and the independent watcher LaunchAgent. Agent-record hook remains SYL-202 |
 | PHK-1.2 | run a command at a fixed path under `~/.local/bin`, without shell syntax, that never changes across Builds | New | agent-watch part: `Hook.test_wrapper_has_an_empty_fast_path_arbol_chat_bypass_and_silent_missing_runtime`, `Installation`; fixed foreground launcher source is agent_hook.launcher. Agent-record hook remains SYL-202 |
 | PHK-1.3 | write each file whole, keep a copy before its own first change and never overwrite it, refuse a file it cannot read, and add nothing twice | New | agent-watch part: `Installation` covers first backups/absence, idempotence, malformed/duplicate JSON, symlinks, disabled providers, changed launchers and preserved foreign trust indices; actual private lifecycle (SYL-221) |
-| PHK-1.4 | record Codex's trust only through `codex app-server`'s `hooks/list` and `config/batchWrite` | New | agent-watch part: `Protocol` in test_hook_codex.py plus actual private local Codex app-server install/reinstall/uninstall probe (SYL-221), with unrelated trust key/hash unchanged; normal install remains pending |
-| PHK-1.5 | on `uninstall`, remove exactly its own entries and their trust entries; on `status`, say for each tool whether each entry is in place and trusted, and the tool's version | New | agent-watch part: `Installation`/`Protocol` and actual private lifecycle prove exact uninstall and status; normal install/installed status remain pending SYL-221. Agent-record hook remains SYL-202 |
+| PHK-1.4 | record Codex's trust only through `codex app-server`'s `hooks/list` and `config/batchWrite` | New | agent-watch part: `Protocol`, actual private install/reinstall/uninstall and normal installed trust/status prove the exact provider-supplied hook key/hash; no provider hash is computed (SYL-221) |
+| PHK-1.5 | on `uninstall`, remove exactly its own entries and their trust entries; on `status`, say for each tool whether each entry is in place and trusted, and the tool's version | New | agent-watch part: `Installation`/`Protocol`, actual private exact uninstall and normal installed status with tool versions, trust and enabled state (SYL-221). Agent-record hook remains SYL-202 |
 | PHK-1.6 | as a watching hook, always exit with 0, print nothing and never run in the background | New | unit |
 | PHK-1.7 | as a steering hook, block only a `PreToolUse` and print only the message to the agent | New | agent-watch part: `Hook`, `Policy`, `Actions`; actual private Claude Code 2.1.304 and Codex CLI 0.162.1 live checks (SYL-221) prove one-use steer, persistent stop, successful retry, allowed wrap-up/release and no forbidden file. Agent-record watching hooks remain SYL-202 |
 | PHK-1.8 | take at most 50 milliseconds in the median on this Mac, keep no part of the conversation, start no lasting process and use no network | New | agent-watch part: `Hook.test_twenty_no_action_calls_stay_below_the_fifty_millisecond_median`, silent missing-script/runtime regression, fail-open/action-owner tests; explicit twenty-run speed check passes. The policy hook uses no network or lasting process; provider live qualification is separate |

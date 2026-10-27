@@ -21,10 +21,10 @@ The chapter was taken out of [AGR-1](../../agent-records/01-the-hooks.md) on 19 
 ```text
 ~/.claude/settings.json  (terminal claude, claude-zai, Claude desktop app)
   ├─ arbol-agents hook claude-code   the agent record, 17 events (AGR-1)     accepted, not installed (SYL-202)
-  └─ agent-watch-hook                steer or stop, PreToolUse (SYL-221)     planned
-~/.codex/hooks.json  (codex in a terminal, Codex app)                        does not exist yet
+  └─ agent-watch-hook                steer or stop, PreToolUse (SYL-221)     installed
+~/.codex/hooks.json  (codex in a terminal, Codex app)                        installed by SYL-221
   ├─ arbol-agents hook codex         the agent record, 12 events (AGR-1)     accepted, not installed (SYL-202)
-  └─ agent-watch-hook                steer or stop, PreToolUse (SYL-221)     planned
+  └─ agent-watch-hook                steer or stop, PreToolUse (SYL-221)     installed
 ~/.codex/config.toml  notify = […]   Computer Use, once per finished turn    installed; not a hook
 A Driver's run, in ~/.claude or ~/.codex (DRV-D42)                           runs every hook above
 ```
