@@ -262,16 +262,16 @@ When `window.webkit` is missing, the page uses that WebSocket instead. The relay
 | BKD-1.1 | carry only the messages `hello`, `call`, `reply`, `subscribe`, `event`, `unsubscribe`, `ended` and `lost`, each one JSON object, with the `id` of a call or a subscription chosen by the window and unique within its connection | Changed | unit `bridge.frames`, `bridge.calls`, `bridge.correlation`, `bridge.subscription-end`; Swift `lost` remains SYL-192 |
 | BKD-1.2 | travel from the page as a JSON string through `window.webkit.messageHandlers.arbol`, to the page through `window.arbolBridge.receive`, and between the Swift App and the backend as one line of UTF-8 JSON of at most 16 MiB on one connection to the Root's `backend.sock` for each window, a longer line closing the connection; and reach the backend only from the main frame of the page loaded from the renderer bundle | Changed | backend unit `bridge.frames`, `bridge.malformed`, `bridge.output-boundary`; Swift/main-frame relay remains SYL-192 |
 | BKD-1.3 | begin every connection with `hello`, giving the Bridge's version, the Root and the backend's Build; have a window refuse another version of the Bridge, and, when its page came from another Build, save its Drafts, wait for its sends and reload once for that Build | New | backend unit `bridge.frames`, `bridge.root-observation`; Build reload/version refusal in the window remains SYL-254/SYL-192 |
-| BKD-1.4 | answer every call exactly once, with `result` or with `error` of the form `{code, message}` and, for an error passed on, `source`; refuse with `invalid_input` an identifier that is not of its kind before a file is touched or a program started; have the window give each call a time limit and show a code it does not know with its message | Changed | backend unit `bridge.calls`, `bridge.errors`, `bridge.identifiers`, `bridge.correlation`, `bridge.root-get`; window deadlines/error display remain SYL-254 |
-| BKD-1.5 | register a subscription before reading its snapshot, begin it with the snapshot, number its events with `seq` from 1 without gaps, keep one subscription for each topic and params on a connection, end a connection's subscriptions with `slow_reader` above 64 MiB waiting; have the window start a subscription again when it finds a gap, when `subscriptions.check` shows it behind after being hidden, and when the database returns | Changed | backend unit `bridge.snapshot-race`, `bridge.subscription-end`, `bridge.topic-params`, `bridge.receipts`, `bridge.backlog-boundary`, `bridge.slow-reader`, `bridge.disconnect`; database-return snapshots remain SYL-252 and window recovery journey SYL-254/SYL-257 |
-| BKD-1.6 | give in a chat's snapshot the last 12 Exchanges, tool inputs and results cut to 8 KiB, the chat's Draft, settings and marks, and for an open Exchange only its message; send every line of `events.jsonl` of each Exchange in progress from the first one on, whole, unchanged and in order, a line larger than 16 MiB as `{n, tooLarge, bytes}`, then its saved rows once it is saved; and announce every Exchange of the chat whose folder appears | Changed | unit, journey |
+| BKD-1.4 | answer every call exactly once, with `result` or with `error` of the form `{code, message}` and, for an error passed on, `source`; refuse with `invalid_input` an identifier that is not of its kind before a file is touched or a program started; have the window give each call a time limit and show a code it does not know with its message | Changed | backend unit `bridge.calls`, `bridge.errors`, `bridge.identifiers`, `bridge.correlation`, `bridge.root-get`, `chats.identifier-catalogues`, `chats.input-types`, `chats.reimport-validation`, `chats.migration-errors`; window deadlines/error display remain SYL-254 |
+| BKD-1.5 | register a subscription before reading its snapshot, begin it with the snapshot, number its events with `seq` from 1 without gaps, keep one subscription for each topic and params on a connection, end a connection's subscriptions with `slow_reader` above 64 MiB waiting; have the window start a subscription again when it finds a gap, when `subscriptions.check` shows it behind after being hidden, and when the database returns | Changed | backend unit `bridge.snapshot-race`, `bridge.subscription-end`, `bridge.topic-params`, `bridge.receipts`, `bridge.backlog-boundary`, `bridge.slow-reader`, `bridge.disconnect`, `chats.view-generation`, `chats.view-isolation`, `chats.mutation-publication-order`; database-return snapshots remain SYL-252 and window recovery journey SYL-254/SYL-257 |
+| BKD-1.6 | give in a chat's snapshot the last 12 Exchanges, tool inputs and results cut to 8 KiB, the chat's Draft, settings and marks, and for an open Exchange only its message; send every line of `events.jsonl` of each Exchange in progress from the first one on, whole, unchanged and in order, a line larger than 16 MiB as `{n, tooLarge, bytes}`, then its saved rows once it is saved; and announce every Exchange of the chat whose folder appears | Changed | snapshot/read part: unit `chats.contract-assembly`, `chats.consistent-snapshot`, `chats.tool-cuts`, `chats.exchange-pages`, `chats.missing-chat`, `chats.own-root-provenance`, `chats.external-observation`, `chats.title-windows`; live lines/folder/saved lifecycle remains SYL-251 and the window journey SYL-257 |
 | BKD-1.7 | when the connection ends, have the window, told by `lost`, keep showing what it shows and the Drafts typed meanwhile, fail its calls under way with `disconnected`, and after the next `hello` start every subscription again and send its calls again as the table of repeating says, `chat.send` and `exchange.sendAgain` with the same Exchange identifier | Changed | drill |
 | BKD-1.8 | give every attention item open in the Root to every window that subscribes to `attention`, from its opening to its closing, and have a window show a kind it does not know with its message | New | unit, drill |
 | BKD-1.9 | change within a Root only by additions that older Builds can ignore, have the backend and the window ignore every field, event kind and attention kind they do not know, and have the backend reply to a method or topic it does not know with `unknown_method` | New | backend unit `bridge.compatibility`, `bridge.topic-params`, `bridge.calls`; window event/attention compatibility remains SYL-254 |
-| BKD-1.10 | carry no secret in either direction | Changed | backend unit `bridge.privacy`, `bridge.private-diagnostics`, `bridge.catalogue-cancel-privacy`, `backend.child-cancel-race`; Swift/window secrecy remains their checks |
+| BKD-1.10 | carry no secret in either direction | Changed | backend unit `bridge.privacy`, `bridge.private-diagnostics`, `bridge.catalogue-cancel-privacy`, `backend.child-cancel-race`, `chats.contract-assembly`, `chats.identifier-catalogues`, `chats.migration-errors`, `chats.paste-wire`; Swift/window secrecy remains their checks |
 | BKD-1.11 | keep the requests between the window and the Swift App, `app.pickFolder`, `app.openLink` and `app.takeOpen`, and the Swift App's message `open`, on a channel of their own, `arbolApp`, which never reaches the backend; keep a request to open a chat until a window takes it; and keep the web view of a window on its own page | New | unit; the Swift App's part with SYL-192 |
 | BKD-1.12 | before the Swift App exists, be relayed by the development relay of the `arbol` repository on the loopback address only, letting in only requests with its cookie, its `Host` and, for the WebSocket, its `Origin`, and logging no message | New | unit |
-| BKD-1.13 | carry optional own-Root migration metadata and the bounded chat.reimport call/result, pass structured errors without secrets, and never repeat that mutation automatically after an ambiguous reply | New | pending Backend Arc SYL-249/SYL-257; Root core is SYL-195 |
+| BKD-1.13 | carry optional own-Root migration metadata and the bounded chat.reimport call/result, pass structured errors without secrets, and never repeat that mutation automatically after an ambiguous reply | New | backend unit `chats.own-root-provenance`, `chats.provenance-layout`, `chats.migration-check-coalescing`, `chats.migration-unavailable`, `chats.reimport-results`, `chats.reimport-coalescing`, `chats.reimport-validation`, `chats.reimport-uncertain`, `chats.migration-errors`; Root core SYL-195/SYL-247; renderer action and UI uncertainty remain SYL-256/SYL-257 |
 
 ## Interface
 
@@ -345,6 +345,16 @@ The calls:
 | `accounts.check`, `accounts.usage`, `accounts.models` | `driver`, `subscription` | DRV-1's `Subscription`, `UsageReport`, `ModelCatalog` | 30 s |
 | `health.measure` | — | `Measurement` (BKD-0) | 30 s |
 
+<!-- sources:
+arbol:src/arbol_backend/chats.py#Chats.__init__
+arbol:src/arbol_backend/chats.py#page_params
+arbol:src/arbol_backend/chats.py#exchange_params
+arbol:src/arbol_backend/chats.py#tool_params
+arbol:src/arbol_backend/migration.py#Migration.reimport
+arbol:tests/backend/test_chat_wire.py#Windows
+arbol:tests/backend/test_chat_migration.py#Delegation
+-->
+
 The topics:
 
 | Topic | Params | Snapshot | Events after it |
@@ -354,6 +364,16 @@ The topics:
 | `attention` | — | `{ kind: "snapshot", items: AttentionItem[] }` | `{ kind: "opened", item }`, `{ kind: "closed", id }` |
 | `draft` | `chat`, or `folder` for the Draft of a new chat in that repository | `{ kind: "snapshot", draft: Draft \| null }` | `{ kind: "draft", draft: Draft \| null }`, null once the Draft is removed |
 | `root` | — | `{ kind: "snapshot", root: RootInfo }` | `{ kind: "root", root: RootInfo }` when the Root's state or display name changed |
+
+<!-- sources:
+arbol:src/arbol_backend/chat_data.py#Reader.chat
+arbol:src/arbol_backend/chat_data.py#Reader.summaries
+arbol:src/arbol_backend/chats.py#Chats.list_snapshot
+arbol:src/arbol_backend/chats.py#Chats.chat_changed
+arbol:src/arbol_backend/chats.py#Chats.list_changed
+arbol:src/arbol_backend/metadata.py#Attention
+arbol:src/arbol_backend/views.py#View.snapshot
+-->
 
 ```ts
 interface Accepted { accepted: true; duplicate: boolean; exchange: string; chat: string; number: number }

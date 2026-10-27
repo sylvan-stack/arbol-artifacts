@@ -96,6 +96,14 @@ For a Root with lineage and an installed supported layout, run its global `arbol
 
 `chat.reimport` validates the target copy UUID and calls `arbol-roots migrate <root> --chat <chat>`, at most 90 seconds. It changes no chat table itself, starts no second import of that copy while one is unresolved, and returns the result chat/action through BKD-1.13. Publish normal list/chat invalidations/snapshots after success, and preserve unrelated Drafts. A process still working after no_answer is tracked, not killed to guess rollback. Reimport is never automatically repeated after ambiguous/disconnected/no_answer: it may have made another copy; refresh the list and report that uncertainty. The copy’s current agent is never stopped or transferred.
 
+<!-- sources:
+arbol:src/arbol_backend/migration.py#Migration
+arbol:src/arbol_backend/migration.py#message
+arbol:src/arbol_backend/process.py#Programs.call
+arbol:tests/backend/test_chat_migration.py#Delegation
+arbol:src/arbol_roots/sql.py#migrate
+-->
+
 ### The database
 
 The backend connects to the Root's database as a Trunk does ([RCT-0](../../arbol-root/contract/00-overview.md#how-a-trunk-finds-its-roots-folder-and-database)): the address in `~/.arbol/database.json`; the password of the Keychain item with the service `com.sylvan-stack.arbol.database` and, as its account, the role the address names, read with `security find-generic-password -s com.sylvan-stack.arbol.database -a <role> -w` within 2 seconds, where the exit status 44 means that there is no such item and the backend connects without a password; and the database that `root.json` names (ARC-1). It talks to it with psycopg 3 at a version pinned in the Build, with its own plain SQL, and every call has a time limit of 5 seconds, to connect and for each statement (RCT-3). It never opens the database of another Root (ARC-1).
@@ -122,6 +130,16 @@ arbol:src/arbol_backend/database.py#Session.execute
 arbol:tests/test_backend.py#SQL
 -->
 
+<!-- sources:
+arbol:src/arbol_backend/chat_data.py#Reader
+arbol:src/arbol_backend/chat_data.py#preview
+arbol:src/arbol_backend/chat_data.py#metadata
+arbol:src/arbol_backend/metadata.py#inspect
+arbol:src/arbol_backend/metadata.py#Layout
+arbol:tests/backend/test_chat_reader.py#Chats
+arbol:tests/backend/test_chat_wire.py#Windows.test_backend_needs_no_schema_or_history_write_permission
+-->
+
 ### Chat read and update choices (BKD-D30)
 
 SYL-249 settles the following details before implementation. Reads of a chat, its older Exchanges or a page use one `REPEATABLE READ READ ONLY` transaction, including layout/provenance inspection and all dependent rows. Visible Exchanges exclude `replaced_by`; the visible count excludes them, while token totals include every saved agent/small run of the chat, including replaced runs whose tokens were spent. An open Exchange contributes only its position-zero user message from SQL; sub-agent tool calls (`parent_call_id` not null) are omitted. The newest 12 visible Exchanges are returned in ascending number order, with `more` for older visible ones; `beforeNumber` is exclusive, positive, and limits are integers, never booleans. A missing chat has null title, zero count/usage, no Exchanges and defaults for absent local rows; it is not created by a read or a setting call.
@@ -137,6 +155,15 @@ Required current columns are checked with the backend tables and sequence; an id
 For lineage with a supported layout, startup and each list opening start `arbol-roots migrate <ownRoot> --check` independently of serving local data. Concurrent requests join its existing attempt; there is no comparison timer. Both comparison and explicit reimport have a90-second deadline and remain tracked rather than killed on timeout, cancellation or shutdown because the command may be changing provenance/history. Reimport calls only `arbol-roots migrate <ownRoot> --chat <validatedTargetCopy>`; one unresolved attempt per copy is allowed, no automatic retry, and a late/ambiguous result remains uncertain. A successful validated command result maps `resultChat` to `chat`, its input copy to `previousChat`, and carries action/fromRoot/fromChat; it invalidates local subscribed views only after the command succeeds. Forwarded codes/source are preserved with a bounded plain message; credential-shaped diagnostics use a fixed safe fallback and no raw output is logged. Comparison failure opens migration_unavailable, a later success closes it, and failed or missing layout never clears stale marks by guesswork.
 
 `paste.save` requires at least10,000 valid Unicode characters. It creates an exclusive UUID-named UTF-8 file under the own Root's private0700 `pastes` directory with0600 permissions, uses directory descriptors and no-follow opens to refuse symlink/path substitution, writes exact bytes and removes only its own incomplete file on failure. Existing files are never overwritten or pruned.
+
+<!-- sources:
+arbol:src/arbol_backend/views.py#View
+arbol:src/arbol_backend/chats.py#Chats
+arbol:src/arbol_backend/chats.py#page_params
+arbol:src/arbol_backend/validation.py#Catalogues
+arbol:tests/backend/test_chat_foundation.py#Views
+arbol:tests/backend/test_chat_wire.py#Windows.test_late_older_write_reply_cannot_publish_stale_settings
+-->
 
 ### Settings
 
@@ -182,6 +209,19 @@ Observed in version 1: a model or an effort picked was saved for the chat at onc
 | `chat_marks` | Whether the Leather Bag marked it ongoing, and when it was archived. An archived chat leaves the latest chats; nothing archives or deletes a chat by itself |
 
 **A long paste.** Text of 10,000 characters or more pasted into a composer is saved by the backend as a file `pastes/<uuid>.txt` of the mode 0600 in the Root's folder, which the folder `pastes/` of the mode 0700 holds, and the window puts the file's path in the message in its place (`paste.save`, BKD-1), as version 1 did. The files stay with the Root, because the chat names them.
+
+<!-- sources:
+arbol:src/arbol_backend/chats.py#Chats.rename
+arbol:src/arbol_backend/chats.py#Chats.settings
+arbol:src/arbol_backend/chats.py#Chats.mark
+arbol:src/arbol_backend/chats.py#Chats.paste
+arbol:src/arbol_backend/chats.py#rename_params
+arbol:src/arbol_backend/chats.py#mark_params
+arbol:src/arbol_backend/chats.py#paste_params
+arbol:src/arbol_backend/validation.py#save_paste
+arbol:tests/backend/test_chat_foundation.py#Inputs
+arbol:tests/backend/test_chat_wire.py#Windows
+-->
 
 ### Sending a message
 
@@ -463,11 +503,11 @@ The database:
 
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
-| BKD-0.5 | read the chat tables directly with SQL of its own, as RCT-3 puts a chat together, leaving out every Exchange that was replaced, read a chat, a page of chats and a snapshot each in one `REPEATABLE READ READ ONLY` transaction and commit every other statement at once, and open no database but its Root's | Changed | unit |
-| BKD-0.6 | create, change and remove no table, column, index or check, use for its own rows only the tables of the Root's own layout that `arbol-roots` runs, and serve a Root whose database lacks them without Drafts and notes, with the attention item `layout_incomplete` | New | layout/migration part: `root.backend-layouts`, `root.backend-whole`, `root.backend-counter-rollback`, `root.backend-counter-lock`, `root.backend-empty-counter`, `root.backend-chat-state`; installed additive check `sapling.backend-layouts` (SYL-247). Backend missing-layout serving/read/write behavior remains SYL-249/250/252 |
+| BKD-0.5 | read the chat tables directly with SQL of its own, as RCT-3 puts a chat together, leaving out every Exchange that was replaced, read a chat, a page of chats and a snapshot each in one `REPEATABLE READ READ ONLY` transaction and commit every other statement at once, and open no database but its Root's | Changed | unit `chats.contract-assembly`, `chats.consistent-snapshot`, `chats.exchange-pages`, `chats.page-cursor`, `chats.own-root-provenance`, `chats.read-only-contract` |
+| BKD-0.6 | create, change and remove no table, column, index or check, use for its own rows only the tables of the Root's own layout that `arbol-roots` runs, and serve a Root whose database lacks them without Drafts and notes, with the attention item `layout_incomplete` | New | layout/migration: SYL-247 checks and installed `sapling.backend-layouts`; backend: unit `chats.no-ddl`, `chats.layout-inspection`, `chats.layout-degraded`, `chats.layout-wire`, `chats.provenance-layout`; Draft mutations and database recovery remain SYL-250/SYL-252 |
 | BKD-0.7 | have its own tables changed within a Root only by additions to the Root's own layout that the Root's older Builds can ignore (RTM-1.5), and its settings file only by fields older Builds can ignore | New | layout/migration part: `root.backend-layouts`, `root.backend-whole`, `root.backend-counter-rollback`, `root.backend-counter-lock`, `root.backend-empty-counter`, `root.backend-chat-state`; installed additive check `sapling.backend-layouts` (SYL-247). Backend missing-layout serving/read/write behavior remains SYL-249/250/252 |
-| BKD-0.8 | write in the chat tables only `chats.title`, when the Leather Bag gives a chat a title or takes it away: the text without spaces at its ends, NULL when nothing is left, and never a placeholder | Changed | unit |
-| BKD-0.9 | read the database password as a Trunk does, with the exit status 44 meaning no password, give every call to the database a time limit of 5 seconds, fail a statement that passes it with `timeout`, and serve each window and each call in a task of its own, so that no call holds up another | Changed | unit `backend.keychain`, `backend.database-identity`, `backend.connect-timeout`, `backend.database-deadlines`, `backend.database-away-start`; per-window Bridge dispatch remains SYL-248 |
+| BKD-0.8 | write in the chat tables only `chats.title`, when the Leather Bag gives a chat a title or takes it away: the text without spaces at its ends, NULL when nothing is left, and never a placeholder | Changed | unit `chats.title-windows`, `chats.read-only-contract`, `chats.input-types` |
+| BKD-0.9 | read the database password as a Trunk does, with the exit status 44 meaning no password, give every call to the database a time limit of 5 seconds, fail a statement that passes it with `timeout`, and serve each window and each call in a task of its own, so that no call holds up another | Changed | unit `backend.keychain`, `backend.database-identity`, `backend.connect-timeout`, `backend.database-deadlines`, `backend.database-away-start`, `bridge.calls`, `chats.observer-isolation`, `chats.migration-check-coalescing` |
 
 Drafts and sending:
 
@@ -478,9 +518,9 @@ Drafts and sending:
 | BKD-0.12 | count a message as accepted only on its acceptance line, pass every refusal on with its code and message and keep the Draft, take nothing, `no_answer` and `in_progress` as no refusal and run the same start again with a request file written anew 15 seconds after the previous attempt returned, never two at once, until 120 seconds after the first, and join a second call for an Exchange it is starting to the first | Changed | unit, drill |
 | BKD-0.13 | send a message again only with `--replaces`, for the Exchange the window names, with the replaced Exchange's working folder and the route the Leather Bag picks, and pass a refusal `cannot_replace` on | Changed | unit |
 | BKD-0.14 | keep a failed, stuck or cancelled Exchange to its own chat: serve every other chat meanwhile, and take a new message for the chat as soon as its Exchange has ended | Changed | drill |
-| BKD-0.31 | keep for each chat, in its tables `chat_settings` and `chat_marks`, the route and the working folder picked for its next message, whether it is ongoing and when it was archived, saving a choice at once, also while its agent works, and mark a chat ongoing whenever a message of it is accepted | Changed | unit |
-| BKD-0.32 | save a pasted text of 10,000 characters or more as a file of the mode 0600 in the folder `pastes/` of the Root's folder, and give the window its path | Kept | unit |
-| BKD-0.33 | compare migrated copies through the owning Root’s supported global command at startup/list opening, serve local data and expose truthful provenance/stale/failure state, and delegate one-chat reimport without direct cross-Root SQL or an automatic ambiguous retry | New | pending Backend Arc SYL-249/SYL-257; core SQL/CLI is SYL-195 |
+| BKD-0.31 | keep for each chat, in its tables `chat_settings` and `chat_marks`, the route and the working folder picked for its next message, whether it is ongoing and when it was archived, saving a choice at once, also while its agent works, and mark a chat ongoing whenever a message of it is accepted | Changed | choice/marks part: unit `chats.atomic-settings`, `chats.atomic-marks`, `chats.mutation-publication-order`, `chats.title-windows`, `chats.archive-list`, `chats.identifier-catalogues`, `chats.additive-driver-catalogue`; marking ongoing on acceptance remains SYL-250 |
+| BKD-0.32 | save a pasted text of 10,000 characters or more as a file of the mode 0600 in the folder `pastes/` of the Root's folder, and give the window its path | Kept | unit `chats.paste-private`, `chats.paste-paths`, `chats.paste-wire` |
+| BKD-0.33 | compare migrated copies through the owning Root’s supported global command at startup/list opening, serve local data and expose truthful provenance/stale/failure state, and delegate one-chat reimport without direct cross-Root SQL or an automatic ambiguous retry | New | backend unit `chats.migration-check-coalescing`, `chats.migration-unavailable`, `chats.own-root-provenance`, `chats.provenance-layout`, `chats.reimport-results`, `chats.reimport-local-input`, `chats.reimport-coalescing`, `chats.reimport-validation`, `chats.reimport-uncertain`, `chats.migration-errors`; core SQL/CLI SYL-195/SYL-247; UI drill remains SYL-257 |
 
 An Exchange in progress:
 

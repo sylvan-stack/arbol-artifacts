@@ -318,7 +318,7 @@ Arbol:
 | ARC-0.5 | consist of the Arbol Swift App, outside every Root, and one Arbol backend for each Root in use | Changed | journey |
 | ARC-0.6 | pass Bridge messages between a UI and its Root's backend without interpreting them in the Swift App, and never open the database from it | Changed | unit |
 | ARC-0.7 | keep the current Root's backend running as long as Arbol runs, start it again when it ends, and run listeners nowhere else | New | drill |
-| ARC-0.8 | read the chat tables directly, and write only its own tables and a chat's title when the Leather Bag changes it | Changed | unit |
+| ARC-0.8 | read the chat tables directly, and write only its own tables and a chat's title when the Leather Bag changes it | Changed | unit `chats.read-only-contract`, `chats.no-ddl`, `chats.title-windows`, `chats.atomic-settings`, `chats.atomic-marks` (SYL-249) |
 | ARC-0.9 | resolve a Brain Recipe, where one is used, to a route before an Exchange starts, and hand down that route and a small-call route and nothing else of the recipe | Changed | unit |
 | ARC-0.10 | call the Drivers directly for account commands and for nothing else, and show what the Driver's `sign-in` asks it to show | Changed | journey |
 | ARC-0.11 | keep its command line to sending a message with a chosen Build, Subscription or Brain Recipe, and let it work while no backend runs | Changed | unit |
