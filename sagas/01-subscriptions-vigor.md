@@ -21,10 +21,12 @@ unknown is always shown with its reason, that every calculation is logged, and
 the allowance source for Kimi Code, and that an exhausted Subscription shows
 zero with its recovery, and that the contract's window says what it counts.
 On 27 October they decided that a reached window of calls exhausts the
-Subscription like a token window, and that among longest windows of equal
-length the one scoped to the coding product is the store. The weight
-placeholder's value and the first operational profile remain proposals. The
-[Decisions](#decisions) table distinguishes them.
+Subscription like a token window, that among longest windows of equal
+length the one scoped to the coding product is the store, where the records
+live, that Vigor is recomputed every few minutes and no faster, and which
+window sets the stale rule. The weight placeholder's value and the first
+operational profile remain proposals. The [Decisions](#decisions) table
+distinguishes them.
 
 ## Scope
 
@@ -36,9 +38,10 @@ which is the [Driver Contract](../driver-contract/01-subscriptions.md) and each
 Driver's own specification; spend and cost; or [Burn](../GLOSSARY.md#burn),
 [Load](../GLOSSARY.md#load) and [Velocity](../GLOSSARY.md#velocity).
 
-The first version computes and logs Vigor and answers a read through
-`arbol-cli`. It displays nothing in [radar-stats](../../mycel/operations/radar-stats.md),
-which reads the Sagas corpus and runs without Arbol. Vigor recommends where to
+The first version computes and logs Vigor and answers a read through the
+`arbol` command line, the verb `arbol vigor` (SGM-D28). It displays nothing in
+[radar-stats](../../mycel/operations/radar-stats.md), which reads the Sagas
+corpus and runs without Arbol. Vigor recommends where to
 spend; it never routes a Turn or changes a Chat's Intelligence Provider.
 
 ## Behaviour
@@ -193,8 +196,9 @@ As in SGM-0, each input is `known`, `unknown` or `stale`; only `known` supplies
 a value, and a known absence never becomes zero.
 
 A result is **stale** when the report it rests on is older than the
-Subscription's shortest token window. It is still computed, from the report
-and the clock, and shown with the report's age, since the owner's other
+Subscription's shortest window that takes part in the sum or can exhaust it,
+five hours for every family today (SGM-D31). It is still computed, from the
+report and the clock, and shown with the report's age, since the owner's other
 devices may have spent allowance the report does not show.
 
 A result is **unknown** when the Subscription's Vigor cannot be computed, and
@@ -214,8 +218,9 @@ other a known gap:
 Every calculation is logged, and so is every report as it arrives (SGM-D22).
 The record is for learning, not for display: it is what teaches the gate
 weights, checks predictions against later reports and lets a changed formula
-be replayed over history. Records live in Arbol's database, never in a
-corpus or in git.
+be replayed over history. Records live in the tables of each Root's own
+layout, written in the current Root's database and not copied when the Root
+changes (SGM-D29), never in a corpus or in git.
 
 A calculation record holds the Subscription, the moment, the report used with
 every window's used share, reset time, length and reached flag, which windows
@@ -305,19 +310,19 @@ belong to the Drivers' own specifications for the reports they deliver.
 | SGM-1.5 | Treat a Subscription with a reached inference-gating window and no overage as exhausted, whatever that window counts, a tool-scoped window excepted; report its Vigor as 0 and carry its recovery: the next change's moment and value | New | unit |
 | SGM-1.6 | Carry with every result the earliest reset among the windows and the Vigor at that moment, computed on the predicted windows | New | unit |
 | SGM-1.7 | After a reset passes without a newer report, predict a fresh window, mark the prediction on the window and the result, and drop every prediction when a report arrives | New | unit |
-| SGM-1.8 | Mark a result stale when its report is older than the Subscription's shortest token window, and show the report's age | New | unit |
+| SGM-1.8 | Mark a result stale when its report is older than the Subscription's shortest window that is summed or can exhaust it, and show the report's age | New | unit |
 | SGM-1.9 | Show unknown with its reason, telling a missing field in an `ok` report apart from an unsupported family, a sign-in need, an unreachable vendor and no report yet; never substitute zero | New | unit |
 | SGM-1.10 | Record every calculation with its inputs, weights, profile version, per-window losses, result, state and next change, and every report as it arrives with its run | New | unit |
 | SGM-1.11 | Learn gate weights from consecutive report pairs around one run, version them as a profile, and replace the placeholder only after calibration is approved | New | unit, scenario |
 | SGM-1.12 | Roll up per Subscription, sorted by Vigor, with unknown Subscriptions kept visible; the headline is the maximum named with its Subscription; never sum across Subscriptions | New | unit |
 | SGM-1.13 | Answer a read of every Subscription's current Vigor without contacting any vendor | New | unit |
-| SGM-1.14 | Recompute when a report arrives, when a reset passes and when the clock advances by the display's interval; replay a changed formula over recorded reports | New | unit |
+| SGM-1.14 | Recompute every three minutes while the backend runs, a profile value, and when a report arrives, a passed reset taking effect at the next tick; replay a changed formula over recorded reports | New | unit |
 | SGM-1.15 | Keep Vigor advisory: it never routes a Turn, changes a binding or spends allowance | New | unit |
 
 ## Interface
 
-A logical data contract; storage, scheduling, the `arbol-cli` verb and UI
-layout are outside this draft. The usage report stays the Driver Contract's.
+A logical data contract; the options of `arbol vigor` and UI layout are
+outside this draft. The usage report stays the Driver Contract's.
 
 | Record | Required contents |
 |---|---|
@@ -370,8 +375,8 @@ applied to every gate of every family. Calibration needs report pairs with no
 other device active, which the record cannot tell apart on its own; the
 learning procedure must mark pairs it cannot trust.
 
-Logging every calculation at a one-minute display interval for four
-Subscriptions is a few thousand small rows a day. If that proves too much,
+Logging every calculation at the three-minute interval for four
+Subscriptions is about two thousand small rows a day. If that proves too much,
 the cheaper rule is to log when inputs change and at least hourly otherwise;
 that is a profile choice, not a reason to lose records.
 
@@ -396,3 +401,7 @@ profile for operation.
 | SGM-D25 | Which of several equal-length longest windows is the store? | The one scoped to the coding product the Subscription serves; the others of that length are shown and not summed | Decided by the owner, 2026-10-27: the window scoped to the coding product the Subscription serves is the store; the others of that length are shown and not summed |
 | SGM-D26 | Do model-specific weekly windows of the Anthropic family enter the report? | Add them scoped by model if the stream reports them; not verified | Settled by a probe, 2026-10-26 (SYL-290): the stream reports none; `unifiedWindows` carries `five_hour` and `seven_day` only, for the test account on the `max` plan with Claude Code 2.1.304, so nothing enters the report today. The proposal stands for a tool version that adds a model-scoped key: the Claude Driver maps it as a further `weekly` window with `tokens`. Record: `~/Artifacts/arbol-claude-driver/research/anthropic-rate-limit-windows-probe-2026-10-26.md` |
 | SGM-D27 | Which reached windows exhaust a Subscription? | Every window that gates inference, whatever it counts, so Kimi's five-hour window of calls exhausts it; a window scoped to one tool, such as z.ai's MCP count, does not | Decided by the owner, 2026-10-27: a reached window of calls that gates inference exhausts the Subscription; a window scoped to one tool does not |
+| SGM-D28 | How is Vigor read in the first version? | The verb `arbol vigor` of the `arbol` command line, with `--refresh` for the manual refresh; `arbol-cli` is version 1's client and does not exist in Arbol 2 | Decided 2026-10-27; the owner left the choice to the agent |
+| SGM-D29 | Where do the report and calculation records live? | In the tables of each Root's own layout, written by Arbol in the current Root's database and not copied when the Root changes, so a Root change starts the history afresh | Decided by the owner, 2026-10-27 |
+| SGM-D30 | How often is Vigor recomputed while nothing displays it? | Every three minutes while the backend runs, a profile value inside the owner's two to three minutes, and when a report arrives; a passed reset takes effect at the next tick; no faster schedule and no recompute on a plain read | Decided by the owner, 2026-10-27: once in two to three minutes and nothing more; Vigor is not a metric to track every ten seconds |
+| SGM-D31 | Which window sets the stale rule? | The Subscription's shortest window that takes part in the sum or can exhaust it, five hours for every family today; Kimi's token and credit windows alone would make its report stale only after a month | Decided by the owner, 2026-10-27 |
