@@ -194,7 +194,7 @@ Arbol:
 | ARC-3.10 | never count time during which the Mac slept towards any limit of this specification | New | Trunk moved-clock unit: StoppingTheRun.test_a_driver_still_alive_16_seconds_after_its_stop_line_is_killed_then_and_not_later (SYL-173), Watching.test_only_sixty_awake_seconds_without_a_raise_trigger_the_end and test_a_wall_clock_jump_does_not_count_as_awake_time (SYL-176), SilentRuns.test_sixteen_minutes_without_a_first_event_uses_the_awake_clock_and_the_scaled_duration and test_a_mac_asleep_for_an_hour_does_not_add_an_hour_to_silence (SYL-178), TimeScaledWaits; Root manager unit `root.stop-awake-clock`, `root.stop-complete-clock` (SYL-183). Actual Mac-sleep drill and backend looks remain pending implementation/qualification under accepted BKD-0.19 |
 | ARC-3.11 | end a stuck Exchange by force without asking, and say in its chat that it was ended because it was stuck | Changed | drill |
 | ARC-3.12 | never end an Exchange because it waits for an answer or for a command the agent runs, and show what it waits for and for how long | Changed | journey |
-| ARC-3.13 | show "stopping" from a stop request until the Exchange has ended, and then its true final state | Changed | journey |
+| ARC-3.13 | show "stopping" from a stop request until the Exchange has ended, and then its true final state | Changed | Backend `stop.shared`, `stop.confirmed-end`, `stop.no-fabricated-save`, `stop.forwarding`, `live.saved` (SYL-251); actual window presentation/journey remains SYL-257. Automatic stuck detection is separate SYL-252. |
 | ARC-3.14 | keep what the agent had produced when an Exchange is ended by force, and let its chat take a new message afterwards | Kept | drill |
 
 ## Interface
@@ -235,6 +235,12 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 - `arbol_deprecated_v1:product-spec/03-turn-execution.md#Known problems and lessons`
 - `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#2. One turn's failure could block everything else`
 - `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#Product guarantees the rewrite must keep`
+
+<!-- sources:
+arbol:src/arbol_backend/controls.py#Controls.run
+arbol:src/arbol_backend/live.py#Live.step
+arbol:tests/backend/test_controls.py#Stopping
+-->
 
 ## Decisions
 

@@ -303,6 +303,36 @@ arbol:src/arbol_backend/dispatch.py#Dispatch.again_params
 arbol:tests/backend/test_dispatch.py#Sending.test_send_again_uses_old_chat_folder_no_message_and_passes_cannot_replace
 -->
 
+<!-- sources:
+arbol:src/arbol_backend/event_file.py#Scanner
+arbol:src/arbol_backend/event_file.py#Envelope
+arbol:src/arbol_backend/event_file.py#completed
+arbol:src/arbol_backend/event_file.py#superseded
+arbol:src/arbol_backend/exchange_files.py#Folders
+arbol:src/arbol_backend/exchange_files.py#Record.status
+arbol:src/arbol_backend/exchange_files.py#processes
+arbol:src/arbol_backend/exchange_files.py#living
+arbol:src/arbol_backend/live.py#Live
+arbol:src/arbol_backend/live.py#Live.step
+arbol:src/arbol_backend/live.py#Live.stream
+arbol:src/arbol_backend/live.py#Lines
+arbol:src/arbol_backend/controls.py#Controls
+arbol:src/arbol_backend/controls.py#Controls.run
+arbol:src/arbol_backend/answers.py#Answers
+arbol:src/arbol_backend/answers.py#answer_params
+arbol:src/arbol_backend/answers.py#current
+arbol:src/arbol_backend/answers.py#validate
+arbol:src/arbol_backend/settling.py#Settling
+arbol:src/arbol_backend/settling.py#listing
+arbol:tests/backend/live_support.py#Trunk
+arbol:tests/backend/test_event_file.py#Events
+arbol:tests/backend/test_exchange_files.py#Files
+arbol:tests/backend/test_live.py#Windows
+arbol:tests/backend/test_controls.py#Stopping
+arbol:tests/backend/test_answers.py#Answering
+arbol:tests/backend/test_settling.py#Settles
+-->
+
 ### Live Exchange and control choices (BKD-D32)
 
 SYL-251 settles these details before implementation. Folder readers open only their own Root's exchanges directory, real canonical UUID directories, and the published record/events/control files through no-follow descriptors. Directories/files must be private owner-owned directories/regular files, not symlinks, devices, FIFOs or extra hard links. Missing/dot folders are skipped; unreadable records never become guessed dead or saved Exchanges. Records are bounded to1MiB and must have matching Root/Exchange, canonical chat, contract1, valid immutable process/trunk/build identity, absolute timestamps and a nonnegative heartbeat. Unknown fields are ignored and unknown waiting/end-state strings are preserved. Only published fields are projected, with the existing safe diagnostic boundary. The process reader runs only /bin/ps, with PATH=/usr/bin:/bin, LANG=C, LC_ALL=C and TZ=UTC, at most5 seconds; missing PID means gone, another failure means unknown/unreadable. Its UTC start must match within two seconds inclusive. Folder names/process observations use one shared750ms cycle per Root while chat windows follow it; a100ms follower cycle leaves room for healthy I/O within the one-second appearance and250ms file-delivery bounds. Line batches remain at least50ms apart. No backend process check signals a Trunk.
@@ -593,10 +623,10 @@ An Exchange in progress:
 
 | ID | The Arbol backend must… | Origin | Verified by |
 |---|---|---|---|
-| BKD-0.15 | read an Exchange's row first and, while it is open, only its message from the tables and its answer from its folder, as RCT-1.9 and RCT-1.10 say: `events.jsonl` from its first line and each new whole line at least every 250 milliseconds while a window follows it, passed on at most every 50 milliseconds, leaving out when it catches up the pieces of a block or a tool call that is whole in the file, and the row again once the folder is gone; and while a window follows the Root's chats, read the names and records in `exchanges/` and check their processes once a second | Changed | unit |
-| BKD-0.16 | on a stop, mark the Exchange `stopping` from the request until it has ended, run `arbol-root --root <root> stop <exchange>` once however many windows ask, waiting for a start of it under way to return, and reply with the `ended` it printed | Changed | unit, drill |
-| BKD-0.17 | write the Leather Bag's answer to the agent's question only after checking it against the question's form, as one whole line of at most 64 KiB with one write on `control` opened for appending, never create the file, wait up to 15 seconds while only `.<exchange>.new` exists, and refuse with `ended` when neither is there | Changed | unit |
-| BKD-0.18 | run `arbol-root --root <root> settle` when it starts, when it sees the database return and after a listing that shows an Exchange `unaccepted`, `unsaved` or `interrupted`, its own Root's or another's, one at a time for each Root and none while the database is unreachable, and show such an Exchange as `gone` until it is settled | Changed | unit, drill |
+| BKD-0.15 | read an Exchange's row first and, while it is open, only its message from the tables and its answer from its folder, as RCT-1.9 and RCT-1.10 say: `events.jsonl` from its first line and each new whole line at least every 250 milliseconds while a window follows it, passed on at most every 50 milliseconds, leaving out when it catches up the pieces of a block or a tool call that is whole in the file, and the row again once the folder is gone; and while a window follows the Root's chats, read the names and records in `exchanges/` and check their processes once a second | Changed | unit `live.row-first`, `live.old-ended-folder`, `live.windows`, `live.replay`, `live.compaction`, `live.cutoff`, `live.partial-line`, `live.forward-compatibility`, `live.malformed-lines`, `live.oversized-line`, `live.bounded-file-memory`, `live.streaming-metadata`, `live.oversized-wire`, `live.batch-boundary`, `live.poll-latency`, `live.snapshot-generation`, `live.truncated-file`, `live.outside-folder`, `live.shared-process-observation`, `live.saved`, `live.private-files`, `live.records`, `live.record-validation`, `live.record-privacy`, `live.process-identity`, `live.process-environment`, `live.process-failure`, `live.slow-window-isolation` (SYL-251); real/UI journey SYL-257 |
+| BKD-0.16 | on a stop, mark the Exchange `stopping` from the request until it has ended, run `arbol-root --root <root> stop <exchange>` once however many windows ask, waiting for a start of it under way to return, and reply with the `ended` it printed | Changed | unit `stop.shared`, `stop.confirmed-end`, `stop.no-fabricated-save`, `stop.wait-start`, `stop.production-limits`, `stop.start-wait-timeout`, `stop.shielded`, `stop.retained-manager`, `stop.repeat`, `stop.forwarding`, `stop.safe-errors`, `stop.result-identity`, `stop.shutdown` (SYL-251); actual Root/Trunk/window journey SYL-257 |
+| BKD-0.17 | write the Leather Bag's answer to the agent's question only after checking it against the question's form, as one whole line of at most 64 KiB with one write on `control` opened for appending, never create the file, wait up to 15 seconds while only `.<exchange>.new` exists, and refuse with `ended` when neither is there | Changed | unit `answers.form`, `answers.one-write`, `answers.no-free-text`, `answers.invalid-form`, `answers.current-ask`, `answers.observed-delivery`, `answers.nested-asks`, `answers.publication`, `answers.ended`, `answers.byte-limit`, `answers.short-write`, `answers.syntax-before-effects`, `answers.file-identity`, `answers.no-create` (SYL-251); actual Root/Trunk/window journey SYL-257 |
+| BKD-0.18 | run `arbol-root --root <root> settle` when it starts, when it sees the database return and after a listing that shows an Exchange `unaccepted`, `unsaved` or `interrupted`, its own Root's or another's, one at a time for each Root and none while the database is unreachable, and show such an Exchange as `gone` until it is settled | Changed | own-Root unit `settle.startup`, `settle.coalescing`, `settle.production-limit`, `settle.database-gate`, `settle.no-timer-retry`, `settle.retained-manager`, `settle.no-overlap`, `settle.listing-reasons`, `settle.own-root`, `settle.shared-listing`, `settle.dead-observation`, `settle.gone-until-saved`, `settle.failure`, `settle.shutdown` (SYL-251); database-return/cross-Root recovery remains SYL-252, actual journey SYL-257 |
 
 Stuck Exchanges:
 
