@@ -18,7 +18,7 @@ The owner asked for the metric on 26 October 2026 and settled, in the session
 that drafted this chapter, where it is computed, that shorter windows count
 with less weight, the pace assumption, that the Radar owns the rollup, that
 unknown is always shown with its reason, that every calculation is logged, and
-the allowance source for Kimi Code, and that a blocked Subscription shows
+the allowance source for Kimi Code, and that an exhausted Subscription shows
 zero with its recovery, and that the contract's window says what it counts.
 The weight placeholder's value and the first operational profile remain
 proposals. The [Decisions](#decisions) table distinguishes them.
@@ -26,7 +26,7 @@ proposals. The [Decisions](#decisions) table distinguishes them.
 ## Scope
 
 This chapter owns the definition of a window's loss, a Subscription's Vigor,
-the blocked state and the next change, prediction after a reset, stale and
+the exhausted state and the next change, prediction after a reset, stale and
 unknown inputs, the calculation record, the Radar rollup, and what each Driver
 must deliver for the calculation. It does not own how a Driver fetches usage,
 which is the [Driver Contract](../driver-contract/01-subscriptions.md) and each
@@ -103,10 +103,10 @@ be spent and, when reached, stops spending altogether until it resets.
 Only windows whose resource is tokens or credits take part in the sum. A
 window that counts something else, such as Kimi's five-hour window of calls
 or z.ai's monthly MCP calls, is shown but not summed (SGM-D24); it can still
-block, see below. When several windows share the longest length, as Kimi's
-monthly code share and monthly total do, the store is the one scoped to the
-coding product the Subscription serves; the others of that length are shown
-and not summed (SGM-D25).
+exhaust the Subscription, see below. When several windows share the longest
+length, as Kimi's monthly code share and monthly total do, the store is the
+one scoped to the coding product the Subscription serves; the others of that
+length are shown and not summed (SGM-D25).
 
 ### The loss of one window
 
@@ -147,30 +147,30 @@ chosen because Anthropic's published plan limits put a week at roughly ten
 five-hour windows; it is a placeholder, not a measured value (SGM-D15).
 
 Vigor is near 1 only when most of the store is unspent and its reset is near.
-It is 0 when the reset is far, when the store is mostly spent, or when a gate
-blocks spending right now.
+It is 0 when the reset is far, when the store is mostly spent, or when the
+Subscription is exhausted.
 
-### Blocked Subscriptions and the next change
+### Exhausted Subscriptions and the next change
 
-A Subscription is **blocked** while any window that gates inference is
+A Subscription is **exhausted** while any window that gates inference is
 reached, whatever it counts: the vendor refuses every request until that
-window resets, and Kimi's five-hour window of calls blocks exactly as a token
-window does. A window scoped to one tool, such as z.ai's MCP count, gates only
-that tool and does not block (SGM-D27). The report marks a reached window with
-`limitReached`. A reached window with paid overage switched on
-is not a block, since the account keeps spending; the Claude report says so in
-`extra.isUsingOverage`, and the Codex report keeps the vendor's related
-fields in `extra`. A reached window's own loss is zero in either case, because
-nothing is left in it.
+window resets, and Kimi's five-hour window of calls exhausts it exactly as a
+token window does. A window scoped to one tool, such as z.ai's MCP count,
+gates only that tool and does not exhaust the Subscription (SGM-D27). The
+report marks a reached window with `limitReached`. A reached window with paid
+overage switched on does not exhaust the Subscription, since the account keeps
+spending; the Claude report says so in `extra.isUsingOverage`, and the Codex
+report keeps the vendor's related fields in `extra`. A reached window's own
+loss is zero in either case, because nothing is left in it.
 
 Vigor measures the urge to use the Subscription now. While it cannot be used,
-that urge is zero. A blocked Subscription therefore shows `0`, with its
-**recovery** beside it, the next change: the earliest reset among the windows, and the Vigor
-the Subscription will have at that moment, computed on the predicted windows
-below. "0 now, 0.39 at 13:20" tells the Radar when a blocked Subscription is
-worth using again (SGM-D16).
+that urge is zero. An exhausted Subscription therefore shows `0`, with its
+**recovery** beside it, the next change: the earliest reset among the windows,
+and the Vigor the Subscription will have at that moment, computed on the
+predicted windows below. "0 now, 0.39 at 13:20" tells the Radar when an
+exhausted Subscription is worth using again (SGM-D16).
 
-Every result carries its next change, blocked or not, since Vigor also jumps
+Every result carries its next change, exhausted or not, since Vigor also jumps
 when a store resets and its unspent share is lost.
 
 ### After a reset without a report
@@ -279,8 +279,8 @@ Kimi Code share used, its five-hour window 70 % used with an hour to go:
 
 Vigor `0.47`: most of a month's coding allowance expires in four days. The
 five-hour window counts calls, so it is shown and not summed, though reaching
-it would block. The month's total across all products has the same length
-and is shown, not summed.
+it would exhaust the Subscription. The month's total across all products has
+the same length and is shown, not summed.
 
 The Radar then reads, highest first: Kimi Code `0.47`, Claude `0.37`, Codex
 `0.16`. With the five-hour window of the Claude account reached instead:
@@ -299,7 +299,7 @@ belong to the Drivers' own specifications for the reports they deliver.
 | SGM-1.2 | Take into the sum only windows whose resource is tokens or credits and whose used share, length and reset time are known; show the others | New | unit |
 | SGM-1.3 | Compute each window's loss as the share expiring unused at the window's even pace, never below zero | New | unit |
 | SGM-1.4 | Combine losses as the sum capped at 1, with the longest window weighted 1 and each shorter window by its share of the longest window's allowance, using the placeholder until a learned weight is approved | New | unit |
-| SGM-1.5 | Treat a Subscription with a reached inference-gating window and no overage as blocked, whatever that window counts, a tool-scoped window excepted; report its Vigor as 0 and carry its recovery: the next change's moment and value | New | unit |
+| SGM-1.5 | Treat a Subscription with a reached inference-gating window and no overage as exhausted, whatever that window counts, a tool-scoped window excepted; report its Vigor as 0 and carry its recovery: the next change's moment and value | New | unit |
 | SGM-1.6 | Carry with every result the earliest reset among the windows and the Vigor at that moment, computed on the predicted windows | New | unit |
 | SGM-1.7 | After a reset passes without a newer report, predict a fresh window, mark the prediction on the window and the result, and drop every prediction when a report arrives | New | unit |
 | SGM-1.8 | Mark a result stale when its report is older than the Subscription's shortest token window, and show the report's age | New | unit |
@@ -321,7 +321,7 @@ layout are outside this draft. The usage report stays the Driver Contract's.
 | Window | Kind, label, resource, used share, reset time, length, reached flag, predicted flag, source report id |
 | Report | Subscription, outcome, fetched time, windows as delivered, `extra` as delivered, arrival time, producing run if any |
 | Profile | Version, approval state, pace assumption, gate weights per family and window with placeholder or learned marking, stale rule |
-| Result | Subscription, moment, report id, profile version, per-window loss and contribution, Vigor or null, blocked, stale with report age, unknown with reason, next change moment and value |
+| Result | Subscription, moment, report id, profile version, per-window loss and contribution, Vigor or null, exhausted, stale with report age, unknown with reason, next change moment and value |
 | Rollup | Moment, every Subscription's result, headline value and Subscription |
 
 Reject a weight outside `[0, 1]`, a store weight other than 1, a nonpositive
@@ -381,7 +381,7 @@ profile for operation.
 |---|---|---|---|
 | SGM-D14 | Where is Vigor computed? | In Arbol's Radar layer, from the Driver Contract's usage report and the clock; Drivers deliver complete windows and never a Vigor | Decided by the owner, 2026-10-26 |
 | SGM-D15 | Do shorter windows count, and how much? | Yes: every token window's loss counts, weighted by its share of the longest window's allowance; placeholder `0.1` for every gate until a learned weight is approved | Decided by the owner, 2026-10-26; the placeholder's value is a placeholder, calibration open |
-| SGM-D16 | What does a blocked Subscription show? | `0`, with its recovery beside it: the moment the reached window resets and the Vigor at that moment | Decided by the owner, 2026-10-26: zero, with the information when it recovers |
+| SGM-D16 | What does an exhausted Subscription show? | `0`, with its recovery beside it: the moment the reached window resets and the Vigor at that moment | Decided by the owner, 2026-10-26: zero, with the information when it recovers |
 | SGM-D17 | What pace does the loss assume? | The window's even pace first; learn the gate-to-store ratio from recorded report pairs as the second step, for the weight and for an "unavoidable even at full tilt" figure | Decided by the owner, 2026-10-26 |
 | SGM-D18 | Who owns the cross-Subscription view, and what is its headline? | The Radar; the headline is the highest Vigor named with its Subscription, the list beneath; never a sum. The first version computes, logs and answers a read, and displays nothing in radar-stats | Decided by the owner, 2026-10-26 |
 | SGM-D19 | How is unknown shown? | Always visibly with its reason; a missing field is named as a Driver defect, an unsupported family as a known gap | Decided by the owner, 2026-10-26 |
@@ -392,4 +392,4 @@ profile for operation.
 | SGM-D24 | Which windows take part, and how does the calculation know? | Only tokens and credits; `resource` on the Driver Contract's window says which. Until every Driver reports it, exclude the Claude Driver's z.ai window labelled `MCP` and treat the rest as tokens | Decided by the owner, 2026-10-26: added to the contract as DRV-1.27 and DRV-D46; reported since Claude Build `d`, Codex Build `9` (absent, no unit) and Pi Build `6` (SYL-290 to SYL-292, 27 October 2026) |
 | SGM-D25 | Which of several equal-length longest windows is the store? | The one scoped to the coding product the Subscription serves; the others of that length are shown and not summed | Open; proposed default in use |
 | SGM-D26 | Do model-specific weekly windows of the Anthropic family enter the report? | Add them scoped by model if the stream reports them; not verified | Settled by a probe, 2026-10-26 (SYL-290): the stream reports none; `unifiedWindows` carries `five_hour` and `seven_day` only, for the test account on the `max` plan with Claude Code 2.1.304, so nothing enters the report today. The proposal stands for a tool version that adds a model-scoped key: the Claude Driver maps it as a further `weekly` window with `tokens`. Record: `~/Artifacts/arbol-claude-driver/research/anthropic-rate-limit-windows-probe-2026-10-26.md` |
-| SGM-D27 | Which reached windows block a Subscription? | Every window that gates inference, whatever it counts, so Kimi's five-hour window of calls blocks; a window scoped to one tool, such as z.ai's MCP count, does not | Open; proposed default in use |
+| SGM-D27 | Which reached windows exhaust a Subscription? | Every window that gates inference, whatever it counts, so Kimi's five-hour window of calls exhausts it; a window scoped to one tool, such as z.ai's MCP count, does not | Open; proposed default in use |
