@@ -398,6 +398,20 @@ arbol:tests/test_roots_sql.py
 arbol:scripts/roots_sql_drill.py#drill
 -->
 
+<!-- sources:
+arbol-root:roots/sapling/drills/migration_drills.py#preparing
+arbol-root:roots/sapling/drills/migration_drills.py#failure
+arbol-root:roots/sapling/drills/migration_drills.py#open_exchange
+arbol-root:roots/sapling/drills/migration_drills.py#ready
+arbol-root:roots/sapling/drills/migration_drills.py#continuation
+arbol-root:roots/sapling/drills/migration_drills.py#judge_history
+arbol-root:roots/sapling/drills/migration_drills.py#sql_row_equal
+arbol-root:roots/sapling/drills/migration_drills.py#reconcile_continuation
+arbol-root:roots/sapling/drills/migration_support.py#fingerprints
+arbol-root:roots/sapling/drills/migration_support.py#MigrationFrame
+arbol-root:roots/sapling/drills/trunk_drill_support.py#Exchange
+-->
+
 ### Settings
 
 The settings of `arbol`, Brain Recipes among them, are kept for each Root in `~/.arbol/roots/<root>/`; `arbol-root` reads no settings file ([RTM-D3](../../arbol-root/specs/00-the-commands.md#decisions)). Otherwise the programs of an older Root would have to read a file whose shape a newer Root had changed. `~/.arbol` itself keeps only the settings of what lies outside every Root: the Drivers, each Trunk that has settings in `arbol-trunk/<code name>.json` ([RCT-0](../../arbol-root/contract/00-overview.md)), `arbol-classifier`, the address of the database server in `database.json` ([ARC-D51](#decisions)) and the rule for removing unused Builds in `arbol-builds.json` (BLD-0). This narrows DRV-D24, which gave every component one file in `~/.arbol`.
@@ -497,21 +511,39 @@ arbol-root:roots/sapling/drills/drill-newer-build.py
 arbol-root:roots/sapling/drills/run-stopping-drills.py
 -->
 
+<!-- sources:
+arbol-root:roots/sapling/drills/jensen_creation.py#entry
+arbol-root:roots/sapling/drills/migration_drills.py#qualified
+arbol-root:roots/sapling/drills/migration_drills.py#original_chat
+arbol-root:roots/sapling/drills/migration_drills.py#chat_history
+arbol-root:roots/sapling/drills/migration_drills.py#target_preserved
+arbol-root:roots/sapling/drills/migration_drills.py#run_phase
+arbol-root:roots/sapling/drills/migration_drills.py#entry
+arbol-root:tests/test_migration_drills.py#ContinuationJudgment
+arbol-root:tests/test_migration_drills.py#ReadyJudgment
+arbol-root:tests/test_migration_drills.py#RootOwnership
+arbol-root:roots/sapling/drills/make-second-root.py
+arbol-root:roots/sapling/drills/drill-migration-fails.py
+arbol-root:roots/sapling/drills/drill-migration-open-exchange.py
+arbol-root:roots/sapling/drills/second-root-ready.py
+arbol-root:roots/sapling/drills/migrated-chat-goes-on.py
+-->
+
 ## Requirements
 
 Roots:
 
 | ID | Arbol must… | Origin | Verified by |
 |---|---|---|---|
-| ARC-1.1 | give every Root an identifier, a display name, a folder, a database, settings and its own Builds of `arbol` and `arbol-root` | New | catalogue: `roots.create`, `roots.create-from`, `roots.default-paths`; installed `sapling.creation` in roots/sapling/drills/make-sapling.py (SYL-186) creates the real First Sapling, qualifies manager Build 1 and proves empty tables/current selection. Backend/App Builds remain their own work |
+| ARC-1.1 | give every Root an identifier, a display name, a folder, a database, settings and its own Builds of `arbol` and `arbol-root` | New | catalogue: `roots.create`, `roots.create-from`, `roots.default-paths`; installed `sapling.creation` in roots/sapling/drills/make-sapling.py (SYL-186) creates the real First Sapling, qualifies manager Build 1 and proves empty tables/current selection. Backend/App Builds remain their own work Installed `sapling.second-root-created` creates Jensen Root/jensen with copied settings, empty database, lineage/contract and qualified manager Build 4 (SYL-189). |
 | ARC-1.2 | keep inside a Root only changes that the older Builds of that Root can ignore, and make a new Root for any other change | Changed | Root own-table part: unit check `layout`, `root.layout-compatible-additions`, `root.layout-edited-statement`, `root.layout-required-column`, `root.layout-new-constraints`, `root.layout-baseline`; private `root.private-sql-builds` (SYL-184). Contract v1 has no chat-table additions (RCT-D24); settings, backend and windows wait for Arbol's own specification |
 | ARC-1.3 | hold no code and no table layout of any Root in the launchers, the build registry, `arbol-builds` and `arbol-roots` | New | unit: `roots.boundary` (SYL-160), `builds.outside-roots` (SYL-155); global catalogue/Build tools hold no Root implementation or table layout |
 | ARC-1.4 | take the `root.json` files as the whole list of Roots, and let a damaged or missing record take only its own Root out of use | New | drill: `arbol:scripts/roots_drill.py`, checked by `roots.damaged-drill`; unit: `roots.catalogue-damaged`, `roots.catalogue` (SYL-160); existing launcher record checks |
 | ARC-1.5 | keep the chats of each Root in a database of its own, and never open one Root's database from a program of another, except from the migration script of the Root that grows from it | New | catalogue lifecycle part: unit `roots.database-access`, `roots.database-ddl`, `roots.boundary`; real-server acceptance proves separate empty databases (SYL-160). Root data readers, backend and migration isolation remain their own components/Beats |
 | ARC-1.6 | list the Roots in the tray menu, mark the current one, open the UIs of the Root that is picked, and show the Root's display name in the header of every UI | New | journey |
-| ARC-1.7 | take as the current Root the newest Root in the state `working`, worked out from the records at every start with no stored setting, send a command without a named Root to it, and run listeners in its backend alone | New | catalogue/current part: unit `roots.catalogue`, `roots.states`, `roots.damaged-drill` (SYL-160); shared reader/launchers: `builds.current-root`, `builds.root-records`, `builds.root-refusals`. Backend listeners and hand-over remain pending |
-| ARC-1.8 | keep an older Root usable, for reading and for continuing chats, as long as its folder, database and Builds exist | New | journey |
-| ARC-1.9 | create Roots, mark them ready or failed, and remove them through `arbol-roots` alone, and remove one only on command and never the current one | New | unit: `roots.create`, `roots.ready`, `roots.states`, `roots.remove`, `roots.remove-refusal`, `roots.remove-retry`, `roots.state-busy`, `roots.catalogue-lock`, `roots.creation-rollback`, `roots.creation-recovery`, `roots.creation-identity`, `roots.sqlstate`, `roots.exchanges`, `roots.exchanges-refusal`; disposable installed-server `real_server_example` (SYL-160/SYL-186) and real First Sapling creation/legacy-directory repair |
+| ARC-1.7 | take as the current Root the newest Root in the state `working`, worked out from the records at every start with no stored setting, send a command without a named Root to it, and run listeners in its backend alone | New | catalogue/current part: unit `roots.catalogue`, `roots.states`, `roots.damaged-drill` (SYL-160); shared reader/launchers: `builds.current-root`, `builds.root-records`, `builds.root-refusals`. Backend listeners and hand-over remain pending Installed `sapling.jensen-ready` makes Jensen current, verifies default manager selection and explicit Sapling use (SYL-189). |
+| ARC-1.8 | keep an older Root usable, for reading and for continuing chats, as long as its folder, database and Builds exist | New | Root/Trunk path: installed `sapling.jensen-ready` leaves Sapling working and completes an explicit Sapling message after Jensen becomes current; migrated stand-in and real Haiku continuation in Jensen leave every Sapling row unchanged (SYL-189). Reading/continuation through a UI remains backend/UI work |
+| ARC-1.9 | create Roots, mark them ready or failed, and remove them through `arbol-roots` alone, and remove one only on command and never the current one | New | unit: `roots.create`, `roots.ready`, `roots.states`, `roots.remove`, `roots.remove-refusal`, `roots.remove-retry`, `roots.state-busy`, `roots.catalogue-lock`, `roots.creation-rollback`, `roots.creation-recovery`, `roots.creation-identity`, `roots.sqlstate`, `roots.exchanges`, `roots.exchanges-refusal`; disposable installed-server `real_server_example` (SYL-160/SYL-186) and real First Sapling creation/legacy-directory repair Installed `sapling.second-root-created`/`sapling.jensen-ready` create/ready Jensen only through the global tool and preserve both Roots (SYL-189). |
 | ARC-1.10 | keep the settings of `arbol` for each Root in `~/.arbol/roots/<root>/` (`arbol-root` reads none: RTM-D3) | Changed | unit: `roots.default-paths`, `roots.create-from`, `roots.create-from-failure`; real-server settings-copy acceptance (SYL-160). The per-Root manager still reads no settings (RTM-0) |
 | ARC-1.11 | show the size of each Root's database | New | journey |
 | ARC-1.21 | let the owner mark a working Root `failed` with a reason, never take a failed Root as current, and still open it when it is named | New | catalogue part: unit `roots.states`, `roots.catalogue`; explicit failed-Root launch: `builds.root-refusals` (SYL-158). Backend/UI opening remains pending |
@@ -534,13 +566,13 @@ Moving chats:
 
 | ID | A migration must… | Origin | Verified by |
 |---|---|---|---|
-| ARC-1.15 | read the database of the older Root without changing or removing anything there, and be the only program of the newer Root that knows the older tables | Changed | Migration check part: `root.migration-whole`, `root.migration-protocol`, `root.migration-protocol-refusal`, source rows/schema unchanged and READ ONLY write refusal (SYL-184). arbol-roots execution is SYL-185; real-Root drill is SYL-189 |
-| ARC-1.16 | go in one direction, from the Root a Root grew from, and be repeatable: for the whole database while the Root is `preparing`, and for one chat afterwards (one chat is not in the first thin path: RTM-D12) | New | Whole-database preparing-only/repeatable path: `roots.migrate`, `roots.migrate-refusal`, `roots.migrate-failure`, `roots.migrate-interruption`; explicit installed-server `roots.runtime-sql` proves recreated destination, exact rows and unchanged source (SYL-185). One chat is not in the first thin path (RTM-D12), remains SYL-195; real-Root drill is SYL-189 |
-| ARC-1.17 | copy a table that did not change as it is, convert the rows of a table that changed, keep the text of every message exactly as it was, and transfer no running Exchange or process | Changed | Unchanged-table copy part: `root.migration-whole`, `root.migration-text-fault`, `root.migration-open-fault`, `root.migration-snapshot-fault`, all five tables and exact text/JSON (SYL-184). Converting a changed table waits for the first Root that changes one; original process/folder ownership is a SYL-189 drill |
-| ARC-1.18 | leave the Root in use current and untouched while it runs and when it fails, and name what failed without cutting or skipping anything silently | Changed | drill |
+| ARC-1.15 | read the database of the older Root without changing or removing anything there, and be the only program of the newer Root that knows the older tables | Changed | Migration check part: `root.migration-whole`, `root.migration-protocol`, `root.migration-protocol-refusal`, source rows/schema unchanged and READ ONLY write refusal (SYL-184). arbol-roots execution is SYL-185; installed `sapling.jensen-failure` and `sapling.jensen-open-exchange` prove unchanged source fingerprints/current selection during failure and successful snapshot copying (SYL-189) |
+| ARC-1.16 | go in one direction, from the Root a Root grew from, and be repeatable: for the whole database while the Root is `preparing`, and for one chat afterwards (one chat is not in the first thin path: RTM-D12) | New | Whole-database preparing-only/repeatable path: `roots.migrate`, `roots.migrate-refusal`, `roots.migrate-failure`, `roots.migrate-interruption`; explicit installed-server `roots.runtime-sql` proves recreated destination, exact rows and unchanged source (SYL-185). One chat is not in the first thin path (RTM-D12), remains SYL-195; installed `sapling.jensen-failure` then `sapling.jensen-open-exchange` prove successful explicit retry from an empty preparing destination, and `sapling.jensen-ready` refuses whole migration after ready (SYL-189) |
+| ARC-1.17 | copy a table that did not change as it is, convert the rows of a table that changed, keep the text of every message exactly as it was, and transfer no running Exchange or process | Changed | Unchanged-table copy part: `root.migration-whole`, `root.migration-text-fault`, `root.migration-open-fault`, `root.migration-snapshot-fault`, all five tables and exact text/JSON (SYL-184). Converting a changed table waits for the first Root that changes one; installed `sapling.jensen-open-exchange` copies exact saved rows while the original remains in Sapling, then completes there with target snapshot unchanged (SYL-189) |
+| ARC-1.18 | leave the Root in use current and untouched while it runs and when it fails, and name what failed without cutting or skipping anything silently | Changed | Installed `sapling.jensen-failure` returns a named bounded database refusal, leaves Jensen preparing/empty and Sapling current/unchanged, and restores the unchanged service; `sapling.jensen-open-exchange` succeeds afterwards without source changes. Only explicit `sapling.jensen-ready` changes current selection (SYL-189). Tray menu preparing state and failure presentation remain App/backend/UI work |
 | ARC-1.19 | mark a migrated chat stale when its original has gone further, checking when the Arbol backend of the newer Root starts and when its chat list is opened, and offer to bring it over again (not in the first thin path: RTM-D12) | New | journey |
 | ARC-1.20 | replace a copy only when the copy was not continued in the newer Root, and otherwise bring the original in as a second chat (not in the first thin path: RTM-D12) | New | unit |
-| ARC-1.27 | leave an original running Exchange and its process untouched in the older Root, and write only its target history copy as interrupted when that Exchange was open at the migration snapshot | New | drill |
+| ARC-1.27 | leave an original running Exchange and its process untouched in the older Root, and write only its target history copy as interrupted when that Exchange was open at the migration snapshot | New | Installed `sapling.jensen-open-exchange` verifies the accepted Sapling Root/Exchange/chat/Trunk/Build plus same live PID/start/group during the copied snapshot, interrupts only the Jensen row at that snapshot, and then lets the original complete only in Sapling with Jensen unchanged (SYL-189) |
 | ARC-1.29 | be carried, together with the Root's table layout, by the `arbol-root` Builds of the Root it fills, and be run on a Root's database by `arbol-roots` alone, and otherwise only by the checks of an `arbol-root` Build on a database server of the check's own (RTM-1) | New | Copied-file selection and psql execution: `roots.sql-selection`, `roots.sql-preflight`, `roots.sql-databases`, `roots.layout`, `roots.migrate`, `roots.sql-failure`, `roots.sql-timeout`; explicit installed-server `roots.runtime-sql` (SYL-185). Build checks use their own server (SYL-184); Root manager commands never connect (SYL-181–183) |
 
 ## Interface

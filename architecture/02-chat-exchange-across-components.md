@@ -159,6 +159,11 @@ arbol-root:roots/sapling/drills/trunk_drills.py#database_through_end
 arbol-root:roots/sapling/drills/trunk_drills.py#failed_or_cancelled
 -->
 
+<!-- sources:
+arbol-root:roots/sapling/drills/migration_drills.py#open_exchange
+arbol-root:roots/sapling/drills/migration_drills.py#judge_copy
+-->
+
 ## Requirements
 
 | ID | The components together must… | Origin | Verified by |
@@ -174,7 +179,7 @@ arbol-root:roots/sapling/drills/trunk_drills.py#failed_or_cancelled
 | ARC-2.9 | refuse a new message while the database cannot be reached, and lose no result of an Exchange in progress | Changed | new-message refusal: installed `sapling.database-away` (SYL-186), bounded database_unavailable with no folder/Driver run/row changes. Existing Exchange: `sapling.database-away-mid-run` and `sapling.database-away-through-end` (SYL-187) after complete connected-server shutdown, ordered whole blocks/tool/run usage retried or settled, actual sixty-second retry and healthy service restored |
 | ARC-2.10 | end an Exchange as failed with the cause `rate_limited` when its run met a rate limit, and take no other route inside the Trunk | Changed | contract: R11 (SYL-177); unit: `WholeExchange.test_a_failed_run_keeps_the_drivers_error_whole` and `WholeExchange.test_a_refusal_can_be_the_only_event_and_no_other_route_is_tried` in `trunks/trivial/tests/test_run.py` of `arbol-trunk` |
 | ARC-2.11 | stop no Exchange when Arbol quits, every UI closes or the Arbol backend ends, and show on return what was produced meanwhile | Kept | drill |
-| ARC-2.12 | record each accepted Exchange's persistent Root identity and concrete Trunk component and Build, retain them through compatible updates and restarts, and leave the original process with its Root when another Root is created or history is migrated | New | Migration-copy part: `root.migration-whole`, `root.migration-open-fault`, `root.migration-snapshot-fault` preserve Trunk/Build rows, record the source Root and leave source data untouched (SYL-184). Existing contract R1/R16 and manager identity checks cover acceptance/listing; installed `sapling.newer-build` preserves accepted Root/Exchange/chat/Trunk/Build ownership across compatible manager replacement (SYL-188); original process ownership across real migration and App/backend restart remain SYL-189 and backend drills |
+| ARC-2.12 | record each accepted Exchange's persistent Root identity and concrete Trunk component and Build, retain them through compatible updates and restarts, and leave the original process with its Root when another Root is created or history is migrated | New | Migration-copy part: `root.migration-whole`, `root.migration-open-fault`, `root.migration-snapshot-fault` preserve Trunk/Build rows, record the source Root and leave source data untouched (SYL-184). Existing contract R1/R16 and manager identity checks cover acceptance/listing; installed `sapling.newer-build` preserves accepted Root/Exchange/chat/Trunk/Build ownership across compatible manager replacement (SYL-188); installed `sapling.jensen-open-exchange` preserves original accepted ownership and the same live process in Sapling while only its Jensen history copy is interrupted at the snapshot (SYL-189); App/backend restart remains their drills |
 | ARC-2.13 | rediscover Exchanges across every retained Root on App or backend restart through the common Root catalogue and matching manager replies, isolate discovery failures by Root, and delegate detailed reads and controls to the owning Root's compatible components | New | drill |
 | ARC-2.14 | call the Leather Bag's attention to a database that cannot be reached for as long as it lasts, and show a finished answer that is not yet saved from its folder, marked as such | New | drill |
 
