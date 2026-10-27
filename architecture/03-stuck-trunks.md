@@ -248,7 +248,7 @@ arbol:src/arbol_backend/stuck.py#awake
 arbol:src/arbol_backend/controls.py#Controls.force
 arbol:src/arbol_backend/note_files.py#NoteFiles
 arbol:src/arbol_backend/notes.py#Notes
-arbol:tests/backend/test_stuck.py#Watching
+arbol:tests/backend/test_stuck.py#Outside
 arbol:tests/backend/test_notes.py#Recovery
 arbol:tests/backend/test_return.py#Returned
 -->

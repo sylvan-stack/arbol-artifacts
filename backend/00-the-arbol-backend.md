@@ -455,7 +455,7 @@ arbol:tests/backend/test_offline_live.py#Offline
 arbol:tests/backend/test_note_files.py#Files
 arbol:tests/backend/test_notes.py#Recovery
 arbol:tests/backend/test_discovery.py#AcrossRoots
-arbol:tests/backend/test_stuck.py#Watching
+arbol:tests/backend/test_stuck.py#Outside
 arbol:tests/backend/test_return.py#Returned
 arbol:tests/backend/recovery_support.py#offline
 arbol:tests/backend/recovery_support.py#online
