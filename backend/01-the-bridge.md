@@ -127,6 +127,7 @@ The window chooses the identifier of a new Exchange, a UUID, before it calls `ch
 | `paste.save` | Yes: a second file with the same text does no harm, and the window uses the path of the reply it gets |
 | `draft.save` | Yes, over the same revision, so that a save that was made already is refused with `draft_conflict` and brings the Draft as it is, which the window takes without asking when it holds the composer's own text |
 | `exchange.answer` | Only when the lines of the Exchange hold no `answer` line for that `askId`; otherwise the answer arrived |
+| `chat.reimport` | No automatic repeat after disconnected/no_answer; refresh the list and report an uncertain result before another explicit action |
 
 ### Attention
 
@@ -137,6 +138,7 @@ An *attention item* is something that is not a normal state and that every windo
 | `database_unreachable` | The database cannot be reached (BKD-0) | "The database server does not answer at 127.0.0.1:5433. New messages cannot be sent; answers in progress go on." |
 | `space_low` | Less than 10 GiB is free on the disk of the database; `severity` `urgent` below 2 GiB (BKD-0) | "8.6 GiB left on the disk of the database. First Sapling's chats take 3.2 GiB." |
 | `layout_incomplete` | The Root's database lacks the backend's own tables (BKD-0) | "First Sapling's database lacks the table drafts: Drafts are not kept. Run arbol-roots layout sapling." |
+| `migration_unavailable` | Comparing the older Root failed; saved marks remain last-known | "The original chats could not be checked. Saved chats are still available." |
 
 A window shows an item of a kind it does not know with its message.
 
@@ -209,6 +211,7 @@ When `window.webkit` is missing, the page uses that WebSocket instead. The relay
 | BKD-1.10 | carry no secret in either direction | Changed | unit |
 | BKD-1.11 | keep the requests between the window and the Swift App, `app.pickFolder`, `app.openLink` and `app.takeOpen`, and the Swift App's message `open`, on a channel of their own, `arbolApp`, which never reaches the backend; keep a request to open a chat until a window takes it; and keep the web view of a window on its own page | New | unit; the Swift App's part with SYL-192 |
 | BKD-1.12 | before the Swift App exists, be relayed by the development relay of the `arbol` repository on the loopback address only, letting in only requests with its cookie, its `Host` and, for the WebSocket, its `Origin`, and logging no message | New | unit |
+| BKD-1.13 | carry optional own-Root migration metadata and the bounded chat.reimport call/result, pass structured errors without secrets, and never repeat that mutation automatically after an ambiguous reply | New | pending Backend Arc SYL-249/SYL-257; Root core is SYL-195 |
 
 ## Interface
 
@@ -272,6 +275,7 @@ The calls:
 | `exchange.stop` | `exchange` | `{ ended: "completed" \| "failed" \| "cancelled" \| "interrupted" \| "saved" \| "none" }`, as `arbol-root stop` printed it (RTM-0) | 120 s |
 | `exchange.answer` | `exchange`, `askId`, `answer` (DRV-3 `Answer`) | `{}` once the line is in `control` | 30 s |
 | `chat.rename` | `chat`, `title`: a string, or `null` to take the title away | `{ title: string \| null }` | 30 s |
+| `chat.reimport` | `chat`: canonical target copy UUID | `{ chat: resultChat, previousChat, action: "replaced" or "copied", fromRoot, fromChat }`; the global Root command owns the mutation | 120 s |
 | `draft.get` | `chat`, or `folder` for the Draft of a new chat in that repository | `Draft \| null` | 30 s |
 | `draft.save` | `chat`, or `folder`; `text`; `baseRevision`: the revision it was made over, `null` when there was no Draft | `{ revision: number }`, or `{ removed: true }` for an empty text | 30 s |
 | `chat.settings` | `chat`, `route?`, `workingFolder?` | `{}` once saved for the chat's next message | 30 s |
@@ -304,6 +308,7 @@ interface ChatSummary {
   workingFolder?: string;               // of the last Exchange
   route?: object;                       // of the last Exchange, for the row of the latest chats
   ongoing: boolean;
+  migration?: { fromRoot: string; fromChat: string; stale: boolean }; // only when this Root has provenance
   archived?: true;                      // only in a changed event, when the chat was archived
 }
 

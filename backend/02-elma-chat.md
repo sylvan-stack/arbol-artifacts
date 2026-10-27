@@ -13,7 +13,7 @@ It follows the conventions of the [Driver Contract](../driver-contract/README.md
 
 Covered: the window, the navigation panel, the Exchange shown, the answer as it arrives, the status of an Exchange, the composer and Drafts, the route, the repositories, sending and stopping, questions of the agent, a failed Exchange, the chat's own actions, the latest chats, opening a chat from elsewhere, signing in, attention, coming back, the renderer bundle, and what First Sapling leaves out.
 
-Not covered: the tray menu, the global hotkeys, resizing the window from its header and the native panel of the latest chats, which are the Swift App's (SYL-192); Willo Station's own side of opening a chat, which is its own specification; the tool with which an agent books a work area ([BKD-D4](00-the-arbol-backend.md#decisions)); marking a migrated chat stale (SYL-195).
+Not covered: the tray menu, the global hotkeys, resizing the window from its header and the native panel of the latest chats, which are the Swift App's (SYL-192); Willo Station's own side of opening a chat, which is its own specification; the tool with which an agent books a work area ([BKD-D4](00-the-arbol-backend.md#decisions)); the Root-owned migration SQL/global commands (SYL-195); their additive display/action binding is below and implemented in the Backend Arc.
 
 ## Behaviour
 
@@ -61,6 +61,10 @@ The window shows what the backend says. In the page's own storage it keeps only 
 | Intelligence | "Model: <model> ⌃M" and "Thinking: <effort> ⌃⇥", and one row for each route, ⌃1 to ⌃9 ([below](#the-route)) |
 
 "Repositories" and "Intelligence" open and close with a click on their header (+, −). Both are open in an empty chat and close once the chat has an Exchange, as in version 1.
+
+### A copy with new messages in its original Root
+
+A stale chat shows “New messages in <source Root display name>” and “Bring over again” in its chat actions/list entry, using only Bridge migration metadata and the Root catalogue’s display name. Save the current Draft before the action, call chat.reimport once, then open the returned chat. A replaced copy opens as updated history; a copied result opens as another chat while the continued copy stays. Do not infer the result chat from a title or the source UUID, and never stop or move an agent. After disconnected/no_answer, keep the current content/Draft, refresh the chat list and show “The import may have finished. Check the chat list before trying again.”; no automatic second call. A failed comparison remains visible through attention, without claiming fresh state. No SQL/tool/package details appear in this flow.
 
 ### The Exchange shown
 
@@ -305,6 +309,7 @@ Version 1's Elma had more than this first version. These parts are not in First 
 | BKD-2.21 | show every attention item of its Root across the top of the chat for as long as it lasts | New | drill |
 | BKD-2.22 | when the backend goes away, say that it reconnects, keep showing the chat and taking text, and read everything again once it is back | Changed | drill |
 | BKD-2.23 | be a renderer bundle in `ui/elma/` of the `arbol` Build, in TypeScript with Svelte 5 from the components of `arbol-design-system`, follow version 1 where they differ, reach nothing but the Bridge and the app channel, never leave its own page, open an `http` or `https` link only through `app.openLink`, and keep in the page's own storage only the conveniences of version 1 and text not yet saved | Kept | unit |
+| BKD-2.24 | show truthful stale-copy metadata and a Bring over again action, save the Draft, call reimport once and open its actual result chat while retaining divergent content, and expose comparison/ambiguous-result failures without automatic retry | New | pending Backend Arc SYL-256/SYL-257; Root core is SYL-195 |
 
 ## Interface
 
