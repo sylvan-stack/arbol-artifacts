@@ -341,6 +341,8 @@ Route defaults are resolved only from configured routes and the public signed-in
 
 A click that moves an existing chat with Exchanges first shows the stated continuity consequence with Cancel and Change repository. The confirmation is tied to that Root/chat/context and is rechecked against the current working state before the settings call; a shortcut always starts the repository’s new-chat composition instead. A folder picker result is ignored if its originating context changed. The chat.settings reply is an empty acknowledgement; the chat subscription carries settings. A receipt can fill an unobserved local change but cannot erase settings published since the call started.
 
+A send stores its exact Root/composition, method, identifiers, text/route/folder and Draft revision before dispatch; if that recovery record cannot be kept, it retains the Draft and does not start the send. One per-Root identifier remembers which unconfirmed send was visible, while other unconfirmed sends can finish independently. Recovery repeats the stored call or a valid backend Draft sentAs/sentRequest with the same identity. A provisional Exchange has no invented backend acceptance time. The reload barrier waits through its definitive receipt and view reconciliation. Before dispatch, changing composition cancels a queued paste/send or stop/send and leaves its text in the original Draft; after dispatch, changing composition does not cancel its receipt recovery. A stop/send queue waits for a saved terminal Exchange from the chat subscription, never the stop reply or a folder end line.
+
 ### What First Sapling leaves out
 
 Version 1's Elma had more than this first version. These parts are not in First Sapling:
