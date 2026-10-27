@@ -833,7 +833,7 @@ This replaces the legacy assignment to a resident Trunk Runtime generation. Ther
 
 ## Exhausted Subscription
 
-A [Subscription](#subscription) whose vendor refuses every request because a window that gates inference is reached, whatever that window counts, until it resets; a reached window with paid overage, or one scoped to a single tool, does not exhaust it. Its [Vigor](#vigor) is 0, shown with its recovery: the moment of the next reset and the Vigor at that moment. Specified in [SGM-1](sagas/01-subscriptions-vigor.md). *(Planned feature.)*
+A [Subscription](#subscription) whose vendor refuses every request because a window that gates inference is reached, whatever that window counts, until it resets; a reached window with paid overage, or one scoped to a single tool, does not exhaust it. Its [Vigor](#vigor) is 0, shown with its recovery: the moment its last reached inference-gating window resets and the Vigor at that moment. Specified in [SGM-1](sagas/01-subscriptions-vigor.md); computed and recorded by Arbol since 27 October 2026.
 
 **Example:** Alex's Claude has spent its five-hour window at 12:40 while 80 % of the week is unspent: exhausted, "0 now, 0.39 at 13:20".
 
@@ -1377,7 +1377,7 @@ An authenticated account with a provider vendor family (login state + usage/limi
 
 ## Subscriptions Vigor
 
-The [Radar](#radar)'s view of [Vigor](#vigor) across every [Subscription](#subscription) on this computer: each Subscription's Vigor, the moment and value of its next change, and its stale or unknown state with the reason, sorted by Vigor. The headline is the highest value named with its Subscription, never a sum across vendors. A Subscription, not an [Intelligence Provider](#intelligence-provider-ip), is the unit. Specified in [SGM-1](sagas/01-subscriptions-vigor.md). *(Planned feature: the first version computes and logs, and displays nothing in radar-stats.)*
+The [Radar](#radar)'s view of [Vigor](#vigor) across every [Subscription](#subscription) on this computer: each Subscription's Vigor, the moment and value of its next change, and its stale or unknown state with the reason, sorted by Vigor. The headline is the highest value named with its Subscription, never a sum across vendors. A Subscription, not an [Intelligence Provider](#intelligence-provider-ip), is the unit. Specified in [SGM-1](sagas/01-subscriptions-vigor.md). The first version computes and records it every three minutes while the Arbol backend runs and answers `arbol vigor` in a terminal; it displays nothing in radar-stats.
 
 **Example:** "Subscriptions Vigor: 0.47, Kimi Code" with Alex's Claude at 0.37, Codex at 0.16, and a fourth Subscription shown as unknown, allowance not supported for its family.
 
@@ -1491,7 +1491,7 @@ The **rate of token generation**: tokens per second produced by the agents worki
 
 ## Vigor
 
-How urgent it is to use a [Subscription](#subscription) now, from 0 to 1: the share of its allowance that will expire unused at a coming reset if spending continues at the window's even pace, summed over its token and credit windows with the longest window weighted 1 and each shorter one by its share of that window's allowance, capped at 1, and 0 while the Subscription is [exhausted](#exhausted-subscription). Computed by Arbol from the [Driver](#driver)'s last usage report and the clock; Drivers deliver windows, never a Vigor. The owner's term. Specified in [SGM-1](sagas/01-subscriptions-vigor.md). *(Planned feature.)*
+How urgent it is to use a [Subscription](#subscription) now, from 0 to 1: the share of its allowance that will expire unused at a coming reset if spending continues at the window's even pace, summed over its token and credit windows with the longest window weighted 1 and each shorter one by its share of that window's allowance, capped at 1, and 0 while the Subscription is [exhausted](#exhausted-subscription). Computed by Arbol from the [Driver](#driver)'s last usage report and the clock; Drivers deliver windows, never a Vigor. The owner's term. Specified in [SGM-1](sagas/01-subscriptions-vigor.md); computed and recorded by Arbol since 27 October 2026, read with `arbol vigor`.
 
 **Example:** 80 % of the week unspent with 43 % of the week left loses 0.37 at even pace: Vigor 0.37. The same account with its five-hour window used up shows 0 now and 0.39 at that window's reset.
 

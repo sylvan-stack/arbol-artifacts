@@ -288,6 +288,8 @@ arbol:src/arbol_radar/records.py#Records.record_report
 arbol:src/arbol_radar/records.py#Records.record_result
 arbol:src/arbol_radar/records.py#Records.replay
 arbol:src/arbol_radar/drivers.py#list_subscriptions
+arbol:src/arbol_radar/tick.py#tick
+arbol:src/arbol_radar/tick.py#Ticker
 arbol-root:roots/sapling/layout.sql
 arbol-root:roots/jensen/layout.sql
 arbol-root:scripts/vigor_tables.py#run
@@ -306,6 +308,25 @@ nothing (SGM-D18).
 A Subscription, not an Intelligence Provider, is the unit: two Intelligence
 Providers bound to the same account share one Vigor. Unknown Subscriptions
 stay in the list, below the known ones, with their reason.
+
+The first version answers the rollup through the command line, `arbol
+[--root <root>] vigor [--refresh [<driver>/<subscription>]] [--text]`
+(SGM-D28): one JSON document on standard output, or the Radar's lines with
+`--text`, the headline first, then one line per Subscription with its Vigor
+or its reason, its next change or its recovery, its predicted and stale
+state, and the moment of its record. A plain read shows the latest records
+and recomputes nothing; `--refresh` fetches through the Driver's `usage`
+first and recomputes (SGM-D20, SGM-D30).
+
+<!-- sources:
+arbol:src/arbol_radar/rollup.py#Rollup
+arbol:src/arbol_radar/rollup.py#rollup
+arbol:src/arbol_radar/rollup.py#as_json
+arbol:src/arbol_radar/rollup.py#as_text
+arbol:src/arbol_radar/cli.py#read
+arbol:src/arbol_radar/cli.py#refresh
+arbol:src/arbol_backend/model.py#parse
+-->
 
 ### Worked examples
 
@@ -374,10 +395,10 @@ belong to the Drivers' own specifications for the reports they deliver.
 | SGM-1.9 | Show unknown with its reason, telling a missing field in an `ok` report apart from an unsupported family, a sign-in need, an unreachable vendor and no report yet; never substitute zero | New | unit `radar.unknown-missing-field`, `radar.unknown-below-zero`, `radar.unknown-unsupported`, `radar.unknown-outcome-message`, `radar.unknown-no-report`, `radar.unknown-never-zero`, `radar.unknown-no-summed-window`, `radar.unknown-exhausted`, `radar.outcome-not-ok` |
 | SGM-1.10 | Record every calculation with its inputs, weights, profile version, per-window losses, result, state and next change, and every report as it arrives with its run | New | unit `radar.record-report-once`, `radar.record-profile`, `radar.record-result`, `radar.record-no-secret`, `radar.record-layout-incomplete`, `radar.layout-copy`, `radar.layout-database`; the Drivers' reports: `radar.drivers-list`, `radar.drivers-failure`, `radar.drivers-launchers`; the tables in both Roots' layouts: `root.vigor-layouts`, `root.vigor-rows`, `root.vigor-constraints`, `root.vigor-migration`, `root.vigor-preview`, `root.vigor-preservation`; installed `sapling.vigor-layouts` (SYL-297) |
 | SGM-1.11 | Learn gate weights from consecutive report pairs around one run, version them as a profile, and replace the placeholder only after calibration is approved | New | unit, scenario |
-| SGM-1.12 | Roll up per Subscription, sorted by Vigor, with unknown Subscriptions kept visible; the headline is the maximum named with its Subscription; never sum across Subscriptions | New | unit |
-| SGM-1.13 | Answer a read of every Subscription's current Vigor without contacting any vendor | New | unit |
-| SGM-1.14 | Recompute every three minutes while the backend runs, a profile value, and when a report arrives, a passed reset taking effect at the next tick; replay a changed formula over recorded reports | New | unit; the replay: `radar.replay` (SYL-297) |
-| SGM-1.15 | Keep Vigor advisory: it never routes a Turn, changes a binding or spends allowance | New | unit `radar.advisory-imports`, `radar.advisory-pure` |
+| SGM-1.12 | Roll up per Subscription, sorted by Vigor, with unknown Subscriptions kept visible; the headline is the maximum named with its Subscription; never sum across Subscriptions | New | unit `radar.rollup-order`, `radar.rollup-headline`, `radar.rollup-no-sum`, `radar.rollup-json`, `radar.rollup-text`, `radar.rollup-when` |
+| SGM-1.13 | Answer a read of every Subscription's current Vigor without contacting any vendor | New | unit `radar.verb-parse`, `radar.verb-refusals`, `radar.read-latest`, `radar.read-failure`, `radar.read-layout-incomplete`, `radar.read-program`; the manual refresh (SGM-D20): `radar.refresh-usage-only`, `radar.refresh-replaces-prediction`, `radar.refresh-one`, `radar.refresh-failure`, `radar.refresh-unknown`, `radar.refresh-program` |
+| SGM-1.14 | Recompute every three minutes while the backend runs, a profile value, and when a report arrives, a passed reset taking effect at the next tick; replay a changed formula over recorded reports | New | unit `radar.tick-records`, `radar.tick-new-report`, `radar.tick-passed-reset`, `radar.tick-interval`, `radar.tick-layout-incomplete`, `radar.tick-failure`; the replay: `radar.replay` (SYL-297) |
+| SGM-1.15 | Keep Vigor advisory: it never routes a Turn, changes a binding or spends allowance | New | unit `radar.advisory-imports`, `radar.advisory-pure`, `radar.advisory-writes` |
 
 ## Interface
 
@@ -388,7 +409,7 @@ outside this draft. The usage report stays the Driver Contract's.
 |---|---|
 | Window | Kind, label, resource, used share, reset time, length, reached flag, predicted flag, source report id |
 | Report | Subscription, outcome, fetched time, windows as delivered, `extra` as delivered, arrival time, producing run if any |
-| Profile | Version, approval state, pace assumption, gate weights per family and window with placeholder or learned marking, stale rule |
+| Profile | Version, approval state, pace assumption, gate weights per family and window with placeholder or learned marking, stale rule, recompute interval |
 | Result | Subscription, moment, report id, profile version, per-window loss and contribution, Vigor or null, exhausted, stale with report age, unknown with reason, next change moment and value |
 | Rollup | Moment, every Subscription's result, headline value and Subscription |
 

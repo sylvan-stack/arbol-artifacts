@@ -100,7 +100,7 @@ Observed in version 1: the Swift App passed Bridge calls to Arbol Root. Each UI 
 
 Every command-line program of Arbol 2 can be started by its name alone in any terminal window (ARC-D63): each component through its launcher (BLD-0), and the tools `arbol-builds` and `arbol-roots` (ARC-1). For example, `arbol-classifier info` works in a newly opened terminal window, without a path.
 
-`arbol` on the command line is the same program as the backend, used from a terminal. It is small on purpose and does not mirror the UIs. It has one use: sending a message with a chosen Build, Subscription or Brain Recipe, to try things out.
+`arbol` on the command line is the same program as the backend, used from a terminal. It is small on purpose and does not mirror the UIs. It has two uses: sending a message with a chosen Build, Subscription or Brain Recipe, to try things out, and reading Subscriptions Vigor with `arbol vigor` ([SGM-1](../sagas/01-subscriptions-vigor.md), SGM-D28).
 
 It needs no running backend: it reads the database and calls `arbol-root` itself, so it still works for diagnosis when the backend is down.
 
@@ -109,6 +109,8 @@ Observed in version 1: `arbol-cli` exposed the same method surface as the UIs, a
 <!-- sources:
 arbol:bin/arbol-roots
 arbol:bin/roots_entry.py
+arbol:src/arbol_backend/model.py#parse
+arbol:src/arbol_radar/cli.py#run
 arbol:scripts/install_builds.py#install
 arbol:tests/test_builds.py#Install
 arbol:tests/test_roots.py#Catalogue.test_roots_install_package_preserves_its_previous_version_on_compile_failure_or_interrupted_rename
@@ -321,7 +323,7 @@ Arbol:
 | ARC-0.8 | read the chat tables directly, and write only its own tables and a chat's title when the Leather Bag changes it | Changed | unit `chats.read-only-contract`, `chats.no-ddl`, `chats.title-windows`, `chats.atomic-settings`, `chats.atomic-marks` (SYL-249) |
 | ARC-0.9 | resolve a Brain Recipe, where one is used, to a route before an Exchange starts, and hand down that route and a small-call route and nothing else of the recipe | Changed | unit |
 | ARC-0.10 | call the Drivers directly for account commands and for nothing else, and show what the Driver's `sign-in` asks it to show | Changed | journey |
-| ARC-0.11 | keep its command line to sending a message with a chosen Build, Subscription or Brain Recipe, and let it work while no backend runs | Changed | unit |
+| ARC-0.11 | keep its command line to sending a message with a chosen Build, Subscription or Brain Recipe and to reading Subscriptions Vigor (`arbol vigor`, SGM-D28), and let it work while no backend runs | Changed | unit; the read: `radar.verb-parse`, `radar.verb-refusals`, `radar.read-program` (SYL-298) |
 | ARC-0.26 | keep every newer Build of the Arbol Swift App working with every Root that still exists | New | journey |
 | ARC-0.14 | report the health of the database server and the size of each Root's database, and warn before space runs out | Changed | journey |
 | ARC-0.31 | let the Leather Bag enter, replace and remove every secret of every component on the Secrets page of Seqoya Lab, store each as the Keychain item its component names, show it only as set or not set, and never display, log or hand on its value | Changed | journey |
