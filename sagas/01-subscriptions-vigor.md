@@ -282,11 +282,51 @@ share the account; the learned weight is a calibrated estimate over many
 pairs, versioned like a profile of SGM-0, and replaces the placeholder only
 when approved (SGM-D17).
 
+The learner forms pairs of consecutive `ok` reports of each Subscription from
+`vigor_reports` and, for each gate, one observation. An observation is trusted
+only when neither window reset between the two reports, both moved, the store
+moved by at least the profile's threshold and by no more than the gate, and
+exactly one run of this computer for the Subscription ended between the two
+fetch times: an Exchange of the current Root whose route names the Driver and
+the Subscription. Every other observation is kept with its reason, for example
+`Five hours did not move`, `no run of this Mac ended between the reports` or
+`the store moved by 1, below the threshold of 2`. A gate's estimate pools the
+trusted observations of every Subscription of its family: the median of their
+ratios, with the pair count and the spread from the lowest to the highest,
+once the profile's number of pairs is reached; before that it says how many
+are missing. The threshold, the number of pairs and the estimator are profile
+values with proposed defaults, 2 percentage points, 10 pairs and the median
+(SGM-D36).
+
+`arbol vigor learn` runs the learner over the current Root's records. When a
+gate's estimate is calibrated it writes a new profile, one version above the
+highest, `proposed`, with the learned weights marked learned with their pairs
+and spread and everything else carried from the profile in use, and shows each
+Subscription's Vigor now by the profile in use beside the proposed one; with
+too few pairs it writes nothing. `arbol vigor profiles` lists every profile
+with its state and the one in use. `arbol vigor approve <version>` is the
+owner's approval, recorded in the profile's row: from the next tick or
+refresh, the calculation uses the highest approved profile, and while none is
+approved the first profile with the placeholder (SGM-D37). A calculation never
+uses a proposed learned profile; a replay may use any recorded version. For
+example, ten trusted pairs of the Claude Subscription whose ratios lie between
+0.08 and 0.13 give profile 2 with the Anthropic five-hour gate at `0.10`;
+`arbol vigor approve 2` makes every later result record version 2.
+
 <!-- sources:
 arbol:src/arbol_radar/records.py#Records
 arbol:src/arbol_radar/records.py#Records.record_report
 arbol:src/arbol_radar/records.py#Records.record_result
 arbol:src/arbol_radar/records.py#Records.replay
+arbol:src/arbol_radar/records.py#Records.in_use
+arbol:src/arbol_radar/records.py#Records.propose
+arbol:src/arbol_radar/records.py#Records.approve
+arbol:src/arbol_radar/records.py#Records.calculate
+arbol:src/arbol_radar/learning.py#observe
+arbol:src/arbol_radar/learning.py#runs_between
+arbol:src/arbol_radar/learning.py#estimate
+arbol:src/arbol_radar/learning.py#learn
+arbol:src/arbol_radar/cli.py#profile_command
 arbol:src/arbol_radar/drivers.py#list_subscriptions
 arbol:src/arbol_radar/tick.py#tick
 arbol:src/arbol_radar/tick.py#Ticker
@@ -394,7 +434,7 @@ belong to the Drivers' own specifications for the reports they deliver.
 | SGM-1.8 | Mark a result stale when its report is older than the Subscription's shortest window that is summed or can exhaust it, and show the report's age | New | unit `radar.stale-claude-five-hours`, `radar.stale-boundary`, `radar.stale-kimi-calls`, `radar.stale-rule-profile` |
 | SGM-1.9 | Show unknown with its reason, telling a missing field in an `ok` report apart from an unsupported family, a sign-in need, an unreachable vendor and no report yet; never substitute zero | New | unit `radar.unknown-missing-field`, `radar.unknown-below-zero`, `radar.unknown-unsupported`, `radar.unknown-outcome-message`, `radar.unknown-no-report`, `radar.unknown-never-zero`, `radar.unknown-no-summed-window`, `radar.unknown-exhausted`, `radar.outcome-not-ok` |
 | SGM-1.10 | Record every calculation with its inputs, weights, profile version, per-window losses, result, state and next change, and every report as it arrives with its run | New | unit `radar.record-report-once`, `radar.record-profile`, `radar.record-result`, `radar.record-no-secret`, `radar.record-layout-incomplete`, `radar.layout-copy`, `radar.layout-database`; the Drivers' reports: `radar.drivers-list`, `radar.drivers-failure`, `radar.drivers-launchers`; the tables in both Roots' layouts: `root.vigor-layouts`, `root.vigor-rows`, `root.vigor-constraints`, `root.vigor-migration`, `root.vigor-preview`, `root.vigor-preservation`; installed `sapling.vigor-layouts` (SYL-297) |
-| SGM-1.11 | Learn gate weights from consecutive report pairs around one run, version them as a profile, and replace the placeholder only after calibration is approved | New | unit, scenario |
+| SGM-1.11 | Learn gate weights from consecutive report pairs around one run, version them as a profile, and replace the placeholder only after calibration is approved | New | unit, the pairs and their trust: `radar.learn-trusted`, `radar.learn-still`, `radar.learn-runs`, `radar.learn-threshold`, `radar.learn-store-faster`, `radar.learn-reset`, `radar.learn-unknown`, `radar.learn-no-gate`, `radar.learn-pairs`, `radar.learn-runs-between`, `radar.learn-observations`; the estimate: `radar.learn-estimate`, `radar.learn-too-few`, `radar.learn-family`; the profiles and approval: `radar.learn-propose`, `radar.learn-nothing-proposed`, `radar.learn-never-proposed`, `radar.learn-replay-any`, `radar.learn-approve-refusals`, `radar.learn-carried`, `radar.reject-profile-version`; the commands: `radar.learn-commands`, `radar.learn-command-refusals`, `radar.verb-parse`, `radar.verb-refusals`; scenario: the drill `radar_drill.py learn` over this computer's records (SYL-299), the owner's review of a first learned profile waiting for recorded pairs (SGM-D35) |
 | SGM-1.12 | Roll up per Subscription, sorted by Vigor, with unknown Subscriptions kept visible; the headline is the maximum named with its Subscription; never sum across Subscriptions | New | unit `radar.rollup-order`, `radar.rollup-headline`, `radar.rollup-no-sum`, `radar.rollup-json`, `radar.rollup-text`, `radar.rollup-when` |
 | SGM-1.13 | Answer a read of every Subscription's current Vigor without contacting any vendor | New | unit `radar.verb-parse`, `radar.verb-refusals`, `radar.read-latest`, `radar.read-failure`, `radar.read-layout-incomplete`, `radar.read-program`; the manual refresh (SGM-D20): `radar.refresh-usage-only`, `radar.refresh-replaces-prediction`, `radar.refresh-one`, `radar.refresh-failure`, `radar.refresh-unknown`, `radar.refresh-program` |
 | SGM-1.14 | Recompute every three minutes while the backend runs, a profile value, and when a report arrives, a passed reset taking effect at the next tick; replay a changed formula over recorded reports | New | unit `radar.tick-records`, `radar.tick-new-report`, `radar.tick-passed-reset`, `radar.tick-interval`, `radar.tick-layout-incomplete`, `radar.tick-failure`; the replay: `radar.replay` (SYL-297) |
@@ -409,13 +449,14 @@ outside this draft. The usage report stays the Driver Contract's.
 |---|---|
 | Window | Kind, label, resource, used share, reset time, length, reached flag, predicted flag, source report id |
 | Report | Subscription, outcome, fetched time, windows as delivered, `extra` as delivered, arrival time, producing run if any |
-| Profile | Version, approval state, pace assumption, gate weights per family and window with placeholder or learned marking, stale rule, recompute interval |
+| Profile | Version, approval state, pace assumption, gate weights per family and window with placeholder or learned marking and a learned weight's pairs and spread, stale rule, recompute interval, learning values: the store's threshold, the pairs a calibrated estimate needs and the estimator |
 | Result | Subscription, moment, report id, profile version, per-window loss and contribution, Vigor or null, exhausted, stale with report age, unknown with reason, next change moment and value |
 | Rollup | Moment, every Subscription's result, headline value and Subscription |
 
 Reject a weight outside `[0, 1]`, a store weight other than 1, a nonpositive
 length, a reset time before the report's fetch time, and a profile version the
-calculation does not know. A window of an unknown resource is shown and not
+calculation does not know: one below 1, or one the current Root's table does
+not record (`unknown_profile`). A window of an unknown resource is shown and not
 summed. A used share below 0 marks the window unknown with the field named; one
 above 100, which Claude reports when an account spends overage, counts as
 100 with the raw value kept.
@@ -430,6 +471,8 @@ says so on the result.
 arbol:src/arbol_radar/model.py#Window
 arbol:src/arbol_radar/model.py#Report.from_contract
 arbol:src/arbol_radar/model.py#Profile
+arbol:src/arbol_radar/model.py#Learning
+arbol:src/arbol_radar/model.py#Weight
 arbol:src/arbol_radar/model.py#Result
 arbol:src/arbol_radar/model.py#Loss
 arbol:src/arbol_radar/records.py#loss_row
@@ -439,7 +482,8 @@ arbol:src/arbol_radar/drivers.py#Listed
 
 ## Known problems and calibration
 
-No scorer is implemented. The even pace is a reference, not a forecast: it
+The calculation, its records, the read and the learner are implemented
+(SYL-295 to SYL-299). The even pace is a reference, not a forecast: it
 says how far behind an even spend the owner is, which is stable and
 explainable, and it will overstate the loss for someone who spends in bursts
 and understate it for someone who stops. The learned ratio and the owner's
@@ -469,7 +513,15 @@ model with `tokens`, and Vigor takes it like any other token window.
 The placeholder weight `0.1` is a guess from one vendor's published limits
 applied to every gate of every family. Calibration needs report pairs with no
 other device active, which the record cannot tell apart on its own; the
-learning procedure must mark pairs it cannot trust.
+learner marks the pairs it cannot trust, and the median of many pairs is not
+moved by a few that slipped through. The owner's own sessions in a terminal
+spend from the same windows and are not Exchanges of a Root, so they appear
+to the learner as another device. Only two gates can be learned today:
+Anthropic's five hours and ChatGPT's five hours when Codex reports it; Kimi
+Code's five-hour window counts calls and is not a gate of the sum. An
+Anthropic report is fetched during a run, a moment before the run ends, so a
+pair of Claude reports usually brackets the run that produced the first
+report.
 
 Logging every calculation at the three-minute interval for four
 Subscriptions is about two thousand small rows a day. If that proves too much,
@@ -505,3 +557,5 @@ profile for operation.
 | SGM-D33 | What is shown when an `ok` report gives no Vigor for a reason the table of unknown does not name: no window counts tokens or credits, or a token window lacks a field while another window is reached? | Unknown, never zero. An `ok` report without a token or credit window reads `unknown: no token or credit window in the <family> report`. A missing field keeps the result unknown with the field named even while a reached window makes the Subscription exhausted, so the Driver defect stays visible; the exhausted flag is still set and the next change is empty | Decided 2026-10-27 during SYL-296, a technical choice; accepted as written by the owner the same day |
 | SGM-D34 | Which reset is an exhausted Subscription's next change when a reached window and an unreached shorter window both have one? | An exhausted Subscription's next change is the moment its last reached inference-gating window resets, with the Vigor at that moment; the earliest reset stays the rule for a Subscription that is not exhausted | Decided by the owner, 2026-10-27, after SYL-296 was merged; applied in SYL-297 |
 | SGM-D35 | How does Vigor stay current while no backend runs? | By hand: `arbol vigor --refresh` fetches and records a fresh report of every Subscription and recomputes, until the Arbol Swift App keeps the backend running (ARC-0.7) and its tick recomputes every three minutes | Decided by the owner, 2026-10-27: "Yes, keep Vigor current by hand with arbol vigor --refresh until the Arbol Swift App runs the backend." |
+| SGM-D36 | Where do the learner's values live, and what are they? | In the profile, with proposed defaults: a trusted pair's store moves by at least 2 percentage points, a calibrated estimate needs 10 trusted pairs, the estimator is the median. Reports give whole percentages, so a change of 1 point is mostly rounding; at 2 points one ratio is within about half of its value, and the median of 10 is not moved by up to four bad pairs. The profile row has no column for them, as for the recompute interval, so they stay in the code's Profile record, the same for every version today, and each learned weight's entry records the values it was learned with; the owner approves them with the first learned profile | Decided 2026-10-27 during SYL-299, a technical choice; the values are proposals the owner approves with a learned profile |
+| SGM-D37 | Which profile does the calculation use, and how is one approved? | The highest approved version the current Root records; while none is approved, the first profile with the placeholder, which is proposed and stands for the chapter's formula. A proposed learned profile is never used, and a replay may use any recorded version. `arbol vigor approve <version>` sets the row's state to `approved`; it refuses a version the Root does not record, one already approved, and one older than the approved profile in use. The learner writes proposals only | Decided 2026-10-27 during SYL-299, a technical choice |
