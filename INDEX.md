@@ -69,5 +69,3 @@ What the two tools do with a hook, the hooks on this Mac and the rules every hoo
 - [Pi Driver specifications](../arbol-pi-driver/specs/README.md): accepted PI-0–PI-6 and independent provider/cutover qualification gates in their permanent corpus.
 
 ### `research/`: context for future specifications
-
-- [Hermes Agent Driver investigation](research/hermes-agent-driver.md): current Arbol boundaries, upstream interfaces, execution ownership, history and memory gaps, proposed compatibility probes and open decisions. [Pinned upstream evidence](research/hermes-agent-upstream-2026-10-27.md), captured 27 October 2026. Start at [the research README](research/README.md).
