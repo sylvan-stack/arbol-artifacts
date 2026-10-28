@@ -653,9 +653,22 @@ Settings are read once from the selected settings folder. Missing arbol.json/fie
 
 The Trunk atomically replaces record.json and renames/removes the Exchange folder after committing its end. A descriptor opened just before that replacement/removal can consequently have zero links when the backend checks it. Such a retired inode is not a current private file: close it and treat it as a transient missing pathname, allowing the existing follower/scan to retry or reconcile the committed saved row. Never read or append through that retired descriptor, never fabricate a final state from it, and retain all normal private mode/owner/type/no-follow checks. A file with two or more links remains unsafe and is refused. A metadata replacement must not permanently end the chat subscription before its saved completion arrives. A replay restart yields to the async scheduler before trying again, so a pending SQL observation, folder scan or another chat can make progress while the old record pathname is gone.
 
+<!-- sources:
+arbol:src/arbol_backend/exchange_files.py#Folder
+arbol:src/arbol_backend/live.py#Live
+arbol:tests/backend/test_exchange_files.py#Files
+arbol:tests/backend/test_live.py#Windows
+-->
+
 ### Local disk identity without extra database privileges (BKD-D40)
 
 The installed database role may log in and create databases, and is deliberately not a member of pg_read_all_settings. PostgreSQL17 therefore refuses current_setting('data_directory') for that role. The backend must not expand that role's privileges or silently assume that a conventional path belongs to the connected server. Keep the authenticated SQL path when it is available. Otherwise query only pg_backend_pid(), pg_postmaster_start_time() and inet_server_addr() on the same authenticated session. The candidate is the standard installed data directory under this backend identity's home. Confirm its private, single-link, owner-owned regular postmaster.pid, exact canonical data path and start second; confirm that the live local connection backend process belongs to this user and has that exact postmaster PID as its parent; and recheck the unchanged file/directory identity. Only a local connection with matching authenticated start/process identities may measure that candidate. Bound the process observation, never log connection details, and report unavailable on any mismatch, denied read or uncertain observation. This reads only local server metadata, never another Root's chat files, and grants no database role or parameter privileges.
+
+<!-- sources:
+arbol:src/arbol_backend/storage.py#LocalDisk
+arbol:src/arbol_backend/measurements.py#Measurements
+arbol:tests/backend/test_measurements.py#Storage
+-->
 
 ### Installed journey boundaries (BKD-D39)
 
@@ -664,6 +677,16 @@ SYL-257 runs the merged installed Backend and its own renderer/relay with the ac
 Real submissions are individually reserved before sending in a new private journey ledger, with a conservative ceiling of five submissions for this Beat, no loop and no automatic repeat of an ambiguous attempt. The existing First Roots ten-submission ledger belongs to SYL-186–189 and remains unchanged. A retry of the same accepted Exchange verifies idempotency rather than reserving another vendor request; a fresh replacement/new Exchange needs its own reservation. Public account checks/catalogues use the test state and never return credentials to the harness output. Raw replies, UUIDs, rows, costs and logs stay in private evidence outside Git; committed code contains only the repeatable checks and named coverage.
 
 Before stopping the installed database, require healthy explicit-Root inspections and no foreign active/unreadable Exchange or Driver run. A live drill may exempt only the exact Exchange/run identities it created and validated. Use the existing expected launch-agent identity and bounded restore-on-success/error/signal procedure; restore the unchanged service and verify all retained Roots before reporting a verdict. Process stop/kill/suspension targets only exact owned PID/start identities, never broad process matching. Preserve all pre-existing history and replaced installed settings/launchers/Builds, and restore temporary per-chat settings where a journey changes them. Low-space tests use a disposable mounted image and its own database rather than filling the owner's disk; distinguish that real-filesystem installed-binary drill from the retained server's location. Record actual sleep/wake checks separately from injected-clock unit evidence; neither private stand-ins nor unperformed native Swift delivery can satisfy installed journeys.
+
+<!-- sources:
+arbol:tools/backend_journeys.py#Budget
+arbol:tools/backend_journeys.py#Frame
+arbol:tools/backend_journeys.py#Bridge
+arbol:tests/backend/test_journeys.py
+arbol:tests/ui/installed_first_path.mjs
+arbol:tests/ui/installed_saved_resume.mjs
+arbol:scripts/package_backend.py
+-->
 
 ### Tests
 
