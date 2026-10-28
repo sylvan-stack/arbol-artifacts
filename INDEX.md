@@ -69,3 +69,5 @@ What the two tools do with a hook, the hooks on this Mac and the rules every hoo
 - [Pi Driver specifications](../arbol-pi-driver/specs/README.md): accepted PI-0–PI-6 and independent provider/cutover qualification gates in their permanent corpus.
 
 ### `research/`: context for future specifications
+
+Mimo Driver: [dedicated accepted originals](../arbol-mimo-driver/specs/README.md), relocated by SYL-312; implementation started, release gates pending.

@@ -17,3 +17,5 @@ Until the other documents are written or moved here, the rest of the documentati
 
 - `product-spec/`: what Arbol does (start at `01-overview-and-scope.md`).
 - `design-system/`: how Arbol looks and is operated. The maintained version is the `sylvan-stack/arbol-design-system` repository.
+
+Mimo Driver: [dedicated accepted originals](../arbol-mimo-driver/specs/README.md), relocated by SYL-312; implementation started, release gates pending.
