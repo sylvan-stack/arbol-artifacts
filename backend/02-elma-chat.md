@@ -74,6 +74,17 @@ arbol:tests/ui/frame.mjs
 
 A stale chat shows “New messages in <source Root display name>” and “Bring over again” in its chat actions/list entry, using only Bridge migration metadata and the Root catalogue’s display name. Save the current Draft before the action, call chat.reimport once, then open the returned chat. A replaced copy opens as updated history; a copied result opens as another chat while the continued copy stays. Do not infer the result chat from a title or the source UUID, and never stop or move an agent. After disconnected/no_answer, keep the current content/Draft, refresh the chat list and show “The import may have finished. Check the chat list before trying again.”; no automatic second call. A failed comparison remains visible through attention, without claiming fresh state. No SQL/tool/package details appear in this flow.
 
+<!-- sources:
+arbol:ui/elma/src/window.svelte.ts
+arbol:ui/elma/src/chats.svelte.ts
+arbol:ui/elma/src/opening.svelte.ts
+arbol:ui/elma/src/App.svelte
+arbol:tests/ui/reimport_browser.mjs
+arbol-design-system:src/patterns/CommandPalette.svelte
+arbol-design-system:src/sections/ConversationWorkspace.svelte
+arbol-design-system:scripts/check-elma-lifecycle.mjs
+-->
+
 ### The Exchange shown
 
 The chat shows one Exchange at a time: its message pinned at the top, and its answer below it. A chat opens on its newest Exchange, where the Leather Bag last scrolled to in it.
@@ -325,21 +336,72 @@ arbol:tests/ui/failure_browser.mjs
 | Copy session ID | The quick action C | Copies the chat's identifier |
 | Quick actions | ⇧⏎ | "Rename chat session" R, "Archive" A, "Copy session ID" C |
 
+<!-- sources:
+arbol:ui/elma/src/mutations.svelte.ts
+arbol:ui/elma/src/window.svelte.ts
+arbol:ui/elma/src/App.svelte
+arbol:ui/elma/src/drafts.svelte.ts
+arbol:tests/ui/mutations.mjs
+arbol:tests/ui/actions_browser.mjs
+arbol:tests/ui/quick_archive_browser.mjs
+arbol-design-system:src/patterns/InlineRename.svelte
+arbol-design-system:src/patterns/CommandPalette.svelte
+arbol-design-system:src/sections/ElmaFrame.svelte
+arbol-design-system:scripts/check-elma-actions.mjs
+-->
+
 ### The latest chats
 
 Observed in version 1: ⌃⇧⌘C shows the latest chats, at most 100, without the chat that is shown: first the chats shown in Elma, the last shown first, then the others by their latest activity. Each row has the title, the repository, the route, the state of the last Exchange and how long ago. Digits 1 to 0 open the first ten, the arrows and Return any, and Escape closes the list (the `chats` topic, BKD-1). Archived chats are not in it. In version 1 the list was a panel of the native shell, and in Arbol 2 it is the Swift App's (SYL-192); until it exists, the window shows the same list over itself, with the same keys.
+
+<!-- sources:
+arbol:ui/elma/src/chats.svelte.ts
+arbol:ui/elma/src/preferences.ts
+arbol:tests/ui/latest_browser.mjs
+arbol-design-system:src/patterns/CommandPalette.svelte
+arbol-design-system:src/pages/NativeSurface.svelte
+arbol-design-system:scripts/check-elma-latest.mjs
+-->
 
 ### Opening a chat from elsewhere
 
 Observed in version 1: Willo Station, the latest chats and the native shell could ask Elma to open a chat, and the request waited until Elma took it, so that one made while Elma loaded was not lost. Kept: the Swift App keeps such a request, the chat to open and, for a new chat, the repository, until the window takes it (`app.takeOpen`, BKD-1), and tells an open window at once. The window saves the Draft of the chat it shows, then shows the chat asked for, with its Draft. Opening a chat from Willo Station is needed in First Sapling (the owner, 19 October 2026): this is Elma Chat's side of it, and Willo Station's side, which card or result asks for which chat, is Willo Station's own specification.
 
+<!-- sources:
+arbol:ui/elma/src/opening.svelte.ts
+arbol:ui/elma/src/app-channel.ts
+arbol:ui/elma/src/drafts.svelte.ts
+arbol:tests/ui/opening_browser.mjs
+arbol:tests/ui/bridge.mjs
+-->
+
 ### Signing in
 
 The Leather Bag signs in with the Driver's own command, at the terminal, until Seqoya Lab has a page for it ([BKD-D17](#decisions)). A route row of a Subscription that cannot be used, and a failed Exchange whose account is not signed in, say so and name the command, for example "claude · zai: logged out. Sign in with: arbol-claude-driver subscriptions sign-in zai". The window takes no code and no key, and no secret crosses the Bridge ([BKD-D10](00-the-arbol-backend.md#decisions)). Once the Subscription is signed in, the row can be picked; the window reads the Subscriptions again when it is shown and when a row is clicked (`accounts.list`). Version 1 signed in on the Subscriptions page of Seqoya Lab.
 
+<!-- sources:
+arbol:ui/elma/src/routes.svelte.ts
+arbol:ui/elma/src/window.svelte.ts
+arbol:tests/ui/accounts_browser.mjs
+arbol:tests/ui/routes.mjs
+arbol:tests/ui/route_browser.mjs
+arbol-design-system:src/sections/ElmaFrame.svelte
+arbol-design-system:src/sections/elma-response.ts
+arbol-design-system:scripts/check-elma-lifecycle.mjs
+-->
+
 ### Attention
 
 Every attention item of the Root is a line across the top of the chat for as long as it lasts, with its message: a warning in the colour of warnings, an urgent one in the colour of errors ([BKD-1](01-the-bridge.md#attention)). For example, while the database server is away: "The database server does not answer at 127.0.0.1:5433. New messages cannot be sent; answers in progress go on." ([ARC-D53](../architecture/02-chat-exchange-across-components.md#decisions)). Version 1's Elma had no such line; a database that does not answer is not a normal state, and Arbol says so.
+
+<!-- sources:
+arbol:ui/elma/src/attention.svelte.ts
+arbol:ui/elma/src/App.svelte
+arbol:tests/ui/recovery_browser.mjs
+arbol-design-system:src/patterns/Notice.svelte
+arbol-design-system:src/stories/Notice.stories.ts
+arbol-design-system:scripts/check-elma-lifecycle.mjs
+-->
 
 ### Coming back
 
@@ -349,6 +411,17 @@ Every attention item of the Root is a line across the top of the chat for as lon
 | The same chat on two connections, such as the window and the browser tab of the development relay, or a page reloaded while its old connection closes | The same chat on both, with the answer arriving on both |
 | The backend goes away | A line "Reconnecting…" across the top. The chat stays as it was shown, the composer still takes text, and when the backend is back the window reads everything again and saves the Draft (BKD-1) |
 | The database cannot be reached | The attention line. The chat shown stays shown, a chat that is opened says that it cannot be read now, a message is refused with its cause and stays in the composer, and answers in progress keep arriving |
+
+<!-- sources:
+arbol:ui/elma/src/bridge.ts
+arbol:ui/elma/src/drafts.svelte.ts
+arbol:ui/elma/src/opening.svelte.ts
+arbol:ui/elma/src/window.svelte.ts
+arbol:tests/ui/recovery_browser.mjs
+arbol:tests/ui/drafts.mjs
+arbol:tests/ui/opening_browser.mjs
+arbol:tests/ui/live_browser.mjs
+-->
 
 ### Its renderer bundle
 
@@ -401,11 +474,11 @@ Failure actions use only the last saved failed Exchange and recheck that identit
 
 ### Chat action and open-request ownership (BKD-D38)
 
-Chat actions capture the Root, chat and visible-context generation. Pending actions are coalesced; a late reply cannot alter a different chat or Root. The window uses canonical subscription publications and actual method replies, without fabricating a saved title or mark. A newer publication wins over an older reply. Idempotent rename/mark operations retain their captured parameters through disconnected/no_answer and repeat as BKD-1 allows; reimport is explicitly excluded from that automatic repeat path.
+Chat actions capture the Root, chat and visible-context generation. A canonical reread of the same visible chat preserves that context, so an action waiting for send acceptance can continue. Workspace inventory is refreshed independently of default-view selection, and a continuation rechecks the context after all pending work. Pending actions are coalesced; a late reply cannot alter a different chat or Root. The window uses canonical subscription publications and actual method replies, without fabricating a saved title or mark. A newer publication wins over an older reply. Idempotent rename/mark operations retain their captured parameters through disconnected/no_answer and repeat as BKD-1 allows; reimport is explicitly excluded from that automatic repeat path.
 
 Rename starts with the actual stored title or an empty field, never the displayed first-message placeholder. The limit counts Unicode codepoints after trimming, matching the backend; an empty title is sent as null. The inline field retains its entered text and a visible cause when saving is refused. The header remains a heading, with an accessible keyboard equivalent to Cmd-click, and its edit controls do not turn a rename into a composer send or a global shortcut.
 
-Archive confirmation names the stop-before-archive consequence. The window saves the current Draft and waits for its unconfirmed sends before changing context. It requests a stop when needed and waits for saved terminal chat data, then rechecks the Root/chat/context and current turn before marking archived. A newly-started turn or changed context cancels that attempt rather than archiving a different state. Archiving neither deletes the chat/Draft nor silently clears ongoing. Only after the actual archived result does this window forget that UUID from its last-chat/repository-chat/recent-chat conveniences and show the repository's independent new-chat Draft.
+Archive confirmation names the stop-before-archive consequence. The window saves the current Draft and waits for its unconfirmed sends before changing context. It requests a stop when needed and waits for saved terminal chat data, then rechecks the Root/chat/context and current turn before marking archived. A newly-started turn or changed context cancels that attempt rather than archiving a different state. Archiving neither deletes the chat/Draft nor silently clears ongoing. Every window also forgets a known archived UUID from its conveniences on canonical marks/snapshots, so an unrelated later preference save cannot restore it as a default. Already-open archived content can remain shown without recaching that UUID. Only after the actual archived result does this window forget that UUID from its last-chat/repository-chat/recent-chat conveniences and show the repository's independent new-chat Draft.
 
 Quick actions and latest chats reuse a controlled command-list interaction with local fictional callbacks in the design system. Latest-chat candidates come from the current Root's bounded active chat summaries. A snapshot replaces them, changed rows update them, archived rows disappear, and a fresh snapshot backfills the bounded list when needed. The Root-local recently-shown UUID conveniences order eligible candidates first; transcript content, titles and row metadata are not cached as conveniences. The current chat is excluded. Missing/invalid activity time stays unrecorded, and an unavailable list is visibly stale or failed rather than invented.
 
@@ -450,14 +523,14 @@ Version 1's Elma had more than this first version. These parts are not in First 
 | BKD-2.14 | show a failed Exchange with "Failed", its time and its cause in plain words with its code and message, a code it does not know with its message, "Retry" and "Continue from failure point" on the chat's last Exchange, Retry in the replaced Exchange's folder, and for `rate_limited` the time it resets | Changed | `tests/ui/failure_browser.mjs`, shared `scripts/check-elma-failures.mjs` and FailedResponse page (last saved only, plain/raw cause, actual end and fixed reset/missing time, chosen route, replaced original folder/number, lost/reload retry once, proceed preserves Draft) (SYL-255: real Chromium/production bundle/loopback HTTP-WebSocket/private Unix backend stand-in. Native Swift delivery and installed Root/Trunk/vendor journeys remain SYL-192/SYL-257.) |
 | BKD-2.15 | show the questions of the agent above the composer with their options, "Submit", "Continue" only when no question has options, and "Cancel" as a decline, no answer in free text, the answer only once its `answer` line is in `events.jsonl`, and the question kept after a `control_refused` | Changed | `tests/ui/question_browser.mjs`, `tests/ui/live.mjs`, `tests/ui/live_browser.mjs`, shared `scripts/check-elma-questions.mjs` (single/multiple/Continue/Cancel/no text, exact control payload, new file answer/refusal positions, late reply fence, closed/saved/unknown Ask) (SYL-255: real Chromium/production bundle/loopback HTTP-WebSocket/private Unix backend stand-in. Native Swift delivery and installed Root/Trunk/vendor journeys remain SYL-192/SYL-257.) |
 | BKD-2.16 | show an Exchange whose process is gone as interrupted, one that ended while the database was away from its folder marked "Not yet saved", and one the backend ended because it was stuck with "Ended because it was stuck" | New | drill Renderer projection/status: `tests/ui/live.mjs`, `tests/ui/live_browser.mjs`, shared Response Interrupted/NotSaved stories. (SYL-254; real Chromium/loopback HTTP-WebSocket/private Unix backend stand-in; native Swift host, installed Root/Trunk/vendor journeys remain SYL-192/SYL-257). Actual installed failure drill remains SYL-257. |
-| BKD-2.17 | rename a chat with ⌘-click on its title or R, an empty title taking it away and a placeholder never stored; mark every chat with an accepted message ongoing and clear it with ⌥0; archive it with ⌘⌫ or A after a confirmation, stopping a running answer first and then showing an empty chat in its repository; and offer these as quick actions on ⇧⏎ | Changed | journey |
-| BKD-2.18 | list the latest chats on ⌃⇧⌘C, at most 100 and none archived, without the chat shown, those shown in Elma first, each with its title, repository, route, state and age, digits opening the first ten, over the window until the Swift App has its panel | Changed | journey |
-| BKD-2.19 | open the chat that the Swift App asks it to open, from Willo Station or elsewhere, taking a request made while it loaded, after saving the Draft of the chat it shows | Kept | journey; the Swift App's part with SYL-192 |
-| BKD-2.20 | say on a Subscription that cannot be used, and on a failed Exchange whose account is not signed in, that it is not signed in and which command of its Driver signs it in, and take no code and no key | Changed | `tests/ui/route_browser.mjs`, `tests/ui/failure_browser.mjs`, shared routing/failure checks (unavailable/failed account command guidance, no credential field or execution) (SYL-255: real Chromium/production bundle/loopback HTTP-WebSocket/private Unix backend stand-in. Native Swift delivery and installed Root/Trunk/vendor journeys remain SYL-192/SYL-257.) |
-| BKD-2.21 | show every attention item of its Root across the top of the chat for as long as it lasts | New | drill |
-| BKD-2.22 | when the backend goes away, say that it reconnects, keep showing the chat and taking text, and read everything again once it is back | Changed | `tests/ui/bridge.mjs`, `tests/ui/draft_recovery.mjs`, `tests/ui/sending.mjs`, `tests/ui/send_browser.mjs`, `tests/ui/send_reload_browser.mjs`, `tests/ui/live_browser.mjs` (lost/newhello, retained view/text, fresh subscriptions, same-UUID receipt/reload ownership) (SYL-255: real Chromium/production bundle/loopback HTTP-WebSocket/private Unix backend stand-in. Native Swift delivery and installed Root/Trunk/vendor journeys remain SYL-192/SYL-257.) |
+| BKD-2.17 | rename a chat with ⌘-click on its title or R, an empty title taking it away and a placeholder never stored; mark every chat with an accepted message ongoing and clear it with ⌥0; archive it with ⌘⌫ or A after a confirmation, stopping a running answer first and then showing an empty chat in its repository; and offer these as quick actions on ⇧⏎ | Changed | `tests/ui/mutations.mjs`, `tests/ui/actions_browser.mjs`, `tests/ui/quick_archive_browser.mjs`, shared `scripts/check-elma-actions.mjs` and `check-elma-lifecycle.mjs`: Unicode240/trim/null/placeholder/focus, R/A/C/copy/Alt0, canonical receipt/replay, Draft-first pending-send/stop/saved/archive, both-window convenience cleanup and independent Drafts. (SYL-256: production Svelte bundle, real Chromium/loopback HTTP-WebSocket relay, private Unix backend/account/Root stand-ins; actual Swift/Willo delivery remains SYL-192 and installed/vendor/sleep/space journeys remain SYL-257.) |
+| BKD-2.18 | list the latest chats on ⌃⇧⌘C, at most 100 and none archived, without the chat shown, those shown in Elma first, each with its title, repository, route, state and age, digits opening the first ten, over the window until the Swift App has its panel | Changed | `tests/ui/latest_browser.mjs`, `tests/ui/recovery_browser.mjs`, shared `scripts/check-elma-latest.mjs`: bounded100/current/archived exclusions, shown-first/activity ordering, metadata/Unicode80/unrecorded age,1–9/0/arrows/Return/Escape/focus, changed/snapshot/backfill and failed selection retains subscribed current view. (SYL-256: production Svelte bundle, real Chromium/loopback HTTP-WebSocket relay, private Unix backend/account/Root stand-ins; actual Swift/Willo delivery remains SYL-192 and installed/vendor/sleep/space journeys remain SYL-257.) |
+| BKD-2.19 | open the chat that the Swift App asks it to open, from Willo Station or elsewhere, taking a request made while it loaded, after saving the Draft of the chat it shows | Kept | `tests/ui/opening_browser.mjs`, `tests/ui/bridge.mjs`: initial readiness/save-before-take, coalesced notices, Draft conflict keeps host request untaken, failed returned target/manual retry, folder Draft, routing-only reload recovery, actual Build reload barrier and no app envelope to backend. The native app channel is an explicit local stand-in; the Swift App/Willo persistence/delivery part remains SYL-192. (SYL-256: production Svelte bundle, real Chromium/loopback HTTP-WebSocket relay, private Unix backend/account/Root stand-ins; actual Swift/Willo delivery remains SYL-192 and installed/vendor/sleep/space journeys remain SYL-257.) |
+| BKD-2.20 | say on a Subscription that cannot be used, and on a failed Exchange whose account is not signed in, that it is not signed in and which command of its Driver signs it in, and take no code and no key | Changed | `tests/ui/accounts_browser.mjs`, `tests/ui/routes.mjs`, `tests/ui/route_browser.mjs`, `tests/ui/failure_browser.mjs`, shared lifecycle/routing/failure checks: exact Claude/Codex/Pi guidance, public account refresh on simulated visibility and row activation, unavailable-row refresh, unchanged selected model/Draft, refusal/late-context guards and no credential/control calls. (SYL-256: production Svelte bundle, real Chromium/loopback HTTP-WebSocket relay, private Unix backend/account/Root stand-ins; actual Swift/Willo delivery remains SYL-192 and installed/vendor/sleep/space journeys remain SYL-257.) |
+| BKD-2.21 | show every attention item of its Root across the top of the chat for as long as it lasts | New | `tests/ui/recovery_browser.mjs`, shared `scripts/check-elma-lifecycle.mjs`: every stable ID, warning/urgent/unknown kind and severity/literal message, upsert/closed/replacing snapshot, both windows, database warning with file text still arriving. (SYL-256: production Svelte bundle, real Chromium/loopback HTTP-WebSocket relay, private Unix backend/account/Root stand-ins; actual Swift/Willo delivery remains SYL-192 and installed/vendor/sleep/space journeys remain SYL-257.) |
+| BKD-2.22 | when the backend goes away, say that it reconnects, keep showing the chat and taking text, and read everything again once it is back | Changed | `tests/ui/recovery_browser.mjs`, `tests/ui/bridge.mjs`, `tests/ui/drafts.mjs`, `tests/ui/opening_browser.mjs`, `tests/ui/send_browser.mjs`, `tests/ui/send_reload_browser.mjs`, `tests/ui/live_browser.mjs`: actual disconnect retains editable view, complete replay/fresh subscriptions, healthy attention snapshot restarts database-ended topics, immediate dirty-Draft CAS save/offline conflict, Root/cache/late-reply isolation and receipt/reload ownership. (SYL-256: production Svelte bundle, real Chromium/loopback HTTP-WebSocket relay, private Unix backend/account/Root stand-ins; actual Swift/Willo delivery remains SYL-192 and installed/vendor/sleep/space journeys remain SYL-257.) |
 | BKD-2.23 | be a renderer bundle in `ui/elma/` of the `arbol` Build, in TypeScript with Svelte 5 from the components of `arbol-design-system`, follow version 1 where they differ, reach nothing but the Bridge and the app channel, never leave its own page, open an `http` or `https` link only through `app.openLink`, and keep in the page's own storage only the conveniences of version 1 and text not yet saved | Kept | `ui/elma` check/build, `tools/sync_elma_design.py --check`, `tests/ui/test_bundle.py` (`elma.package-relocation`, `elma.package-identity`, `elma.package-hashes`, `elma.package-csp`, `elma.package-fonts`, `elma.package-paths`), `tests/ui/test_relay.py`, `tests/ui/relay_browser.mjs`; private numbered image/packaged Python/relay/browser and113-file independent payload reproducibility; paired maintained design check/build/catalog/affected browser checks (SYL-254; real Chromium/loopback HTTP-WebSocket/private Unix backend stand-in; native Swift host, installed Root/Trunk/vendor journeys remain SYL-192/SYL-257). |
-| BKD-2.24 | show truthful stale-copy metadata and a Bring over again action, save the Draft, call reimport once and open its actual result chat while retaining divergent content, and expose comparison/ambiguous-result failures without automatic retry | New | pending Backend Arc SYL-256/SYL-257; Root core is SYL-195 |
+| BKD-2.24 | show truthful stale-copy metadata and a Bring over again action, save the Draft, call reimport once and open its actual result chat while retaining divergent content, and expose comparison/ambiguous-result failures without automatic retry | New | `tests/ui/reimport_browser.mjs`, shared `scripts/check-elma-lifecycle.mjs` and `check-elma-latest.mjs`: catalogue display name, separate row action/keyboard, Draft-first one mutation, validated returned UUID, replaced/copied/continued content and Draft, failed-result read retry without mutation, comparison attention and lost/no_answer uncertainty without automatic replay. Root core remains covered by SYL-195/SYL-247. (SYL-256: production Svelte bundle, real Chromium/loopback HTTP-WebSocket relay, private Unix backend/account/Root stand-ins; actual Swift/Willo delivery remains SYL-192 and installed/vendor/sleep/space journeys remain SYL-257.) |
 
 ## Interface
 
