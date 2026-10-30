@@ -274,7 +274,7 @@ A **deterministic composition of [Blueprint](#blueprint) runs** — the *program
 ## Book
 
 A synonym of [Hold](#hold): to **book Beaver Workspace** means an agent has
-started a [Workspace Booking](#workspace-booking) for work in **Beaver Workspace**.
+started a [Workspace Booking](#workspace-booking) of a territory in **Beaver Workspace** for its work.
 **Booking** and **holding** name the same operation and reservation.
 
 ## Brain Recipe
@@ -881,12 +881,13 @@ The umbrella for [Mycel](#mycel)'s **productive** side: *producing or regenerati
 ## Hold
 
 To **hold** or **book** **Beaver Workspace** means an agent has started
-working there and reserved the complete Workspace for that work. The verbs are
+working there and reserved a territory in it for that work. The verbs are
 synonyms; the reservation period is a [Workspace Booking](#workspace-booking).
 Several participating Chat Sessions can share that booking. Ending it is
-[Release](#release). Live ownership and territory procedures remain those
-of [Working in Sagas](../mycel/operations/sagas.md#holds) until the ledger
-design's coordinated migration is implemented.
+[Release](#release). Until the switch-over to the [Workspace Ledger](#workspace-ledger),
+a hold is a file in `~/.sagas/holds/`, as
+[Working in Sagas](../mycel/operations/sagas.md#holds) describes; after it, a hold
+is a booking listed in the Workspace's `.ledger/bookings.json`.
 
 **Example:** "Hold Beaver Workspace" and "Book Beaver Workspace" mean the
 same operation.
@@ -1225,8 +1226,9 @@ Relation to its siblings: a Refresh is the Artifact-Corpus step *inside* a [Sync
 
 ## Release
 
-To **release Beaver Workspace** means ending its
-[Workspace Booking](#workspace-booking). One participating Chat Session
+To **release Beaver Workspace** means ending the agent's
+[Workspace Booking](#workspace-booking) there; other bookings in **Beaver
+Workspace** continue. One participating Chat Session
 leaving or handing work to another does not end that booking. **Unhold**
 and **unbook** are synonyms; **release** is the standard operation name.
 The existing rules for
@@ -1549,8 +1551,9 @@ the Workspace Ledger". The owner set this rule on 30 October 2026.
 **Beaver Workspace** is reached at `~/repos/sylvan-stack/beaver/`. The Mycel
 repository in **Beaver Workspace** is `~/repos/sylvan-stack/beaver/mycel`;
 name the repository separately from the Workspace's full name. A
-[Workspace Booking](#workspace-booking) reserves the complete Workspace for
-work, normally a Saga, keeping its repositories together. Chat Sessions
+[Workspace Booking](#workspace-booking) reserves a territory in the Workspace for
+work, normally a Saga; several bookings, from different Sagas too, can share a
+Workspace while their territories do not overlap. Chat Sessions
 and subagents participate in that work; they are not the identity of the
 reservation. The owner's own checkouts and `readonly/` are outside the pool.
 
@@ -1564,35 +1567,48 @@ for the name mapping, booking, branches, setup and return. The new
 `workspace-ledger` component reads names, stable IDs, paths and aliases from a
 Git-ignored local configuration instead of a compiled inventory. Its
 [configuration specification](../sylvan-stack/repos/workspace-ledger/specs/00-scope-and-configuration.md)
-is draft; existing booking scripts retain their live behavior until migration.
+is in review; existing booking scripts retain their live behavior until the
+switch-over.
 
 ## Workspace Booking
 
-A period from holding or booking a Workspace, such as **Beaver Workspace**,
-until releasing it. It belongs to the work, normally a Saga, and has an
-identity independent of any [Chat Session](#chat-session). Named ad-hoc work
-can also have a booking. Several Chat Sessions and their subagents may
-participate, and replacement Chat Sessions may continue the same booking.
-Its history stays together in the [Workspace Ledger](#workspace-ledger).
+A reservation of a territory in a Workspace, such as `arbol-trunk/trunks/trivial/`
+in **Beaver Workspace**, from booking it until releasing it. A territory is a
+list of folders and files in the Workspace. The booking belongs to the work,
+normally a Saga, and has an identity independent of any
+[Chat Session](#chat-session). Named ad-hoc work can also have a booking.
+Several bookings, from different Sagas too, can be open in one Workspace while
+their territories do not overlap. Several Chat Sessions and their subagents may
+participate, and replacement Chat Sessions may continue the same booking. Each
+open booking is listed in the Workspace's `.ledger/bookings.json`, and its
+history stays together in the [Workspace Ledger](#workspace-ledger).
 
 **Example:** A Chat Session and two subagents work on a Saga in **Beaver
 Workspace**. A replacement Chat Session takes over that work without
-releasing **Beaver Workspace**: the same Workspace Booking continues.
+releasing **Beaver Workspace**: the same Workspace Booking continues. Meanwhile
+ad-hoc work books `mycel/operations/` in **Beaver Workspace** too; the two
+territories do not overlap.
 
 The lifecycle and capture design is in
 [Workspace Booking and Workspace Ledger](../mycel/operations/workspace-ledger.md).
-Its new controller and capture mechanisms are not yet activated.
+The owner decided territory bookings on 30 October 2026. They are not
+implemented yet: until the switch-over, bookings are recorded as hold files.
 
 ## Workspace Ledger
 
-The Git-ignored `.ledger/` directory of a Workspace, such as **Beaver
-Workspace**, containing its work history: `current.jsonl` for the open
-[Workspace Booking](#workspace-booking), timestamped `booking-*.jsonl` archives
-for each closed booking, and `history.jsonl` for the Workspace's lifecycle index
-with links to its bookings. This replaces the initial single-file working
-name `ledger.jsonl` by the owner's direction of 26 October 2026.
+The Git-ignored `.ledger/` directory every Workspace has, such as the one in
+**Beaver Workspace**, holding its bookings and work history: `bookings.json`
+listing every open [Workspace Booking](#workspace-booking) with its Saga, Chat
+Sessions and territory, one timestamped `booking-*.jsonl` event file per
+booking, and `history.jsonl` for the Workspace's lifecycle index with links to
+its bookings. A Workspace without `.ledger/` has no bookings, and the folder is
+created. No other file records bookings. The owner directed the directory on
+26 October 2026, replacing the single-file working name `ledger.jsonl`, and
+`bookings.json`, one file per booking and the mandatory folder on
+30 October 2026.
 
-Its primary record is the exact net file-content change across a booking,
+Its primary record is the exact net file-content change inside a booking's
+territory,
 using retained opening and closing snapshots, including uncommitted and
 untracked files, with associated Git history. Intermediate tool and watcher
 events provide a supplementary timeline and approximate attribution to Chat
@@ -1604,7 +1620,7 @@ Ledger for Beaver Workspace**. The
 [format and logging design](../mycel/operations/workspace-ledger.md) describes
 the mechanisms still to build and their coverage limits. The independent
 `workspace-ledger` component has its own
-[draft specifications](../sylvan-stack/repos/workspace-ledger/specs/README.md),
+[specifications](../sylvan-stack/repos/workspace-ledger/specs/README.md),
 including private configuration, snapshot capture, passive watching and recovery.
 
 ## Worktree
