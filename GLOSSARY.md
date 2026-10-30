@@ -881,7 +881,7 @@ The umbrella for [Mycel](#mycel)'s **productive** side: *producing or regenerati
 ## Hold
 
 To **hold** or **book** **Beaver Workspace** means an agent has started
-working there and reserved the complete area for that work. The verbs are
+working there and reserved the complete Workspace for that work. The verbs are
 synonyms; the reservation period is a [Workspace Booking](#workspace-booking).
 Several participating Chat Sessions can share that booking. Ending it is
 [Release](#release). Live ownership and territory procedures remain those
@@ -1230,7 +1230,7 @@ To **release Beaver Workspace** means ending its
 leaving or handing work to another does not end that booking. **Unhold**
 and **unbook** are synonyms; **release** is the standard operation name.
 The existing rules for
-[returning the booked area](../mycel/operations/sagas.md#stopping-and-finishing)
+[returning the booked Workspace](../mycel/operations/sagas.md#stopping-and-finishing)
 still apply.
 
 ## Repo
@@ -1527,28 +1527,34 @@ The umbrella for the agent-work measurements the [Radar](#radar) reports: [Burn]
 
 ## Workspace
 
-A reusable working area for parallel agent work, with one clone of every
+A reusable working folder for parallel agent work, with one clone of every
 repository and its development dependencies installed. Always use the full
 animal name with the term: **Badger Workspace**, **Beaver Workspace**,
 **Fox Workspace**, **Hare Workspace**, **Lynx Workspace**, **Otter Workspace**,
 **Owl Workspace**, **Panda Workspace**, **Raven Workspace** and
 **Wolf Workspace**, in that booking order. Do not shorten an individual name
 to the animal alone or use the term without its name. Generic instructions
-can refer to the booked area or the pool.
+can refer to the booked Workspace or the pool.
+
+**No other words for a Workspace.** Say *Workspace*, a full name such as
+**Fox Workspace**, *the booked Workspace*, or *the pool* for all of them
+together. Do not use a synonym the owner has not agreed to, such as *area*,
+*work area*, *named area*, *working area*, *environment* or *prepared folder*,
+in documents, instructions or replies. Propose a new word to the owner before
+using it. The owner set this rule on 30 October 2026.
 
 **Beaver Workspace** is reached at `~/repos/sylvan-stack/beaver/`. The Mycel
 repository in **Beaver Workspace** is `~/repos/sylvan-stack/beaver/mycel`;
-name the repository separately from the area's full name. A
-[Workspace Booking](#workspace-booking) reserves the complete area for
+name the repository separately from the Workspace's full name. A
+[Workspace Booking](#workspace-booking) reserves the complete Workspace for
 work, normally a Saga, keeping its repositories together. Chat Sessions
 and subagents participate in that work; they are not the identity of the
 reservation. The owner's own checkouts and `readonly/` are outside the pool.
 
 The owner chose the animal names and this term on 26 October 2026,
 replacing the former term *Environment* and the earlier *prepared folder*.
-Animal paths remain aliases to the existing physical color folders, which
-stay in place for running agents, saved sessions and installed dependencies.
-Color and numbered paths still name the same ten areas; existing holds keep
+Since 29 October 2026 the animal folders are the physical folders; the
+former color folders and numbered aliases no longer exist. Existing holds keep
 their recorded paths. The legacy `#environment` link remains an alias to
 this definition. See [Working in Sagas](../mycel/operations/sagas.md#named-work-areas)
 for the name mapping, booking, branches, setup and return. The new
@@ -1559,7 +1565,7 @@ is draft; existing booking scripts retain their live behavior until migration.
 
 ## Workspace Booking
 
-A period from holding or booking a named area, such as **Beaver Workspace**,
+A period from holding or booking a Workspace, such as **Beaver Workspace**,
 until releasing it. It belongs to the work, normally a Saga, and has an
 identity independent of any [Chat Session](#chat-session). Named ad-hoc work
 can also have a booking. Several Chat Sessions and their subagents may
@@ -1576,10 +1582,10 @@ Its new controller and capture mechanisms are not yet activated.
 
 ## Workspace Ledger
 
-The Git-ignored `.ledger/` directory for a named area, such as **Beaver
+The Git-ignored `.ledger/` directory of a Workspace, such as **Beaver
 Workspace**, containing its work history: `current.jsonl` for the open
 [Workspace Booking](#workspace-booking), timestamped `booking-*.jsonl` archives
-for each closed booking, and `history.jsonl` for the area's lifecycle index
+for each closed booking, and `history.jsonl` for the Workspace's lifecycle index
 with links to its bookings. This replaces the initial single-file working
 name `ledger.jsonl` by the owner's direction of 26 October 2026.
 
