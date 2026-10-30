@@ -1541,7 +1541,10 @@ can refer to the booked Workspace or the pool.
 together. Do not use a synonym the owner has not agreed to, such as *area*,
 *work area*, *named area*, *working area*, *environment* or *prepared folder*,
 in documents, instructions or replies. Propose a new word to the owner before
-using it. The owner set this rule on 30 October 2026.
+using it. Do not label a Workspace with such a word either, such as *pilot* for
+the first Workspace switched to the [Workspace Ledger](#workspace-ledger): say
+what is true of it, for example "Hare Workspace is the only Workspace that uses
+the Workspace Ledger". The owner set this rule on 30 October 2026.
 
 **Beaver Workspace** is reached at `~/repos/sylvan-stack/beaver/`. The Mycel
 repository in **Beaver Workspace** is `~/repos/sylvan-stack/beaver/mycel`;
