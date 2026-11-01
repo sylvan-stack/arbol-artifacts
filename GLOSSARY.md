@@ -866,12 +866,15 @@ A deterministic reduce over [Event Log](#event-log) events into a derived view (
 The planned repository, and the one name, for organizing work: the order of
 tasks, what waits for what, their draft plans and their status updates. It is
 to bring together what exists today as [Sagas](#saga), [Arcs](#arc) and
-[Beats](#beat), the [Workspaces](#workspace) and their
-[Workspace Ledger](#workspace-ledger), and the copies in Linear. The owner named
-it on 2 November 2026. Its design is under discussion: nothing has moved into it
-yet, and the existing names and procedures stay in force until it is decided.
+[Beats](#beat), bookings of territories, the
+[Workspace Ledger](#workspace-ledger)'s record of what each booking changed, and
+the copies in Linear. The owner named it on 2 November 2026 and decided the same
+day that each repository has one checkout shared by every agent, replacing the
+[Workspaces](#workspace). Its [decisions and open questions](../sylvan-stack/repos/forester/decisions.md)
+are in its corpus. Nothing has moved into it yet, and the existing names and
+procedures stay in force until the move-over.
 
-**Example:** Planning a new Saga, booking a Workspace for one of its Beats and
+**Example:** Planning a new Saga, booking a territory for one of its Beats and
 copying its plan to Linear would all be done through Forester.
 
 ## Free-standing
@@ -897,10 +900,10 @@ To **hold** or **book** **Beaver Workspace** means an agent has started
 working there and reserved a territory in it for that work. The verbs are
 synonyms; the reservation period is a [Workspace Booking](#workspace-booking).
 Several participating Chat Sessions can share that booking. Ending it is
-[Release](#release). Until the switch-over to the [Workspace Ledger](#workspace-ledger),
-a hold is a file in `~/.sagas/holds/`, as
-[Working in Sagas](../mycel/operations/sagas.md#holds) describes; after it, a hold
-is a booking listed in the Workspace's `.ledger/bookings.json`.
+[Release](#release). Until the move-over to one checkout per repository
+([Forester](../sylvan-stack/repos/forester/decisions.md#moving-over)), a hold is a file in
+`~/.sagas/holds/`, as [Working in Sagas](../mycel/operations/sagas.md#holds)
+describes; after it, a hold is an entry of `~/Artifacts/sagas/holds.json`.
 
 **Example:** "Hold Beaver Workspace" and "Book Beaver Workspace" mean the
 same operation.
@@ -1548,8 +1551,13 @@ animal name with the term: **Badger Workspace**, **Beaver Workspace**,
 **Fox Workspace**, **Hare Workspace**, **Lynx Workspace**, **Otter Workspace**,
 **Owl Workspace**, **Panda Workspace**, **Raven Workspace** and
 **Wolf Workspace**, in that booking order. Do not shorten an individual name
-to the animal alone or use the term without its name. Generic instructions
-can refer to the booked Workspace or the pool.
+to the animal alone or use the term without its name. Generic instructions can refer to the booked Workspace or the pool.
+
+**Withdrawn by the owner on 2 November 2026, not yet moved over.** Each
+repository is to have one checkout, `~/repos/sylvan-stack/<repo>`, on `main` and
+shared by every agent, kept apart by territories ([Forester](#forester),
+[FOR-D2](../sylvan-stack/repos/forester/decisions.md)). Until the move-over the ten Workspaces below
+and `readonly/` stay in use.
 
 **No other words for a Workspace.** Say *Workspace*, a full name such as
 **Fox Workspace**, *the booked Workspace*, or *the pool* for all of them
@@ -1592,9 +1600,9 @@ normally a Saga, and has an identity independent of any
 [Chat Session](#chat-session). Named ad-hoc work can also have a booking.
 Several bookings, from different Sagas too, can be open in one Workspace while
 their territories do not overlap. Several Chat Sessions and their subagents may
-participate, and replacement Chat Sessions may continue the same booking. Each
-open booking is listed in the Workspace's `.ledger/bookings.json`, and its
-history stays together in the [Workspace Ledger](#workspace-ledger).
+participate, and replacement Chat Sessions may continue the same booking. After the move-over, each open booking is listed in
+`~/Artifacts/sagas/holds.json`, and the [Workspace Ledger](#workspace-ledger)
+records what it changed.
 
 **Example:** A Chat Session and two subagents work on a Saga in **Beaver
 Workspace**. A replacement Chat Session takes over that work without
@@ -1604,8 +1612,12 @@ territories do not overlap.
 
 The lifecycle and capture design is in
 [Workspace Booking and Workspace Ledger](../mycel/operations/workspace-ledger.md).
-The owner decided territory bookings on 30 October 2026. They are not
-implemented yet: until the switch-over, bookings are recorded as hold files.
+The owner decided territory bookings on 30 October 2026, and on 2 November 2026
+that territories are booked in the one shared checkout of each repository and in
+the corpora, with every open booking in `~/Artifacts/sagas/holds.json`
+([FOR-D5](../sylvan-stack/repos/forester/decisions.md)); the `.ledger/bookings.json` of 30 October is
+superseded. Neither is implemented yet: until the move-over, bookings are
+recorded as hold files.
 
 ## Workspace Ledger
 
@@ -1635,6 +1647,11 @@ the mechanisms still to build and their coverage limits. The independent
 `workspace-ledger` component has its own
 [specifications](../sylvan-stack/repos/workspace-ledger/specs/README.md),
 including private configuration, snapshot capture, passive watching and recovery.
+
+On 2 November 2026 the owner decided that the Ledger no longer books: its
+`bookings.json` and the `.ledger/` in every Workspace are superseded, and it is
+rewritten as part of [Forester](#forester) as the record of what each booking
+changed (WL-D22). Nothing of either design is implemented yet.
 
 ## Worktree
 
