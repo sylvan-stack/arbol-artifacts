@@ -28,6 +28,11 @@ Every hook runs the same command, with the tool's name as its only argument:
 
 The tool names the event in its input (`hook_event_name`), so one command serves every event. The command is a single program with two arguments, without any shell syntax, so that the tool starts it directly and the hook's parent process is the tool's own process (seen in the live checks). Should a shell stand between them anyway, the hook takes the shell's parent.
 
+<!-- sources:
+arbol:src/arbol_agents/cli.py#main
+arbol:src/arbol_agents/owner.py#Processes.candidate
+-->
+
 ### Which hook writes what
 
 Each row says what the event does to the record. *Open calls* are the tool calls that have begun and not yet returned; *asks* marks an open call that waits for the Leather Bag's answer (below). After every event, `waitingFor` is worked out anew: `answer` while an open call asks, otherwise `tool` while a call is open, otherwise `message` after the end of a turn, otherwise `driver` ([AGR-0](00-the-agent-record.md#what-an-agent-waits-for)).
@@ -53,9 +58,19 @@ When each tool sends each event is in [PHK-0](../architecture/provider-hooks/00-
 
 Every event also sets `lastEvent`. `workingFolder` and `transcript` are taken only from events of the session itself, not of a sub-agent; `transcript` only from `SessionStart` and `UserPromptSubmit`.
 
+<!-- sources:
+arbol:src/arbol_agents/hooks.py#handle
+arbol:src/arbol_agents/hooks.py#apply_call_event
+arbol:src/arbol_agents/hooks.py#refresh
+-->
+
 ### Sub-agents
 
 An event that comes from a sub-agent carries the session's `session_id` and an `agent_id` of its own ([PHK-0](../architecture/provider-hooks/00-hooks-of-claude-code-and-codex.md#the-events-and-when-each-tool-sends-them)). An event with an `agent_id` changes only the open calls and `lastEvent`: a tool call of a sub-agent is an open call of the session, so while a sub-agent runs a command, the session waits for a command; but a sub-agent's end of turn, its start and its transcript change nothing else.
+
+<!-- sources:
+arbol:src/arbol_agents/hooks.py#subagent
+-->
 
 ### Questions to the Leather Bag
 
@@ -68,13 +83,28 @@ Some tools exist to ask the Leather Bag something. While their call is open, the
 
 A permission request names the tool but not the call. The hook therefore marks the open call of that tool that was opened last; with two calls of one tool open at once, it may mark the other one, which changes nothing that a reader sees.
 
+<!-- sources:
+arbol:src/arbol_agents/hooks.py#ASKING_TOOLS
+arbol:src/arbol_agents/hooks.py#mark_last
+-->
+
 ### What the hooks never do
 
 They are watching hooks and follow [PHK-1](../architecture/provider-hooks/01-hooks-on-this-mac.md#the-rules-for-running-a-hook)'s rules for one: they never block, approve, deny or change anything and always exit with 0; they print nothing; they run in the foreground ([AGR-D4](00-the-agent-record.md#decisions)); the tools' settings give each a time limit of 5 seconds, 3 for Codex's `SessionEnd`; they keep no part of the conversation ([AGR-0.7](00-the-agent-record.md#requirements)); they start no process that outlives them, use no network and touch no file but the agent records. Besides, a hook gives up after 1 second without the folder's lock.
 
+<!-- sources:
+arbol:src/arbol_agents/cli.py#main
+arbol:src/arbol_agents/records.py#Store.locked
+-->
+
 ### How fast a hook is
 
 A tool waits for its hooks, so a hook adds its time to each event ([PHK-0](../architecture/provider-hooks/00-hooks-of-claude-code-and-codex.md#how-long-a-tool-waits)). Asking `ps` costs a hook little and asking `lsof` much, so the hook asks `ps` only when the process identifier differs from the record's owner, which happens at a session's start, and never asks `lsof`: that is the reader's work ([AGR-0](00-the-agent-record.md#what-a-reader-can-tell)). It must take at most 50 milliseconds in the median on this Mac, and at most 100 when it asks `ps`.
+
+<!-- sources:
+arbol:src/arbol_agents/owner.py#Processes.candidate
+arbol:src/arbol_agents/owner.py#Processes.started
+-->
 
 ### Installing the hooks
 

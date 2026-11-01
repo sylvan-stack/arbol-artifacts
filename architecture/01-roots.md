@@ -50,6 +50,11 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 
 Nothing inside a Root can be relied on in the next one. What lies outside must therefore stay small and change rarely. The launchers, the build registry, `arbol-builds` and `arbol-roots` hold no implementation code or table layout of any Root. They read the small Root and Build records and start the matching programs. The table layout and the migration script of a Root are carried by that Root's `arbol-root` Builds ([ARC-D49](#decisions)). The Arbol Swift App can be reached by a breaking change, so each Root's record names the oldest Build of the Swift App it works with (ARC-0).
 
+<!-- sources:
+arbol:src/arbol_agents/records.py#folder
+arbol:scripts/install_builds.py#install
+-->
+
 ### Names
 
 A Root is not numbered. It has a loud name of its own, such as "First Sapling".

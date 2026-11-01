@@ -47,6 +47,11 @@ The file is named `<tool>-<session>.json`. A session identifier holds only lette
 
 The records are the interface. A reader needs no Arbol program to read them: the rules of this specification are all it needs. Something that refers to an agent, such as a hold of a Beat, names it by `tool` and `session`, and the reader finds its record by that name. Arbol reads the records with `arbol-agents list` (below); the check of holds in Working in Sagas reads them itself, because a Mycel guide may read Arbol's data but never run Arbol's programs.
 
+<!-- sources:
+arbol:src/arbol_agents/records.py#folder
+arbol:src/arbol_agents/records.py#Store
+-->
+
 ### The record
 
 ```json
@@ -90,6 +95,10 @@ Every time has the form that JavaScript's `toISOString` writes, in UTC, as in BL
 
 The record holds no part of the conversation: no message, no prompt, no tool input or output, no answer ([AGR-D6](#decisions)). The hooks receive all of these and keep none of them.
 
+<!-- sources:
+arbol:src/arbol_agents/model.py#AgentRecord
+-->
+
 ### Writing a record
 
 | Rule | Detail |
@@ -98,6 +107,13 @@ The record holds no part of the conversation: no message, no prompt, no tool inp
 | Replaced whole | The hook writes `.<file>.<pid>.tmp` in the same folder and renames it over the record, so a reader sees the old record or the new one, never a part ([DRV-6](../driver-contract/06-state-and-simultaneous-calls.md#writing-a-file)) |
 | A missing or unreadable record | Is written anew from the event at hand. A hook installed in the middle of a session therefore starts its record with the next event |
 | After the end | An ended record changes again only through a start event, or through an event from another process (below). Then its `end` is removed |
+
+<!-- sources:
+arbol:src/arbol_agents/records.py#Store.read
+arbol:src/arbol_agents/records.py#Store.write
+arbol:src/arbol_agents/records.py#Store.locked
+arbol:src/arbol_agents/hooks.py#handle
+-->
 
 ### The owner
 
@@ -118,6 +134,8 @@ Which process becomes the owner:
 
 <!-- sources:
 arbol:driver-contract/06-state-and-simultaneous-calls.md#Knowing that a process is alive
+arbol:src/arbol_agents/owner.py#Processes
+arbol:src/arbol_agents/hooks.py#handle
 -->
 
 ### What an agent waits for
@@ -132,6 +150,10 @@ arbol:driver-contract/06-state-and-simultaneous-calls.md#Knowing that a process 
 | `message` | has ended its turn and waits for the Leather Bag's next message | the answer is complete |
 
 When several are true, the first in the order of this table is given. `driver` is ARC-3's word for an Exchange whose Driver run goes on; no Driver runs in a Claude Code or Codex session of the Leather Bag's own, but what it says is the same: the model is at work. `since` changes only when `waitingFor` changes: while one command runs for two hours, `since` stays at its start, and each new tool call after a pause in `driver` starts a new `since`. Which event of which tool leads to which value is in [AGR-1](01-the-hooks.md#which-hook-writes-what).
+
+<!-- sources:
+arbol:src/arbol_agents/hooks.py#refresh
+-->
 
 ### Signs of life
 
@@ -206,6 +228,11 @@ claude-code  ace0b692-38cf-4eca-ac4c-1d8e53451149          waiting for your mess
 codex        01a1438b-1b0b-78c2-ae38-236d45157af0          running Bash                   13:51  ~/repos/shop
 arbol        sapling/c3d4e5f6-0718-4293-a4b5-c6d7e8f90a1b  working                        14:10
 ```
+
+<!-- sources:
+arbol:src/arbol_agents/cli.py#main
+arbol:scripts/install_builds.py#install
+-->
 
 ### Removing old records
 
