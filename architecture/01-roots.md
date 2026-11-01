@@ -41,6 +41,8 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 | The [Arbol Swift App](../GLOSSARY.md#arbol-swift-app), with the tray menu. Its Builds belong to no Root, and each Root's record names the oldest of them it works with | The Builds of `arbol`: the Arbol backend, the renderer bundles of the [UIs](../GLOSSARY.md#ui), the command line |
 | The launchers, the build registry and `arbol-builds` (BLD-0) | The Builds of `arbol-root`, which carry the Root's table layout and its migration script |
 | `arbol-roots` and the list of Roots | The Root's folder |
+| `arbol-agents` (AGR-0) | |
+| The folder of agent records (AGR-0) | |
 | The [Drivers](../GLOSSARY.md#driver), their state and their [Subscriptions](../GLOSSARY.md#subscription) | The Root's database |
 | The Trunk Builds. They are numbered on their own, and each lists the Root Contract versions it implements | The Root's settings |
 | The PostgreSQL server | |
