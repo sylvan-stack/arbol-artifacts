@@ -27,6 +27,7 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **G** — [Generation](#generation)
 - **H** — [H-Nex](#h-nex) · [Heartwood](#heartwood) · [Hold](#hold) · [Hunk Review](#hunk-review)
 - **I** — [Identity Reconciliation](#identity-reconciliation) · [Ignore Rule](#ignore-rule) · [Index Store](#index-store) · [Ingest](#ingest) · [Initiator](#initiator) · [Instructions Hub](#instructions-hub) · [Intelligence Provider (IP)](#intelligence-provider-ip)
+- **J** — [Justification](#justification)
 - **K** — [Knowledge System](#knowledge-system)
 - **L** — [Ladder](#ladder) · [Leather Bag](#leather-bag) · [Living Topic](#living-topic) · [Load](#load)
 - **M** — [Mac OS Communicado](#mac-os-communicado) · [Mandate](#mandate) · [Mycel](#mycel) · [Mycel Operation](#mycel-operation) · [Mycel Skill](#mycel-skill) · [Mycel-enabled](#mycel-enabled) · [Mycel-integrated](#mycel-integrated)
@@ -868,11 +869,16 @@ tasks, what waits for what, their draft plans and their status updates. It is
 to bring together what exists today as [Sagas](#saga), [Arcs](#arc) and
 [Beats](#beat), bookings of territories, the
 [Workspace Ledger](#workspace-ledger)'s record of what each booking changed, and
-the copies in Linear. The owner named it on 2 November 2026 and decided the same
-day that each repository has one checkout shared by every agent, replacing the
-[Workspaces](#workspace). Its [decisions and open questions](../sylvan-stack/repos/forester/decisions.md)
-are in its corpus. Nothing has moved into it yet, and the existing names and
-procedures stay in force until the move-over.
+the copies in Linear. It is also to guard code: before a change is committed,
+Forester checks, mechanically and without a language model, that the change stays
+inside its booking's territory and that every piece of code it touches has a
+[Justification](#justification) or a logged reason for skipping one. The owner
+named it on 2 November 2026 and decided the same day that each repository has
+one checkout shared by every agent, replacing the [Workspaces](#workspace), and
+that Forester's documents, every Saga and the tracking files live in
+`~/Artifacts/forester/`. Its [decisions and open questions](../forester/decisions.md)
+are in its corpus. Only its documents have moved there yet, and the existing
+names and procedures stay in force until the move-over.
 
 **Example:** Planning a new Saga, booking a territory for one of its Beats and
 copying its plan to Linear would all be done through Forester.
@@ -901,9 +907,9 @@ working there and reserved a territory in it for that work. The verbs are
 synonyms; the reservation period is a [Workspace Booking](#workspace-booking).
 Several participating Chat Sessions can share that booking. Ending it is
 [Release](#release). Until the move-over to one checkout per repository
-([Forester](../sylvan-stack/repos/forester/decisions.md#moving-over)), a hold is a file in
+([Forester](../forester/decisions.md#moving-over)), a hold is a file in
 `~/.sagas/holds/`, as [Working in Sagas](../mycel/operations/sagas.md#holds)
-describes; after it, a hold is an entry of `~/Artifacts/sagas/holds.json`.
+describes; after it, a hold is an entry of `~/Artifacts/forester/holds.json`.
 
 **Example:** "Hold Beaver Workspace" and "Book Beaver Workspace" mean the
 same operation.
@@ -976,6 +982,24 @@ The **one stable address every knowledge consumer memorizes**: `~/Artifacts/myce
 A configured, build-agnostic way to run inference: a [Driver](#driver) + a bound [Subscription](#subscription) + repo rules + a **default** model + thinking, **spanning all the models that provider offers** (the default is just that — a default, not the only model it may run). A given run can pin a specific model + thinking via a [Brain Recipe](#brain-recipe), still subject to the IP's repo rules. The unit [Seqoya Lab](#seqoya-lab) manages and a [Chat Session](#chat-session) is pinned to. Deployed IPs: `bro-claude`, `safe-claude`, `codex`, `cursor`. Several IPs can share one Driver — `bro-claude` and `safe-claude` both run on the `claude` Driver; [Arbol Root](#arbol-root) hands the IP's bound Subscription token to the Driver per [Turn](#turn), so the Driver itself is subscription-agnostic. **IP refers to this layer only.**
 
 **Example:** `safe-claude` pairs the Claude driver with Alex’s Claude subscription, a default model + conservative thinking, and strict repo rules; a given run may pin a different model + thinking via a [Brain Recipe](#brain-recipe), still bound by those repo rules.
+
+## Justification
+
+The written reason for one piece of code, kept in the repository's corpus and
+never in the code: why a function, method, class, run of top-level code or
+complex part of a function was added, changed or removed, and the
+[Origin](#origin) it rests on. A repository's Justifications are Markdown files
+at `justifications/<path in the repository>.md` in its corpus, with one section
+per piece, and [Mycel](#mycel) is to derive [Origin Links](#origin-link) from
+them. [Forester](#forester) refuses a change in which a piece has neither a
+Justification nor a logged reason for skipping one, such as code for a proof of
+concept that will be removed after the trial. Decided by the owner on
+2 November 2026 ([FOR-D8 to FOR-D12](../forester/decisions.md)); not implemented yet.
+
+**Example:** The section `DeriveStore.apply` of
+`~/Artifacts/mycel/justifications/src/mycel/_derive.py.md` says why that method
+exists and names the requirement it rests on. An entry below it quotes the lines
+of a complex part of the method and says why they are there.
 
 ## Knowledge System
 
@@ -1143,6 +1167,11 @@ The [Chunk](#chunk) at the source end of an [Origin Link](#origin-link): what or
 ## Origin Coverage
 
 What the command `mycel origins` reports: which [Chunks](#chunk) of a repository have an [Origin Link](#origin-link) and which have none, and which [Requirements](#requirement) and [Decisions](#decision) nothing rests on. It is a report for the agent or person who asks, on demand; no gate, hook or release step depends on it.
+
+On 2 November 2026 the owner decided that [Forester](#forester) is to refuse a
+code change in which a piece of code has neither a [Justification](#justification)
+nor a logged reason for skipping one ([FOR-D8](../forester/decisions.md)). Origin Coverage itself
+stays a report; the check is not implemented yet.
 
 **Example:** `mycel origins --changes`, run in Beaver Workspace after changing `src/mycel/_derive.py`, lists `DeriveStore.apply` as a chunk without Origin.
 
@@ -1556,7 +1585,7 @@ to the animal alone or use the term without its name. Generic instructions can r
 **Withdrawn by the owner on 2 November 2026, not yet moved over.** Each
 repository is to have one checkout, `~/repos/sylvan-stack/<repo>`, on `main` and
 shared by every agent, kept apart by territories ([Forester](#forester),
-[FOR-D2](../sylvan-stack/repos/forester/decisions.md)). Until the move-over the ten Workspaces below
+[FOR-D2](../forester/decisions.md)). Until the move-over the ten Workspaces below
 and `readonly/` stay in use.
 
 **No other words for a Workspace.** Say *Workspace*, a full name such as
@@ -1601,7 +1630,7 @@ normally a Saga, and has an identity independent of any
 Several bookings, from different Sagas too, can be open in one Workspace while
 their territories do not overlap. Several Chat Sessions and their subagents may
 participate, and replacement Chat Sessions may continue the same booking. After the move-over, each open booking is listed in
-`~/Artifacts/sagas/holds.json`, and the [Workspace Ledger](#workspace-ledger)
+`~/Artifacts/forester/holds.json`, and the [Workspace Ledger](#workspace-ledger)
 records what it changed.
 
 **Example:** A Chat Session and two subagents work on a Saga in **Beaver
@@ -1614,8 +1643,8 @@ The lifecycle and capture design is in
 [Workspace Booking and Workspace Ledger](../mycel/operations/workspace-ledger.md).
 The owner decided territory bookings on 30 October 2026, and on 2 November 2026
 that territories are booked in the one shared checkout of each repository and in
-the corpora, with every open booking in `~/Artifacts/sagas/holds.json`
-([FOR-D5](../sylvan-stack/repos/forester/decisions.md)); the `.ledger/bookings.json` of 30 October is
+the corpora, with every open booking in `~/Artifacts/forester/holds.json`
+([FOR-D5](../forester/decisions.md)); the `.ledger/bookings.json` of 30 October is
 superseded. Neither is implemented yet: until the move-over, bookings are
 recorded as hold files.
 
