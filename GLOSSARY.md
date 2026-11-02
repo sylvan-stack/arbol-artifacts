@@ -1681,7 +1681,10 @@ including private configuration, snapshot capture, passive watching and recovery
 On 2 November 2026 the owner decided that the Ledger no longer books: its
 `bookings.json` and the `.ledger/` in every Workspace are superseded, and it is
 rewritten as part of [Forester](#forester) as the record of what each booking
-changed (WL-D22). Nothing of either design is implemented yet.
+changed (WL-D22). Nothing of either design is implemented yet. The same day the
+owner renamed it the **Forester Ledger**
+([FOR-D16](../forester/decisions.md)); the old name stays in use until the
+move-over.
 
 ## Worktree
 
