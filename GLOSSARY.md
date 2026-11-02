@@ -869,10 +869,11 @@ tasks, what waits for what, their draft plans and their status updates. It is
 to bring together what exists today as [Sagas](#saga), [Arcs](#arc) and
 [Beats](#beat), bookings of territories, the
 [Workspace Ledger](#workspace-ledger)'s record of what each booking changed, and
-the copies in Linear. It is also to guard code: before a change is committed,
-Forester checks, mechanically and without a language model, that the change stays
-inside its booking's territory and that every piece of code it touches has a
-[Justification](#justification) or a logged reason for skipping one. The owner
+the copies in Linear. It is also to guard code: agents do not commit code
+themselves. Forester checks the prepared change, mechanically and without a
+language model, that it stays inside its booking's territory and that every
+piece of code it touches has a [Justification](#justification) or a logged
+reason for skipping one, and only then commits and pushes it. The owner
 named it on 2 November 2026 and decided the same day that each repository has
 one checkout shared by every agent, replacing the [Workspaces](#workspace), and
 that Forester's documents, every Saga and the tracking files live in
@@ -998,8 +999,8 @@ concept that will be removed after the trial. Decided by the owner on
 
 **Example:** The section `DeriveStore.apply` of
 `~/Artifacts/mycel/justifications/src/mycel/_derive.py.md` says why that method
-exists and names the requirement it rests on. An entry below it quotes the lines
-of a complex part of the method and says why they are there.
+exists and names the requirement it rests on. An entry below it quotes the lines of a complex part of the method, records
+where they are within it, and says why they are there.
 
 ## Knowledge System
 
