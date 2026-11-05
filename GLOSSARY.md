@@ -892,7 +892,7 @@ not part of any step, such as code changed in work booked outside a
 were made. Decided by the owner on 5 November 2026 ([FOR-D40, FOR-D57, FOR-D58](../forester/decisions.md)); not implemented yet.
 
 **Example:** In work booked outside any Beat, the agent announces a Free
-Intention for `src/mycel/_cli.py` with the reason "`--dry-run` missing from the
+Intention for `mycel:src/mycel/_cli.py` with the reason "`--dry-run` missing from the
 help text", changes the file, and reports the Intention closed once Forester
 has committed it.
 
@@ -1013,10 +1013,12 @@ Intention it was made under, and one Intention may have several commits.
 Decided by the owner on 4 and 5 November 2026 ([FOR-D40, FOR-D57, FOR-D58](../forester/decisions.md)); not implemented yet.
 
 **Example:** Before step 3 of the Beat SYL-231, the agent announces an
-Intention for `src/mycel/_classify.py` and `src/mycel/_credentials.py` with the
-reason "MYC-14.21: a dry-run reaches the store as every other command does".
+Intention for `mycel:src/mycel/_classify.py` and
+`mycel:src/mycel/_credentials.py` with the reason "MYC-14.21: a dry-run reaches the store as every other command does".
 Its edits of those two files pass; an edit of `src/mycel/_audit.py` is refused
-until the agent adds that file to the Intention.
+until the agent adds that file to the Intention. Forester writes each path as
+the repository's name and the path inside it, so a moved checkout breaks no
+record ([FOR-D59](../forester/decisions.md)).
 
 ## Justification
 
@@ -1461,7 +1463,7 @@ Intentions are wanted, the plan has more steps. Decided by the owner on 4 and
 5 November 2026 ([FOR-D40, FOR-D57, FOR-D58](../forester/decisions.md)); not implemented yet.
 
 **Example:** The Intention for step 3 of SYL-231, which names
-`src/mycel/_classify.py` and `src/mycel/_credentials.py`, closes when the agent
+`mycel:src/mycel/_classify.py` and `mycel:src/mycel/_credentials.py`, closes when the agent
 marks step 3 done after Forester has committed both files.
 
 ## Steward
