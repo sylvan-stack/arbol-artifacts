@@ -901,14 +901,16 @@ copying its plan to Linear would all be done through Forester.
 
 The agent with a language model to which [Forester](#forester) hands an
 anomaly found by the [Watcher Duty](#watcher-duty), as an action item, for
-the cases that need judgement, such as an [Intention](#intention) its agent
-left open: it investigates and closes it with the right resolution. It runs
-only when an anomaly is handed to it, never every minute. Decided by the owner
-on 5 November 2026 ([FOR-D58, FOR-D60](../forester/decisions.md)); not implemented yet.
+the cases that need judgement and that no agent at work can answer, such as an
+agent that seems stuck, or a Free [Intention](#intention) left open outside
+any [Beat](#beat): it investigates and settles it. An Intention left open in a
+Beat goes first to the next agent that takes the Beat. It runs only when an
+anomaly is handed to it, never every minute. Decided by the owner on
+5 November 2026 ([FOR-D60, FOR-D64, FOR-D66](../forester/decisions.md)); not implemented yet.
 
-**Example:** The agent of SYL-231 quits with its Intention open and two files
-changed; two minute checks in a row find it, and the Forester Watcher gets one
-action item to decide what becomes of the Intention.
+**Example:** The agent of SYL-231 has run `git log` without a pager limit and
+the command has used no processor time for minutes; two minute checks in a row
+find it, and the Forester Watcher gets one action item with the command line.
 
 ## Free Intention
 
