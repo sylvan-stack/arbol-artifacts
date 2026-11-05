@@ -23,10 +23,10 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **C** — [Cell](#cell) · [Change Walkthrough](#change-walkthrough) · [Chat Exchange](#chat-exchange) · [Chat Note](#chat-note) · [Chat Session](#chat-session) · [Checkpoint](#checkpoint) · [Chunk](#chunk) · [Chunking](#chunking) · [CLI](#cli) · [Code Corpus](#code-corpus) · [Code Map](#code-map) · [Code Scout](#code-scout) · [Command](#command) · [Communicado](#communicado) · [Communicado Action](#communicado-action) · [Communicado Delivery](#communicado-delivery) · [Communicado Descriptor](#communicado-descriptor) · [Communicado Family](#communicado-family) · [Communicado Presentation](#communicado-presentation) · [Communicado Species](#communicado-species) · [Communicado State](#communicado-state) · [Companion](#companion) · [Completion](#completion) · [Corpus](#corpus) · [Corpus Watcher](#corpus-watcher) · [Coupling](#coupling) · [Cue](#cue) · [Cue Channel](#cue-channel) · [Cue Command](#cue-command) · [Cue Detection Catalog](#cue-detection-catalog) · [Cue Target](#cue-target) · [Cue Target Cache](#cue-target-cache)
 - **D** — [Decision](#decision) · [Default Arbol Trunk](#default-arbol-trunk) · [Delegate](#delegate) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance)
 - **E** — [Effector](#effector) · [Email Source Item](#email-source-item) · [Elma Chat](#elma-chat) · [Elma View Page](#elma-view-page) · [Embedder Profile](#embedder-profile) · [Embedding](#embedding) · [Embedding Provider](#embedding-provider) · [Entity](#entity) · [Entity Card](#entity-card) · [Entity Card Content](#entity-card-content) · [Entity Card Resolver](#entity-card-resolver) · [Entity Chip](#entity-chip) · [Entity Context Menu](#entity-context-menu) · [Entity Edge](#entity-edge) · [Entity Kind](#entity-kind) · [Entity Shape](#entity-shape) · [Entity URI](#entity-uri) · [Env Keepers](#env-keepers) · [Errand](#errand) · [Event Log](#event-log) · [Event Log Service](#event-log-service) · [Event Sourcing](#event-sourcing) · [Exchange Assignment](#exchange-assignment) · [Exhausted Subscription](#exhausted-subscription)
-- **F** — [Fanout](#fanout) · [Flyer](#flyer) · [Fold / Projection](#fold--projection) · [Font Scale](#font-scale) · [Forester](#forester) · [Free-standing](#free-standing)
+- **F** — [Fanout](#fanout) · [Flyer](#flyer) · [Fold / Projection](#fold--projection) · [Font Scale](#font-scale) · [Forester](#forester) · [Free Intention](#free-intention) · [Free-standing](#free-standing)
 - **G** — [Generation](#generation)
 - **H** — [H-Nex](#h-nex) · [Heartwood](#heartwood) · [Hold](#hold) · [Hunk Review](#hunk-review)
-- **I** — [Identity Reconciliation](#identity-reconciliation) · [Ignore Rule](#ignore-rule) · [Index Store](#index-store) · [Ingest](#ingest) · [Initiator](#initiator) · [Instructions Hub](#instructions-hub) · [Intelligence Provider (IP)](#intelligence-provider-ip)
+- **I** — [Identity Reconciliation](#identity-reconciliation) · [Ignore Rule](#ignore-rule) · [Index Store](#index-store) · [Ingest](#ingest) · [Initiator](#initiator) · [Instructions Hub](#instructions-hub) · [Intelligence Provider (IP)](#intelligence-provider-ip) · [Intention](#intention)
 - **J** — [Justification](#justification)
 - **K** — [Knowledge System](#knowledge-system)
 - **L** — [Ladder](#ladder) · [Leather Bag](#leather-bag) · [Living Topic](#living-topic) · [Load](#load)
@@ -35,7 +35,7 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **O** — [Oaken](#oaken) · [Objectives](#objectives) · [Organization](#organization) · [Origin](#origin) · [Origin Coverage](#origin-coverage) · [Origin Link](#origin-link) · [Owner Goal](#owner-goal) · [Owner Requirement](#owner-requirement)
 - **P** — [Parse Result](#parse-result) · [Parser](#parser) · [Parser Pipeline](#parser-pipeline) · [Provider](#provider)
 - **R** — [Radar](#radar) · [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Release](#release) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Requirement](#requirement) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Routine](#routine) · [Runbook](#runbook)
-- **S** — [Saga](#saga) · [Scan](#scan) · [Signal](#signal) · [Signal Rule](#signal-rule) · [Signal Type](#signal-type) · [Seqoya Lab](#seqoya-lab) · [Source Ref](#source-ref) · [Sparse Retrieval](#sparse-retrieval) · [Spec Requirement](#spec-requirement) · [Spotlight](#spotlight) · [Stale](#stale) · [Stale Summary Regeneration](#stale-summary-regeneration) · [State Runtime Profile](#state-runtime-profile) · [Steward](#steward) · [Stint](#stint) · [Subscription](#subscription) · [Subscriptions Vigor](#subscriptions-vigor) · [Summary Node](#summary-node) · [Surface](#surface) · [Sync Pass](#sync-pass)
+- **S** — [Saga](#saga) · [Scan](#scan) · [Signal](#signal) · [Signal Rule](#signal-rule) · [Signal Type](#signal-type) · [Seqoya Lab](#seqoya-lab) · [Source Ref](#source-ref) · [Sparse Retrieval](#sparse-retrieval) · [Spec Requirement](#spec-requirement) · [Spotlight](#spotlight) · [Stale](#stale) · [Stale Summary Regeneration](#stale-summary-regeneration) · [State Runtime Profile](#state-runtime-profile) · [Step Intention](#step-intention) · [Steward](#steward) · [Stint](#stint) · [Subscription](#subscription) · [Subscriptions Vigor](#subscriptions-vigor) · [Summary Node](#summary-node) · [Surface](#surface) · [Sync Pass](#sync-pass)
 - **T** — [Taproot](#taproot) · [Text Snapshot](#text-snapshot) · [Theme](#theme) · [Tool](#tool) · [Tool Request](#tool-request) · [Tracked Source](#tracked-source) · [Trivial Trunk](#trivial-trunk) · [Trunk Runtime](#trunk-runtime) · [Turn](#turn)
 - **U** — [UI](#ui) · [UIShell / Chrome](#uishell--chrome)
 - **V** — [Velocity](#velocity) · [Vigor](#vigor) · [Visit](#visit)
@@ -884,6 +884,18 @@ names and procedures stay in force until the move-over.
 **Example:** Planning a new Saga, booking a territory for one of its Beats and
 copying its plan to Linear would all be done through Forester.
 
+## Free Intention
+
+An [Intention](#intention) tied to no step of a plan, for a code change that is
+not part of any step, such as code changed in work booked outside a
+[Beat](#beat). The agent closes it by reporting that the changes it describes
+were made. Decided by the owner on 5 November 2026 ([FOR-D40, FOR-D57, FOR-D58](../forester/decisions.md)); not implemented yet.
+
+**Example:** In work booked outside any Beat, the agent announces a Free
+Intention for `src/mycel/_cli.py` with the reason "`--dry-run` missing from the
+help text", changes the file, and reports the Intention closed once Forester
+has committed it.
+
 ## Free-standing
 
 The **default connectivity state** of a [Chunk](#chunk): no [Derivation](#derivation) or [Coupling](#coupling) touches it — nothing governs it, it governs nothing, no consistency obligation binds it. Not a defect and not a backlog: in a corpus where most code has no documentation, free-standing is the honourable normal — edges are *earned* (asserted by a leather bag or created by [Generation](#generation)), never presumed. Orthogonal to **role** (a free-standing code chunk is still `authored`) and to [Heartwood](#heartwood) (connectivity vs temporality — three separate axes with [role](#chunk)). [Detection](#detection) has nothing to check on it, so it can never be [Stale](#stale); it participates in [Retrieval](#retrieval), and that is the whole of its obligations.
@@ -983,6 +995,28 @@ The **one stable address every knowledge consumer memorizes**: `~/Artifacts/myce
 A configured, build-agnostic way to run inference: a [Driver](#driver) + a bound [Subscription](#subscription) + repo rules + a **default** model + thinking, **spanning all the models that provider offers** (the default is just that — a default, not the only model it may run). A given run can pin a specific model + thinking via a [Brain Recipe](#brain-recipe), still subject to the IP's repo rules. The unit [Seqoya Lab](#seqoya-lab) manages and a [Chat Session](#chat-session) is pinned to. Deployed IPs: `bro-claude`, `safe-claude`, `codex`, `cursor`. Several IPs can share one Driver — `bro-claude` and `safe-claude` both run on the `claude` Driver; [Arbol Root](#arbol-root) hands the IP's bound Subscription token to the Driver per [Turn](#turn), so the Driver itself is subscription-agnostic. **IP refers to this layer only.**
 
 **Example:** `safe-claude` pairs the Claude driver with Alex’s Claude subscription, a default model + conservative thinking, and strict repo rules; a given run may pin a different model + thinking via a [Brain Recipe](#brain-recipe), still bound by those repo rules.
+
+## Intention
+
+What an agent announces to [Forester](#forester) before it changes code: the
+files and folders it is about to change in code repositories, and why. While
+it is open, the agent may change those files and no other code file; corpus
+files, such as [Justifications](#justification) and a [Beat](#beat)'s plan,
+need no Intention. A [Step Intention](#step-intention) is tied to one step of
+the Beat's plan; a [Free Intention](#free-intention) is tied to none, so there
+are more Intentions than steps. The reason is required, but Forester checks
+only that it is not empty: it controls where the changes were made, never
+what the reason says. The agent declares the Intention, makes the changes and
+reports it closed; one its agent left open is investigated and closed with its
+resolution by the Forester Watcher. Each commit Forester makes names the one
+Intention it was made under, and one Intention may have several commits.
+Decided by the owner on 4 and 5 November 2026 ([FOR-D40, FOR-D57, FOR-D58](../forester/decisions.md)); not implemented yet.
+
+**Example:** Before step 3 of the Beat SYL-231, the agent announces an
+Intention for `src/mycel/_classify.py` and `src/mycel/_credentials.py` with the
+reason "MYC-14.21: a dry-run reaches the store as every other command does".
+Its edits of those two files pass; an edit of `src/mycel/_audit.py` is refused
+until the agent adds that file to the Intention.
 
 ## Justification
 
@@ -1418,6 +1452,17 @@ The **incremental** path for repairing a [RAPTOR Tree](#raptor-tree): re-run [RA
 ## State Runtime Profile
 
 The explicit `state` build/install selection whose dedicated Root, Default Trunk and Provider entrypoints use controller-bound PostgreSQL current-state authority and direct domain transactions. Its package contains no ELS executable; compiled/runtime import guards reject legacy authority, replay, aggregates/projections, snapshots and the separate offline importer. Typed render DTOs, Provider delivery sequences, current-state history, live overlays and dirty hints remain reusable. The default installed production profile remains `legacy` until actual acceptance and separately authorized production conversion. See [architecture](../arbol_deprecated_v1/architecture/state-runtime.md) and [operator contract](../arbol_deprecated_v1/tools/state-runtime.md).
+
+## Step Intention
+
+An [Intention](#intention) tied to one step of a [Beat](#beat)'s
+implementation plan, closed when the agent marks the step done. Where finer
+Intentions are wanted, the plan has more steps. Decided by the owner on 4 and
+5 November 2026 ([FOR-D40, FOR-D57, FOR-D58](../forester/decisions.md)); not implemented yet.
+
+**Example:** The Intention for step 3 of SYL-231, which names
+`src/mycel/_classify.py` and `src/mycel/_credentials.py`, closes when the agent
+marks step 3 done after Forester has committed both files.
 
 ## Steward
 
