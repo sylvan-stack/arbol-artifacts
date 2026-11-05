@@ -21,9 +21,9 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **A** — [A-Nex](#a-nex) · [Action Item](#action-item) · [Activity](#activity) · [Activity Execution](#activity-execution) · [Activity Graph](#activity-graph) · [Activation Rule](#activation-rule) · [Admission Boundary](#admission-boundary) · [Agent Attempt](#agent-attempt) · [Agent Record](#agent-record) · [Aggregate](#aggregate) · [Answer Beacon](#answer-beacon) · [Answer Threshold](#answer-threshold) · [Arbol](#arbol) · [Arbol Trunk](#arbol-trunk) · [Arbol Component](#arbol-component) · [Arbol Root](#arbol-root) · [Arbol Internals](#arbol-internals) · [Arbol Secret](#arbol-secret) · [Arbol Swift App](#arbol-swift-app) · [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) · [Arc](#arc) · [Artifact](#artifact) · [Artifact Chapter](#artifact-chapter) · [Artifact Corpus](#artifact-corpus) · [Artifact Space](#artifact-space) · [Attestation](#attestation) · [Authoritative Input](#authoritative-input) · [Authority Epoch](#authority-epoch)
 - **B** — [Beat](#beat) · [better-grep](#better-grep) · [Blueprint](#blueprint) · [Blueprint Chain](#blueprint-chain) · [Book](#book) · [Brain Recipe](#brain-recipe) · [Branch](#branch) · [Branch Overlay](#branch-overlay) · [Bridge](#bridge) · [Build](#build) · [Burn](#burn)
 - **C** — [Cell](#cell) · [Change Walkthrough](#change-walkthrough) · [Chat Exchange](#chat-exchange) · [Chat Note](#chat-note) · [Chat Session](#chat-session) · [Checkpoint](#checkpoint) · [Chunk](#chunk) · [Chunking](#chunking) · [CLI](#cli) · [Code Corpus](#code-corpus) · [Code Map](#code-map) · [Code Scout](#code-scout) · [Command](#command) · [Communicado](#communicado) · [Communicado Action](#communicado-action) · [Communicado Delivery](#communicado-delivery) · [Communicado Descriptor](#communicado-descriptor) · [Communicado Family](#communicado-family) · [Communicado Presentation](#communicado-presentation) · [Communicado Species](#communicado-species) · [Communicado State](#communicado-state) · [Companion](#companion) · [Completion](#completion) · [Corpus](#corpus) · [Corpus Watcher](#corpus-watcher) · [Coupling](#coupling) · [Cue](#cue) · [Cue Channel](#cue-channel) · [Cue Command](#cue-command) · [Cue Detection Catalog](#cue-detection-catalog) · [Cue Target](#cue-target) · [Cue Target Cache](#cue-target-cache)
-- **D** — [Decision](#decision) · [Default Arbol Trunk](#default-arbol-trunk) · [Delegate](#delegate) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance)
+- **D** — [Decision](#decision) · [Default Arbol Trunk](#default-arbol-trunk) · [Delegate](#delegate) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance) · [Duty Observation](#duty-observation)
 - **E** — [Effector](#effector) · [Email Source Item](#email-source-item) · [Elma Chat](#elma-chat) · [Elma View Page](#elma-view-page) · [Embedder Profile](#embedder-profile) · [Embedding](#embedding) · [Embedding Provider](#embedding-provider) · [Entity](#entity) · [Entity Card](#entity-card) · [Entity Card Content](#entity-card-content) · [Entity Card Resolver](#entity-card-resolver) · [Entity Chip](#entity-chip) · [Entity Context Menu](#entity-context-menu) · [Entity Edge](#entity-edge) · [Entity Kind](#entity-kind) · [Entity Shape](#entity-shape) · [Entity URI](#entity-uri) · [Env Keepers](#env-keepers) · [Errand](#errand) · [Event Log](#event-log) · [Event Log Service](#event-log-service) · [Event Sourcing](#event-sourcing) · [Exchange Assignment](#exchange-assignment) · [Exhausted Subscription](#exhausted-subscription)
-- **F** — [Fanout](#fanout) · [Flyer](#flyer) · [Fold / Projection](#fold--projection) · [Font Scale](#font-scale) · [Forester](#forester) · [Free Intention](#free-intention) · [Free-standing](#free-standing)
+- **F** — [Fanout](#fanout) · [Flyer](#flyer) · [Fold / Projection](#fold--projection) · [Font Scale](#font-scale) · [Forester](#forester) · [Forester Watcher](#forester-watcher) · [Free Intention](#free-intention) · [Free-standing](#free-standing)
 - **G** — [Generation](#generation)
 - **H** — [H-Nex](#h-nex) · [Heartwood](#heartwood) · [Hold](#hold) · [Hunk Review](#hunk-review)
 - **I** — [Identity Reconciliation](#identity-reconciliation) · [Ignore Rule](#ignore-rule) · [Index Store](#index-store) · [Ingest](#ingest) · [Initiator](#initiator) · [Instructions Hub](#instructions-hub) · [Intelligence Provider (IP)](#intelligence-provider-ip) · [Intention](#intention)
@@ -39,7 +39,7 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **T** — [Taproot](#taproot) · [Text Snapshot](#text-snapshot) · [Theme](#theme) · [Tool](#tool) · [Tool Request](#tool-request) · [Tracked Source](#tracked-source) · [Trivial Trunk](#trivial-trunk) · [Trunk Runtime](#trunk-runtime) · [Turn](#turn)
 - **U** — [UI](#ui) · [UIShell / Chrome](#uishell--chrome)
 - **V** — [Velocity](#velocity) · [Vigor](#vigor) · [Visit](#visit)
-- **W** — [Willo Station](#willo-station) · [Working Directory](#working-directory) · [Workload](#workload) · [Workspace](#workspace) · [Workspace Booking](#workspace-booking) · [Workspace Ledger](#workspace-ledger) · [Worktree](#worktree) · [Worktree Container](#worktree-container)
+- **W** — [Watcher Duty](#watcher-duty) · [Willo Station](#willo-station) · [Working Directory](#working-directory) · [Workload](#workload) · [Workspace](#workspace) · [Workspace Booking](#workspace-booking) · [Workspace Ledger](#workspace-ledger) · [Worktree](#worktree) · [Worktree Container](#worktree-container)
 
 ---
 
@@ -655,6 +655,19 @@ A concrete, versioned build of a [Driver](#driver), identified `<provider>@<buil
 
 **Example:** `claude@20260612T135543Z-a1b2c3` and `claude@20260613T090000Z-d4e5f6` can run side-by-side while Agent Attempts pinned to the old instance drain.
 
+## Duty Observation
+
+One fact that the [Watcher Duty](#watcher-duty) collects in a minute check,
+such as a changed file with the booking and [Intention](#intention) it lies
+in, or an agent's process found gone. A Duty Observation the records cannot
+explain is an anomaly. The owner named it on 5 November 2026 ([FOR-D58, FOR-D60](../forester/decisions.md)); not
+implemented yet. Not to be confused with a [Cue](#cue), a weak signal found in
+analysed text.
+
+**Example:** "`mycel:src/mycel/_classify.py` changed inside the open Intention
+`i-4f2c9e1a`" is a Duty Observation; the same change with no booking around it
+is one the records cannot explain.
+
 ## Effector
 
 The daemon that executes and settles [Tool Requests](#tool-request): run / run-always / reject.
@@ -883,6 +896,19 @@ names and procedures stay in force until the move-over.
 
 **Example:** Planning a new Saga, booking a territory for one of its Beats and
 copying its plan to Linear would all be done through Forester.
+
+## Forester Watcher
+
+The agent with a language model to which [Forester](#forester) hands an
+anomaly found by the [Watcher Duty](#watcher-duty), as an action item, for
+the cases that need judgement, such as an [Intention](#intention) its agent
+left open: it investigates and closes it with the right resolution. It runs
+only when an anomaly is handed to it, never every minute. Decided by the owner
+on 5 November 2026 ([FOR-D58, FOR-D60](../forester/decisions.md)); not implemented yet.
+
+**Example:** The agent of SYL-231 quits with its Intention open and two files
+changed; two minute checks in a row find it, and the Forester Watcher gets one
+action item to decide what becomes of the Intention.
 
 ## Free Intention
 
@@ -1585,6 +1611,23 @@ A windowed [Surface](#surface): one window in the Arbol family. Each is a separa
 The shared three-row window frame (Header / Viewport / Status Bar) every UI mounts, with `headerLead` / `headerExtras` slots.
 
 **Example:** The same header/status-bar frame wraps Elma Chat, Oaken, Seqoya Lab, and Willo Station, while each surface fills the viewport differently.
+
+## Watcher Duty
+
+[Forester](#forester)'s check of every registered code repository, run once a
+minute: a simple deterministic script that calls no language model. It runs
+`git status` in each repository, reads the agents' processes and Forester's
+tracking files once, and compares what the records say of agents, bookings,
+Intentions and [Beats](#beat) with each other and with what the processes,
+the files and Git show. Each fact it collects is a
+[Duty Observation](#duty-observation); one the records cannot explain is an
+anomaly, which it hands to the [Forester Watcher](#forester-watcher) when two
+checks in a row found it. Decided by the owner on 5 November 2026
+([FOR-D58, FOR-D60](../forester/decisions.md)); not implemented yet.
+
+**Example:** At 14:21 Watcher Duty runs `git status` in the Mycel checkout,
+finds `src/mycel/_classify.py` changed inside the open Intention of SYL-231,
+whose agent's process is running, and records that as normal.
 
 ## Willo Station
 
