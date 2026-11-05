@@ -32,7 +32,7 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **L** — [Ladder](#ladder) · [Leather Bag](#leather-bag) · [Living Topic](#living-topic) · [Load](#load)
 - **M** — [Mac OS Communicado](#mac-os-communicado) · [Mandate](#mandate) · [Mycel](#mycel) · [Mycel Operation](#mycel-operation) · [Mycel Skill](#mycel-skill) · [Mycel-enabled](#mycel-enabled) · [Mycel-integrated](#mycel-integrated)
 - **N** — [Native Tool Call](#native-tool-call) · [Nex](#nex) · [Nex Colab](#nex-colab) · [Nex Knowledge Map](#nex-knowledge-map) · [Normalizer](#normalizer) · [Now Line](#now-line)
-- **O** — [Oaken](#oaken) · [Objectives](#objectives) · [Organization](#organization) · [Origin](#origin) · [Origin Coverage](#origin-coverage) · [Origin Link](#origin-link) · [Owner Goal](#owner-goal) · [Owner Requirement](#owner-requirement)
+- **O** — [Oaken](#oaken) · [Objectives](#objectives) · [Organization](#organization) · [Origin](#origin) · [Origin Coverage](#origin-coverage) · [Origin Link](#origin-link) · [Orphaned Change](#orphaned-change) · [Owner Goal](#owner-goal) · [Owner Requirement](#owner-requirement)
 - **P** — [Parse Result](#parse-result) · [Parser](#parser) · [Parser Pipeline](#parser-pipeline) · [Provider](#provider)
 - **R** — [Radar](#radar) · [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Release](#release) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Requirement](#requirement) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Routine](#routine) · [Runbook](#runbook)
 - **S** — [Saga](#saga) · [Scan](#scan) · [Signal](#signal) · [Signal Rule](#signal-rule) · [Signal Type](#signal-type) · [Seqoya Lab](#seqoya-lab) · [Source Ref](#source-ref) · [Sparse Retrieval](#sparse-retrieval) · [Spec Requirement](#spec-requirement) · [Spotlight](#spotlight) · [Stale](#stale) · [Stale Summary Regeneration](#stale-summary-regeneration) · [State Runtime Profile](#state-runtime-profile) · [Step Intention](#step-intention) · [Steward](#steward) · [Stint](#stint) · [Subscription](#subscription) · [Subscriptions Vigor](#subscriptions-vigor) · [Summary Node](#summary-node) · [Surface](#surface) · [Sync Pass](#sync-pass)
@@ -1245,6 +1245,23 @@ stays a report; the check is not implemented yet.
 A directed link from a [Chunk](#chunk) to its [Origin](#origin): a claim that this chunk exists because of that requirement, decision, section or code chunk, and never a proof. Its fields are the `method` by which it was made (`stated` by a person, `proven` by a check, `inferred` by a model, `recovered` from history), a `confidence_score` from 0 to 1, the `confidence` band the score falls in (`asserted` above 0.9, `proven` 0.8 to 0.9, `inferred` 0.5 to 0.8, `candidate` below 0.5; the thresholds are example values set in one place), who made it and when, and its `review`. A chunk has a list of Origin Links; the score rises by a review or a passing check and falls by a failed conformance check. Origin Links live in the [Index Store](#index-store), never in the code; they are stated with `mycel justify`, listed with `mycel origins`, inferred with `mycel recovery` and disputed with `mycel audit`. Contrast [Derivation](#derivation), which records authority and conformance, and [Reference](#reference), a locator.
 
 **Example:** `mycel justify 'mycel:@code/src/mycel/_derive.py#DeriveStore.apply' '[req:9b6984cc-…:…]'` records an Origin Link with `method: stated` from that method to the requirement.
+
+## Orphaned Change
+
+A change in a code repository that nobody owns, found by the
+[Watcher Duty](#watcher-duty): an uncommitted change outside every booking,
+or a commit [Forester](#forester) did not make. Forester never reverts it; it
+records it and tells the owner. Anyone takes ownership by booking a territory
+that covers the file; one nobody has taken a day later gets a [Beat](#beat)
+that finds the Beat it belongs to, or commits it with its own
+[Justification](#justification), or removes it after saving a patch and asking
+the owner. A commit Forester did not make gets a Beat at once, to write its
+Justifications. Decided by the owner on 5 November 2026
+([FOR-D68, FOR-D69](../forester/decisions.md)); not implemented yet.
+
+**Example:** The owner edits `src/mycel/_cli.py` by hand and does not commit.
+Watcher Duty marks it orphaned; the next agent that books `_cli.py` is told it
+took the change over and commits it with its own work.
 
 ## Owner Goal
 
