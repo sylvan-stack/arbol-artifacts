@@ -21,7 +21,7 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **A** — [A-Nex](#a-nex) · [Action Item](#action-item) · [Activity](#activity) · [Activity Execution](#activity-execution) · [Activity Graph](#activity-graph) · [Activation Rule](#activation-rule) · [Admission Boundary](#admission-boundary) · [Agent Attempt](#agent-attempt) · [Agent Record](#agent-record) · [Aggregate](#aggregate) · [Answer Beacon](#answer-beacon) · [Answer Threshold](#answer-threshold) · [Arbol](#arbol) · [Arbol Trunk](#arbol-trunk) · [Arbol Component](#arbol-component) · [Arbol Root](#arbol-root) · [Arbol Internals](#arbol-internals) · [Arbol Secret](#arbol-secret) · [Arbol Swift App](#arbol-swift-app) · [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) · [Arc](#arc) · [Artifact](#artifact) · [Artifact Chapter](#artifact-chapter) · [Artifact Corpus](#artifact-corpus) · [Artifact Space](#artifact-space) · [Attestation](#attestation) · [Authoritative Input](#authoritative-input) · [Authority Epoch](#authority-epoch)
 - **B** — [Beat](#beat) · [better-grep](#better-grep) · [Blueprint](#blueprint) · [Blueprint Chain](#blueprint-chain) · [Book](#book) · [Brain Recipe](#brain-recipe) · [Branch](#branch) · [Branch Overlay](#branch-overlay) · [Bridge](#bridge) · [Build](#build) · [Burn](#burn)
 - **C** — [Cell](#cell) · [Change Walkthrough](#change-walkthrough) · [Chat Exchange](#chat-exchange) · [Chat Note](#chat-note) · [Chat Session](#chat-session) · [Checkpoint](#checkpoint) · [Chunk](#chunk) · [Chunking](#chunking) · [CLI](#cli) · [Code Corpus](#code-corpus) · [Code Map](#code-map) · [Code Scout](#code-scout) · [Command](#command) · [Communicado](#communicado) · [Communicado Action](#communicado-action) · [Communicado Delivery](#communicado-delivery) · [Communicado Descriptor](#communicado-descriptor) · [Communicado Family](#communicado-family) · [Communicado Presentation](#communicado-presentation) · [Communicado Species](#communicado-species) · [Communicado State](#communicado-state) · [Companion](#companion) · [Completion](#completion) · [Corpus](#corpus) · [Corpus Watcher](#corpus-watcher) · [Coupling](#coupling) · [Cue](#cue) · [Cue Channel](#cue-channel) · [Cue Command](#cue-command) · [Cue Detection Catalog](#cue-detection-catalog) · [Cue Target](#cue-target) · [Cue Target Cache](#cue-target-cache)
-- **D** — [Decision](#decision) · [Default Arbol Trunk](#default-arbol-trunk) · [Delegate](#delegate) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance) · [Duty Routine](#duty-routine)
+- **D** — [Decision](#decision) · [Default Arbol Trunk](#default-arbol-trunk) · [Delegate](#delegate) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance) · [Duty Observation](#duty-observation) · [Duty Routine](#duty-routine)
 
 - **E** — [Effector](#effector) · [Email Source Item](#email-source-item) · [Elma Chat](#elma-chat) · [Elma View Page](#elma-view-page) · [Embedder Profile](#embedder-profile) · [Embedding](#embedding) · [Embedding Provider](#embedding-provider) · [Entity](#entity) · [Entity Card](#entity-card) · [Entity Card Content](#entity-card-content) · [Entity Card Resolver](#entity-card-resolver) · [Entity Chip](#entity-chip) · [Entity Context Menu](#entity-context-menu) · [Entity Edge](#entity-edge) · [Entity Kind](#entity-kind) · [Entity Shape](#entity-shape) · [Entity URI](#entity-uri) · [Env Keepers](#env-keepers) · [Errand](#errand) · [Event Log](#event-log) · [Event Log Service](#event-log-service) · [Event Sourcing](#event-sourcing) · [Exchange Assignment](#exchange-assignment) · [Exhausted Subscription](#exhausted-subscription)
 - **F** — [Fanout](#fanout) · [Flyer](#flyer) · [Fold / Projection](#fold--projection) · [Font Scale](#font-scale) · [Forester](#forester) · [Forester Watcher](#forester-watcher) · [Free Intention](#free-intention) · [Free-standing](#free-standing)
@@ -35,7 +35,7 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **N** — [Native Tool Call](#native-tool-call) · [Nex](#nex) · [Nex Colab](#nex-colab) · [Nex Knowledge Map](#nex-knowledge-map) · [Normalizer](#normalizer) · [Now Line](#now-line)
 - **O** — [Oaken](#oaken) · [Objectives](#objectives) · [Organization](#organization) · [Origin](#origin) · [Origin Coverage](#origin-coverage) · [Origin Link](#origin-link) · [Orphaned Change](#orphaned-change) · [Owner Goal](#owner-goal) · [Owner Requirement](#owner-requirement)
 - **P** — [Parse Result](#parse-result) · [Parser](#parser) · [Parser Pipeline](#parser-pipeline) · [Provider](#provider)
-- **R** — [Radar](#radar) · [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Release](#release) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Requirement](#requirement) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Routine](#routine) · [Routine Observation](#routine-observation) · [Runbook](#runbook)
+- **R** — [Radar](#radar) · [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Release](#release) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Requirement](#requirement) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Routine](#routine) · [Runbook](#runbook)
 - **S** — [Saga](#saga) · [Scan](#scan) · [Signal](#signal) · [Signal Rule](#signal-rule) · [Signal Type](#signal-type) · [Seqoya Lab](#seqoya-lab) · [Source Ref](#source-ref) · [Sparse Retrieval](#sparse-retrieval) · [Spec Requirement](#spec-requirement) · [Spotlight](#spotlight) · [Stale](#stale) · [Stale Summary Regeneration](#stale-summary-regeneration) · [State Runtime Profile](#state-runtime-profile) · [Step Intention](#step-intention) · [Steward](#steward) · [Stint](#stint) · [Subscription](#subscription) · [Subscriptions Vigor](#subscriptions-vigor) · [Summary Node](#summary-node) · [Surface](#surface) · [Sync Pass](#sync-pass)
 - **T** — [Taproot](#taproot) · [Text Snapshot](#text-snapshot) · [Theme](#theme) · [Tool](#tool) · [Tool Request](#tool-request) · [Tracked Source](#tracked-source) · [Trivial Trunk](#trivial-trunk) · [Trunk Runtime](#trunk-runtime) · [Turn](#turn)
 - **U** — [UI](#ui) · [UIShell / Chrome](#uishell--chrome)
@@ -656,6 +656,20 @@ A concrete, versioned build of a [Driver](#driver), identified `<provider>@<buil
 
 **Example:** `claude@20260612T135543Z-a1b2c3` and `claude@20260613T090000Z-d4e5f6` can run side-by-side while Agent Attempts pinned to the old instance drain.
 
+## Duty Observation
+
+One fact that the [Duty Routine](#duty-routine) collects in a minute
+check, such as a changed file with the booking and [Intention](#intention) it
+lies in, or an agent's process found gone. A Duty Observation the records
+cannot explain is an anomaly. The owner named it on 5 November 2026 and kept
+the name on 6 November 2026
+([FOR-D60, FOR-D73](../forester/decisions.md)); not implemented yet. Not to be
+confused with a [Cue](#cue), a weak signal found in analysed text.
+
+**Example:** "`mycel:src/mycel/_classify.py` changed inside the open Intention
+`i-4f2c9e1a`" is a Duty Observation; the same change with no booking around
+it is one the records cannot explain.
+
 ## Duty Routine
 
 [Forester](#forester)'s check of every registered code repository, run once a
@@ -664,7 +678,7 @@ minute: a simple deterministic script that calls no language model. It runs
 tracking files once, and compares what the records say of agents, bookings,
 Intentions and [Beats](#beat) with each other and with what the processes,
 the files and Git show. Each fact it collects is a
-[Routine Observation](#routine-observation); one the records cannot explain is an
+[Duty Observation](#duty-observation); one the records cannot explain is an
 anomaly, which it hands to the [Forester Watcher](#forester-watcher) when two
 checks in a row found it. It is a [Routine](#routine) of Forester's own:
 Forester runs it, with no [Steward](#steward) and no
@@ -1416,20 +1430,6 @@ The contract that an [Arbol Root](#arbol-root) shares with all its [Arbol Trunks
 Recurring or triggered work performed by a [Steward](#steward), commonly maintenance such as re-ingesting a corpus, sweeping stale chunks, or garbage-collecting. Each run that requires agent work is an [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) whose [Initiator](#initiator) is the Steward. A schedule or event supplies an activation opportunity and the Steward's activation policy decides whether to act; neither the trigger nor Mandate condition is the Initiator. The Steward's authority is recorded through the exact [Mandate](#mandate) version used. Distinct from an [Errand](#errand), which is one-off delegated work.
 
 **Example:** A nightly Routine re-ingests `~/Artifacts/Arbol/` and records work items for any chunk whose source moved since it was last generated.
-
-## Routine Observation
-
-One fact that the [Duty Routine](#duty-routine) collects in a minute
-check, such as a changed file with the booking and [Intention](#intention) it
-lies in, or an agent's process found gone. A Routine Observation the records
-cannot explain is an anomaly. First called Duty Observation, the owner's name;
-decided by the owner on 5 and 6 November 2026
-([FOR-D60, FOR-D71](../forester/decisions.md)); not implemented yet. Not to be
-confused with a [Cue](#cue), a weak signal found in analysed text.
-
-**Example:** "`mycel:src/mycel/_classify.py` changed inside the open Intention
-`i-4f2c9e1a`" is a Routine Observation; the same change with no booking around
-it is one the records cannot explain.
 
 ## Runbook
 
