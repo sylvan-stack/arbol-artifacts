@@ -1708,6 +1708,11 @@ The umbrella for the agent-work measurements the [Radar](#radar) reports: [Burn]
 
 ## Workspace
 
+Withdrawn by Forester FOR-D2 at the single-checkout migration of 6 November
+2026. Code now lives in one shared checkout per repository; use
+[Forester territory bookings](../forester/operations/sagas.md). The definition
+below records the former arrangement.
+
 A reusable working folder for parallel agent work, with one clone of every
 repository and its development dependencies installed. Always use the full
 animal name with the term: **Badger Workspace**, **Beaver Workspace**,
@@ -1755,6 +1760,11 @@ is in review; existing booking scripts retain their live behavior until the
 switch-over.
 
 ## Workspace Booking
+
+Withdrawn by Forester FOR-D2 at the single-checkout migration of 6 November
+2026. Code now lives in one shared checkout per repository; use
+[Forester territory bookings](../forester/operations/sagas.md). The definition
+below records the former arrangement.
 
 A reservation of a territory in a Workspace, such as `arbol-trunk/trunks/trivial/`
 in **Beaver Workspace**, from booking it until releasing it. A territory is a
