@@ -21,10 +21,10 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **A** — [A-Nex](#a-nex) · [Action Item](#action-item) · [Activity](#activity) · [Activity Execution](#activity-execution) · [Activity Graph](#activity-graph) · [Activation Rule](#activation-rule) · [Admission Boundary](#admission-boundary) · [Agent Attempt](#agent-attempt) · [Agent Record](#agent-record) · [Aggregate](#aggregate) · [Answer Beacon](#answer-beacon) · [Answer Threshold](#answer-threshold) · [Arbol](#arbol) · [Arbol Trunk](#arbol-trunk) · [Arbol Component](#arbol-component) · [Arbol Root](#arbol-root) · [Arbol Internals](#arbol-internals) · [Arbol Secret](#arbol-secret) · [Arbol Swift App](#arbol-swift-app) · [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) · [Arc](#arc) · [Artifact](#artifact) · [Artifact Chapter](#artifact-chapter) · [Artifact Corpus](#artifact-corpus) · [Artifact Space](#artifact-space) · [Attestation](#attestation) · [Authoritative Input](#authoritative-input) · [Authority Epoch](#authority-epoch)
 - **B** — [Beat](#beat) · [better-grep](#better-grep) · [Blueprint](#blueprint) · [Blueprint Chain](#blueprint-chain) · [Book](#book) · [Brain Recipe](#brain-recipe) · [Branch](#branch) · [Branch Overlay](#branch-overlay) · [Bridge](#bridge) · [Build](#build) · [Burn](#burn)
 - **C** — [Cell](#cell) · [Change Walkthrough](#change-walkthrough) · [Chat Exchange](#chat-exchange) · [Chat Note](#chat-note) · [Chat Session](#chat-session) · [Checkpoint](#checkpoint) · [Chunk](#chunk) · [Chunking](#chunking) · [CLI](#cli) · [Code Corpus](#code-corpus) · [Code Map](#code-map) · [Code Scout](#code-scout) · [Command](#command) · [Communicado](#communicado) · [Communicado Action](#communicado-action) · [Communicado Delivery](#communicado-delivery) · [Communicado Descriptor](#communicado-descriptor) · [Communicado Family](#communicado-family) · [Communicado Presentation](#communicado-presentation) · [Communicado Species](#communicado-species) · [Communicado State](#communicado-state) · [Companion](#companion) · [Completion](#completion) · [Corpus](#corpus) · [Corpus Watcher](#corpus-watcher) · [Coupling](#coupling) · [Cue](#cue) · [Cue Channel](#cue-channel) · [Cue Command](#cue-command) · [Cue Detection Catalog](#cue-detection-catalog) · [Cue Target](#cue-target) · [Cue Target Cache](#cue-target-cache)
-- **D** — [Decision](#decision) · [Default Arbol Trunk](#default-arbol-trunk) · [Delegate](#delegate) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance) 
+- **D** — [Decision](#decision) · [Default Arbol Trunk](#default-arbol-trunk) · [Delegate](#delegate) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance) · [Duty Routine](#duty-routine)
 
 - **E** — [Effector](#effector) · [Email Source Item](#email-source-item) · [Elma Chat](#elma-chat) · [Elma View Page](#elma-view-page) · [Embedder Profile](#embedder-profile) · [Embedding](#embedding) · [Embedding Provider](#embedding-provider) · [Entity](#entity) · [Entity Card](#entity-card) · [Entity Card Content](#entity-card-content) · [Entity Card Resolver](#entity-card-resolver) · [Entity Chip](#entity-chip) · [Entity Context Menu](#entity-context-menu) · [Entity Edge](#entity-edge) · [Entity Kind](#entity-kind) · [Entity Shape](#entity-shape) · [Entity URI](#entity-uri) · [Env Keepers](#env-keepers) · [Errand](#errand) · [Event Log](#event-log) · [Event Log Service](#event-log-service) · [Event Sourcing](#event-sourcing) · [Exchange Assignment](#exchange-assignment) · [Exhausted Subscription](#exhausted-subscription)
-- **F** — [Fanout](#fanout) · [Flyer](#flyer) · [Fold / Projection](#fold--projection) · [Font Scale](#font-scale) · [Forester](#forester) · [Forester Routine](#forester-routine) · [Forester Watcher](#forester-watcher) · [Free Intention](#free-intention) · [Free-standing](#free-standing)
+- **F** — [Fanout](#fanout) · [Flyer](#flyer) · [Fold / Projection](#fold--projection) · [Font Scale](#font-scale) · [Forester](#forester) · [Forester Watcher](#forester-watcher) · [Free Intention](#free-intention) · [Free-standing](#free-standing)
 - **G** — [Generation](#generation)
 - **H** — [H-Nex](#h-nex) · [Heartwood](#heartwood) · [Hold](#hold) · [Hunk Review](#hunk-review)
 - **I** — [Identity Reconciliation](#identity-reconciliation) · [Ignore Rule](#ignore-rule) · [Index Store](#index-store) · [Ingest](#ingest) · [Initiator](#initiator) · [Instructions Hub](#instructions-hub) · [Intelligence Provider (IP)](#intelligence-provider-ip) · [Intention](#intention)
@@ -656,6 +656,26 @@ A concrete, versioned build of a [Driver](#driver), identified `<provider>@<buil
 
 **Example:** `claude@20260612T135543Z-a1b2c3` and `claude@20260613T090000Z-d4e5f6` can run side-by-side while Agent Attempts pinned to the old instance drain.
 
+## Duty Routine
+
+[Forester](#forester)'s check of every registered code repository, run once a
+minute: a simple deterministic script that calls no language model. It runs
+`git status` in each repository, reads the agents' processes and Forester's
+tracking files once, and compares what the records say of agents, bookings,
+Intentions and [Beats](#beat) with each other and with what the processes,
+the files and Git show. Each fact it collects is a
+[Routine Observation](#routine-observation); one the records cannot explain is an
+anomaly, which it hands to the [Forester Watcher](#forester-watcher) when two
+checks in a row found it. It is a [Routine](#routine) of Forester's own:
+Forester runs it, with no [Steward](#steward) and no
+[Chat Session](#chat-session). First called Watcher Duty, then Forester Routine.
+Decided by the owner on 5 and 6 November 2026
+([FOR-D60, FOR-D70, FOR-D72](../forester/decisions.md)); not implemented yet.
+
+**Example:** At 14:21 the Duty Routine runs `git status` in the Mycel
+checkout, finds `src/mycel/_classify.py` changed inside the open Intention of
+SYL-231, whose agent's process is running, and records that as normal.
+
 ## Effector
 
 The daemon that executes and settles [Tool Requests](#tool-request): run / run-always / reject.
@@ -885,31 +905,11 @@ names and procedures stay in force until the move-over.
 **Example:** Planning a new Saga, booking a territory for one of its Beats and
 copying its plan to Linear would all be done through Forester.
 
-## Forester Routine
-
-[Forester](#forester)'s check of every registered code repository, run once a
-minute: a simple deterministic script that calls no language model. It runs
-`git status` in each repository, reads the agents' processes and Forester's
-tracking files once, and compares what the records say of agents, bookings,
-Intentions and [Beats](#beat) with each other and with what the processes,
-the files and Git show. Each fact it collects is a
-[Routine Observation](#routine-observation); one the records cannot explain is an
-anomaly, which it hands to the [Forester Watcher](#forester-watcher) when two
-checks in a row found it. It is a [Routine](#routine) of Forester's own:
-Forester runs it, with no [Steward](#steward) and no
-[Chat Session](#chat-session). First called Watcher Duty. Decided by the owner
-on 5 and 6 November 2026 ([FOR-D60, FOR-D70](../forester/decisions.md)); not
-implemented yet.
-
-**Example:** At 14:21 the Forester Routine runs `git status` in the Mycel
-checkout, finds `src/mycel/_classify.py` changed inside the open Intention of
-SYL-231, whose agent's process is running, and records that as normal.
-
 ## Forester Watcher
 
 
 The agent with a language model to which [Forester](#forester) hands an
-anomaly found by the [Forester Routine](#forester-routine), as an action item, for
+anomaly found by the [Duty Routine](#duty-routine), as an action item, for
 the cases that need judgement and that no agent at work can answer, such as an
 agent that seems stuck, or a Free [Intention](#intention) left open outside
 any [Beat](#beat): it investigates and settles it. An Intention left open in a
@@ -1258,7 +1258,7 @@ A directed link from a [Chunk](#chunk) to its [Origin](#origin): a claim that th
 ## Orphaned Change
 
 A change in a code repository that nobody owns, found by the
-[Forester Routine](#forester-routine): an uncommitted change outside every booking,
+[Duty Routine](#duty-routine): an uncommitted change outside every booking,
 or a commit [Forester](#forester) did not make. Forester never reverts it; it
 records it and tells the owner. Anyone takes ownership by booking a territory
 that covers the file; one nobody has taken a day later gets a [Beat](#beat)
@@ -1269,7 +1269,7 @@ Justifications. Decided by the owner on 5 November 2026
 ([FOR-D68, FOR-D69](../forester/decisions.md)); not implemented yet.
 
 **Example:** The owner edits `src/mycel/_cli.py` by hand and does not commit.
-The Forester Routine marks it orphaned; the next agent that books `_cli.py` is told it
+The Duty Routine marks it orphaned; the next agent that books `_cli.py` is told it
 took the change over and commits it with its own work.
 
 ## Owner Goal
@@ -1419,7 +1419,7 @@ Recurring or triggered work performed by a [Steward](#steward), commonly mainten
 
 ## Routine Observation
 
-One fact that the [Forester Routine](#forester-routine) collects in a minute
+One fact that the [Duty Routine](#duty-routine) collects in a minute
 check, such as a changed file with the booking and [Intention](#intention) it
 lies in, or an agent's process found gone. A Routine Observation the records
 cannot explain is an anomaly. First called Duty Observation, the owner's name;
