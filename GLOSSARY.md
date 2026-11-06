@@ -24,7 +24,7 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **D** — [Decision](#decision) · [Default Arbol Trunk](#default-arbol-trunk) · [Delegate](#delegate) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance) · [Duty Observation](#duty-observation) · [Duty Routine](#duty-routine)
 
 - **E** — [Effector](#effector) · [Email Source Item](#email-source-item) · [Elma Chat](#elma-chat) · [Elma View Page](#elma-view-page) · [Embedder Profile](#embedder-profile) · [Embedding](#embedding) · [Embedding Provider](#embedding-provider) · [Entity](#entity) · [Entity Card](#entity-card) · [Entity Card Content](#entity-card-content) · [Entity Card Resolver](#entity-card-resolver) · [Entity Chip](#entity-chip) · [Entity Context Menu](#entity-context-menu) · [Entity Edge](#entity-edge) · [Entity Kind](#entity-kind) · [Entity Shape](#entity-shape) · [Entity URI](#entity-uri) · [Env Keepers](#env-keepers) · [Errand](#errand) · [Event Log](#event-log) · [Event Log Service](#event-log-service) · [Event Sourcing](#event-sourcing) · [Exchange Assignment](#exchange-assignment) · [Exhausted Subscription](#exhausted-subscription)
-- **F** — [Fanout](#fanout) · [Flyer](#flyer) · [Fold / Projection](#fold--projection) · [Font Scale](#font-scale) · [Forester](#forester) · [Forester Watcher](#forester-watcher) · [Free Intention](#free-intention) · [Free-standing](#free-standing)
+- **F** — [Fanout](#fanout) · [Flyer](#flyer) · [Fold / Projection](#fold--projection) · [Font Scale](#font-scale) · [Forester](#forester) · [Forester Feed](#forester-feed) · [Forester Watcher](#forester-watcher) · [Free Intention](#free-intention) · [Free-standing](#free-standing)
 - **G** — [Generation](#generation)
 - **H** — [H-Nex](#h-nex) · [Heartwood](#heartwood) · [Hold](#hold) · [Hunk Review](#hunk-review)
 - **I** — [Identity Reconciliation](#identity-reconciliation) · [Ignore Rule](#ignore-rule) · [Index Store](#index-store) · [Ingest](#ingest) · [Initiator](#initiator) · [Instructions Hub](#instructions-hub) · [Intelligence Provider (IP)](#intelligence-provider-ip) · [Intention](#intention)
@@ -918,6 +918,23 @@ names and procedures stay in force until the move-over.
 
 **Example:** Planning a new Saga, booking a territory for one of its Beats and
 copying its plan to Linear would all be done through Forester.
+
+## Forester Feed
+
+The short messages [Forester](#forester) writes for the owner, one post per
+line in `~/Artifacts/forester/feed.jsonl`: not every record, which the Forester
+Ledger keeps, but what the owner might want to read. Each post has a level,
+`debug`, `update` or `notification`, and posts older than 24 hours move to the
+archive. The Feed's [Deck Talk](#deck-talk) consumer sends posts of a set
+level to the Stream Deck as they are written and shows the rest when the owner
+presses Debug, Update or Notification there. Decided by the owner on
+6 November 2026 ([FOR-D74](../forester/decisions.md)); the consumer exists as
+a prototype, the rest is not implemented yet.
+
+**Example:** Forester writes "Orphaned Change in mycel:src/mycel/_cli.py:
+changed by hand, nobody has booked it" as a `notification`; it appears on the
+Deck within seconds, while the debug post of each Duty Routine check appears
+only when the owner presses Debug.
 
 ## Forester Watcher
 
