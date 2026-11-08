@@ -957,7 +957,7 @@ find it, and the Forester Watcher gets one action item with the command line.
 An [Intention](#intention) tied to no step of a plan, for a code change that is
 not part of any step, such as code changed in work booked outside a
 [Beat](#beat). The agent closes it by reporting that the changes it describes
-were made. Decided by the owner on 5 November 2026 ([FOR-D40, FOR-D57, FOR-D58](../forester/decisions.md)); not implemented yet.
+were made. Decided by the owner on 5 November 2026 ([FOR-D40, FOR-D57, FOR-D58](../forester/decisions.md)); built on 8 November 2026 as `forester intend` ([FOR-D109](../forester/decisions.md)).
 
 **Example:** In work booked outside any Beat, the agent announces a Free
 Intention for `mycel:src/mycel/_cli.py` with the reason "`--dry-run` missing from the
@@ -1078,7 +1078,7 @@ what the reason says. The agent declares the Intention, makes the changes and
 reports it closed; one its agent left open is investigated and closed with its
 resolution by the Forester Watcher. Each commit Forester makes names the one
 Intention it was made under, and one Intention may have several commits.
-Decided by the owner on 4 and 5 November 2026 ([FOR-D40, FOR-D57, FOR-D58](../forester/decisions.md)); not implemented yet.
+Decided by the owner on 4 and 5 November 2026 ([FOR-D40, FOR-D57, FOR-D58](../forester/decisions.md)); built on 8 November 2026 as `forester intend` ([FOR-D109](../forester/decisions.md)).
 
 **Example:** Before step 3 of the Beat SYL-231, the agent announces an
 Intention for `mycel:src/mycel/_classify.py` and
@@ -1546,7 +1546,7 @@ The explicit `state` build/install selection whose dedicated Root, Default Trunk
 An [Intention](#intention) tied to one step of a [Beat](#beat)'s
 implementation plan, closed when the agent marks the step done. Where finer
 Intentions are wanted, the plan has more steps. Decided by the owner on 4 and
-5 November 2026 ([FOR-D40, FOR-D57, FOR-D58](../forester/decisions.md)); not implemented yet.
+5 November 2026 ([FOR-D40, FOR-D57, FOR-D58](../forester/decisions.md)); built on 8 November 2026 as `forester intend --step` ([FOR-D109](../forester/decisions.md)).
 
 **Example:** The Intention for step 3 of SYL-231, which names
 `mycel:src/mycel/_classify.py` and `mycel:src/mycel/_credentials.py`, closes when the agent
