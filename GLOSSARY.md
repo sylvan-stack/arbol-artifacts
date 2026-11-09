@@ -24,10 +24,10 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **D** — [Decision](#decision) · [Default Arbol Trunk](#default-arbol-trunk) · [Delegate](#delegate) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance) · [Duty Observation](#duty-observation) · [Duty Routine](#duty-routine)
 
 - **E** — [Effector](#effector) · [Email Source Item](#email-source-item) · [Elma Chat](#elma-chat) · [Elma View Page](#elma-view-page) · [Embedder Profile](#embedder-profile) · [Embedding](#embedding) · [Embedding Provider](#embedding-provider) · [Entity](#entity) · [Entity Card](#entity-card) · [Entity Card Content](#entity-card-content) · [Entity Card Resolver](#entity-card-resolver) · [Entity Chip](#entity-chip) · [Entity Context Menu](#entity-context-menu) · [Entity Edge](#entity-edge) · [Entity Kind](#entity-kind) · [Entity Shape](#entity-shape) · [Entity URI](#entity-uri) · [Env Keepers](#env-keepers) · [Errand](#errand) · [Event Log](#event-log) · [Event Log Service](#event-log-service) · [Event Sourcing](#event-sourcing) · [Exchange Assignment](#exchange-assignment) · [Exhausted Subscription](#exhausted-subscription)
-- **F** — [Fanout](#fanout) · [Flyer](#flyer) · [Fold / Projection](#fold--projection) · [Font Scale](#font-scale) · [Forester](#forester) · [Forester Feed](#forester-feed) · [Forester Watcher](#forester-watcher) · [Free Intention](#free-intention) · [Free-standing](#free-standing)
+- **F** — [Fanout](#fanout) · [Feature Course](#feature-course) · [Feature Triage](#feature-triage) · [Flyer](#flyer) · [Fold / Projection](#fold--projection) · [Font Scale](#font-scale) · [Forester](#forester) · [Forester Feed](#forester-feed) · [Forester Watcher](#forester-watcher) · [Free Intention](#free-intention) · [Free-standing](#free-standing)
 - **G** — [Generation](#generation)
 - **H** — [H-Nex](#h-nex) · [Heartwood](#heartwood) · [Hold](#hold) · [Hunk Review](#hunk-review)
-- **I** — [Identity Reconciliation](#identity-reconciliation) · [Ignore Rule](#ignore-rule) · [Index Store](#index-store) · [Ingest](#ingest) · [Initiator](#initiator) · [Instructions Hub](#instructions-hub) · [Intelligence Provider (IP)](#intelligence-provider-ip) · [Intention](#intention)
+- **I** — [Idea Discussion](#idea-discussion) · [Identity Reconciliation](#identity-reconciliation) · [Ignore Rule](#ignore-rule) · [Implementation Planning](#implementation-planning) · [Index Store](#index-store) · [Ingest](#ingest) · [Initial Research](#initial-research) · [Initiator](#initiator) · [Instructions Hub](#instructions-hub) · [Intelligence Provider (IP)](#intelligence-provider-ip) · [Intention](#intention)
 - **J** — [Justification](#justification)
 - **K** — [Knowledge System](#knowledge-system)
 - **L** — [Ladder](#ladder) · [Leather Bag](#leather-bag) · [Living Topic](#living-topic) · [Load](#load)
@@ -36,7 +36,7 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **O** — [Oaken](#oaken) · [Objectives](#objectives) · [Organization](#organization) · [Origin](#origin) · [Origin Coverage](#origin-coverage) · [Origin Link](#origin-link) · [Orphaned Change](#orphaned-change) · [Owner Goal](#owner-goal) · [Owner Requirement](#owner-requirement)
 - **P** — [Parse Result](#parse-result) · [Parser](#parser) · [Parser Pipeline](#parser-pipeline) · [Provider](#provider)
 - **R** — [Radar](#radar) · [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Release](#release) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Requirement](#requirement) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Routine](#routine) · [Runbook](#runbook)
-- **S** — [Saga](#saga) · [Scan](#scan) · [Signal](#signal) · [Signal Rule](#signal-rule) · [Signal Type](#signal-type) · [Seqoya Lab](#seqoya-lab) · [Source Ref](#source-ref) · [Sparse Retrieval](#sparse-retrieval) · [Spec Requirement](#spec-requirement) · [Spotlight](#spotlight) · [Stale](#stale) · [Stale Summary Regeneration](#stale-summary-regeneration) · [State Runtime Profile](#state-runtime-profile) · [Step Intention](#step-intention) · [Steward](#steward) · [Stint](#stint) · [Subscription](#subscription) · [Subscriptions Vigor](#subscriptions-vigor) · [Summary Node](#summary-node) · [Surface](#surface) · [Sync Pass](#sync-pass)
+- **S** — [Saga](#saga) · [Saga Planning](#saga-planning) · [Scan](#scan) · [Signal](#signal) · [Signal Rule](#signal-rule) · [Signal Type](#signal-type) · [Seqoya Lab](#seqoya-lab) · [Source Ref](#source-ref) · [Sparse Retrieval](#sparse-retrieval) · [Spec Requirement](#spec-requirement) · [Spec Writing](#spec-writing) · [Spotlight](#spotlight) · [Stale](#stale) · [Stale Summary Regeneration](#stale-summary-regeneration) · [State Runtime Profile](#state-runtime-profile) · [Step Intention](#step-intention) · [Steward](#steward) · [Stint](#stint) · [Subscription](#subscription) · [Subscriptions Vigor](#subscriptions-vigor) · [Summary Node](#summary-node) · [Surface](#surface) · [Sync Pass](#sync-pass)
 - **T** — [Taproot](#taproot) · [Text Snapshot](#text-snapshot) · [Theme](#theme) · [Tool](#tool) · [Tool Request](#tool-request) · [Tracked Source](#tracked-source) · [Trivial Trunk](#trivial-trunk) · [Trunk Runtime](#trunk-runtime) · [Turn](#turn)
 - **U** — [UI](#ui) · [UIShell / Chrome](#uishell--chrome)
 - **V** — [Velocity](#velocity) · [Vigor](#vigor) · [Visit](#visit)
@@ -879,6 +879,18 @@ Pub/sub delivery of appended events to live subscribers.
 
 **Example:** When Root appends a new turn event, Elma Chat and a status bar subscriber both receive the update live.
 
+## Feature Course
+
+The whole path a new feature takes in a [Mycel-enabled](#mycel-enabled) repository, from the owner's first free-form words about it to [Beats](#beat) ready to implement. It has six stages, in order: [Idea Discussion](#idea-discussion), [Initial Research](#initial-research), [Feature Triage](#feature-triage), [Spec Writing](#spec-writing), [Saga Planning](#saga-planning) and [Implementation Planning](#implementation-planning). It is the everyday way to develop a feature: the owner talks about the feature, and the agent does the research and writes the documents. No feature is implemented before it has a specification with its [Spec Requirements](#spec-requirement) and [Decisions](#decision). What the course knows, such as its stages and the standards of each document, belongs to [Mycel](#mycel); [Forester](#forester) only enforces its rules. Described by the owner on 9 November 2026; not yet specified or built.
+
+**Example:** On 9 November 2026 the owner asked how a Beat's plan should be written (Idea Discussion). The agent read the Sagas guide, FOR-1 and all 216 Beat files and reported what exists (Initial Research). The owner's answers then settled what a plan step is (Feature Triage). Spec Writing, Saga Planning and Implementation Planning follow.
+
+## Feature Triage
+
+The third stage of a [Feature Course](#feature-course). The owner adds what the feature must do, its limits and its priorities. The agent works out how the feature relates to the existing code: what it reuses, what it changes and what it conflicts with. Each new piece of information from the owner may lead the agent to research the code again. Triage ends when the feature is understood well enough to specify.
+
+**Example:** The owner says that plan standards are checked by Mycel, not by Forester. The agent then researches what Mycel already knows about Beat files and what Forester already checks, and reports which of the two must change.
+
 ## Flyer
 
 An [Entity](#entity) (kind `flyer`, tag `fly`): any excerpt of text carrying important information, extractable from any other Entity. *(Planned feature.)*
@@ -1015,6 +1027,12 @@ A document whose **truth-conditions are frozen in time**: a past research note, 
 
 **Example:** `operations/archive/deep-research-cursor-era.md` — the snapshot of the engine that powered deep-research before its successor: marked heartwood with `implemented: 2026-03` / `outdated: 2026-07-05`. It stops appearing in Drifts and summaries, but "how did the Cursor-era phase loop work?" still finds it — badged heartwood.
 
+## Idea Discussion
+
+The first stage of a [Feature Course](#feature-course). The owner describes a new feature in their own words, in any order and form, and the agent asks questions and restates the idea until both mean the same thing. The result is the idea, stated clearly enough to research.
+
+**Example:** The owner writes "we need to discuss how Beats implementation plans should be written". The agent asks what the owner already has in mind, and restates the idea as "a standard for the steps of a Beat's plan, and a way to check plans against it".
+
 ## Identity Reconciliation
 
 The step of [Ingest](#ingest) that decides, for every chunk candidate produced by [Chunking](#chunking), *which stored [Chunk](#chunk) it is* — so a chunk's immutable id, and everything hanging off it ([Derivations](#derivation), [Embedding](#embedding), history), survives edits and renames instead of being destroyed and recreated.
@@ -1049,6 +1067,12 @@ Beat, and rewritten whenever a booking of the work is released
 **Example:** `SYL-292.history.md`, beside `SYL-292.md` in the Drivers Arc,
 lists the Intentions of that Beat with their commits in `arbol-codex-driver`.
 
+## Implementation Planning
+
+The sixth stage of a [Feature Course](#feature-course): writing the implementation plans, the numbered steps by which the planned work will be done. Every [Beat](#beat) has one. It is a checkbox tree in the Beat's `## Plan` section, whose leaves are logical, atomic steps of any kind, as many and as deep as the planning gives them ([FOR-D42, FOR-D119](../forester/decisions.md)). Forester ties each code change to one step through an [Intention](#intention). Whether [Sagas](#saga) and [Arcs](#arc) also get plans, at a higher level, is still open.
+
+**Example:** The plan of the Beat SYL-342 has five steps; step 2 has three sub-steps, one of which is "Expose the existing rename key through `mycel pieces`".
+
 ## Index Store
 
 [Mycel](#mycel)'s own PostgreSQL database with ParadeDB, at the address its settings name, holding the [Chunks](#chunk), their versions and vectors, the edges ([Derivations](#derivation), [Couplings](#coupling) and [Origin Links](#origin-link)), the marks such as [Stale](#stale), the [Requirement](#requirement) and [Decision](#decision) entities, and the record of its work. It is a different database from Arbol's: Mycel reads Arbol's database as data when a decision's discussion is shown, and writes nothing there. Most of the Index Store can be made again from the files; what exists nowhere else is what a person asserted or confirmed in it, such as stated Origin Links.
@@ -1060,6 +1084,12 @@ lists the Intentions of that Beat with their commits in `arbol-codex-driver`.
 The operation that synchronizes one [Corpus](#corpus) into [Mycel](#mycel)'s stored graph. Three steps, in order: **[Scan](#scan)** (read files, hash them, skip the byte-identical ones) → **[Chunking](#chunking)** (split each changed file into chunk candidates) → **[Identity Reconciliation](#identity-reconciliation)** (decide which stored [Chunk](#chunk) each candidate is). After reconciliation, each changed chunk's content hash is recorded and its [Embedding](#embedding) cleared, making it *pending* for the next embed. Mechanical — no model calls; runs per-corpus (an Artifact-Corpus ingest and a Code-Corpus ingest are the same operation over different roots and chunkers).
 
 **Example:** After a refactor touching two files, Ingest re-reads the corpus but only those two files pass [Scan](#scan); five symbols come back `edited`, one `renamed`, the rest of the corpus is untouched.
+
+## Initial Research
+
+The second stage of a [Feature Course](#feature-course): the agent's first study of the code base for the new feature. It covers the current architecture and the code and documents related to the idea, with file-and-line evidence, so that triage starts from facts rather than guesses. It describes how things work today and proposes no design. It goes deeper than a [Code Scout](#code-scout), which only maps where to dig.
+
+**Example:** For a standard for Beat plans, the agent reads the Sagas guide, the plan rules in FOR-1 and FOR-3 and all 216 Beat files. It reports that the rules cover only a plan's form, and that plans range from 2 to 42 steps.
 
 ## Initiator
 
@@ -1488,6 +1518,12 @@ Not the distributed-systems "saga pattern" (compensating transactions): a Saga n
 
 **Example:** The "Semantic Research Saga" contains the "Glossary Arc" and the "Arbol Specs Arc"; the "Glossary Arc" contains the "Trunk Implementation Beat" and the "Workflow Semantics Beat". The two Beats touch disjoint files, so two [Delegates](#delegate) can work them at once. The "Writing Specs Saga" and the "Implementing Specs Saga" declare overlapping territories — both change the spec artifacts — so they never run at the same time: "Implementing Specs Saga" becomes runnable the moment "Writing Specs Saga" finishes.
 
+## Saga Planning
+
+The fifth stage of a [Feature Course](#feature-course). The Saga Planner, the agent that plans the work with the owner, turns the specification into the [Sagas](#saga), [Arcs](#arc) and [Beats](#beat) that implement it. A Beat is written only once its requirements are fully described; work that is foreseen but not yet specified is noted in its Arc ([FOR-D34](../forester/decisions.md)). The last Beat of each Arc tests that Arc's work ([FOR-D120](../forester/decisions.md)).
+
+**Example:** For a specification of plan review, the Saga Planner writes one Arc for the Mycel side and one for the Forester side. Each Arc ends with a testing Beat.
+
 ## Scan
 
 The first step of [Ingest](#ingest): read every file of a [Corpus](#corpus) from disk and compute each file's whole-file content hash. Read-only — no database writes — and it produces the picture of "what exists right now" the rest of Ingest works from. A file whose hash matches the stored one is **skipped entirely** (its chunks are provably identical, since [Chunking](#chunking) is deterministic); this short-circuit is what makes an idle Ingest sub-second.
@@ -1535,6 +1571,12 @@ Search **by exact words** (BM25 / keyword / *lexical* search): a text is represe
 A [Requirement](#requirement) of one product, recorded as one row of a specification's Requirements table: its human id such as `MYC-2.13`, the text beginning "Mycel must…", whether it is kept, changed or new from version 1 (`From v1`) and the kind of check that verifies it. A Spec Requirement is an [Entity](#entity) (kind `requirement`, tag `req`, shape `note`), keyed by a UUID that stands in the row's first cell in an HTML comment after the human id, invisible to readers and read by [Mycel](#mycel), and addressed by an [Entity URI](#entity-uri) `[req:<uuid>:<title>]`. Mycel keeps it as a [Chunk](#chunk) of its own beside the section that holds the row, so that code and documents can name it as their [Origin](#origin) through an [Origin Link](#origin-link), and so that editing the row marks what rests on it [Stale](#stale) as a [Derivation](#derivation) does. The human id is its display name and is never edited; the row can move between chapters without changing identity, and a withdrawn id stays reserved. A [Saga](#saga), an [Arc](#arc) or a [Beat](#beat) records no requirement of its own: a Beat names the Spec Requirements it implements under "Requirements owned by this task". Contrast [Owner Requirement](#owner-requirement), stated by the owner independent of any specification, and [Decision](#decision), a choice the owner made.
 
 **Example:** `| MYC-2.13 <!-- 9b6984cc-db34-4a84-b948-0eaefbea916a --> | mark a chunk stale when a source of it has a content hash other than the one its edge stores … | Changed | store |` is one Spec Requirement; its Entity URI is `[req:9b6984cc-db34-4a84-b948-0eaefbea916a:<title>]`.
+
+## Spec Writing
+
+The fourth stage of a [Feature Course](#feature-course): the agent writes a new specification for the feature, or extends an existing one, with its [Spec Requirements](#spec-requirement) and the owner's [Decisions](#decision), following the README of the specification's folder. Implementation starts only from what a specification says.
+
+**Example:** The standard for Beat plans becomes a chapter of a Mycel specification, with a requirement such as "a leaf of a plan is one logical, atomic step" and the owner's decisions on how plans are checked.
 
 ## Spotlight
 
