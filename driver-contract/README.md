@@ -53,4 +53,4 @@ Driver specifications: [Claude Driver](../../arbol-claude-driver/specs/README.md
 
 **Wording.** *Observed* means read in the version 1 source or seen in a probe recorded here. *Proposed* means a design for Arbol 2. Requirements are Proposed by nature; their origin column says what they rest on. Examples are fictional: no credentials, account names or conversation content.
 
-Permanent Pi originals: [Pi Driver corpus](../../arbol-pi-driver/specs/README.md), relocated by SYL-273 on 20 October 2026; accepted identifiers and Linear copies retained.
+Permanent Pi originals: [Pi Driver corpus](../../arbol-pi-driver/specs/README.md), relocated by SYL-273 on 20 October 2026; accepted identifiers retained.

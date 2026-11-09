@@ -903,8 +903,8 @@ The planned repository, and the one name, for organizing work: the order of
 tasks, what waits for what, their draft plans and their status updates. It is
 to bring together what exists today as [Sagas](#saga), [Arcs](#arc) and
 [Beats](#beat), bookings of territories, the
-[Workspace Ledger](#workspace-ledger)'s record of what each booking changed, and
-the copies in Linear. It is also to guard code: agents do not commit code
+[Workspace Ledger](#workspace-ledger)'s record of what each booking changed.
+It is also to guard code: agents do not commit code
 themselves. Forester checks the prepared change, mechanically and without a
 language model, that it stays inside its booking's territory and that every
 piece of code it touches has a [Justification](#justification) or a logged
@@ -916,8 +916,8 @@ that Forester's documents, every Saga and the tracking files live in
 are in its corpus. Only its documents have moved there yet, and the existing
 names and procedures stay in force until the move-over.
 
-**Example:** Planning a new Saga, booking a territory for one of its Beats and
-copying its plan to Linear would all be done through Forester.
+**Example:** Planning a new Saga and booking a territory for one of its Beats
+are both done through Forester.
 
 ## Forester Feed
 
@@ -1286,7 +1286,7 @@ A named set of [Repos](#repo) belonging to one organizational unit. An Organizat
 
 ## Origin
 
-The [Chunk](#chunk) at the source end of an [Origin Link](#origin-link): what ordered the chunk at the other end. An Origin is of any kind: a [Requirement](#requirement), a [Decision](#decision), a document section, or a code chunk when nothing better exists, as in an undocumented open-source repository. A step of a [Beat](#beat)'s plan, a task, a Beat or a Linear issue is never an Origin: it is where the work was done, not why ([FOR-D114](../forester/decisions.md)). The word is used for nothing else in [Mycel](#mycel); the former `Origin` column of the requirement tables, which said whether a requirement was kept, changed, new or dropped from version 1, is named `From v1`. An Origin is written as an [Entity URI](#entity-uri) when it has a UUID and as a Mycel source address otherwise.
+The [Chunk](#chunk) at the source end of an [Origin Link](#origin-link): what ordered the chunk at the other end. An Origin is of any kind: a [Requirement](#requirement), a [Decision](#decision), a document section, or a code chunk when nothing better exists, as in an undocumented open-source repository. A step of a [Beat](#beat)'s plan, a task or a Beat is never an Origin: it is where the work was done, not why ([FOR-D114](../forester/decisions.md)). The word is used for nothing else in [Mycel](#mycel); the former `Origin` column of the requirement tables, which said whether a requirement was kept, changed, new or dropped from version 1, is named `From v1`. An Origin is written as an [Entity URI](#entity-uri) when it has a UUID and as a Mycel source address otherwise.
 
 **Example:** The requirement `MYC-2.13` is the Origin of the function that marks a chunk stale; the Origin Link from that function names the requirement by its Entity URI.
 
