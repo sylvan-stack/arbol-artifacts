@@ -19,7 +19,7 @@ The chapter was taken out of [AGR-1](../../agent-records/01-the-hooks.md) on 19 
 ## The hooks in one picture
 
 ```text
-~/.claude/settings.json  (terminal claude, claude-zai, Claude desktop app)
+~/.claude/settings.json  (terminal claude, Claude desktop app)
   ├─ arbol-agents hook claude-code   the agent record, 17 events (AGR-1)     accepted, not installed (SYL-202)
   └─ agent-watch-hook                steer or stop, PreToolUse (SYL-221)     installed
 ~/.codex/hooks.json  (codex in a terminal, Codex app)                        installed by SYL-221

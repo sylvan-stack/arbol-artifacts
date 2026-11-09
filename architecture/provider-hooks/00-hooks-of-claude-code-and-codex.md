@@ -22,7 +22,7 @@ Not covered: which hooks are on this Mac and the rules for installing one ([PHK-
 | | Claude Code | Codex |
 |---|---|---|
 | The Leather Bag's own file | `~/.claude/settings.json`, key `hooks` | `~/.codex/hooks.json`, key `hooks` |
-| Who reads it | The terminal `claude`; `claude-zai`, which is `claude` with the same home and one more settings file (`--settings ~/.claude/settings-zai.json`, which has no hooks); the Claude desktop app, which starts each session with `--setting-sources=user,project,local` (seen in the app's own process, version 2.1.299) | `codex` in a terminal and the Codex app's own `codex app-server` |
+| Who reads it | The terminal `claude`; the Claude desktop app, which starts each session with `--setting-sources=user,project,local` (seen in the app's own process, version 2.1.299) | `codex` in a terminal and the Codex app's own `codex app-server` |
 | A repository's file | `.claude/settings.json` and `.claude/settings.local.json` of the working folder | `.codex/hooks.json` of the working folder |
 | On the command line | `--settings <file>` | `-c` overrides; the Codex app ignores hooks given this way ([Codex's trust](#codexs-trust)) |
 | Switched off | `--safe-mode` leaves out hooks, CLAUDE.md and MCP servers | `--disable hooks`: `hooks` is a stable feature, on as shipped (`codex features list`, 19 October 2026) |
