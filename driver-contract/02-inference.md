@@ -38,6 +38,20 @@ A run needs no permission from its caller on its way (DRV-3). Two things can sti
 
 A run does not outlive its caller. The Driver stops the run as soon as it can no longer write an event, and, where there is a control input, as soon as that input ends.
 
+### An Arbol chat's identity
+
+An Arbol caller adds `rootId` to the run request and uses the existing `chatSessionId` for its chat. When `rootId` is present, it must be a nonempty string of lower-case ASCII letters and digits, and `chatSessionId` must be a UUID written in lower case with hyphens. An invalid or incomplete pair is refused with `invalid_input` before the vendor tool starts.
+
+The Driver adds only `ARBOL_ROOT=rootId` and `ARBOL_CHAT=chatSessionId` from this pair to the vendor tool's normal clean environment, for that run alone. For example, `rootId: "sapling"` gives the tool `ARBOL_ROOT=sapling`. The Driver takes neither variable from its inherited environment and accepts no arbitrary environment entries from the request. Without `rootId`, it sets neither variable; a caller can still use an opaque `chatSessionId` for continuity as before. The pair does not change how the Driver finds a saved conversation (DRV-D23, DRV-D47).
+
+<!-- sources:
+arbol-claude-driver:src/arbol_claude_driver/request.py#read_request
+arbol-claude-driver:src/arbol_claude_driver/runtime.py#run
+arbol-codex-driver:src/arbol_codex_driver/run_request.py#read_run_request
+arbol-codex-driver:src/arbol_codex_driver/run.py#run
+arbol-codex-driver:src/arbol_codex_driver/app_server.py#AppServer.start
+-->
+
 ### The event stream
 
 Every run produces one ordered stream. Each event carries the run's identifier and a sequence number that starts at 1 and has no gaps.
@@ -237,6 +251,7 @@ Current records and source/package provenance: `~/Artifacts/arbol-codex-driver/r
 | DRV-2.34 | keep a map from the caller's chat session and the Subscription to the tool's saved conversation, holding identifiers and a digest of what that conversation covers and no message; write an entry only after a completed run and remove the entry of a conversation whose run ended any other way; keep no other record of a conversation | New | Claude Python: `C14`, `test_runtime.RequestTests`, `test_runtime.ProtocolTests`, `test_runtime.TransportTests`; Codex Python: `C14`, `Foundation.test_continuity_selection_order_conditional_settlement_and_killed_owner` |
 | DRV-2.35 | when it builds a conversation, write into it the earlier tool calls with their results, whichever Driver reported them, and the images of the earlier messages, all in the tool's own form, a `shell` call with its plain command and working folder (DRV-3.19); fall back to text only where the tool refuses | New | Claude Python: `C14`, `test_runtime.RequestTests`, `test_runtime.ProtocolTests`, `test_runtime.TransportTests`; Codex Python: `C14`, `Foundation.test_history_native_pairing_shell_fields_and_private_ordered_images` |
 | DRV-2.36 | write the result of a history's tool call as text by the rule above wherever its vendor tool takes results as text, and use the text form above, with a `notice`, where the vendor tool refuses a conversation built in its own format | New | Claude Python: `test_runtime.RequestTests`, `test_runtime.ProtocolTests`, `test_runtime.TransportTests`; Codex Python: `C14`, `Continuity.test_native_history_and_visible_text_fallback_preserve_tools_images_and_system_prompt`, `Foundation.test_history_native_pairing_shell_fields_and_private_ordered_images`, `Foundation.test_migration_golden_vectors_and_nonmutating_stream_snapshots` |
+| DRV-2.37 <!-- b59fb1a2-54cd-4dc0-a116-ad9b75bbc527 --> | when `rootId` is supplied, validate it and the accompanying `chatSessionId` before starting the vendor tool, then set `ARBOL_ROOT` and `ARBOL_CHAT` from those fields alone in that run's tool environment; set neither without `rootId` | New | contract; pending qualification |
 
 DRV-2.14 switched off the vendor tool's own memory and the instructions of the working folder. It was withdrawn on 6 October 2026 with DRV-D26, and its number is not used again.
 
@@ -256,7 +271,8 @@ interface RunRequest {
   additionalDirectories?: string[];
   history: HistoryItem[];            // the earlier conversation of this branch, oldest first
   input: Message;                    // the new message, role "user"
-  chatSessionId?: string;            // the caller's own identifier of the conversation; opaque to the Driver
+  rootId?: string;                   // Arbol Root identifier; requires an Arbol chat UUID
+  chatSessionId?: string;            // the caller's chat identifier; opaque when rootId is absent
   tools: Tools;                      // DRV-3: "all" or "none"
   limits?: RunLimits;                // DRV-4
   searchPath?: string[];             // extra folders for commands the agent runs
@@ -398,3 +414,4 @@ SYL-95 verification is recorded in the requirement-level `~/Artifacts/arbol/driv
 | DRV-D22 | Who keeps chat sessions and their history? | The caller: Arbol and its Trunks. A Driver is a bridge to the agent and keeps no conversation of its own; it is sent the messages with every run | Decided 6 October 2026 by the owner |
 | DRV-D23 | How does a Driver find the tool's saved conversation for a chat? | The caller names its own chat session with every run and knows nothing of the vendor tools' sessions. The Driver keeps the map from chat session and Subscription to the tool's saved conversation. Conversations themselves are stored only in the vendor tools' folders and in the caller's store | Decided 6 October 2026 by the owner |
 | DRV-D33 | A program that makes itself a background service cuts every tie to the command that started it, and a Driver cannot find it again when the run ends. Is that accepted? | Yes. A Driver ends what stayed with the agent's commands, which covers a command simply left in the background. The vendor tools' own command-line programs leave such a program running too. Finding it needs what version 1 had: every run started as a job of the system's service manager, a large piece of code and one more step at the start of every message | Decided 6 October 2026 by the owner: accepted, the proposed default (SYL-73) |
+| DRV-D47 <!-- a89d4c35-29b9-413a-80e9-78cc0f0a2455 --> | How does a run carry its Arbol chat identity (AGR-D11)? | Add only `rootId` and reuse `chatSessionId`. Map the validated pair to two fixed variable names at tool launch, without a general environment field, changes to saved conversation keys, or an environment fallback. The field is optional so non-Arbol callers keep using the same interface. | Decided 9 November 2026, a technical choice |
