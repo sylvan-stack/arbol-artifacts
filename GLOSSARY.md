@@ -1034,6 +1034,21 @@ Mutable user configuration that prevents a matching external source from being r
 
 **Example:** Ignoring domain `com` intentionally suppresses every sender in `.com`; the confirmation previews the impact rather than prohibiting that broad rule.
 
+## Implementation History
+
+An account of one piece of work, joined by [Forester](#forester) from the
+Forester Ledger (the former [Workspace Ledger](#workspace-ledger)), the [Beat](#beat) files and Git, with no
+language model and nothing summarised: the [Saga](#saga), [Arc](#arc) and Beat,
+then each [Intention](#intention) in order with its reasons, amendments, files,
+Origins, [Justifications](#justification) and its one commit with a link, and
+every commit of the work at the end. Stored as `<ID>.history.md` beside the
+Beat's file, or under `~/Artifacts/forester/histories/` for work outside a
+Beat, and rewritten whenever a booking of the work is released
+([FOR-D115](../forester/decisions.md)); not implemented yet.
+
+**Example:** `SYL-292.history.md`, beside `SYL-292.md` in the Drivers Arc,
+lists the Intentions of that Beat with their commits in `arbol-codex-driver`.
+
 ## Index Store
 
 [Mycel](#mycel)'s own PostgreSQL database with ParadeDB, at the address its settings name, holding the [Chunks](#chunk), their versions and vectors, the edges ([Derivations](#derivation), [Couplings](#coupling) and [Origin Links](#origin-link)), the marks such as [Stale](#stale), the [Requirement](#requirement) and [Decision](#decision) entities, and the record of its work. It is a different database from Arbol's: Mycel reads Arbol's database as data when a decision's discussion is shown, and writes nothing there. Most of the Index Store can be made again from the files; what exists nowhere else is what a person asserted or confirmed in it, such as stated Origin Links.
@@ -1099,7 +1114,13 @@ per piece, and [Mycel](#mycel) is to derive [Origin Links](#origin-link) from
 them. [Forester](#forester) refuses a change in which a piece has neither a
 Justification nor a logged reason for skipping one, such as code for a proof of
 concept that will be removed after the trial. Decided by the owner on
-2 November 2026 ([FOR-D8 to FOR-D12](../forester/decisions.md)); not implemented yet.
+2 November 2026 ([FOR-D8 to FOR-D12](../forester/decisions.md)). Since
+9 November 2026 `forester commit` is to write each entry from the
+[Intention](#intention) that made the change, with its Origins, or from a
+piece's own reason given with `forester justify`, and the entry names that
+Intention ([FOR-D113](../forester/decisions.md)); not implemented yet. A
+Justification is not an [Origin Link](#origin-link): it is the written reason,
+from which Mycel derives the link, and it also covers removed code and skips.
 
 **Example:** The section `DeriveStore.apply` of
 `~/Artifacts/mycel/justifications/src/mycel/_derive.py.md` says why that method
@@ -1265,7 +1286,7 @@ A named set of [Repos](#repo) belonging to one organizational unit. An Organizat
 
 ## Origin
 
-The [Chunk](#chunk) at the source end of an [Origin Link](#origin-link): what ordered the chunk at the other end. An Origin is of any kind: a [Requirement](#requirement), a [Decision](#decision), a document section, or a code chunk when nothing better exists, as in an undocumented open-source repository. The word is used for nothing else in [Mycel](#mycel); the former `Origin` column of the requirement tables, which said whether a requirement was kept, changed, new or dropped from version 1, is named `From v1`. An Origin is written as an [Entity URI](#entity-uri) when it has a UUID and as a Mycel source address otherwise.
+The [Chunk](#chunk) at the source end of an [Origin Link](#origin-link): what ordered the chunk at the other end. An Origin is of any kind: a [Requirement](#requirement), a [Decision](#decision), a document section, or a code chunk when nothing better exists, as in an undocumented open-source repository. A step of a [Beat](#beat)'s plan, a task, a Beat or a Linear issue is never an Origin: it is where the work was done, not why ([FOR-D114](../forester/decisions.md)). The word is used for nothing else in [Mycel](#mycel); the former `Origin` column of the requirement tables, which said whether a requirement was kept, changed, new or dropped from version 1, is named `From v1`. An Origin is written as an [Entity URI](#entity-uri) when it has a UUID and as a Mycel source address otherwise.
 
 **Example:** The requirement `MYC-2.13` is the Origin of the function that marks a chunk stale; the Origin Link from that function names the requirement by its Entity URI.
 
