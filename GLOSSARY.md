@@ -20,7 +20,7 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 
 - **A** — [A-Nex](#a-nex) · [Action Item](#action-item) · [Activity](#activity) · [Activity Execution](#activity-execution) · [Activity Graph](#activity-graph) · [Activation Rule](#activation-rule) · [Admission Boundary](#admission-boundary) · [Agent Attempt](#agent-attempt) · [Agent Record](#agent-record) · [Aggregate](#aggregate) · [Answer Beacon](#answer-beacon) · [Answer Threshold](#answer-threshold) · [Approach](#approach) · [Arbol](#arbol) · [Arbol Trunk](#arbol-trunk) · [Arbol Component](#arbol-component) · [Arbol Root](#arbol-root) · [Arbol Internals](#arbol-internals) · [Arbol Secret](#arbol-secret) · [Arbol Swift App](#arbol-swift-app) · [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) · [Arc](#arc) · [Arc Review](#arc-review) · [Artifact](#artifact) · [Artifact Chapter](#artifact-chapter) · [Artifact Corpus](#artifact-corpus) · [Artifact Space](#artifact-space) · [Attestation](#attestation) · [Authoritative Input](#authoritative-input) · [Authority Epoch](#authority-epoch)
 - **B** — [Beat](#beat) · [better-grep](#better-grep) · [Blueprint](#blueprint) · [Blueprint Chain](#blueprint-chain) · [Book](#book) · [Brain Recipe](#brain-recipe) · [Branch](#branch) · [Branch Overlay](#branch-overlay) · [Bridge](#bridge) · [Build](#build) · [Burn](#burn)
-- **C** — [Cell](#cell) · [Change Walkthrough](#change-walkthrough) · [Chat Exchange](#chat-exchange) · [Chat Note](#chat-note) · [Chat Session](#chat-session) · [Checkpoint](#checkpoint) · [Chunk](#chunk) · [Chunking](#chunking) · [CLI](#cli) · [Code Corpus](#code-corpus) · [Code Map](#code-map) · [Code Scout](#code-scout) · [Command](#command) · [Communicado](#communicado) · [Communicado Action](#communicado-action) · [Communicado Delivery](#communicado-delivery) · [Communicado Descriptor](#communicado-descriptor) · [Communicado Family](#communicado-family) · [Communicado Presentation](#communicado-presentation) · [Communicado Species](#communicado-species) · [Communicado State](#communicado-state) · [Companion](#companion) · [Completion](#completion) · [Corpus](#corpus) · [Corpus Watcher](#corpus-watcher) · [Coupling](#coupling) · [Cue](#cue) · [Cue Card](#cue-card) · [Cue Command](#cue-command) · [Cue Detection Catalog](#cue-detection-catalog) · [Cue Target](#cue-target) · [Cue Target Cache](#cue-target-cache)
+- **C** — [Cell](#cell) · [Change Walkthrough](#change-walkthrough) · [Chat Exchange](#chat-exchange) · [Chat Note](#chat-note) · [Chat Session](#chat-session) · [Checkpoint](#checkpoint) · [Chunk](#chunk) · [Chunking](#chunking) · [CLI](#cli) · [Code Corpus](#code-corpus) · [Code Map](#code-map) · [Code Scout](#code-scout) · [Command](#command) · [Communicado](#communicado) · [Communicado Action](#communicado-action) · [Communicado Delivery](#communicado-delivery) · [Communicado Descriptor](#communicado-descriptor) · [Communicado Family](#communicado-family) · [Communicado Presentation](#communicado-presentation) · [Communicado Species](#communicado-species) · [Communicado State](#communicado-state) · [Companion](#companion) · [Completion](#completion) · [Corpus](#corpus) · [Corpus Watcher](#corpus-watcher) · [Coupling](#coupling) · [Cue](#cue) · [Cue Card](#cue-card) · [Cue Detection Catalog](#cue-detection-catalog) · [Cue Target](#cue-target) · [Cue Target Cache](#cue-target-cache)
 - **D** — [Decision](#decision) · [Default Arbol Trunk](#default-arbol-trunk) · [Delegate](#delegate) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance) · [Duty Observation](#duty-observation) · [Duty Routine](#duty-routine)
 
 - **E** — [Effector](#effector) · [Email Source Item](#email-source-item) · [Elma Chat](#elma-chat) · [Elma View Page](#elma-view-page) · [Embedder Profile](#embedder-profile) · [Embedding](#embedding) · [Embedding Provider](#embedding-provider) · [Entity](#entity) · [Entity Card](#entity-card) · [Entity Card Content](#entity-card-content) · [Entity Card Resolver](#entity-card-resolver) · [Entity Chip](#entity-chip) · [Entity Context Menu](#entity-context-menu) · [Entity Edge](#entity-edge) · [Entity Kind](#entity-kind) · [Entity Shape](#entity-shape) · [Entity URI](#entity-uri) · [Env Keepers](#env-keepers) · [Errand](#errand) · [Event Log](#event-log) · [Event Log Service](#event-log-service) · [Event Sourcing](#event-sourcing) · [Exchange Assignment](#exchange-assignment) · [Exhausted Subscription](#exhausted-subscription)
@@ -430,23 +430,15 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 
 ## Cue
 
-A provisional, traceable weak signal derived from analysed text. A Cue records what was detected and where it was detected; it does not by itself establish the text's meaning. The rule that detected it—not a universal confidence rule—determines which [Cue Command](#cue-command) the finding produces.
+A provisional, traceable weak signal derived from analysed text. A Cue records what was detected and where it was detected; it does not by itself establish the text's meaning.
 
 **Example:** Finding the exact string “team lead” records a literal Cue. The observation that the string occurred is certain, while what the Leather Bag meant by it may remain uncertain.
 
 ## Cue Card
 
-A rule that adds instructions to an agent's context when the owner's message contains a cue, and that the agent must then read. A Cue Card has a `type`, the first version knowing only `literal`, an exact term; for a literal card a `match`, the terms that fire it; and a [Cue Target](#cue-target), whose exact text is added, or `instructions`, text added verbatim, or both. It is declared beside its target in a `mycel:cues` comment, and [Mycel](#mycel) compiles all cards into one catalog; [Forester](#forester) adds the text of the cards a prompt fires, once per session and again after compaction, in Claude Code, Codex and Kimi Code. Decided by the owner on 9 November 2026 (MYC-D83); specified in [MYC-21](../mycel/specs/21-cue-cards.md). It replaces the earlier detection rules and the [Cue Command](#cue-command).
+A rule that adds instructions to an agent's context when the owner's message contains a cue, and that the agent must then read. A Cue Card has a `type`, the first version knowing only `literal`, an exact term; for a literal card a `match`, the terms that fire it; and a [Cue Target](#cue-target), whose exact text is added, or `instructions`, text added verbatim, or both. It is declared beside its target in a `mycel:cues` comment, and [Mycel](#mycel) compiles all cards into one catalog; [Forester](#forester) adds the text of the cards a prompt fires, once per session and again after compaction, in Claude Code, Codex and Kimi Code. Decided by the owner on 9 November 2026 (MYC-D83); specified in [MYC-21](../mycel/specs/21-cue-cards.md). It replaces the earlier detection rules and the commands they produced.
 
 **Example:** The glossary's heading "Arc Review" gives a literal Cue Card with `match: ["Arc Review"]` and that section as its target. The owner writes "is the Arc Review done?", and the section is added to the agent's context before it answers.
-
-## Cue Command
-
-**Replaced on 9 November 2026 by the [Cue Card](#cue-card)** (MYC-D86): a card has one effect, adding its text, so no command is needed.
-
-A requested downstream effect produced according to a detection rule's contract after that rule detects a [Cue](#cue). A Cue Command is data passed to later [Activities](#activity), not an effect performed by the detector itself. Multiple commands for the same effect and [Cue Target](#cue-target) are deduplicated before execution.
-
-**Example:** A literal Cue for “Arbol Trunk” produces `include target in next system prompt` for the Arbol Trunk glossary target; target extraction and prompt composition execute that command later.
 
 ## Cue Detection Catalog
 
@@ -454,11 +446,11 @@ Since 9 November 2026 (MYC-21), the compiled [Cue Cards](#cue-card): `~/.mycel/c
 
 A generated catalog of detection rules, distinct from the runtime [Cues](#cue) found in text. The literal rules' `generated/cue-detection/literal.json` is a flat JSON array with one unique `literal` and one-or-more `targets`. Mycel-style `mycel:cues` HTML-comment declarations compile into it. In `GLOSSARY.md`, one file-level declaration derives literals from selected section headings; `literal: exclude` suppresses a heading-derived rule locally, and an ordinary local literal list adds aliases. A heading such as `Fold / Projection` derives separate `Fold` and `Projection` rules that share one section target.
 
-**Example:** `{"literal":"Team Lead","targets":["Arbol:GLOSSARY.md#Arbol Glossary > Team Lead"]}` tells literal detection which text to match and which target its command must include.
+**Example:** `{"literal":"Team Lead","targets":["Arbol:GLOSSARY.md#Arbol Glossary > Team Lead"]}` tells literal detection which text to match and which target to include.
 
 ## Cue Target
 
-A locator for Artifact content named by a [Cue Command](#cue-command). A Cue Target identifies either a whole file or one Markdown section; it is not the extracted content itself. Section targets use the corpus, corpus-relative path, and full Markdown heading path so nested sections and duplicate local heading names resolve unambiguously.
+A locator for the Artifact content a [Cue Card](#cue-card) adds. A Cue Target identifies either a whole file or one Markdown section; it is not the extracted content itself. Section targets use the corpus, corpus-relative path, and full Markdown heading path so nested sections and duplicate local heading names resolve unambiguously.
 
 **Example:** `Arbol:GLOSSARY.md` targets the whole glossary, while `Arbol:GLOSSARY.md#Arbol Glossary > Arbol Trunk` targets only the Arbol Trunk section and its nested subsections.
 
@@ -466,7 +458,7 @@ A locator for Artifact content named by a [Cue Command](#cue-command). A Cue Tar
 
 The bounded, runtime-wide cache of content extracted from [Cue Targets](#cue-target), shared by all ongoing Drafts and [Chat Sessions](#chat-session). It is keyed by the target and source version, so unchanged content prepared from a provisional draft Cue can be reused at submission or by another active conversation. The cache stores no Cues, makes no inclusion decision, and cannot keep a superseded draft Cue active.
 
-**Example:** After one draft extracts the Team Lead glossary section, another active Chat Session can reuse the cached section while the glossary source remains unchanged; each message still needs its own Cue and Cue Command before inclusion.
+**Example:** After one draft extracts the Team Lead glossary section, another active Chat Session can reuse the cached section while the glossary source remains unchanged; each message still needs its own Cue before inclusion.
 
 ## Command
 
