@@ -448,9 +448,9 @@ The compiled [Cue Cards](#cue-card): `~/.mycel/cues/catalog.json`, written by `m
 
 ## Cue Target
 
-A locator for the Artifact content a [Cue Card](#cue-card) adds. A Cue Target identifies either a whole file or one Markdown section; it is not the extracted content itself. Section targets use the corpus, corpus-relative path, and full Markdown heading path so nested sections and duplicate local heading names resolve unambiguously.
+A locator for the Artifact content a [Cue Card](#cue-card) adds. A Cue Target identifies either a whole file or one Markdown section; it is not the extracted content itself. It is written `<repo>:<path>` for a whole file and `<repo>:<path>#<heading path>` for a section: the configured repository, the path relative to its artifact root, and every heading that contains the section, outermost first, joined by ` > `, so nested sections and duplicate local heading names resolve unambiguously (MYC-D89).
 
-**Example:** `Arbol:GLOSSARY.md` targets the whole glossary, while `Arbol:GLOSSARY.md#Arbol Glossary > Arbol Trunk` targets only the Arbol Trunk section and its nested subsections.
+**Example:** `arbol:GLOSSARY.md` targets the whole glossary, while `arbol:GLOSSARY.md#Arbol Glossary > Arbol Trunk` targets only the Arbol Trunk section and its nested subsections.
 
 ## Command
 
