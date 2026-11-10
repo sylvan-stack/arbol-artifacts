@@ -20,8 +20,8 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 
 - **A** — [A-Nex](#a-nex) · [Action Item](#action-item) · [Activity](#activity) · [Activity Execution](#activity-execution) · [Activity Graph](#activity-graph) · [Activation Rule](#activation-rule) · [Admission Boundary](#admission-boundary) · [Agent Attempt](#agent-attempt) · [Agent Record](#agent-record) · [Aggregate](#aggregate) · [Answer Beacon](#answer-beacon) · [Answer Threshold](#answer-threshold) · [Approach](#approach) · [Arbol](#arbol) · [Arbol Trunk](#arbol-trunk) · [Arbol Component](#arbol-component) · [Arbol Root](#arbol-root) · [Arbol Internals](#arbol-internals) · [Arbol Secret](#arbol-secret) · [Arbol Swift App](#arbol-swift-app) · [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) · [Arc](#arc) · [Arc Review](#arc-review) · [Artifact](#artifact) · [Artifact Chapter](#artifact-chapter) · [Artifact Corpus](#artifact-corpus) · [Artifact Space](#artifact-space) · [Attestation](#attestation) · [Authoritative Input](#authoritative-input) · [Authority Epoch](#authority-epoch)
 - **B** — [Beat](#beat) · [better-grep](#better-grep) · [Blueprint](#blueprint) · [Blueprint Chain](#blueprint-chain) · [Book](#book) · [Brain Recipe](#brain-recipe) · [Branch](#branch) · [Branch Overlay](#branch-overlay) · [Bridge](#bridge) · [Build](#build) · [Burn](#burn)
-- **C** — [Cell](#cell) · [Change Walkthrough](#change-walkthrough) · [Chat Exchange](#chat-exchange) · [Chat Note](#chat-note) · [Chat Session](#chat-session) · [Checkpoint](#checkpoint) · [Chunk](#chunk) · [Chunking](#chunking) · [CLI](#cli) · [Code Corpus](#code-corpus) · [Code Map](#code-map) · [Code Scout](#code-scout) · [Command](#command) · [Communicado](#communicado) · [Communicado Action](#communicado-action) · [Communicado Delivery](#communicado-delivery) · [Communicado Descriptor](#communicado-descriptor) · [Communicado Family](#communicado-family) · [Communicado Presentation](#communicado-presentation) · [Communicado Species](#communicado-species) · [Communicado State](#communicado-state) · [Companion](#companion) · [Completion](#completion) · [Corpus](#corpus) · [Corpus Watcher](#corpus-watcher) · [Coupling](#coupling) · [Cue](#cue) · [Cue Card](#cue-card) · [Cue Detection Catalog](#cue-detection-catalog) · [Cue Target](#cue-target) · [Cue Target Cache](#cue-target-cache)
-- **D** — [Decision](#decision) · [Default Arbol Trunk](#default-arbol-trunk) · [Delegate](#delegate) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance) · [Duty Observation](#duty-observation) · [Duty Routine](#duty-routine)
+- **C** — [Cell](#cell) · [Change Walkthrough](#change-walkthrough) · [Chat Exchange](#chat-exchange) · [Chat Note](#chat-note) · [Chat Session](#chat-session) · [Checkpoint](#checkpoint) · [Chunk](#chunk) · [Chunking](#chunking) · [CLI](#cli) · [Code Corpus](#code-corpus) · [Code Map](#code-map) · [Code Scout](#code-scout) · [Command](#command) · [Communicado](#communicado) · [Communicado Action](#communicado-action) · [Communicado Delivery](#communicado-delivery) · [Communicado Descriptor](#communicado-descriptor) · [Communicado Family](#communicado-family) · [Communicado Presentation](#communicado-presentation) · [Communicado Species](#communicado-species) · [Communicado State](#communicado-state) · [Companion](#companion) · [Completion](#completion) · [Corpus](#corpus) · [Corpus Watcher](#corpus-watcher) · [Coupling](#coupling) · [Cue](#cue) · [Cue Card](#cue-card) · [Cue Detection Catalog](#cue-detection-catalog) · [Cue Target](#cue-target)
+- **D** — [Decision](#decision) · [Default Arbol Trunk](#default-arbol-trunk) · [Delegate](#delegate) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Draft Cue](#draft-cue) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance) · [Duty Observation](#duty-observation) · [Duty Routine](#duty-routine)
 
 - **E** — [Effector](#effector) · [Email Source Item](#email-source-item) · [Elma Chat](#elma-chat) · [Elma View Page](#elma-view-page) · [Embedder Profile](#embedder-profile) · [Embedding](#embedding) · [Embedding Provider](#embedding-provider) · [Entity](#entity) · [Entity Card](#entity-card) · [Entity Card Content](#entity-card-content) · [Entity Card Resolver](#entity-card-resolver) · [Entity Chip](#entity-chip) · [Entity Context Menu](#entity-context-menu) · [Entity Edge](#entity-edge) · [Entity Kind](#entity-kind) · [Entity Shape](#entity-shape) · [Entity URI](#entity-uri) · [Env Keepers](#env-keepers) · [Errand](#errand) · [Event Log](#event-log) · [Event Log Service](#event-log-service) · [Event Sourcing](#event-sourcing) · [Exchange Assignment](#exchange-assignment) · [Exhausted Subscription](#exhausted-subscription)
 - **F** — [Fanout](#fanout) · [Feature Course](#feature-course) · [Feature Triage](#feature-triage) · [Flyer](#flyer) · [Fold / Projection](#fold--projection) · [Font Scale](#font-scale) · [Forester](#forester) · [Forester Feed](#forester-feed) · [Forester Watcher](#forester-watcher) · [Free Intention](#free-intention) · [Free-standing](#free-standing)
@@ -430,9 +430,9 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 
 ## Cue
 
-A provisional, traceable weak signal derived from analysed text. A Cue records what was detected and where it was detected; it does not by itself establish the text's meaning.
+A term in the owner's message or [Draft](#draft) that fires a [Cue Card](#cue-card): one of the card's `match` terms, found as a whole word in any case, also with a trailing `s` or `es` (MYC-D85). A Cue says only that the term occurs; the card it fires decides what is added to the agent's context. A Cue in a message not yet sent is a [Draft Cue](#draft-cue).
 
-**Example:** Finding the exact string “team lead” records a literal Cue. The observation that the string occurred is certain, while what the Leather Bag meant by it may remain uncertain.
+**Example:** In "is the Arc Review done?", "Arc Review" is a Cue: it fires the glossary's Arc Review card, and that section is added before the agent answers.
 
 ## Cue Card
 
@@ -442,23 +442,15 @@ A rule that adds instructions to an agent's context when the owner's message con
 
 ## Cue Detection Catalog
 
-Since 9 November 2026 (MYC-21), the compiled [Cue Cards](#cue-card): `~/.mycel/cues/catalog.json`, with each card's target text and matching expression, which Forester reads at every prompt. The text below describes the earlier design, for literal detection.
+The compiled [Cue Cards](#cue-card): `~/.mycel/cues/catalog.json`, written by `mycel cues compile` from every `mycel:cues` declaration. For each card it holds the terms, a matching pattern ready to apply and the exact text the card adds; for each source file, its size, modification time and SHA-256. [Forester](#forester) reads it at every prompt and needs nothing else. Specified in [MYC-21](../mycel/specs/21-cue-cards.md#the-catalog-file) (MYC-D88).
 
-A generated catalog of detection rules, distinct from the runtime [Cues](#cue) found in text. The literal rules' `generated/cue-detection/literal.json` is a flat JSON array with one unique `literal` and one-or-more `targets`. Mycel-style `mycel:cues` HTML-comment declarations compile into it. In `GLOSSARY.md`, one file-level declaration derives literals from selected section headings; `literal: exclude` suppresses a heading-derived rule locally, and an ordinary local literal list adds aliases. A heading such as `Fold / Projection` derives separate `Fold` and `Projection` rules that share one section target.
-
-**Example:** `{"literal":"Team Lead","targets":["Arbol:GLOSSARY.md#Arbol Glossary > Team Lead"]}` tells literal detection which text to match and which target to include.
+**Example:** The glossary's heading "Arc Review" gives the catalog a card with `"match": ["Arc Review"]`, its pattern and that section's text; a message containing "arc reviews" fires it.
 
 ## Cue Target
 
 A locator for the Artifact content a [Cue Card](#cue-card) adds. A Cue Target identifies either a whole file or one Markdown section; it is not the extracted content itself. Section targets use the corpus, corpus-relative path, and full Markdown heading path so nested sections and duplicate local heading names resolve unambiguously.
 
 **Example:** `Arbol:GLOSSARY.md` targets the whole glossary, while `Arbol:GLOSSARY.md#Arbol Glossary > Arbol Trunk` targets only the Arbol Trunk section and its nested subsections.
-
-## Cue Target Cache
-
-The bounded, runtime-wide cache of content extracted from [Cue Targets](#cue-target), shared by all ongoing Drafts and [Chat Sessions](#chat-session). It is keyed by the target and source version, so unchanged content prepared from a provisional draft Cue can be reused at submission or by another active conversation. The cache stores no Cues, makes no inclusion decision, and cannot keep a superseded draft Cue active.
-
-**Example:** After one draft extracts the Team Lead glossary section, another active Chat Session can reuse the cached section while the glossary source remains unchanged; each message still needs its own Cue before inclusion.
 
 ## Command
 
@@ -613,6 +605,12 @@ Composer input—text, attachments, and related editable selections—that the [
 In version 1 a Draft was placed inside a provisional, Trunk-owned Chat Exchange, which abandoning the Draft closed or cancelled; the implementation stored new-chat Drafts on their own and made the chat's record only on Send.
 
 **Example:** The Leather Bag types in a new chat's Composer, and several coalesced revisions may trigger speculative Cue extraction. On Send a Trunk accepts the text, and a Chat Exchange begins. Had the database been away, the message would have been refused, and the Draft would have stayed in the Composer.
+
+## Draft Cue
+
+A [Cue](#cue) found in a [Draft](#draft), while the [Leather Bag](#leather-bag) is still typing it. It fires nothing: it shows which [Cue Cards](#cue-card) the message would fire when sent, and it disappears when its term is deleted. On sending, the message's Cues fire as usual. Named by the owner on 10 November 2026, replacing the earlier Cue Target Cache, whose copies of target sections the [Cue Detection Catalog](#cue-detection-catalog) now holds; not yet specified.
+
+**Example:** The Leather Bag types "is the Arc Review…" and the Arc Review card shows as about to be added. Deleting "Arc Review" removes it; sending the message adds the section to the agent's context.
 
 ## Drift
 
