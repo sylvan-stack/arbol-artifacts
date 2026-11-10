@@ -4,7 +4,6 @@
 literal: section_headings
 heading-levels:
   - 2
-target-scope: local_section
 -->
 
 Authoritative flat-list reference for every first-class term in Arbol. Alphabetical; no grouping. When code, docs, or UI copy disagree with a definition here, rename to match. Each term is a stable anchor — link directly as `GLOSSARY.md#aggregate`, `GLOSSARY.md#turn`, etc.
@@ -301,7 +300,6 @@ A reusable, named **brain recipe**: built on a specific [Intelligence Provider](
 
 <!-- mycel:cues
 literal: exclude
-target-scope: local_section
 -->
 
 An [Entity](#entity) (kind `branch`, tag `brn`): a git branch plus the metadata Arbol tracks about it. Like any Entity it connects to others via [Entity Edges](#entity-edge)—to the `commit`/`mr` Entities raised on it, the [Chat Sessions](#chat-session) that worked there, and the `ticket` it implements. Its `path` is the branch's [Worktree](#worktree) root when checked out; multiple Worktrees are why one [Repo](#repo) can expose several branch directories. Fields:
@@ -332,7 +330,6 @@ The Swift↔renderer communication channel (`window.webkit.messageHandlers.arbol
 
 <!-- mycel:cues
 literal: exclude
-target-scope: local_section
 -->
 
 The versioned set of build outputs (binaries, app/renderer bundles) produced by one `build.sh` run, identified by a `build_id`. A [Driver Instance](#driver-instance) is a [Driver](#driver) pinned to one Build. *(Build outputs are not [Artifacts](#artifact) — different sense of the word.)*
@@ -399,7 +396,6 @@ The step of [Ingest](#ingest) that splits one corpus file's text into **chunk ca
 
 <!-- mycel:cues
 literal: exclude
-target-scope: local_section
 -->
 
 `arbol-cli`: the command-line client — both an [Arbol Component](#arbol-component) (a short-lived process, one per invocation) and a terminal [Surface](#surface). A thin, stateless RPC client that reaches [Arbol Root](#arbol-root) and the other daemons over their Unix sockets, exposing the *same* method surface the [UIs](#ui) use — `session.*`, `ip.*`, `subscription.*`, `secrets.*`, `integration.*`, plus `healthz` / `triage` / `audit` / `watch` / `pending` / `approve`. It owns no state; every daemon it calls is the real owner. Built by `build.sh` (→ `dist/Arbol/bin/arbol-cli`) and installed to `$PREFIX/bin`. Serves as the headless admin / diagnostic / scripting interface: `gc-ip-instances.sh` drives [Driver Instance](#driver-instance) garbage-collection through it (`ip gc-candidates` / `ip collect`), and `rebuild-and-restart.sh` gates Root readiness on `arbol-cli healthz`.
@@ -456,7 +452,6 @@ A locator for the Artifact content a [Cue Card](#cue-card) adds. A Cue Target id
 
 <!-- mycel:cues
 literal: exclude
-target-scope: local_section
 -->
 
 An *intent* to change state — imperative, present/future tense (`SendMessage`, `CreateChatSession`), the counterpart to an [Event](#event-log) (a past-tense fact). A Command is *requested*, never stored as truth: [Arbol Root](#arbol-root) validates it against the current [folded](#fold--projection) state via the [Aggregate](#aggregate) guard, and on success it produces one or more events; on failure it is **rejected** (e.g. `IllegalTransition`). Events are immutable and cannot be rejected; Commands can be edited or refused right up until they are accepted. A [Draft](#draft) is a durable, editable representation of not-yet-accepted input; its revision and lifecycle facts may be event-sourced without turning the provisional content into accepted [Authoritative Input](#authoritative-input). See also: [Draft](#draft), [Aggregate](#aggregate), [Event Log](#event-log).
@@ -992,7 +987,6 @@ The **default connectivity state** of a [Chunk](#chunk): no [Derivation](#deriva
 
 <!-- mycel:cues
 literal: exclude
-target-scope: local_section
 -->
 
 The umbrella for [Mycel](#mycel)'s **productive** side: *producing or regenerating* a `derived` [Chunk](#chunk) from its source(s) — as opposed to [Detection](#detection), which only notices what's out of date. Always model work, always deliberately triggered (never part of a [Sync Pass](#sync-pass)); its output starts [Unattested](#attestation) until verified. Concrete instances: **[RAPTOR Summarization](#raptor-summarization)** and **[Stale Summary Regeneration](#stale-summary-regeneration)** (built); *doc-from-code generation* (recreate documentation from the [Code Corpus](#code-corpus) with source→derived edges) and *drift-driven doc regeneration* via a [Routine](#routine) (planned).
@@ -1445,7 +1439,6 @@ A **locator**: a pointer to a target — a file path, [Artifact](#artifact)-sect
 
 <!-- mycel:cues
 literal: exclude
-target-scope: local_section
 -->
 
 The [Artifact Corpus](#artifact-corpus) maintenance step: an [Ingest](#ingest) of the Artifact Corpus, then a re-hash of every [Tracked Source](#tracked-source), then [Detection](#detection). Mechanical and detection-only: no model calls, no [Generation](#generation), nothing regenerated.
