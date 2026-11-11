@@ -140,9 +140,9 @@ Historical evidence: `arbol-design-system:heritage/app/Arbol/UISwitcherHotkeys.s
 
 ### Shared UI shell header
 
-Each Arbol UI uses the maintained design system’s WorkspaceShell header. The shared header identifies the Root of the window and provides the Root selector. A UI supplies its own title and controls through the header slots. Elma Chat is the first consumer.
+Each Arbol UI uses the maintained design system’s WorkspaceShell header. A UI supplies its own title and controls through the header slots. Elma Chat is the first consumer. When a verified renderer advertises this header, the App places the native close, minimize and zoom controls in its leading space and hides the separate AppKit title bar. The window keeps native dragging, resizing and geometry. A renderer without the shared header retains native title-bar clearance.
 
-The selector lists retained Roots by display name and state. It marks the window’s Root and shows why a choice is unavailable when the App is incompatible or the target UI has no runnable renderer. On selection the App refreshes availability and opens or raises the same UI for the named Root. The original window, its Draft and the shared current Root stay as they were. A refused or expired open reports the cause in the selector and can be retried. A request is bound to its originating trusted document and may open a window only while that document and the request are still active.
+The Root name is a dropdown trigger. The anchored list shows retained Roots by display name and state. It marks the window’s Root and shows why a choice is unavailable when the App is incompatible or the target UI has no runnable renderer. On selection the App refreshes availability and opens or raises the same UI for the named Root. The original window, its Draft and the shared current Root stay as they were. A refused or expired open reports the cause in the dropdown and can be retried. A request is bound to its originating trusted document and may open a window only while that document and the request are still active.
 
 ### Opening a chat and using native controls
 
@@ -178,7 +178,7 @@ arbol-app:Sources/ElmaAppChannel.swift#ElmaOpenQueue
 | BKD-3.13 <!-- 206cc66a-8fb5-4100-92be-649300a25d89 --> | Show the catalogue’s current Root name and the running App’s Build number in read-only rows above the tray actions, with explicit Root unavailable states | Changed · owner request, 11 November 2026 | Tray journey across Root selection and App Build handoff |
 | BKD-3.14 <!-- 15658f18-630e-4ae0-8387-634608110c03 --> | keep the running App and newest ready Build during handoff and have the Build tool retire the previous payload after the replacement is ready and the previous process exits | Changed · BLD-D25, BLD-0.28 | Installed retention handoff drill pending |
 | BKD-3.15 <!-- 53a6f4a4-cbaf-470e-ba8f-7cf056484a19 --> | Refresh the Current Root row and submenu checkmark after a selection, automatic reset or catalogue update, with explicit loading and unavailable states | Changed · owner request, 11 November 2026 | Tray journey across Root selection and clearing |
-| BKD-3.16 <!-- ba8c172c-bdbc-4d20-8cc3-ffe68e930ef7 --> | Use the design system’s shared header and open or raise the same UI for a named Root from its selector, with availability feedback and isolation of the original window | New · owner request, 11 November 2026 | Two-Root selector journey with an open Draft and a refused target |
+| BKD-3.16 <!-- ba8c172c-bdbc-4d20-8cc3-ffe68e930ef7 --> | Use one shared header with integrated native controls and a Root dropdown that opens or raises the same UI for a named Root, with availability feedback and isolation of the original window | New · owner request, 11 November 2026 | Two-Root dropdown journey with an open Draft and a refused target |
 
 Verification descriptions name future evidence. The App implementation will follow the owner's separate testing and Build policy.
 
