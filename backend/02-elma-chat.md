@@ -357,7 +357,7 @@ arbol-design-system:scripts/check-elma-actions.mjs
 
 ### The latest chats
 
-Observed in version 1: ⌃⇧⌘C shows the latest chats, at most 100, without the chat that is shown: first the chats shown in Elma, the last shown first, then the others by their latest activity. Each row has the title, the repository, the route, the state of the last Exchange and how long ago. Digits 1 to 0 open the first ten, the arrows and Return any, and Escape closes the list (the `chats` topic, BKD-1). Archived chats are not in it. In version 1 the list was a panel of the native shell, and in Arbol 2 it is the Swift App's (SYL-192); until it exists, the window shows the same list over itself, with the same keys.
+Observed in version 1: ⌃⇧⌘C shows the latest chats, at most 100, without the chat that is shown: first the chats shown in Elma, the last shown first, then the others by their latest activity. Each row has the title, the repository, the route, the state of the last Exchange and how long ago. Digits 1 to 0 open the first ten, the arrows and Return any, and Escape closes the list (the `chats` topic, BKD-1). Archived chats are not in it. In version 1 the list was a panel of the native shell. [BKD-3](03-the-arbol-swift-app.md) (review) specifies the Arbol 2 native panel. The window shows the same list over itself when the native panel is unavailable.
 
 <!-- sources:
 arbol:ui/elma/src/chats.svelte.ts

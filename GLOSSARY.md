@@ -181,7 +181,7 @@ An [Entity](#entity) (kind `secret`, tag `sec`): a user-provided value containin
 
 ## Arbol Swift App
 
-The native macOS Swift/AppKit component built from `arbol-app`, with its own numbered [Builds](#build) outside every [Arbol Root](#arbol-root). One process holds the tray menu, hotkeys, native surfaces and the web views of the UIs. It discovers the retained Roots on every start and loads each selected Root's renderer bundles from that Root's `arbol` Build. It exposes the [Bridge](#bridge) and passes calls and subscriptions to the selected Root's backend without interpreting them or opening its database. Each Root records its minimum App Build; the tray menu offers Roots the running App can serve and says which Build the others need. See [the Swift App and the backend](architecture/00-components-and-boundaries.md#arbol-the-swift-app-and-the-backend).
+The native macOS Swift/AppKit component built from `arbol-app`, with its own numbered [Builds](#build) outside every [Arbol Root](#arbol-root). One process holds the tray menu, hotkeys, native surfaces and the web views of the UIs. It discovers the retained Roots on every start and loads each selected Root's renderer bundles from that Root's `arbol` Build. It exposes the [Bridge](#bridge) and passes calls and subscriptions to the selected Root's backend without interpreting them or opening its database. Each Root records its minimum App Build; the tray menu offers Roots the running App can serve and says which Build the others need. See [the Swift App and the backend](architecture/00-components-and-boundaries.md#arbol-the-swift-app-and-the-backend) and [BKD-3](backend/03-the-arbol-swift-app.md) (review).
 
 **Example:** One Swift App shows First Sapling and a second Root in its tray menu. Opening Elma Chat in each loads that Root's renderer and connects it to that Root's backend; neither operation creates another Swift App process.
 
@@ -1725,14 +1725,9 @@ A complete [Chat Exchange](#chat-exchange) may span several Turns, retries, fail
 
 ## UI
 
-A windowed [Surface](#surface): one window in the Arbol family. Each is a separate `.app` sharing one [Arbol Swift App](#arbol-swift-app) binary, with its own renderer bundle baked in. The four UIs:
+A windowed [Surface](#surface) of Arbol. One [Arbol Swift App](#arbol-swift-app) opens one window per UI and Root. The window loads its renderer bundle from that Root's `arbol` Build and shows the Root's display name. The architecture names [Elma Chat](#elma-chat), [Willo Station](#willo-station) and [Seqoya Lab](#seqoya-lab). [BKD-2](backend/02-elma-chat.md) specifies Elma Chat. [BKD-3](backend/03-the-arbol-swift-app.md) (review) specifies how the App opens and hosts these windows.
 
-- **[Elma Chat](#elma-chat)** — conversation: a [Chat Session](#chat-session) as a branching tree of [Turns](#turn).
-- **[Seqoya Lab](#seqoya-lab)** — administration: [Intelligence Providers](#intelligence-provider-ip), [Subscriptions](#subscription), usage.
-- **[Willo Station](#willo-station)** — station/control: the [Event Log](#event-log) monitor/inspector.
-- **[Oaken](#oaken)** — task management and delivery workspace.
-
-**Example:** Elma Chat and Oaken are different UIs: one is for conversation, the other is for delivery planning, but both run inside the Arbol app family.
+**Example:** Elma Chat can be open in First Sapling and another retained Root at the same time. Each window reads from its own Root.
 
 ## UIShell / Chrome
 

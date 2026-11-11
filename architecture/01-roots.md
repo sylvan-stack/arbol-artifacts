@@ -219,7 +219,7 @@ arbol:tests/test_builds.py#PruningRoots
 
 ### The tray menu and `arbol-roots`
 
-The tray menu of the Arbol Swift App lists the Roots, marks the current one, and opens the UIs of the Root that is picked. Every UI shows the display name of its Root in its header, so the Leather Bag always sees which Root a window belongs to.
+The tray menu of the Arbol Swift App lists the Roots, marks the current one, and opens the UIs of the Root that is picked. Every UI shows the display name of its Root in its header, so the Leather Bag always sees which Root a window belongs to. [BKD-3](../backend/03-the-arbol-swift-app.md) (review) specifies the tray parts of ARC-1.6, 1.11, 1.18 and 1.23 and the App restart part of ARC-1.26.
 
 One tool, `arbol-roots`, creates and changes Roots. It lies beside `arbol-builds` in the `arbol` repository and, like it, is outside every Root and is not itself a Build. The tray menu calls it. Its commands ([ARC-D35](#decisions)):
 

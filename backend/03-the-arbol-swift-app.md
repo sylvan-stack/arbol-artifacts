@@ -1,0 +1,191 @@
+---
+role: authored
+spec: BKD-3
+status: review
+---
+# Arbol backend · 03 The Arbol Swift App
+
+## Purpose
+
+The Arbol Swift App is the macOS program that stays in the menu bar. It opens the windows of any retained Root it can serve. Open Elma Chat under First Sapling and the window shows First Sapling's page, talks to First Sapling's backend and stays there when another Root becomes current.
+
+## Scope
+
+One Swift App, its numbered Builds, the tray menu, global shortcuts, native windows and Latest chats panel, and the host side of the Bridge and of opening a chat. [ARC-0](../architecture/00-components-and-boundaries.md#arbol-the-swift-app-and-the-backend) and [ARC-1](../architecture/01-roots.md) give the boundaries. [BKD-0](00-the-arbol-backend.md), [BKD-1](01-the-bridge.md) and [BKD-2](02-elma-chat.md) give the backend, the Bridge and Elma Chat. Willo Station's and Seqoya Lab's own pages and Telegram listeners have separate specifications. The choices awaiting the owner are in [Decisions](#decisions).
+
+## Behaviour
+
+### One App and its Builds
+
+The Swift and AppKit source lives in `arbol-app`. `arbol-builds build arbol-app` packages the signed macOS application bundle, including its executable entry, into the component's registry folder. The repository declares that entry and its build commands in `arbol-build.json`. The App reads the Build and package version from its own `build.json` and shows them in the tray. [BLD-0](../builds/00-builds-and-versions.md) governs the independent hexadecimal count, records, default, launcher and explicit `-v`. App Builds belong to no Root. A development run outside the registry reports Build `0`.
+
+There is one running App per signed-in user on the Mac. Concurrent launches agree which process owns the tray, hotkeys and backend lifetimes before any of them start. Another launch of that same Build asks the resident App to show its tray menu and exits. A launch of a different Build reports which Build is running and asks the owner to quit it before retrying. The running App reports when a newer working Build is available. An ordinary launch after Quit selects the newest working Build again. See BKD-D46 for the proposed upgrade behavior.
+
+The App starts in the menu bar. With login launch enabled, macOS runs the ordinary launcher at login, so it selects the working default then. On ordinary launch it leaves other applications in front until the owner opens a window. Closing the last window keeps the App and its current Root's backend running. Quit ends the App's backend ownership. Launch at login is a separate owner choice (BKD-D43).
+
+### The tray menu and the catalogue
+
+The App reads `arbol-roots list` on startup, while running, on wake and when opening the menu. Recheck the chosen record before acting on a menu or shortcut selection. The record's `current` flag decides which Root gets a checkmark, even if this App cannot open it. A transient catalogue failure is visible. Previously known rows can be shown as stale, with a fresh successful selection required before opening a Root. One bad row leaves the others usable. Keep ownership of already needed backends during a transient failed refresh, then reconcile on the next successful catalogue result.
+
+| What the catalogue says | What the tray shows |
+|---|---|
+| Working | Display name, with a current mark on the current Root only |
+| Preparing | Display name and “Preparing”. Open available UIs explicitly to try the Root |
+| Failed | Display name, “Failed” and the recorded reason. Open available UIs explicitly to read or continue its chats |
+| Minimum App Build above the running one | Keep the row visible, disable its open actions and give the required App Build |
+| Build, bundle or backend unavailable | Keep the row and name the unavailable component, Root and known cause |
+| No current Root | Say so and keep explicit Root actions available where they work |
+
+Compare `app` as a BLD-0 hexadecimal number. The catalogue value `"0"` permits the first App Build and every later one. An omitted minimum in a readable older header has the same meaning. A present malformed minimum disables that Root with a diagnostic. A compatible preparing or failed Root follows the same Build selection as a compatible working one. Picking any row leaves the catalogue's current selection as it was.
+
+Each Root offers the UIs packaged for it. Elma Chat is the first. Willo Station and Seqoya Lab use the same window contract when their bundles ship. An unavailable UI has no enabled action. The menu offers Latest chats and Quit. Root creation, migration, readiness, failure marking and removal use `arbol-roots` (BKD-D45).
+
+Show each Root's database size from the backend's `health.measure` reply, by Root identifier. Use the current Root's running backend, or an already running backend for an open window if the current Root is unavailable. Never start an otherwise idle Root solely to measure it. Loading, unavailable and old measurements have distinct labels. A partial result preserves the values it actually measured and shows the affected Root's reason. Zero is a measurement only when the backend reports zero. Refresh asynchronously so a slow or failing measure leaves the open actions usable.
+
+A failed whole-Root migration leaves its destination preparing and leaves the current Root alone. The implemented command reports this refusal to its caller. To show it on a later tray opening, `arbol-roots` publishes an optional Root-local `migrationProblem` in the catalogue. It gives the attempt time and a bounded, safe reason from the migration command, and clears on a successful whole migration or explicit readiness. The tray labels it “Migration failed” alongside the Root's actual state. When the command cannot confirm the outcome, its reason says so and the tray labels it “Migration outcome unknown”. Publish the problem only for an attempted whole migration of that preparing Root. A catalogue write failure leaves the original command refusal available. A comparison failure or failed one-chat reimport stays with that operation's existing BKD attention or error. No new catalogue flag makes a Root current or marks it failed.
+
+<!-- sources:
+arbol:src/arbol_roots/model.py#list_roots
+arbol:src/arbol_roots/operations.py#ready
+arbol:src/arbol_roots/operations.py#fail
+arbol:src/arbol_roots/sql.py#migrate
+arbol:src/arbol_backend/measurements.py#Measurements
+-->
+
+### Windows and renderer Builds
+
+There is one window for each pair of Root and UI. Opening a second time raises and restores the same window. A minimized or hidden window is still open. Close saves the frame, gives the renderer a chance to save or preserve its unsaved Draft using the existing departure path, releases the web view and its socket, and leaves the menu-bar App available. Give each Root and UI its own saved window size and position. Restore a reachable frame after a display is disconnected. Keep native traffic lights, resize edges, title dragging from the unused header area and system window actions. Header controls remain clickable and keyboard reachable. The renderer shows the Root's current display name and state in its header, as BKD-2.1 does for Elma Chat.
+
+The App starts the named Root's backend through the launcher, then loads the bundle of the Build in the backend's ready line. The Build registry resolves that exact Build. For an already-running backend, start with the named Root's default bundle if needed and reconcile with the connected backend's Build as BKD-1.3 specifies. For Elma Chat the entry is `ui/elma/index.html`, accompanied by `ui/elma/bundle.json`. Verify that the registry record, Build identity and bundle agree and that serving the bundle exposes only that bundle's files. Hold the renderer Build against normal pruning while a page uses it, including when its original backend has ended. Acquire the same shared Build-use guard that BLD-0 pruning checks before reading the bundle. A missing or damaged bundle yields a native error with Retry. Never borrow a bundle from another Root.
+
+A reconnect can pair an old page with a new backend of its own Root. The renderer reads `hello`, saves its Drafts, settles pending sends and opens, and asks to reload with `reloadedFor` as in BKD-1.3. The App handles this trusted main-frame navigation as a request for a validated Build of the window's own Root. It preserves the accumulated reload markers and the Root's renderer storage across the replacement. If that bundle cannot be loaded, keep the working page with a diagnosis and an explicit retry using that same Build selection. A later backend within a Root is additive, so it can still serve the prior page. Keep navigation, saved frame, Draft shadow and open target state isolated between Roots and UIs.
+
+Historical evidence: `arbol-design-system:heritage/app/Arbol/AppDelegate.swift#restoreFrame`, `arbol-design-system:heritage/app/Arbol/AppDelegate.swift#applicationShouldTerminateAfterLastWindowClosed`. The maintained contract for native chrome is [Native and auxiliary surfaces](https://github.com/sylvan-stack/arbol-design-system/blob/09ae88b8be0c5871389fe7724001bf9c24b6be49/docs/design-system/08-native-and-auxiliary.md).
+
+<!-- sources:
+arbol:scripts/package_backend.py
+arbol:tools/elma_bundle.py#verify
+arbol:ui/elma/src/bridge.ts
+arbol:ui/elma/src/drafts.svelte.ts
+arbol:ui/elma/src/opening.svelte.ts
+-->
+
+### The lifetime of a Root's backend
+
+The App needs a backend for a compatible current Root as long as it runs, and for each other compatible Root as long as a window for that Root is open. A user opening Latest chats in an idle Root counts as one temporary window. The App reconciles this set when the catalogue or windows change. A newly current Root needs its backend even before a window opens. The previous current Root keeps its backend while one of its windows remains. Existing windows stay pinned to their original Root. When a Root is removed or its minimum rises above the running App, its windows show why the connection can no longer be used and the App stops its own backend for it. An incompatible current Root stays marked current, with no other Root promoted in its place.
+
+The App uses `arbol --root <identifier> backend`, with a pipe it owns for standard input. It observes the ready or refusal line of [BKD-0](00-the-arbol-backend.md#the-process), verifies the Root and expected socket path, and retains the child handle. One launch at a time per Root is enough even if several windows open together. If the backend reports `already_running`, use the verified private socket of the existing backend. An App that did not start that process neither signals it nor takes responsibility for ending it. If it goes away while needed, the App starts one of its own.
+
+A child ending while needed starts one replacement using the then-selected working Build. A rapid series of failures delays subsequent attempts up to a bounded retry interval and leaves the cause visible. A fresh catalogue or manual Retry can resume after repair. A failure in one Root leaves the others running. Once an owned child is no longer needed, close its input pipe and wait for BKD-0's shutdown before replacing it or ending the App. Termination fallback targets only the owned child. App failure closes the pipe as well. No App action stops or reassigns an Exchange or restarts a Trunk. Listeners belong to the current Root only. The listener handover remains with ARC-D52.
+
+At startup the App also discovers Exchanges in retained Roots using each Root's matching `arbol-root --root <identifier> list` as in ARC-1.25. Report a manager refusal with its Root. This metadata needs no backend for an idle Root. A restart of the App or a backend uses that Root's own manager and restores live views from fresh subscriptions. Wake rechecks the catalogue, owned children and sockets, and lets the renderer check its subscription receipts. Sleep or a slow database alone is no reason to kill a healthy backend or change the Root of a window.
+
+### Passing the Bridge on
+
+Each loaded window connects once to its Root's owner-only `backend.sock`. The App accepts JSON strings on the `arbol` script message handler only from the current trusted bundle document in that window's main frame. It adds the LF frame terminator and forwards the UTF-8 bytes in order up to BKD-1's 16 MiB limit including LF. It passes reply strings as data to `window.arbolBridge.receive(text)`, in order and without reading their JSON fields. WebKit receives message text as a JavaScript argument. The App accepts no page-supplied socket address. It confirms the socket and its location belong to the current user and closes a connection with oversized, incomplete or invalid UTF-8 framing. Queue bounds and backpressure keep a slow or closed view from accumulating unbounded data.
+
+A trusted renderer gets the backend's first `hello` once its receiver is ready. Reloading or closing the page closes that connection and cancels delivery to the previous document. A broken connection tells the loaded page `{"type":"lost"}` once and reconnects when that Root listens again. The page sees a fresh `hello` and restores its own subscriptions. The App replays no calls and retains no conversation or Bridge log.
+
+Block navigations, popups, subframes and resource loads outside the verified bundle. A valid internal reload can select only the window's own Root and UI. Host controls and any native error page have no route to the Bridge. The App opens web links in the default browser through the app channel. It never opens a database. Tray and panel reads are a separate, bounded native client of the documented backend calls, with its own socket. This client parses its own replies and cannot receive a web view's traffic.
+
+Platform references: [WKWebView navigation and local content](https://developer.apple.com/documentation/webkit/wkwebview), [frame identity](https://developer.apple.com/documentation/webkit/wkscriptmessage/frameinfo), [JavaScript arguments](https://developer.apple.com/documentation/webkit/wkwebview/callasyncjavascript(_:arguments:in:contentworld:)).
+
+### Hotkeys and Latest chats
+
+Use the original global keys from the one resident App. Registration failure is visible for the affected shortcut and the corresponding tray action still works. The rest of the global keys stay available. Unavailable destinations have no shortcut registration. A renderer handles its own local keys, including the Elma latest-chats fallback when the native panel does not take the shortcut.
+
+| Shortcut | Action |
+|---|---|
+| ⌃⌥⇧⌘E | Open or raise Elma Chat |
+| ⌃⌥⇧⌘W | Open or raise Willo Station when its bundle ships |
+| ⌃⌥⇧⌘S | Open or raise Seqoya Lab when its bundle ships |
+| ⌃⇧⌘C | Open or dismiss Latest chats |
+
+A hotkey uses the Root of the focused Arbol window, or the current Root from another application or when no Arbol window has focus (BKD-D44). The tray can also open Latest chats for a named Root. While the panel is open, its Root is fixed and named in its header. If the target has no compatible App or requested bundle, show that cause and allow explicit selection of another Root from the tray.
+
+Latest chats is a native panel. It takes keyboard focus when invoked and can be used before Elma is open. If the owner selects a row in an idle Root, open Elma before releasing the panel’s hold on the backend. Use BKD-1's `chats` summaries for the selected Root, with the bounded candidate set in BKD-2.18. Exclude archived chats and the one shown in that Root's open Elma window. Order by that Root's Elma recent-view UUIDs first, then by descending activity, then UUID as the backend does. Each row shows title or title placeholder, repository, route, last Exchange state and age. Unavailable values are explicit. A new connection or a missed update starts a fresh subscription snapshot. The list shows loading, empty and failed reads with Retry. Digit keys 1 through 9 then 0 open the first ten rows, and arrows, Return and click reach all rows. Escape or clicking outside dismisses it and restores prior focus when appropriate.
+
+Selection uses the same Draft-safe open path as a request from Willo Station. Preserve focus, the existing chat and the failed row on a refused open. Retry or dismiss the request from the panel. Stale migrated rows keep their distinct Bring over again action. The action is handled by the Elma renderer, with BKD-2.24's Draft and send barrier, actual result Chat, and uncertain-result handling. A native panel only requests an action. The renderer sends the mutation after its barrier.
+
+Historical evidence: `arbol-design-system:heritage/app/Arbol/UISwitcherHotkeys.swift#bindings`, `arbol-design-system:heritage/app/Arbol/AppDelegate.swift#LatestChatSessionsHotkeyController`, `arbol-design-system:heritage/app/Arbol/AppDelegate.swift#LatestChatSessionsModel`. Use the maintained [Elma picker and opening contract](https://github.com/sylvan-stack/arbol-design-system/blob/09ae88b8be0c5871389fe7724001bf9c24b6be49/docs/design-system/05-elma.md) and [native surface reference](https://github.com/sylvan-stack/arbol-design-system/blob/09ae88b8be0c5871389fe7724001bf9c24b6be49/src/pages/NativeSurface.svelte). Implement and validate the native and design-system behavior together after acceptance, with fictional fixtures in the reference.
+
+### Opening a chat and using native controls
+
+The *app channel* is the small set of requests the App itself answers. It is available only to the same trusted document as the Bridge. It validates each method, parameter and caller and returns one reply with the request's ID. An open request names an explicit target Root and exactly one chat UUID or absolute new-chat folder. A request cannot supply a program, a URL for the web view or a backend path. A Willo renderer can submit a chat from its own Root or from a Root it identifies in its discovery view. The App validates the Root, checks its App minimum, queues the request before opening Elma and returns an explicit refusal if it cannot queue it. This gives Willo's First Sapling hand-over a receiver. Willo's own UI and its choice of target stay with that specification.
+
+There is a queue for each target Root. A request arriving while Elma loads stays in that queue. The App sends `{"type":"open"}` when the loaded page can receive it. When a renderer calls `app.takeOpen` after its Draft and pending-operation barrier, the App hands it the next target. Retain it until delivery to that document succeeds. A failed delivery leaves it waiting. After delivery, the renderer retains its target through a page reload and reports read failures with Retry and Dismiss, as BKD-2.19 specifies. A Root change, an unrelated window and a later request cannot take or overwrite that target. An App relaunch starts a fresh native queue. Chats and Drafts already saved belong to the backend.
+
+Older compatible bundles continue to speak BKD-1's three app calls. The initial native panel can read the old backend's chat summaries and deliver the original open target to those bundles. The Elma page then owns the open result and retains its own fallback list and migration actions. An updated Elma advertises panel support with `app.elmaState`. It supplies its current and recent chat IDs and reports each selected action's outcome. The panel keeps that row pending until Elma reports the result. On older renderers the native list uses activity order when no recent-view state is known and Elma shows the outcome of the handoff. The original call and result forms remain valid across new App Builds. Any Root whose own future bundle requires newer host behavior declares the new minimum through `arbol-roots app`.
+
+For folder picking the App opens the macOS folder dialog attached to the requesting window. The optional starting folder is a hint. The owner chooses a directory or cancels; cancellation returns null. Elma waits up to 30 seconds for an app call. End the picker by that deadline and close it when its document leaves, so a late selection cannot apply to another page. For links the App accepts a well-formed absolute HTTP or HTTPS URL and asks the default browser to open it. It returns a safe refusal for other schemes or a failure to open.
+
+## Requirements
+
+| ID | The App must | Origin and basis | Verified by |
+|---|---|---|---|
+| BKD-3.1 | Package `arbol-app` as a global numbered Build, launch the selected Build through BLD-0, and show the running Build and package version | Changed · ARC-D21, BLD-0 | Installed default and exact Build launch |
+| BKD-3.2 | Keep one App per signed-in user, stay resident with no windows and apply the launch and update choices of BKD-D43 and BKD-D46 | Changed · ARC-0.5 | Launch, close, second invocation and update journey |
+| BKD-3.3 | List Roots with their catalogue current mark, state and reason, and open the selected Root's available UIs only when its minimum App Build is satisfied | New · ARC-1.6, 1.7, 1.21, 1.23 | Tray journey with working, preparing, failed, incompatible and unavailable Roots |
+| BKD-3.4 | Show each Root's measured database size and visible migration refusal with the actual Root state | New · ARC-1.11, 1.18; BKD-0.27 | Tray journey with partial measurement and failed migration |
+| BKD-3.5 | Bind one reusable window per Root and UI to its own verified renderer Build and restore usable native chrome and geometry | Changed · ARC-0.5, ARC-1.6, BKD-2.1 | Two-Root window and display-change journey |
+| BKD-3.6 | Start and supervise the compatible current Root's backend and the backends of other Roots with open windows, and end only owned children when released | New · ARC-0.7, BKD-0.2–3 | Installed crash, wake, overlapping open, promotion, last-close and quit drill |
+| BKD-3.7 | Rediscover retained Roots' Exchanges through the matching managers, isolate discovery failures and leave accepted Exchange ownership intact through restarts | New · ARC-1.25–26, BKD-0.21–22 | Multi-Root restart drill with an Exchange in progress |
+| BKD-3.8 | Relay opaque BKD-1 frames on one private socket per trusted window, refuse untrusted content and isolate connection and page generations | Changed · ARC-0.6, BKD-1.1–3, 1.11 | Native wire and WebKit boundary checks |
+| BKD-3.9 | Deliver disconnect and fresh hello, honor the renderer's Draft-safe Build reload and keep older compatible Roots usable | New · ARC-0.26, BKD-1.3, BKD-2.22 | Installed reconnect and retained old Root/Build journey |
+| BKD-3.10 | Register the available global shortcuts with BKD-D44's Root routing and keep tray access when registration fails | Changed · BKD-2.18, archived native shortcuts | Native key and focus journey |
+| BKD-3.11 | Show and select Root-local Latest chats with the existing ordering, keyboard and Draft-safe behavior, including the separate reimport action on capable renderers | Kept · BKD-2.18, 2.24 | Native panel journey, including failed read and failed selection |
+| BKD-3.12 | Answer the native folder and link calls and deliver queued opens only to the intended Root's Elma document | Kept · BKD-1.11, BKD-2.19 | Native app-channel and Willo open journey, including cold window and Draft conflict |
+
+Verification descriptions name future evidence. The App implementation will follow the owner's separate testing and Build policy.
+
+## Interface
+
+| Boundary | Form |
+|---|---|
+| App start | `arbol-app [-v <build>]` via BLD-0. Its repository's Build record declares the executable entry inside the macOS app bundle |
+| Catalogue and Build inventory | `arbol-roots list`, `arbol-builds show arbol@<build> --root <root>`, and `arbol-builds show arbol --root <root>` for a Root's default. ARC-1 and BLD-0 give their records and refusal envelopes |
+| Catalogue extension | Optional `migrationProblem: { at: string, reason: string, uncertain?: true }` on a Root record. Older records without it report no recorded migration failure |
+| Backend | `arbol --root <root> backend`, ready/refusal line and stdin ownership from BKD-0.2. Private socket and web view handlers from BKD-1.2 |
+| Native reads | Separate backend client uses `health.measure` for the tray, `chats` for the picker and read-only `workspace.get` when resolving repository labels. It checks the backend's Root and supported Bridge version before sending its own calls |
+| App channel | `window.webkit.messageHandlers.arbolApp.postMessage(text)` sends `{type:"call", id, method, params}`. `window.arbolApp.receive(text)` takes `{type:"reply", id, result}`, `{type:"reply", id, error:{code,message}}` or `{type:"open"}`. Text is JSON, as in the implemented Elma adapter |
+
+| App method | Parameters | Successful result |
+|---|---|---|
+| `app.pickFolder` | `{start?: string}` | `{folder: string}` or `{folder: null}` |
+| `app.openLink` | `{url: string}` | `{}` after the system accepts the open |
+| `app.takeOpen` | `{}` | `{chat: string}`, `{folder: string}` or `{}` |
+| `app.openChat` | `{root: string, chat: string}` from Willo Station | `{}` after the host queues the request |
+| `app.elmaState` | `{shown: string or null, recent: string[], panel: 1}` from Elma | `{panel: 1}` on a host that implements this adapter |
+| `app.openResult` | `{request, status, error?}` from Elma, for a correlated panel action | `{}` after the host records the outcome |
+
+When both ends support `panel: 1`, a panel selection extends the `app.takeOpen` chat reply with an opaque `request` identifier and an `action` of `open` or `reimport`. The renderer retains them with its pending target across reload. Keep a taken request in the same page session through the existing Draft barrier. If an outcome goes missing, show that the open could not be confirmed and let the owner dismiss or check the chat. It reports `opened`, `failed`, or `dismissed` for that identifier, with a safe error on failure. An uncertain reimport reports failure with the BKD-2.24 message and permits a fresh read, without retrying the mutation. Ordinary chat and folder replies retain their original shape. A native panel and its result are bound to the target Root and request. A panel that closes cannot be changed by a late outcome. Older hosts and the development relay can ignore the added method and keep the renderer fallback.
+
+Use `invalid_input` for malformed arguments, `unknown_root` for an unavailable catalogue entry, `app_build_required` with the minimum for an incompatible Root, `build_unavailable` for a missing UI and `operation_failed` with a safe cause for a native failure. The additive panel adapter carries only the shown chat, up to 100 recent chat IDs, supported actions and a request-correlated outcome. Negotiate that adapter before using it. The initial BKD-1 call forms need no capability exchange.
+
+<!-- sources:
+arbol:ui/elma/src/app-channel.ts
+arbol:ui/elma/src/opening.svelte.ts
+arbol:ui/elma/src/chats.svelte.ts
+arbol:ui/elma/src/preferences.ts
+arbol:src/arbol_builds/service.py#show_build
+-->
+
+## Known problems in version 1
+
+- **One app bundle per UI.** Each bundle embedded its renderer and needed its own process. Multiple processes negotiated which one owned the global keys. One App now opens Root-selected pages and owns the keys once.
+- **One global recent history.** The native Latest chats panel shared one set of active and recent session IDs. Root-local views and queues now keep one Root's chat from being selected in another.
+- **Restoring a window on a disconnected display.** A saved frame only partly on a connected display could still leave the useful controls out of reach. Restore a reachable frame.
+
+Historical evidence: `arbol-design-system:heritage/app/Arbol/UISwitcherHotkeys.swift#UISwitcherHotkeysController`, `arbol-design-system:heritage/app/Arbol/AppDelegate.swift#LatestChatSessionsHistory`, `arbol-design-system:heritage/app/Arbol/AppDelegate.swift#restoreFrame`.
+
+## Decisions
+
+| ID | Question | Proposed answer | Status |
+|---|---|---|---|
+| BKD-D43 | What should an ordinary start show, and should Arbol start at login? | Start in the menu bar without opening a window. Keep launch at login opt-in. An explicit UI or chat request opens its target | Owner decision pending |
+| BKD-D44 | Which Root should a global shortcut use? | Use the focused Arbol window's Root while working in Arbol. From other apps or with no focused Arbol window, use the current Root. A panel stays on the Root it opened with | Owner decision pending |
+| BKD-D45 | Should the first tray manage Roots as well as open them? | Show state, failure, size and available UIs, plus Latest chats and Quit. Keep create, migrate, ready, fail and remove in `arbol-roots` | Owner decision pending |
+| BKD-D46 | How should the resident App switch to a newer or explicitly selected Build? | Show when a newer working Build is available. Switch on Quit and relaunch, using ordinary launch for the default or `-v` for a specific Build | Owner decision pending |
+| BKD-D47 | How does the App start and stop a backend without owning a manually started process? | Reconcile the compatible current Root and the Roots of open windows. Reuse a verified already-running socket and use child-input ownership for shutdown and restart of App-started children | Technical choice · 11 November 2026 |
+| BKD-D48 | How can the App stay an opaque relay and still draw native surfaces? | Keep a separate read-only native client for tray and panel data. Use an additive app-channel adapter for Elma's local view state and selection outcomes. Keep mutating work and its Draft barrier in Elma | Technical choice · 11 November 2026 |
+| BKD-D49 | Where does the tray learn about a whole-Root migration refusal after the command exits? | Add an optional safe problem to the existing catalogue, using the Root command as its writer and clearing it on success or readiness | Technical choice · 11 November 2026 |
