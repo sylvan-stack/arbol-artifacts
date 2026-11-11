@@ -110,13 +110,13 @@ arbol-app:Sources/ElmaWindow.swift#ElmaWindow
 
 ### Hotkeys and Latest chats
 
-Register the global keys from the one resident App. Register Option+E while the App is resident and release it before handing residence to a replacement. When the shortcut fires, re-read the catalogue and open or raise Elma Chat for the current Root. If the current Root or its Elma renderer is unavailable, show the cause in the tray. If macOS refuses registration, show that the shortcut is unavailable and keep named-Root opens available. The rest of the global keys stay available. A renderer handles its own local keys, including the Elma latest-chats fallback when the native panel does not take the shortcut.
+Register the global keys from the one resident App. Register Option+E and Option+Q while the App is resident and release them before handing residence to a replacement. When either shortcut fires, re-read the catalogue and open or raise its UI for the current Root. If the current Root or requested renderer is unavailable, show the cause in the tray. If macOS refuses registration, show that the shortcut is unavailable and keep named-Root opens available. The rest of the global keys stay available. A renderer handles its own local keys, including the Elma latest-chats fallback when the native panel does not take the shortcut.
 
 | Shortcut | Action |
 |---|---|
 | ⌥E | Open or raise Elma Chat |
 | ⌃⌥⇧⌘W | Open or raise Willo Station when its bundle ships |
-| ⌃⌥⇧⌘S | Open or raise Seqoya Lab when its bundle ships |
+| ⌥Q | Open or raise Seqoya Lab when its bundle ships |
 | ⌃⇧⌘C | Open or dismiss Latest chats |
 
 A global hotkey uses the catalogue’s current Root, wherever focus is (BKD-D44). While the panel is open, its Root is fixed and named in its header. If the current Root has no compatible App or requested bundle, show the cause. The owner can select an available Root in the tray before invoking the shortcut again.
@@ -131,7 +131,7 @@ Historical evidence: `arbol-design-system:heritage/app/Arbol/UISwitcherHotkeys.s
 
 Each Arbol UI uses the maintained design system’s WorkspaceShell header. A UI supplies its own title and controls through the header slots. Elma Chat is the first consumer. When a verified renderer advertises this header, the App places the native close, minimize and zoom controls in its leading space and hides the separate AppKit title bar. The window keeps native dragging, resizing and geometry. A renderer without the shared header retains native title-bar clearance.
 
-Seqoya Lab opens for the current Root with **Control+Option+Shift+Command+S**. Its header can open the same UI for another Root. Its first layout provides the shared header, a navigation rail for Intelligence Providers, Subscriptions and Usage, and a content area that explains that administration data is pending. The initial renderer reads its Root identity from the named backend’s Bridge hello through the trusted host and leaves provider configuration and usage operations for later.
+Seqoya Lab opens for the current Root with **Option+Q**. Its header can open the same UI for another Root. Its first layout provides the shared header, a navigation rail for Intelligence Providers, Subscriptions and Usage, and a content area that explains that administration data is pending. The initial renderer reads its Root identity from the named backend’s Bridge hello through the trusted host and leaves provider configuration and usage operations for later.
 
 The Root name is a dropdown trigger. The anchored list shows retained Roots by display name and state. It marks the window’s Root and shows why a choice is unavailable when the App is incompatible or the target Root has no runnable backend. On selection the App refreshes availability and opens or raises the same UI for the named Root. The original window, its Draft and the shared current Root stay as they were. A refused or expired open reports the cause in the dropdown and can be retried. A request is bound to its originating trusted document and may open a window only while that document and the request are still active.
 
@@ -163,7 +163,7 @@ arbol-app:Sources/ElmaAppChannel.swift#ElmaOpenQueue
 | BKD-3.7 | Rediscover retained Roots' Exchanges through the matching managers, isolate discovery failures and leave accepted Exchange ownership intact through restarts | New · ARC-1.25–26, BKD-0.21–22 | Multi-Root restart drill with an Exchange in progress |
 | BKD-3.8 | Relay opaque BKD-1 frames on one private socket per trusted window, refuse untrusted content and isolate connection and page generations | Changed · ARC-0.6, BKD-1.1–3, 1.11 | Native wire and WebKit boundary checks |
 | BKD-3.9 | Deliver disconnect and fresh hello, retain the renderer across compatible backend Build changes and preserve Drafts across App departure | New · ARC-0.26, BKD-1.3, BKD-2.22 | Installed reconnect and retained old Root/Build journey |
-| BKD-3.10 | Open or raise current-Root Elma Chat with global Option+E. Send the other available global shortcuts to the catalogue’s current Root regardless of focus. Report registration failures and keep explicit Root opens available | Changed · owner request, BKD-2.18, BKD-D44 | Native key journey with focus in a different Root or application |
+| BKD-3.10 | Open or raise Elma Chat with global Option+E and Seqoya Lab with global Option+Q. Send the available global shortcuts to the catalogue’s current Root regardless of focus. Report registration failures and keep explicit Root opens available | Changed · owner request, BKD-2.18, BKD-D44 | Native key journey with focus in a different Root or application |
 | BKD-3.11 | Show and select Root-local Latest chats with the existing ordering, keyboard and Draft-safe behavior, including the separate reimport action on capable renderers | Kept · BKD-2.18, 2.24 | Native panel journey, including failed read and failed selection |
 | BKD-3.12 | Answer the native folder and link calls and deliver queued opens only to the intended Root's Elma document | Kept · BKD-1.11, BKD-2.19 | Native app-channel and Willo open journey, including cold window and Draft conflict |
 | BKD-3.13 <!-- 206cc66a-8fb5-4100-92be-649300a25d89 --> | Show the catalogue’s current Root name and the running App’s Build number in read-only rows above the tray actions, with explicit Root unavailable states | Changed · owner request, 11 November 2026 | Tray journey across Root selection and App Build handoff |
