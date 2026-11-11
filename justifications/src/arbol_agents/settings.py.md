@@ -23,9 +23,9 @@ Origins: AGR-1.8 · Intention i-69c8acbb · 2026-11-11
 
 ## SettingsFile.backup
 
-Reason: Make settings changes whole and retain the first private backup
+Reason: Remember original settings absence instead of backing up the generated file on uninstall
 
-Origins: AGR-1.8 · Intention i-69c8acbb · 2026-11-11
+Origins: AGR-1.8 · Intention i-a0c1e420 · 2026-11-11
 
 ## SettingsFile.read
 
