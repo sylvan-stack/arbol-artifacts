@@ -5,19 +5,19 @@ role: authored
 
 ## <before style>
 
-Reason: Use the published one-row window header and Root dropdown in the packaged Elma renderer.
+Reason: Sync the shared WorkspaceHeader from the published design revision into both App renderer entries.
 
-Origins: BKD-3.5, BKD-3.16 · Intention i-60c1b1bd · 2026-11-11
+Origins: BKD-3.5, BKD-3.16 · Intention i-4b49c353 · 2026-11-11
 
 ## script
 
-Reason: Use the published one-row window header and Root dropdown in the packaged Elma renderer.
+Reason: Sync the shared WorkspaceHeader from the published design revision into both App renderer entries.
 
-Origins: BKD-3.5, BKD-3.16 · Intention i-60c1b1bd · 2026-11-11
+Origins: BKD-3.5, BKD-3.16 · Intention i-4b49c353 · 2026-11-11
 
 ## style
 
-Reason: Import the published shared header through Elma’s hashed design-source snapshot.
+Reason: Sync the shared WorkspaceHeader from the published design revision into both App renderer entries.
 
-Origins: BKD-3.16 · Intention i-ad66b510 · 2026-11-11
+Origins: BKD-3.5, BKD-3.16 · Intention i-4b49c353 · 2026-11-11
 
