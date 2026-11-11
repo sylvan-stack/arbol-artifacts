@@ -5,9 +5,9 @@ role: authored
 
 ## <before optional_event_text>
 
-Reason: Set the waiting timestamp from the actual state transition, keep the session owner and metadata independent of sub-agent events, and keep the installed hook quiet during package replacement.
+Reason: Record Kimi Code events with the common lifecycle and privacy rules
 
-Origins: AGR-0.4, AGR-0.6, AGR-1.1, AGR-1.2, AGR-1.4, AGR-1.5, AGR-D8 · Intention i-943b0a33 · 2026-11-09
+Origins: AGR-0.1, AGR-1.1, AGR-1.4 · Intention i-d0bbc247 · 2026-11-11
 
 ## adopt
 
@@ -17,13 +17,19 @@ Origins: AGR-0.4, AGR-0.6, AGR-1.1, AGR-1.2, AGR-1.4, AGR-1.5, AGR-D8 · Intenti
 
 ## handle
 
-Reason: Sign-of-life events advance lastEvent while preserving the existing session metadata and wait state.
+Reason: Record Kimi Code events with the common lifecycle and privacy rules
 
-Origins: AGR-1.1, AGR-0.6 · Intention i-705c045d · 2026-11-11
+Origins: AGR-0.1, AGR-1.1, AGR-1.4 · Intention i-d0bbc247 · 2026-11-11
 
 ## refresh
 
 Reason: Set the waiting timestamp from the actual state transition, keep the session owner and metadata independent of sub-agent events, and keep the installed hook quiet during package replacement.
 
 Origins: AGR-0.4, AGR-0.6, AGR-1.1, AGR-1.2, AGR-1.4, AGR-1.5, AGR-D8 · Intention i-943b0a33 · 2026-11-09
+
+## apply_call_event
+
+Reason: Record Kimi Code events with the common lifecycle and privacy rules
+
+Origins: AGR-0.1, AGR-1.1, AGR-1.4 · Intention i-d0bbc247 · 2026-11-11
 

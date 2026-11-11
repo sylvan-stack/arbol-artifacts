@@ -9,3 +9,9 @@ Reason: Set the waiting timestamp from the actual state transition, keep the ses
 
 Origins: AGR-0.4, AGR-0.6, AGR-1.1, AGR-1.2, AGR-1.4, AGR-1.5, AGR-D8 · Intention i-943b0a33 · 2026-11-09
 
+## Processes.entrypoint
+
+Reason: Record Kimi Code events with the common lifecycle and privacy rules
+
+Origins: AGR-0.1, AGR-1.1, AGR-1.4 · Intention i-d0bbc247 · 2026-11-11
+
