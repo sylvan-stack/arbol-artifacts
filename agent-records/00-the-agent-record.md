@@ -5,7 +5,7 @@ status: accepted
 ---
 # Agent records · 00 The agent record
 
-An *agent record* is a small JSON file that one agent session keeps up to date while it lives, such as `~/Library/Application Support/Arbol/agents/codex-01a1438b-1b0b-78c2-ae38-236d45157af0.json` for one Codex thread. It says who the agent is, which process runs it, what the agent waits for now and since when, and when the session ended. This specification states what counts as one agent session, where the records are kept, the fields of a record and how it is written so that a reader never sees half of it, how the process that owns a record is named, how a reader tells a working, waiting, silent, gone and ended agent apart, and how an Exchange of an Arbol Trunk takes part without a file of its own. It matters because until now only Arbol's own programs kept such a record (a Driver's run, [DRV-6](../driver-contract/06-state-and-simultaneous-calls.md); a Trunk's Exchange, [RCT-1](../../arbol-root/contract/01-the-exchange-folder.md)), so an agent that the Leather Bag ran in Claude Code or Codex was invisible to Arbol.
+An *agent record* is a small JSON file that one agent session keeps up to date while it lives, such as `~/Library/Application Support/Arbol/agents/codex-01a1438b-1b0b-78c2-ae38-236d45157af0.json` for one Codex thread. It says who the agent is, which process runs it, what the agent waits for now and since when, and when the session ended. This specification states what counts as one agent session, where the records are kept, the fields of a record and how it is written so that a reader never sees half of it, how the process that owns a record is named, how a reader tells a working, waiting, silent, gone and ended agent apart, and how an Exchange of an Arbol Trunk takes part without a file of its own. It matters because until now only Arbol's own programs kept such a record (a Driver's run, [DRV-6](../driver-contract/06-state-and-simultaneous-calls.md); a Trunk's Exchange, [RCT-1](../../arbol-root/contract/01-the-exchange-folder.md)), so an agent that the Leather Bag ran in Claude Code, Codex or Kimi Code was invisible to Arbol.
 
 It follows the conventions of the [Driver Contract](../driver-contract/README.md#conventions) and of this chapter's [README](README.md#conventions). The hooks that write the records are in [AGR-1](01-the-hooks.md). The owner answered its question on 16 October 2026, and the specification was accepted the same day.
 
@@ -27,6 +27,7 @@ An agent session is what the Leather Bag talks to as one conversation, in whatev
 |---|---|---|---|
 | Claude Code, in a terminal, in the Claude desktop app or as `claude -p` | One session | The session id, which Claude Code gives its hooks as `session_id` and the agent's commands as `CLAUDE_CODE_SESSION_ID` | `ace0b692-38cf-4eca-ac4c-1d8e53451149` |
 | Codex, in a terminal, as `codex exec`, or in the Codex app | One thread | The thread id, which Codex gives its hooks as `session_id` and the agent's commands as `CODEX_THREAD_ID` | `01a1438b-1b0b-78c2-ae38-236d45157af0` |
+| Kimi Code, in a terminal or in the desktop app | One session | Kimi sends `session_<UUID>` as `session_id`. The record uses `session-<UUID>` so it can use the same filename alphabet as the other tools | `session-34efcb40-5f3f-4dce-a77d-14fe45fd1e20` |
 | Arbol | One chat of a Root, seen through its Exchange in progress | The Root and the chat | `sapling/c3d4e5f6-0718-4293-a4b5-c6d7e8f90a1b` |
 
 A sub-agent belongs to the session that started it: its hooks carry its parent's `session_id`, with an `agent_id` of its own (seen in the live checks for Codex). A session that is continued later, such as with `claude --resume` or by opening a Codex thread again, keeps its identifier and its record. A session that the Leather Bag clears with `/clear` is a new session: the old record ends, a new one begins.
@@ -39,11 +40,12 @@ A run of a Driver is not an agent session of its own. It runs in the Driver's Su
 ~/Library/Application Support/Arbol/agents/
   claude-code-ace0b692-38cf-4eca-ac4c-1d8e53451149.json     one Claude Code session
   codex-01a1438b-1b0b-78c2-ae38-236d45157af0.json           one Codex thread
+  kimi-code-session-34efcb40-5f3f-4dce-a77d-14fe45fd1e20.json one Kimi Code session
   .lock                                                     taken by a hook while it rewrites a record
   .codex-01a1438b-1b0b-78c2-ae38-236d45157af0.json.4711.tmp a record being written: every reader skips a name that starts with a dot
 ```
 
-The file is named `<tool>-<session>.json`. A session identifier holds only letters, digits and `-`; a hook that is given any other identifier writes nothing. The folder has the mode 0700 and its files 0600. It lies outside every Root, like `arbol-roots` ([ARC-1](../architecture/01-roots.md)): there is one for the Mac, because the agents on it are not part of any Root.
+The file is named `<tool>-<session>.json`. A record identifier holds only letters, digits and `-`. For Kimi Code, the hook first validates `session_<UUID>` and changes its prefix to `session-`. A hook given a malformed identifier writes nothing. The folder has the mode 0700 and its files 0600. It lies outside every Root, like `arbol-roots` ([ARC-1](../architecture/01-roots.md)): there is one for the Mac, because the agents on it are not part of any Root.
 
 The records are the interface. A reader needs no Arbol program to read them: the rules of this specification are all it needs. Something that refers to an agent, such as a hold of a Beat, names it by `tool` and `session`, and the reader finds its record by that name. Arbol reads the records with `arbol-agents list` (below); the check of holds in Working in Sagas reads them itself, because a Mycel guide may read Arbol's data but never run Arbol's programs.
 
@@ -76,13 +78,13 @@ arbol:src/arbol_agents/records.py#Store
 | Field | What it is | Example |
 |---|---|---|
 | `agentRecord` | The format number, `1` for this specification. A reader that finds a higher number lists the record as unreadable | `1` |
-| `tool` | `claude-code` or `codex` | `"codex"` |
+| `tool` | `claude-code`, `codex` or `kimi-code` | `"codex"` |
 | `session` | The session's identifier (above) | |
-| `entrypoint` | Where the session runs, as the tool tells it: for Claude Code the value of `CLAUDE_CODE_ENTRYPOINT`, such as `cli` in a terminal or `claude-desktop` in the app; for Codex `app-server` when its owner is a `codex app-server` process, as in the Codex app, and `cli` otherwise. Absent when unknown | `"app-server"` |
+| `entrypoint` | Where the session runs, as the tool tells it: for Claude Code the value of `CLAUDE_CODE_ENTRYPOINT`, such as `cli` in a terminal or `claude-desktop` in the app; for Codex `app-server` when its owner is a `codex app-server` process, as in the Codex app, and `cli` otherwise. The bundled Kimi Code host 2.5.2 gives neither an entrypoint nor a client type, so this field is absent for its records. Absent when unknown | `"app-server"` |
 | `owner` | The process that runs the session (below) | |
 | `workingFolder` | The session's working folder, as the latest event of the session itself gave it | `"/Users/sam/repos/shop"` |
-| `transcript` | The tool's own record file of the session, which Claude Code and Codex name `transcript_path`. Absent when no event has given it yet | |
-| `model` | The model, when the tool names it. Codex names it in every event; Claude Code's hooks do not | `"gpt-6.1-sol"` |
+| `transcript` | The tool's own record file of the session, which Claude Code and Codex name `transcript_path`. Absent when no event has given it yet. Kimi Code supplies no transcript path | |
+| `model` | The model, when the tool names it. Codex names it in every event and Kimi Code in `SessionStart`; Claude Code's hooks do not | `"gpt-6.1-sol"` |
 | `startedAt` | When the first event of the session was seen | |
 | `waitingFor` and `since` | What the agent waits for now, and since when (below) | `"answer"` |
 | `toolName` | The name of the tool call opened last, while `waitingFor` is `tool` or `answer`. Only the name, never its input | `"Bash"` |
@@ -93,7 +95,7 @@ arbol:src/arbol_agents/records.py#Store
 
 Every time has the form that JavaScript's `toISOString` writes, in UTC, as in BLD-0. A reader ignores a field it does not know, and shows a `waitingFor` it does not know as it is given.
 
-The record holds no part of the conversation: no message, no prompt, no tool input or output, no answer ([AGR-D6](#decisions)). The hooks receive all of these and keep none of them.
+The record holds no part of the conversation: no message, prompt, tool input, tool output, answer or Kimi session title ([AGR-D6](#decisions)). The hooks receive all of these and keep none of them.
 
 <!-- sources:
 arbol:src/arbol_agents/model.py#AgentRecord
@@ -123,6 +125,7 @@ The owner of a record is the process that runs the session, named as DRV-6 names
 |---|---|---|---|
 | Claude Code | The session's own `claude` process. It runs one session at a time; the desktop app runs one for each open session | `CLAUDE_PID`, which is also the hook's parent process (seen in the live checks) | the owner is alive, and no newer record names the same owner: a process that has gone on to another session has left the old one |
 | Codex | The `codex` process that has the thread loaded: `codex` or `codex exec` in a terminal, or the one `codex app-server` that runs every thread of the Codex app | the hook's parent process (seen in the live checks for all three) | some `codex` process has the thread's transcript open. Codex keeps that file open exactly while the thread is loaded, also when another process loaded it again, such as the Codex app after a restart. A record without `transcript`: while its owner is alive |
+| Kimi Code | The Kimi CLI or desktop host that runs the session | The hook’s parent process, past the command shell | Its recorded owner is alive. A shared desktop host can own several sessions. A heartbeat advances `lastEvent` while Kimi keeps the session loaded |
 
 Which process becomes the owner:
 
@@ -215,10 +218,10 @@ arbol-root:specs/00-the-commands.md#The listing
 
 | Command | What it does |
 |---|---|
-| `arbol-agents hook claude-code` and `arbol-agents hook codex` | The hook: reads one event from its input and rewrites the session's record ([AGR-1](01-the-hooks.md)) |
+| `arbol-agents hook <tool>` for `claude-code`, `codex` or `kimi-code` | The hook: reads one event from its input and rewrites the session's record ([AGR-1](01-the-hooks.md)) |
 | `arbol-agents list [--json]` | Lists every agent on the Mac: the records, and the Exchanges in progress of every Root, each with its state. It removes old records (below) |
-| `arbol-agents install` and `arbol-agents uninstall` | Adds the hooks to the settings of Claude Code and Codex, or removes exactly what it added ([AGR-1](01-the-hooks.md#installing-the-hooks)) |
-| `arbol-agents status` | Says for each tool whether the hooks are installed, whether Codex will run them (Codex runs a new hook only once it is trusted, AGR-1), and the tool's version |
+| `arbol-agents install` and `arbol-agents uninstall` | Adds the hooks to the settings of Claude Code, Codex and Kimi Code, or removes exactly what it added ([AGR-1](01-the-hooks.md#installing-the-hooks)) |
+| `arbol-agents status [--json]` | Says for each tool whether the hooks are installed, whether Codex will run them (Codex runs a new hook only once it is trusted, AGR-1), and the tool's version |
 
 For example, `arbol-agents list` prints:
 
@@ -254,20 +257,20 @@ The hooks (`arbol-agents hook`):
 
 | ID | A hook must… | Origin | Verified by |
 |---|---|---|---|
-| AGR-0.1 | keep one record for each agent session in `~/Library/Application Support/Arbol/agents/<tool>-<session>.json`, with the fields above, the folder 0700 and the files 0600, and write nothing for an identifier that holds anything but letters, digits and `-` | New | SYL-201 installed writer replay |
+| AGR-0.1 | keep one record for each agent session in `~/Library/Application Support/Arbol/agents/<tool>-<session>.json`, with the fields above, the folder 0700 and the files 0600, and normalize Kimi Code’s `session_<UUID>` to `session-<UUID>` and write nothing for a malformed identifier | New | SYL-201 installed writer replay (Claude Code and Codex); Kimi Code replay pending |
 | AGR-0.2 | take the folder's lock (`flock` on `.lock`) before reading a record, write nothing when it has not got the lock within 1 second, and replace the record whole by renaming a temporary file over it | New | SYL-201 installed locking and concurrent-writer check |
 | AGR-0.3 | write a missing or unreadable record anew from the event at hand, and change an ended record only for a start event or an event from another process | New | SYL-201 installed writer replay |
-| AGR-0.4 | name the owner by process identifier and start time, read with `/bin/ps` in a clean environment and the C locale: for Claude Code the process in `CLAUDE_PID`, for Codex the hook's parent process; and read the start time only when the process identifier differs from the record's owner | New | SYL-201 installed process check and source review; live (SYL-204) |
+| AGR-0.4 | name the owner by process identifier and start time, read with `/bin/ps` in a clean environment and the C locale: for Claude Code the process in `CLAUDE_PID`, for Codex and Kimi Code the hook's parent process past a shell; and read the start time only when the process identifier differs from the record's owner | New | SYL-201 installed process check and source review (Claude Code and Codex); live (SYL-204) |
 | AGR-0.5 | change the owner as the table "Which process becomes the owner" says, and ignore `SessionEnd` from a process other than a live owner | New | SYL-201 installed process check |
 | AGR-0.6 | set `waitingFor` to the first that holds of `answer`, `tool`, `driver` and `message`, and change `since` only when `waitingFor` changes | New | SYL-201 installed writer replay |
-| AGR-0.7 | keep no message, prompt, tool input, tool output or answer in the record | New | SYL-201 installed writer replay |
+| AGR-0.7 | keep no message, prompt, tool input, tool output, answer or Kimi Code session title in the record | New | SYL-201 installed writer replay (Claude Code and Codex); Kimi Code replay pending |
 
 A reader (`arbol-agents list`, and any other program that reads the records):
 
 | ID | A reader must… | Origin | Verified by |
 |---|---|---|---|
 | AGR-0.8 | tell `ended`, `gone`, `waiting-for-leather-bag`, `waiting-for-command`, `working` and `silent` apart as the table above says, in its order | New | unit |
-| AGR-0.9 | count a Claude Code agent as alive while its owner is alive and no newer record names the same owner, and a Codex agent while some `codex` process has its transcript open, or, without a transcript, while its owner is alive | New | unit; drill |
+| AGR-0.9 | count a Claude Code agent as alive while its owner is alive and no newer record names the same owner, and a Codex agent while some `codex` process has its transcript open, or, without a transcript, while its owner is alive. Count a Kimi Code agent as alive while its owner is alive, including when a newer session shares the owner | New | unit; drill |
 | AGR-0.10 | take as a record's sign of life the later of `lastEvent.at` and the change time of its transcript, and call an agent silent only when it waits for `driver` and has given none for 15 minutes | New | unit |
 | AGR-0.11 | never stop, release or change anything because an agent is silent | New | unit |
 | AGR-0.12 | list a record it cannot read, or whose format number is higher than it knows, as unreadable, and go on with the others | New | unit |

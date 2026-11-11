@@ -3,7 +3,7 @@ role: authored
 ---
 # Agent records
 
-How Arbol sees every agent session on this Mac, whatever tool runs it: Claude Code and Codex, in a terminal or in their apps, and the [Chat Exchanges](../GLOSSARY.md#chat-exchange) of Arbol's own Trunks. Each session keeps one small file, its *agent record*, that says who the agent is, which process owns it, what it waits for and since when, and when it ended. Claude Code and Codex write it through their own hooks, set once in their settings, so neither tool is changed and both keep their full power. An Exchange takes part through the record it already keeps ([RCT-1](../../arbol-root/contract/01-the-exchange-folder.md)).
+How Arbol sees every agent session on this Mac, whatever tool runs it: Claude Code, Codex and Kimi Code, in a terminal or in their apps, and the [Chat Exchanges](../GLOSSARY.md#chat-exchange) of Arbol's own Trunks. Each session keeps one small file, its *agent record*, that says who the agent is, which process owns it, what it waits for and since when, and when it ended. The three tools write it through their own hooks, set once in their settings, so neither tool is changed and all three keep their full power. An Exchange takes part through the record it already keeps ([RCT-1](../../arbol-root/contract/01-the-exchange-folder.md)).
 
 For example, when a Codex thread starts a long build, its record says that it waits for a command; when the agent asks the Leather Bag which branch to use, it says that it waits for an answer; when the thread is archived, the record gets its end.
 
@@ -14,7 +14,7 @@ It was decided on 15 October 2026 that Arbol must not lock anyone into its own a
 | Spec | Title | Status |
 |---|---|---|
 | [AGR-0](00-the-agent-record.md) | The agent record | accepted |
-| [AGR-1](01-the-hooks.md) | The hooks of Claude Code and Codex | accepted |
+| [AGR-1](01-the-hooks.md) | The hooks of Claude Code, Codex and Kimi Code | accepted |
 
 ## Conventions
 
