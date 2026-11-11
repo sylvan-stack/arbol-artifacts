@@ -11,7 +11,7 @@ The Arbol Swift App is the macOS program that stays in the menu bar. It opens th
 
 ## Scope
 
-One Swift App, its numbered Builds, the tray menu, global shortcuts, native windows and Latest chats panel, and the host side of the Bridge and of opening a chat. [ARC-0](../architecture/00-components-and-boundaries.md#arbol-the-swift-app-and-the-backend) and [ARC-1](../architecture/01-roots.md) give the boundaries. [BKD-0](00-the-arbol-backend.md), [BKD-1](01-the-bridge.md) and [BKD-2](02-elma-chat.md) give the backend, the Bridge and Elma Chat. Willo Station's and Seqoya Lab's own pages and Telegram listeners have separate specifications. The owner’s choices for startup, Root selection and relaunch are in [Decisions](#decisions).
+One Swift App, its numbered Builds, the tray menu, global shortcuts, native windows and Latest chats panel, and the host side of the Bridge and of opening a chat. [ARC-0](../architecture/00-components-and-boundaries.md#arbol-the-swift-app-and-the-backend) and [ARC-1](../architecture/01-roots.md) give the boundaries. [BKD-0](00-the-arbol-backend.md), [BKD-1](01-the-bridge.md) and [BKD-2](02-elma-chat.md) give the backend, the Bridge and Elma Chat. This specification also covers Seqoya Lab’s read-only Subscriptions listing. Willo Station’s pages, the other Seqoya Lab pages and Telegram listeners have separate specifications. The owner’s choices for startup, Root selection and relaunch are in [Decisions](#decisions).
 
 ## Behaviour
 
@@ -182,7 +182,7 @@ arbol-app:Sources/ElmaAppChannel.swift#ElmaOpenQueue
 | BKD-3.14 <!-- 15658f18-630e-4ae0-8387-634608110c03 --> | keep the running App and newest ready Build during handoff and have the Build tool retire the previous payload after the replacement is ready and the previous process exits | Changed · BLD-D25, BLD-0.28 | Installed retention handoff drill pending |
 | BKD-3.15 <!-- 53a6f4a4-cbaf-470e-ba8f-7cf056484a19 --> | Refresh the Current Trunk row and submenu checkmark after a selection or catalogue update, with explicit loading and unavailable states | Changed · owner request, 11 November 2026 | Tray journey across Root selection and clearing |
 | BKD-3.16 <!-- ba8c172c-bdbc-4d20-8cc3-ffe68e930ef7 --> | Use one shared header with integrated native controls and a Trunk dropdown that selects a compatible Trunk for the originating window only, with availability feedback | New · owner request, 11 November 2026 | Two-Root dropdown journey with an open Draft and a refused target |
-| BKD-3.17 <!-- 1e2a3635-e381-4f89-8c8d-686bddb48fd7 --> | Open Seqoya Lab in its own window for each available Root. Use the shared header and a navigation rail for Intelligence Providers, Subscriptions and Usage. In Subscriptions, list the accounts and last recorded usage the Root’s backend returns through `accounts.list` | New · owner request | Open both surfaces for one Root and select a window-local Trunk in Seqoya |
+| BKD-3.17 <!-- 1e2a3635-e381-4f89-8c8d-686bddb48fd7 --> | Open Seqoya Lab in its own window for each available Root. Use the shared header and a navigation rail for Intelligence Providers, Subscriptions and Usage. In Subscriptions, list the accounts and last recorded usage the Root’s backend returns through `accounts.list` | New · owner request | Open both surfaces for one Root and select a window-local Trunk in Seqoya; verify stored-only Refresh, partial and stale results, and reconnect in Subscriptions |
 
 Verification descriptions name future evidence. The App implementation will follow the owner's separate testing and Build policy.
 
