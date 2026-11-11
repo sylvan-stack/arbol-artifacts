@@ -254,13 +254,13 @@ The hooks (`arbol-agents hook`):
 
 | ID | A hook must… | Origin | Verified by |
 |---|---|---|---|
-| AGR-0.1 | keep one record for each agent session in `~/Library/Application Support/Arbol/agents/<tool>-<session>.json`, with the fields above, the folder 0700 and the files 0600, and write nothing for an identifier that holds anything but letters, digits and `-` | New | unit |
-| AGR-0.2 | take the folder's lock (`flock` on `.lock`) before reading a record, write nothing when it has not got the lock within 1 second, and replace the record whole by renaming a temporary file over it | New | unit |
-| AGR-0.3 | write a missing or unreadable record anew from the event at hand, and change an ended record only for a start event or an event from another process | New | unit |
-| AGR-0.4 | name the owner by process identifier and start time, read with `/bin/ps` in a clean environment and the C locale: for Claude Code the process in `CLAUDE_PID`, for Codex the hook's parent process; and read the start time only when the process identifier differs from the record's owner | New | unit; live |
-| AGR-0.5 | change the owner as the table "Which process becomes the owner" says, and ignore `SessionEnd` from a process other than a live owner | New | unit |
-| AGR-0.6 | set `waitingFor` to the first that holds of `answer`, `tool`, `driver` and `message`, and change `since` only when `waitingFor` changes | New | unit |
-| AGR-0.7 | keep no message, prompt, tool input, tool output or answer in the record | New | unit |
+| AGR-0.1 | keep one record for each agent session in `~/Library/Application Support/Arbol/agents/<tool>-<session>.json`, with the fields above, the folder 0700 and the files 0600, and write nothing for an identifier that holds anything but letters, digits and `-` | New | SYL-201 installed writer replay |
+| AGR-0.2 | take the folder's lock (`flock` on `.lock`) before reading a record, write nothing when it has not got the lock within 1 second, and replace the record whole by renaming a temporary file over it | New | SYL-201 installed locking and concurrent-writer check |
+| AGR-0.3 | write a missing or unreadable record anew from the event at hand, and change an ended record only for a start event or an event from another process | New | SYL-201 installed writer replay |
+| AGR-0.4 | name the owner by process identifier and start time, read with `/bin/ps` in a clean environment and the C locale: for Claude Code the process in `CLAUDE_PID`, for Codex the hook's parent process; and read the start time only when the process identifier differs from the record's owner | New | SYL-201 installed process check and source review; live (SYL-204) |
+| AGR-0.5 | change the owner as the table "Which process becomes the owner" says, and ignore `SessionEnd` from a process other than a live owner | New | SYL-201 installed process check |
+| AGR-0.6 | set `waitingFor` to the first that holds of `answer`, `tool`, `driver` and `message`, and change `since` only when `waitingFor` changes | New | SYL-201 installed writer replay |
+| AGR-0.7 | keep no message, prompt, tool input, tool output or answer in the record | New | SYL-201 installed writer replay |
 
 A reader (`arbol-agents list`, and any other program that reads the records):
 
