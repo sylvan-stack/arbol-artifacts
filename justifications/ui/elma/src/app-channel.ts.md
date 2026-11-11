@@ -5,15 +5,15 @@ role: authored
 
 ## AppChannel
 
-Reason: Use the shared selector in the Elma renderer and route choices through the native app channel.
+Reason: Wire the shared header to the window Trunk and retain it on dispatch replay
 
-Origins: BKD-3.16 · Intention i-0dec02d0 · 2026-11-11
+Origins: BKD-0.11, BKD-1.7, BKD-3.16 · Intention i-3d376ddd · 2026-11-11
 
 ## AppChannel.call
 
-Reason: Use the shared selector in the Elma renderer and route choices through the native app channel.
+Reason: Wire the shared header to the window Trunk and retain it on dispatch replay
 
-Origins: BKD-3.16 · Intention i-0dec02d0 · 2026-11-11
+Origins: BKD-0.11, BKD-1.7, BKD-3.16 · Intention i-3d376ddd · 2026-11-11
 
 ## <before AppChannel>
 
@@ -23,31 +23,61 @@ Removed by Intention i-0dec02d0 · 2026-11-11
 
 ## <before RootMethod>
 
-Reason: Use the shared selector in the Elma renderer and route choices through the native app channel.
+Removed: Wire the shared header to the window Trunk and retain it on dispatch replay
 
-Origins: BKD-3.16 · Intention i-0dec02d0 · 2026-11-11
+Removed by Intention i-3d376ddd · 2026-11-11
 
 ## AppChannel.callRoot
 
-Reason: Use the shared selector in the Elma renderer and route choices through the native app channel.
+Removed: Wire the shared header to the window Trunk and retain it on dispatch replay
 
-Origins: BKD-3.16 · Intention i-0dec02d0 · 2026-11-11
+Removed by Intention i-3d376ddd · 2026-11-11
 
 ## AppMethod
 
-Reason: Use the shared selector in the Elma renderer and route choices through the native app channel.
+Reason: Wire the shared header to the window Trunk and retain it on dispatch replay
 
-Origins: BKD-3.16 · Intention i-0dec02d0 · 2026-11-11
+Origins: BKD-0.11, BKD-1.7, BKD-3.16 · Intention i-3d376ddd · 2026-11-11
 
 ## RootMethod
 
-Reason: Use the shared selector in the Elma renderer and route choices through the native app channel.
+Removed: Wire the shared header to the window Trunk and retain it on dispatch replay
 
-Origins: BKD-3.16 · Intention i-0dec02d0 · 2026-11-11
+Removed by Intention i-3d376ddd · 2026-11-11
 
 ## isRootChoice
 
-Reason: Use the shared selector in the Elma renderer and route choices through the native app channel.
+Removed: Wire the shared header to the window Trunk and retain it on dispatch replay
 
-Origins: BKD-3.16 · Intention i-0dec02d0 · 2026-11-11
+Removed by Intention i-3d376ddd · 2026-11-11
+
+## <before TrunkMethod>
+
+Reason: Wire the shared header to the window Trunk and retain it on dispatch replay
+
+Origins: BKD-0.11, BKD-1.7, BKD-3.16 · Intention i-3d376ddd · 2026-11-11
+
+## AppChannel.currentTrunk
+
+Reason: Wire the shared header to the window Trunk and retain it on dispatch replay
+
+Origins: BKD-0.11, BKD-1.7, BKD-3.16 · Intention i-3d376ddd · 2026-11-11
+
+## AppChannel.trunkSelector
+
+Reason: Wire the shared header to the window Trunk and retain it on dispatch replay
+
+Origins: BKD-0.11, BKD-1.7, BKD-3.16 · Intention i-3d376ddd · 2026-11-11
+
+## TrunkMethod
+
+Reason: Wire the shared header to the window Trunk and retain it on dispatch replay
+
+Origins: BKD-0.11, BKD-1.7, BKD-3.16 · Intention i-3d376ddd · 2026-11-11
+
+## isTrunkCode
+
+Reason: Wire the shared header to the window Trunk and retain it on dispatch replay
+
+Origins: BKD-0.11, BKD-1.7, BKD-3.16 · Intention i-3d376ddd · 2026-11-11
 
