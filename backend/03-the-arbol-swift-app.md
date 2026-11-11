@@ -138,6 +138,12 @@ Selection uses the same Draft-safe open path as a request from Willo Station. Pr
 
 Historical evidence: `arbol-design-system:heritage/app/Arbol/UISwitcherHotkeys.swift#bindings`, `arbol-design-system:heritage/app/Arbol/AppDelegate.swift#LatestChatSessionsHotkeyController`, `arbol-design-system:heritage/app/Arbol/AppDelegate.swift#LatestChatSessionsModel`. Use the maintained [Elma picker and opening contract](https://github.com/sylvan-stack/arbol-design-system/blob/09ae88b8be0c5871389fe7724001bf9c24b6be49/docs/design-system/05-elma.md) and [native surface reference](https://github.com/sylvan-stack/arbol-design-system/blob/09ae88b8be0c5871389fe7724001bf9c24b6be49/src/pages/NativeSurface.svelte). Implement and validate the native and design-system behavior together after acceptance, with fictional fixtures in the reference.
 
+### Shared UI shell header
+
+Each Arbol UI uses the maintained design system’s WorkspaceShell header. The shared header identifies the Root of the window and provides the Root selector. A UI supplies its own title and controls through the header slots. Elma Chat is the first consumer.
+
+The selector lists retained Roots by display name and state. It marks the window’s Root and shows why a choice is unavailable when the App is incompatible or the target UI has no runnable renderer. On selection the App refreshes availability and opens or raises the same UI for the named Root. The original window, its Draft and the shared current Root stay as they were. A refused or expired open reports the cause in the selector and can be retried. A request is bound to its originating trusted document and may open a window only while that document and the request are still active.
+
 ### Opening a chat and using native controls
 
 The *app channel* is the small set of requests the App itself answers. It is available only to the same trusted document as the Bridge. It validates each method, parameter and caller and returns one reply with the request's ID. An open request names an explicit target Root and exactly one chat UUID or absolute new-chat folder. A request cannot supply a program, a URL for the web view or a backend path. A Willo renderer can submit a chat from its own Root or from a Root it identifies in its discovery view. The App validates the Root, checks its App minimum, queues the request before opening Elma and returns an explicit refusal if it cannot queue it. This gives Willo's First Sapling hand-over a receiver. Willo's own UI and its choice of target stay with that specification.
@@ -172,6 +178,7 @@ arbol-app:Sources/ElmaAppChannel.swift#ElmaOpenQueue
 | BKD-3.13 <!-- 206cc66a-8fb5-4100-92be-649300a25d89 --> | Show the catalogue’s current Root name and the running App’s Build number in read-only rows above the tray actions, with explicit Root unavailable states | Changed · owner request, 11 November 2026 | Tray journey across Root selection and App Build handoff |
 | BKD-3.14 <!-- 15658f18-630e-4ae0-8387-634608110c03 --> | keep the running App and newest ready Build during handoff and have the Build tool retire the previous payload after the replacement is ready and the previous process exits | Changed · BLD-D25, BLD-0.28 | Installed retention handoff drill pending |
 | BKD-3.15 <!-- 53a6f4a4-cbaf-470e-ba8f-7cf056484a19 --> | Refresh the Current Root row and submenu checkmark after a selection, automatic reset or catalogue update, with explicit loading and unavailable states | Changed · owner request, 11 November 2026 | Tray journey across Root selection and clearing |
+| BKD-3.16 <!-- ba8c172c-bdbc-4d20-8cc3-ffe68e930ef7 --> | Use the design system’s shared header and open or raise the same UI for a named Root from its selector, with availability feedback and isolation of the original window | New · owner request, 11 November 2026 | Two-Root selector journey with an open Draft and a refused target |
 
 Verification descriptions name future evidence. The App implementation will follow the owner's separate testing and Build policy.
 
@@ -191,6 +198,8 @@ Verification descriptions name future evidence. The App implementation will foll
 |---|---|---|
 | `app.pickFolder` | `{start?: string}` | `{folder: string}` or `{folder: null}` |
 | `app.openLink` | `{url: string}` | `{}` after the system accepts the open |
+| `app.listRoots` | `{}` from a trusted UI | `{roots: [{root, name, status, unavailable?}, ...]}`. Availability refers to that UI on the running App |
+| `app.openRoot` | `{root: string}` from a trusted UI | `{}` after the App opens or raises that same UI for the named Root |
 | `app.takeOpen` | `{}` | `{chat: string}`, `{folder: string}` or `{}` |
 | `app.openChat` | `{root: string, chat: string}` from Willo Station | `{}` after the host queues the request |
 | `app.elmaState` | `{shown: string or null, recent: string[], panel: 1}` from Elma | `{panel: 1}` on a host that implements this adapter |
