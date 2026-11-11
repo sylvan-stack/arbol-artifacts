@@ -5,7 +5,7 @@ role: authored
 
 ## <end>
 
-Reason: Keep the shared Elma page when its Root reconnects with a compatible backend, while preserving the old deployment path.
+Reason: Bundle the same Seqoya layout as a verified App entry while preserving the legacy Elma package.
 
-Origins: BKD-1.3, BKD-2.22 · Intention i-f0d297be · 2026-11-11
+Origins: BKD-3.17, BKD-3.16 · Intention i-eaa9cb74 · 2026-11-11
 
