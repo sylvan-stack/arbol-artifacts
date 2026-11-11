@@ -137,6 +137,13 @@ Seqoya Lab opens for the current Root with **Option+Q**. Its first layout provid
 
 The header displays the window’s Trunk. A new window starts with the tray’s default for its Root. The dropdown lists Trunks available for that window’s Root and selects one for that window only. Show loading, no compatible Trunks and refusal states. Selection stays in the same window and does not affect its Root or any accepted Exchange. A selection request belongs to the originating trusted document. A new Exchange uses the window’s selected Trunk at dispatch, including an explicit retry or Continue. A transport retry repeats the captured Trunk and Exchange identifier. Older backends support the default `trivial` path; Elma refuses to dispatch a non-default Trunk until the backend advertises support.
 
+<!-- sources:
+arbol-design-system:src/patterns/WorkspaceHeader.svelte
+arbol-design-system:src/patterns/WorkspaceShell.svelte
+arbol:ui/elma/src/seqoya/App.svelte
+arbol:ui/elma/src/preferences.ts
+-->
+
 ### Opening a chat and using native controls
 
 The *app channel* is the small set of requests the App itself answers. It is available only to the same trusted document as the Bridge. It validates each method, parameter and caller and returns one reply with the request's ID. An open request names an explicit target Root and exactly one chat UUID or absolute new-chat folder. A request cannot supply a program, a URL for the web view or a backend path. A Willo renderer can submit a chat from its own Root or from a Root it identifies in its discovery view. The App validates the Root, checks its App minimum, queues the request before opening Elma and returns an explicit refusal if it cannot queue it. This gives Willo's First Sapling hand-over a receiver. Willo's own UI and its choice of target stay with that specification.
