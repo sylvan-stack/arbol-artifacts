@@ -195,7 +195,7 @@ Opening the First Sapling has to start Build 6, not Build 8. The selection rules
 | Change | Detail |
 |---|---|
 | A Build names its Root | The record of a Build of `arbol` or of `arbol-root` says which Root it was made for |
-| The default is worked out for a Root | The default Build is the working Build with the highest build number among those of the Root that was asked for. When no Root is named, that is the current Root, the newest working one. The whole rule is: the newest working Build of the newest working Root |
+| The default is worked out for a Root | The default Build is the working Build with the highest build number among those of the Root that was asked for. When no Root is named, use the current Root selected by the catalogue |
 | Naming a Root | `--root <identifier>` as the launcher's first argument, in the way of `-v`. A Build named with `-v` needs no Root: its record says which one it belongs to |
 | Pruning | Pruning keeps the newest working Build of every Root that still exists |
 | Trunks and Drivers | Their Builds belong to no Root. A record says what the Build is compatible with: for a Driver the contract version it implements, and for a Trunk the Root Contract versions it implements. For a Trunk, Root first chooses the caller's named Trunk or else the Trivial Trunk, then the newest working Build of that Trunk that fits (ARC-0, RCT-0) |
@@ -219,7 +219,7 @@ arbol:tests/test_builds.py#PruningRoots
 
 ### The tray menu and `arbol-roots`
 
-The tray menu of the Arbol Swift App lists the Roots, marks the current one, and opens the UIs of the Root that is picked. Every UI shows the display name of its Root in its header, so the Leather Bag always sees which Root a window belongs to. [BKD-3](../backend/03-the-arbol-swift-app.md) specifies the tray parts of ARC-1.6, 1.11, 1.18 and 1.23 and the App restart part of ARC-1.26.
+The tray menu of the Arbol Swift App lists the Roots, marks the current one, and lets the owner change it for both the App and the command line. Every UI shows the display name of its Root in its header, so the Leather Bag always sees which Root a window belongs to. [BKD-3](../backend/03-the-arbol-swift-app.md) specifies the tray parts of ARC-1.6, 1.11, 1.18 and 1.23 and the App restart part of ARC-1.26.
 
 One tool, `arbol-roots`, creates and changes Roots. It lies beside `arbol-builds` in the `arbol` repository and, like it, is outside every Root and is not itself a Build. The tray menu calls it. Its commands ([ARC-D35](#decisions)):
 
@@ -228,6 +228,8 @@ One tool, `arbol-roots`, creates and changes Roots. It lies beside `arbol-builds
 | `arbol-roots create <identifier> --name <display name> [--from <root>] [--root-contract <version>]` | Makes the folder, the record and the empty database of a Root in the state `preparing`. Records the oldest Build of `arbol-app` the Root works with, by default the newest working one. With `--from`, records the Root it grows from and copies its settings once. Writes the Root Contract version named with `--root-contract` into the record as `rootContract`; without the option, the version of the `--from` Root, and 1 when there is none (RCT-0.11). It runs no script, because the Root's Builds do not exist yet |
 | `arbol-roots list` | Prints the records, newest first, and marks the current Root |
 | `arbol-roots show [<identifier>]` | Prints one record; without an identifier, the current Root's |
+| `arbol-roots use <identifier>` | Makes a retained working Root current, even when another Root was created later. Prints the selected record |
+| `arbol-roots use --auto` | Clears the choice so the newest working Root becomes current. Prints that record, or JSON null when no Root is working |
 | `arbol-roots ready <identifier>` | Marks a Root `working`: a new Root that is ready to be used, or a failed one that works again. It does so only while a working Build of the Trivial Trunk lists the Root's Root Contract version (RCT-0.13) |
 | `arbol-roots fail <identifier> --reason <text>` | Marks a working Root `failed` |
 | `arbol-roots app <identifier> <build number>` | Raises the oldest Build of `arbol-app` the Root works with, when a later Build of the Root needs a newer Swift App |
@@ -310,13 +312,11 @@ arbol-root:tests/test_listing_form.py#ListingForm.test_two_root_listings_combine
 | `working` | Declared ready with `arbol-roots ready` | Yes |
 | `failed` | Was `working`, and the owner marked it as not working as expected, with a reason. Its Builds may all have passed their checks | No. It is still opened when it is named |
 
-The *current* Root is the newest Root in the state `working`, where newest means created last. It is not a setting. It is worked out from the records at every start, as the default Build is (BLD-0), so:
+The *current* Root is the owner's selected working Root. Store the selection in `.current-root.json` beside the Root directories as `{"root":"<identifier>","createdAt":"<record timestamp>"}`. Write or clear it under the catalogue mutation lock. The creation timestamp binds a selection to the record even if a later Root reuses the identifier.
 
-- a Root in preparation changes nothing: the Root in use stays current;
-- a Root is current from the moment its record says `working`, when no newer Root is working;
-- marking the newest Root `failed` makes the Root before it current again.
+At every read, use that selection if it resolves to the same working Root. Otherwise use the newest working Root, ordered by creation time and then identifier. No working Roots means no current Root. A missing, unreadable or malformed selection has the same effect as automatic selection. A temporarily ineligible selected Root can become current again when that same Root returns to working. **Use newest working Root** in the tray and `arbol-roots use --auto` clear the selection. A request to select a missing, preparing or failed Root is refused and leaves the saved selection in place.
 
-The current Root is the Root that a command without `--root` goes to, the one whose backend runs as long as Arbol runs, and the only one whose backend runs listeners (ARC-0). The Swift App has its own choice of the default Root for UI opens and hotkeys. It follows the current Root until the owner selects a Root in the tray ([BKD-3](../backend/03-the-arbol-swift-app.md#the-tray-menu-and-the-catalogue)). When another Root becomes current, the listeners move with it. How a running Arbol hands them over is not specified yet: Telegram, the only listener so far, is postponed, and the hand-over is specified when Telegram is built ([ARC-D52](#decisions)).
+The current Root is the default for commands without an explicit Root, new App UI opens and global hotkeys. Its backend runs as long as Arbol runs, and only that backend runs listeners (ARC-0). Named commands and existing windows or Exchanges keep their Root. The listener handover remains with [ARC-D52](#decisions).
 
 An older Root stays usable for as long as its folder, its database and its Builds are kept: it is opened from the tray menu, and chats can be continued in it. The same holds for a failed Root, which the tray menu shows as failed, with the reason. When a newer Root does not work as expected, the owner marks it `failed` and works on in the Root before it. Chats written in the failed Root stay there.
 
@@ -577,7 +577,7 @@ Roots:
 | ARC-1.4 | take the `root.json` files as the whole list of Roots, and let a damaged or missing record take only its own Root out of use | New | drill: `arbol:scripts/roots_drill.py`, checked by `roots.damaged-drill`; unit: `roots.catalogue-damaged`, `roots.catalogue` (SYL-160); existing launcher record checks |
 | ARC-1.5 | keep the chats of each Root in a database of its own, and never open one Root's database from a program of another, except from the migration script of the Root that grows from it | New | catalogue lifecycle part: unit `roots.database-access`, `roots.database-ddl`, `roots.boundary`; real-server acceptance proves separate empty databases (SYL-160). Root data readers, backend and migration isolation remain their own components/Beats |
 | ARC-1.6 | list the Roots in the tray menu, mark the current one, open the UIs of the Root that is picked, and show the Root's display name in the header of every UI | New | journey |
-| ARC-1.7 | take as the current Root the newest Root in the state `working`, worked out from the records at every start with no stored setting, send a command without a named Root to it, and run listeners in its backend alone | New | catalogue/current part: unit `roots.catalogue`, `roots.states`, `roots.damaged-drill` (SYL-160); shared reader/launchers: `builds.current-root`, `builds.root-records`, `builds.root-refusals`. Backend listeners and hand-over remain pending Installed `sapling.jensen-ready` makes Jensen current, verifies default manager selection and explicit Sapling use (SYL-189). Backend current-Root reads: unit `backend.root-observation` (SYL-246); no listener is implemented. Backend fresh catalogue/current publication: `bridge.root-catalogue`, `bridge.root-observation`, `bridge.root-get` (SYL-248); no listener is implemented; tray/UI hand-over remains SYL-192/SYL-254. |
+| ARC-1.7 | Share one current Root across the catalogue, App and implicit command routing. Persist a choice of any retained working Root, or follow the newest working Root in automatic mode. Run listeners in the current Root’s backend alone | Changed · owner request, 11 November 2026 | Existing automatic-selection evidence from SYL-158 and SYL-160. Explicit shared selection and reset qualification pending |
 | ARC-1.8 | keep an older Root usable, for reading and for continuing chats, as long as its folder, database and Builds exist | New | Root/Trunk path: installed `sapling.jensen-ready` leaves Sapling working and completes an explicit Sapling message after Jensen becomes current; migrated stand-in and real Haiku continuation in Jensen leave every Sapling row unchanged (SYL-189). Reading/continuation through a UI remains backend/UI work Backend process starts preparing/working/failed and a named private Root Build: `backend.identity-isolation`, `backend.name-only-build` (SYL-246); UI reading/continuation remains SYL-249 onward. |
 | ARC-1.9 | create Roots, mark them ready or failed, and remove them through `arbol-roots` alone, and remove one only on command and never the current one | New | unit: `roots.create`, `roots.ready`, `roots.states`, `roots.remove`, `roots.remove-refusal`, `roots.remove-retry`, `roots.state-busy`, `roots.catalogue-lock`, `roots.creation-rollback`, `roots.creation-recovery`, `roots.creation-identity`, `roots.sqlstate`, `roots.exchanges`, `roots.exchanges-refusal`; disposable installed-server `real_server_example` (SYL-160/SYL-186) and real First Sapling creation/legacy-directory repair Installed `sapling.second-root-created`/`sapling.jensen-ready` create/ready Jensen only through the global tool and preserve both Roots (SYL-189). |
 | ARC-1.10 | keep the settings of `arbol` for each Root in `~/.arbol/roots/<root>/` (`arbol-root` reads none: RTM-D3) | Changed | unit: `roots.default-paths`, `roots.create-from`, `roots.create-from-failure`; real-server settings-copy acceptance (SYL-160). The per-Root manager still reads no settings (RTM-0) Backend settings read: unit `backend.settings` (SYL-246). |
@@ -620,7 +620,7 @@ interface RootRecord {                 // root.json
   root: string;                        // the identifier, "sapling"
   name: string;                        // the display name, "First Sapling"
   status: "preparing" | "working" | "failed";
-  createdAt: string;                   // ISO 8601, UTC; the newest working Root is the current one
+  createdAt: string;                   // ISO 8601, UTC; orders Roots in automatic mode
   grewFrom?: string;                   // the identifier of the Root it grew from; absent for the first Root
   database: string;                    // the name of its database, "arbol_sapling"
   app: string;                         // the oldest Build of arbol-app this Root works with, "7"; "0" before any App Build (ARC-D66)
