@@ -182,6 +182,8 @@ Draft scope, exact bigint revisions, conflict null, send ownership, accepted-mar
 
 For older App Builds and the development relay, legacy renderer copies still support the Draft-safe `reloadedFor` navigation. The relay serves the Root's legacy copy on loopback and reselects the Root's working Build on document navigation. The shared renderer in the App keeps its page when it reconnects to a compatible backend.
 
+A backend that advertises `"trunkSelection": true` in `hello` accepts an optional `trunk` code name on `chat.send` and `exchange.sendAgain`. A missing code uses `trivial`. The window keeps a non-default code with the request when replaying an Exchange identifier. A window with a non-default selection requires the capability before dispatch.
+
 The window chooses the identifier of a new Exchange, a UUID, before it calls `chat.send` or `exchange.sendAgain` ([BKD-D7](00-the-arbol-backend.md#decisions)). When the call fails with `disconnected`, or with `no_answer`, the window sends the same call again, with the same identifier, once the backend is back. The Trunk replies with the Exchange it accepted, marked as a repeat, or accepts it then; the message never runs twice (RCT-2). The window's time limit for these two calls, 150 seconds, is longer than the backend's longest attempt (BKD-0).
 
 ```json
@@ -410,7 +412,7 @@ arbol:tests/ui/relay_browser.mjs
 
 ```ts
 type BridgeMessage =
-  | { type: "hello"; bridge: 1; root: RootInfo; build: string }
+  | { type: "hello"; bridge: 1; root: RootInfo; build: string; trunkSelection?: true }
   | { type: "call"; id: string; method: string; params: object }
   | { type: "reply"; id: string; result: unknown }
   | { type: "reply"; id: string; error: BridgeError }

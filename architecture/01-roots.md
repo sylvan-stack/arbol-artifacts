@@ -59,7 +59,7 @@ arbol:scripts/install_builds.py#install
 
 A Root is not numbered. It has a loud name of its own, such as "First Sapling".
 
-A Root has an *identifier*, one lower-case word such as `sapling`, and a *display name*, "First Sapling" ([ARC-D26](#decisions)). The identifier names the Root's folders, its database and its Builds, and is what `--root sapling` takes. The display name is shown in the tray menu and in the header of every UI. Because there is no number, the Root's record says which Root it grew from; that gives the direction in which chats are migrated.
+A Root has an *identifier*, one lower-case word such as `sapling`, and a *display name*, "First Sapling" ([ARC-D26](#decisions)). The identifier names the Root's folders, its database and its Builds, and is what `--root sapling` takes. The display name identifies the Root in the catalogue and Root-specific diagnostics. Because there is no number, the Root's record says which Root it grew from; that gives the direction in which chats are migrated.
 
 ### A Root on disk
 
@@ -219,7 +219,7 @@ arbol:tests/test_builds.py#PruningRoots
 
 ### The tray menu and `arbol-roots`
 
-The tray menu of the Arbol Swift App lists the Roots, marks the current one, and lets the owner change it for both the App and the command line. Every UI shows the display name of its Root in its header, so the Leather Bag always sees which Root a window belongs to. [BKD-3](../backend/03-the-arbol-swift-app.md) specifies the tray parts of ARC-1.6, 1.11, 1.18 and 1.23 and the App restart part of ARC-1.26.
+The tray and shared window header list compatible Arbol Trunks. The tray sets the default for new windows in the current Root and the header selects the Trunk for one window. The window remains bound to its Root. The `arbol-roots` command selects the current Root for shortcuts and implicit CLI routing. [BKD-3](../backend/03-the-arbol-swift-app.md) specifies the App behavior.
 
 One tool, `arbol-roots`, creates and changes Roots. It lies beside `arbol-builds` in the `arbol` repository and, like it, is outside every Root and is not itself a Build. The tray menu calls it. Its commands ([ARC-D35](#decisions)):
 
