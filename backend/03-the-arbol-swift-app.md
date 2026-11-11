@@ -141,7 +141,7 @@ For folder picking the App opens the macOS folder dialog attached to the request
 | BKD-3.10 | Send available global shortcuts to the tray-selected default Root regardless of focus and keep tray access when registration fails | Changed · BKD-2.18, BKD-D44, archived native shortcuts | Native key journey with focus in a different Root or application |
 | BKD-3.11 | Show and select Root-local Latest chats with the existing ordering, keyboard and Draft-safe behavior, including the separate reimport action on capable renderers | Kept · BKD-2.18, 2.24 | Native panel journey, including failed read and failed selection |
 | BKD-3.12 | Answer the native folder and link calls and deliver queued opens only to the intended Root's Elma document | Kept · BKD-1.11, BKD-2.19 | Native app-channel and Willo open journey, including cold window and Draft conflict |
-| BKD-3.13 | Show the catalogue’s current Root name and the running App’s build time in read-only rows above the tray actions, with explicit unavailable states | New · owner request, 11 November 2026 | Tray journey across Root selection and App Build handoff |
+| BKD-3.13 <!-- 206cc66a-8fb5-4100-92be-649300a25d89 --> | Show the catalogue’s current Root name and the running App’s build time in read-only rows above the tray actions, with explicit unavailable states | New · owner request, 11 November 2026 | Tray journey across Root selection and App Build handoff |
 
 Verification descriptions name future evidence. The App implementation will follow the owner's separate testing and Build policy.
 
