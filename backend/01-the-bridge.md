@@ -480,7 +480,7 @@ The calls:
 | `paste.save` | `text`, of 10,000 characters or more | `{ path: string }`, the file it was saved in | 30 s |
 | `accounts.list` | — | `{ drivers: Array<{ driver: string; subscriptions?: Subscription[]; error?: BridgeError }> }` (DRV-1 `Subscription`) | 30 s |
 | `accounts.check`, `accounts.usage`, `accounts.models` | `driver`, `subscription` | DRV-1's `Subscription`, `UsageReport`, `ModelCatalog` | 30 s |
-| `accounts.activity` | `driver`, `subscription` | `{runCount, inputTokens?, outputTokens?, lastRunAt?}`. Read this Root's saved agent runs ending in the last 30 days. Attribute by the agent route's Driver and the started event's Subscription when present, or the route's Subscription otherwise. Sum only reported counts. Zero runs and unreported tokens stay distinct. | 30 s |
+| `accounts.activity` | `driver`, `subscription` | `{runCount, inputTokens?, outputTokens?, lastRunAt?}`. Read this Root's saved agent runs ending in the last 30 days. Attribute by the agent route's Driver and the started event's Subscription when present, or the route's Subscription otherwise. Sum only reported counts and return token totals as decimal strings. Zero runs and unreported tokens stay distinct. | 30 s |
 | `health.measure` | — | `Measurement` (BKD-0) | 30 s |
 
 <!-- sources:
