@@ -432,7 +432,7 @@ The Root environment wording below follows ARC-D47 of 12 October 2026. The entri
 | [Chat Exchange](../GLOSSARY.md#chat-exchange) | One message of the Leather Bag in a chat and the agent's answer to it, from its acceptance by one Trunk process to its end; one row of `exchanges` (RCT-2, RCT-3). No longer owned by a resident Trunk Runtime, and with no retries or failovers inside it |
 | [Draft](../GLOSSARY.md#draft) | Kept by Arbol before a Chat Exchange is accepted, no longer inside one |
 | [Trunk Runtime](../GLOSSARY.md#trunk-runtime), [Default Arbol Trunk](../GLOSSARY.md#default-arbol-trunk) | History. There is no resident Trunk and no generation of one |
-| [Arbol Swift App](../GLOSSARY.md#arbol-swift-app) | A component of its own, `arbol-app`. Its Builds belong to no Root, and each Root names the oldest of them it works with. It passes the Bridge on to the Arbol backend, not to Root, and loads renderer bundles from a Root's Build |
+| [Arbol Swift App](../GLOSSARY.md#arbol-swift-app) | A component of its own, `arbol-app`. Its Builds belong to no Root, and each Root names the oldest of them it works with. It passes the Bridge on to the Arbol backend, not to Root, and loads renderer bundles from its own App Build |
 | [UI](../GLOSSARY.md#ui) | Its renderer is shipped in the shared Swift App Build. Three remain: Elma Chat, Willo Station, Seqoya Lab |
 | [CLI](../GLOSSARY.md#cli) | `arbol`, with few commands. No longer a client of Root that mirrors the UIs |
 | [Brain Recipe](../GLOSSARY.md#brain-recipe) | Belongs to Arbol alone. No longer built on one Intelligence Provider: its logic may weigh several Subscriptions. It is resolved to a route before an Exchange starts |
