@@ -54,7 +54,7 @@ page                  ◀──receive(text)─────  Arbol Swift App  �
 | Swift App to page | The Swift App calls `window.arbolBridge.receive(text)` with the message as it came |
 | Swift App to backend and back | One connection to the Root's `backend.sock` for each window. Each message is one line of UTF-8 JSON ending with a newline, at most 16 MiB. Both ends read lines up to that size, and close a connection whose line is longer |
 
-The Swift App passes every message on unchanged, in the order it came, and reads none of them; it adds only `lost` ([below](#when-the-backend-goes-away)). It passes a message from a page on only when it comes from the main frame of the page that it loaded from the renderer bundle, so that nothing else that might be shown in the web view reaches the backend. A window belongs to one Root, and its connection goes to that Root's backend only. The connection itself says which window a message comes from, so when a window closes, its connection closes, and the backend ends its subscriptions. The host side is specified in [BKD-3](03-the-arbol-swift-app.md) (review) and checked with the App.
+The Swift App passes every message on unchanged, in the order it came, and reads none of them; it adds only `lost` ([below](#when-the-backend-goes-away)). It passes a message from a page on only when it comes from the main frame of the page that it loaded from the renderer bundle, so that nothing else that might be shown in the web view reaches the backend. A window belongs to one Root, and its connection goes to that Root's backend only. The connection itself says which window a message comes from, so when a window closes, its connection closes, and the backend ends its subscriptions. The host side is specified in [BKD-3](03-the-arbol-swift-app.md) and checked with the App.
 
 <!-- sources:
 arbol:src/arbol_backend/bridge.py#encode
@@ -329,7 +329,7 @@ arbol:tests/ui/opening_browser.mjs
 
 ### What the Swift App answers itself
 
-A web page cannot open the Mac's folder dialog and should not leave its own page to follow a link, and a request to open a chat comes from outside the page. The window and the Swift App speak about these on a channel of their own, the *app channel*, which is not the Bridge and never reaches the backend: `window.webkit.messageHandlers.arbolApp.postMessage(text)`, answered with `window.arbolApp.receive(text)`, in the form of a call and its reply, and one message the Swift App sends by itself. [BKD-3](03-the-arbol-swift-app.md) (review) gives the host interface. The implemented renderer uses these forms.
+A web page cannot open the Mac's folder dialog and should not leave its own page to follow a link, and a request to open a chat comes from outside the page. The window and the Swift App speak about these on a channel of their own, the *app channel*, which is not the Bridge and never reaches the backend: `window.webkit.messageHandlers.arbolApp.postMessage(text)`, answered with `window.arbolApp.receive(text)`, in the form of a call and its reply, and one message the Swift App sends by itself. [BKD-3](03-the-arbol-swift-app.md) gives the host interface. The implemented renderer uses these forms.
 
 | Request | Params | Result |
 |---|---|---|

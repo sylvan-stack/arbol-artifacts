@@ -1,7 +1,7 @@
 ---
 role: authored
 spec: BKD-3
-status: review
+status: accepted
 ---
 # Arbol backend · 03 The Arbol Swift App
 
@@ -11,7 +11,7 @@ The Arbol Swift App is the macOS program that stays in the menu bar. It opens th
 
 ## Scope
 
-One Swift App, its numbered Builds, the tray menu, global shortcuts, native windows and Latest chats panel, and the host side of the Bridge and of opening a chat. [ARC-0](../architecture/00-components-and-boundaries.md#arbol-the-swift-app-and-the-backend) and [ARC-1](../architecture/01-roots.md) give the boundaries. [BKD-0](00-the-arbol-backend.md), [BKD-1](01-the-bridge.md) and [BKD-2](02-elma-chat.md) give the backend, the Bridge and Elma Chat. Willo Station's and Seqoya Lab's own pages and Telegram listeners have separate specifications. The choices awaiting the owner are in [Decisions](#decisions).
+One Swift App, its numbered Builds, the tray menu, global shortcuts, native windows and Latest chats panel, and the host side of the Bridge and of opening a chat. [ARC-0](../architecture/00-components-and-boundaries.md#arbol-the-swift-app-and-the-backend) and [ARC-1](../architecture/01-roots.md) give the boundaries. [BKD-0](00-the-arbol-backend.md), [BKD-1](01-the-bridge.md) and [BKD-2](02-elma-chat.md) give the backend, the Bridge and Elma Chat. Willo Station's and Seqoya Lab's own pages and Telegram listeners have separate specifications. The owner’s choices for startup, Root selection and relaunch are in [Decisions](#decisions).
 
 ## Behaviour
 
@@ -19,13 +19,15 @@ One Swift App, its numbered Builds, the tray menu, global shortcuts, native wind
 
 The Swift and AppKit source lives in `arbol-app`. `arbol-builds build arbol-app` packages the signed macOS application bundle, including its executable entry, into the component's registry folder. The repository declares that entry and its build commands in `arbol-build.json`. The App reads the Build and package version from its own `build.json` and shows them in the tray. [BLD-0](../builds/00-builds-and-versions.md) governs the independent hexadecimal count, records, default, launcher and explicit `-v`. App Builds belong to no Root. A development run outside the registry reports Build `0`.
 
-There is one running App per signed-in user on the Mac. Concurrent launches agree which process owns the tray, hotkeys and backend lifetimes before any of them start. Another launch of that same Build asks the resident App to show its tray menu and exits. A launch of a different Build reports which Build is running and asks the owner to quit it before retrying. The running App reports when a newer working Build is available. An ordinary launch after Quit selects the newest working Build again. See BKD-D46 for the proposed upgrade behavior.
+There is one running App per signed-in user on the Mac. Concurrent launches agree which process owns the tray, hotkeys and backend lifetimes before any of them start. An explicit request to show the tray activates the resident App. A repeated background launch leaves the tray resident. A separate `-v` invocation for a different Build reports the running Build. The tray is the ordinary way to switch a running App.
 
-The App starts in the menu bar. With login launch enabled, macOS runs the ordinary launcher at login, so it selects the working default then. On ordinary launch it leaves other applications in front until the owner opens a window. Closing the last window keeps the App and its current Root's backend running. Quit ends the App's backend ownership. Launch at login is a separate owner choice (BKD-D43).
+After a rebuild produces a newer runnable working `arbol-app` Build, the tray shows **Rebuild and Relaunch**, with the target Build number beside it (BKD-D46). The completed rebuild supplies the target. On selection, revalidate that exact Build, allow each window to save or preserve its Draft, close the App's windows and hand off to the normal launcher with `-v <build>`. The replacement waits for the resident App to give up ownership. Keep both Build payloads available against normal pruning until the handoff succeeds or recovery completes. A failed rebuild leaves the current App available. If the target becomes unavailable before shutdown, keep the current App running and show the cause. If the replacement cannot start after shutdown, recover the prior runnable Build and report the failure. Exchanges keep running through the switch. The replacement starts in the tray and reads the saved default Root for UIs.
+
+Installation registers one per-user login launch. At login macOS runs the ordinary launcher, which selects the working default Build. Only the tray icon appears. The menu stays closed and no window or panel takes focus. The App starts the compatible current Root's backend in the background. An explicit request for a UI opens its target. Closing the last window keeps the App and the current Root's backend running. Quit ends the App's backend ownership. The login entry starts the launcher again at the next login (BKD-D43).
 
 ### The tray menu and the catalogue
 
-The App reads `arbol-roots list` on startup, while running, on wake and when opening the menu. Recheck the chosen record before acting on a menu or shortcut selection. The record's `current` flag decides which Root gets a checkmark, even if this App cannot open it. A transient catalogue failure is visible. Previously known rows can be shown as stale, with a fresh successful selection required before opening a Root. One bad row leaves the others usable. Keep ownership of already needed backends during a transient failed refresh, then reconcile on the next successful catalogue result.
+The App reads `arbol-roots list` on startup, while running, on wake and when opening the menu. Recheck the chosen record before acting on a menu or shortcut selection. A **Current Root** line shows the catalogue’s `current` Root, its status, database size when available, and any relevant incompatibility or failure. A transient catalogue failure is visible. Previously known rows can be shown as stale, with a fresh successful selection required before opening a Root. One bad row leaves the others usable. Keep ownership of already needed backends during a transient failed refresh, then reconcile on the next successful catalogue result.
 
 | What the catalogue says | What the tray shows |
 |---|---|
@@ -36,9 +38,11 @@ The App reads `arbol-roots list` on startup, while running, on wake and when ope
 | Build, bundle or backend unavailable | Keep the row and name the unavailable component, Root and known cause |
 | No current Root | Say so and keep explicit Root actions available where they work |
 
-Compare `app` as a BLD-0 hexadecimal number. The catalogue value `"0"` permits the first App Build and every later one. An omitted minimum in a readable older header has the same meaning. A present malformed minimum disables that Root with a diagnostic. A compatible preparing or failed Root follows the same Build selection as a compatible working one. Picking any row leaves the catalogue's current selection as it was.
+Compare `app` as a BLD-0 hexadecimal number. The catalogue value `"0"` permits the first App Build and every later one. An omitted minimum in a readable older header has the same meaning. A present malformed minimum disables that Root with a diagnostic. A compatible preparing or failed Root follows the same Build selection as a compatible working one. The menu also shows **Default for UIs**. Pick a compatible Root here to send subsequent default UI opens and global shortcuts to it, even if another Root is current or has the focused window. Store the chosen Root identifier as an App preference across relaunch and login. The first launch and **Use current Root** follow the catalogue's current Root. Show a stale, removed or incompatible saved selection with its cause and allow another selection. An affected default open reports the problem, so it cannot silently go to a different Root. The selected Root and the catalogue's current Root are separately labelled.
 
-Each Root offers the UIs packaged for it. Elma Chat is the first. Willo Station and Seqoya Lab use the same window contract when their bundles ship. An unavailable UI has no enabled action. The menu offers Latest chats and Quit. Root creation, migration, readiness, failure marking and removal use `arbol-roots` (BKD-D45).
+Selecting the default opens no window. An explicit open from a Root's submenu uses that Root without changing the default. Existing windows keep their Root. The catalogue's current flag still controls CLI defaults, backend residency and listener ownership. For example, select First Sapling for UIs while another Root is current. The Elma Chat hotkey opens First Sapling, and the tray still identifies the other Root as current.
+
+Each Root offers the UIs packaged for it. Elma Chat is the first. Willo Station and Seqoya Lab use the same window contract when their bundles ship. An unavailable UI has no enabled action. The menu offers default UI opens, Latest chats and Quit. Root creation, migration, readiness, failure marking and removal use `arbol-roots` (BKD-D45).
 
 Show each Root's database size from the backend's `health.measure` reply, by Root identifier. Use the current Root's running backend, or an already running backend for an open window if the current Root is unavailable. Never start an otherwise idle Root solely to measure it. Loading, unavailable and old measurements have distinct labels. A partial result preserves the values it actually measured and shows the affected Root's reason. Zero is a measurement only when the backend reports zero. Refresh asynchronously so a slow or failing measure leaves the open actions usable.
 
@@ -101,7 +105,7 @@ Use the original global keys from the one resident App. Registration failure is 
 | ⌃⌥⇧⌘S | Open or raise Seqoya Lab when its bundle ships |
 | ⌃⇧⌘C | Open or dismiss Latest chats |
 
-A hotkey uses the Root of the focused Arbol window, or the current Root from another application or when no Arbol window has focus (BKD-D44). The tray can also open Latest chats for a named Root. While the panel is open, its Root is fixed and named in its header. If the target has no compatible App or requested bundle, show that cause and allow explicit selection of another Root from the tray.
+A global hotkey uses the same Root as a default tray open, wherever focus is (BKD-D44). The tray can also open Latest chats for a named Root. While the panel is open, its Root is fixed and named in its header. If the target has no compatible App or requested bundle, show that cause and allow explicit selection of another Root from the tray.
 
 Latest chats is a native panel. It takes keyboard focus when invoked and can be used before Elma is open. If the owner selects a row in an idle Root, open Elma before releasing the panel’s hold on the backend. Use BKD-1's `chats` summaries for the selected Root, with the bounded candidate set in BKD-2.18. Exclude archived chats and the one shown in that Root's open Elma window. Order by that Root's Elma recent-view UUIDs first, then by descending activity, then UUID as the backend does. Each row shows title or title placeholder, repository, route, last Exchange state and age. Unavailable values are explicit. A new connection or a missed update starts a fresh subscription snapshot. The list shows loading, empty and failed reads with Retry. Digit keys 1 through 9 then 0 open the first ten rows, and arrows, Return and click reach all rows. Escape or clicking outside dismisses it and restores prior focus when appropriate.
 
@@ -124,15 +128,15 @@ For folder picking the App opens the macOS folder dialog attached to the request
 | ID | The App must | Origin and basis | Verified by |
 |---|---|---|---|
 | BKD-3.1 | Package `arbol-app` as a global numbered Build, launch the selected Build through BLD-0, and show the running Build and package version | Changed · ARC-D21, BLD-0 | Installed default and exact Build launch |
-| BKD-3.2 | Keep one App per signed-in user, stay resident with no windows and apply the launch and update choices of BKD-D43 and BKD-D46 | Changed · ARC-0.5 | Launch, close, second invocation and update journey |
-| BKD-3.3 | List Roots with their catalogue current mark, state and reason, and open the selected Root's available UIs only when its minimum App Build is satisfied | New · ARC-1.6, 1.7, 1.21, 1.23 | Tray journey with working, preparing, failed, incompatible and unavailable Roots |
+| BKD-3.2 | Start one resident App per signed-in user at login with only the tray icon, and offer Rebuild and Relaunch after a newer working Build is ready | Changed · ARC-0.5, BKD-D43, BKD-D46 | Login, last-close, concurrent start and failed/successful Build handoff journey |
+| BKD-3.3 | Show the catalogue's current Root and allow a separate saved default for UI opens, showing each Root's state, reason and required App Build | New · ARC-1.6, 1.7, 1.21, 1.23, BKD-D45 | Tray journey with a non-current default, relaunch, invalid default and incompatible Root |
 | BKD-3.4 | Show each Root's measured database size and visible migration refusal with the actual Root state | New · ARC-1.11, 1.18; BKD-0.27 | Tray journey with partial measurement and failed migration |
 | BKD-3.5 | Bind one reusable window per Root and UI to its own verified renderer Build and restore usable native chrome and geometry | Changed · ARC-0.5, ARC-1.6, BKD-2.1 | Two-Root window and display-change journey |
 | BKD-3.6 | Start and supervise the compatible current Root's backend and the backends of other Roots with open windows, and end only owned children when released | New · ARC-0.7, BKD-0.2–3 | Installed crash, wake, overlapping open, promotion, last-close and quit drill |
 | BKD-3.7 | Rediscover retained Roots' Exchanges through the matching managers, isolate discovery failures and leave accepted Exchange ownership intact through restarts | New · ARC-1.25–26, BKD-0.21–22 | Multi-Root restart drill with an Exchange in progress |
 | BKD-3.8 | Relay opaque BKD-1 frames on one private socket per trusted window, refuse untrusted content and isolate connection and page generations | Changed · ARC-0.6, BKD-1.1–3, 1.11 | Native wire and WebKit boundary checks |
 | BKD-3.9 | Deliver disconnect and fresh hello, honor the renderer's Draft-safe Build reload and keep older compatible Roots usable | New · ARC-0.26, BKD-1.3, BKD-2.22 | Installed reconnect and retained old Root/Build journey |
-| BKD-3.10 | Register the available global shortcuts with BKD-D44's Root routing and keep tray access when registration fails | Changed · BKD-2.18, archived native shortcuts | Native key and focus journey |
+| BKD-3.10 | Send available global shortcuts to the tray-selected default Root regardless of focus and keep tray access when registration fails | Changed · BKD-2.18, BKD-D44, archived native shortcuts | Native key journey with focus in a different Root or application |
 | BKD-3.11 | Show and select Root-local Latest chats with the existing ordering, keyboard and Draft-safe behavior, including the separate reimport action on capable renderers | Kept · BKD-2.18, 2.24 | Native panel journey, including failed read and failed selection |
 | BKD-3.12 | Answer the native folder and link calls and deliver queued opens only to the intended Root's Elma document | Kept · BKD-1.11, BKD-2.19 | Native app-channel and Willo open journey, including cold window and Draft conflict |
 
@@ -142,7 +146,8 @@ Verification descriptions name future evidence. The App implementation will foll
 
 | Boundary | Form |
 |---|---|
-| App start | `arbol-app [-v <build>]` via BLD-0. Its repository's Build record declares the executable entry inside the macOS app bundle |
+| App start | `arbol-app [-v <build>]` via BLD-0. The per-user login entry runs the default launcher, and tray relaunch names the prepared Build. The Build record declares the executable entry inside the macOS app bundle |
+| Default UI Root | One persisted Root identifier, or follow the catalogue current flag when absent. Scope is the App per user |
 | Catalogue and Build inventory | `arbol-roots list`, `arbol-builds show arbol@<build> --root <root>`, and `arbol-builds show arbol --root <root>` for a Root's default. ARC-1 and BLD-0 give their records and refusal envelopes |
 | Catalogue extension | Optional `migrationProblem: { at: string, reason: string, uncertain?: true }` on a Root record. Older records without it report no recorded migration failure |
 | Backend | `arbol --root <root> backend`, ready/refusal line and stdin ownership from BKD-0.2. Private socket and web view handlers from BKD-1.2 |
@@ -180,12 +185,12 @@ Historical evidence: `arbol-design-system:heritage/app/Arbol/UISwitcherHotkeys.s
 
 ## Decisions
 
-| ID | Question | Proposed answer | Status |
+| ID | Question | Outcome | Status |
 |---|---|---|---|
-| BKD-D43 | What should an ordinary start show, and should Arbol start at login? | Start in the menu bar without opening a window. Keep launch at login opt-in. An explicit UI or chat request opens its target | Owner decision pending |
-| BKD-D44 | Which Root should a global shortcut use? | Use the focused Arbol window's Root while working in Arbol. From other apps or with no focused Arbol window, use the current Root. A panel stays on the Root it opened with | Owner decision pending |
-| BKD-D45 | Should the first tray manage Roots as well as open them? | Show state, failure, size and available UIs, plus Latest chats and Quit. Keep create, migrate, ready, fail and remove in `arbol-roots` | Owner decision pending |
-| BKD-D46 | How should the resident App switch to a newer or explicitly selected Build? | Show when a newer working Build is available. Switch on Quit and relaunch, using ordinary launch for the default or `-v` for a specific Build | Owner decision pending |
+| BKD-D43 | What should an ordinary start show, and should Arbol start at login? | Start Arbol at login with only the tray icon. Open a window or panel on an explicit request | Decided by the owner · 11 November 2026 |
+| BKD-D44 | Which Root should a global shortcut use? | Send global shortcuts to the Root selected in the tray, regardless of focus. A panel stays on the Root it opened with | Decided by the owner · 11 November 2026 |
+| BKD-D45 | What Root information and selection belong in the tray? | Show information about the catalogue’s current Root and let the user choose the default Root for opening Arbol UIs. Root administration continues through `arbol-roots` | Decided by the owner · 11 November 2026 |
+| BKD-D46 | How should the resident App switch to a newer or explicitly selected Build? | Show **Rebuild and Relaunch** in the tray after a successful rebuild makes a newer working App Build available. Use that prepared Build for the relaunch | Decided by the owner · 11 November 2026 |
 | BKD-D47 | How does the App start and stop a backend without owning a manually started process? | Reconcile the compatible current Root and the Roots of open windows. Reuse a verified already-running socket and use child-input ownership for shutdown and restart of App-started children | Technical choice · 11 November 2026 |
 | BKD-D48 | How can the App stay an opaque relay and still draw native surfaces? | Keep a separate read-only native client for tray and panel data. Use an additive app-channel adapter for Elma's local view state and selection outcomes. Keep mutating work and its Draft barrier in Elma | Technical choice · 11 November 2026 |
 | BKD-D49 | Where does the tray learn about a whole-Root migration refusal after the command exits? | Add an optional safe problem to the existing catalogue, using the Root command as its writer and clearing it on success or readiness | Technical choice · 11 November 2026 |

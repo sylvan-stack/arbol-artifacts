@@ -219,7 +219,7 @@ arbol:tests/test_builds.py#PruningRoots
 
 ### The tray menu and `arbol-roots`
 
-The tray menu of the Arbol Swift App lists the Roots, marks the current one, and opens the UIs of the Root that is picked. Every UI shows the display name of its Root in its header, so the Leather Bag always sees which Root a window belongs to. [BKD-3](../backend/03-the-arbol-swift-app.md) (review) specifies the tray parts of ARC-1.6, 1.11, 1.18 and 1.23 and the App restart part of ARC-1.26.
+The tray menu of the Arbol Swift App lists the Roots, marks the current one, and opens the UIs of the Root that is picked. Every UI shows the display name of its Root in its header, so the Leather Bag always sees which Root a window belongs to. [BKD-3](../backend/03-the-arbol-swift-app.md) specifies the tray parts of ARC-1.6, 1.11, 1.18 and 1.23 and the App restart part of ARC-1.26.
 
 One tool, `arbol-roots`, creates and changes Roots. It lies beside `arbol-builds` in the `arbol` repository and, like it, is outside every Root and is not itself a Build. The tray menu calls it. Its commands ([ARC-D35](#decisions)):
 
@@ -316,7 +316,7 @@ The *current* Root is the newest Root in the state `working`, where newest means
 - a Root is current from the moment its record says `working`, when no newer Root is working;
 - marking the newest Root `failed` makes the Root before it current again.
 
-The current Root is the Root that a command without `--root` goes to, the one whose backend runs as long as Arbol runs, and the only one whose backend runs listeners (ARC-0). When another Root becomes current, the listeners move with it. How a running Arbol hands them over is not specified yet: Telegram, the only listener so far, is postponed, and the hand-over is specified when Telegram is built ([ARC-D52](#decisions)).
+The current Root is the Root that a command without `--root` goes to, the one whose backend runs as long as Arbol runs, and the only one whose backend runs listeners (ARC-0). The Swift App has its own choice of the default Root for UI opens and hotkeys. It follows the current Root until the owner selects a Root in the tray ([BKD-3](../backend/03-the-arbol-swift-app.md#the-tray-menu-and-the-catalogue)). When another Root becomes current, the listeners move with it. How a running Arbol hands them over is not specified yet: Telegram, the only listener so far, is postponed, and the hand-over is specified when Telegram is built ([ARC-D52](#decisions)).
 
 An older Root stays usable for as long as its folder, its database and its Builds are kept: it is opened from the tray menu, and chats can be continued in it. The same holds for a failed Root, which the tray menu shows as failed, with the reason. When a newer Root does not work as expected, the owner marks it `failed` and works on in the Root before it. Chats written in the failed Root stay there.
 

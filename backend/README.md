@@ -16,7 +16,7 @@ The architecture says where these parts stand ([ARC-0](../architecture/00-compon
 | [BKD-0](00-the-arbol-backend.md) | The Arbol backend | accepted |
 | [BKD-1](01-the-bridge.md) | The Bridge | accepted |
 | [BKD-2](02-elma-chat.md) | Elma Chat, its first version | accepted |
-| [BKD-3](03-the-arbol-swift-app.md) | The Arbol Swift App | review |
+| [BKD-3](03-the-arbol-swift-app.md) | The Arbol Swift App | accepted |
 
 Not here: Brain Recipes and how a route is chosen (SYL-191), the command line `arbol` (SYL-193), the pages of Seqoya Lab, the Secrets page among them (SYL-194), listeners such as Telegram ([ARC-D52](../architecture/01-roots.md#decisions)), and the Root-owned SQL/global commands for bringing one chat over again (SYL-195); the backend/Bridge/renderer binding of that path is included in the additive requirements below.
 
@@ -27,7 +27,7 @@ In the READMEs of the [Root Contract](../../arbol-root/contract/README.md#where-
 | Requirement | Carried by |
 |---|---|
 | ARC-0.4 | The UIs: BKD-2 for Elma Chat's first version; the command line: SYL-193; listeners: not yet (ARC-D52) |
-| ARC-0.5, ARC-0.6, ARC-0.26 | [BKD-3](03-the-arbol-swift-app.md) (review); the Bridge boundary is BKD-1.2 and BKD-1.11 |
+| ARC-0.5, ARC-0.6, ARC-0.26 | [BKD-3](03-the-arbol-swift-app.md); the Bridge boundary is BKD-1.2 and BKD-1.11 |
 | ARC-0.7 | Keeping the current Root's backend running: BKD-3.6; no listener outside the current Root: BKD-0.3 |
 | ARC-0.8 | BKD-0.5, BKD-0.8 |
 | ARC-0.9 | Elma Chat resolves no Brain Recipe: its route is the Leather Bag's choice or a default, and its small-call route a default (BKD-0.11, BKD-0.30, BKD-D3). This narrows ARC-0.9 and the offer after a rate limit in ARC-2 for Elma Chat, by the owner's decision of 19 October 2026; resolving a Brain Recipe where one is used: SYL-191 |

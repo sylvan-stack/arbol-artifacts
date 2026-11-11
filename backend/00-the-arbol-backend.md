@@ -36,7 +36,7 @@ arbol --root sapling backend
 | Its end | On SIGTERM or SIGINT, and when its standard input is a pipe that reaches its end, which happens when the Swift App that started it ends, it closes every connection, removes its socket, releases the lock and ends with the status 0 within 2 seconds. It stops no Exchange (ARC-2) |
 | What it hands on | The lock file and the socket are opened so that no program the backend starts inherits them (close-on-exec), and the socket is made with the file mode mask 077, so that a detached Trunk never holds a later backend out |
 
-The Swift App starts the current Root's backend when Arbol starts, and starts it again whenever it ends while Arbol runs. It starts another Root's backend when that Root's first window opens, and ends it when the last one closes (ARC-0). How it does so is specified in [BKD-3](03-the-arbol-swift-app.md) (review).
+The Swift App starts the current Root's backend when Arbol starts, and starts it again whenever it ends while Arbol runs. It starts another Root's backend when that Root's first window opens, and ends it when the last one closes (ARC-0). How it does so is specified in [BKD-3](03-the-arbol-swift-app.md).
 
 A backend starts for a Root in every state, `preparing`, `working` or `failed`, because a Root that is being prepared is tried with its chats, and a failed one is still opened when it is named ([ARC-1](../architecture/01-roots.md#the-states-of-a-root-and-the-current-root)). It serves an older Root for as long as its folder, its database and its Builds exist.
 
