@@ -29,9 +29,9 @@ Origins: AGR-1.9, AGR-1.10, AGR-1.11 · Intention i-8f6f3d02 · 2026-11-11
 
 ## AppServer.hooks
 
-Reason: Use the Codex app-server protocol to manage only the applicable hook trust state
+Reason: Check the saved trust through Codex and restore hooks after a rejected trust change
 
-Origins: AGR-1.9, AGR-1.10, AGR-1.11 · Intention i-8f6f3d02 · 2026-11-11
+Origins: AGR-1.9, AGR-1.10 · Intention i-db60a8d7 · 2026-11-11
 
 ## AppServer.send
 
@@ -53,9 +53,9 @@ Origins: AGR-1.9, AGR-1.10, AGR-1.11 · Intention i-8f6f3d02 · 2026-11-11
 
 ## CodexTrust.install
 
-Reason: Use the Codex app-server protocol to manage only the applicable hook trust state
+Reason: Check the saved trust through Codex and restore hooks after a rejected trust change
 
-Origins: AGR-1.9, AGR-1.10, AGR-1.11 · Intention i-8f6f3d02 · 2026-11-11
+Origins: AGR-1.9, AGR-1.10 · Intention i-db60a8d7 · 2026-11-11
 
 ## CodexTrust.installed_hooks
 
@@ -71,21 +71,21 @@ Origins: AGR-1.9, AGR-1.10, AGR-1.11 · Intention i-8f6f3d02 · 2026-11-11
 
 ## CodexTrust.trusted
 
-Reason: Use the Codex app-server protocol to manage only the applicable hook trust state
+Reason: Check the saved trust through Codex and restore hooks after a rejected trust change
 
-Origins: AGR-1.9, AGR-1.10, AGR-1.11 · Intention i-8f6f3d02 · 2026-11-11
+Origins: AGR-1.9, AGR-1.10 · Intention i-db60a8d7 · 2026-11-11
 
 ## CodexTrust.uninstall
 
-Reason: Use the Codex app-server protocol to manage only the applicable hook trust state
+Reason: Check the saved trust through Codex and restore hooks after a rejected trust change
 
-Origins: AGR-1.9, AGR-1.10, AGR-1.11 · Intention i-8f6f3d02 · 2026-11-11
+Origins: AGR-1.9, AGR-1.10 · Intention i-db60a8d7 · 2026-11-11
 
 ## Hook
 
-Reason: Use the Codex app-server protocol to manage only the applicable hook trust state
+Reason: Check the saved trust through Codex and restore hooks after a rejected trust change
 
-Origins: AGR-1.9, AGR-1.10, AGR-1.11 · Intention i-8f6f3d02 · 2026-11-11
+Origins: AGR-1.9, AGR-1.10 · Intention i-db60a8d7 · 2026-11-11
 
 ## app_server
 
