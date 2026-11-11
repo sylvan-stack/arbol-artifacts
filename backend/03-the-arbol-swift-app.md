@@ -129,7 +129,7 @@ Historical evidence: `arbol-design-system:heritage/app/Arbol/UISwitcherHotkeys.s
 
 ### Shared UI shell header
 
-Each Arbol UI uses the maintained design system’s WorkspaceShell header. A UI supplies its own title and controls through the header slots. Elma Chat is the first consumer. When a verified renderer advertises this header, the App places the native close, minimize and zoom controls in its leading space and hides the separate AppKit title bar. The window keeps native dragging, resizing and geometry. A renderer without the shared header retains native title-bar clearance.
+WorkspaceShell renders the design system’s WorkspaceHeader for Elma Chat and Seqoya Lab. The component owns the shared title and workspace mark, Root dropdown, navigation control and native-control spacing. Each UI supplies its title and may add surface controls through slots. When a verified renderer advertises this header, the App places the native close, minimize and zoom controls in its leading space and hides the separate AppKit title bar. The window keeps native dragging, resizing and geometry. A renderer without the shared header retains native title-bar clearance.
 
 Seqoya Lab opens for the current Root with **Option+Q**. Its header can open the same UI for another Root. Its first layout provides the shared header, a navigation rail for Intelligence Providers, Subscriptions and Usage, and a content area that explains that administration data is pending. The initial renderer reads its Root identity from the named backend’s Bridge hello through the trusted host and leaves provider configuration and usage operations for later.
 
