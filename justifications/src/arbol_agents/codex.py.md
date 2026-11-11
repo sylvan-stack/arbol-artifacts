@@ -89,15 +89,15 @@ Origins: AGR-1.9, AGR-1.10, AGR-1.11 · Intention i-8f6f3d02 · 2026-11-11
 
 ## app_server
 
-Reason: Use the Codex app-server protocol to manage only the applicable hook trust state
+Reason: Honor the selected Codex home even when the login profile sets its own default
 
-Origins: AGR-1.9, AGR-1.10, AGR-1.11 · Intention i-8f6f3d02 · 2026-11-11
+Origins: AGR-1.9, AGR-1.11 · Intention i-cc8c8a10 · 2026-11-11
 
 ## codex_command
 
-Reason: Use the Codex app-server protocol to manage only the applicable hook trust state
+Reason: Honor the selected Codex home even when the login profile sets its own default
 
-Origins: AGR-1.9, AGR-1.10, AGR-1.11 · Intention i-8f6f3d02 · 2026-11-11
+Origins: AGR-1.9, AGR-1.11 · Intention i-cc8c8a10 · 2026-11-11
 
 ## login_command
 
@@ -107,9 +107,9 @@ Origins: AGR-1.9, AGR-1.10, AGR-1.11 · Intention i-8f6f3d02 · 2026-11-11
 
 ## login_environment
 
-Reason: Use the Codex app-server protocol to manage only the applicable hook trust state
+Reason: Honor the selected Codex home even when the login profile sets its own default
 
-Origins: AGR-1.9, AGR-1.10, AGR-1.11 · Intention i-8f6f3d02 · 2026-11-11
+Origins: AGR-1.9, AGR-1.11 · Intention i-cc8c8a10 · 2026-11-11
 
 ## objects
 
