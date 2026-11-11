@@ -51,8 +51,8 @@ Every installer of a hook of Arbol's (today `arbol-agents install` and the check
 
 | Rule | Detail |
 |---|---|
-| Only the Leather Bag's own files | `~/.claude/settings.json`, `~/.codex/hooks.json`, and `hooks.state` in `~/.codex/config.toml`. Never a repository's settings, never a Subscription home, never `--settings` files such as `settings-zai.json`, never Codex's `notify` |
-| One entry per event, its own group | Each hook is added as a group of its own in the event's list. Entries already there, whoever wrote them, stay as they are and in their order |
+| Only the Leather Bag's own files | `~/.claude/settings.json`, `~/.codex/hooks.json`, `hooks.state` in `~/.codex/config.toml`, and the Kimi Code settings file named by [AGR-1](../../agent-records/01-the-hooks.md#installing-the-hooks). Never a repository's settings, never a Subscription home, never `--settings` files such as `settings-zai.json`, never Codex's `notify` |
+| One entry per event, its own group | Each Claude Code and Codex hook is added as a group of its own in the event’s list. Each Kimi Code hook is a separate entry in its `hooks` array. Entries already there, whoever wrote them, stay as they are and in their order |
 | Known by its command | An installer recognises its own entries only by their command. Running it again adds nothing that is there already |
 | The command never changes | A fixed path under `~/.local/bin`, one program with its arguments, no shell syntax. Codex trusts only the exact definition ([PHK-0](00-hooks-of-claude-code-and-codex.md#codexs-trust)), so a new Build changes what the path points at, never the path |
 | Whole files | Each file is written whole, through a temporary file and a rename. A file that cannot be read is left alone and the installer fails naming it |
@@ -105,7 +105,7 @@ A steering hook's block is seen by the watching hooks only as a `PreToolUse` who
 
 | ID | Every hook of Arbol's and its installer must… | Origin | Verified by |
 |---|---|---|---|
-| PHK-1.1 | be installed only into `~/.claude/settings.json`, `~/.codex/hooks.json` and `hooks.state` of `~/.codex/config.toml`, as a group of its own per event, leaving every other entry and setting as it is | New | agent-watch part: private `Installation`, actual private lifecycle and normal installed proof in SYL-221 preserve unrelated JSON/TOML and the independent watcher LaunchAgent. Agent-record hook remains SYL-202 |
+| PHK-1.1 | be installed only into `~/.claude/settings.json`, `~/.codex/hooks.json`, `hooks.state` of `~/.codex/config.toml` and the Kimi Code settings file named by AGR-1, as a group or entry of its own per event, leaving every other entry and setting as it is | New | agent-watch part: private `Installation`, actual private lifecycle and normal installed proof in SYL-221 preserve unrelated JSON/TOML and the independent watcher LaunchAgent. Agent-record hook remains SYL-202 |
 | PHK-1.2 | run a command at a fixed path under `~/.local/bin`, without shell syntax, that never changes across Builds | New | agent-watch part: `Hook.test_wrapper_has_an_empty_fast_path_arbol_chat_bypass_and_silent_missing_runtime`, `Installation`; fixed foreground launcher source is agent_hook.launcher. Agent-record hook remains SYL-202 |
 | PHK-1.3 | write each file whole, keep a copy before its own first change and never overwrite it, refuse a file it cannot read, and add nothing twice | New | agent-watch part: `Installation` covers first backups/absence, idempotence, malformed/duplicate JSON, symlinks, disabled providers, changed launchers and preserved foreign trust indices; actual private lifecycle (SYL-221) |
 | PHK-1.4 | record Codex's trust only through `codex app-server`'s `hooks/list` and `config/batchWrite` | New | agent-watch part: `Protocol`, actual private install/reinstall/uninstall and normal installed trust/status prove the exact provider-supplied hook key/hash; no provider hash is computed (SYL-221) |

@@ -92,7 +92,7 @@ An event that comes from a sub-agent carries the session's `session_id` and an `
 arbol:src/arbol_agents/hooks.py#subagent
 -->
 
-Kimi Code reports the child name on `SubagentStart` and `SubagentStop`. Its permission hooks carry `agent_id`, with `main` identifying the main agent. A permission event with a different `agent_id` may change the matching call and `lastEvent` but cannot change the session’s metadata or owner. Kimi’s tool-call hooks do not consistently carry a child identifier, so the writer associates those calls with their session.
+Kimi Code reports the child name on `SubagentStart` and `SubagentStop`. Its permission hooks carry `agent_id`, with `main` identifying the main agent. A permission event with a different `agent_id` may change the matching call and `lastEvent` but cannot change the session’s metadata or owner. Kimi’s tool-call and turn hooks do not consistently carry a child identifier. The writer associates untagged events with the session, which limits how precisely it can track turns during sub-agent activity.
 
 ### Questions to the Leather Bag
 
@@ -115,13 +115,13 @@ arbol:src/arbol_agents/hooks.py#mark_last
 They are watching hooks and follow [PHK-1](../architecture/provider-hooks/01-hooks-on-this-mac.md#the-rules-for-running-a-hook)'s rules for one: they never block, approve, deny or change anything and always exit with 0; they print nothing; they run in the foreground ([AGR-D4](00-the-agent-record.md#decisions)); the tools' settings give each a time limit of 5 seconds, 3 for Codex's `SessionEnd`; they keep no part of the conversation ([AGR-0.7](00-the-agent-record.md#requirements)); they start no process that outlives them, use no network and touch no file but the agent records. Besides, a hook gives up after 1 second without the folder's lock.
 
 <!-- sources:
-arbol:src/arbol_agents/cli.py#main
+arbol:src/arbol_agents/cli.py#hook
 arbol:src/arbol_agents/records.py#Store.locked
 -->
 
 ### How fast a hook is
 
-A tool can wait for its hooks, so a hook can add its time to an event ([PHK-0](../architecture/provider-hooks/00-hooks-of-claude-code-and-codex.md#how-long-a-tool-waits)). Asking `ps` costs a hook little and asking `lsof` much, so the hook asks `ps` only when the process identifier differs from the record's owner, which happens at a session's start, and never asks `lsof`: that is the reader's work ([AGR-0](00-the-agent-record.md#what-a-reader-can-tell)). It must take at most 50 milliseconds in the median on this Mac, and at most 100 when it asks `ps`.
+A tool can wait for its hooks, so a hook can add its time to an event ([PHK-0](../architecture/provider-hooks/00-hooks-of-claude-code-and-codex.md#how-long-a-tool-waits)). The hook reuses the process start time when the process identifier is unchanged. It may use `ps` to find the owner past a shell and never asks `lsof`: that is the reader's work ([AGR-0](00-the-agent-record.md#what-a-reader-can-tell)). It must take at most 50 milliseconds in the median on this Mac, and at most 100 when it asks `ps`.
 
 <!-- sources:
 arbol:src/arbol_agents/owner.py#Processes.candidate
@@ -164,9 +164,18 @@ command = "/Users/sam/.local/bin/arbol-agents hook kimi-code"
 timeout = 5
 ```
 
-For the installer commands, `CLAUDE_CONFIG_DIR` and `CODEX_HOME` select the corresponding settings homes when set. Empty values use the normal homes. The installer follows [PHK-1](../architecture/provider-hooks/01-hooks-on-this-mac.md#the-rules-for-installing-a-hook)'s rules for installing a hook. Its own names under them: the copy of a file is `<name>.before-arbol-agents`, the command is always `~/.local/bin/arbol-agents` ([AGR-D8](00-the-agent-record.md#decisions)), and `arbol-agents uninstall` removes the handlers whose command matches the tool’s exact installed command, and their trust entries. Codex indexes its trust by hook position. If removing an owned handler moves another handler, preserve that handler’s trust at the key Codex now reports for it. When it ends, `install` says that running Claude Code sessions keep their old hooks and that the Codex app is to be quit and reopened once ([PHK-0](../architecture/provider-hooks/00-hooks-of-claude-code-and-codex.md#when-a-change-takes-effect)).
+For the installer commands, `CLAUDE_CONFIG_DIR` and `CODEX_HOME` select the corresponding settings homes when set. Empty values use the normal homes. The installer follows [PHK-1](../architecture/provider-hooks/01-hooks-on-this-mac.md#the-rules-for-installing-a-hook)'s rules for installing a hook. Its own names under them: the copy of a file is `<name>.before-arbol-agents`. If the file is absent at the first write, an empty `<name>.before-arbol-agents.absent` remembers that there was no original. The command is always `~/.local/bin/arbol-agents` ([AGR-D8](00-the-agent-record.md#decisions)), and `arbol-agents uninstall` removes the handlers whose command matches the tool’s exact installed command, and their trust entries. Codex indexes its trust by hook position. If removing an owned handler moves another handler, preserve that handler’s trust at the key Codex now reports for it. When it ends, `install` says that running Claude Code sessions keep their old hooks and that the Codex app is to be quit and reopened once ([PHK-0](../architecture/provider-hooks/00-hooks-of-claude-code-and-codex.md#when-a-change-takes-effect)).
 
 `arbol-agents status` says, for each tool, whether every entry is in place, whether Codex counts each as trusted (`hooks/list`), and the tool's version. It reports Kimi Code CLI’s version when `kimi` is available and the installed desktop version when only the app is available. An unavailable version is reported as unknown. A hook is in place when its command, event, unfiltered matcher and foreground timeout match the installer’s entry. In JSON the top-level keys are the tool names, each with `installed` and `version`, plus `trusted` for Codex.
+
+<!-- sources:
+arbol:src/arbol_agents/installation.py#configure
+arbol:src/arbol_agents/installation.py#status
+arbol:src/arbol_agents/settings.py#SettingsFile
+arbol:src/arbol_agents/settings.py#JsonHooks
+arbol:src/arbol_agents/kimi_config.py#KimiHooks
+arbol:src/arbol_agents/codex.py#CodexTrust
+-->
 
 ### What the hooks cannot see
 
@@ -193,11 +202,11 @@ The live checks of 16 October 2026, with Claude Code 2.1.294 and 2.1.299 and Cod
 | ID | The hooks and `arbol-agents install` must… | Origin | Verified by |
 |---|---|---|---|
 | AGR-1.1 | change the record as the table "Which hook writes what" says, for each event of each tool | New | SYL-201 installed writer replay (Claude Code and Codex); Kimi Code replay and live (SYL-204) pending |
-| AGR-1.2 | restrict sub-agent events to open calls and `lastEvent` as described above | New | SYL-201 installed writer replay; live (SYL-204) |
-| AGR-1.3 | mark as asking a call of `AskUserQuestion` or `ExitPlanMode` (Claude Code) or `request_user_input` (Codex), or `AskUserQuestion` or `ExitPlanMode` (Kimi Code), and track the open call that a permission request concerns | New | SYL-201 installed writer replay; live (SYL-204) |
-| AGR-1.4 | take `transcript` only from `SessionStart` and `UserPromptSubmit` of the session itself, and the owner from `CLAUDE_PID` (Claude Code) or the parent process, past a shell (Codex and Kimi Code) | New | SYL-201 installed writer replay and SYL-201 installed process check; live (SYL-204) |
+| AGR-1.2 | restrict sub-agent events to open calls and `lastEvent` as described above | New | SYL-201 installed writer replay (Claude Code and Codex); live (SYL-204) |
+| AGR-1.3 | mark as asking a call of `AskUserQuestion` or `ExitPlanMode` (Claude Code) or `request_user_input` (Codex), or `AskUserQuestion` or `ExitPlanMode` (Kimi Code), and track the open call that a permission request concerns | New | SYL-201 installed writer replay (Claude Code and Codex); live (SYL-204) |
+| AGR-1.4 | take `transcript` only from `SessionStart` and `UserPromptSubmit` of the session itself, and the owner from `CLAUDE_PID` (Claude Code) or the parent process, past a shell (Codex and Kimi Code) | New | SYL-201 installed writer replay and process check (Claude Code and Codex); live (SYL-204) |
 | AGR-1.5 | always exit with 0, print nothing, and keep no part of the conversation | New | SYL-201 installed writer replay |
-| AGR-1.6 | take at most 50 milliseconds in the median on this Mac, at most 100 when it asks `ps`, and never ask `lsof` | New | SYL-201 installed timing and source review; live (SYL-204) |
+| AGR-1.6 | take at most 50 milliseconds in the median on this Mac, at most 100 when it asks `ps`, and never ask `lsof` | New | SYL-201 installed timing and source review (Claude Code and Codex); live (SYL-204) |
 | AGR-1.7 | install for every event of the table one entry that runs `~/.local/bin/arbol-agents hook <tool>` in the foreground, with a time limit of 5 seconds (3 for Codex's `SessionEnd`), in the provider settings listed above, leaving every other entry and setting as it is | New | unit |
 | AGR-1.8 | write each settings file whole, keep a copy of it before the first change ever made and never overwrite that copy, refuse a file it cannot read, and add nothing twice | New | unit |
 | AGR-1.9 | record Codex's trust in the new hooks through Codex's own `hooks/list` and `config/batchWrite`, as [AGR-D12](#decisions) decides, and say at the end that the Codex app is to be reopened | New | probe |
@@ -225,6 +234,6 @@ Version 1 used no hooks of either tool. It saw only the turns it ran itself.
 |---|---|---|---|
 | AGR-D12 | Codex runs a new hook only after the Leather Bag has reviewed and trusted it, for example with `/hooks` in `codex`. Does `arbol-agents install` record that trust itself? | Yes. Installing is the Leather Bag's own act, and the command shows what it adds. It records the trust through Codex's own calls, so Codex computes and stores it. The alternative: `install` adds the hooks, and the Leather Bag trusts them once in `codex` with `/hooks`; until then Codex skips them and `status` says so | Decided 16 October 2026 by the owner: the proposed default |
 | AGR-D13 | Claude Code sends no hook when the Leather Bag interrupts it. Is anything done about it? | No. The record is corrected by the end of the next turn or of the session, and only the Radar shows it wrong meanwhile. Reading the transcript's last line would tie Arbol to a format Claude Code changes without notice (AGR-D9) | Technical choice, 16 October 2026 |
-| AGR-D14 | Which events are installed? | Every event that changes the record or shows life, as the table says: 17 of Claude Code's, 12 of Codex's and 20 of Kimi Code’s. Events that say nothing about waiting, such as a changed setting or a created task, are left out | Technical choice, 16 October 2026 |
+| AGR-D14 | Which events are installed? | Every event that changes the record or shows life, as the table says: 17 of Claude Code's, 12 of Codex's and 20 of Kimi Code’s. Events that say nothing about waiting, such as a changed Claude Code setting, are left out. Kimi Code’s task events serve as signs of life | Technical choice, 16 October 2026; Kimi Code added 11 November 2026 |
 | AGR-D17 | Since 19 October 2026 a Driver runs `claude` and `codex` in their default homes (DRV-D42), so a run of an Arbol chat runs these hooks too. Does it get an agent record? | The hook writes nothing when `ARBOL_ROOT` is present. The Exchange already keeps its own record (AGR-D7) | Implemented in SYL-201 and verified by the installed writer replay. SYL-399 verified delivery of `ARBOL_ROOT` |
 | AGR-D19 | How does Kimi Code fit the existing record format? | Validate the installed host’s `session_<UUID>` and normalize its prefix, use the host process past its shell, and keep only the folder, model and event metadata used by the common record. Omit entrypoint and transcript for host 2.5.2 | Technical choice, 11 November 2026, from the installed host and the Forester adapter |

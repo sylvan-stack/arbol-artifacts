@@ -47,7 +47,7 @@ A run of a Driver is not an agent session of its own. It runs in the Driver's Su
 
 The file is named `<tool>-<session>.json`. A record identifier holds only letters, digits and `-`. For Kimi Code, the hook first validates `session_<UUID>` and changes its prefix to `session-`. A hook given a malformed identifier writes nothing. The folder has the mode 0700 and its files 0600. It lies outside every Root, like `arbol-roots` ([ARC-1](../architecture/01-roots.md)): there is one for the Mac, because the agents on it are not part of any Root.
 
-The records are the interface. A reader needs no Arbol program to read them: the rules of this specification are all it needs. Something that refers to an agent, such as a hold of a Beat, names it by `tool` and `session`, and the reader finds its record by that name. Arbol reads the records with `arbol-agents list` (below); the check of holds in Working in Sagas reads them itself, because a Mycel guide may read Arbol's data but never run Arbol's programs.
+The records are the interface. A reader needs no Arbol program to read them: the rules of this specification are all it needs. Something that refers to an agent, such as a hold of a Beat, names it by `tool` and `session`, and the reader finds its record by that name. A reader given Kimi Code’s native `session_<UUID>`, such as a Forester hold, uses the same prefix conversion when looking up the record. Arbol reads the records with `arbol-agents list` (below); the check of holds in Working in Sagas reads them itself, because a Mycel guide may read Arbol's data but never run Arbol's programs.
 
 <!-- sources:
 arbol:src/arbol_agents/records.py#folder
