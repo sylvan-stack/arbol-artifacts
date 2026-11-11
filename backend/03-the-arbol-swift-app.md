@@ -51,7 +51,7 @@ Compare `app` as a BLD-0 hexadecimal number. The catalogue value `"0"` permits t
 
 Selecting a current Root opens no window. An explicit open from a Root’s submenu uses that Root for the new window. For example, making First Sapling current sends the next Elma Chat hotkey and the next command without an explicit Root to First Sapling.
 
-Each Root offers the UIs packaged for it. Elma Chat is the first. Willo Station and Seqoya Lab use the same window contract when their bundles ship. An unavailable UI has no enabled action. The menu offers default UI opens, Latest chats and Quit. Root creation, migration, readiness, failure marking and removal use `arbol-roots` (BKD-D45).
+Each Root offers the UIs packaged for it. Elma Chat is the first. Willo Station and Seqoya Lab use the same window contract when their bundles ship. An unavailable UI has no enabled action. The menu offers explicit Root opens, Latest chats and Quit. Use the Option+E shortcut to open the current Root’s Elma Chat. Root creation, migration, readiness, failure marking and removal use `arbol-roots` (BKD-D45).
 
 Show each Root's database size from the backend's `health.measure` reply, by Root identifier. Use the current Root's running backend, or an already running backend for an open window if the current Root is unavailable. Never start an otherwise idle Root solely to measure it. Loading, unavailable and old measurements have distinct labels. A partial result preserves the values it actually measured and shows the affected Root's reason. Zero is a measurement only when the backend reports zero. Refresh asynchronously so a slow or failing measure leaves the open actions usable.
 
@@ -121,16 +121,16 @@ arbol-app:Sources/ElmaWindow.swift#ElmaWindow
 
 ### Hotkeys and Latest chats
 
-Use the original global keys from the one resident App. Registration failure is visible for the affected shortcut and the corresponding tray action still works. The rest of the global keys stay available. Unavailable destinations have no shortcut registration. A renderer handles its own local keys, including the Elma latest-chats fallback when the native panel does not take the shortcut.
+Register the global keys from the one resident App. Register Option+E while the App is resident and release it before handing residence to a replacement. When the shortcut fires, re-read the catalogue and open or raise Elma Chat for the current Root. If the current Root or its Elma renderer is unavailable, show the cause in the tray. If macOS refuses registration, show that the shortcut is unavailable and keep named-Root opens available. The rest of the global keys stay available. A renderer handles its own local keys, including the Elma latest-chats fallback when the native panel does not take the shortcut.
 
 | Shortcut | Action |
 |---|---|
-| ⌃⌥⇧⌘E | Open or raise Elma Chat |
+| ⌥E | Open or raise Elma Chat |
 | ⌃⌥⇧⌘W | Open or raise Willo Station when its bundle ships |
 | ⌃⌥⇧⌘S | Open or raise Seqoya Lab when its bundle ships |
 | ⌃⇧⌘C | Open or dismiss Latest chats |
 
-A global hotkey uses the same Root as a default tray open, wherever focus is (BKD-D44). The tray can also open Latest chats for a named Root. While the panel is open, its Root is fixed and named in its header. If the target has no compatible App or requested bundle, show that cause and allow explicit selection of another Root from the tray.
+A global hotkey uses the catalogue’s current Root, wherever focus is (BKD-D44). The tray can also open Latest chats for a named Root. While the panel is open, its Root is fixed and named in its header. If the target has no compatible App or requested bundle, show that cause and allow explicit selection of another Root from the tray.
 
 Latest chats is a native panel. It takes keyboard focus when invoked and can be used before Elma is open. If the owner selects a row in an idle Root, open Elma before releasing the panel’s hold on the backend. Use BKD-1's `chats` summaries for the selected Root, with the bounded candidate set in BKD-2.18. Exclude archived chats and the one shown in that Root's open Elma window. Order by that Root's Elma recent-view UUIDs first, then by descending activity, then UUID as the backend does. Each row shows title or title placeholder, repository, route, last Exchange state and age. Unavailable values are explicit. A new connection or a missed update starts a fresh subscription snapshot. The list shows loading, empty and failed reads with Retry. Digit keys 1 through 9 then 0 open the first ten rows, and arrows, Return and click reach all rows. Escape or clicking outside dismisses it and restores prior focus when appropriate.
 
@@ -166,7 +166,7 @@ arbol-app:Sources/ElmaAppChannel.swift#ElmaOpenQueue
 | BKD-3.7 | Rediscover retained Roots' Exchanges through the matching managers, isolate discovery failures and leave accepted Exchange ownership intact through restarts | New · ARC-1.25–26, BKD-0.21–22 | Multi-Root restart drill with an Exchange in progress |
 | BKD-3.8 | Relay opaque BKD-1 frames on one private socket per trusted window, refuse untrusted content and isolate connection and page generations | Changed · ARC-0.6, BKD-1.1–3, 1.11 | Native wire and WebKit boundary checks |
 | BKD-3.9 | Deliver disconnect and fresh hello, honor the renderer's Draft-safe Build reload and keep older compatible Roots usable | New · ARC-0.26, BKD-1.3, BKD-2.22 | Installed reconnect and retained old Root/Build journey |
-| BKD-3.10 | Send available global shortcuts to the catalogue’s current Root regardless of focus and keep tray access when registration fails | Changed · BKD-2.18, BKD-D44, archived native shortcuts | Native key journey with focus in a different Root or application |
+| BKD-3.10 | Open or raise current-Root Elma Chat with global Option+E. Send the other available global shortcuts to the catalogue’s current Root regardless of focus. Report registration failures and keep explicit Root opens available | Changed · owner request, BKD-2.18, BKD-D44 | Native key journey with focus in a different Root or application |
 | BKD-3.11 | Show and select Root-local Latest chats with the existing ordering, keyboard and Draft-safe behavior, including the separate reimport action on capable renderers | Kept · BKD-2.18, 2.24 | Native panel journey, including failed read and failed selection |
 | BKD-3.12 | Answer the native folder and link calls and deliver queued opens only to the intended Root's Elma document | Kept · BKD-1.11, BKD-2.19 | Native app-channel and Willo open journey, including cold window and Draft conflict |
 | BKD-3.13 <!-- 206cc66a-8fb5-4100-92be-649300a25d89 --> | Show the catalogue’s current Root name and the running App’s Build number in read-only rows above the tray actions, with explicit Root unavailable states | Changed · owner request, 11 November 2026 | Tray journey across Root selection and App Build handoff |
