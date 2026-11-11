@@ -51,7 +51,7 @@ Compare `app` as a BLD-0 hexadecimal number. The catalogue value `"0"` permits t
 
 Selecting a current Root opens no window. An explicit open from a Root’s submenu uses that Root for the new window. For example, making First Sapling current sends the next Elma Chat hotkey and the next command without an explicit Root to First Sapling.
 
-Each Root offers the UIs packaged for it. Elma Chat is the first. Willo Station and Seqoya Lab use the same window contract when their bundles ship. An unavailable UI has no enabled action. The menu offers explicit Root opens, Latest chats and Quit. Use the Option+E shortcut to open the current Root’s Elma Chat. Root creation, migration, readiness, failure marking and removal use `arbol-roots` (BKD-D45).
+The App offers its packaged UIs for Roots with a compatible, runnable backend. Elma Chat is the first. Willo Station and Seqoya Lab use the same window contract when their bundles ship. An unavailable UI has no enabled action. The menu offers explicit Root opens, Latest chats and Quit. Use the Option+E shortcut to open the current Root’s Elma Chat. Root creation, migration, readiness, failure marking and removal use `arbol-roots` (BKD-D45).
 
 Show each Root's database size from the backend's `health.measure` reply, by Root identifier. Use the current Root's running backend, or an already running backend for an open window if the current Root is unavailable. Never start an otherwise idle Root solely to measure it. Loading, unavailable and old measurements have distinct labels. A partial result preserves the values it actually measured and shows the affected Root's reason. Zero is a measurement only when the backend reports zero. Refresh asynchronously so a slow or failing measure leaves the open actions usable.
 
