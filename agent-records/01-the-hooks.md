@@ -80,7 +80,7 @@ This table uses the installed Kimi Code desktop app 1.3.3, whose embedded host i
 | `PostToolUse`, `PostToolUseFailure` | Close the named `tool_call_id` |
 | `Stop`, `StopFailure`, `Interrupt` | Clear open calls and set `waitingFor` to `message` |
 | `SessionEnd` | Clear open calls and set `end` with `exit` or `archive` from `reason`, subject to the same live-owner rule as the other tools |
-| `SessionHeartbeat`, `SubagentStart`, `SubagentStop`, `TaskStarted`, `UserPromptQueued`, `PreCompact`, `PostCompact`, `Notification` | Only `lastEvent` on an existing record. A queued prompt starts no turn by itself |
+| `SessionHeartbeat`, `SubagentStart`, `SubagentStop`, `TaskStarted`, `UserPromptQueued`, `PreCompact`, `PostCompact`, `Notification` | Only `lastEvent` on an existing record. If no readable record exists, initialize it from this event using the common recovery rule. A queued prompt starts no turn by itself |
 
 Every accepted event advances `lastEvent`. The common owner transitions, `waitingFor` precedence and `since` rules apply. The writer uses the session’s `cwd` as for the other tools. The bundled host supplies no `transcript_path` or client type. It sends a `session_title` and may send `profile` and conversation fields, which the writer discards. `background` remains a Claude Code field.
 
