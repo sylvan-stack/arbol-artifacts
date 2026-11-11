@@ -51,7 +51,7 @@ Compare `app` as a BLD-0 hexadecimal number. The catalogue value `"0"` permits t
 
 Selecting a current Root opens no window. An explicit open from a Root’s submenu uses that Root for the new window. For example, making First Sapling current sends the next Elma Chat hotkey and the next command without an explicit Root to First Sapling.
 
-The App offers its packaged UIs for Roots with a compatible, runnable backend. Elma Chat is the first. Willo Station and Seqoya Lab use the same window contract when their bundles ship. An unavailable UI has no enabled action. The menu offers explicit Root opens, Latest chats and Quit. Use the Option+E shortcut to open the current Root’s Elma Chat. Root creation, migration, readiness, failure marking and removal use `arbol-roots` (BKD-D45).
+The App offers its packaged UIs for Roots with a compatible, runnable backend. Elma Chat and Seqoya Lab use this window contract. Willo Station uses it when its bundle ships. An unavailable UI has no enabled action. The menu offers explicit Root opens, Latest chats and Quit. Use the Option+E shortcut to open the current Root’s Elma Chat. Root creation, migration, readiness, failure marking and removal use `arbol-roots` (BKD-D45).
 
 Show each Root's database size from the backend's `health.measure` reply, by Root identifier. Use the current Root's running backend, or an already running backend for an open window if the current Root is unavailable. Never start an otherwise idle Root solely to measure it. Loading, unavailable and old measurements have distinct labels. A partial result preserves the values it actually measured and shows the affected Root's reason. Zero is a measurement only when the backend reports zero. Refresh asynchronously so a slow or failing measure leaves the open actions usable.
 
@@ -142,6 +142,8 @@ Historical evidence: `arbol-design-system:heritage/app/Arbol/UISwitcherHotkeys.s
 
 Each Arbol UI uses the maintained design system’s WorkspaceShell header. A UI supplies its own title and controls through the header slots. Elma Chat is the first consumer. When a verified renderer advertises this header, the App places the native close, minimize and zoom controls in its leading space and hides the separate AppKit title bar. The window keeps native dragging, resizing and geometry. A renderer without the shared header retains native title-bar clearance.
 
+Seqoya Lab opens from **Roots → Open Seqoya Lab for Root** or its current-Root shortcut. Its first layout provides the shared header, a navigation rail for Intelligence Providers, Subscriptions and Usage, and a content area that explains that administration data is pending. The initial renderer reads its Root identity from the trusted host and leaves provider configuration and usage operations for later.
+
 The Root name is a dropdown trigger. The anchored list shows retained Roots by display name and state. It marks the window’s Root and shows why a choice is unavailable when the App is incompatible or the target Root has no runnable backend. On selection the App refreshes availability and opens or raises the same UI for the named Root. The original window, its Draft and the shared current Root stay as they were. A refused or expired open reports the cause in the dropdown and can be retried. A request is bound to its originating trusted document and may open a window only while that document and the request are still active.
 
 ### Opening a chat and using native controls
@@ -179,6 +181,7 @@ arbol-app:Sources/ElmaAppChannel.swift#ElmaOpenQueue
 | BKD-3.14 <!-- 15658f18-630e-4ae0-8387-634608110c03 --> | keep the running App and newest ready Build during handoff and have the Build tool retire the previous payload after the replacement is ready and the previous process exits | Changed · BLD-D25, BLD-0.28 | Installed retention handoff drill pending |
 | BKD-3.15 <!-- 53a6f4a4-cbaf-470e-ba8f-7cf056484a19 --> | Refresh the Current Root row and submenu checkmark after a selection, automatic reset or catalogue update, with explicit loading and unavailable states | Changed · owner request, 11 November 2026 | Tray journey across Root selection and clearing |
 | BKD-3.16 <!-- ba8c172c-bdbc-4d20-8cc3-ffe68e930ef7 --> | Use one shared header with integrated native controls and a Root dropdown that opens or raises the same UI for a named Root, with availability feedback and isolation of the original window | New · owner request, 11 November 2026 | Two-Root dropdown journey with an open Draft and a refused target |
+| BKD-3.17 <!-- 1e2a3635-e381-4f89-8c8d-686bddb48fd7 --> | Open Seqoya Lab in its own window for each available Root. Use the shared header, a navigation rail and initial pages for Intelligence Providers, Subscriptions and Usage | New · owner request | Open both surfaces for one Root and select another Root from Seqoya |
 
 Verification descriptions name future evidence. The App implementation will follow the owner's separate testing and Build policy.
 
