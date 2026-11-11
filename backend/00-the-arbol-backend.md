@@ -620,13 +620,13 @@ For example, the reply of a measurement:
 
 ### Its program and its Build
 
-The backend is typed Python in the repository `arbol`, beside `arbol-builds` and `arbol-roots`, with a packaged interpreter, as every component is (ARC-0, BLD-0). It is built with `arbol-builds build arbol --root <root>` into a Build of `arbol` made for that Root (BLD-0, RTM-D9). The Build also carries the renderer bundle of Elma Chat, built from the same repository ([BKD-2](02-elma-chat.md#its-renderer-bundle)):
+The backend is typed Python in the repository `arbol`, beside `arbol-builds` and `arbol-roots`, with a packaged interpreter, as every component is (ARC-0, BLD-0). It is built with `arbol-builds build arbol --root <root>` into a Build of `arbol` made for that Root (BLD-0, RTM-D9). The Build retains a renderer copy for older App Builds and the development relay. The current App supplies its shared renderer from its own package ([BKD-2](02-elma-chat.md#its-renderer-bundle)):
 
 ```text
 ~/Library/Application Support/Arbol/builds/arbol/6/
   build.json               "root": "sapling"
   bin/arbol                the program: backend, and the command line of SYL-193
-  ui/elma/index.html       the renderer bundle of Elma Chat, which the Swift App loads into a window
+  ui/elma/index.html       legacy Elma renderer for older App Builds and the development relay
 ```
 
 It serves its Bridge with one task for each window and for each call, so no call to the database or to another program holds up another (ARC-2). Each window's connection and each call can fail on its own without ending the backend.

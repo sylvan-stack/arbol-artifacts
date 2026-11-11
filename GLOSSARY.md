@@ -127,9 +127,9 @@ The high-level plan of a [Saga](#saga) or an [Arc](#arc), written in its file du
 
 ## Arbol
 
-The local, single-user macOS application, consisting of one global [Arbol Swift App](#arbol-swift-app) and one backend for each [Arbol Root](#arbol-root) in use. A Root's `arbol` Build supplies its backend and UI renderer bundles; the Swift App hosts those bundles in web views and passes their Bridge calls to that Root's backend. The backend holds listeners, resolves Brain Recipes and calls the Root's manager to start [Arbol Trunks](#arbol-trunk), which run [Drivers](#driver). The command line is also `arbol` and works without a running backend. Roots keep separate chat databases and settings; the Swift App and Drivers are shared. See [components and boundaries](architecture/00-components-and-boundaries.md).
+The local, single-user macOS application, consisting of one global [Arbol Swift App](#arbol-swift-app) and one backend for each [Arbol Root](#arbol-root) in use. The Swift App Build supplies shared UI renderers and hosts them in web views. A Root's `arbol` Build supplies its backend, which answers the UI's Bridge calls. The backend holds listeners, resolves Brain Recipes and calls the Root's manager to start [Arbol Trunks](#arbol-trunk), which run [Drivers](#driver). The command line is also `arbol` and works without a running backend. Roots keep separate chat databases and settings; the Swift App and Drivers are shared. See [components and boundaries](architecture/00-components-and-boundaries.md).
 
-**Example:** Elma Chat opened in First Sapling uses First Sapling's renderer bundle and backend. Its accepted Exchange keeps running in a detached Trunk process when Arbol quits; reopening Arbol discovers the retained Roots and reads First Sapling's database and Exchange records again.
+**Example:** Elma Chat opened in First Sapling uses the shared Elma renderer and First Sapling's backend. Its accepted Exchange keeps running in a detached Trunk process when Arbol quits; reopening Arbol discovers the retained Roots and reads First Sapling's database and Exchange records again.
 
 ## Arbol Backend
 
@@ -181,9 +181,9 @@ An [Entity](#entity) (kind `secret`, tag `sec`): a user-provided value containin
 
 ## Arbol Swift App
 
-The native macOS Swift/AppKit component built from `arbol-app`, with its own numbered [Builds](#build) outside every [Arbol Root](#arbol-root). One process holds the tray menu, hotkeys, native surfaces and the web views of the UIs. It discovers the retained Roots on every start and loads each selected Root's renderer bundles from that Root's `arbol` Build. It exposes the [Bridge](#bridge) and passes calls and subscriptions to the selected Root's backend without interpreting them or opening its database. Each Root records its minimum App Build; the tray menu offers Roots the running App can serve and says which Build the others need. See [the Swift App and the backend](architecture/00-components-and-boundaries.md#arbol-the-swift-app-and-the-backend) and [BKD-3](backend/03-the-arbol-swift-app.md).
+The native macOS Swift/AppKit component built from `arbol-app`, with its own numbered [Builds](#build) outside every [Arbol Root](#arbol-root). One process holds the tray menu, hotkeys, native surfaces and the web views of the UIs. It discovers the retained Roots on every start and loads its shared renderer bundles into Root-specific windows. It exposes the [Bridge](#bridge) and passes calls and subscriptions to the selected Root's backend without interpreting them or opening its database. Each Root records its minimum App Build; the tray menu offers Roots the running App can serve and says which Build the others need. See [the Swift App and the backend](architecture/00-components-and-boundaries.md#arbol-the-swift-app-and-the-backend) and [BKD-3](backend/03-the-arbol-swift-app.md).
 
-**Example:** One Swift App shows First Sapling and a second Root in its tray menu. Opening Elma Chat in each loads that Root's renderer and connects it to that Root's backend; neither operation creates another Swift App process.
+**Example:** One Swift App shows First Sapling and a second Root in its tray menu. Opening Elma Chat in each loads the same shared renderer and connects it to the corresponding Root's backend in the same Swift App process.
 
 ## Arc
 
@@ -1725,7 +1725,7 @@ A complete [Chat Exchange](#chat-exchange) may span several Turns, retries, fail
 
 ## UI
 
-A windowed [Surface](#surface) of Arbol. One [Arbol Swift App](#arbol-swift-app) opens one window per UI and Root. The window loads its renderer bundle from that Root's `arbol` Build and shows the Root's display name. The architecture names [Elma Chat](#elma-chat), [Willo Station](#willo-station) and [Seqoya Lab](#seqoya-lab). [BKD-2](backend/02-elma-chat.md) specifies Elma Chat. [BKD-3](backend/03-the-arbol-swift-app.md) specifies how the App opens and hosts these windows.
+A windowed [Surface](#surface) of Arbol. One [Arbol Swift App](#arbol-swift-app) opens one window per UI and Root. The window loads the shared renderer from the App Build, connects to the selected Root's backend and shows its display name. Compatible UI and backend Builds can change independently. The architecture names [Elma Chat](#elma-chat), [Willo Station](#willo-station) and [Seqoya Lab](#seqoya-lab). [BKD-2](backend/02-elma-chat.md) specifies Elma Chat. [BKD-3](backend/03-the-arbol-swift-app.md) specifies how the App opens and hosts these windows.
 
 **Example:** Elma Chat can be open in First Sapling and another retained Root at the same time. Each window reads from its own Root.
 
