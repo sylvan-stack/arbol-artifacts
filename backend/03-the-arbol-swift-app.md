@@ -27,6 +27,13 @@ When a newer runnable working `arbol-app` Build is available, **Start new versio
 
 Installation writes one per-user Aqua LaunchAgent with RunAtLoad and the absolute ordinary launcher path with `--background`. The login entry is independent of the numbered package and loads at the next login. At login macOS runs the ordinary launcher, which selects the working default Build. Only the tray icon appears. The menu stays closed and no window or panel takes focus. The App starts the compatible current Root's backend in the background. An explicit request for a UI opens its target. Closing the last window keeps the App and the current Root's backend running. Quit ends the App's backend ownership. The login entry starts the launcher again at the next login (BKD-D43).
 
+<!-- sources:
+arbol-app:Sources/ResidentApp.swift#ResidentApp
+arbol-app:Sources/AppBuildHandoff.swift#AppBuildHandoff
+arbol-app:Sources/ArbolApp.swift#ArbolApp
+arbol-app:README.md#start-at-login
+-->
+
 ### The tray menu and the catalogue
 
 The App reads `arbol-roots list` on startup, while running, on wake and when opening the menu. Recheck the chosen record before acting on a menu or shortcut selection. A **Current Root** line shows the catalogue’s `current` Root, its status, database size when available, and any relevant incompatibility or failure. A transient catalogue failure is visible. Previously known rows can be shown as stale, with a fresh successful selection required before opening a Root. One bad row leaves the others usable. Keep ownership of already needed backends during a transient failed refresh, then reconcile on the next successful catalogue result.
@@ -76,6 +83,9 @@ arbol:tools/elma_bundle.py#verify
 arbol:ui/elma/src/bridge.ts
 arbol:ui/elma/src/drafts.svelte.ts
 arbol:ui/elma/src/opening.svelte.ts
+arbol-app:Sources/ElmaWindow.swift#ElmaWindow
+arbol-app:Sources/RendererBundle.swift#RendererBundle
+arbol-design-system:src/pages/NativeSurface.svelte
 -->
 
 ### The lifetime of a Root's backend
@@ -88,6 +98,12 @@ A child ending while needed starts one replacement using the then-selected worki
 
 At startup the App also discovers Exchanges in retained Roots using each Root's matching `arbol-root --root <identifier> list` as in ARC-1.25. Report a manager refusal with its Root. This metadata needs no backend for an idle Root. A restart of the App or a backend uses that Root's own manager and restores live views from fresh subscriptions. Wake rechecks the catalogue, owned children and sockets, and lets the renderer check its subscription receipts. Sleep or a slow database alone is no reason to kill a healthy backend or change the Root of a window.
 
+<!-- sources:
+arbol-app:Sources/RootBackend.swift#RootBackend
+arbol-app:Sources/RootSocket.swift#RootSocket
+arbol-app:Sources/ArbolTools.swift#ArbolTools
+-->
+
 ### Passing the Bridge on
 
 Each loaded window connects once to its Root's owner-only `backend.sock`. The App accepts JSON strings on the `arbol` script message handler only from the current trusted bundle document in that window's main frame. It adds the LF frame terminator and forwards the UTF-8 bytes in order up to BKD-1's 16 MiB limit including LF. It passes reply strings as data to `window.arbolBridge.receive(text)`, in order and without reading their JSON fields. WebKit receives message text as a JavaScript argument. The App accepts no page-supplied socket address. It confirms the socket and its location belong to the current user and closes a connection with oversized, incomplete or invalid UTF-8 framing. Queue bounds and backpressure keep a slow or closed view from accumulating unbounded data.
@@ -97,6 +113,11 @@ A trusted renderer gets the backend's first `hello` once its receiver is ready. 
 Block navigations, popups, subframes and resource loads outside the verified bundle. A valid internal reload can select only the window's own Root and UI. Host controls and any native error page have no route to the Bridge. The App opens web links in the default browser through the app channel. It never opens a database. Tray and panel reads are a separate, bounded native client of the documented backend calls, with its own socket. This client parses its own replies and cannot receive a web view's traffic.
 
 Platform references: [WKWebView navigation and local content](https://developer.apple.com/documentation/webkit/wkwebview), [frame identity](https://developer.apple.com/documentation/webkit/wkscriptmessage/frameinfo), [JavaScript arguments](https://developer.apple.com/documentation/webkit/wkwebview/callasyncjavascript(_:arguments:in:contentworld:)).
+
+<!-- sources:
+arbol-app:Sources/BridgeConnection.swift#BridgeConnection
+arbol-app:Sources/ElmaWindow.swift#ElmaWindow
+-->
 
 ### Hotkeys and Latest chats
 
@@ -127,6 +148,11 @@ Older compatible bundles continue to speak BKD-1's three app calls. The initial 
 
 For folder picking the App opens the macOS folder dialog attached to the requesting window. The optional starting folder is a hint. The owner chooses a directory or cancels; cancellation returns null. Elma waits up to 30 seconds for an app call. End the picker by that deadline and close it when its document leaves, so a late selection cannot apply to another page. For links the App accepts a well-formed absolute HTTP or HTTPS URL and asks the default browser to open it. It returns a safe refusal for other schemes or a failure to open.
 
+<!-- sources:
+arbol-app:Sources/ElmaAppChannel.swift#ElmaAppChannel
+arbol-app:Sources/ElmaAppChannel.swift#ElmaOpenQueue
+-->
+
 ## Requirements
 
 | ID | The App must | Origin and basis | Verified by |
@@ -153,7 +179,7 @@ Verification descriptions name future evidence. The App implementation will foll
 
 | Boundary | Form |
 |---|---|
-| App start | `arbol-app [-v <build>]` via BLD-0. The per-user login entry runs the default launcher, and tray relaunch names the prepared Build. The Build record declares the executable entry inside the macOS app bundle |
+| App start | `arbol-app [-v <build>]` via BLD-0. Login passes `--background` to the default launcher. `--show-tray` requests the resident menu. Tray relaunch names the prepared Build. The Build record declares the executable entry inside the macOS app bundle |
 | Default UI Root | One persisted Root identifier, or follow the catalogue current flag when absent. Scope is the App per user |
 | Catalogue and Build inventory | `arbol-roots list`, `arbol-builds show arbol@<build> --root <root>`, and `arbol-builds show arbol --root <root>` for a Root's default. ARC-1 and BLD-0 give their records and refusal envelopes |
 | Catalogue extension | Optional `migrationProblem: { at: string, reason: string, uncertain?: true }` on a Root record. Older records without it report no recorded migration failure |
