@@ -5,19 +5,19 @@ role: authored
 
 ## <before style>
 
-Reason: Connect the published cards to explicit vendor refresh and local Root activity.
+Reason: Sync the published design snapshot and connect tab selection to the existing account reader. Load the account list when the first Subscriptions tab connects or is reselected, preserve refresh and reconnection behavior, and reuse the existing vendor and activity reads. Verify types and snapshot provenance. Serves BKD-3.17.
 
-Origins: BKD-0.25, BKD-1.4, BKD-3.17 · Intention i-574738aa · 2026-11-11
+Origins: BKD-3.17 · Intention i-5b2335a8 · 2026-11-12
 
 ## script
 
-Reason: Connect the published cards to explicit vendor refresh and local Root activity.
+Reason: Sync the published design snapshot and connect tab selection to the existing account reader. Load the account list when the first Subscriptions tab connects or is reselected, preserve refresh and reconnection behavior, and reuse the existing vendor and activity reads. Verify types and snapshot provenance. Serves BKD-3.17.
 
-Origins: BKD-0.25, BKD-1.4, BKD-3.17 · Intention i-574738aa · 2026-11-11
+Origins: BKD-3.17 · Intention i-5b2335a8 · 2026-11-12
 
 ## style
 
-Reason: Show the current Root’s public account snapshot and keep reconnects and replies scoped to that Root.
+Reason: Sync the published design snapshot and connect tab selection to the existing account reader. Load the account list when the first Subscriptions tab connects or is reselected, preserve refresh and reconnection behavior, and reuse the existing vendor and activity reads. Verify types and snapshot provenance. Serves BKD-3.17.
 
-Origins: BKD-3.17, BKD-0.25, DRV-1.14 · Intention i-a224ef00 · 2026-11-11
+Origins: BKD-3.17 · Intention i-5b2335a8 · 2026-11-12
 
