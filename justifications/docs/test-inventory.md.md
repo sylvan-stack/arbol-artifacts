@@ -5,7 +5,13 @@ role: authored
 
 ## Test inventory: arbol > Retained selections
 
-Reason: DRV-5.5: the arbol inventory records that C44 passed offline under SYL-399
+Reason: Run the relocated runtime cases in the packaged Arbol top tier and retain the separate legacy Root recovery gates.
 
-Origins: DRV-5.5 · Intention i-69e5f018 · 2026-11-11
+Origins: ARC-4.6 · Intention i-668138b3 · 2026-11-12
+
+## Test inventory: arbol
+
+Reason: Run the relocated runtime cases in the packaged Arbol top tier and retain the separate legacy Root recovery gates.
+
+Origins: ARC-4.6 · Intention i-668138b3 · 2026-11-12
 

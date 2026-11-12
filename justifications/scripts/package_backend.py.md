@@ -5,13 +5,25 @@ role: authored
 
 ## package
 
-Reason: Use the same installation lease to protect Build recovery inputs and stage its private module in both consumers.
+Reason: Run the relocated runtime cases in the packaged Arbol top tier and retain the separate legacy Root recovery gates.
 
-Origins: ARC-4.4, ARC-4.5 · Intention i-e245baed · 2026-11-12
+Origins: ARC-4.6 · Intention i-668138b3 · 2026-11-12
 
 ## <before package>
 
-Reason: Stage the schema-compatible Arbol Build and its Exchange command
+Removed: Run the relocated runtime cases in the packaged Arbol top tier and retain the separate legacy Root recovery gates.
 
-Origins: ARC-4.1, ARC-4.3, ARC-4.8 · Intention i-d1b0e71e · 2026-11-12
+Removed by Intention i-668138b3 · 2026-11-12
+
+## <before packaged_top>
+
+Reason: Run the relocated runtime cases in the packaged Arbol top tier and retain the separate legacy Root recovery gates.
+
+Origins: ARC-4.6 · Intention i-668138b3 · 2026-11-12
+
+## packaged_top
+
+Reason: Run the relocated runtime cases in the packaged Arbol top tier and retain the separate legacy Root recovery gates.
+
+Origins: ARC-4.6 · Intention i-668138b3 · 2026-11-12
 

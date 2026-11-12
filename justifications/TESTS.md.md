@@ -5,13 +5,19 @@ role: authored
 
 ## Tests: arbol > Selection and limits
 
-Reason: DRV-5.5: the arbol inventory records that C44 passed offline under SYL-399
+Reason: Run the relocated runtime cases in the packaged Arbol top tier and retain the separate legacy Root recovery gates.
 
-Origins: DRV-5.5 · Intention i-69e5f018 · 2026-11-11
+Origins: ARC-4.6 · Intention i-668138b3 · 2026-11-12
 
 ## Tests: arbol > Builds
 
-Reason: Require the global Root catalogue recovery check alongside the packaged backend unit check, so the Arbol Build gate exercises all three retained top-tier cases.
+Reason: Run the relocated runtime cases in the packaged Arbol top tier and retain the separate legacy Root recovery gates.
 
-Origins: BLD-0.5 · Intention i-293128f8 · 2026-11-11
+Origins: ARC-4.6 · Intention i-668138b3 · 2026-11-12
+
+## Tests: arbol > Active top tier
+
+Reason: Run the relocated runtime cases in the packaged Arbol top tier and retain the separate legacy Root recovery gates.
+
+Origins: ARC-4.6 · Intention i-668138b3 · 2026-11-12
 
