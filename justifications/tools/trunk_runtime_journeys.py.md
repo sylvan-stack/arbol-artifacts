@@ -5,9 +5,9 @@ role: authored
 
 ## <before Build>
 
-Reason: Stage the real numbered packages, generated launchers, canonical schema and controlled Driver in one disposable installation with explicit target checks.
+Reason: Read public detached acceptance without waiting for the live Trunk to exit and bind harness source separately
 
-Origins: ARC-4.3, ARC-4.4, ARC-4.6 · Intention i-48e23304 · 2026-11-12
+Origins: ARC-4.3, ARC-4.6 · Intention i-644fb5a4 · 2026-11-12
 
 ## <end>
 
@@ -35,9 +35,9 @@ Origins: ARC-4.3, ARC-4.4, ARC-4.6 · Intention i-48e23304 · 2026-11-12
 
 ## JourneyInstallation.__init__
 
-Reason: Stage the real numbered packages, generated launchers, canonical schema and controlled Driver in one disposable installation with explicit target checks.
+Reason: Read public detached acceptance without waiting for the live Trunk to exit and bind harness source separately
 
-Origins: ARC-4.3, ARC-4.4, ARC-4.6 · Intention i-48e23304 · 2026-11-12
+Origins: ARC-4.3, ARC-4.6 · Intention i-644fb5a4 · 2026-11-12
 
 ## JourneyInstallation._call
 
@@ -47,9 +47,9 @@ Origins: ARC-4.3, ARC-4.4, ARC-4.6 · Intention i-48e23304 · 2026-11-12
 
 ## JourneyInstallation.close
 
-Reason: Stage the real numbered packages, generated launchers, canonical schema and controlled Driver in one disposable installation with explicit target checks.
+Reason: Read public detached acceptance without waiting for the live Trunk to exit and bind harness source separately
 
-Origins: ARC-4.3, ARC-4.4, ARC-4.6 · Intention i-48e23304 · 2026-11-12
+Origins: ARC-4.3, ARC-4.6 · Intention i-644fb5a4 · 2026-11-12
 
 ## JourneyInstallation.options
 
@@ -89,9 +89,9 @@ Origins: ARC-4.3, ARC-4.4, ARC-4.6 · Intention i-48e23304 · 2026-11-12
 
 ## JourneyInstallation.start
 
-Reason: Stage the real numbered packages, generated launchers, canonical schema and controlled Driver in one disposable installation with explicit target checks.
+Reason: Read public detached acceptance without waiting for the live Trunk to exit and bind harness source separately
 
-Origins: ARC-4.3, ARC-4.4, ARC-4.6 · Intention i-48e23304 · 2026-11-12
+Origins: ARC-4.3, ARC-4.6 · Intention i-644fb5a4 · 2026-11-12
 
 ## JourneyInstallation.trunks
 
@@ -113,9 +113,9 @@ Origins: ARC-4.3, ARC-4.4, ARC-4.6 · Intention i-48e23304 · 2026-11-12
 
 ## main
 
-Reason: Stage the real numbered packages, generated launchers, canonical schema and controlled Driver in one disposable installation with explicit target checks.
+Reason: Read public detached acceptance without waiting for the live Trunk to exit and bind harness source separately
 
-Origins: ARC-4.3, ARC-4.4, ARC-4.6 · Intention i-48e23304 · 2026-11-12
+Origins: ARC-4.3, ARC-4.6 · Intention i-644fb5a4 · 2026-11-12
 
 ## object_file
 
@@ -128,4 +128,10 @@ Origins: ARC-4.3, ARC-4.4, ARC-4.6 · Intention i-48e23304 · 2026-11-12
 Reason: Stage the real numbered packages, generated launchers, canonical schema and controlled Driver in one disposable installation with explicit target checks.
 
 Origins: ARC-4.3, ARC-4.4, ARC-4.6 · Intention i-48e23304 · 2026-11-12
+
+## JourneyInstallation.public_start
+
+Reason: Read public detached acceptance without waiting for the live Trunk to exit and bind harness source separately
+
+Origins: ARC-4.3, ARC-4.6 · Intention i-644fb5a4 · 2026-11-12
 
