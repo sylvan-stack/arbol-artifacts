@@ -5,9 +5,9 @@ role: authored
 
 ## <before receipt>
 
-Reason: Expose the private installation command with replies matching backend consumers
+Reason: Fence runtime starts and bind the detached launch to its admission generation.
 
-Origins: ARC-4.1, ARC-4.6 · Intention i-b28581e9 · 2026-11-12
+Origins: ARC-4.4, ARC-4.8 · Intention i-b2de2b80 · 2026-11-12
 
 ## accepted
 
@@ -35,9 +35,9 @@ Origins: ARC-4.1, ARC-4.6 · Intention i-b28581e9 · 2026-11-12
 
 ## start
 
-Reason: Expose the private installation command with replies matching backend consumers
+Reason: Fence runtime starts and bind the detached launch to its admission generation.
 
-Origins: ARC-4.1, ARC-4.6 · Intention i-b28581e9 · 2026-11-12
+Origins: ARC-4.4, ARC-4.8 · Intention i-b2de2b80 · 2026-11-12
 
 ## wait_reply
 
