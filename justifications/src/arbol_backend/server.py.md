@@ -5,9 +5,9 @@ role: authored
 
 ## Backend.__init__
 
-Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
+Reason: Keep Vigor paused until admitted, resume a due tick after reopening, and leave empty history until a new report.
 
-Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
+Origins: ARC-4.4, ARC-4.7 · Intention i-fded1ae6 · 2026-11-12
 
 ## <before Backend>
 
@@ -17,9 +17,9 @@ Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
 
 ## Backend.monitor
 
-Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
+Reason: Keep Vigor paused until admitted, resume a due tick after reopening, and leave empty history until a new report.
 
-Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
+Origins: ARC-4.4, ARC-4.7 · Intention i-fded1ae6 · 2026-11-12
 
 ## Backend.run
 
@@ -56,4 +56,16 @@ Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
 Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
 
 Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
+
+## Backend.task
+
+Reason: Keep Vigor paused until admitted, resume a due tick after reopening, and leave empty history until a new report.
+
+Origins: ARC-4.4, ARC-4.7 · Intention i-fded1ae6 · 2026-11-12
+
+## Backend.wake_vigor
+
+Reason: Keep Vigor paused until admitted, resume a due tick after reopening, and leave empty history until a new report.
+
+Origins: ARC-4.4, ARC-4.7 · Intention i-fded1ae6 · 2026-11-12
 
