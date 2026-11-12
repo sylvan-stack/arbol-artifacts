@@ -29,9 +29,9 @@ Origins: DRV-2.37, CLD-2.26, CDX-2.22, DRV-5.5 · Intention i-86490b68 · 2026-1
 
 ## run_c44
 
-Reason: Qualify validated UUID identity and rejection before vendor launch using only an existing real profile
+Reason: Observe a real saved vendor conversation resume across compatible runs of the same validated chat
 
-Origins: ARC-4.7 · Intention i-4bb66729 · 2026-11-12
+Origins: ARC-4.7 · Intention i-b287cc5c · 2026-11-12
 
 ## c44_subscription
 
@@ -41,7 +41,7 @@ Origins: ARC-4.7 · Intention i-4bb66729 · 2026-11-12
 
 ## <before events>
 
-Reason: Qualify validated UUID identity and rejection before vendor launch using only an existing real profile
+Reason: Observe a real saved vendor conversation resume across compatible runs of the same validated chat
 
-Origins: ARC-4.7 · Intention i-4bb66729 · 2026-11-12
+Origins: ARC-4.7 · Intention i-b287cc5c · 2026-11-12
 
