@@ -17,9 +17,9 @@ Origins: ARC-4.1, ARC-4.4, ARC-4.7 · Intention i-1792384e · 2026-11-12
 
 ## Backend.monitor
 
-Reason: Advertise Bridge 2 installation status first, remove Root catalogue RPCs, and preserve the maintenance and schema refusal codes.
+Reason: Hold ordinary admission over backend mutations and prevent cancellation from detaching a protected file write.
 
-Origins: ARC-4.1, ARC-4.4, ARC-4.7 · Intention i-1792384e · 2026-11-12
+Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
 
 ## Backend.run
 
