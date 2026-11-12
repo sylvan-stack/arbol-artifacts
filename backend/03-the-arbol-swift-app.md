@@ -181,6 +181,14 @@ arbol-design-system:src/sections/SubscriptionList.svelte
 arbol:ui/elma/src/preferences.ts
 -->
 
+### Editable subscription cards and allowance layout
+
+A card name reveals Edit on hover or keyboard focus and remains reachable on touch devices. Editing opens the existing displayed name in the shared inline editor. Save persists the Driver's subscription label, while Cancel or Escape preserves it. Keep the draft and show the cause if saving fails. The trusted Seqoya-only `app.renameSubscription` operation checks the Driver, Subscription ID, creation time and prior label before invoking the Driver's label-only update. Names contain 1–256 Unicode code points on one line. No credential crosses the app channel. Preserve quota evidence after a name-only update; report a partial-save warning if its matching update stamp cannot be advanced.
+
+Normalize allowance types to five hours, week, month and other, in that order, so a pending five-hour window still appears first. Preserve separate vendor scopes. Put a small centered label between separator lines: 5 hours, 7 days, a month or other. Omit Window length. Start each section with a remaining-allowance bar: the main color represents remaining capacity and the secondary color represents used capacity, with Used and Remaining labels and percentages at the corresponding ends. Unknown shares stay unknown. Then show Time remaining with a hover/focus tooltip giving Resets at in the established local format and any terminal expiration. Follow with output-token equivalents used, output-token equivalents remaining and remaining equivalents per hour. Keep positive available reset inventory at the card bottom.
+
+Kimi quota ratios and normalized limits are not absolute token quantities or implicit thousands/millions. Do not convert a normalized 100-unit quota into 100 calls. Replace the old median-output-per-turn conversion with an explicitly approximate output-token capacity calibrated from local output and provider percentage-point movement within the same five-hour window. Keep the account's identity check and at least five percentage points of movement as admission conditions. For the verified K3.1 Pro sample, 44,477 output tokens accompanied 5.56 percentage points of usage, giving approximately 799,946 output-token equivalents per full five-hour allowance. Preserve the numerical operands and source in estimate details. [Kimi quota schema](https://www.kimi.com/code/docs/en/kimi-code-cli/reference/server-api.html) · [Kimi token-based credit rules](https://www.kimi.com/en/help/membership/membership-update-rules)
+
 ### Opening a chat and using native controls
 
 The *app channel* is the small set of requests the App itself answers. It is available only to the same trusted document as the Bridge. It validates each method, parameter and caller and returns one reply with the request's ID. An open request names an explicit target Root and exactly one chat UUID or absolute new-chat folder. A request cannot supply a program, a URL for the web view or a backend path. A Willo renderer can submit a chat from its own Root or from a Root it identifies in its discovery view. The App validates the Root, checks its App minimum, queues the request before opening Elma and returns an explicit refusal if it cannot queue it. This gives Willo's First Sapling hand-over a receiver. Willo's own UI and its choice of target stay with that specification.
@@ -239,6 +247,7 @@ Verification descriptions name future evidence. The App implementation will foll
 | `app.openLink` | `{url: string}` | `{}` after the system accepts the open |
 | `app.currentTrunk` | `{}` from a trusted UI | `{trunk: string}` for the bound window |
 | `app.listTrunks` | `{}` from a trusted UI | `{trunks: string[]}` for the bound window’s Root |
+| `app.renameSubscription` | `{driver, subscription, label, expectedLabel, createdAt}` from a trusted Seqoya document | The saved name and optional evidence warning; persist through the Driver label-only update |
 | `app.openSubscriptionUsage` | `{driver: string, subscription: string}` from a trusted Seqoya document | `{}` after opening ChatGPT usage in the bound subscription’s profile; the browser has its own sign-in |
 | `app.readVigor` | `{}` from a trusted Seqoya document | The saved SGM-1 rollup for the window’s bound Root, with optional typed `usageEvidence` or `usageEvidenceError` |
 | `app.selectTrunk` | `{trunk: string}` from a trusted UI | `{trunk: string}` after validating and applying it to that window |
