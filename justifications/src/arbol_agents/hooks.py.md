@@ -17,9 +17,9 @@ Origins: AGR-0.4, AGR-0.6, AGR-1.1, AGR-1.2, AGR-1.4, AGR-1.5, AGR-D8 · Intenti
 
 ## handle
 
-Reason: Record Kimi Code events with the common lifecycle and privacy rules
+Reason: Use the chat environment marker for the agent-record exemption so an Arbol Exchange is recorded only by the Trunk.
 
-Origins: AGR-0.1, AGR-1.1, AGR-1.4 · Intention i-d0bbc247 · 2026-11-11
+Origins: ARC-4.7 · Intention i-e0704723 · 2026-11-12
 
 ## refresh
 
