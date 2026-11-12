@@ -35,9 +35,9 @@ Origins: ARC-4.6 · Intention i-2fff8f61 · 2026-11-12
 
 ## usage_snapshot
 
-Reason: Retain recorded Exchange Builds during installation pruning
+Reason: Retire generation and installation of the Root runtime launchers
 
-Origins: ARC-4.6 · Intention i-2fff8f61 · 2026-11-12
+Origins: ARC-4.1, ARC-4.8 · Intention i-de10fbd4 · 2026-11-12
 
 ## Usage.retains
 

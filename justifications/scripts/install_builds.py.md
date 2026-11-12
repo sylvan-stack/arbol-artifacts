@@ -5,15 +5,15 @@ role: authored
 
 ## install
 
-Reason: Read the one installed schema through the release's canonical read-only status command.
+Reason: Retire generation and installation of the Root runtime launchers
 
-Origins: ARC-4.1, ARC-4.3 · Intention i-529033a1 · 2026-11-12
+Origins: ARC-4.1, ARC-4.8 · Intention i-de10fbd4 · 2026-11-12
 
 ## <before probe>
 
-Reason: Read the one installed schema through the release's canonical read-only status command.
+Reason: Retire generation and installation of the Root runtime launchers
 
-Origins: ARC-4.1, ARC-4.3 · Intention i-529033a1 · 2026-11-12
+Origins: ARC-4.1, ARC-4.8 · Intention i-de10fbd4 · 2026-11-12
 
 ## install_schema_reader
 
