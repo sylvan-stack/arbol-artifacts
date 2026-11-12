@@ -91,7 +91,7 @@ For example, a run of `arbol-claude-driver run --subscription anthropic …` sta
 | The Driver writes nothing there | What the tool writes in its home is the tool's own, as when it is started by hand. The one exception is what a Driver's specification names, such as the new session file the Claude Driver writes to continue a conversation ([CLD-D21](../../arbol-claude-driver/specs/02-inference.md#decisions)). A setting the Driver needs for a run, such as the tool's memory switched off (DRV-3) or its check for updates, is given on that run's command line or in its environment, never written to the owner's files |
 | Runs side by side | Any number of runs, and the Leather Bag's own sessions, share the home as sessions started by hand do |
 | The owner's own sign-in | Signing `anthropic` or `chatgpt` in is signing the tool in on this Mac. The Driver never signs it out and never removes it ([DRV-D43](01-subscriptions.md#decisions)) |
-| Probes and live checks | A test Subscription, named `test-<family>` (DRV-5), keeps a home of its own in the test state directory; probes and live checks use it or homes created for them and never the default homes ([DRV-5](05-conformance.md), [DRV-D44](05-conformance.md#decisions)) |
+| Probes and live checks | Use a real existing profile and Subscription ID directly under the owner’s 12 November 2026 direction. Application fixtures remain disposable ([DRV-5](05-conformance.md)). Earlier test-profile homes and DRV-D44 are historical |
 
 Observed until 19 October 2026: each Subscription had a home of its own in the state directory, the Claude Driver kept each sign-in in a Keychain item named after that home, and of the owner's own setup a run had only the skills and the MCP servers (DRV-D27). A Driver run therefore had no hooks, no plug-ins, no settings and no instruction file of the owner's.
 
@@ -290,3 +290,9 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 - `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#6. Many resident services with strict, version-coupled contracts`
 - `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#Product guarantees the rewrite must keep`
 - `arbol_deprecated_v1:product-spec/12-lessons-and-invariants.md#Decisions for the successor's design`
+
+## Real existing profiles for qualification · 12 November 2026
+
+The owner prohibited test profiles and required real existing profiles. Probes and live qualification select an existing real provider profile and Subscription ID directly. Discover and verify that selection before inference. The gate must refuse a missing or signed-out selection. Creating a test profile, creating a profile alias, copying authentication or starting a new sign-in to satisfy qualification is prohibited.
+
+Keep application database, runtime, Build registry and evidence disposable and separate from provider profile selection. A real live run uses the existing profile's native credential binding and records its actual inference, completion and usage outcome. Keep the complete documented Build gates. Earlier test-profile decisions and qualification records remain historical evidence of their original releases.

@@ -28,7 +28,7 @@ All of a Driver's files are under one folder, by default `~/Library/Application 
       record.json               the Subscription
       lock                      present only while record.json is being rewritten
       sign-in.json              present only while a sign-in is pending
-      home/                     only for a test Subscription: the vendor tool's home for probes and live checks (DRV-D44)
+      home/                     historical test-profile home, preserved until explicit cleanup; current qualification uses existing real profiles
       chats/
         <chat key>.json         one entry of the map per chat session
   runs/
@@ -253,3 +253,9 @@ SYL-95 verification is recorded in the requirement-level `~/Artifacts/arbol/driv
 | DRV-D29 | How do calls that run at the same moment keep out of each other's way? | A lock file per Subscription, created so that a second creation fails, held only while one record is rewritten. Whatever lasts is a record naming its owner, never a lock. File locks of the operating system are not used: Node.js offers none without an add-on | Decided 6 October 2026, a technical choice made in drafting on the owner's go-ahead |
 | DRV-D30 | How does one call reach another that is already running? | By the termination signal, sent to the process named in the record of the run or of the sign-in. A Driver already stops its run on that signal (DRV-2.26), so nothing new is needed | Decided 6 October 2026, a technical choice made in drafting on the owner's go-ahead |
 | DRV-D31 | Is a saved conversation continued when the system prompt has changed? | Where the vendor tool takes the new prompt, yes. Where it keeps the first one, a new conversation is built, which is always right and costs the tool's own record of the conversation | Decided 6 October 2026 by the real test that SYL-30 listed, a technical choice. `claude` takes the new prompt when it is started with `--system-prompt-snapshot off`, so the Claude Driver continues. `codex` kept the first prompt whatever `thread/resume` was given, so the Codex Driver rebuilds |
+
+## Real existing profiles for qualification · 12 November 2026
+
+The owner prohibited test profiles and required real existing profiles. Probes and live qualification select an existing real provider profile and Subscription ID directly. Discover and verify that selection before inference. The gate must refuse a missing or signed-out selection. Creating a test profile, creating a profile alias, copying authentication or starting a new sign-in to satisfy qualification is prohibited.
+
+Keep application database, runtime, Build registry and evidence disposable and separate from provider profile selection. A real live run uses the existing profile's native credential binding and records its actual inference, completion and usage outcome. Keep the complete documented Build gates. Earlier test-profile decisions and qualification records remain historical evidence of their original releases.
