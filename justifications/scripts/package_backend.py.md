@@ -5,9 +5,9 @@ role: authored
 
 ## package
 
-Reason: Stage the schema-compatible Arbol Build and its Exchange command
+Reason: Use the same installation lease to protect Build recovery inputs and stage its private module in both consumers.
 
-Origins: ARC-4.1, ARC-4.3, ARC-4.8 · Intention i-d1b0e71e · 2026-11-12
+Origins: ARC-4.4, ARC-4.5 · Intention i-e245baed · 2026-11-12
 
 ## <before package>
 

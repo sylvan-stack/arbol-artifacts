@@ -5,15 +5,15 @@ role: authored
 
 ## <before read_days>
 
-Reason: Retain recorded Exchange Builds during installation pruning
+Reason: Use the same installation lease to protect Build recovery inputs and stage its private module in both consumers.
 
-Origins: ARC-4.6 · Intention i-2fff8f61 · 2026-11-12
+Origins: ARC-4.4, ARC-4.5 · Intention i-e245baed · 2026-11-12
 
 ## prune_unused
 
-Reason: Retain recorded Exchange Builds during installation pruning
+Reason: Use the same installation lease to protect Build recovery inputs and stage its private module in both consumers.
 
-Origins: ARC-4.6 · Intention i-2fff8f61 · 2026-11-12
+Origins: ARC-4.4, ARC-4.5 · Intention i-e245baed · 2026-11-12
 
 ## <before Usage>
 
@@ -44,4 +44,10 @@ Origins: ARC-4.1, ARC-4.8 · Intention i-de10fbd4 · 2026-11-12
 Reason: Retain recorded Exchange Builds during installation pruning
 
 Origins: ARC-4.6 · Intention i-2fff8f61 · 2026-11-12
+
+## prune_admitted
+
+Reason: Use the same installation lease to protect Build recovery inputs and stage its private module in both consumers.
+
+Origins: ARC-4.4, ARC-4.5 · Intention i-e245baed · 2026-11-12
 
