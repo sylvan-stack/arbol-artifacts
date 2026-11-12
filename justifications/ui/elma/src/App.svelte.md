@@ -5,7 +5,7 @@ role: authored
 
 ## <before style>
 
-Reason: Wire the shared header to the window Trunk and retain it on dispatch replay
+Reason: Publish the installation Bridge 2 renderer and scoped chat, Draft, pending request and administration adapters
 
-Origins: BKD-0.11, BKD-1.7, BKD-3.16 · Intention i-3d376ddd · 2026-11-11
+Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
 
