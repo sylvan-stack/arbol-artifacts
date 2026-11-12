@@ -39,3 +39,15 @@ Reason: Coalesce inventory by Exchange UUID and verify event folders against the
 
 Origins: ARC-4.1, ARC-4.6 · Intention i-37a0246e · 2026-11-12
 
+## Stuck.force
+
+Reason: Hold controlled admission through accepted Exchange controls, note persistence and Draft recovery.
+
+Origins: ARC-4.4, ARC-4.6 · Intention i-b419ba12 · 2026-11-12
+
+## Stuck.save_note
+
+Reason: Hold controlled admission through accepted Exchange controls, note persistence and Draft recovery.
+
+Origins: ARC-4.4, ARC-4.6 · Intention i-b419ba12 · 2026-11-12
+

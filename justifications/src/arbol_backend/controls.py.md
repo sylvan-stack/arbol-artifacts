@@ -11,9 +11,9 @@ Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
 
 ## Controls.__init__
 
-Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
+Reason: Hold controlled admission through accepted Exchange controls, note persistence and Draft recovery.
 
-Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
+Origins: ARC-4.4, ARC-4.6 · Intention i-b419ba12 · 2026-11-12
 
 ## Controls.force
 
@@ -29,9 +29,9 @@ Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
 
 ## Controls.run
 
-Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
+Reason: Hold controlled admission through accepted Exchange controls, note persistence and Draft recovery.
 
-Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
+Origins: ARC-4.4, ARC-4.6 · Intention i-b419ba12 · 2026-11-12
 
 ## Controls.run_force
 
@@ -50,4 +50,10 @@ Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
 Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
 
 Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
+
+## Controls.run_admitted
+
+Reason: Hold controlled admission through accepted Exchange controls, note persistence and Draft recovery.
+
+Origins: ARC-4.4, ARC-4.6 · Intention i-b419ba12 · 2026-11-12
 
