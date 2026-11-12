@@ -11,15 +11,15 @@ Origins: BKD-3.17, BKD-0.25, DRV-1.14 · Intention i-a224ef00 · 2026-11-11
 
 ## SubscriptionRecord
 
-Reason: Sync the published design snapshot. Apply the fixed label catalog to each returned account in the Seqoya adapter, by exact Driver and vendor family. Include the six default classifications and GPT-6-Astra from the specification. Retain account and usage data, keep Codex distinct from Pi's ChatGPT, and preserve the current connection and refresh paths. Serves BKD-3.17.
+Reason: Sync the published shared design. Combine public accounts, saved Radar windows and typed Root evidence without using a dashboard snapshot for another binding. Use a current MiMo Driver report first, the manual snapshot for the exact ID and binding update time second, and an unpredicted Radar window third. Apply Xiaomi’s rate only to known credits. Match Pi by exact ID and binding update time and show the shared windows and policy cap. Match Codex by ID, account creation time and reported plan. Use at least five points of movement in one weekly window and observations at most 28 days old. Label previous-window calibration and use only an unelapsed weekly quota for a remaining estimate. On explicit signed-in MiMo Refresh usage call accounts.usage and reread the account list, preserving the previous reading on refusal. Read the extended app.readVigor on entry and ordinary Refresh of both tabs. Coalesce simultaneous reads, keep the existing score, and keep ordinary Refresh stored-only. Serves BKD-3.17 and BKD-3.18.
 
-Origins: BKD-3.17 · Intention i-5f439d61 · 2026-11-12
+Origins: BKD-3.17, BKD-3.18 · Intention i-8c1d8d92 · 2026-11-12
 
 ## SubscriptionView
 
-Reason: Connect the published cards to explicit vendor refresh and local Root activity.
+Reason: Sync the published shared design. Combine public accounts, saved Radar windows and typed Root evidence without using a dashboard snapshot for another binding. Use a current MiMo Driver report first, the manual snapshot for the exact ID and binding update time second, and an unpredicted Radar window third. Apply Xiaomi’s rate only to known credits. Match Pi by exact ID and binding update time and show the shared windows and policy cap. Match Codex by ID, account creation time and reported plan. Use at least five points of movement in one weekly window and observations at most 28 days old. Label previous-window calibration and use only an unelapsed weekly quota for a remaining estimate. On explicit signed-in MiMo Refresh usage call accounts.usage and reread the account list, preserving the previous reading on refusal. Read the extended app.readVigor on entry and ordinary Refresh of both tabs. Coalesce simultaneous reads, keep the existing score, and keep ordinary Refresh stored-only. Serves BKD-3.17 and BKD-3.18.
 
-Origins: BKD-0.25, BKD-1.4, BKD-3.17 · Intention i-574738aa · 2026-11-11
+Origins: BKD-3.17, BKD-3.18 · Intention i-8c1d8d92 · 2026-11-12
 
 ## SubscriptionActivity
 
@@ -68,4 +68,16 @@ Origins: BKD-3.18 · Intention i-ea002c00 · 2026-11-12
 Reason: Sync the published shared design and connect tab entry and Refresh to `app.readVigor({})` through the 30-second App channel. Coalesce reads in flight, validate the reply, retain the last answer on failure and discard replies after disposal. Report a missing host method in the browser or on an older host. Serves BKD-3.18.
 
 Origins: BKD-3.18 · Intention i-ea002c00 · 2026-11-12
+
+## AllowanceView
+
+Reason: Sync the published shared design. Combine public accounts, saved Radar windows and typed Root evidence without using a dashboard snapshot for another binding. Use a current MiMo Driver report first, the manual snapshot for the exact ID and binding update time second, and an unpredicted Radar window third. Apply Xiaomi’s rate only to known credits. Match Pi by exact ID and binding update time and show the shared windows and policy cap. Match Codex by ID, account creation time and reported plan. Use at least five points of movement in one weekly window and observations at most 28 days old. Label previous-window calibration and use only an unelapsed weekly quota for a remaining estimate. On explicit signed-in MiMo Refresh usage call accounts.usage and reread the account list, preserving the previous reading on refusal. Read the extended app.readVigor on entry and ordinary Refresh of both tabs. Coalesce simultaneous reads, keep the existing score, and keep ordinary Refresh stored-only. Serves BKD-3.17 and BKD-3.18.
+
+Origins: BKD-3.17, BKD-3.18 · Intention i-8c1d8d92 · 2026-11-12
+
+## UsageDestination
+
+Reason: Sync the published shared design. Combine public accounts, saved Radar windows and typed Root evidence without using a dashboard snapshot for another binding. Use a current MiMo Driver report first, the manual snapshot for the exact ID and binding update time second, and an unpredicted Radar window third. Apply Xiaomi’s rate only to known credits. Match Pi by exact ID and binding update time and show the shared windows and policy cap. Match Codex by ID, account creation time and reported plan. Use at least five points of movement in one weekly window and observations at most 28 days old. Label previous-window calibration and use only an unelapsed weekly quota for a remaining estimate. On explicit signed-in MiMo Refresh usage call accounts.usage and reread the account list, preserving the previous reading on refusal. Read the extended app.readVigor on entry and ordinary Refresh of both tabs. Coalesce simultaneous reads, keep the existing score, and keep ordinary Refresh stored-only. Serves BKD-3.17 and BKD-3.18.
+
+Origins: BKD-3.17, BKD-3.18 · Intention i-8c1d8d92 · 2026-11-12
 
