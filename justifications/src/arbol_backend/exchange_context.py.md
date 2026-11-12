@@ -5,9 +5,9 @@ role: authored
 
 ## <before Refusal>
 
-Reason: Recover committed receipts before selecting and launching the exact detached Trunk
+Reason: Expose the private installation command with replies matching backend consumers
 
-Origins: ARC-4.6 · Intention i-4ae5d249 · 2026-11-12
+Origins: ARC-4.1, ARC-4.6 · Intention i-b28581e9 · 2026-11-12
 
 ## Context
 
@@ -23,15 +23,15 @@ Origins: ARC-4.6 · Intention i-4ae5d249 · 2026-11-12
 
 ## Context.database
 
-Reason: Recover committed receipts before selecting and launching the exact detached Trunk
+Reason: Expose the private installation command with replies matching backend consumers
 
-Origins: ARC-4.6 · Intention i-4ae5d249 · 2026-11-12
+Origins: ARC-4.1, ARC-4.6 · Intention i-b28581e9 · 2026-11-12
 
 ## Context.environment
 
-Reason: Recover committed receipts before selecting and launching the exact detached Trunk
+Reason: Expose the private installation command with replies matching backend consumers
 
-Origins: ARC-4.6 · Intention i-4ae5d249 · 2026-11-12
+Origins: ARC-4.1, ARC-4.6 · Intention i-b28581e9 · 2026-11-12
 
 ## Context.exchanges
 
@@ -53,13 +53,13 @@ Origins: ARC-4.6 · Intention i-4ae5d249 · 2026-11-12
 
 ## context
 
-Reason: Recover committed receipts before selecting and launching the exact detached Trunk
+Reason: Expose the private installation command with replies matching backend consumers
 
-Origins: ARC-4.6 · Intention i-4ae5d249 · 2026-11-12
+Origins: ARC-4.1, ARC-4.6 · Intention i-b28581e9 · 2026-11-12
 
 ## socket_target
 
-Reason: Recover committed receipts before selecting and launching the exact detached Trunk
+Removed: Expose the private installation command with replies matching backend consumers
 
-Origins: ARC-4.6 · Intention i-4ae5d249 · 2026-11-12
+Removed by Intention i-b28581e9 · 2026-11-12
 
