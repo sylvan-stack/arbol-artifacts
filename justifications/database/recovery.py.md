@@ -5,9 +5,9 @@ role: authored
 
 ## <before timestamp>
 
-Reason: Capture the named database with its exact snapshot, verified release and exclusive maintenance session
+Reason: Require a successful isolated restore and validate its archive, data, release and maintenance bindings before authorizing a change
 
-Origins: ARC-4.5, ARC-4.8 · Intention i-67d8e913 · 2026-11-12
+Origins: ARC-4.5, ARC-4.8 · Intention i-c84db912 · 2026-11-12
 
 ## <end>
 
@@ -59,9 +59,9 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-67d8e913 · 2026-11-12
 
 ## main
 
-Reason: Capture the named database with its exact snapshot, verified release and exclusive maintenance session
+Reason: Require a successful isolated restore and validate its archive, data, release and maintenance bindings before authorizing a change
 
-Origins: ARC-4.5, ARC-4.8 · Intention i-67d8e913 · 2026-11-12
+Origins: ARC-4.5, ARC-4.8 · Intention i-c84db912 · 2026-11-12
 
 ## observations
 
@@ -98,4 +98,34 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-67d8e913 · 2026-11-12
 Reason: Capture the named database with its exact snapshot, verified release and exclusive maintenance session
 
 Origins: ARC-4.5, ARC-4.8 · Intention i-67d8e913 · 2026-11-12
+
+## check_isolated
+
+Reason: Require a successful isolated restore and validate its archive, data, release and maintenance bindings before authorizing a change
+
+Origins: ARC-4.5, ARC-4.8 · Intention i-c84db912 · 2026-11-12
+
+## read_private
+
+Reason: Require a successful isolated restore and validate its archive, data, release and maintenance bindings before authorizing a change
+
+Origins: ARC-4.5, ARC-4.8 · Intention i-c84db912 · 2026-11-12
+
+## restore
+
+Reason: Require a successful isolated restore and validate its archive, data, release and maintenance bindings before authorizing a change
+
+Origins: ARC-4.5, ARC-4.8 · Intention i-c84db912 · 2026-11-12
+
+## validate_snapshot
+
+Reason: Require a successful isolated restore and validate its archive, data, release and maintenance bindings before authorizing a change
+
+Origins: ARC-4.5, ARC-4.8 · Intention i-c84db912 · 2026-11-12
+
+## verify_recovery
+
+Reason: Require a successful isolated restore and validate its archive, data, release and maintenance bindings before authorizing a change
+
+Origins: ARC-4.5, ARC-4.8 · Intention i-c84db912 · 2026-11-12
 
