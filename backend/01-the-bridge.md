@@ -340,6 +340,7 @@ A web page cannot open the Mac's folder dialog and should not leave its own page
 | `app.takeOpen` | — | The request to open a chat that waits for this window, `{"chat": "c3d4e5f6-…"}`, or `{"folder": "/…/readonly/shop"}` for a new chat in a repository, or `{}` when none waits. The Swift App keeps a request from Willo Station, from its latest chats or from its global keys until a window takes it, so that one made while the window loads is not lost |
 | `app.currentTrunk` | — | The Trunk for the requesting window |
 | `app.listTrunks` | — | Eligible Trunks for the requesting window’s Root |
+| `app.readVigor` | — | The recorded Vigor rollup for the requesting Seqoya window’s Root (BKD-3.18) |
 | `app.selectTrunk` | `trunk`, a Trunk code name | Sets and returns the Trunk for the requesting window |
 | The message `{"type":"open"}` | From the Swift App | Tells a window that is open that a request waits; the window takes it with `app.takeOpen` |
 
@@ -610,6 +611,7 @@ type AppRequest =
   | { type: "call"; id: string; method: "app.pickFolder"; params: { start?: string } }
   | { type: "call"; id: string; method: "app.openLink"; params: { url: string } }
   | { type: "call"; id: string; method: "app.takeOpen" | "app.currentTrunk" | "app.listTrunks"; params: {} }
+  | { type: "call"; id: string; method: "app.readVigor"; params: {} }
   | { type: "call"; id: string; method: "app.selectTrunk"; params: { trunk: string } };
 type AppMessage = { type: "open" };     // from the Swift App: a request to open a chat waits
 ```
