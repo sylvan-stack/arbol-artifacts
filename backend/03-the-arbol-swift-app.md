@@ -137,6 +137,18 @@ Seqoya Lab opens for the current Root with **Option+Q**. Its shared header and n
 
 Subscriptions lists every account returned by that Root’s `accounts.list` (BKD-1). The page reads the list on entry, on Refresh and after reconnecting while open. It identifies the vendor family separately from the Driver, shows the stored sign-in state and authentication mode, and labels the last saved usage and reset times when the Driver reports them. A missing usage report is not zero. A Driver failure is shown alongside the other Drivers’ accounts. The last snapshot stays visible, marked as stale, after a failed read or lost connection to the same Root; a Root change clears it. No credentials cross the Bridge. Refresh reads the stored list without contacting a vendor. DeepSeek and z.ai offer a separate Refresh usage action for signed-in accounts. It calls the Driver through `accounts.usage` on demand and rereads the saved list. Show DeepSeek's balance with its currency and z.ai's quota windows. If the request fails, keep any saved report and show the cause on its card.
 
+For the named Subscriptions, show fixed Performance and Cost labels for the default model. When another model is classified, show its name and labels on a separate row in the same account. These are the owner's tiers. A row without a named model describes the default for that Subscription. Use the Driver and vendor family to identify the matching account. Leave other accounts without model labels.
+
+| Subscription (Driver/vendor family) | Model | Performance | Cost |
+|---|---|---|---|
+| Claude Code (`claude/anthropic`) | Opus 5.5 (default) | Top | Expensive |
+| Codex (`codex/chatgpt`) | GPT-6.1-Sol (default) | Top | Expensive |
+| Codex (`codex/chatgpt`) | GPT-6-Astra | Top | Expensive |
+| Kimi Code (`pi/kimi-coding`) | Default | High | Moderate |
+| z.ai (`pi/zai`) | Default | Medium | Moderate |
+| DeepSeek (`pi/deepseek`) | Default | Medium | Cheap |
+| MiMo (`mimo/xiaomi`) | Default | Low | Cheap |
+
 MiMo shows agent run counts and reported input and output tokens for the last 30 days in this Root using `accounts.activity`. A missing Root read and an unreported token count stay distinct from zero recorded runs. Its console action opens Xiaomi's own account page in the system browser. Root activity is never presented as vendor allowance. Provider configuration and sign-in remain separate.
 
 The header displays the window’s Trunk. A new window starts with the tray’s default for its Root. The dropdown lists Trunks available for that window’s Root and selects one for that window only. Show loading, no compatible Trunks and refusal states. Selection stays in the same window and does not affect its Root or any accepted Exchange. A selection request belongs to the originating trusted document. A new Exchange uses the window’s selected Trunk at dispatch, including an explicit retry or Continue. A transport retry repeats the captured Trunk and Exchange identifier. Older backends support the default `trivial` path; Elma refuses to dispatch a non-default Trunk until the backend advertises support.
@@ -184,7 +196,7 @@ arbol-app:Sources/ElmaAppChannel.swift#ElmaOpenQueue
 | BKD-3.14 <!-- 15658f18-630e-4ae0-8387-634608110c03 --> | keep the running App and newest ready Build during handoff and have the Build tool retire the previous payload after the replacement is ready and the previous process exits | Changed · BLD-D25, BLD-0.28 | Installed retention handoff drill pending |
 | BKD-3.15 <!-- 53a6f4a4-cbaf-470e-ba8f-7cf056484a19 --> | Refresh the Current Trunk row and submenu checkmark after a selection or catalogue update, with explicit loading and unavailable states | Changed · owner request, 11 November 2026 | Tray journey across Root selection and clearing |
 | BKD-3.16 <!-- ba8c172c-bdbc-4d20-8cc3-ffe68e930ef7 --> | Use one shared header with integrated native controls and a Trunk dropdown that selects a compatible Trunk for the originating window only, with availability feedback | New · owner request, 11 November 2026 | Two-Root dropdown journey with an open Draft and a refused target |
-| BKD-3.17 <!-- 1e2a3635-e381-4f89-8c8d-686bddb48fd7 --> | Open Seqoya Lab in its own window for each available Root. Use the shared header and one Intelligence Providers page with Subscriptions, Vigor and Routing tabs. Start on Subscriptions. In Subscriptions, list accounts and saved usage from `accounts.list`, allow explicit DeepSeek and z.ai usage reads, and show recent Root activity for MiMo | New · owner request | Open both surfaces for one Root and select a window-local Trunk in Seqoya; verify stored-only Refresh, partial and stale results, and reconnect in Subscriptions |
+| BKD-3.17 <!-- 1e2a3635-e381-4f89-8c8d-686bddb48fd7 --> | Open Seqoya Lab in its own window for each available Root. Use the shared header and one Intelligence Providers page with Subscriptions, Vigor and Routing tabs. Start on Subscriptions. In Subscriptions, list accounts and saved usage from `accounts.list`, allow explicit DeepSeek and z.ai usage reads, show recent Root activity for MiMo, and show the specified default and additional model labels | New · owner request | Open both surfaces for one Root and select a window-local Trunk in Seqoya; verify stored-only Refresh, partial and stale results, reconnect in Subscriptions, and default and additional model labels |
 
 Verification descriptions name future evidence. The App implementation will follow the owner's separate testing and Build policy.
 
