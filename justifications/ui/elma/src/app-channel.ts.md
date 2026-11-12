@@ -11,9 +11,9 @@ Origins: BKD-0.11, BKD-1.7, BKD-3.16 · Intention i-3d376ddd · 2026-11-11
 
 ## AppChannel.call
 
-Reason: Wire the shared header to the window Trunk and retain it on dispatch replay
+Reason: Sync the published shared design and connect tab entry and Refresh to `app.readVigor({})` through the 30-second App channel. Coalesce reads in flight, validate the reply, retain the last answer on failure and discard replies after disposal. Report a missing host method in the browser or on an older host. Serves BKD-3.18.
 
-Origins: BKD-0.11, BKD-1.7, BKD-3.16 · Intention i-3d376ddd · 2026-11-11
+Origins: BKD-3.18 · Intention i-ea002c00 · 2026-11-12
 
 ## <before AppChannel>
 
@@ -35,9 +35,9 @@ Removed by Intention i-3d376ddd · 2026-11-11
 
 ## AppMethod
 
-Reason: Wire the shared header to the window Trunk and retain it on dispatch replay
+Reason: Sync the published shared design and connect tab entry and Refresh to `app.readVigor({})` through the 30-second App channel. Coalesce reads in flight, validate the reply, retain the last answer on failure and discard replies after disposal. Report a missing host method in the browser or on an older host. Serves BKD-3.18.
 
-Origins: BKD-0.11, BKD-1.7, BKD-3.16 · Intention i-3d376ddd · 2026-11-11
+Origins: BKD-3.18 · Intention i-ea002c00 · 2026-11-12
 
 ## RootMethod
 
