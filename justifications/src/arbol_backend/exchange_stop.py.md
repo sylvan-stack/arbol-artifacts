@@ -5,9 +5,9 @@ role: authored
 
 ## <before Observed>
 
-Reason: Stop the verified UUID process group and settle it after exit
+Reason: Hold controlled admission throughout the runtime stop and settlement operations and hand their generation to the child.
 
-Origins: ARC-4.6 · Intention i-56a9c4ca · 2026-11-12
+Origins: ARC-4.4 · Intention i-2497be8c · 2026-11-12
 
 ## Observed
 
@@ -53,13 +53,19 @@ Origins: ARC-4.6 · Intention i-56a9c4ca · 2026-11-12
 
 ## save_ended
 
-Reason: Stop the verified UUID process group and settle it after exit
+Reason: Hold controlled admission throughout the runtime stop and settlement operations and hand their generation to the child.
 
-Origins: ARC-4.6 · Intention i-56a9c4ca · 2026-11-12
+Origins: ARC-4.4 · Intention i-2497be8c · 2026-11-12
 
 ## stop
 
-Reason: Stop the verified UUID process group and settle it after exit
+Reason: Hold controlled admission throughout the runtime stop and settlement operations and hand their generation to the child.
 
-Origins: ARC-4.6 · Intention i-56a9c4ca · 2026-11-12
+Origins: ARC-4.4 · Intention i-2497be8c · 2026-11-12
+
+## stop_admitted
+
+Reason: Hold controlled admission throughout the runtime stop and settlement operations and hand their generation to the child.
+
+Origins: ARC-4.4 · Intention i-2497be8c · 2026-11-12
 
