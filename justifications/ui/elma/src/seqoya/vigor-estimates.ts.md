@@ -17,9 +17,9 @@ Origins: BKD-3.18 · Intention i-58029244 · 2026-11-12
 
 ## deepSeekEstimate
 
-Reason: Sync the published design. Reuse the existing account activity method for the exact Pi ChatGPT and MiMo accounts and attach its result to the expanded rows. Preserve zero runs and missing token totals. Supply the actual balance operand to the estimate. Serves BKD-3.18.
+Reason: Sync the design and remove the unused meter from the renderer snapshot. Project dated provider windows and existing Pi and MiMo fallbacks into independent sections ordered by end. Attach Codex and MiMo estimates only to the matching window and derive used and remaining equivalents from the same dated window reading and reuse DeepSeek’s existing balance conversion. Keep known elapsed readings historical and derive pace only for a positive time remaining. Use Kimi’s monthly credit and Xiaomi’s Token Plan expiration policy. Parse Codex’s saved available reset inventory once per subscription. Count a full grant once even if it covers multiple windows, and subtract known expirations only when unique available entries reconcile with the reported count. Otherwise show the reported count with its reading time. Distinguish absent and confirmed zero. Leave the Vigor view and report schema intact. Serves BKD-3.17.
 
-Origins: BKD-3.18 · Intention i-9d7e9398 · 2026-11-12
+Origins: BKD-3.17 · Intention i-a65374d0 · 2026-11-12
 
 ## rankVigor
 
@@ -44,4 +44,10 @@ Origins: BKD-3.18 · Intention i-58029244 · 2026-11-12
 Reason: Sync the published design snapshot. Refresh the public account list while Vigor is open on entry, explicit refresh and reconnect. Join the union of accounts and saved Radar results by Driver and Subscription. Preserve saved scores and reserve Unavailable for known inactive accounts. For active accounts lacking a score use zero for confirmed exhaustion or insufficient balance, or 0.05 for missing evidence. When sign-in state is unreadable, keep a saved score or show a provisional 0.05 with the reason. Estimate DeepSeek token capacity only when no reset is reported, using the higher supported currency estimate and the documented rate and formula. Rerank by displayed score. Retain the last same-Root success if either read fails and show partial failures separately. Serves BKD-3.18.
 
 Origins: BKD-3.18 · Intention i-58029244 · 2026-11-12
+
+## deepSeekBalance
+
+Reason: Sync the design and remove the unused meter from the renderer snapshot. Project dated provider windows and existing Pi and MiMo fallbacks into independent sections ordered by end. Attach Codex and MiMo estimates only to the matching window and derive used and remaining equivalents from the same dated window reading and reuse DeepSeek’s existing balance conversion. Keep known elapsed readings historical and derive pace only for a positive time remaining. Use Kimi’s monthly credit and Xiaomi’s Token Plan expiration policy. Parse Codex’s saved available reset inventory once per subscription. Count a full grant once even if it covers multiple windows, and subtract known expirations only when unique available entries reconcile with the reported count. Otherwise show the reported count with its reading time. Distinguish absent and confirmed zero. Leave the Vigor view and report schema intact. Serves BKD-3.17.
+
+Origins: BKD-3.17 · Intention i-a65374d0 · 2026-11-12
 
