@@ -29,9 +29,9 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
 
 ## capture_build
 
-Reason: Record exact selected Builds, verify source and package evidence, and retain the recovery inputs privately
+Reason: Capture the native bundle declared by the source-verified Build entry so the renamed signed App can be preserved with its renderer and source inputs
 
-Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
+Origins: ARC-4.5 · Intention i-6dd60169 · 2026-11-12
 
 ## check_hashes
 
