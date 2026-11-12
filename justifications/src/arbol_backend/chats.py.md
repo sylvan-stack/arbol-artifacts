@@ -75,3 +75,9 @@ Reason: Hold ordinary admission over backend mutations and prevent cancellation 
 
 Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
 
+## Chats.failed_refresh
+
+Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
+
+Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
+

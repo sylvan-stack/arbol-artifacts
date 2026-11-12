@@ -5,9 +5,9 @@ role: authored
 
 ## Backend.__init__
 
-Reason: Hold controlled admission through accepted Exchange controls, note persistence and Draft recovery.
+Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
 
-Origins: ARC-4.4, ARC-4.6 · Intention i-b419ba12 · 2026-11-12
+Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
 
 ## <before Backend>
 
@@ -17,15 +17,15 @@ Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
 
 ## Backend.monitor
 
-Reason: Hold ordinary admission over backend mutations and prevent cancellation from detaching a protected file write.
+Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
 
-Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
+Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
 
 ## Backend.run
 
-Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
+Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
 
-Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
+Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
 
 ## Backend.initial_catalogue
 
@@ -35,13 +35,25 @@ Removed by Intention i-961a1afa · 2026-11-12
 
 ## Backend.connection
 
-Reason: Advertise Bridge 2 installation status first, remove Root catalogue RPCs, and preserve the maintenance and schema refusal codes.
+Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
 
-Origins: ARC-4.1, ARC-4.4, ARC-4.7 · Intention i-1792384e · 2026-11-12
+Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
 
 ## Backend.listed
 
 Reason: Coalesce inventory by Exchange UUID and verify event folders against the recorded assignment and process.
 
 Origins: ARC-4.1, ARC-4.6 · Intention i-37a0246e · 2026-11-12
+
+## Backend.hello
+
+Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
+
+Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
+
+## Backend.watch_maintenance
+
+Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
+
+Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
 

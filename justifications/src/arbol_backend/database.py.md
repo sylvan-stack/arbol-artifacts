@@ -5,15 +5,15 @@ role: authored
 
 ## Database.__init__
 
-Reason: Hold ordinary admission over backend mutations and prevent cancellation from detaching a protected file write.
+Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
 
-Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
+Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
 
 ## Database.session
 
-Reason: Measure only the configured installation and refresh status and views when schema access returns.
+Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-bd55831d · 2026-11-12
+Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
 
 ## credentials
 
@@ -29,9 +29,9 @@ Removed by Intention i-fd7b43a3 · 2026-11-12
 
 ## <before Schema>
 
-Reason: Hold ordinary admission over backend mutations and prevent cancellation from detaching a protected file write.
+Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
 
-Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
+Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
 
 ## Database.read_schema
 
@@ -83,15 +83,15 @@ Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
 
 ## Admission.status
 
-Reason: Hold ordinary admission over backend mutations and prevent cancellation from detaching a protected file write.
+Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
 
-Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
+Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
 
 ## Database.permit
 
-Reason: Hold ordinary admission over backend mutations and prevent cancellation from detaching a protected file write.
+Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
 
-Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
+Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
 
 ## protected_thread
 
@@ -122,4 +122,22 @@ Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
 Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
 
 Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
+
+## Database.connection
+
+Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
+
+Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
+
+## Database.observe_maintenance
+
+Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
+
+Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
+
+## Database.readable
+
+Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
+
+Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
 

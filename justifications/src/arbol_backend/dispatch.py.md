@@ -59,9 +59,9 @@ Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
 
 ## Dispatch.dispatch
 
-Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
+Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
 
-Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
+Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
 
 ## Dispatch.cleanup
 
@@ -86,4 +86,10 @@ Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
 Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
 
 Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
+
+## Dispatch.reopen
+
+Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
+
+Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
 
