@@ -5,15 +5,15 @@ role: authored
 
 ## <before not_json>
 
-Reason: Discover pending and running Exchanges from verified installation records
+Reason: Prove an empty runtime and database under the same lease gate, then bind snapshot, upgrade and explicit verified reopen to the durable session.
 
-Origins: ARC-4.6 · Intention i-1ef86594 · 2026-11-12
+Origins: ARC-4.4, ARC-4.8 · Intention i-4292c8dd · 2026-11-12
 
 ## listing
 
-Reason: Expose the private installation command with replies matching backend consumers
+Reason: Prove an empty runtime and database under the same lease gate, then bind snapshot, upgrade and explicit verified reopen to the durable session.
 
-Origins: ARC-4.1, ARC-4.6 · Intention i-b28581e9 · 2026-11-12
+Origins: ARC-4.4, ARC-4.8 · Intention i-4292c8dd · 2026-11-12
 
 ## lookup
 
@@ -44,4 +44,10 @@ Origins: ARC-4.6 · Intention i-1ef86594 · 2026-11-12
 Reason: Discover pending and running Exchanges from verified installation records
 
 Origins: ARC-4.6 · Intention i-1ef86594 · 2026-11-12
+
+## drained_inventory
+
+Reason: Prove an empty runtime and database under the same lease gate, then bind snapshot, upgrade and explicit verified reopen to the durable session.
+
+Origins: ARC-4.4, ARC-4.8 · Intention i-4292c8dd · 2026-11-12
 
