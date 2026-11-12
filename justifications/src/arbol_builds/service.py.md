@@ -15,3 +15,15 @@ Reason: Record each database-dependent Build's declared schema compatibility and
 
 Origins: ARC-4.3 · Intention i-62e4abb1 · 2026-11-12
 
+## <before now>
+
+Reason: Read the one installed schema through the release's canonical read-only status command.
+
+Origins: ARC-4.1, ARC-4.3 · Intention i-529033a1 · 2026-11-12
+
+## launcher_source
+
+Reason: Read the one installed schema through the release's canonical read-only status command.
+
+Origins: ARC-4.1, ARC-4.3 · Intention i-529033a1 · 2026-11-12
+
