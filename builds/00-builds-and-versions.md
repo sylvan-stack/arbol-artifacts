@@ -236,7 +236,7 @@ arbol:tests/test_unused.py#UseGuards
 
 ### Retaining the newest Build
 
-A Build keeps its component and hexadecimal number in the existing registry. For example, `arbol-app@b` is the bundle `~/Library/Application Support/Arbol/builds/arbol-app/b/Arbol.app`. The bundle name is always `Arbol.app`. A new build of an earlier source commit gets the next Build number.
+A Build keeps its component and hexadecimal number in the existing registry. For example, the historical `arbol-app@b` bundle is `~/Library/Application Support/Arbol/builds/arbol-app/b/Arbol.app`. New Swift App Builds package `Seqoya Lab.app` with an executable named Seqoya Lab. Existing Build records retain their original entry paths; launch and handoff resolve each Build’s recorded entry. The component and CLI remain `arbol-app`. A new build of an earlier source commit gets the next Build number.
 
 Normally keep the latest runnable working payload for each selection scope. The Swift App has one scope outside all Roots. The `arbol` and `arbol-root` components each keep the newest runnable working payload per retained Root. Retained Roots also keep the Trunk Builds their Root Contracts require.
 
