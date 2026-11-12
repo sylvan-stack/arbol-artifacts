@@ -149,15 +149,15 @@ Origins: BKD-3.17 · Intention i-d3d8c042 · 2026-11-12
 
 ## WindowEstimate
 
-Reason: Synchronize the published shared card and date formatter. Use scoped window evidence to derive model estimates for Claude, Kimi, Pi ChatGPT and z.ai, preserving source, date and numerical basis. Use the recorded used share for the selected window and match the current account, identity check and window label. For z.ai use the current bound account’s verified model credit caps and the GLM-5.3 Standard conversion of credits × 10,000 ÷ 24. Preserve MCP call windows separately. Explain missing or invalidated evidence. Show z.ai’s zero-use rolling period as starting with its next use. Use specific states for closed periods and recurring expiry, and retain DeepSeek’s unavailable values. Serves BKD-3.17.
+Reason: Synchronize the published shared design. Wire native renaming with connection and subscription-identity fencing, retain input on refusal and reread saved accounts on success. Remove the invalid Kimi calls conversion and use a matching local-output/share calibration; normalize display order without discarding vendor windows or scope. Add the native app-channel method and explicit browser-preview refusal. Serves BKD-3.17.
 
-Origins: BKD-3.17 · Intention i-d3d8c042 · 2026-11-12
+Origins: BKD-3.17 · Intention i-9cd567d4 · 2026-11-12
 
 ## windowCapacity
 
-Reason: Synchronize the published shared card and date formatter. Use scoped window evidence to derive model estimates for Claude, Kimi, Pi ChatGPT and z.ai, preserving source, date and numerical basis. Use the recorded used share for the selected window and match the current account, identity check and window label. For z.ai use the current bound account’s verified model credit caps and the GLM-5.3 Standard conversion of credits × 10,000 ÷ 24. Preserve MCP call windows separately. Explain missing or invalidated evidence. Show z.ai’s zero-use rolling period as starting with its next use. Use specific states for closed periods and recurring expiry, and retain DeepSeek’s unavailable values. Serves BKD-3.17.
+Reason: Synchronize the published shared design. Wire native renaming with connection and subscription-identity fencing, retain input on refusal and reread saved accounts on success. Remove the invalid Kimi calls conversion and use a matching local-output/share calibration; normalize display order without discarding vendor windows or scope. Add the native app-channel method and explicit browser-preview refusal. Serves BKD-3.17.
 
-Origins: BKD-3.17 · Intention i-d3d8c042 · 2026-11-12
+Origins: BKD-3.17 · Intention i-9cd567d4 · 2026-11-12
 
 ## Rollover
 

@@ -11,9 +11,9 @@ Origins: BKD-0.11, BKD-1.7, BKD-3.16 · Intention i-3d376ddd · 2026-11-11
 
 ## AppChannel.call
 
-Reason: Synchronize the shared design including the icon. Replace elapsed readings with the next allowance: project a documented recurring date and initial allowance where possible, leave start-on-use windows undated until use, and wait for a confirmed new grant if renewal cannot be inferred. Keep a newer provider reading authoritative and leave all elapsed metrics out of the cards. On the active Subscriptions tab attempt one live usage read per passed observed boundary for capable accounts, including Codex and Kimi Code. Coalesce due boundaries per account, deduplicate by binding and boundary in the open renderer, fence replies by connection, and retain a manual retry. Send ChatGPT to the Seqoya-only host method with account identity; preserve the separate MiMo console action. Serves BKD-3.17.
+Reason: Synchronize the published shared design. Wire native renaming with connection and subscription-identity fencing, retain input on refusal and reread saved accounts on success. Remove the invalid Kimi calls conversion and use a matching local-output/share calibration; normalize display order without discarding vendor windows or scope. Add the native app-channel method and explicit browser-preview refusal. Serves BKD-3.17.
 
-Origins: BKD-3.17 · Intention i-9dbf0f62 · 2026-11-12
+Origins: BKD-3.17 · Intention i-9cd567d4 · 2026-11-12
 
 ## <before AppChannel>
 
@@ -35,9 +35,9 @@ Removed by Intention i-3d376ddd · 2026-11-11
 
 ## AppMethod
 
-Reason: Synchronize the shared design including the icon. Replace elapsed readings with the next allowance: project a documented recurring date and initial allowance where possible, leave start-on-use windows undated until use, and wait for a confirmed new grant if renewal cannot be inferred. Keep a newer provider reading authoritative and leave all elapsed metrics out of the cards. On the active Subscriptions tab attempt one live usage read per passed observed boundary for capable accounts, including Codex and Kimi Code. Coalesce due boundaries per account, deduplicate by binding and boundary in the open renderer, fence replies by connection, and retain a manual retry. Send ChatGPT to the Seqoya-only host method with account identity; preserve the separate MiMo console action. Serves BKD-3.17.
+Reason: Synchronize the published shared design. Wire native renaming with connection and subscription-identity fencing, retain input on refusal and reread saved accounts on success. Remove the invalid Kimi calls conversion and use a matching local-output/share calibration; normalize display order without discarding vendor windows or scope. Add the native app-channel method and explicit browser-preview refusal. Serves BKD-3.17.
 
-Origins: BKD-3.17 · Intention i-9dbf0f62 · 2026-11-12
+Origins: BKD-3.17 · Intention i-9cd567d4 · 2026-11-12
 
 ## RootMethod
 
