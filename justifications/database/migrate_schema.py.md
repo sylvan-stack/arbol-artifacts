@@ -95,9 +95,9 @@ Origins: ARC-4.1, ARC-4.2, ARC-4.3, ARC-4.8 · Intention i-f573246b · 2026-11-1
 
 ## initialize
 
-Reason: Read the installed schema and initialize the baseline only in an explicitly authorized empty database
+Reason: Apply an explicit ordered prefix with an atomic ledger entry for each migration
 
-Origins: ARC-4.1, ARC-4.2, ARC-4.3, ARC-4.8 · Intention i-f573246b · 2026-11-12
+Origins: ARC-4.2, ARC-4.3 · Intention i-add61040 · 2026-11-12
 
 ## load_manifest
 
@@ -107,9 +107,9 @@ Origins: ARC-4.1, ARC-4.2, ARC-4.3, ARC-4.8 · Intention i-f573246b · 2026-11-1
 
 ## lookup
 
-Reason: Read the installed schema and initialize the baseline only in an explicitly authorized empty database
+Reason: Apply an explicit ordered prefix with an atomic ledger entry for each migration
 
-Origins: ARC-4.1, ARC-4.2, ARC-4.3, ARC-4.8 · Intention i-f573246b · 2026-11-12
+Origins: ARC-4.2, ARC-4.3 · Intention i-add61040 · 2026-11-12
 
 ## main
 
@@ -122,4 +122,22 @@ Origins: ARC-4.1, ARC-4.2, ARC-4.3, ARC-4.8 · Intention i-f573246b · 2026-11-1
 Reason: Read the installed schema and initialize the baseline only in an explicitly authorized empty database
 
 Origins: ARC-4.1, ARC-4.2, ARC-4.3, ARC-4.8 · Intention i-f573246b · 2026-11-12
+
+## _apply_prefix
+
+Reason: Apply an explicit ordered prefix with an atomic ledger entry for each migration
+
+Origins: ARC-4.2, ARC-4.3 · Intention i-add61040 · 2026-11-12
+
+## _check_target
+
+Reason: Apply an explicit ordered prefix with an atomic ledger entry for each migration
+
+Origins: ARC-4.2, ARC-4.3 · Intention i-add61040 · 2026-11-12
+
+## _read_committed
+
+Reason: Apply an explicit ordered prefix with an atomic ledger entry for each migration
+
+Origins: ARC-4.2, ARC-4.3 · Intention i-add61040 · 2026-11-12
 
