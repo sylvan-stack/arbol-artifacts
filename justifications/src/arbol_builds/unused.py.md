@@ -5,13 +5,43 @@ role: authored
 
 ## <before read_days>
 
-Reason: Protect the installed schema’s default Trunk from pruning and run the delivered reader with the pinned psycopg dependency.
+Reason: Retain recorded Exchange Builds during installation pruning
 
-Origins: ARC-4.1, ARC-4.3 · Intention i-53c98edf · 2026-11-12
+Origins: ARC-4.6 · Intention i-2fff8f61 · 2026-11-12
 
 ## prune_unused
 
-Reason: Protect the installed schema’s default Trunk from pruning and run the delivered reader with the pinned psycopg dependency.
+Reason: Retain recorded Exchange Builds during installation pruning
 
-Origins: ARC-4.1, ARC-4.3 · Intention i-53c98edf · 2026-11-12
+Origins: ARC-4.6 · Intention i-2fff8f61 · 2026-11-12
+
+## <before Usage>
+
+Reason: Retain recorded Exchange Builds during installation pruning
+
+Origins: ARC-4.6 · Intention i-2fff8f61 · 2026-11-12
+
+## Usage
+
+Reason: Retain recorded Exchange Builds during installation pruning
+
+Origins: ARC-4.6 · Intention i-2fff8f61 · 2026-11-12
+
+## listed_exchanges
+
+Reason: Retain recorded Exchange Builds during installation pruning
+
+Origins: ARC-4.6 · Intention i-2fff8f61 · 2026-11-12
+
+## usage_snapshot
+
+Reason: Retain recorded Exchange Builds during installation pruning
+
+Origins: ARC-4.6 · Intention i-2fff8f61 · 2026-11-12
+
+## Usage.retains
+
+Reason: Retain recorded Exchange Builds during installation pruning
+
+Origins: ARC-4.6 · Intention i-2fff8f61 · 2026-11-12
 

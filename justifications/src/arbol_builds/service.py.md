@@ -17,9 +17,9 @@ Origins: ARC-4.1, ARC-4.3, ARC-4.8 · Intention i-d1b0e71e · 2026-11-12
 
 ## <before now>
 
-Reason: Stage the schema-compatible Arbol Build and its Exchange command
+Reason: Retain recorded Exchange Builds during installation pruning
 
-Origins: ARC-4.1, ARC-4.3, ARC-4.8 · Intention i-d1b0e71e · 2026-11-12
+Origins: ARC-4.6 · Intention i-2fff8f61 · 2026-11-12
 
 ## launcher_source
 
@@ -38,4 +38,10 @@ Origins: ARC-4.1, ARC-4.3, ARC-4.8 · Intention i-d1b0e71e · 2026-11-12
 Reason: Stage the schema-compatible Arbol Build and its Exchange command
 
 Origins: ARC-4.1, ARC-4.3, ARC-4.8 · Intention i-d1b0e71e · 2026-11-12
+
+## prune_builds
+
+Reason: Retain recorded Exchange Builds during installation pruning
+
+Origins: ARC-4.6 · Intention i-2fff8f61 · 2026-11-12
 
