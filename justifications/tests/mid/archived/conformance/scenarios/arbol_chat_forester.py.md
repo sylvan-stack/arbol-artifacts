@@ -47,7 +47,13 @@ Origins: ARC-4.7 · Intention i-6fd55dbb · 2026-11-12
 
 ## ForesterProbe.verify
 
-Reason: Qualify persistent UUID ownership, normal and managed refusal hooks and shell correlation across native sessions
+Reason: Qualify exact historical owners and guarded legacy booking settlement with local-only Git history publication
 
-Origins: ARC-4.7 · Intention i-5fc5f907 · 2026-11-12
+Origins: ARC-4.7, ARC-4.8 · Intention i-ccc1d02b · 2026-11-12
+
+## ForesterProbe.verify_legacy
+
+Reason: Qualify exact historical owners and guarded legacy booking settlement with local-only Git history publication
+
+Origins: ARC-4.7, ARC-4.8 · Intention i-ccc1d02b · 2026-11-12
 
