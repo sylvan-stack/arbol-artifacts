@@ -5,7 +5,31 @@ role: authored
 
 ## Backend.__init__
 
-Reason: Read recent MiMo activity from the selected Root’s saved agent runs.
+Reason: Make App and CLI acquisition share the private installation lifetime lock and readiness contract.
 
-Origins: BKD-1.4, BKD-3.17 · Intention i-a6391151 · 2026-11-11
+Origins: ARC-4.1 · Intention i-961a1afa · 2026-11-12
+
+## <before Backend>
+
+Reason: Make App and CLI acquisition share the private installation lifetime lock and readiness contract.
+
+Origins: ARC-4.1 · Intention i-961a1afa · 2026-11-12
+
+## Backend.monitor
+
+Reason: Make App and CLI acquisition share the private installation lifetime lock and readiness contract.
+
+Origins: ARC-4.1 · Intention i-961a1afa · 2026-11-12
+
+## Backend.run
+
+Reason: Make App and CLI acquisition share the private installation lifetime lock and readiness contract.
+
+Origins: ARC-4.1 · Intention i-961a1afa · 2026-11-12
+
+## Backend.initial_catalogue
+
+Removed: Make App and CLI acquisition share the private installation lifetime lock and readiness contract.
+
+Removed by Intention i-961a1afa · 2026-11-12
 

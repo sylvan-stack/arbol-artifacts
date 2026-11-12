@@ -5,9 +5,9 @@ role: authored
 
 ## <before Refused>
 
-Reason: Resolve a single installation configuration and enforce the installed schema contract before database work.
+Reason: Make App and CLI acquisition share the private installation lifetime lock and readiness contract.
 
-Origins: ARC-4.1, ARC-4.4 · Intention i-fd7b43a3 · 2026-11-12
+Origins: ARC-4.1 · Intention i-961a1afa · 2026-11-12
 
 ## Identity
 
@@ -23,9 +23,9 @@ Origins: ARC-4.1, ARC-4.4 · Intention i-fd7b43a3 · 2026-11-12
 
 ## parse
 
-Reason: Resolve a single installation configuration and enforce the installed schema contract before database work.
+Reason: Make App and CLI acquisition share the private installation lifetime lock and readiness contract.
 
-Origins: ARC-4.1, ARC-4.4 · Intention i-fd7b43a3 · 2026-11-12
+Origins: ARC-4.1 · Intention i-961a1afa · 2026-11-12
 
 ## Identity.root
 
