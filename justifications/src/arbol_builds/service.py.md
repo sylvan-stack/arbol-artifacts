@@ -5,9 +5,9 @@ role: authored
 
 ## list_builds
 
-Reason: Resolve the saved working Root in the shared catalogue reader used by implicit launches, inventory and removal protection.
+Reason: Protect the installed schema’s default Trunk from pruning and run the delivered reader with the pinned psycopg dependency.
 
-Origins: ARC-1.7 · Intention i-ae9010e7 · 2026-11-11
+Origins: ARC-4.1, ARC-4.3 · Intention i-53c98edf · 2026-11-12
 
 ## build_component
 
@@ -17,13 +17,25 @@ Origins: ARC-4.3 · Intention i-62e4abb1 · 2026-11-12
 
 ## <before now>
 
-Reason: Drop the obsolete Root reader from the generated Trunk launcher and remove an unused import in the embedded schema reader.
+Reason: Protect the installed schema’s default Trunk from pruning and run the delivered reader with the pinned psycopg dependency.
 
-Origins: ARC-4.1, ARC-4.3 · Intention i-fa05f54d · 2026-11-12
+Origins: ARC-4.1, ARC-4.3 · Intention i-53c98edf · 2026-11-12
 
 ## launcher_source
 
 Reason: Read the one installed schema through the release's canonical read-only status command.
 
 Origins: ARC-4.1, ARC-4.3 · Intention i-529033a1 · 2026-11-12
+
+## prune_protections
+
+Reason: Protect the installed schema’s default Trunk from pruning and run the delivered reader with the pinned psycopg dependency.
+
+Origins: ARC-4.1, ARC-4.3 · Intention i-53c98edf · 2026-11-12
+
+## show_build
+
+Reason: Protect the installed schema’s default Trunk from pruning and run the delivered reader with the pinned psycopg dependency.
+
+Origins: ARC-4.1, ARC-4.3 · Intention i-53c98edf · 2026-11-12
 
