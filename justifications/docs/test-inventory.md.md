@@ -5,9 +5,9 @@ role: authored
 
 ## Test inventory: arbol > Retained selections
 
-Reason: Restore complete source checks using canonical installation fixtures while preserving current guarantees and retired Root evidence
+Reason: Describe C44 UUID continuity, child Forester ownership and exact legacy settlement while preserving historical qualification scope
 
-Origins: ARC-4.1, ARC-4.3, ARC-4.4, ARC-4.6, ARC-4.7 · Intention i-a24cfd8e · 2026-11-12
+Origins: ARC-4.7, ARC-4.8 · Intention i-c43f57a6 · 2026-11-12
 
 ## Test inventory: arbol
 
@@ -23,7 +23,7 @@ Origins: ARC-4.1, ARC-4.3, ARC-4.4, ARC-4.6, ARC-4.7 · Intention i-a24cfd8e · 
 
 ## Test inventory: arbol > ASD-8 installation fixture adaptation · 12 November 2026
 
-Reason: Restore complete source checks using canonical installation fixtures while preserving current guarantees and retired Root evidence
+Reason: Describe C44 UUID continuity, child Forester ownership and exact legacy settlement while preserving historical qualification scope
 
-Origins: ARC-4.1, ARC-4.3, ARC-4.4, ARC-4.6, ARC-4.7 · Intention i-a24cfd8e · 2026-11-12
+Origins: ARC-4.7, ARC-4.8 · Intention i-c43f57a6 · 2026-11-12
 

@@ -5,9 +5,9 @@ role: authored
 
 ## <end>
 
-Reason: DRV-2.37: a shared scenario observes the Arbol chat identity at the vendor tool launch boundary and its refusal before launch
+Reason: Describe C44 UUID continuity, child Forester ownership and exact legacy settlement while preserving historical qualification scope
 
-Origins: DRV-2.37, CLD-2.26, CDX-2.22, DRV-5.5 · Intention i-86490b68 · 2026-11-11
+Origins: ARC-4.7, ARC-4.8 · Intention i-c43f57a6 · 2026-11-12
 
 ## <before identity_run>
 
@@ -23,9 +23,9 @@ Origins: DRV-2.37, CLD-2.26, CDX-2.22, DRV-5.5 · Intention i-86490b68 · 2026-1
 
 ## identity_run
 
-Reason: DRV-2.37: a shared scenario observes the Arbol chat identity at the vendor tool launch boundary and its refusal before launch
+Reason: Describe C44 UUID continuity, child Forester ownership and exact legacy settlement while preserving historical qualification scope
 
-Origins: DRV-2.37, CLD-2.26, CDX-2.22, DRV-5.5 · Intention i-86490b68 · 2026-11-11
+Origins: ARC-4.7, ARC-4.8 · Intention i-c43f57a6 · 2026-11-12
 
 ## run_c44
 
