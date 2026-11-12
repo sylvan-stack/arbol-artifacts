@@ -17,9 +17,9 @@ Origins: ARC-4.1, ARC-4.7 · Intention i-bd55831d · 2026-11-12
 
 ## credentials
 
-Reason: Measure only the configured installation and refresh status and views when schema access returns.
+Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-bd55831d · 2026-11-12
+Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
 
 ## <before Unavailable>
 
@@ -35,9 +35,9 @@ Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
 
 ## Database.read_schema
 
-Reason: Measure only the configured installation and refresh status and views when schema access returns.
+Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-bd55831d · 2026-11-12
+Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
 
 ## Schema
 
@@ -98,4 +98,28 @@ Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
 Reason: Hold ordinary admission over backend mutations and prevent cancellation from detaching a protected file write.
 
 Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
+
+## configured_target
+
+Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
+
+Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
+
+## database_fields
+
+Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
+
+Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
+
+## explicit_target
+
+Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
+
+Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
+
+## private_socket
+
+Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
+
+Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
 

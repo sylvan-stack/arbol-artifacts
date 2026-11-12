@@ -29,9 +29,9 @@ Removed by Intention i-7975d6ee · 2026-11-11
 
 ## <before selected_trunk>
 
-Reason: Hold ordinary admission over backend mutations and prevent cancellation from detaching a protected file write.
+Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
 
-Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
+Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
 
 ## selected_trunk
 
@@ -53,13 +53,37 @@ Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
 
 ## Dispatch.maintain
 
-Reason: Hold ordinary admission over backend mutations and prevent cancellation from detaching a protected file write.
+Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
 
-Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
+Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
 
 ## Dispatch.dispatch
 
-Reason: Hold ordinary admission over backend mutations and prevent cancellation from detaching a protected file write.
+Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
 
-Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
+Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
+
+## Dispatch.cleanup
+
+Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
+
+Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
+
+## Dispatch.result
+
+Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
+
+Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
+
+## Dispatch.send
+
+Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
+
+Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
+
+## Entry
+
+Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
+
+Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
 

@@ -5,9 +5,9 @@ role: authored
 
 ## Programs.call
 
-Reason: Make App and CLI acquisition share the private installation lifetime lock and readiness contract.
+Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
 
-Origins: ARC-4.1 · Intention i-961a1afa · 2026-11-12
+Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
 
 ## <before Child>
 
@@ -23,9 +23,9 @@ Removed by Intention i-961a1afa · 2026-11-12
 
 ## <before lock_pid>
 
-Reason: Advertise Bridge 2 installation status first, remove Root catalogue RPCs, and preserve the maintenance and schema refusal codes.
+Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
 
-Origins: ARC-4.1, ARC-4.4, ARC-4.7 · Intention i-1792384e · 2026-11-12
+Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
 
 ## acquire_backend
 
@@ -41,13 +41,13 @@ Origins: ARC-4.1 · Intention i-961a1afa · 2026-11-12
 
 ## lock_pid
 
-Reason: Make App and CLI acquisition share the private installation lifetime lock and readiness contract.
+Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
 
-Origins: ARC-4.1 · Intention i-961a1afa · 2026-11-12
+Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
 
 ## running_backend
 
-Reason: Advertise Bridge 2 installation status first, remove Root catalogue RPCs, and preserve the maintenance and schema refusal codes.
+Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
 
-Origins: ARC-4.1, ARC-4.4, ARC-4.7 · Intention i-1792384e · 2026-11-12
+Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
 
