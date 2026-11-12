@@ -41,9 +41,9 @@ Origins: ARC-4.1, ARC-4.6 · Intention i-37a0246e · 2026-11-12
 
 ## Stuck.force
 
-Reason: Hold controlled admission through accepted Exchange controls, note persistence and Draft recovery.
+Reason: Require verified acceptance for answers and a confirmed force stop before storing a stuck note.
 
-Origins: ARC-4.4, ARC-4.6 · Intention i-b419ba12 · 2026-11-12
+Origins: ARC-4.4, ARC-4.6 · Intention i-3f5612dc · 2026-11-12
 
 ## Stuck.save_note
 

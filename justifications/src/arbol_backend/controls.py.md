@@ -23,9 +23,9 @@ Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
 
 ## Controls.result
 
-Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
+Reason: Require verified acceptance for answers and a confirmed force stop before storing a stuck note.
 
-Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
+Origins: ARC-4.4, ARC-4.6 · Intention i-3f5612dc · 2026-11-12
 
 ## Controls.run
 
