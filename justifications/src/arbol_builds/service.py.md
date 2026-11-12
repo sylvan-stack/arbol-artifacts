@@ -17,9 +17,9 @@ Origins: ARC-4.3 · Intention i-62e4abb1 · 2026-11-12
 
 ## <before now>
 
-Reason: Read the one installed schema through the release's canonical read-only status command.
+Reason: Drop the obsolete Root reader from the generated Trunk launcher and remove an unused import in the embedded schema reader.
 
-Origins: ARC-4.1, ARC-4.3 · Intention i-529033a1 · 2026-11-12
+Origins: ARC-4.1, ARC-4.3 · Intention i-fa05f54d · 2026-11-12
 
 ## launcher_source
 
