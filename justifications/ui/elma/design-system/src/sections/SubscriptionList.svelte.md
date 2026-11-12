@@ -5,9 +5,9 @@ role: authored
 
 ## <before style>
 
-Reason: Synchronize the published design source for subscription expiry, headings and local date formatting. Serves BKD-3.17.
+Reason: Synchronize the pinned installation design source, original Seqoya icon and exact manifest provenance
 
-Origins: BKD-3.17 · Intention i-f7d7cbad · 2026-11-12
+Origins: ARC-4.7 · Intention i-8e6b3358 · 2026-11-12
 
 ## script
 
