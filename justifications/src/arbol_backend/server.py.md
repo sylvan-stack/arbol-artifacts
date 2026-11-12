@@ -5,15 +5,15 @@ role: authored
 
 ## Backend.__init__
 
-Reason: Keep Vigor paused until admitted, resume a due tick after reopening, and leave empty history until a new report.
+Reason: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
 
-Origins: ARC-4.4, ARC-4.7 · Intention i-fded1ae6 · 2026-11-12
+Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
 
 ## <before Backend>
 
-Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
+Reason: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
 
-Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
+Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
 
 ## Backend.monitor
 

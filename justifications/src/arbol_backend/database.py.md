@@ -29,9 +29,9 @@ Removed by Intention i-fd7b43a3 · 2026-11-12
 
 ## <before Schema>
 
-Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
+Reason: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
 
-Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
+Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
 
 ## Database.read_schema
 
@@ -65,33 +65,33 @@ Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
 
 ## <before Admission>
 
-Reason: Hold ordinary admission over backend mutations and prevent cancellation from detaching a protected file write.
+Removed: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
 
-Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
+Removed by Intention i-4f63d0c4 · 2026-11-12
 
 ## Admission
 
-Reason: Hold ordinary admission over backend mutations and prevent cancellation from detaching a protected file write.
+Removed: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
 
-Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
+Removed by Intention i-4f63d0c4 · 2026-11-12
 
 ## Admission.permit
 
-Reason: Hold ordinary admission over backend mutations and prevent cancellation from detaching a protected file write.
+Removed: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
 
-Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
+Removed by Intention i-4f63d0c4 · 2026-11-12
 
 ## Admission.status
 
-Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
+Removed: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
 
-Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
+Removed by Intention i-4f63d0c4 · 2026-11-12
 
 ## Database.permit
 
-Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
+Reason: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
 
-Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
+Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
 
 ## protected_thread
 
@@ -125,9 +125,9 @@ Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
 
 ## Database.connection
 
-Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
+Reason: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
 
-Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
+Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
 
 ## Database.observe_maintenance
 
@@ -140,4 +140,16 @@ Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
 Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
 
 Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
+
+## <before current_lease>
+
+Reason: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
+
+Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
+
+## current_lease
+
+Reason: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
+
+Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
 

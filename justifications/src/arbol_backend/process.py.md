@@ -5,9 +5,9 @@ role: authored
 
 ## Programs.call
 
-Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
+Reason: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
 
-Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
+Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
 
 ## <before Child>
 
@@ -23,9 +23,9 @@ Removed by Intention i-961a1afa · 2026-11-12
 
 ## <before lock_pid>
 
-Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
+Reason: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
 
-Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
+Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
 
 ## acquire_backend
 

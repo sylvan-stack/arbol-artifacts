@@ -5,19 +5,19 @@ role: authored
 
 ## <before Options>
 
-Reason: Use one Vigor data source and admit explicit refresh, learning and approval without refreshing vendor data on saved reads.
+Reason: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
 
-Origins: ARC-4.1, ARC-4.4, ARC-4.7 · Intention i-ab65ccdb · 2026-11-12
+Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
 
 ## profile_command
 
-Reason: Use one Vigor data source and admit explicit refresh, learning and approval without refreshing vendor data on saved reads.
+Reason: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
 
-Origins: ARC-4.1, ARC-4.4, ARC-4.7 · Intention i-ab65ccdb · 2026-11-12
+Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
 
 ## read
 
-Reason: Use one Vigor data source and admit explicit refresh, learning and approval without refreshing vendor data on saved reads.
+Reason: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
 
-Origins: ARC-4.1, ARC-4.4, ARC-4.7 · Intention i-ab65ccdb · 2026-11-12
+Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
 
