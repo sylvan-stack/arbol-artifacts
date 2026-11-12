@@ -5,9 +5,9 @@ role: authored
 
 ## Backend.__init__
 
-Reason: Advertise Bridge 2 installation status first, remove Root catalogue RPCs, and preserve the maintenance and schema refusal codes.
+Reason: Measure only the configured installation and refresh status and views when schema access returns.
 
-Origins: ARC-4.1, ARC-4.4, ARC-4.7 · Intention i-1792384e · 2026-11-12
+Origins: ARC-4.1, ARC-4.7 · Intention i-bd55831d · 2026-11-12
 
 ## <before Backend>
 

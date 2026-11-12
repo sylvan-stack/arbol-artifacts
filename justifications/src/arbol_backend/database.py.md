@@ -11,15 +11,15 @@ Origins: ARC-4.1, ARC-4.4 · Intention i-fd7b43a3 · 2026-11-12
 
 ## Database.session
 
-Reason: Resolve a single installation configuration and enforce the installed schema contract before database work.
+Reason: Measure only the configured installation and refresh status and views when schema access returns.
 
-Origins: ARC-4.1, ARC-4.4 · Intention i-fd7b43a3 · 2026-11-12
+Origins: ARC-4.1, ARC-4.7 · Intention i-bd55831d · 2026-11-12
 
 ## credentials
 
-Reason: Resolve a single installation configuration and enforce the installed schema contract before database work.
+Reason: Measure only the configured installation and refresh status and views when schema access returns.
 
-Origins: ARC-4.1, ARC-4.4 · Intention i-fd7b43a3 · 2026-11-12
+Origins: ARC-4.1, ARC-4.7 · Intention i-bd55831d · 2026-11-12
 
 ## <before Unavailable>
 
@@ -29,15 +29,15 @@ Removed by Intention i-fd7b43a3 · 2026-11-12
 
 ## <before Schema>
 
-Reason: Resolve a single installation configuration and enforce the installed schema contract before database work.
+Reason: Measure only the configured installation and refresh status and views when schema access returns.
 
-Origins: ARC-4.1, ARC-4.4 · Intention i-fd7b43a3 · 2026-11-12
+Origins: ARC-4.1, ARC-4.7 · Intention i-bd55831d · 2026-11-12
 
 ## Database.read_schema
 
-Reason: Resolve a single installation configuration and enforce the installed schema contract before database work.
+Reason: Measure only the configured installation and refresh status and views when schema access returns.
 
-Origins: ARC-4.1, ARC-4.4 · Intention i-fd7b43a3 · 2026-11-12
+Origins: ARC-4.1, ARC-4.7 · Intention i-bd55831d · 2026-11-12
 
 ## Schema
 
