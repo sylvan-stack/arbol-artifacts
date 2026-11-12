@@ -15,6 +15,7 @@ The inside of an [Arbol Trunk](../GLOSSARY.md#arbol-trunk) is absent on purpose.
 | [ARC-1](01-roots.md) | Roots | accepted |
 | [ARC-2](02-chat-exchange-across-components.md) | A Chat Exchange across the components | accepted |
 | [ARC-3](03-stuck-trunks.md) | Stuck Trunks | accepted |
+| [ARC-4](04-single-database.md) | Single database and schema upgrades | draft |
 
 The sub-chapter [Provider hooks](provider-hooks/README.md) (PHK-0 and PHK-1) holds what Claude Code and Codex do with a hook, which hooks are on this Mac, and the rules every hook of Arbol's follows.
 

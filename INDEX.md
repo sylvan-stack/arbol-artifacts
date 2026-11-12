@@ -53,6 +53,7 @@ The components, what each owns, and how Arbol lives with breaking changes. Start
 - [`01-roots.md`](architecture/01-roots.md) (ARC-1): a named Root as a persistent compatibility environment with its own folder, database, settings and compatible Builds; Root identity, manager Builds and invocations; what lies outside every Root; names; Builds and Roots; the tray menu and `arbol-roots`; the current Root; cross-Root discovery and migration.
 - [`02-chat-exchange-across-components.md`](architecture/02-chat-exchange-across-components.md) (ARC-2): one message from sending to its final state: the folder of an Exchange, the arriving answer as a file, stop and answers, the end, an Exchange whose process is gone, a database that cannot be reached.
 - [`03-stuck-trunks.md`](architecture/03-stuck-trunks.md) (ARC-3): when an Exchange counts as stuck, the heartbeat of a Trunk, a Trunk that ends itself, how Arbol notices from outside, a stop that is not obeyed, ending by force, long waits on purpose.
+- [`04-single-database.md`](architecture/04-single-database.md) (ARC-4, draft): one installed database, in-place schema upgrades, Trunk Build compatibility, snapshots and recovery, and the one-time clean start.
 
 #### `architecture/provider-hooks/`: the hooks of Claude Code and Codex
 
@@ -71,4 +72,5 @@ What the two tools do with a hook, the hooks on this Mac and the rules every hoo
 
 ### `research/`: context for future specifications
 
+- [Arbol with one database](research/arbol-single-database.md): dependencies and transition decisions for retiring Arbol Roots and migrating one database in place.
 Mimo Driver: [dedicated accepted originals](../arbol-mimo-driver/specs/README.md), relocated by SYL-312; implementation started, release gates pending.
