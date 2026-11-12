@@ -11,9 +11,9 @@ Origins: ARC-4.1 · Intention i-961a1afa · 2026-11-12
 
 ## Identity
 
-Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
+Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
 
-Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
+Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
 
 ## identity
 
@@ -29,9 +29,9 @@ Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
 
 ## Identity.root
 
-Reason: Resolve a single installation configuration and enforce the installed schema contract before database work.
+Removed: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
 
-Origins: ARC-4.1, ARC-4.4 · Intention i-fd7b43a3 · 2026-11-12
+Removed by Intention i-6607cbec · 2026-11-12
 
 ## private_directory
 
@@ -44,4 +44,10 @@ Origins: ARC-4.1, ARC-4.4 · Intention i-fd7b43a3 · 2026-11-12
 Reason: Resolve a single installation configuration and enforce the installed schema contract before database work.
 
 Origins: ARC-4.1, ARC-4.4 · Intention i-fd7b43a3 · 2026-11-12
+
+## root_record
+
+Removed: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
+
+Removed by Intention i-6607cbec · 2026-11-12
 

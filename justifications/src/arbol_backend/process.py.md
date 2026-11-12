@@ -5,9 +5,9 @@ role: authored
 
 ## Programs.call
 
-Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
+Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
 
-Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
+Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
 
 ## <before Child>
 
@@ -23,9 +23,9 @@ Removed by Intention i-961a1afa · 2026-11-12
 
 ## <before lock_pid>
 
-Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
+Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
 
-Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
+Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
 
 ## acquire_backend
 
@@ -50,4 +50,10 @@ Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
 Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
 
 Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
+
+## Programs.command_key
+
+Removed: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
+
+Removed by Intention i-6607cbec · 2026-11-12
 

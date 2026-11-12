@@ -5,7 +5,7 @@ role: authored
 
 ## <before Error>
 
-Reason: Advertise Bridge 2 installation status first, remove Root catalogue RPCs, and preserve the maintenance and schema refusal codes.
+Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
 
-Origins: ARC-4.1, ARC-4.4, ARC-4.7 · Intention i-1792384e · 2026-11-12
+Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
 

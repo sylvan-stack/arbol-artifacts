@@ -5,15 +5,15 @@ role: authored
 
 ## Chats.__init__
 
-Reason: Remove migration and stale copy data from the active chat and backend contracts.
+Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-b2f8b6f1 · 2026-11-12
+Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
 
 ## <before page_params>
 
-Reason: Hold ordinary admission over backend mutations and prevent cancellation from detaching a protected file write.
+Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
 
-Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
+Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
 
 ## Chats.initial
 

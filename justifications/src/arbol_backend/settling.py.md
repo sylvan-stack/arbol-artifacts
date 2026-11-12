@@ -5,27 +5,27 @@ role: authored
 
 ## Settling.__init__
 
-Reason: Coalesce inventory by Exchange UUID and verify event folders against the recorded assignment and process.
+Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
 
-Origins: ARC-4.1, ARC-4.6 · Intention i-37a0246e · 2026-11-12
+Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
 
 ## Settling.close
 
-Reason: Coalesce inventory by Exchange UUID and verify event folders against the recorded assignment and process.
+Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
 
-Origins: ARC-4.1, ARC-4.6 · Intention i-37a0246e · 2026-11-12
+Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
 
 ## Settling.listed
 
-Reason: Coalesce inventory by Exchange UUID and verify event folders against the recorded assignment and process.
+Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
 
-Origins: ARC-4.1, ARC-4.6 · Intention i-37a0246e · 2026-11-12
+Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
 
 ## Settling.observe
 
-Reason: Coalesce inventory by Exchange UUID and verify event folders against the recorded assignment and process.
+Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
 
-Origins: ARC-4.1, ARC-4.6 · Intention i-37a0246e · 2026-11-12
+Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
 
 ## <before listing>
 
@@ -41,7 +41,55 @@ Removed by Intention i-37a0246e · 2026-11-12
 
 ## <before Queue>
 
-Reason: Coalesce inventory by Exchange UUID and verify event folders against the recorded assignment and process.
+Removed: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
 
-Origins: ARC-4.1, ARC-4.6 · Intention i-37a0246e · 2026-11-12
+Removed by Intention i-6607cbec · 2026-11-12
+
+## Settling.request
+
+Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
+
+Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
+
+## Settling.start
+
+Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
+
+Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
+
+## Settling.work
+
+Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
+
+Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
+
+## Queue
+
+Removed: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
+
+Removed by Intention i-6607cbec · 2026-11-12
+
+## Settling.request_listing
+
+Removed: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
+
+Removed by Intention i-6607cbec · 2026-11-12
+
+## Settling.worker
+
+Removed: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
+
+Removed by Intention i-6607cbec · 2026-11-12
+
+## <before Settling>
+
+Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
+
+Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
+
+## Settling.start_worker
+
+Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
+
+Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
 
