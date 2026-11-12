@@ -5,7 +5,13 @@ role: authored
 
 ## package
 
-Reason: Carry over the production shared-checkout paths from Arbol main at 17673a2. Preserve the published Beat history; Forester only publishes single-parent commits. Leave drill runners for the later integration.
+Reason: Stage the schema-compatible Arbol Build and its Exchange command
 
-Origins: FOR-D2 · Intention i-eb96f142 · 2026-11-09
+Origins: ARC-4.1, ARC-4.3, ARC-4.8 · Intention i-d1b0e71e · 2026-11-12
+
+## <before package>
+
+Reason: Stage the schema-compatible Arbol Build and its Exchange command
+
+Origins: ARC-4.1, ARC-4.3, ARC-4.8 · Intention i-d1b0e71e · 2026-11-12
 
