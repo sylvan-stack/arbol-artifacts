@@ -53,9 +53,9 @@ Origins: BKD-0.11, BKD-1.7, BKD-3.16 · Intention i-3d376ddd · 2026-11-11
 
 ## deadline
 
-Reason: Publish the installation Bridge 2 renderer and scoped chat, Draft, pending request and administration adapters
+Reason: Adopt the value-only tooltip and start pending windows once per cycle, with identity-fenced genuine usage rereads and explicit retry.
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
+Origins: BKD-3.17 · Intention i-0f0c306a · 2026-11-13
 
 ## RootInfo
 

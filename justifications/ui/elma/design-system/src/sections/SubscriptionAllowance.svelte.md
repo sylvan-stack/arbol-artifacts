@@ -5,9 +5,9 @@ role: authored
 
 ## <before style>
 
-Reason: Synchronize the published Remaining-left subscription bar and its exact design snapshot provenance
+Reason: Adopt the value-only tooltip and start pending windows once per cycle, with identity-fenced genuine usage rereads and explicit retry.
 
-Origins: BKD-3.17 · Intention i-e0771c43 · 2026-11-13
+Origins: BKD-3.17 · Intention i-0f0c306a · 2026-11-13
 
 ## script
 
@@ -17,7 +17,7 @@ Origins: BKD-3.17 · Intention i-9cd567d4 · 2026-11-12
 
 ## style
 
-Reason: Synchronize the published Remaining-left subscription bar and its exact design snapshot provenance
+Reason: Adopt the value-only tooltip and start pending windows once per cycle, with identity-fenced genuine usage rereads and explicit retry.
 
-Origins: BKD-3.17 · Intention i-e0771c43 · 2026-11-13
+Origins: BKD-3.17 · Intention i-0f0c306a · 2026-11-13
 
