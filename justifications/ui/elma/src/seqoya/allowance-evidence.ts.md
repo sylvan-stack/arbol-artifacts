@@ -11,9 +11,9 @@ Origins: BKD-3.17 · Intention i-d3d8c042 · 2026-11-12
 
 ## <before matches>
 
-Reason: Sync the published shared design. Combine public accounts, saved Radar windows and typed Root evidence without using a dashboard snapshot for another binding. Use a current MiMo Driver report first, the manual snapshot for the exact ID and binding update time second, and an unpredicted Radar window third. Apply Xiaomi’s rate only to known credits. Match Pi by exact ID and binding update time and show the shared windows and policy cap. Match Codex by ID, account creation time and reported plan. Use at least five points of movement in one weekly window and observations at most 28 days old. Label previous-window calibration and use only an unelapsed weekly quota for a remaining estimate. On explicit signed-in MiMo Refresh usage call accounts.usage and reread the account list, preserving the previous reading on refusal. Read the extended app.readVigor on entry and ordinary Refresh of both tabs. Coalesce simultaneous reads, keep the existing score, and keep ordinary Refresh stored-only. Serves BKD-3.17 and BKD-3.18.
+Removed: Keep explicitly marked plan-capacity references across routine checks while preserving current quota and plan/incarnation/age guards
 
-Origins: BKD-3.17, BKD-3.18 · Intention i-8c1d8d92 · 2026-11-12
+Removed by Intention i-c83ebb41 · 2026-11-13
 
 ## Credits
 
@@ -47,9 +47,9 @@ Origins: BKD-3.17, BKD-3.18 · Intention i-8c1d8d92 · 2026-11-12
 
 ## UsageEvidence
 
-Reason: Synchronize the published shared card and date formatter. Use scoped window evidence to derive model estimates for Claude, Kimi, Pi ChatGPT and z.ai, preserving source, date and numerical basis. Use the recorded used share for the selected window and match the current account, identity check and window label. For z.ai use the current bound account’s verified model credit caps and the GLM-5.3 Standard conversion of credits × 10,000 ÷ 24. Preserve MCP call windows separately. Explain missing or invalidated evidence. Show z.ai’s zero-use rolling period as starting with its next use. Use specific states for closed periods and recurring expiry, and retain DeepSeek’s unavailable values. Serves BKD-3.17.
+Reason: Keep explicitly marked plan-capacity references across routine checks while preserving current quota and plan/incarnation/age guards
 
-Origins: BKD-3.17 · Intention i-d3d8c042 · 2026-11-12
+Origins: BKD-3.17 · Intention i-c83ebb41 · 2026-11-13
 
 ## allowance
 
@@ -65,9 +65,9 @@ Origins: BKD-3.17 · Intention i-a65374d0 · 2026-11-12
 
 ## codexCapacity
 
-Reason: Sync the amended type and use the typed field for the public exact counts. Require the same Codex identity-check timestamp as the calibration, so re-signing into a recycled ID invalidates earlier evidence. Serves BKD-3.17 and BKD-3.18.
+Reason: Keep explicitly marked plan-capacity references across routine checks while preserving current quota and plan/incarnation/age guards
 
-Origins: BKD-3.17, BKD-3.18 · Intention i-f1dab6fd · 2026-11-12
+Origins: BKD-3.17 · Intention i-c83ebb41 · 2026-11-13
 
 ## matches
 
@@ -149,15 +149,15 @@ Origins: BKD-3.17 · Intention i-d3d8c042 · 2026-11-12
 
 ## WindowEstimate
 
-Reason: Synchronize the published shared design. Wire native renaming with connection and subscription-identity fencing, retain input on refusal and reread saved accounts on success. Remove the invalid Kimi calls conversion and use a matching local-output/share calibration; normalize display order without discarding vendor windows or scope. Add the native app-channel method and explicit browser-preview refusal. Serves BKD-3.17.
+Reason: Keep explicitly marked plan-capacity references across routine checks while preserving current quota and plan/incarnation/age guards
 
-Origins: BKD-3.17 · Intention i-9cd567d4 · 2026-11-12
+Origins: BKD-3.17 · Intention i-c83ebb41 · 2026-11-13
 
 ## windowCapacity
 
-Reason: Synchronize the published shared design. Wire native renaming with connection and subscription-identity fencing, retain input on refusal and reread saved accounts on success. Remove the invalid Kimi calls conversion and use a matching local-output/share calibration; normalize display order without discarding vendor windows or scope. Add the native app-channel method and explicit browser-preview refusal. Serves BKD-3.17.
+Reason: Keep explicitly marked plan-capacity references across routine checks while preserving current quota and plan/incarnation/age guards
 
-Origins: BKD-3.17 · Intention i-9cd567d4 · 2026-11-12
+Origins: BKD-3.17 · Intention i-c83ebb41 · 2026-11-13
 
 ## Rollover
 
@@ -176,4 +176,28 @@ Origins: BKD-3.17 · Intention i-9dbf0f62 · 2026-11-12
 Reason: Synchronize the shared design including the icon. Replace elapsed readings with the next allowance: project a documented recurring date and initial allowance where possible, leave start-on-use windows undated until use, and wait for a confirmed new grant if renewal cannot be inferred. Keep a newer provider reading authoritative and leave all elapsed metrics out of the cards. On the active Subscriptions tab attempt one live usage read per passed observed boundary for capable accounts, including Codex and Kimi Code. Coalesce due boundaries per account, deduplicate by binding and boundary in the open renderer, fence replies by connection, and retain a manual retry. Send ChatGPT to the Seqoya-only host method with account identity; preserve the separate MiMo console action. Serves BKD-3.17.
 
 Origins: BKD-3.17 · Intention i-9dbf0f62 · 2026-11-12
+
+## <before sameCreation>
+
+Reason: Keep explicitly marked plan-capacity references across routine checks while preserving current quota and plan/incarnation/age guards
+
+Origins: BKD-3.17 · Intention i-c83ebb41 · 2026-11-13
+
+## publicAccountPlan
+
+Reason: Keep explicitly marked plan-capacity references across routine checks while preserving current quota and plan/incarnation/age guards
+
+Origins: BKD-3.17 · Intention i-c83ebb41 · 2026-11-13
+
+## recentObservation
+
+Reason: Keep explicitly marked plan-capacity references across routine checks while preserving current quota and plan/incarnation/age guards
+
+Origins: BKD-3.17 · Intention i-c83ebb41 · 2026-11-13
+
+## sameCreation
+
+Reason: Keep explicitly marked plan-capacity references across routine checks while preserving current quota and plan/incarnation/age guards
+
+Origins: BKD-3.17 · Intention i-c83ebb41 · 2026-11-13
 
