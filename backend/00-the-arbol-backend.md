@@ -72,6 +72,8 @@ arbol:tests/test_backend.py#AsyncFoundation.test_current_root_is_read_each_time_
 | `arbol-claude-driver`, `arbol-codex-driver` | Account commands only ([below](#accounts)) | Their launchers |
 | `/usr/bin/security` | Reading the database password, as a Trunk reads it ([below](#the-database)) | Itself |
 
+Owner amendment · 13 November 2026: `accounts.startWindow` is the narrow exception to account-only Driver calls. For BKD-3.17 it may start one fixed `run` completion on a supported existing subscription, with tools disabled, no history or working folder and no chat or Exchange. Hold normal writer admission through cooperative cancellation and process cleanup. Ordinary account list/check/usage/models operations still never start inference.
+
 The *launchers* are the small programs in `~/.local/bin` that pick the Build to run and start it (BLD-0). The folder of the launchers, `~/.local/bin` unless `--bin-dir` names another, is first on the search path of every program the backend starts, so that a Trunk that `arbol-root` starts for the backend finds the same Drivers as one started from a shell (RCT-0). Each program is started in a process group of its own, as the system call `setsid` does, so that a start, a stop or a settle that is under way goes on when the backend ends. The backend waits for none without a time limit:
 
 | Command | Waited for at most | Because |
