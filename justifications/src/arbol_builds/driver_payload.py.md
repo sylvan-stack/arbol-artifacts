@@ -5,9 +5,9 @@ role: authored
 
 ## <before relative>
 
-Reason: Resolve exact registered payloads and verify gate, platform and scoped qualification authority before qualified execution
+Reason: Complete static import ordering of exact gate and qualification verification
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-b19c1bd3 · 2026-11-14
+Origins: DRV-6.21 · Intention i-aa1576d7 · 2026-11-14
 
 ## Payload
 
