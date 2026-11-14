@@ -213,3 +213,57 @@ Reason: Publish strict private component authority and stable admission/control 
 
 Origins: DRV-6.21, DRV-6.18 · Intention i-f82fa399 · 2026-11-14
 
+## <before without_authority>
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## custody_loss
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## handoff_path
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## normal_context
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## normal_control
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## read_handoff
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## read_writer
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## without_authority
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## writer_path
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+

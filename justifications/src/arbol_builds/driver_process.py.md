@@ -5,9 +5,9 @@ role: authored
 
 ## <before BsdInfo>
 
-Reason: Read exact integer kernel process-start microseconds and fixed boot UUID without coarse identity fallback
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
 
-Origins: DRV-6.21 · Intention i-8deddc90 · 2026-11-14
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
 
 ## BsdInfo
 
@@ -23,9 +23,9 @@ Origins: DRV-6.21 · Intention i-8deddc90 · 2026-11-14
 
 ## boot_uuid
 
-Reason: Read exact integer kernel process-start microseconds and fixed boot UUID without coarse identity fallback
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
 
-Origins: DRV-6.21 · Intention i-8deddc90 · 2026-11-14
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
 
 ## identity_record
 
@@ -68,4 +68,94 @@ Origins: DRV-6.21 · Intention i-8deddc90 · 2026-11-14
 Reason: Read exact integer kernel process-start microseconds and fixed boot UUID without coarse identity fallback
 
 Origins: DRV-6.21 · Intention i-8deddc90 · 2026-11-14
+
+## Frames
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## Frames.__init__
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## Frames._receive
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## Frames._timeout
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## Frames.close
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## Frames.no_extra
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## Frames.receive
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## Frames.send
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## Guardian
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## Guardian._bootstrap_writer
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## Guardian._check
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## Guardian._close_owned
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## Guardian.abort
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## Guardian.admit
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## Guardian.spawn_main
+
+Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
 
