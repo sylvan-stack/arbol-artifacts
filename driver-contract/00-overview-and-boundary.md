@@ -304,3 +304,10 @@ A Build implementing the [local lifetime proof](01-subscriptions.md#local-subscr
 | ID | Requirement | Origin | Verified by |
 |---|---|---|---|
 | DRV-0.17 | advertise `capabilities.subscriptionIdentity: 1` only for the complete revision-1 local producer implementation; preserve ordinary info fields and allow callers to reject absent/unknown revisions without fallback | BRW-D32; DRV-1.28 | pending ABR-38 |
+
+
+### Capability declaration and qualified authority · ABR-40 correction
+
+The source `subscriptionIdentity:1` declaration describes the complete implementation; positive Browser use additionally requires DRV-6's exact immutable M/D payload, gate and **qualified** acceptance tuple on the supported platform. The child validates its own D/M and accepted registry context without embedding a self-referential code hash. A candidate acceptance is usable only inside its explicitly isolated qualification registry and is never Browser authority. No field on ordinary `info` by itself proves qualification. Arbol alone keeps application UUID authority; ordinary catalogues and info remain database-independent. ABR-34–37 produce payload declarations; ABR-39 verifies shared authority; ABR-38 plus independent Arc Review produces final accepted evidence. This corrects technical composition only, without changing Contract2 or claiming implementation.
+
+ABR-40 actual-review correction: consume DRV-6's exact `-ISB` bootstrap/D.importRoots and normal/helper `ARBOL_DRIVER_ADMISSION_FD`/`ARBOL_DRIVER_ADMISSION_CONTEXT` wire. Validate registry/boot/epoch/own and parent process identity, exact payload/entry/acceptance and the offer/ready/go/started acknowledged handoff before any Driver state access. Each child opens its own independent lease; no inherited main lock or exclusive-maintenance receipt substitutes. Source/helper declarations and candidate state never become qualified Browser authority.

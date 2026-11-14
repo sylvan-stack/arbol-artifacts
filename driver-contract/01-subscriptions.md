@@ -388,3 +388,8 @@ arbol-pi-driver:src/arbol_pi_driver/accounts.py#Accounts.read
 arbol-pi-driver:src/arbol_pi_driver/accounts.py#Accounts.save
 arbol-mimo-driver:src/arbol_mimo_driver/binding.py#BindingState
 -->
+
+
+### Normal proof admission · ABR-40 correction
+
+Capture/expect uses qualified normal launch admission plus its own format2 shared identity guard; it needs no maintenance receipt. Before first Driver state access, the invocation and every metadata-writing helper obey DRV-6's independent-lease preregistration/handoff protocol. All delayed auth/usage/run/recovery completions remain lifetime-bound; no detached writer may use inherited main admission after parent release. Legacy execution is tainted before execution and never establishes Browser proof. Missing/changed qualification, closed gate, incomplete conversion or unknown continuity refuses without a fallback. Supported restore/reset still invalidates proof before admission; boot recovery resolves writer uncertainty and does not validate copied identity. Canonical selector, exact output/refusal and application-only UUID rules above remain authoritative.
