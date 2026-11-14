@@ -238,6 +238,8 @@ A successful producer must return usable stable matching proof after restart, ra
 
 Normal Build gates retain their genuine existing-profile/model requirements. Before requesting any such gate, prepare the exact candidate/fixture/inventory, real existing canonical profile/Subscription selection, model, action/prompt count, finite quota/spend bound, state paths, cleanup and baseline-preservation plan. Obtain its explicit bounded operational scope; do not use fake profiles, credential copies, silent reduced gates or a static package result as a working Build. Mid-tier selection likewise needs the named concrete selection and explicit scope. Any missing required evidence blocks Arc review/release; production defects become separate implementation work and renewed qualification.
 
+#### Requirements
+
 | ID | Requirement | Origin | Verified by |
 |---|---|---|---|
 | DRV-5.11 | qualify revision-1 identity lifetime/format/concurrency/restore behavior with independent local observations on immutable producers and preserve full ordinary gates and explicit genuine/mid-tier scope | DRV-0.17, DRV-1.28–1.30, DRV-6.17–6.20 | pending ABR-38; integrated ABR-19/21 |

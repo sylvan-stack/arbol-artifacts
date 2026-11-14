@@ -301,6 +301,8 @@ Keep application database, runtime, Build registry and evidence disposable and s
 
 A Build implementing the [local lifetime proof](01-subscriptions.md#local-subscription-lifetime-proof--browser-amendment-14-november-2026) adds `capabilities: { subscriptionIdentity: 1 }` to `DriverInfo`. Absent or unknown capability means unavailable, even if the ordinary catalogue works. This additive capability keeps Contract 2; it does not certify a Build merely because its source declares the field. The producer Arc qualifies exact packages before Seqoya consumes them. `info` may report the capability on format-1 state without upgrading it; the identity operation still refuses until the explicit format-2 upgrade. No tool or credential check is needed solely to report this capability.
 
+#### Requirements
+
 | ID | Requirement | Origin | Verified by |
 |---|---|---|---|
 | DRV-0.17 | advertise `capabilities.subscriptionIdentity: 1` only for the complete revision-1 local producer implementation; preserve ordinary info fields and allow callers to reject absent/unknown revisions without fallback | BRW-D32; DRV-1.28 | pending ABR-38 |

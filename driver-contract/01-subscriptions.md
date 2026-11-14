@@ -369,6 +369,8 @@ Arbol persists the complete equality key alongside an Arbol-generated incarnatio
 
 ### Browser producer requirements
 
+#### Requirements
+
 | ID | Requirement | Origin | Verified by |
 |---|---|---|---|
 | DRV-1.28 | provide capability revision 1 and the exact local `subscriptions identity` capture/expected-proof comparison, with no vendor, credential or application database dependency | BRW-1.11/.14, BRW-D32 | pending ABR-38 producer qualification; application composition ABR-19/21 |

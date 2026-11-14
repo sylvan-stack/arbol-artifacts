@@ -307,6 +307,8 @@ Every **supported** Driver state restore/reset/copy into an admitted installatio
 
 An unobservable byte-for-byte rollback of **all** authorities and maintenance evidence cannot be detected from those same restored files. There is no anti-rollback anchor here. This observability limit does not waive invalidation for a restore/reset the supported tool/caller knows occurred, and does not permit claiming unknown legacy continuity. No stronger guarantee or owner-only backup policy is invented by this amendment.
 
+#### Requirements
+
 | ID | Requirement | Origin | Verified by |
 |---|---|---|---|
 | DRV-6.17 | implement format-2 root/per-Subscription evidence, private durable publication, short-lock materialization and transaction recovery; ordinary format-1/list paths do not assert proof | DRV-1.28/.29; BRW-D32 | pending ABR-38 |
@@ -348,6 +350,8 @@ Supported production entry points are the registered named/default Build launche
 The earlier same-boot pre-gate inventory-based resolution is **superseded**. Initial deployment and any legacy/unobservable writer uncertainty use the finite closed boot-boundary procedure below. Pre-gate work cannot be made retrospectively observable, and process-group emptiness, polling, NOTE_FORK, stale run cleanup, dead main/guardian or elapsed time never clears its uncertainty. ABR-39 supplies the deployment journal/closed gate, not an Endpoint Security observer, privileged helper or resident service. ABR-38 qualifies the actual transition separately; owner-state deployment is later explicit operational scope and no automatic reboot is authorized.
 
 Supported Driver restore/reset is the same closed/drained helper route: restore only declared Driver-owned metadata, leave native credential stores/homes intact, retain the live guard inode, rotate root generation through the exact qualified payload, verify its durable result, then finish the component fence. A restored/copy payload cannot contain authoritative maintenance receipts or reopen control. Arbitrary native/vendor backup restore is not a new Driver-owned entry point.
+
+#### Requirements
 
 | ID | Requirement | Origin | Verified by |
 |---|---|---|---|
