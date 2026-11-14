@@ -5,15 +5,15 @@ role: authored
 
 ## <before Accounts>
 
-Reason: Start a pending allowance using one bounded, tools-disabled completion with current subscription identity and normal writer admission.
+Reason: Expose browser-only explicit identity lifecycle without database calls or deletion on account discovery
 
-Origins: BKD-0.25, BKD-3.17 · Intention i-2339b7d1 · 2026-11-13
+Origins: BRW-1.11, BRW-1.14 · Intention i-1c69d4bf · 2026-11-14
 
 ## Accounts.__init__
 
-Reason: Start a pending allowance using one bounded, tools-disabled completion with current subscription identity and normal writer admission.
+Reason: Expose browser-only explicit identity lifecycle without database calls or deletion on account discovery
 
-Origins: BKD-0.25, BKD-3.17 · Intention i-2339b7d1 · 2026-11-13
+Origins: BRW-1.11, BRW-1.14 · Intention i-1c69d4bf · 2026-11-14
 
 ## Accounts.activity
 
@@ -50,4 +50,34 @@ Origins: BKD-0.25, BKD-3.17 · Intention i-2339b7d1 · 2026-11-13
 Reason: Start a pending allowance using one bounded, tools-disabled completion with current subscription identity and normal writer admission.
 
 Origins: BKD-0.25, BKD-3.17 · Intention i-2339b7d1 · 2026-11-13
+
+## Accounts.browser_identity
+
+Reason: Expose browser-only explicit identity lifecycle without database calls or deletion on account discovery
+
+Origins: BRW-1.11, BRW-1.14 · Intention i-1c69d4bf · 2026-11-14
+
+## Accounts.browser_slot
+
+Reason: Expose browser-only explicit identity lifecycle without database calls or deletion on account discovery
+
+Origins: BRW-1.11, BRW-1.14 · Intention i-1c69d4bf · 2026-11-14
+
+## Accounts.identity_authority
+
+Reason: Expose browser-only explicit identity lifecycle without database calls or deletion on account discovery
+
+Origins: BRW-1.11, BRW-1.14 · Intention i-1c69d4bf · 2026-11-14
+
+## Accounts.rebind_browser_identity
+
+Reason: Expose browser-only explicit identity lifecycle without database calls or deletion on account discovery
+
+Origins: BRW-1.11, BRW-1.14 · Intention i-1c69d4bf · 2026-11-14
+
+## Accounts.retire_browser_identity
+
+Reason: Expose browser-only explicit identity lifecycle without database calls or deletion on account discovery
+
+Origins: BRW-1.11, BRW-1.14 · Intention i-1c69d4bf · 2026-11-14
 
