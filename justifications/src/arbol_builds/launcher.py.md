@@ -17,9 +17,9 @@ Origins: ARC-4.3 · Intention i-62e4abb1 · 2026-11-12
 
 ## launch
 
-Reason: Stage the schema-compatible Arbol Build and its Exchange command
+Reason: Publish browser-only private Build selection in the shared launcher independently
 
-Origins: ARC-4.1, ARC-4.3, ARC-4.8 · Intention i-d1b0e71e · 2026-11-12
+Origins: BRW-0.2, BRW-0.9, BRW-0.14 · Intention i-19200bf7 · 2026-11-14
 
 ## backend_fits
 
