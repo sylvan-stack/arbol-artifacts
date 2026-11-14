@@ -296,3 +296,11 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 The owner prohibited test profiles and required real existing profiles. Probes and live qualification select an existing real provider profile and Subscription ID directly. Discover and verify that selection before inference. The gate must refuse a missing or signed-out selection. Creating a test profile, creating a profile alias, copying authentication or starting a new sign-in to satisfy qualification is prohibited.
 
 Keep application database, runtime, Build registry and evidence disposable and separate from provider profile selection. A real live run uses the existing profile's native credential binding and records its actual inference, completion and usage outcome. Keep the complete documented Build gates. Earlier test-profile decisions and qualification records remain historical evidence of their original releases.
+
+## Browser identity capability · 14 November 2026
+
+A Build implementing the [local lifetime proof](01-subscriptions.md#local-subscription-lifetime-proof--browser-amendment-14-november-2026) adds `capabilities: { subscriptionIdentity: 1 }` to `DriverInfo`. Absent or unknown capability means unavailable, even if the ordinary catalogue works. This additive capability keeps Contract 2; it does not certify a Build merely because its source declares the field. The producer Arc qualifies exact packages before Seqoya consumes them. `info` may report the capability on format-1 state without upgrading it; the identity operation still refuses until the explicit format-2 upgrade. No tool or credential check is needed solely to report this capability.
+
+| ID | Requirement | Origin | Verified by |
+|---|---|---|---|
+| DRV-0.17 | advertise `capabilities.subscriptionIdentity: 1` only for the complete revision-1 local producer implementation; preserve ordinary info fields and allow callers to reject absent/unknown revisions without fallback | BRW-D32; DRV-1.28 | pending ABR-38 |

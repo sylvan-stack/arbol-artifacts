@@ -54,3 +54,7 @@ Driver specifications: [Claude Driver](../../arbol-claude-driver/specs/README.md
 **Wording.** *Observed* means read in the version 1 source or seen in a probe recorded here. *Proposed* means a design for Arbol 2. Requirements are Proposed by nature; their origin column says what they rest on. Examples are fictional: no credentials, account names or conversation content.
 
 Permanent Pi originals: [Pi Driver corpus](../../arbol-pi-driver/specs/README.md), relocated by SYL-273 on 20 October 2026; accepted identifiers retained.
+
+## Browser identity amendment · 14 November 2026
+
+[DRV-1's local lifetime proof](01-subscriptions.md#local-subscription-lifetime-proof--browser-amendment-14-november-2026), [DRV-6's format-2 admission and recovery](06-state-and-simultaneous-calls.md#identity-format-2-and-maintenance-boundary--14-november-2026) and [DRV-5 qualification](05-conformance.md#browser-identity-qualification-amendment--14-november-2026) are technical means for accepted BRW-1.11/.14, allocated by ABR-33. They are specified and unimplemented: older dated qualification and working Builds do not qualify them. Contract 2 stays unchanged; the optional capability revision is explicit and unsupported producers refuse Browser continuity. No owner state, installed Build or native credential store is migrated by this amendment.

@@ -317,3 +317,74 @@ SYL-95 verification is recorded in the requirement-level `~/Artifacts/arbol/driv
 The owner prohibited test profiles and required real existing profiles. Probes and live qualification select an existing real provider profile and Subscription ID directly. Discover and verify that selection before inference. The gate must refuse a missing or signed-out selection. Creating a test profile, creating a profile alias, copying authentication or starting a new sign-in to satisfy qualification is prohibited.
 
 Keep application database, runtime, Build registry and evidence disposable and separate from provider profile selection. A real live run uses the existing profile's native credential binding and records its actual inference, completion and usage outcome. Keep the complete documented Build gates. Earlier test-profile decisions and qualification records remain historical evidence of their original releases.
+
+## Local Subscription lifetime proof · Browser amendment, 14 November 2026
+
+This is the concrete producer boundary for accepted BRW-1.11/.14 and BRW-D32. It is specified, **not implemented or qualified**. It adds no credential authority and keeps Contract 2: existing commands/results retain their meanings. Arbol alone allocates the persisted application incarnation UUID. A Driver proves only the lifetime of its local Subscription record, including an implicit built-in record; it does not prove which human owns a native login.
+
+For example, `chatgpt` keeps the same proof across a relabel, native sign-out and reattachment. Removing a removable `anthropic-2` and creating that selector again yields a different proof. Arbol then refuses the former browser binding and offers explicit replacement; it never adopts the previous login by name.
+
+### Operation and result
+
+A qualified Build advertises `capabilities.subscriptionIdentity: 1` in `info` (DRV-0). The caller pins that exact Build and state directory for discovery and operation. Missing capability, an unsupported revision or invocation failure supplies no proof. Ordinary `subscriptions list` remains its current local catalogue interface; it gains no proof field, vendor call or application database dependency.
+
+```sh
+arbol-codex-driver subscriptions identity chatgpt --state-dir <absolute-state-directory>
+arbol-codex-driver subscriptions identity chatgpt --expect <generation>.<witness> --state-dir <absolute-state-directory>
+```
+
+The positional argument is the **exact canonical local Subscription id** under that Driver's existing id validation, not a family alias, display label, application alias or default selection. It is mandatory; no default is substituted. The operation performs no vendor discovery, credential resolution, authentication, model call or browser operation. It works for signed-out records too. It may materialize local proof as specified in DRV-6, including an implicit built-in record; this is why it is distinct from list.
+
+Success is one JSON document, exit 0, at most 4096 UTF-8 bytes, with these required fields. Unknown additive fields may be ignored, but all listed fields and exact types/values must validate; duplicate JSON keys, extra stdout documents, unsafe/noncanonical ids and malformed proofs are refused by the consumer.
+
+```ts
+interface SubscriptionIdentityProof {
+  version: 1;
+  driver: "codex" | "claude" | "pi" | "mimo";
+  subscription: string;                 // exact canonical request id
+  generation: string;                   // 43 base64url chars, no padding, 32 random bytes
+  witness: string;                      // same encoding, independent 32 random bytes
+}
+```
+
+The equality key is `(version, driver, subscription, generation, witness)`. Tokens match `[A-Za-z0-9_-]{43}` and must decode canonically to 32 bytes. Use OS cryptographic randomness, never UUIDs, timestamps, account/credential hashes, record revisions or auth epochs. The generation scopes one admitted Driver state lineage; the witness scopes one Subscription lifetime within it. Neither is secret, an access token, application UUID, authorization or an authentication claim. Return no account details, path, login material or auth-store identifier in this result. A forged locally edited proof has no stronger trust than the caller-owned local state; this is accidental continuity protection, not an adversarial same-user attestation.
+
+`--expect` is exactly the two canonical tokens separated by one dot, at most 87 ASCII bytes. Under the same short Subscription lock used for proof capture, compare both tokens and emit success only on equality. Without it, capture the current proof. A missing sidecar may first be materialized with a fresh witness, but never matching an old `--expect` by construction. A mismatched expectation returns existing `in_use`, exit 1, with a fixed message/remedy requiring a fresh selection/rebind; it does not return a replacement proof as success. Malformed arguments return `invalid_input`; an unknown nonbuilt-in id returns `not_found`; malformed/unsafe/incomplete state returns `internal`; higher data format returns `state_newer`. Format 1 returns `invalid_input` with the fixed remedy `Upgrade Driver state under exclusive maintenance before using Subscription identity.` No failure becomes an empty successful proof or silently upgrades state.
+
+Capture/compare linearizes under the short lock. A successful later removal can invalidate that snapshot; a capture is not a lease preventing subsequent removal. Arbol must freshly capture for each binding request, compare again with `--expect` immediately before returning/opening the selected binding, and discard any stale in-flight completion after its own selection/authority changes. A removal/recreation ordered after a successful comparison cannot make a later recreated request inherit that profile: its new witness differs. No old in-flight result is accepted as proof for a newer selection.
+
+### Lifetime and application mapping
+
+| Event | Proof rule |
+|---|---|
+| New supported record creation | Persist its fresh witness before acknowledging creation; a failure cannot acknowledge an unpersisted proof |
+| Initial implicit built-in, or first admitted legacy record | Identity operation persists a fresh witness; this starts provability now and makes no claim about pre-upgrade history |
+| Relabel, sign-out, auth rejection, sign-in or credential reattachment | Retain witness and generation; do not derive either from auth state |
+| Successful permitted remove | Durably retire the witness before success; recreation, including reappearance of a removable implicit built-in, gets a fresh witness |
+| Refused native-managed remove/sign-out, cancelled or failed pre-commit operation | Preserve the current proof; an ambiguous interrupted remove stays unavailable until local recovery determines its durable outcome |
+| Missing/deleted proof file, supported state reset/restore | New proof cannot assert old continuity; use DRV-6 recovery/invalidation before admission |
+| Temporary catalogue/launcher/vendor/database failure | No proof; never infer removal or create another identity/profile as fallback |
+
+Arbol persists the complete equality key alongside an Arbol-generated incarnation UUID in its normal installation database. First use with no previous row may allocate a new UUID and store the current proof transactionally. An existing row without proof, a changed key, a known restore/reset or ambiguous legacy row becomes `needs_rebind`; it is never backfilled onto the old UUID. Explicit rebind captures the current key, compares the exact selected installation/prior incarnation, retires old rows and creates a new UUID/proof atomically, preserving browser data. Equal proof plus active persisted authority retains the UUID across requests/restarts; a proof alone cannot reactivate retired or `needs_rebind` rows. The Browser receives only its opaque profile id, never these tokens.
+
+### Browser producer requirements
+
+| ID | Requirement | Origin | Verified by |
+|---|---|---|---|
+| DRV-1.28 | provide capability revision 1 and the exact local `subscriptions identity` capture/expected-proof comparison, with no vendor, credential or application database dependency | BRW-1.11/.14, BRW-D32 | pending ABR-38 producer qualification; application composition ABR-19/21 |
+| DRV-1.29 | persist a distinct nonsecret lifetime witness, retain it over relabel/auth changes and invalidate it on successful permitted removal/recreation without weakening native-managed refusals | BRW-1.11/.14 | pending ABR-38 |
+| DRV-1.30 | keep reusable canonical selectors, auth identity, proof evidence and Arbol-owned incarnation UUID authority distinct; ambiguous legacy/reset/restoration cannot adopt a prior binding | BRW-D32 | pending ABR-38; ABR-19/21 |
+
+### Existing source boundary
+
+Current Codex/Claude records do not provide this proof: implicit records synthesize times from the format file, and their validators accept only the existing record keys. Pi `_revision` increments on writes and native bindings carry credential revisions. Mimo `BindingState` epochs/revisions fence authentication verdicts. These fields cannot prove the required record lifetime. The new sidecar and admission format in DRV-6 avoid treating them as such; existing historical verification above does not qualify this amendment.
+
+<!-- sources:
+arbol-codex-driver:src/arbol_codex_driver/subscriptions.py#Subscriptions.record
+arbol-codex-driver:src/arbol_codex_driver/subscriptions.py#parse_record
+arbol-claude-driver:src/arbol_claude_driver/subscriptions.py#Subscriptions.record
+arbol-claude-driver:src/arbol_claude_driver/subscriptions.py#Subscriptions.record
+arbol-pi-driver:src/arbol_pi_driver/accounts.py#Accounts.read
+arbol-pi-driver:src/arbol_pi_driver/accounts.py#Accounts.save
+arbol-mimo-driver:src/arbol_mimo_driver/binding.py#BindingState
+-->
