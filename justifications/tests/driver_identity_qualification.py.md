@@ -5,15 +5,15 @@ role: authored
 
 ## <before require>
 
-Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+Reason: Repair R2 by pinning original private authority and shared directory identities plus the independently owned genuine deployment lock descriptor; source only
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-dad0fcec · 2026-11-15
 
 ## Baseline
 
-Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+Reason: Repair R2 by pinning original private authority and shared directory identities plus the independently owned genuine deployment lock descriptor; source only
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-dad0fcec · 2026-11-15
 
 ## CompletedLaunch
 
@@ -77,9 +77,9 @@ Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
 
 ## FixtureAuthority._healthy
 
-Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+Reason: Repair R2 by pinning original private authority and shared directory identities plus the independently owned genuine deployment lock descriptor; source only
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-dad0fcec · 2026-11-15
 
 ## FixtureAuthority._locks
 
@@ -101,15 +101,15 @@ Origins: DRV-5.11, DRV-6.21 · Intention i-d77c92b4 · 2026-11-15
 
 ## FixtureAuthority._publish
 
-Reason: Repair R1 by revalidating the full exact old normal control and allowed lineage under all four control mutexes before any rebind closure; source only
+Reason: Repair R2 by pinning original private authority and shared directory identities plus the independently owned genuine deployment lock descriptor; source only
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-89a1af8b · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-dad0fcec · 2026-11-15
 
 ## FixtureAuthority._validate_group
 
-Reason: Author prospective external qualification controller and independent evidence primitives for exact admitted fixtures, current custody before-images and full-lifetime phases; no runtime or wiring before body review.
+Reason: Repair R2 by pinning original private authority and shared directory identities plus the independently owned genuine deployment lock descriptor; source only
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-d77c92b4 · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-dad0fcec · 2026-11-15
 
 ## FixtureAuthority.apply
 
@@ -314,4 +314,28 @@ Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
 Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
 
 Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+
+## DeploymentPin
+
+Reason: Repair R2 by pinning original private authority and shared directory identities plus the independently owned genuine deployment lock descriptor; source only
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-dad0fcec · 2026-11-15
+
+## DeploymentPin.verify
+
+Reason: Repair R2 by pinning original private authority and shared directory identities plus the independently owned genuine deployment lock descriptor; source only
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-dad0fcec · 2026-11-15
+
+## FixtureAuthority._authority_identities
+
+Reason: Repair R2 by pinning original private authority and shared directory identities plus the independently owned genuine deployment lock descriptor; source only
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-dad0fcec · 2026-11-15
+
+## fixture_deployment_lock
+
+Reason: Repair R2 by pinning original private authority and shared directory identities plus the independently owned genuine deployment lock descriptor; source only
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-dad0fcec · 2026-11-15
 
