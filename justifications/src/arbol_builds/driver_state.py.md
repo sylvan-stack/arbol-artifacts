@@ -5,9 +5,9 @@ role: authored
 
 ## <before _route>
 
-Reason: Implement static closed rollout, exact caller assertion, preserved launcher/selection before-images and resumable verified all-four checkpoint without executing deployment
+Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
 
 ## _admission_marker
 
@@ -155,9 +155,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-e07374d3 · 2026-11-15
 
 ## begin
 
-Reason: Bound cooperative drain, request exact main SIGTERM through existing cancellation behavior, recheck exclusive custody and publish one-shot maintenance receipt without clearing unknown taint
+Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-c8239ecc · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
 
 ## status
 
@@ -179,9 +179,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-c8239ecc · 2026-11-15
 
 ## drain
 
-Reason: Implement static closed rollout, exact caller assertion, preserved launcher/selection before-images and resumable verified all-four checkpoint without executing deployment
+Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
 
 ## _before_route
 
@@ -215,9 +215,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
 
 ## _rollout_bindings
 
-Reason: Implement static closed rollout, exact caller assertion, preserved launcher/selection before-images and resumable verified all-four checkpoint without executing deployment
+Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
 
 ## _rollout_folder
 
@@ -239,13 +239,37 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
 
 ## _verify_rollout
 
-Reason: Implement static closed rollout, exact caller assertion, preserved launcher/selection before-images and resumable verified all-four checkpoint without executing deployment
+Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
 
 ## deploy
 
-Reason: Implement static closed rollout, exact caller assertion, preserved launcher/selection before-images and resumable verified all-four checkpoint without executing deployment
+Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
+
+## _boot_recovery_pending
+
+Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
+
+## _recover_boot
+
+Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
+
+## _recovery_journal
+
+Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
+
+## _verify_boot_archive
+
+Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
 

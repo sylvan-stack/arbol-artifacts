@@ -209,9 +209,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-f82fa399 · 2026-11-14
 
 ## validate
 
-Reason: Implement static closed rollout, exact caller assertion, preserved launcher/selection before-images and resumable verified all-four checkpoint without executing deployment
+Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
 
 ## <before without_authority>
 
@@ -311,9 +311,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-c8239ecc · 2026-11-15
 
 ## admission_fingerprint
 
-Reason: Implement static closed rollout, exact caller assertion, preserved launcher/selection before-images and resumable verified all-four checkpoint without executing deployment
+Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
 
 ## deployment_mutex
 
@@ -326,4 +326,10 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
 Reason: Implement static closed rollout, exact caller assertion, preserved launcher/selection before-images and resumable verified all-four checkpoint without executing deployment
 
 Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
+
+## archive_boot_custody
+
+Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
 
