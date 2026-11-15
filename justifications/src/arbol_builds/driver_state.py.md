@@ -389,13 +389,49 @@ Origins: DRV-6.21, DRV-6.18, DRV-6.19 · Intention i-2cfbe49e · 2026-11-15
 
 ## execute
 
-Reason: Settle only exact bounded child or durable same-attempt results after complete marker, immutable archive, root-generation and operation-relative pending checks; retain closed failures
+Reason: Verify exact exclusive finish result and operation-relative metadata, archive complete marker before removal, journal normal epoch and make interrupted finish idempotent without opening an all-four deployment
 
-Origins: DRV-6.21, DRV-6.18, DRV-6.19 · Intention i-2cfbe49e · 2026-11-15
+Origins: DRV-6.21, DRV-6.18, DRV-6.19 · Intention i-ba424652 · 2026-11-15
 
 ## settle_execute
 
 Reason: Settle only exact bounded child or durable same-attempt results after complete marker, immutable archive, root-generation and operation-relative pending checks; retain closed failures
 
 Origins: DRV-6.21, DRV-6.18, DRV-6.19 · Intention i-2cfbe49e · 2026-11-15
+
+## _finish_inputs
+
+Reason: Verify exact exclusive finish result and operation-relative metadata, archive complete marker before removal, journal normal epoch and make interrupted finish idempotent without opening an all-four deployment
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19 · Intention i-ba424652 · 2026-11-15
+
+## _finish_marker
+
+Reason: Verify exact exclusive finish result and operation-relative metadata, archive complete marker before removal, journal normal epoch and make interrupted finish idempotent without opening an all-four deployment
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19 · Intention i-ba424652 · 2026-11-15
+
+## _finish_record
+
+Reason: Verify exact exclusive finish result and operation-relative metadata, archive complete marker before removal, journal normal epoch and make interrupted finish idempotent without opening an all-four deployment
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19 · Intention i-ba424652 · 2026-11-15
+
+## _finish_status
+
+Reason: Verify exact exclusive finish result and operation-relative metadata, archive complete marker before removal, journal normal epoch and make interrupted finish idempotent without opening an all-four deployment
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19 · Intention i-ba424652 · 2026-11-15
+
+## _normal_finish_retry
+
+Reason: Verify exact exclusive finish result and operation-relative metadata, archive complete marker before removal, journal normal epoch and make interrupted finish idempotent without opening an all-four deployment
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19 · Intention i-ba424652 · 2026-11-15
+
+## finish
+
+Reason: Verify exact exclusive finish result and operation-relative metadata, archive complete marker before removal, journal normal epoch and make interrupted finish idempotent without opening an all-four deployment
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19 · Intention i-ba424652 · 2026-11-15
 
