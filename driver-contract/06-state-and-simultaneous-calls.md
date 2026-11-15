@@ -510,3 +510,28 @@ arbol:@code/scripts/package_backend.py#stage_provider
 arbol-claude-driver:@code/src/arbol_claude_driver/maintenance.py#snapshot_bytes
 arbol-mimo-driver:@code/src/arbol_mimo_driver/maintenance.py#snapshot_bytes
 -->
+
+
+### ABR-39 full provider source/review-input boundary · 15 November 2026
+
+The provider's complete source candidate is Arbol `625fdd86f0d19baeb2e84250c99b1e0318553ed3`, tree `48fa0ec25822fa3710cb9b1a2f9cc375e38d4917`. It includes the six fixed deploy/begin/drain/execute/finish/status handlers, cooperative normal/helper admission and terminal custody reconciliation, exact kernel-microsecond identity adapter, closed boot-recovery/deployment algorithms, durable per-attempt context/request/result settlement, operation-relative finish and all-four reopen. It also includes both pruning paths' exact provider/recovery/independent-helper Build retention, immutable isolated bootstrap/entry packaging and read-only installer gate preservation. These implement the existing DRV-6.18/.19/.21 requirements; no new wire, policy, authority or requirement status is introduced.
+
+ABR-43 is now Done after independent bounded actual-source/static-input acceptance (Forester `17091ab`, history `2e59b10`); that acceptance covers only its recorded repair revisions and does not substitute for ABR-39's pending fresh full actual-source/static-artifact review. Prior dated checkpoints above remain evidence of their original revisions. Later unrelated producer changes are outside this provider checkpoint.
+
+ABR-39 supplies an immutable committed-source/input bundle for review and ABR-38, with exact source, launcher/bootstrap and package-input hashes. No generator or package function, provider/Driver/helper entry, kernel API, test or gate is executed for that bundle. Its executable runtime, allocated Build, generated M/D, registered acceptance, installed gate and deployment/boot tuples are explicitly unproduced. Existing managed Justifications retain the per-leaf source-to-Origin records. Full normal/administrative/helper/TTY/import-boundary/metadata-recovery behavior, all five complete gates and the genuine kernel-transition operational proposal/evidence remain ABR-38 obligations; no consumer prerequisite lifts. Ingest, embedding and indexed retrieval verification are deferred; local path/Origin checks are not indexed-store evidence.
+
+<!-- sources:
+arbol:@code/src/arbol_builds/cli.py
+arbol:@code/src/arbol_builds/launcher.py
+arbol:@code/src/arbol_builds/driver_admission.py
+arbol:@code/src/arbol_builds/driver_process.py
+arbol:@code/src/arbol_builds/driver_payload.py
+arbol:@code/src/arbol_builds/driver_bootstrap.py
+arbol:@code/src/arbol_builds/driver_state.py
+arbol:@code/src/arbol_builds/service.py
+arbol:@code/src/arbol_builds/unused.py
+arbol:@code/bin/driver_state_entry.py
+arbol:@code/scripts/install_builds.py
+arbol:@code/scripts/package_backend.py
+arbol:@code/scripts/backend_package.py
+-->

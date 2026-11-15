@@ -608,3 +608,26 @@ The 6–7 October decisions below remain as recorded. The Root-specific extensio
 | BLD-D23 | What does unused pruning do when manager/Driver activity is unknown, and how are settings, age and output interpreted? | Strict opt-in positive finite days; missing setting is no-op, invalid setting refuses before mutation, age must be strictly older, and building/damaged/unverifiable-time records stay. Use one retained-Root/listing snapshot, protect every listed Trunk Build, and retain all Trunks/Drivers/classifier Builds for any unavailable Root; retain all Drivers/classifier Builds while any Root lists an Exchange because Listing cannot identify those Builds. Query only a working runnable manager, before reservations, for at most 30 seconds (the existing reservation bound), validating Root/Build identity and complete records. Return component/pruned rows with unavailableRoots/rootsWithExchanges only when relevant. The alternative, relying on Driver last-start, would remove a still-running Build when the owner sets a period shorter than its run | Decided 26 October 2026, technical choice for SYL-163: the proposed default, preserving the never-remove-in-use requirement conservatively |
 | BLD-D24 | How does pruning avoid a concurrent launch or an age shorter than a running process? | Per-Build shared nonblocking advisory guard held by each launcher through exec, outside the image under component/.uses/build; exclusive nonblocking guard before both pruning paths mark/remove files. No launch waits; a pruning winner makes that concurrent candidate unavailable. Launch guard I/O failure remains best-effort, but an unverifiable guard prevents pruning. Keep guard metadata and re-read last-start under the component reservation/exclusive guard immediately before unused removal. Active/unverifiable candidates are reported without changing their records. A private macOS shell-to-Python proof showed the lock survives exec and releases at process exit. The alternative, only a last-start/listing snapshot, has a gap for a start during pruning | Decided 26 October 2026, technical choice for SYL-163: the proposed default; installed launcher refresh and conservative manager protections cover the transition from older launchers |
 | BLD-D25 <!-- 4aabdd43-dd06-4331-a428-bf86f5407a30 --> | How many runnable Build payloads stay on disk? | Keep the newest working payload per selection scope and any payload still needed by a running process or retained Root. The Swift App normally keeps one payload and keeps two during handoff. Remove the prior App payload after the replacement is ready and the previous process exits. Keep Build identity and logs. Failed attempts leave no payload | Decided by the owner · 11 November 2026. Updates the normal retention rule in BLD-D7 and BLD-D12 |
+
+
+## ABR-39 provider source boundary · 15 November 2026
+
+Source `625fdd86f0d19baeb2e84250c99b1e0318553ed3` (tree `48fa0ec25822fa3710cb9b1a2f9cc375e38d4917`) contains the Driver-specific implementation extension to the delivery/launcher and pruning sections above. Ordinary non-Driver selection, explicit Build/default selection and existing complete Build/gate command strings retain their existing branches. Driver admission uses the fixed verified provider interpreter/isolated entry; the installer preserves existing valid gate bytes and refuses missing or changed authority before installation mutations. Only explicit closed deployment publishes a gate. Both keep-count and unused pruning retain the installed fixed provider, pending deployment/operation recovery tuples and independently admitted writer/helper payloads, including after guardian/main exit. Component admission leases alone are not Build protection.
+
+Provider packaging source independently copies the pinned runtime/dependencies and exact committed arbol_builds/arbol_installation closure into `driver-payload/`, verifies all six handlers and the early signal prelude, then settles provenance before complete M/D emission. The outer historical file map omits only the two exact nested generated metadata documents. This is source coverage for BLD-0.3/.4/.9/.15/.16/.26/.28, not a replacement for their dated verification or accepted requirements. ABR-43's bounded repair passed independent actual-source/static-input review; ABR-39's full source/static-artifact review and ABR-38's actual packages, full gates and runtime/transition evidence remain pending. No package, M/D, acceptance, installed gate or Build was produced for this checkpoint.
+
+<!-- sources:
+arbol:@code/src/arbol_builds/launcher.py
+arbol:@code/src/arbol_builds/service.py#driver_launcher_source
+arbol:@code/src/arbol_builds/service.py#driver_gate_identity
+arbol:@code/src/arbol_builds/service.py#prune_protections
+arbol:@code/src/arbol_builds/service.py#remove_build_payload
+arbol:@code/src/arbol_builds/unused.py#prune_admitted
+arbol:@code/src/arbol_builds/driver_payload.py#retention
+arbol:@code/scripts/install_builds.py#preflight_launchers
+arbol:@code/scripts/install_builds.py#install
+arbol:@code/scripts/package_backend.py#stage_provider
+arbol:@code/scripts/package_backend.py#finish_provider
+arbol:@code/scripts/backend_package.py#files
+arbol:@code/scripts/backend_package.py#verify
+-->
