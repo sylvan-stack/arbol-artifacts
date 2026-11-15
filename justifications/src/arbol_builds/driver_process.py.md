@@ -155,9 +155,9 @@ Origins: DRV-6.18, DRV-6.21, BLD-0.9, BLD-0.11 · Intention i-b3bcaee7 · 2026-1
 
 ## Guardian.spawn_main
 
-Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
+Reason: Reuse exact Guardian handoff for fixed candidate unit and native helpers
 
-Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
+Origins: DRV-6.18, DRV-6.21, BLD-0.9 · Intention i-6e7a9952 · 2026-11-15
 
 ## SignalBridge
 
@@ -302,4 +302,16 @@ Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-e6e9ba05 · 2026-
 Reason: Implement fixed isolated administrative child argv, duplicate-only inherited exclusive OFD, bounded private output capture and exact-owner cancellation while retaining closed attempts on interruption
 
 Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-e6e9ba05 · 2026-11-15
+
+## Guardian._spawn
+
+Reason: Reuse exact Guardian handoff for fixed candidate unit and native helpers
+
+Origins: DRV-6.18, DRV-6.21, BLD-0.9 · Intention i-6e7a9952 · 2026-11-15
+
+## Guardian.spawn_gate
+
+Reason: Reuse exact Guardian handoff for fixed candidate unit and native helpers
+
+Origins: DRV-6.18, DRV-6.21, BLD-0.9 · Intention i-6e7a9952 · 2026-11-15
 
