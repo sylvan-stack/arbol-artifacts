@@ -101,9 +101,9 @@ Origins: DRV-5.11, DRV-6.21 · Intention i-d77c92b4 · 2026-11-15
 
 ## FixtureAuthority._publish
 
-Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+Reason: Repair R1 by revalidating the full exact old normal control and allowed lineage under all four control mutexes before any rebind closure; source only
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-89a1af8b · 2026-11-15
 
 ## FixtureAuthority._validate_group
 
