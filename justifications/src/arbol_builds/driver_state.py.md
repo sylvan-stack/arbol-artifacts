@@ -5,9 +5,9 @@ role: authored
 
 ## <before _route>
 
-Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
+Reason: Parse exact maintenance grammar and dispatch only through the verified isolated immutable provider while preserving ordinary commands
 
-Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
+Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
 
 ## _admission_marker
 
@@ -50,4 +50,76 @@ Origins: DRV-6.21, BLD-0.7, BLD-0.8, BLD-0.9, BLD-0.11 · Intention i-2499f246 �
 Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
 
 Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
+
+## <before Request>
+
+Reason: Parse exact maintenance grammar and dispatch only through the verified isolated immutable provider while preserving ordinary commands
+
+Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
+
+## <before handler>
+
+Reason: Parse exact maintenance grammar and dispatch only through the verified isolated immutable provider while preserving ordinary commands
+
+Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
+
+## Request
+
+Reason: Parse exact maintenance grammar and dispatch only through the verified isolated immutable provider while preserving ordinary commands
+
+Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
+
+## Request.component
+
+Reason: Parse exact maintenance grammar and dispatch only through the verified isolated immutable provider while preserving ordinary commands
+
+Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
+
+## Request.session
+
+Reason: Parse exact maintenance grammar and dispatch only through the verified isolated immutable provider while preserving ordinary commands
+
+Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
+
+## _maintenance_error
+
+Reason: Parse exact maintenance grammar and dispatch only through the verified isolated immutable provider while preserving ordinary commands
+
+Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
+
+## _provider
+
+Reason: Parse exact maintenance grammar and dispatch only through the verified isolated immutable provider while preserving ordinary commands
+
+Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
+
+## _use_provider_guard
+
+Reason: Parse exact maintenance grammar and dispatch only through the verified isolated immutable provider while preserving ordinary commands
+
+Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
+
+## command
+
+Reason: Parse exact maintenance grammar and dispatch only through the verified isolated immutable provider while preserving ordinary commands
+
+Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
+
+## handler
+
+Reason: Parse exact maintenance grammar and dispatch only through the verified isolated immutable provider while preserving ordinary commands
+
+Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
+
+## parse_request
+
+Reason: Parse exact maintenance grammar and dispatch only through the verified isolated immutable provider while preserving ordinary commands
+
+Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
+
+## provider_entry
+
+Reason: Parse exact maintenance grammar and dispatch only through the verified isolated immutable provider while preserving ordinary commands
+
+Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
 

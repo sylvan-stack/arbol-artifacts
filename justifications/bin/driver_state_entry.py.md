@@ -5,7 +5,7 @@ role: authored
 
 ## <end>
 
-Reason: Generate an isolated built-in/frozen confinement prefix and sealed provider entry before application imports
+Reason: Parse exact maintenance grammar and dispatch only through the verified isolated immutable provider while preserving ordinary commands
 
-Origins: DRV-6.21, BLD-0.16, BLD-0.9 · Intention i-21e6526d · 2026-11-14
+Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
 
