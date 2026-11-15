@@ -17,12 +17,12 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 
 **Table of Contents**
 
-- **A** — [A-Nex](#a-nex) · [Action Item](#action-item) · [Activity](#activity) · [Activity Execution](#activity-execution) · [Activity Graph](#activity-graph) · [Activation Rule](#activation-rule) · [Admission Boundary](#admission-boundary) · [Agent Attempt](#agent-attempt) · [Agent Record](#agent-record) · [Aggregate](#aggregate) · [Answer Beacon](#answer-beacon) · [Answer Threshold](#answer-threshold) · [Approach](#approach) · [Arbol](#arbol) · [Arbol Trunk](#arbol-trunk) · [Arbol Component](#arbol-component) · [Arbol Root](#arbol-root) · [Arbol Internals](#arbol-internals) · [Arbol Secret](#arbol-secret) · [Arbol Swift App](#arbol-swift-app) · [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) · [Arc](#arc) · [Arc Review](#arc-review) · [Artifact](#artifact) · [Artifact Chapter](#artifact-chapter) · [Artifact Corpus](#artifact-corpus) · [Artifact Space](#artifact-space) · [Attestation](#attestation) · [Authoritative Input](#authoritative-input) · [Authority Epoch](#authority-epoch)
+- **A** — [A-Nex](#a-nex) · [Action Item](#action-item) · [Activity](#activity) · [Activity Execution](#activity-execution) · [Activity Graph](#activity-graph) · [Admission Boundary](#admission-boundary) · [Agent Attempt](#agent-attempt) · [Agent Record](#agent-record) · [Aggregate](#aggregate) · [Answer Beacon](#answer-beacon) · [Answer Threshold](#answer-threshold) · [Approach](#approach) · [Arbol](#arbol) · [Arbol Trunk](#arbol-trunk) · [Arbol Component](#arbol-component) · [Arbol Root](#arbol-root) · [Arbol Internals](#arbol-internals) · [Arbol Secret](#arbol-secret) · [Arbol Swift App](#arbol-swift-app) · [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) · [Arc](#arc) · [Arc Review](#arc-review) · [Artifact](#artifact) · [Artifact Chapter](#artifact-chapter) · [Artifact Corpus](#artifact-corpus) · [Artifact Space](#artifact-space) · [Attestation](#attestation) · [Authoritative Input](#authoritative-input) · [Authority Epoch](#authority-epoch)
 - **B** — [Beat](#beat) · [better-grep](#better-grep) · [Blueprint](#blueprint) · [Blueprint Chain](#blueprint-chain) · [Book](#book) · [Brain Recipe](#brain-recipe) · [Branch](#branch) · [Branch Overlay](#branch-overlay) · [Bridge](#bridge) · [Build](#build) · [Burn](#burn)
 - **C** — [Cell](#cell) · [Change Walkthrough](#change-walkthrough) · [Chat Exchange](#chat-exchange) · [Chat Note](#chat-note) · [Chat Session](#chat-session) · [Checkpoint](#checkpoint) · [Chunk](#chunk) · [Chunking](#chunking) · [CLI](#cli) · [Code Corpus](#code-corpus) · [Code Map](#code-map) · [Code Scout](#code-scout) · [Command](#command) · [Communicado](#communicado) · [Communicado Action](#communicado-action) · [Communicado Delivery](#communicado-delivery) · [Communicado Descriptor](#communicado-descriptor) · [Communicado Family](#communicado-family) · [Communicado Presentation](#communicado-presentation) · [Communicado Species](#communicado-species) · [Communicado State](#communicado-state) · [Companion](#companion) · [Completion](#completion) · [Corpus](#corpus) · [Corpus Watcher](#corpus-watcher) · [Coupling](#coupling) · [Cue](#cue) · [Cue Card](#cue-card) · [Cue Detection Catalog](#cue-detection-catalog) · [Cue Target](#cue-target)
-- **D** — [Decision](#decision) · [Default Arbol Trunk](#default-arbol-trunk) · [Delegate](#delegate) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Draft Cue](#draft-cue) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance) · [Duty Observation](#duty-observation) · [Duty Routine](#duty-routine)
+- **D** — [Decision](#decision) · [Default Arbol Trunk](#default-arbol-trunk) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Draft Cue](#draft-cue) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance) · [Duty Observation](#duty-observation) · [Duty Routine](#duty-routine)
 
-- **E** — [Effector](#effector) · [Email Source Item](#email-source-item) · [Elma Chat](#elma-chat) · [Elma View Page](#elma-view-page) · [Embedder Profile](#embedder-profile) · [Embedding](#embedding) · [Embedding Provider](#embedding-provider) · [Entity](#entity) · [Entity Card](#entity-card) · [Entity Card Content](#entity-card-content) · [Entity Card Resolver](#entity-card-resolver) · [Entity Chip](#entity-chip) · [Entity Context Menu](#entity-context-menu) · [Entity Edge](#entity-edge) · [Entity Kind](#entity-kind) · [Entity Shape](#entity-shape) · [Entity URI](#entity-uri) · [Env Keepers](#env-keepers) · [Errand](#errand) · [Event Log](#event-log) · [Event Log Service](#event-log-service) · [Event Sourcing](#event-sourcing) · [Exchange Assignment](#exchange-assignment) · [Exhausted Subscription](#exhausted-subscription)
+- **E** — [Effector](#effector) · [Email Source Item](#email-source-item) · [Elma Chat](#elma-chat) · [Elma View Page](#elma-view-page) · [Embedder Profile](#embedder-profile) · [Embedding](#embedding) · [Embedding Provider](#embedding-provider) · [Entity](#entity) · [Entity Card](#entity-card) · [Entity Card Content](#entity-card-content) · [Entity Card Resolver](#entity-card-resolver) · [Entity Chip](#entity-chip) · [Entity Context Menu](#entity-context-menu) · [Entity Edge](#entity-edge) · [Entity Kind](#entity-kind) · [Entity Shape](#entity-shape) · [Entity URI](#entity-uri) · [Env Keepers](#env-keepers) · [Event Log](#event-log) · [Event Log Service](#event-log-service) · [Event Sourcing](#event-sourcing) · [Exchange Assignment](#exchange-assignment) · [Exhausted Subscription](#exhausted-subscription)
 - **F** — [Fanout](#fanout) · [Feature Course](#feature-course) · [Feature Triage](#feature-triage) · [Flyer](#flyer) · [Fold / Projection](#fold--projection) · [Font Scale](#font-scale) · [Forester](#forester) · [Forester Feed](#forester-feed) · [Forester Watcher](#forester-watcher) · [Free Intention](#free-intention) · [Free-standing](#free-standing)
 - **G** — [Generation](#generation)
 - **H** — [H-Nex](#h-nex) · [Heartwood](#heartwood) · [Hold](#hold) · [Hunk Review](#hunk-review)
@@ -30,12 +30,12 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **J** — [Justification](#justification)
 - **K** — [Knowledge System](#knowledge-system)
 - **L** — [Ladder](#ladder) · [Leather Bag](#leather-bag) · [Living Topic](#living-topic) · [Load](#load)
-- **M** — [Mac OS Communicado](#mac-os-communicado) · [Mandate](#mandate) · [Mycel](#mycel) · [Mycel Operation](#mycel-operation) · [Mycel Skill](#mycel-skill) · [Mycel-enabled](#mycel-enabled) · [Mycel-integrated](#mycel-integrated)
+- **M** — [Mac OS Communicado](#mac-os-communicado) · [Mycel](#mycel) · [Mycel Operation](#mycel-operation) · [Mycel Skill](#mycel-skill) · [Mycel-enabled](#mycel-enabled) · [Mycel-integrated](#mycel-integrated)
 - **N** — [Native Tool Call](#native-tool-call) · [Nex](#nex) · [Nex Colab](#nex-colab) · [Nex Knowledge Map](#nex-knowledge-map) · [Normalizer](#normalizer) · [Now Line](#now-line)
 - **O** — [Oaken](#oaken) · [Objectives](#objectives) · [Operational Artifact](#operational-artifact) · [Organization](#organization) · [Origin](#origin) · [Origin Coverage](#origin-coverage) · [Origin Link](#origin-link) · [Orphaned Change](#orphaned-change) · [Owner Goal](#owner-goal) · [Owner Requirement](#owner-requirement)
 - **P** — [Parse Result](#parse-result) · [Parser](#parser) · [Parser Pipeline](#parser-pipeline) · [Provider](#provider)
-- **R** — [Radar](#radar) · [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Release](#release) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Requirement](#requirement) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Routine](#routine) · [Runbook](#runbook)
-- **S** — [Saga](#saga) · [Saga Planning](#saga-planning) · [Scan](#scan) · [Signal](#signal) · [Signal Rule](#signal-rule) · [Signal Type](#signal-type) · [Seqoya Lab](#seqoya-lab) · [Source Ref](#source-ref) · [Sparse Retrieval](#sparse-retrieval) · [Spec Requirement](#spec-requirement) · [Spec Writing](#spec-writing) · [Spotlight](#spotlight) · [Stale](#stale) · [Stale Summary Regeneration](#stale-summary-regeneration) · [State Runtime Profile](#state-runtime-profile) · [Step Intention](#step-intention) · [Steward](#steward) · [Stint](#stint) · [Subscription](#subscription) · [Subscriptions Vigor](#subscriptions-vigor) · [Summary Node](#summary-node) · [Surface](#surface) · [Sync Pass](#sync-pass)
+- **R** — [Radar](#radar) · [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Release](#release) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Requirement](#requirement) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Runbook](#runbook)
+- **S** — [Saga](#saga) · [Saga Planning](#saga-planning) · [Scan](#scan) · [Signal](#signal) · [Signal Rule](#signal-rule) · [Signal Type](#signal-type) · [Seqoya Lab](#seqoya-lab) · [Source Ref](#source-ref) · [Sparse Retrieval](#sparse-retrieval) · [Spec Requirement](#spec-requirement) · [Spec Writing](#spec-writing) · [Spotlight](#spotlight) · [Stale](#stale) · [Stale Summary Regeneration](#stale-summary-regeneration) · [State Runtime Profile](#state-runtime-profile) · [Step Intention](#step-intention) · [Stint](#stint) · [Subscription](#subscription) · [Subscriptions Vigor](#subscriptions-vigor) · [Summary Node](#summary-node) · [Surface](#surface) · [Sync Pass](#sync-pass)
 - **T** — [Taproot](#taproot) · [Text Snapshot](#text-snapshot) · [Theme](#theme) · [Tool](#tool) · [Tool Request](#tool-request) · [Tracked Source](#tracked-source) · [Trivial Trunk](#trivial-trunk) · [Trunk Runtime](#trunk-runtime) · [Turn](#turn)
 - **U** — [UI](#ui) · [UIShell / Chrome](#uishell--chrome)
 - **V** — [Velocity](#velocity) · [Vigor](#vigor) · [Visit](#visit)
@@ -56,14 +56,6 @@ A durable [Communicado](#communicado) whose common status is `action_required`. 
 Action Item and [Spotlight](#spotlight) are orthogonal. Creating an Action Item does not Spotlight it; Spotlighting or removing it does not alter its status; resolving it does not remove an independent Spotlight designation.
 
 **Example:** A pending tool approval is persisted as an `action_required` Communicado and appears in Willo Station's Action Items section until the user approves or rejects it. The user may independently Spotlight that Communicado to keep it visible after resolution.
-
-## Activation Rule
-
-An active, durable listener that evaluates a complex logical expression of atomic events and emits a [Signal](#signal) when its conditions are met. Atomic inputs may be time events such as cron schedules, subscriptions to other Signals with payload analysis, or intermediate **semi-activation flags** that remember one matched event and its timestamp while waiting for another event within a bounded time window.
-
-An Activation Rule is independent of [Stewards](#steward) and [Mandates](#mandate): it stores no foreign key to either and does not directly start an agent. Its emitted Signal payload may contain any data—including Steward or Mandate identifiers. Separate dispatch logic can interpret that Signal to start a Steward and assign or revoke runtime Mandates.
-
-**Example:** A rule remembers `deployment.started`, waits up to 30 minutes for either `deployment.succeeded` or `deployment.failed`, and emits `steward.release.check.requested` with the project and suggested Steward ID only when the resulting condition matches.
 
 ## Activity
 
@@ -163,7 +155,7 @@ Any runnable instance/process that makes up a running [Arbol](#arbol). Component
 
 ## Arbol-Initiated Chat Session
 
-Umbrella term for any [Chat Session](#chat-session) a [Leather Bag](#initiator) did **not** start directly — one started by an agent, such as the conversational agent in another Chat Session, a [Delegate](#delegate), or a [Steward](#steward). Used only as the genus; in practice each is a concrete type such as a [Companion](#companion), [Research Trip](#research-trip), [Errand](#errand), or [Routine](#routine). Contrast a *Leather-Bag-initiated* Chat Session — the live conversation a person drives in [Elma Chat](#elma-chat). Whatever started it, it is still an ordinary Chat Session (Turns, tools, [Event Log](#event-log)); the [Initiator](#initiator) is a property, not a separate aggregate.
+Umbrella term for any [Chat Session](#chat-session) a [Leather Bag](#initiator) did **not** start directly — one started by an agent, such as the conversational agent in another Chat Session or a subagent. Used only as the genus; in practice each is a concrete type such as a [Companion](#companion) or a [Research Trip](#research-trip). Contrast a *Leather-Bag-initiated* Chat Session — the live conversation a person drives in [Elma Chat](#elma-chat). Whatever started it, it is still an ordinary Chat Session (Turns, tools, [Event Log](#event-log)); the [Initiator](#initiator) is a property, not a separate aggregate.
 
 **Example:** When the agent in a Chat Session needs the auth module summarised without bloating its context, it spawns a [Research Trip](#research-trip) — an Arbol-Initiated Chat Session — and reads back only the findings.
 
@@ -242,7 +234,7 @@ A recorded verification of some content — an [Artifact](#artifact), a chunk, a
 
 An attestation **decays**: it is bound to the version it verified, so when the content (or what it was checked against) changes, it no longer applies and the thing is Unattested again — the same mechanism that makes a *derived* chunk go stale against its source, generalised from "still matches its source" to "has been verified". Distinct from approval: an [Effector](#effector) approve/reject grants *permission to act* (run a [Tool Request](#tool-request)); it does not vouch for the *result*. The dangerous, common case is **Leather-Bag-initiated + Unattested** — work a person delegated, an agent did, and nobody competent checked.
 
-**Example:** A [Delegate](#delegate) runs an [Errand](#errand) editing a config file and the changelog. A [Routine](#routine) later runs the test suite — the passing tests are a machine attestation of the config against that commit; the changelog prose, which no test covers, stays Unattested until a competent reader confirms it. Change the config afterwards and its attestation decays to Unattested.
+**Example:** A subagent edits a config file and the changelog. A later CI run executes the test suite — the passing tests are a machine attestation of the config against that commit; the changelog prose, which no test covers, stays Unattested until a competent reader confirms it. Change the config afterwards and its attestation decays to Unattested.
 
 ## Attention Item
 
@@ -262,9 +254,9 @@ The persisted state generation used with database and installation identity to f
 
 ## Beat
 
-The leaf tier of a [Saga](#saga): the task-sized unit of work an agent picks up and runs to done or abandoned — typically through an [Errand](#errand). A specific Beat is named by proper name plus tier word — "Trunk Implementation Beat", "Workflow Semantics Beat" (see [Saga](#saga) **Usage**). A Beat declares its own territory like every other tier, may carry [Objectives](#objectives) as its done-when, and is where progress is measured: a Saga's or Arc's progress is read from its Beats' outcomes, which is what a future board visualization would show per unit.
+The leaf tier of a [Saga](#saga): the task-sized unit of work an agent picks up and runs to done or abandoned — often through a subagent. A specific Beat is named by proper name plus tier word — "Trunk Implementation Beat", "Workflow Semantics Beat" (see [Saga](#saga) **Usage**). A Beat declares its own territory like every other tier, may carry [Objectives](#objectives) as its done-when, and is where progress is measured: a Saga's or Arc's progress is read from its Beats' outcomes, which is what a future board visualization would show per unit.
 
-**Example:** The "Idempotency Key Column Beat" touches `migrations/…` and `ledger/writer.py` only; while a [Delegate](#delegate) works it, no other active Beat, Arc, or Saga may claim those files.
+**Example:** The "Idempotency Key Column Beat" touches `migrations/…` and `ledger/writer.py` only; while a subagent works it, no other active Beat, Arc, or Saga may claim those files.
 
 ## better-grep
 
@@ -340,7 +332,7 @@ The versioned set of build outputs (binaries, app/renderer bundles) produced by 
 
 The **accumulated token consumption** of saga work: every token spent by the agents working a unit, from its start to now, reportable per [Subscription](#subscription), [Brain Recipe](#brain-recipe), and [Stint](#stint). Burn is a stock, not a rate — the rate of token generation is [Velocity](#velocity). Scoped like every Radar metric: "**Research Saga Burn**" is one unit's total, **Radar Burn** the machine-wide total (see [Radar](#radar)). *(Planned feature.)*
 
-**Example:** "Semantic Research Saga" has burned 412k tokens across two Delegates — 300k of them on the second [Brain Recipe](#brain-recipe) of its [Ladder](#ladder).
+**Example:** "Semantic Research Saga" has burned 412k tokens across two subagents — 300k of them on the second [Brain Recipe](#brain-recipe) of its [Ladder](#ladder).
 
 ## Cell
 
@@ -510,13 +502,13 @@ The Species-specific state of one [Communicado](#communicado), governed by its [
 
 ## Companion
 
-An [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) attached to a **parent** Chat Session as a follow-up, running alongside it to assist (summarise, fetch context, watch). Inherited from the Arco app. The one Arbol-initiated type **meant to be read by the [Leather Bag](#initiator)**, so it appears in [Willo Station](#willo-station) like any Chat Session — but rendered to make its link to the parent clear. Defined by its **parent edge**; the other types are rootless. Run by a [Delegate](#delegate).
+An [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) attached to a **parent** Chat Session as a follow-up, running alongside it to assist (summarise, fetch context, watch). Inherited from the Arco app. The one Arbol-initiated type **meant to be read by the [Leather Bag](#initiator)**, so it appears in [Willo Station](#willo-station) like any Chat Session — but rendered to make its link to the parent clear. Defined by its **parent edge**; the other types are rootless. Run by a subagent.
 
 **Example:** After a long refactor Chat Session, a Companion is spawned to draft the MR description; it shows in Willo Station beneath its parent, visibly tied to it.
 
 ## Completion
 
-A **one-shot, non-agentic** model call: a single prompt → output via a [Brain Recipe](#brain-recipe), with no tools, approvals, multi-turn, or [Event Log](#event-log) — the counterpart to an agentic [Chat Session](#chat-session). Use it when a model should *transform* input into output, not *do work*. [RAPTOR Summarization](#raptor-summarization) (cluster → [Summary Node](#summary-node)) and other simple [Generation](#generation) tasks are Completions; an [Embedding](#embedding) call is the same shape (a stateless API call). When generation needs to read code, run tools, or iterate, it stops being a Completion and becomes a Chat Session — an [Errand](#errand)/[Routine](#routine) run by a [Delegate](#delegate).
+A **one-shot, non-agentic** model call: a single prompt → output via a [Brain Recipe](#brain-recipe), with no tools, approvals, multi-turn, or [Event Log](#event-log) — the counterpart to an agentic [Chat Session](#chat-session). Use it when a model should *transform* input into output, not *do work*. [RAPTOR Summarization](#raptor-summarization) (cluster → [Summary Node](#summary-node)) and other simple [Generation](#generation) tasks are Completions; an [Embedding](#embedding) call is the same shape (a stateless API call). When generation needs to read code, run tools, or iterate, it stops being a Completion and becomes a Chat Session run by a subagent.
 
 **Example:** RAPTOR runs each cluster through a Completion — prompt in, summary out — instead of spinning up a throwaway Chat Session per cluster.
 
@@ -560,12 +552,6 @@ A choice the owner made about a product, recorded as one row of a specification'
 The first [Arbol Trunk](#arbol-trunk), created by behavior-preserving isolation of the chat communication implementation currently centered on `ChatSessionOrchestrator`. It is the compatibility baseline used while Root–Trunk process boundaries, complete Chat Session Event Sourcing, and side-by-side Trunk replacement are introduced. “Default” names this specific Trunk implementation, not a permanently privileged architecture role; later Trunks may be selected for future [Chat Exchanges](#chat-exchange). It is not the [Trivial Trunk](#trivial-trunk), the default Trunk of every Root in Arbol 2.
 
 **Example:** During the first migration, all new Exchanges are assigned to a Default Arbol Trunk runtime even though old and new runtime generations may coexist during a safe rebuild.
-
-## Delegate
-
-The agent **role** of a background worker: an agent dispatched by another agent — the conversational agent in a regular [Chat Session](#chat-session), another Delegate, or a [Steward](#steward) — to perform bounded work off the main thread in an [Arbol-Initiated Chat Session](#arbol-initiated-chat-session), such as a [Companion](#companion), [Research Trip](#research-trip), or [Errand](#errand). Delegate is Arbol's word for a **background agent** or **subagent** — the canonical term for conversation and docs. The CLI that runs the agent session is `infer`, but `infer` is role-blind; being a Delegate is a property of how the agent was dispatched. As an [Initiator](#initiator), a Delegate is an agent that itself spawned a further session.
-
-**Example:** Three Delegates run in parallel — one [Research Trip](#research-trip) and two [Errands](#errand) — while the agent in the parent Chat Session keeps the conversation with the [Leather Bag](#initiator) going.
 
 ## Dense Retrieval
 
@@ -622,9 +608,9 @@ A cheap **re-verification** then runs on each candidate and yields a [trust scor
 - **trust holds** → **reconcile**: bump `hash_at_gen` to the new source version, close the candidate;
 - **trust drops below threshold** → promote to a real [Drift](#drift).
 
-So **two gates**: the *change score* on the source decides whether to fan out at all (a typo never re-verifies its dependents); the *trust score* on each dependent decides reconcile-vs-Drift. Together they stop hash-churn from flooding [Drifts](#drift) — only meaning changes that actually erode a dependent reach a person. Because closing a candidate is the *trust-asserting* (dangerous) direction, an **unsure** verifier escalates to a Drift rather than reconciling silently. Re-verification resolves the [Repo](#repo) to its highest-priority clearing [Ladder](#ladder) and climbs the rungs as a [Delegate](#delegate) — rung 1 (cheapest) first, stepping up only when confidence stays low. If **no** Ladder clears the Repo, re-verification can't run at all: Arbol raises an explicit error to the user rather than silently reconciling or opening a Drift.
+So **two gates**: the *change score* on the source decides whether to fan out at all (a typo never re-verifies its dependents); the *trust score* on each dependent decides reconcile-vs-Drift. Together they stop hash-churn from flooding [Drifts](#drift) — only meaning changes that actually erode a dependent reach a person. Because closing a candidate is the *trust-asserting* (dangerous) direction, an **unsure** verifier escalates to a Drift rather than reconciling silently. Re-verification resolves the [Repo](#repo) to its highest-priority clearing [Ladder](#ladder) and climbs the rungs as a subagent — rung 1 (cheapest) first, stepping up only when confidence stays low. If **no** Ladder clears the Repo, re-verification can't run at all: Arbol raises an explicit error to the user rather than silently reconciling or opening a Drift.
 
-**Example:** A typo fix scores below the change-score threshold → its dependents reconcile with no re-verification at all. Rewording the definition of "Errand" scores high → its dependents become Drift Candidates → the ones that actually relied on the old meaning fail re-verification and become Drifts.
+**Example:** A typo fix scores below the change-score threshold → its dependents reconcile with no re-verification at all. Rewording the definition of "Research Trip" scores high → its dependents become Drift Candidates → the ones that actually relied on the old meaning fail re-verification and become Drifts.
 
 ## Diff
 
@@ -681,8 +667,7 @@ Intentions and [Beats](#beat) with each other and with what the processes,
 the files and Git show. Each fact it collects is a
 [Duty Observation](#duty-observation); one the records cannot explain is an
 anomaly, which it hands to the [Forester Watcher](#forester-watcher) when two
-checks in a row found it. It is a [Routine](#routine) of Forester's own:
-Forester runs it, with no [Steward](#steward) and no
+checks in a row found it. Forester runs it itself, with no agent and no
 [Chat Session](#chat-session). First called Watcher Duty, then Forester Routine.
 Decided by the owner on 5 and 6 November 2026
 ([FOR-D60, FOR-D70, FOR-D72](../forester/decisions.md)); not implemented yet.
@@ -831,12 +816,6 @@ An Entity's canonical Entity URI is generated when the Entity is created and sto
 The **gitignored-but-precious files** a fresh checkout or worktree needs but git will not carry: `.env*` files, `.npmrc`, IDE configs, local-dev patches. Backed up path-preserving under `~/.arbol/env-backups/<repo>/`, and **seeded into every new worktree** by `mycel wt add` (existing files are never overwritten) — so a [Worktree Container](#worktree-container) worktree is dev-ready without hand-copying secrets. The backup dir doubles as the home for salvage patches (e.g. unlanded work rescued from old stashes). When you create a new keeper file, add it to the backup dir too — that is what future worktrees inherit.
 
 **Example:** a service repo's per-service `.env.*.local` files land in every new task or review worktree automatically; without the seed, half the services fail to boot locally.
-
-## Errand
-
-An [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) for one-off background work the dispatching agent could have done itself but delegates — usually to run tasks in parallel. Run by a [Delegate](#delegate). Distinct from a [Research Trip](#research-trip) (which only gathers and reports back) and a [Routine](#routine) (which recurs): an Errand does a discrete piece of work, **once**.
-
-**Example:** While the agent in the parent Chat Session keeps talking to the [Leather Bag](#initiator), it fires an Errand to update the changelog in a worktree, then folds the result back in.
 
 ## Event Log
 
@@ -989,9 +968,9 @@ The **default connectivity state** of a [Chunk](#chunk): no [Derivation](#deriva
 literal: exclude
 -->
 
-The umbrella for [Mycel](#mycel)'s **productive** side: *producing or regenerating* a `derived` [Chunk](#chunk) from its source(s) — as opposed to [Detection](#detection), which only notices what's out of date. Always model work, always deliberately triggered (never part of a [Sync Pass](#sync-pass)); its output starts [Unattested](#attestation) until verified. Concrete instances: **[RAPTOR Summarization](#raptor-summarization)** and **[Stale Summary Regeneration](#stale-summary-regeneration)** (built); *doc-from-code generation* (recreate documentation from the [Code Corpus](#code-corpus) with source→derived edges) and *drift-driven doc regeneration* via a [Routine](#routine) (planned).
+The umbrella for [Mycel](#mycel)'s **productive** side: *producing or regenerating* a `derived` [Chunk](#chunk) from its source(s) — as opposed to [Detection](#detection), which only notices what's out of date. Always model work, always deliberately triggered (never part of a [Sync Pass](#sync-pass)); its output starts [Unattested](#attestation) until verified. Concrete instances: **[RAPTOR Summarization](#raptor-summarization)** and **[Stale Summary Regeneration](#stale-summary-regeneration)** (built); *doc-from-code generation* (recreate documentation from the [Code Corpus](#code-corpus) with source→derived edges) and *drift-driven doc regeneration* (planned).
 
-**Example:** A [Routine](#routine) could regenerate a stale "API reference" [Chunk](#chunk) from the code it derives from, then leave it Unattested for a competent reviewer — that's Generation; the [Detection](#detection) that flagged it stale is not.
+**Example:** A scheduled job could regenerate a stale "API reference" [Chunk](#chunk) from the code it derives from, then leave it Unattested for a competent reviewer — that's Generation; the [Detection](#detection) that flagged it stale is not.
 
 ## Hold
 
@@ -1093,9 +1072,9 @@ The second stage of a [Feature Course](#feature-course): the agent's first study
 
 ## Initiator
 
-The actor that started a [Chat Session](#chat-session) — a property of every session, not a separate type. An Initiator is either a **[Leather Bag](#leather-bag)** (a person at the keyboard — *Leather Bag*, not "user", because not every user of Arbol is a person) or an **agent**. Agent Initiators include the conversational agent in another Chat Session, a [Delegate](#delegate), and a [Steward](#steward); provenance preserves the actual agent identity, its role where applicable, and its parent Chat Session. A Leather-Bag-initiated session is the live conversation; an agent-initiated one is an [Arbol-Initiated Chat Session](#arbol-initiated-chat-session). Initiator is *who started it* — independent of both the authority under which it acted and whether the result can be trusted. For a Steward, provenance therefore records the Steward as Initiator and the [Mandate](#mandate) version used. Trust is a separate axis earned by verification, see [Attestation](#attestation) (a Leather-Bag-initiated session is not authoritative just because a person kicked it off).
+The actor that started a [Chat Session](#chat-session) — a property of every session, not a separate type. An Initiator is either a **[Leather Bag](#leather-bag)** (a person at the keyboard — *Leather Bag*, not "user", because not every user of Arbol is a person) or an **agent**. Agent Initiators include the conversational agent in another Chat Session and a subagent; provenance preserves the actual agent identity, its role where applicable, and its parent Chat Session. A Leather-Bag-initiated session is the live conversation; an agent-initiated one is an [Arbol-Initiated Chat Session](#arbol-initiated-chat-session). Initiator is *who started it* — independent of both the authority under which it acted and whether the result can be trusted. Trust is a separate axis earned by verification, see [Attestation](#attestation) (a Leather-Bag-initiated session is not authoritative just because a person kicked it off).
 
-**Example:** A Chat Session opened in [Elma Chat](#elma-chat) has Initiator = Leather Bag; a Research Trip spawned from it has Initiator = the actual conversational agent; an [Errand](#errand) that Research Trip spawns in turn has Initiator = its [Delegate](#delegate); a scheduled monitor that decides to open a new investigation has Initiator = its [Steward](#steward).
+**Example:** A Chat Session opened in [Elma Chat](#elma-chat) has Initiator = Leather Bag; a Research Trip spawned from it has Initiator = the actual conversational agent; a further Research Trip that one spawns in turn has Initiator = its subagent.
 
 ## Instructions Hub
 
@@ -1189,21 +1168,13 @@ A Living Topic is not bounded work, a schedule, or a current-attention designati
 
 The **instantaneous measure of agent work in flight**: how many agents are actively working a scope and how much live [Chat Session](#chat-session) context they hold. **Radar Load** is the total across all projects and sagas on this computer — the machine's agentic load at this moment; a unit's load is the agents it employs. Load is what the capacity question reads against: units that add no Load but hold runnable territory are exactly what could start next. Scoped per unit and machine-wide (see [Radar](#radar)). *(Planned feature.)*
 
-**Example:** Radar Load: four Delegates, ~380k tokens of live context. "Glossary Arc": one Delegate at 60k context — and two Beats whose territories overlap nothing active, ready to start.
+**Example:** Radar Load: four subagents, ~380k tokens of live context. "Glossary Arc": one subagent at 60k context — and two Beats whose territories overlap nothing active, ready to start.
 
 ## Mac OS Communicado
 
 The first concrete [Communicado Species](#communicado-species). It accepts a `title`, `content`, and [Communicado Descriptor](#communicado-descriptor), has one Presentation—a native macOS notification—and redirects through the Descriptor when the user clicks that notification. It does not have a Willo Station Presentation and is not durable in the Communicados page in its first implementation. The code identifier is `macos`, and renderer callers use `communicado.macos.deliver`.
 
 **Example:** Elma can deliver “Agent finished” with a Descriptor for that Chat Session; clicking the notification activates Elma and opens the session.
-
-## Mandate
-
-An [Entity](#entity) (kind `mandate`, tag `mnd`, shape `note`) representing one durable, bounded **permission to do something**. A Mandate is like an access card, credential, or key: it defines an authorized action and its bounds, but it does not know who carries it, what mission they have, or what caused them to run. In particular, a Mandate has no [Steward](#steward) or [Activation Rule](#activation-rule) reference.
-
-A Steward may hold any number of Mandates. Assigning or revoking that relationship is state of the Steward, and may be static or happen at runtime. Editing a Mandate's permission creates a new immutable version; provenance of an exercised permission records the acting Steward and exact Mandate version separately. Initial permissions include reading the Steward's Chat Session history, creating Chat Sessions, posting in existing Chat Sessions, using named [Brain Recipes](#brain-recipe), and calling named [Blueprints](#blueprint).
-
-**Example:** “May post in release Chat Sessions” is a Mandate. It can exist before any Steward holds it and contains no schedule or activation condition; a Release Steward must hold the Mandate before posting.
 
 ## Mycel
 
@@ -1409,7 +1380,7 @@ The Radar watches work, not processes: monitoring Arbol processes themselves rem
 
 The Radar is also the gathering point for work statistics (under design): the [Workload](#workload) family — [Burn](#burn) (accumulated token consumption), [Load](#load) (agents working now and their live context), [Velocity](#velocity) (token generation rate) — together with summaries of the work done, estimated progress, and spend and usage rollups per [Subscription](#subscription), [Brain Recipe](#brain-recipe), and [Stint](#stint). Radar metrics scope symmetrically: per unit — "**Research Saga Burn**" — and machine-wide — **Radar Burn**, **Radar Load**, **Radar Velocity** — all projects and sagas on this computer.
 
-**Example:** The Radar shows the "Semantic Research Saga" with its "Glossary Arc" three Beats along, the "Trunk Implementation Beat" held by a [Delegate](#delegate), and the "Implementing Specs Saga" greyed out as queued — its territory overlaps the active "Writing Specs Saga". The corner reads "Radar Load: 4 Delegates · ~380k tokens live" and "Radar Velocity: 520 tok/s".
+**Example:** The Radar shows the "Semantic Research Saga" with its "Glossary Arc" three Beats along, the "Trunk Implementation Beat" held by a subagent, and the "Implementing Specs Saga" greyed out as queued — its territory overlaps the active "Writing Specs Saga". The corner reads "Radar Load: 4 subagents · ~380k tokens live" and "Radar Velocity: 520 tok/s".
 
 ## RAPTOR Rebuild
 
@@ -1433,7 +1404,7 @@ The hierarchical summary layer over a [Corpus](#corpus): tier 0 is the corpus [C
 
 A **locator**: a pointer to a target — a file path, [Artifact](#artifact)-section anchor, code-symbol path, http link, or ticket link (a "see also" is one too). Its only integrity question is **does it still resolve**: a Reference breaks when its target is **renamed, moved, or removed**, *not* when the target's content changes (a linked ticket can be rewritten and the link stays valid). It's checked by **resolution** — a cheap lookup ("does this path / anchor / ticket still exist?"), needing no model and no [trust score](#attestation); a broken Reference is just a "fix the pointer" item. Distinct from an [Entity Edge](#entity-edge) (a structural tie in the entity graph) and — crucially — from **using a term's meaning**, which is *not* a Reference but a meaning-dependency ([Derivation](#derivation) / [Coupling](#coupling)) checked by re-verification instead.
 
-**Example:** `[see auth](auth.md#tokens)`, a ticket link, and a path like `core/session.py` are References — they survive content edits to their targets and break only on rename / move / remove. A sentence that *relies on what "Errand" means* is, by contrast, a [Derivation](#derivation) — not a Reference.
+**Example:** `[see auth](auth.md#tokens)`, a ticket link, and a path like `core/session.py` are References — they survive content edits to their targets and break only on rename / move / remove. A sentence that *relies on what "Research Trip" means* is, by contrast, a [Derivation](#derivation) — not a Reference.
 
 ## Refresh
 
@@ -1482,7 +1453,7 @@ Something the software must do or include, recorded in one of two places: as an 
 
 ## Research Trip
 
-An [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) dispatched to research a question and **return only the findings**, so the dispatcher's context window isn't polluted by the raw exploration. Run by a [Delegate](#delegate), typically dispatched by the agent in another Chat Session. Go out, look around, come back with a report — the conversational counterpart to an [Errand](#errand) (which does work rather than gathering it).
+An [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) dispatched to research a question and **return only the findings**, so the dispatcher's context window isn't polluted by the raw exploration. Run by a subagent, typically dispatched by the agent in another Chat Session. Go out, look around, come back with a report.
 
 **Example:** Before editing, the agent in a Chat Session sends a Research Trip to map how Chat Sessions are persisted; it returns a three-paragraph summary instead of fifty files of context.
 
@@ -1498,16 +1469,10 @@ The contract that an [Arbol Root](#arbol-root) shares with all its [Arbol Trunks
 
 **Example:** First Sapling and a second Root made from it both use version 1, so Build 4 of the [Trivial Trunk](#trivial-trunk), with `"rootContracts": [1, 2]`, runs in both without being built again.
 
-## Routine
-
-Recurring or triggered work performed by a [Steward](#steward), commonly maintenance such as re-ingesting a corpus, sweeping stale chunks, or garbage-collecting. Each run that requires agent work is an [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) whose [Initiator](#initiator) is the Steward. A schedule or event supplies an activation opportunity and the Steward's activation policy decides whether to act; neither the trigger nor Mandate condition is the Initiator. The Steward's authority is recorded through the exact [Mandate](#mandate) version used. Distinct from an [Errand](#errand), which is one-off delegated work.
-
-**Example:** A nightly Routine re-ingests `~/Artifacts/Arbol/` and records work items for any chunk whose source moved since it was last generated.
-
 ## Runbook
 
 
-A **technical manual for a tool**, kept **near its file** (the runbook-near-file rule): CLI tools whose code lives in repos get theirs in a `tools/` [Artifact Chapter](#artifact-chapter) — `~/Artifacts/mycel/tools/` for the client-agnostic Tools (mycel, infer, blueprint, better-grep), `~/Artifacts/Arbol/tools/` for Arbol-only ones (arbol-cli, deployment); a [Blueprint Chain's](#blueprint-chain) runbook sits NEXT to its script in `~/Artifacts/mycel/chains/` as a same-name sibling `.md`. Contents: syntax, parameters, inputs/outputs, data structures, exit codes, and failure modes with cures — carrying [Source Refs](#source-ref) to the implementing scripts/modules (repo-hosted code only; sibling scripts aren't indexed, so proximity is the link). A runbook contains **no process reasoning**: it answers "how do I *say* it", never "what should happen" — that is a [Mycel Operation's](#mycel-operation) job. Runbooks serve every actor that **learns at runtime** — humans and agents alike, whether hosted in Claude Code, codex, or an Arbol [Chat Session](#chat-session) (conversational agents, [Delegates](#delegate), and [Stewards](#steward) operating tools are prime consumers). Only **compiled code** (UI buttons calling RPCs, daemon internals) consults nothing at runtime — it is instead what runbooks *cite*, so [Detection](#detection) flags the manual when the tool changes. The **Arbol Runbook** (`tools/arbol-cli.md`) is the reference for all `arbol-cli` commands. Discovery works both ways: forward via [Retrieval](#retrieval); backward via the refs' reverse edges — [better-grep](#better-grep) shows `documented in: tools/…` the moment an agent touches the tool's code. Freshness by [Detection](#detection); retirement by [Heartwood](#heartwood). The habit: a new command or hard-won failure-mode lesson gets its section in the same breath as the change.
+A **technical manual for a tool**, kept **near its file** (the runbook-near-file rule): CLI tools whose code lives in repos get theirs in a `tools/` [Artifact Chapter](#artifact-chapter) — `~/Artifacts/mycel/tools/` for the client-agnostic Tools (mycel, infer, blueprint, better-grep), `~/Artifacts/Arbol/tools/` for Arbol-only ones (arbol-cli, deployment); a [Blueprint Chain's](#blueprint-chain) runbook sits NEXT to its script in `~/Artifacts/mycel/chains/` as a same-name sibling `.md`. Contents: syntax, parameters, inputs/outputs, data structures, exit codes, and failure modes with cures — carrying [Source Refs](#source-ref) to the implementing scripts/modules (repo-hosted code only; sibling scripts aren't indexed, so proximity is the link). A runbook contains **no process reasoning**: it answers "how do I *say* it", never "what should happen" — that is a [Mycel Operation's](#mycel-operation) job. Runbooks serve every actor that **learns at runtime** — humans and agents alike, whether hosted in Claude Code, codex, or an Arbol [Chat Session](#chat-session) (conversational agents and subagents operating tools are prime consumers). Only **compiled code** (UI buttons calling RPCs, daemon internals) consults nothing at runtime — it is instead what runbooks *cite*, so [Detection](#detection) flags the manual when the tool changes. The **Arbol Runbook** (`tools/arbol-cli.md`) is the reference for all `arbol-cli` commands. Discovery works both ways: forward via [Retrieval](#retrieval); backward via the refs' reverse edges — [better-grep](#better-grep) shows `documented in: tools/…` the moment an agent touches the tool's code. Freshness by [Detection](#detection); retirement by [Heartwood](#heartwood). The habit: a new command or hard-won failure-mode lesson gets its section in the same breath as the change.
 
 **Example:** `tools/deployment.md`'s failure-mode table (poisoned-package zlib crashes, orphan-core reaping, socket-wait timing) carries refs to `rebuild-and-restart.sh` — edit that script and Detection flags the section for review.
 
@@ -1517,11 +1482,11 @@ An **independent stream of work** that does not interfere with other Sagas: no t
 
 Sagas nest exactly **two levels deep**: a top-level **Saga** — a high-level direction of work — contains **[Arcs](#arc)**, and an Arc contains **[Beats](#beat)**. All three tiers are one record kind, a Saga at different levels of nesting, and every one of them is an independent stream. The exclusivity rule settles only units outside a containment line — sibling Beats of one Arc, sibling Arcs of one Saga, and unrelated Sagas never run concurrently on overlapping territory, while an ancestor runs through its descendants. Nesting goes no deeper — an Arc cannot contain another Arc, and a Beat contains nothing. Sagas and Arcs can be Draft, Depends On, Ready to Plan, Partly Ready, Fully Ready, In Review or Done. A Saga can also be Ready to Close once all its Arcs are Done and it awaits the owner’s closure. Only Ready to Plan, Partly Ready and Fully Ready units can be taken into work, and those units must be free of dependencies ([FOR-D124, FOR-D125 and FOR-D133](../forester/decisions.md), [MYC-20](../mycel/specs/20-feature-course.md#statuses-of-sagas-and-arcs)). How a territory is declared, held and checked is in the [Sagas guide](../mycel/operations/sagas.md).
 
-Not the distributed-systems "saga pattern" (compensating transactions): a Saga names a direction of work, not a transaction scheme. Distinct from an [Errand](#errand) (the delegated session through which an agent works a Beat — the Errand is execution, the Saga is the work) and [Activities](#activity) (trunk-internal execution units below the Saga layer).
+Not the distributed-systems "saga pattern" (compensating transactions): a Saga names a direction of work, not a transaction scheme. Distinct from the subagent session through which an agent works a Beat (the session is execution, the Saga is the work) and from [Activities](#activity) (trunk-internal execution units below the Saga layer).
 
 **Usage:** A specific unit is always referred to by its proper name followed by its tier word, with the tier word capitalized — "Semantic Research Saga", "Glossary Arc", "Trunk Implementation Beat". Prose, UI labels, and code use the full form for a specific unit (code identifiers end in the tier: `semantic_research_saga`); the bare tier word is reserved for generic statements about a tier ("an Arc cannot contain another Arc") and back-references whose antecedent is unambiguous in the same paragraph. Unqualified **Saga** (plural **Sagas**) may also denote a unit of any tier when the family sense is meant; when the tier matters, name it.
 
-**Example:** The "Semantic Research Saga" contains the "Glossary Arc" and the "Arbol Specs Arc"; the "Glossary Arc" contains the "Trunk Implementation Beat" and the "Workflow Semantics Beat". The two Beats touch disjoint files, so two [Delegates](#delegate) can work them at once. The "Writing Specs Saga" and the "Implementing Specs Saga" declare overlapping territories — both change the spec artifacts — so they never run at the same time: "Implementing Specs Saga" becomes runnable the moment "Writing Specs Saga" finishes.
+**Example:** The "Semantic Research Saga" contains the "Glossary Arc" and the "Arbol Specs Arc"; the "Glossary Arc" contains the "Trunk Implementation Beat" and the "Workflow Semantics Beat". The two Beats touch disjoint files, so two subagents can work them at once. The "Writing Specs Saga" and the "Implementing Specs Saga" declare overlapping territories — both change the spec artifacts — so they never run at the same time: "Implementing Specs Saga" becomes runnable the moment "Writing Specs Saga" finishes.
 
 ## Saga Planning
 
@@ -1619,14 +1584,6 @@ Intentions are wanted, the plan has more steps. Decided by the owner on 4 and
 **Example:** The Intention for step 3 of SYL-231, which names
 `mycel:src/mycel/_classify.py` and `mycel:src/mycel/_credentials.py`, closes when the agent
 marks step 3 done after Forester has committed both files.
-
-## Steward
-
-A [Delegate](#delegate) activated by an [Activation Rule](#activation-rule) in order to accomplish a mission or task rather than by a direct request in a regular [Chat Session](#chat-session). The Steward persists as an identity between runs even though no agent process needs to remain alive. Its identity owns the mission, default [Brain Recipe](#brain-recipe), runtime metadata, Chat Session history, and the set of [Mandates](#mandate) it currently holds.
-
-Mandates—not activation—allow a Steward to perform actions on the person's behalf that regular conversational agents cannot normally perform, such as reading all of its own Chat Sessions, creating new Chat Sessions, posting to existing ones, selecting other Brain Recipes, or calling permitted [Blueprints](#blueprint). A Steward may have any number of static Mandates; Activation Rules or runtime logic may assign or revoke additional Mandates. Provenance records the Steward as actor, the Signal that prompted its run, and every exact Mandate version exercised.
-
-**Example:** A Release Steward starts when it receives `steward.release.check.requested`. It reads its previous investigations using a history Mandate and, when needed, exercises separate Mandates to post in the release chat or create a new investigation.
 
 ## Stint
 
@@ -1749,7 +1706,7 @@ The repository folder in which a Chat Session executes commands. It is the first
 
 The **rate of token generation**: tokens per second produced by the agents working a unit. A flow — the rate counterpart of [Burn](#burn)'s stock. **Radar Velocity** is the machine-wide total. Scoped per unit and machine-wide (see [Radar](#radar)). *(Planned feature.)*
 
-**Example:** "Writing Specs Saga" runs at ~180 tok/s while its Delegate drafts; the machine totals ~520 tok/s across four Delegates.
+**Example:** "Writing Specs Saga" runs at ~180 tok/s while its subagent drafts; the machine totals ~520 tok/s across four subagents.
 
 ## Vigor
 
