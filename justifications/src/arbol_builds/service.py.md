@@ -29,9 +29,9 @@ Origins: ARC-4.1, ARC-4.8 · Intention i-de10fbd4 · 2026-11-12
 
 ## prune_protections
 
-Reason: Retire generation and installation of the Root runtime launchers
+Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
 
-Origins: ARC-4.1, ARC-4.8 · Intention i-de10fbd4 · 2026-11-12
+Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
 
 ## show_build
 
@@ -74,4 +74,10 @@ Origins: DRV-6.21, BLD-0.16 · Intention i-9c1b219b · 2026-11-15
 Reason: Generate immutable isolated Driver launcher bytes including spaced-path wrapper fallback and refuse ordinary gated-launcher replacement
 
 Origins: DRV-6.21, BLD-0.16, BLD-0.9, BLD-0.15 · Intention i-6fbf8388 · 2026-11-15
+
+## remove_build_payload
+
+Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
+
+Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
 

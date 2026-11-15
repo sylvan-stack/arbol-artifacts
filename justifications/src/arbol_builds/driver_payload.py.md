@@ -5,9 +5,9 @@ role: authored
 
 ## <before relative>
 
-Reason: Complete static import ordering of exact gate and qualification verification
+Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
 
-Origins: DRV-6.21 · Intention i-aa1576d7 · 2026-11-14
+Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
 
 ## Payload
 
@@ -113,13 +113,73 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-b19c1bd3 · 2026-11-14
 
 ## verify_acceptance
 
-Reason: Resolve exact registered payloads and verify gate, platform and scoped qualification authority before qualified execution
+Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-b19c1bd3 · 2026-11-14
+Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
 
 ## verify_gate
 
 Reason: Resolve exact registered payloads and verify gate, platform and scoped qualification authority before qualified execution
 
 Origins: DRV-6.21, DRV-6.18 · Intention i-b19c1bd3 · 2026-11-14
+
+## Retention
+
+Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
+
+Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
+
+## _retention_acceptance
+
+Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
+
+Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
+
+## _retention_builds
+
+Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
+
+Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
+
+## _retention_component
+
+Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
+
+Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
+
+## _retention_gate
+
+Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
+
+Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
+
+## _retention_records
+
+Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
+
+Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
+
+## pin_payloads
+
+Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
+
+Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
+
+## protected_payloads
+
+Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
+
+Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
+
+## retention
+
+Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
+
+Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
+
+## retention_status
+
+Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
+
+Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
 
