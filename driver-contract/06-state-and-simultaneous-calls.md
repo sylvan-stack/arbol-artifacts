@@ -799,3 +799,26 @@ arbol:@code/src/arbol_builds/driver_state.py#drain
 arbol:@code/src/arbol_builds/driver_state.py#execute
 arbol:@code/src/arbol_builds/driver_state.py#finish
 -->
+
+
+### Retained completed fixture maintenance receipts · 15 November 2026
+
+The healthy-rebind condition above, “no deployment/maintenance/active checkpoint/recovery or pending transaction/archive journal”, is clarified as: **no deployment, active or unresolved maintenance, active checkpoint/recovery, or pending transaction/archive journal; a retained completed maintenance receipt is permitted only under the following historical-receipt predicate.** This is a technical clarification of the testing-only fixture contract, not permission to skip or manufacture production finish.
+
+**Retained completed maintenance receipt.** Presence of `.driver-admission/maintenance.json` alone does not mean maintenance remains active: the unchanged production finish preserves that receipt after reopening normal admission. Healthy rebind may preserve it only as independently verified historical evidence. Require its exact bounded canonical bytes and production schema, component/session/old-epoch/gate binding, and the genuine issuing tuple/acceptance/physical-registry lineage. Its raw SHA-256 must equal the receiptSha256 of the corresponding real context/operation chain. Validate the matching immutable request/context/operation/result/marker archives and finish journal, including their exact attempt, generation, result/context/request/marker hashes and distinct nextEpoch. Require independently retained evidence that the unchanged production provider genuinely finished that exact operation, with no pending operation or unresolved finish remaining. A finish journal in ready phase alone is not completed evidence; it is permitted only when the actual provider subsequently accepted the exact normal finish retry and its required archived-marker and target-state checks.
+
+Before closure, actual control must be normal/session-null at that verified finish nextEpoch, or at a later epoch reached solely through an independently retained chain of legitimate completed maintenance and accepted healthy-fixture rebinds. Preserve each original receipt’s issuing tuple/gate/epoch bindings through that chain; do not require a historical receipt to match a later selected tuple/gate, and do not reinterpret it as current maintenance authority. Missing, incomplete, changed, ambiguous or unexplained receipt/session/result/finish/epoch lineage refuses.
+
+The rebinder neither deletes, rewrites nor archives the retained receipt for convenience. Preserve its exact bytes, completed session/attempt evidence and existing receipt archives through rebind. Only a later genuine production drain may perform its existing previous-receipt archival and replacement. All existing current-marker before-image/fingerprint, unchanged-byte checks, full terminal custody, no-taint, OLDscope reconciliation, stable-inode and actual all-four EX requirements remain mandatory. This historical classification grants no admission, clears no taint and substitutes for no production finish or recovery observation.
+
+Source-backed disposition: production finish publishes normal control then a complete finish journal without deleting maintenance.json; normal_control does not treat receipt existence as active authority. Its normal finish retry deliberately accepts exact ready/complete journal plus nextEpoch/archived-marker/target-state checks, and later drain preserves an older receipt by its hash before replacement. The delivered narrow source/spec review identified the blanket file-existence predicate as overstrict; direct source inspection confirms the exact clarification above against unchanged production0ef963b6 (also present at prospective-testing checkpointd7adf41). No production defect, API change, prospective-body admission, runtime/gate/Build/deployment/boot result or owner-only policy choice is introduced. The existing full Plan/44/50 body-admission boundaries remain.
+
+<!-- sources:
+arbol:@code/src/arbol_builds/driver_state.py#_receipt
+arbol:@code/src/arbol_builds/driver_state.py#_closed_attempt
+arbol:@code/src/arbol_builds/driver_state.py#_finish_inputs
+arbol:@code/src/arbol_builds/driver_state.py#_finish_record
+arbol:@code/src/arbol_builds/driver_state.py#_normal_finish_retry
+arbol:@code/src/arbol_builds/driver_state.py#_finish_component
+arbol:@code/src/arbol_builds/driver_admission.py#normal_control
+-->
