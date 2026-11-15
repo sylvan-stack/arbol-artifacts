@@ -125,9 +125,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-e07374d3 · 2026-11-15
 
 ## _component
 
-Reason: Recognize genuine optional legacy payload absence before private parent validation while retaining matching tuple verification
+Reason: Keep optional candidate bytes separate from required acceptance bytes for strict typing
 
-Origins: DRV-6.18, DRV-6.21 · Intention i-425cae65 · 2026-11-15
+Origins: DRV-6.18, DRV-6.21 · Intention i-e6f092ea · 2026-11-15
 
 ## _control
 
