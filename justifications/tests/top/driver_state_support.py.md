@@ -345,3 +345,105 @@ Reason: Add bounded H1-only interactive owned-child collection with exact ready/
 
 Origins: DRV-5.11, DRV-6.21 · Intention i-a26ec4d6 · 2026-11-15
 
+## TerminalSpanCollector
+
+Reason: Add the accepted ordered terminal-close collector and bounded verified Suite/provider stop-resume cleanup without changing ordinary collection
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-88ece80c · 2026-11-15
+
+## TerminalSpanCollector.__init__
+
+Reason: Add the accepted ordered terminal-close collector and bounded verified Suite/provider stop-resume cleanup without changing ordinary collection
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-88ece80c · 2026-11-15
+
+## TerminalSpanCollector._continue_target
+
+Reason: Add the accepted ordered terminal-close collector and bounded verified Suite/provider stop-resume cleanup without changing ordinary collection
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-88ece80c · 2026-11-15
+
+## TerminalSpanCollector._ps_image
+
+Reason: Add the accepted ordered terminal-close collector and bounded verified Suite/provider stop-resume cleanup without changing ordinary collection
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-88ece80c · 2026-11-15
+
+## TerminalSpanCollector._pump
+
+Reason: Add the accepted ordered terminal-close collector and bounded verified Suite/provider stop-resume cleanup without changing ordinary collection
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-88ece80c · 2026-11-15
+
+## TerminalSpanCollector._settle_terminal
+
+Reason: Add the accepted ordered terminal-close collector and bounded verified Suite/provider stop-resume cleanup without changing ordinary collection
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-88ece80c · 2026-11-15
+
+## TerminalSpanCollector._state
+
+Reason: Add the accepted ordered terminal-close collector and bounded verified Suite/provider stop-resume cleanup without changing ordinary collection
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-88ece80c · 2026-11-15
+
+## TerminalSpanCollector.abort
+
+Reason: Add the accepted ordered terminal-close collector and bounded verified Suite/provider stop-resume cleanup without changing ordinary collection
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-88ece80c · 2026-11-15
+
+## TerminalSpanCollector.bind_verified_participants
+
+Reason: Add the accepted ordered terminal-close collector and bounded verified Suite/provider stop-resume cleanup without changing ordinary collection
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-88ece80c · 2026-11-15
+
+## TerminalSpanCollector.capture_ended_failure
+
+Reason: Add the accepted ordered terminal-close collector and bounded verified Suite/provider stop-resume cleanup without changing ordinary collection
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-88ece80c · 2026-11-15
+
+## TerminalSpanCollector.confirm_terminal_stops
+
+Reason: Add the accepted ordered terminal-close collector and bounded verified Suite/provider stop-resume cleanup without changing ordinary collection
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-88ece80c · 2026-11-15
+
+## TerminalSpanCollector.continue_after_validation
+
+Reason: Add the accepted ordered terminal-close collector and bounded verified Suite/provider stop-resume cleanup without changing ordinary collection
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-88ece80c · 2026-11-15
+
+## TerminalSpanCollector.finish_positive
+
+Reason: Add the accepted ordered terminal-close collector and bounded verified Suite/provider stop-resume cleanup without changing ordinary collection
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-88ece80c · 2026-11-15
+
+## TerminalSpanCollector.raw_observation
+
+Reason: Add the accepted ordered terminal-close collector and bounded verified Suite/provider stop-resume cleanup without changing ordinary collection
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-88ece80c · 2026-11-15
+
+## TerminalSpanCollector.resume_terminal
+
+Reason: Add the accepted ordered terminal-close collector and bounded verified Suite/provider stop-resume cleanup without changing ordinary collection
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-88ece80c · 2026-11-15
+
+## TerminalSpanCollector.terminal_armed
+
+Reason: Add the accepted ordered terminal-close collector and bounded verified Suite/provider stop-resume cleanup without changing ordinary collection
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-88ece80c · 2026-11-15
+
+## TerminalSpanCollector.terminal_interval_ends_at
+
+Reason: Add the accepted ordered terminal-close collector and bounded verified Suite/provider stop-resume cleanup without changing ordinary collection
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-88ece80c · 2026-11-15
+
