@@ -329,9 +329,9 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
 
 ## H1SpanObservation.__init__
 
-Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+Reason: Clamp actual ready H1 collector end to min(existing, ready+60), capture deadline within same span retaining20-second cleanup reserve and separate5-second action deadline; preserve failed bytes/EOF/cleanup and all actual identity/S2/EX/unknown oracles. Source-only accepted repair.
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-84763300 · 2026-11-15
 
 ## H1SpanObservation._continue
 
