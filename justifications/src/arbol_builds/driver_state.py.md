@@ -155,9 +155,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-e07374d3 · 2026-11-15
 
 ## begin
 
-Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
+Reason: Preserve the exact same-session closed boot checkpoint custody before the first recovery journal exists
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
+Origins: DRV-6.21 · Intention i-239b4b72 · 2026-11-15
 
 ## status
 
@@ -251,9 +251,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-18d0693d · 2026-11-15
 
 ## _boot_recovery_pending
 
-Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
+Reason: Preserve the exact same-session closed boot checkpoint custody before the first recovery journal exists
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
+Origins: DRV-6.21 · Intention i-239b4b72 · 2026-11-15
 
 ## _recover_boot
 
