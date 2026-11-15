@@ -245,9 +245,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
 
 ## deploy
 
-Reason: Verify four exact ready results under lexical control mutexes and independent EX leases, journal desired epochs before partial control publication and commit global complete last
+Reason: Preserve deploy completed-phase reply while requiring the new complete all-four verification before caller-enable readiness
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-18d0693d · 2026-11-15
 
 ## _boot_recovery_pending
 
