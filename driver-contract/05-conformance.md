@@ -265,3 +265,24 @@ This technical clarification is accepted after fresh independent actual-contract
 Candidate preparation may use exact real retained failed auxiliary tuples, preserving their status/history and evidence limits. Each genuinely new Build must still complete its own full ordinary gate against its own exact payload. The final five-tuple qualification manifest separately binds those own-Build gate records and every required final-cohort composition case. No source-identical auxiliary result substitutes for changed payload/gate/acceptance bytes. Preserve all genuine-profile/model, native, named mid-tier and real kernel-transition requirements and their separately explicit scope. Static, failed, building, candidate, working and qualified remain different facts.
 
 All17 original descriptor checks remain: Arbol2, Codex3, Claude3, Pi5 and Mimo4. Preserve Arbol's separate Root database observation, Pi's separate Node program/four genuine live families, contract-tier dispositions and Mimo's distinct unit/native/live gates. Mimo's exact synthetic native-candidate requirement is not a genuine profile/model permission. Runner adaptation covers every actual state access, including Pi's pre-spawn State/Accounts lookup; merely fixing its completion subprocess is insufficient. Killed fixture writers retain unknown custody until genuine closed-boot recovery; testing cannot mark them terminal or clear taint to make a check run.
+
+
+### ABR-45 full-gate launch preparation source · 15 November 2026
+
+The source checkpoint implements one-use producer helper tickets and joined/shielded asynchronous creation/acknowledgement for the shipped Codex/Claude nested dev commands, retaining exact immutable entry prefixes, process/parent/nonce bindings, independent leases, native environment, streams and bounded cleanup. Caller-owned testing controls may use their own reviewed nonauthority descriptors with the explicit ticket; normal production convenience launchers retain fresh-socket-only authority. All17 original descriptor checks and ordinary commands remain unchanged, including Pi's four live families and Mimo's distinct synthetic-native and genuine-live checks.
+
+Package source explicitly declares the fixed check runner and reserved fixture helpers; their actual bodies/actions/path/transport and pre-spawn state accesses are still unimplemented or unadmitted ABR-38 work. The Mimo current real-profile dev correction remains its independently accepted ABR-44 source within the final checkpoint. This is no model/profile use, native test, complete gate or working/qualified Build result. Fresh integrated ABR-45 source/input acceptance and ABR-38 full qualification/independent Arc Review remain required; numeric Codex1/capability1 is not blanket Contract2 credit.
+
+<!-- sources:
+arbol-codex-driver:@code/src/arbol_codex_driver/admission.py#Session.prepare_helper
+arbol-codex-driver:@code/src/arbol_codex_driver/admission.py
+arbol-codex-driver:@code/src/arbol_codex_driver/dev.py
+arbol-codex-driver:@code/tests/mid/archived/src/arbol_codex_driver/dev.py
+arbol-codex-driver:@code/scripts/identity_package.py
+arbol-claude-driver:@code/src/arbol_claude_driver/admission.py
+arbol-claude-driver:@code/bin/entry.py
+arbol-claude-driver:@code/tests/mid/archived/src/arbol_claude_driver/dev.py
+arbol-claude-driver:@code/scripts/package_build.py
+arbol-pi-driver:@code/scripts/package_build.py
+arbol-mimo-driver:@code/scripts/package_build.py
+-->

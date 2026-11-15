@@ -668,3 +668,20 @@ This technical clarification is accepted after fresh independent actual-contract
 Preserve the existing ordinary lifecycle: allocate a real numbered building record, run the complete original build array, then the complete original check array, and mark working only after every own check succeeds. In an explicitly isolated qualification registry, an exact newly packaged still-building tuple may receive the candidate-only protocol admission specified by DRV-6 for **its own checks**. Public named/default selection still refuses every building record. Checks execute that Build's own payload through the fixed candidate admission boundary rather than selecting another Build through the public launcher. No pass record, D, status or failure history is copied or rewritten. A genuine retained failed tuple may support preparation/investigation but never supplies the new Build's own successful gates or promotion.
 
 The new sealed candidate dispatch and exact own-check/final-cohort evidence boundary are specified in [DRV-6](../driver-contract/06-state-and-simultaneous-calls.md#isolated-qualification-build-bootstrap-clarification--15-november-2026). No public stage/continue lifecycle, generic allow-building option or resumption/promotion API is introduced.
+
+
+### ABR-45 isolated own-check source checkpoint · 15 November 2026
+
+Arbol source `263e7ccbb5db57ffaf22934734526e3b79c345c2`, tree `73e48d7ba267cf93920daf25fd64803022a5ca37`, implements the reviewed isolated candidate resolution/finite helper routing in source. Ordinary service lifecycle, public named/default building refusal, launcher signal/selection behavior, generator/copy/pruning code and every original build/check array remain unchanged. CandidateStage retains staged-before-install verification only for deployment inputs/pins; execution_scope separately requires actual all-four installed gate hashes. Explicit candidate scope is propagated through pins, supervision, administrative operations and custody rather than granting a generic allow-building switch.
+
+This is implementation linkage for25, not the final integrated source/input review or runtime qualification. All executable runtime/M-D, allocated candidate Builds, acceptance, gates and genuine transition evidence remain unproduced. ABR-38 must exercise each new Build's own complete ordinary checks and exact final cohort under the reviewed explicit operational scopes; no retained auxiliary or source equality supplies another Build's pass.
+
+<!-- sources:
+arbol:@code/src/arbol_builds/driver_payload.py#CandidateScope
+arbol:@code/src/arbol_builds/driver_payload.py#resolve_candidate
+arbol:@code/src/arbol_builds/driver_payload.py#_registered_payload
+arbol:@code/src/arbol_builds/driver_payload.py#pin_payloads
+arbol:@code/src/arbol_builds/driver_state.py#CandidateStage
+arbol:@code/src/arbol_builds/driver_state.py#_candidate_stage
+arbol:@code/src/arbol_builds/driver_state.py#_execution_scope
+-->

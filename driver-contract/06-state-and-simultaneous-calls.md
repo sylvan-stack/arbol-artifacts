@@ -691,3 +691,28 @@ Handshake remains its existing20sec bound. From provider spawn, total subject ob
 Unexpected EOF, malformed/reordered data, pipe overflow, wrong actual PID/context, timeout, child death before the fixed boundary or Guardian exit without verified actor death is **failed/unavailable evidence**. At cancellation failure, use existing bounded exact-owned cancellation only; if a verified owned active process must be killed, retain unknown custody and fail that subject. Never kill an unknown/reused PID or a group to clean the test. A stuck Guardian is not permission to kill the actor without independent verification; report retained processes/obligations and the scope limitation. Close only owned pipe/capture handles, preserve all records/evidence and pending transfers. No EOF, reaped wrapper, closed socket, empty process group, native exit or readiness frame proves cooperative terminal or unlocks registry admission.
 
 Actual bodies must independently pass admission review before wiring/execution, proving descriptor/path containment, real cancellation preserving the recorded native session/temporary claim, settled tasks/helpers and independently observed actual native list/delete/fresh-list calls. SQLite absence alone is insufficient. Missing proof, malformed transport, timeout or uncertain cleanup preserves failure/custody/evidence; no test subset or static artifact becomes qualification. Every genuine existing-profile/model, named mid-tier, owner-state migration/deployment and disruptive real kernel-transition scope remains separately explicit after concrete preparation. No source, body, package, runtime, gate, Build or Arc acceptance follows from this specification.
+
+
+### ABR-45 integrated source linkage · 15 November 2026
+
+Final source inputs through the additive fixed-selector leaf are Arbol `263e7ccbb5db57ffaf22934734526e3b79c345c2` (tree `73e48d7ba267cf93920daf25fd64803022a5ca37`), Codex `74a13d7772f4fdc56799cd1258a607df7865a2ba` (tree `37f003007efa9d729ace8ecee13e67625983bde2`), Claude `78396b54bafe212997e272088d15b23a6355149d` (tree `f9b6eda762d195e417b9af93d15b0609bb8bbf1a`), Pi `4f814e00b9ae05245d68ce0703a0bca89331de95` (tree `6e93df52199b870ca85b63296ea3999a21523743`) and Mimo `636845c7b89613027f500336edfff4078b122a51` (tree `8c7fb0b840c6a618357a24c05fa935cbbb549a4a`). Prior accepted/rejected source bundles and histories retain their original revisions; source14-file delta and all17 original gate commands remain separately bound.
+
+CandidateScope and CandidateStage keep exact raw registered tuples, selected candidate acceptance, registry/platform/gate/payload pins and staged versus executable deployment authority distinct. The scope reaches normal_control/reconcile, Guardian, request/execute/result/finish and guarded publication without relaxing unknown/dead-writer refusal. Finite candidate driver/unit/Mimo-native/three Mimo death-fixture routes validate the exact declared helper and arguments in both routing and Guardian guards; actor routes accept no caller arguments. Existing normal wire/token format, physical scope and process-bound acknowledged independent child admission remain. No arbitrary entry/module/filter, extra inherited authority or production actor-transport parser is added.
+
+Reserved actor and runner files remain future testing deliverables, not filename-based execution permission. Real active death stays unresolved in its own subject scope; legitimate passive-owner/recovery proposals cannot manufacture terminal state or clear/copy taint. The corrected canonical43-character transport identifiers remain distinct from32-hex fixture/probe IDs. Complete actual source/input review is still pending at this publication; every package/runtime/M-D/registered acceptance, real full-gate/model/native/restore/import/custody/boot observation and final independent Arc Review remains ABR-38 work. No source/runtime result is inferred from Source Refs; ingest/embedding/indexed verification remains deferred.
+
+<!-- sources:
+arbol:@code/src/arbol_builds/driver_payload.py#CandidateScope
+arbol:@code/src/arbol_builds/driver_payload.py#resolve_candidate
+arbol:@code/src/arbol_builds/driver_payload.py#verify_gate
+arbol:@code/src/arbol_builds/driver_payload.py#verify_acceptance
+arbol:@code/src/arbol_builds/driver_admission.py#normal_control
+arbol:@code/src/arbol_builds/driver_admission.py#reconcile
+arbol:@code/src/arbol_builds/driver_process.py#Guardian.admit
+arbol:@code/src/arbol_builds/driver_process.py#Guardian.spawn_gate
+arbol:@code/src/arbol_builds/driver_process.py#Guardian._spawn
+arbol:@code/src/arbol_builds/driver_process.py#supervise
+arbol:@code/src/arbol_builds/driver_state.py#launch_candidate
+arbol:@code/src/arbol_builds/driver_state.py#_request_scope
+arbol:@code/src/arbol_builds/driver_state.py#guarded_publication
+-->
