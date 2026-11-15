@@ -5,9 +5,9 @@ role: authored
 
 ## <before _route>
 
-Reason: Recognize genuine optional legacy payload absence before private parent validation while retaining matching tuple verification
+Reason: Dispatch only fixed isolated candidate driver unit and Mimo-native entries
 
-Origins: DRV-6.18, DRV-6.21 · Intention i-425cae65 · 2026-11-15
+Origins: DRV-5.8, DRV-5.11, DRV-6.18, DRV-6.21, BLD-0.5, BLD-0.8, BLD-0.9, BLD-0.15 · Intention i-36b31e06 · 2026-11-15
 
 ## _admission_marker
 
@@ -119,9 +119,9 @@ Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
 
 ## provider_entry
 
-Reason: Preserve inherited normal-launch signal masks and confine SIGINT/SIGTERM unblocking to administrative dispatch
+Reason: Dispatch only fixed isolated candidate driver unit and Mimo-native entries
 
-Origins: BLD-0.9, DRV-6.21 · Intention i-1d624c3d · 2026-11-15
+Origins: DRV-5.8, DRV-5.11, DRV-6.18, DRV-6.21, BLD-0.5, BLD-0.8, BLD-0.9, BLD-0.15 · Intention i-36b31e06 · 2026-11-15
 
 ## _component
 
@@ -470,4 +470,10 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
 Reason: Verify completed deployment readback against archived checkpoint and current normal authority while permitting legitimate post-completion admissions; pending-boundary checks remain strict
 
 Origins: DRV-6.21, DRV-6.18 · Intention i-7e8ff620 · 2026-11-15
+
+## launch_candidate
+
+Reason: Dispatch only fixed isolated candidate driver unit and Mimo-native entries
+
+Origins: DRV-5.8, DRV-5.11, DRV-6.18, DRV-6.21, BLD-0.5, BLD-0.8, BLD-0.9, BLD-0.15 · Intention i-36b31e06 · 2026-11-15
 
