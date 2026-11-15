@@ -143,9 +143,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-59d10822 · 2026-11-15
 
 ## <before _collect_real>
 
-Reason: Observe the fixed root-owned OS sleep executable with dedicated bounded physical identity and hash checks
+Reason: Require a paired public invocation and verify that the actual pinned admission check refuses the live draining session.
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-761865e0 · 2026-11-15
+Origins: DRV-6.21 · Intention i-1d8182dd · 2026-11-15
 
 ## <before complete_main_admission_inventory>
 
@@ -479,9 +479,9 @@ Origins: DRV-5.11, DRV-6.21 · Intention i-761865e0 · 2026-11-15
 
 ## <before _mimo_explicit_native_image>
 
-Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+Reason: Require a paired public invocation and verify that the actual pinned admission check refuses the live draining session.
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+Origins: DRV-6.21 · Intention i-1d8182dd · 2026-11-15
 
 ## MimoMainRecipe
 
@@ -623,9 +623,9 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-
 
 ## MimoMainSubject._lifetime
 
-Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+Reason: Require a paired public invocation and verify that the actual pinned admission check refuses the live draining session.
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+Origins: DRV-6.21 · Intention i-1d8182dd · 2026-11-15
 
 ## MimoMainSubject._prep_call
 
@@ -647,9 +647,9 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-
 
 ## MimoMainSubject._source_coupling
 
-Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+Reason: Require a paired public invocation and verify that the actual pinned admission check refuses the live draining session.
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+Origins: DRV-6.21 · Intention i-1d8182dd · 2026-11-15
 
 ## MimoMainSubject.abort
 
@@ -665,21 +665,21 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-
 
 ## MimoMainSubject.prepare
 
-Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+Reason: Require a paired public invocation and verify that the actual pinned admission check refuses the live draining session.
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+Origins: DRV-6.21 · Intention i-1d8182dd · 2026-11-15
 
 ## MimoMainSubject.refuse_new_after_begin
 
-Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+Reason: Require a paired public invocation and verify that the actual pinned admission check refuses the live draining session.
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+Origins: DRV-6.21 · Intention i-1d8182dd · 2026-11-15
 
 ## MimoMainSubject.settle_after_ordinary_stop
 
-Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+Reason: Require a paired public invocation and verify that the actual pinned admission check refuses the live draining session.
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+Origins: DRV-6.21 · Intention i-1d8182dd · 2026-11-15
 
 ## MimoMainSubject.start_and_begin
 
@@ -734,4 +734,16 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-
 Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
 
 Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainSubject._observe_draining_control
+
+Reason: Require a paired public invocation and verify that the actual pinned admission check refuses the live draining session.
+
+Origins: DRV-6.21 · Intention i-1d8182dd · 2026-11-15
+
+## MimoMainSubject._provider_sources
+
+Reason: Require a paired public invocation and verify that the actual pinned admission check refuses the live draining session.
+
+Origins: DRV-6.21 · Intention i-1d8182dd · 2026-11-15
 
