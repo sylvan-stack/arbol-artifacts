@@ -5,9 +5,9 @@ role: authored
 
 ## <before _route>
 
-Reason: Dispatch only fixed isolated candidate driver unit and Mimo-native entries
+Reason: Carry explicit isolated candidate resolution through administrative delegation and pins
 
-Origins: DRV-5.8, DRV-5.11, DRV-6.18, DRV-6.21, BLD-0.5, BLD-0.8, BLD-0.9, BLD-0.15 · Intention i-36b31e06 · 2026-11-15
+Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-f3b18537 · 2026-11-15
 
 ## _admission_marker
 
@@ -47,9 +47,9 @@ Origins: DRV-6.21, BLD-0.7, BLD-0.8, BLD-0.9, BLD-0.11 · Intention i-2499f246 �
 
 ## guarded_publication
 
-Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
+Reason: Carry explicit isolated candidate resolution through administrative delegation and pins
 
-Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
+Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-f3b18537 · 2026-11-15
 
 ## <before Request>
 
@@ -65,9 +65,9 @@ Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
 
 ## Request
 
-Reason: Parse exact maintenance grammar and dispatch only through the verified isolated immutable provider while preserving ordinary commands
+Reason: Carry explicit isolated candidate resolution through administrative delegation and pins
 
-Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
+Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-f3b18537 · 2026-11-15
 
 ## Request.component
 
@@ -89,9 +89,9 @@ Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
 
 ## _provider
 
-Reason: Parse exact maintenance grammar and dispatch only through the verified isolated immutable provider while preserving ordinary commands
+Reason: Carry explicit isolated candidate resolution through administrative delegation and pins
 
-Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
+Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-f3b18537 · 2026-11-15
 
 ## _use_provider_guard
 
@@ -101,9 +101,9 @@ Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
 
 ## command
 
-Reason: Parse exact maintenance grammar and dispatch only through the verified isolated immutable provider while preserving ordinary commands
+Reason: Carry explicit isolated candidate resolution through administrative delegation and pins
 
-Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
+Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-f3b18537 · 2026-11-15
 
 ## handler
 
@@ -119,15 +119,15 @@ Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
 
 ## provider_entry
 
-Reason: Dispatch only fixed isolated candidate driver unit and Mimo-native entries
+Reason: Carry explicit isolated candidate resolution through administrative delegation and pins
 
-Origins: DRV-5.8, DRV-5.11, DRV-6.18, DRV-6.21, BLD-0.5, BLD-0.8, BLD-0.9, BLD-0.15 · Intention i-36b31e06 · 2026-11-15
+Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-f3b18537 · 2026-11-15
 
 ## _component
 
-Reason: Keep optional candidate bytes separate from required acceptance bytes for strict typing
+Reason: Carry explicit isolated candidate resolution through administrative delegation and pins
 
-Origins: DRV-6.18, DRV-6.21 · Intention i-e6f092ea · 2026-11-15
+Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-f3b18537 · 2026-11-15
 
 ## _control
 
@@ -137,9 +137,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-e07374d3 · 2026-11-15
 
 ## _recheck
 
-Reason: Verify exact qualified component tuples, serialize begin with admission, preserve same-session epochs and report read-only bounded custody status
+Reason: Carry explicit isolated candidate resolution through administrative delegation and pins
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-e07374d3 · 2026-11-15
+Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-f3b18537 · 2026-11-15
 
 ## _status
 
@@ -476,4 +476,10 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-7e8ff620 · 2026-11-15
 Reason: Dispatch only fixed isolated candidate driver unit and Mimo-native entries
 
 Origins: DRV-5.8, DRV-5.11, DRV-6.18, DRV-6.21, BLD-0.5, BLD-0.8, BLD-0.9, BLD-0.15 · Intention i-36b31e06 · 2026-11-15
+
+## _request_scope
+
+Reason: Carry explicit isolated candidate resolution through administrative delegation and pins
+
+Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-f3b18537 · 2026-11-15
 
