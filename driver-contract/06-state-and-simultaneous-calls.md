@@ -716,3 +716,15 @@ arbol:@code/src/arbol_builds/driver_state.py#launch_candidate
 arbol:@code/src/arbol_builds/driver_state.py#_request_scope
 arbol:@code/src/arbol_builds/driver_state.py#guarded_publication
 -->
+
+
+### ABR-45 terminal-archival review repair · 15 November 2026
+
+The first full source/static-input review rejects Arbol263e7ccb for a missing candidate-scope handoff from both drain branches into terminal archival: archive_terminal's ordinary reconciliation would re-resolve a healthy still-building payload through named_runnable and persist false custody-loss taint. That exact rejected five-source/154-file bundle and delivered verdict remain unchanged. The cold-reviewed repair at Arbol `0ef963b63edc2beba6f3ded2c4aab2d89ed2eefb`, tree `20b5ef4b0e42b1cc53eb77e43527485647406499`, carries the existing verified request.candidate into both archive_terminal calls and through its reconciliation. Ordinary None resolution, CandidateStage boundaries and genuine unknown/dead-writer refusal remain unchanged; no wire/schema or authority relaxation is added. The other four producer revisions remain the previously recorded ABR-45 source inputs.
+
+This is implementation-only linkage pending fresh full repaired-source/input review. The replacement immutable bundle must bind actual contemporaneous validation Python/Ruff/mypy identities, metadata/config/file hashes, exact commands/results and mirror/reconstruction inputs; the rejected bundle's missing tool provenance is not retroactively invented or patched. No product/package/generator/runtime, native/profile/model/state, test/gate/Build/boot or qualification result follows. ABR-38 and final independent Arc Review retain all original obligations.
+
+<!-- sources:
+arbol:@code/src/arbol_builds/driver_admission.py#archive_terminal
+arbol:@code/src/arbol_builds/driver_state.py#drain
+-->
