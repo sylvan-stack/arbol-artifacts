@@ -11,9 +11,9 @@ Removed by Intention i-59d10822 · 2026-11-15
 
 ## <end>
 
-Reason: Author only source-supported fixed runner helper lease and late new Guardian launch cases, preserving explicit missing H1 preterminal latch/schema obligations; source only
+Removed: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-7d69571f · 2026-11-15
+Removed by Intention i-4a40a104 · 2026-11-15
 
 ## AdmissionSubject
 
@@ -143,9 +143,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-59d10822 · 2026-11-15
 
 ## <before _collect_real>
 
-Reason: Repair bounded owned process cleanup on both positive and death failures and actual begin collection failure, preserving original errors and unowned-child uncertainty; source only
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-ca968244 · 2026-11-15
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
 
 ## <before complete_main_admission_inventory>
 
@@ -278,4 +278,142 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-ca968244 · 2026-11-15
 Reason: Capture independent raw metadata before and after late fixed-runner refusal; retain exact original custody and permit only genuine bound taint publication.
 
 Origins: DRV-5.11, DRV-6.21 · Intention i-efb39c58 · 2026-11-15
+
+## <before H1ProgramPins>
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## H1ProgramPins
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## H1ProgramPins.verify
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## H1ShortOrigins
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## H1ShortOrigins.absent_lock
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## H1ShortOrigins.capture
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## H1ShortOrigins.recheck
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## H1SpanObservation
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## H1SpanObservation.__init__
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## H1SpanObservation._continue
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## H1SpanObservation._fresh_active
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## H1SpanObservation._remaining
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## H1SpanObservation._stop_and_observe
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## H1SpanObservation.bind
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## H1SpanObservation.cleanup
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## H1SpanObservation.death
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## H1SpanObservation.positive_precontinue
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## H1SystemPs
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## H1SystemPs.capture
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## H1SystemPs.stopped
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## _h1_canonical
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## _h1_raw_ex
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+
+## h1_active_loss_subject
+
+Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
 
