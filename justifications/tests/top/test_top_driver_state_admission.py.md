@@ -665,15 +665,15 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-
 
 ## MimoMainSubject.prepare
 
-Reason: Require a paired public invocation and verify that the actual pinned admission check refuses the live draining session.
+Reason: Bind the observed Refusal to the exact pinned phase-check line in addition to its traceback shape.
 
-Origins: DRV-6.21 · Intention i-1d8182dd · 2026-11-15
+Origins: DRV-6.21 · Intention i-c74f79c9 · 2026-11-15
 
 ## MimoMainSubject.refuse_new_after_begin
 
-Reason: Require a paired public invocation and verify that the actual pinned admission check refuses the live draining session.
+Reason: Bind the observed Refusal to the exact pinned phase-check line in addition to its traceback shape.
 
-Origins: DRV-6.21 · Intention i-1d8182dd · 2026-11-15
+Origins: DRV-6.21 · Intention i-c74f79c9 · 2026-11-15
 
 ## MimoMainSubject.settle_after_ordinary_stop
 
@@ -737,13 +737,19 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-
 
 ## MimoMainSubject._observe_draining_control
 
-Reason: Require a paired public invocation and verify that the actual pinned admission check refuses the live draining session.
+Reason: Bind the observed Refusal to the exact pinned phase-check line in addition to its traceback shape.
 
-Origins: DRV-6.21 · Intention i-1d8182dd · 2026-11-15
+Origins: DRV-6.21 · Intention i-c74f79c9 · 2026-11-15
 
 ## MimoMainSubject._provider_sources
 
-Reason: Require a paired public invocation and verify that the actual pinned admission check refuses the live draining session.
+Reason: Bind the observed Refusal to the exact pinned phase-check line in addition to its traceback shape.
 
-Origins: DRV-6.21 · Intention i-1d8182dd · 2026-11-15
+Origins: DRV-6.21 · Intention i-c74f79c9 · 2026-11-15
+
+## MimoMainSubject._normal_admission_probe
+
+Reason: Bind the observed Refusal to the exact pinned phase-check line in addition to its traceback shape.
+
+Origins: DRV-6.21 · Intention i-c74f79c9 · 2026-11-15
 
