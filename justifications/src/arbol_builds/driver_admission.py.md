@@ -305,7 +305,7 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-8ab6ff38 · 2026-11-15
 
 ## reconcile
 
-Reason: Verify exact qualified component tuples, serialize begin with admission, preserve same-session epochs and report read-only bounded custody status
+Reason: Bound cooperative drain, request exact main SIGTERM through existing cancellation behavior, recheck exclusive custody and publish one-shot maintenance receipt without clearing unknown taint
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-e07374d3 · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-c8239ecc · 2026-11-15
 

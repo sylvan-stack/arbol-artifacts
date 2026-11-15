@@ -5,9 +5,9 @@ role: authored
 
 ## <before BsdInfo>
 
-Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
+Reason: Bound cooperative drain, request exact main SIGTERM through existing cancellation behavior, recheck exclusive custody and publish one-shot maintenance receipt without clearing unknown taint
 
-Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-c8239ecc · 2026-11-15
 
 ## BsdInfo
 
@@ -263,7 +263,13 @@ Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
 
 ## supervise
 
-Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
+Reason: Bound cooperative drain, request exact main SIGTERM through existing cancellation behavior, recheck exclusive custody and publish one-shot maintenance receipt without clearing unknown taint
 
-Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-c8239ecc · 2026-11-15
+
+## request_cancellation
+
+Reason: Bound cooperative drain, request exact main SIGTERM through existing cancellation behavior, recheck exclusive custody and publish one-shot maintenance receipt without clearing unknown taint
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-c8239ecc · 2026-11-15
 
