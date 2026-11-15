@@ -5,9 +5,9 @@ role: authored
 
 ## <before require>
 
-Reason: Author exact H1 report/source/custody validation and whole positive external-phase coordination on accepted bounded interactive collector, preserving full local inventory and all deferred assertions; source-only.
+Reason: Retain verified H1 participants across failed positive spans and coordinate descendant cancellation with the existing owned-provider cleanup budget
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-29492e60 · 2026-11-15
 
 ## Baseline
 
@@ -425,9 +425,9 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
 
 ## WholeCheckController.run_h1_positive
 
-Reason: Author exact H1 report/source/custody validation and whole positive external-phase coordination on accepted bounded interactive collector, preserving full local inventory and all deferred assertions; source-only.
+Reason: Retain verified H1 participants across failed positive spans and coordinate descendant cancellation with the existing owned-provider cleanup budget
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-29492e60 · 2026-11-15
 
 ## WholeCheckController.verify_h1_ready
 
@@ -446,4 +446,10 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
 Reason: Author exact H1 report/source/custody validation and whole positive external-phase coordination on accepted bounded interactive collector, preserving full local inventory and all deferred assertions; source-only.
 
 Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
+
+## WholeCheckController._cleanup_h1_failure
+
+Reason: Retain verified H1 participants across failed positive spans and coordinate descendant cancellation with the existing owned-provider cleanup budget
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-29492e60 · 2026-11-15
 
