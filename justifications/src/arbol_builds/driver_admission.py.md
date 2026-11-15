@@ -299,9 +299,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-8ab6ff38 · 2026-11-15
 
 ## archive_terminal
 
-Reason: Implement static closed rollout, exact caller assertion, preserved launcher/selection before-images and resumable verified all-four checkpoint without executing deployment
+Reason: Carry the already validated candidate scope through both drain terminal archival calls and archive_terminal reconciliation, preserving ordinary None resolution and strict unknown custody.
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
+Origins: DRV-6.18, DRV-6.21 · Intention i-1c11af85 · 2026-11-15
 
 ## reconcile
 

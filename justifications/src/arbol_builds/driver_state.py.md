@@ -179,9 +179,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-c8239ecc · 2026-11-15
 
 ## drain
 
-Reason: Preserve candidate scope through custody execution results and exact finish replay
+Reason: Carry the already validated candidate scope through both drain terminal archival calls and archive_terminal reconciliation, preserving ordinary None resolution and strict unknown custody.
 
-Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-0af6afa0 · 2026-11-15
+Origins: DRV-6.18, DRV-6.21 · Intention i-1c11af85 · 2026-11-15
 
 ## _before_route
 
