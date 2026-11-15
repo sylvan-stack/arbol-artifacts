@@ -263,13 +263,19 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-59d10822 · 2026-11-15
 
 ## late_new_guardian_gate_after_begin_refuses
 
-Reason: Author only source-supported fixed runner helper lease and late new Guardian launch cases, preserving explicit missing H1 preterminal latch/schema obligations; source only
+Reason: Capture independent raw metadata before and after late fixed-runner refusal; retain exact original custody and permit only genuine bound taint publication.
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-7d69571f · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-efb39c58 · 2026-11-15
 
 ## _cleanup_verified_window
 
 Reason: Repair bounded owned process cleanup on both positive and death failures and actual begin collection failure, preserving original errors and unowned-child uncertainty; source only
 
 Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-ca968244 · 2026-11-15
+
+## _raw_authority_image
+
+Reason: Capture independent raw metadata before and after late fixed-runner refusal; retain exact original custody and permit only genuine bound taint publication.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-efb39c58 · 2026-11-15
 
