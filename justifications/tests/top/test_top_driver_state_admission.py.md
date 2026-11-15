@@ -395,9 +395,9 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
 
 ## H1SystemPs.stopped
 
-Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+Reason: Restore the fixed stat-only process-state observer argv and one-token parser without changing independently verified ownership or STOP cleanup
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-6cc22c9d · 2026-11-15
 
 ## _h1_canonical
 
