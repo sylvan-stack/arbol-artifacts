@@ -353,7 +353,49 @@ Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-e6e9ba05 · 2026-
 
 ## supervise_execute
 
-Reason: Implement fixed isolated administrative child argv, duplicate-only inherited exclusive OFD, bounded private output capture and exact-owner cancellation while retaining closed attempts on interruption
+Reason: Settle only exact bounded child or durable same-attempt results after complete marker, immutable archive, root-generation and operation-relative pending checks; retain closed failures
 
-Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-e6e9ba05 · 2026-11-15
+Origins: DRV-6.21, DRV-6.18, DRV-6.19 · Intention i-2cfbe49e · 2026-11-15
+
+## _archive_observation
+
+Reason: Settle only exact bounded child or durable same-attempt results after complete marker, immutable archive, root-generation and operation-relative pending checks; retain closed failures
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19 · Intention i-2cfbe49e · 2026-11-15
+
+## _child_result
+
+Reason: Settle only exact bounded child or durable same-attempt results after complete marker, immutable archive, root-generation and operation-relative pending checks; retain closed failures
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19 · Intention i-2cfbe49e · 2026-11-15
+
+## _complete_marker
+
+Reason: Settle only exact bounded child or durable same-attempt results after complete marker, immutable archive, root-generation and operation-relative pending checks; retain closed failures
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19 · Intention i-2cfbe49e · 2026-11-15
+
+## _pending_scope
+
+Reason: Settle only exact bounded child or durable same-attempt results after complete marker, immutable archive, root-generation and operation-relative pending checks; retain closed failures
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19 · Intention i-2cfbe49e · 2026-11-15
+
+## _result_value
+
+Reason: Settle only exact bounded child or durable same-attempt results after complete marker, immutable archive, root-generation and operation-relative pending checks; retain closed failures
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19 · Intention i-2cfbe49e · 2026-11-15
+
+## execute
+
+Reason: Settle only exact bounded child or durable same-attempt results after complete marker, immutable archive, root-generation and operation-relative pending checks; retain closed failures
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19 · Intention i-2cfbe49e · 2026-11-15
+
+## settle_execute
+
+Reason: Settle only exact bounded child or durable same-attempt results after complete marker, immutable archive, root-generation and operation-relative pending checks; retain closed failures
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19 · Intention i-2cfbe49e · 2026-11-15
 
