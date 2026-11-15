@@ -11,9 +11,9 @@ Origins: DRV-5.11, DRV-6.21 · Intention i-dad0fcec · 2026-11-15
 
 ## Baseline
 
-Reason: Repair R2 by pinning original private authority and shared directory identities plus the independently owned genuine deployment lock descriptor; source only
+Reason: Repair R3 by binding prior generation and immutable archive identities, permitting only captured real production additions and fresh per-transaction evidence lineage; source only
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-dad0fcec · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
 
 ## CompletedLaunch
 
@@ -65,9 +65,9 @@ Origins: DRV-5.11, DRV-6.21 · Intention i-d77c92b4 · 2026-11-15
 
 ## FixtureAuthority.__init__
 
-Reason: Author prospective external qualification controller and independent evidence primitives for exact admitted fixtures, current custody before-images and full-lifetime phases; no runtime or wiring before body review.
+Reason: Repair R3 by binding prior generation and immutable archive identities, permitting only captured real production additions and fresh per-transaction evidence lineage; source only
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-d77c92b4 · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
 
 ## FixtureAuthority._assert_no_special_authority
 
@@ -77,9 +77,9 @@ Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
 
 ## FixtureAuthority._healthy
 
-Reason: Repair R2 by pinning original private authority and shared directory identities plus the independently owned genuine deployment lock descriptor; source only
+Reason: Repair R3 by binding prior generation and immutable archive identities, permitting only captured real production additions and fresh per-transaction evidence lineage; source only
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-dad0fcec · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
 
 ## FixtureAuthority._locks
 
@@ -101,21 +101,21 @@ Origins: DRV-5.11, DRV-6.21 · Intention i-d77c92b4 · 2026-11-15
 
 ## FixtureAuthority._publish
 
-Reason: Repair R2 by pinning original private authority and shared directory identities plus the independently owned genuine deployment lock descriptor; source only
+Reason: Repair R3 by binding prior generation and immutable archive identities, permitting only captured real production additions and fresh per-transaction evidence lineage; source only
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-dad0fcec · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
 
 ## FixtureAuthority._validate_group
 
-Reason: Repair R2 by pinning original private authority and shared directory identities plus the independently owned genuine deployment lock descriptor; source only
+Reason: Repair R3 by binding prior generation and immutable archive identities, permitting only captured real production additions and fresh per-transaction evidence lineage; source only
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-dad0fcec · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
 
 ## FixtureAuthority.apply
 
-Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+Reason: Repair R3 by binding prior generation and immutable archive identities, permitting only captured real production additions and fresh per-transaction evidence lineage; source only
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
 
 ## InventoryPhase
 
@@ -209,9 +209,9 @@ Origins: DRV-5.11, DRV-6.21 · Intention i-d77c92b4 · 2026-11-15
 
 ## WholeCheckController.maintenance
 
-Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+Reason: Repair R3 by binding prior generation and immutable archive identities, permitting only captured real production additions and fresh per-transaction evidence lineage; source only
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
 
 ## WholeCheckController.require_finished_graph
 
@@ -227,21 +227,21 @@ Origins: DRV-5.11, DRV-6.21 · Intention i-d77c92b4 · 2026-11-15
 
 ## Workspace
 
-Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+Reason: Repair R3 by binding prior generation and immutable archive identities, permitting only captured real production additions and fresh per-transaction evidence lineage; source only
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
 
 ## Workspace.create
 
-Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+Reason: Repair R3 by binding prior generation and immutable archive identities, permitting only captured real production additions and fresh per-transaction evidence lineage; source only
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
 
 ## Workspace.verify
 
-Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+Reason: Repair R3 by binding prior generation and immutable archive identities, permitting only captured real production additions and fresh per-transaction evidence lineage; source only
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
 
 ## catalog_section
 
@@ -287,9 +287,9 @@ Origins: DRV-5.11, DRV-6.21 · Intention i-d77c92b4 · 2026-11-15
 
 ## AdministrativeCapture
 
-Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+Reason: Repair R3 by binding prior generation and immutable archive identities, permitting only captured real production additions and fresh per-transaction evidence lineage; source only
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
 
 ## CompletedReceipt
 
@@ -338,4 +338,58 @@ Origins: DRV-5.11, DRV-6.21 · Intention i-dad0fcec · 2026-11-15
 Reason: Repair R2 by pinning original private authority and shared directory identities plus the independently owned genuine deployment lock descriptor; source only
 
 Origins: DRV-5.11, DRV-6.21 · Intention i-dad0fcec · 2026-11-15
+
+## ArchiveImage
+
+Reason: Repair R3 by binding prior generation and immutable archive identities, permitting only captured real production additions and fresh per-transaction evidence lineage; source only
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
+
+## ArchiveImage.capture
+
+Reason: Repair R3 by binding prior generation and immutable archive identities, permitting only captured real production additions and fresh per-transaction evidence lineage; source only
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
+
+## ArchiveImage.evidence
+
+Reason: Repair R3 by binding prior generation and immutable archive identities, permitting only captured real production additions and fresh per-transaction evidence lineage; source only
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
+
+## ArchiveWitness
+
+Reason: Repair R3 by binding prior generation and immutable archive identities, permitting only captured real production additions and fresh per-transaction evidence lineage; source only
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
+
+## ArchiveWitness.verify
+
+Reason: Repair R3 by binding prior generation and immutable archive identities, permitting only captured real production additions and fresh per-transaction evidence lineage; source only
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
+
+## FixtureAuthority._prior_generation
+
+Reason: Repair R3 by binding prior generation and immutable archive identities, permitting only captured real production additions and fresh per-transaction evidence lineage; source only
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
+
+## FixtureAuthority._retained_archives
+
+Reason: Repair R3 by binding prior generation and immutable archive identities, permitting only captured real production additions and fresh per-transaction evidence lineage; source only
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
+
+## custody_source_images
+
+Reason: Repair R3 by binding prior generation and immutable archive identities, permitting only captured real production additions and fresh per-transaction evidence lineage; source only
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
+
+## verify_archive_delta
+
+Reason: Repair R3 by binding prior generation and immutable archive identities, permitting only captured real production additions and fresh per-transaction evidence lineage; source only
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
 
