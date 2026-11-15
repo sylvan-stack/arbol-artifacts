@@ -143,9 +143,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-59d10822 · 2026-11-15
 
 ## <before _collect_real>
 
-Reason: Observe genuine terminal-before-original-close interval and complete positive closure for all four producer families
+Reason: Observe the fixed root-owned OS sleep executable with dedicated bounded physical identity and hash checks
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-65392ebf · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-761865e0 · 2026-11-15
 
 ## <before complete_main_admission_inventory>
 
@@ -419,9 +419,9 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-65392ebf · 2026-11-15
 
 ## provider_stale_owner_refuses
 
-Reason: Observe actual provider stale-owner read-boundary refusal without any signal or metadata change
+Reason: Observe the fixed root-owned OS sleep executable with dedicated bounded physical identity and hash checks
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-9b5ed949 · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-761865e0 · 2026-11-15
 
 ## TerminalSpanObservation
 
@@ -470,4 +470,10 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-65392ebf · 2026-11-15
 Reason: Observe genuine terminal-before-original-close interval and complete positive closure for all four producer families
 
 Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-65392ebf · 2026-11-15
+
+## _fixed_sleep_image
+
+Reason: Observe the fixed root-owned OS sleep executable with dedicated bounded physical identity and hash checks
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-761865e0 · 2026-11-15
 
