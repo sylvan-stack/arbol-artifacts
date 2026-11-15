@@ -5,15 +5,15 @@ role: authored
 
 ## <before AdmissionSubject>
 
-Reason: Author prospective real admission and publication race cases with independently observed refusal and custody; no runtime use or gate wiring before body admission
+Reason: Author the accepted fixed external Guardian-class caller bootstrap and closed stdio control boundaries against exact packaged implementation; prospective source only
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-eb9a8860 · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-9bd93147 · 2026-11-15
 
 ## <end>
 
-Reason: Author prospective real admission and publication race cases with independently observed refusal and custody; no runtime use or gate wiring before body admission
+Reason: Author the accepted fixed external Guardian-class caller bootstrap and closed stdio control boundaries against exact packaged implementation; prospective source only
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-eb9a8860 · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-9bd93147 · 2026-11-15
 
 ## AdmissionSubject
 
@@ -122,4 +122,16 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-eb9a8860 · 2026-11-15
 Reason: Author prospective real admission and publication race cases with independently observed refusal and custody; no runtime use or gate wiring before body admission
 
 Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-eb9a8860 · 2026-11-15
+
+## <before _fixed_guardian_caller>
+
+Reason: Author the accepted fixed external Guardian-class caller bootstrap and closed stdio control boundaries against exact packaged implementation; prospective source only
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-9bd93147 · 2026-11-15
+
+## _fixed_guardian_caller
+
+Reason: Author the accepted fixed external Guardian-class caller bootstrap and closed stdio control boundaries against exact packaged implementation; prospective source only
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-9bd93147 · 2026-11-15
 
