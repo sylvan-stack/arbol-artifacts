@@ -728,3 +728,12 @@ This is implementation-only linkage pending fresh full repaired-source/input rev
 arbol:@code/src/arbol_builds/driver_admission.py#archive_terminal
 arbol:@code/src/arbol_builds/driver_state.py#drain
 -->
+
+
+### ABR-45 repaired whole-source review completed · 15 November 2026
+
+Fresh independent actual-source/static-input review accepts repaired Arbol `0ef963b63edc2beba6f3ded2c4aab2d89ed2eefb` / tree `20b5ef4b0e42b1cc53eb77e43527485647406499` and the four separately pinned producer pairs in the preceding integrated linkage, recorded in Forester `840f2e3ba3c959fccab8dc58dbe2aaf7f9d9404f`. ABR-45 completes31/31 at hand-over `538cbd901c4d50bf75a514b9aa13c16892ab4de8`. The optional candidate propagation into terminal archival resolves the first source finding without changing ordinary resolution or unknown-custody refusal.
+
+The new527-file immutable input checkpoint has artifact manifest `916155515a63924df35315acdfbabd8aa7b944062b073b7e2fce2d6898612bb4` and review-input manifest `2296ca207ac82df727fe777d521dcf29b886554fbb94887e121f9175ac0d2cc0`. Actual interpreter/tool/distribution/file provenance and43 exact command/output records resolve the missing validation provenance. The original rejected154-file checkpoint/verdict stays unchanged and explicitly rejected. All17 descriptor checks remain exact. This supersedes only earlier pending source-review status, not any unexecuted runtime obligation.
+
+No executable M/D, registered acceptance, fixture initializer/body admission, actual test/gate/Build, native/model/profile, deployment/boot or final-cohort result follows. ABR-38 still needs its accepted fixture specification/full Plan and independently admitted testing bodies, complete own-Build gates and final independent Arc Review. Indexed verification/ingest/embedding remains deferred.
