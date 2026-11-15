@@ -119,9 +119,9 @@ Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9
 
 ## verify_gate
 
-Reason: Resolve exact registered payloads and verify gate, platform and scoped qualification authority before qualified execution
+Reason: Resolve exact isolated candidate tuples without public building selection
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-b19c1bd3 · 2026-11-14
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21, BLD-0.4, BLD-0.5, BLD-0.15 · Intention i-f5dd2e70 · 2026-11-15
 
 ## Retention
 
@@ -254,4 +254,46 @@ Origins: DRV-6.18, DRV-6.21 · Intention i-425cae65 · 2026-11-15
 Reason: Factor exact registered payload validation while preserving named selection
 
 Origins: DRV-6.21, BLD-0.3, BLD-0.4, BLD-0.8, BLD-0.15 · Intention i-e1feba76 · 2026-11-15
+
+## CandidateScope
+
+Reason: Resolve exact isolated candidate tuples without public building selection
+
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21, BLD-0.4, BLD-0.5, BLD-0.15 · Intention i-f5dd2e70 · 2026-11-15
+
+## CandidateScope.acceptance
+
+Reason: Resolve exact isolated candidate tuples without public building selection
+
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21, BLD-0.4, BLD-0.5, BLD-0.15 · Intention i-f5dd2e70 · 2026-11-15
+
+## CandidateScope.producer
+
+Reason: Resolve exact isolated candidate tuples without public building selection
+
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21, BLD-0.4, BLD-0.5, BLD-0.15 · Intention i-f5dd2e70 · 2026-11-15
+
+## _candidate_acceptance
+
+Reason: Resolve exact isolated candidate tuples without public building selection
+
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21, BLD-0.4, BLD-0.5, BLD-0.15 · Intention i-f5dd2e70 · 2026-11-15
+
+## _candidate_payload
+
+Reason: Resolve exact isolated candidate tuples without public building selection
+
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21, BLD-0.4, BLD-0.5, BLD-0.15 · Intention i-f5dd2e70 · 2026-11-15
+
+## _gate_document
+
+Reason: Resolve exact isolated candidate tuples without public building selection
+
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21, BLD-0.4, BLD-0.5, BLD-0.15 · Intention i-f5dd2e70 · 2026-11-15
+
+## resolve_candidate
+
+Reason: Resolve exact isolated candidate tuples without public building selection
+
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21, BLD-0.4, BLD-0.5, BLD-0.15 · Intention i-f5dd2e70 · 2026-11-15
 
