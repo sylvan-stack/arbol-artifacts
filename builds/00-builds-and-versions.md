@@ -646,3 +646,16 @@ arbol:@code/src/arbol_builds/driver_state.py#_boot_recovery_pending
 arbol:@code/src/arbol_builds/launcher.py#launch
 arbol:@code/src/arbol_builds/driver_process.py#SignalBridge
 -->
+
+
+## ABR-39 normal-mask source correction · 15 November 2026
+
+The independent review of source3d11c385 passed the prior ignored-disposition and pre-journal custody corrections, but required removal of the provider's unconditional normal-launch signal unblocking. Accepted mask-plan30 now publishes source `933e82ba7f9e41b1dff1f0cc7cbb05cd543b304f`, tree `81c65e4b169a8189f8b43c13c3a60f43186a0405`, with normal managed Justifications `a6cea3d69e353d8005780dd1caece932eae54d84`. The sole code delta moves the existing SIGINT/SIGTERM unblock call after normal launch's terminal exit and the validated driver-state command guard, before administrative parsing/dispatch. Normal legacy/qualified launches retain their inherited masks with no unblock/restore window; administrative tool behavior and all other source remain unchanged.
+
+This implements existing BLD-0.9/DRV-6.21, without a new mask exception or normative/delivery/status change. Both rejected source/input bundles and failed-review evidence remain retained; a distinct new complete source/input bundle awaits independent32 re-review before33completion. No runtime, generator/package function, test, gate, Build, provider/native/TTY/state operation, M/D, acceptance or installed authority is produced here. ABR-38 retains actual signal-mask and complete qualification evidence.
+
+<!-- sources:
+arbol:@code/src/arbol_builds/driver_state.py#provider_entry
+arbol:@code/src/arbol_builds/cli.py#entry
+arbol:@code/src/arbol_builds/launcher.py#launch
+-->

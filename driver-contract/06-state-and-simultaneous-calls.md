@@ -575,3 +575,16 @@ arbol-codex-driver:@code/src/arbol_codex_driver/cli.py
 arbol-codex-driver:@code/scripts/identity_package.py
 arbol-codex-driver:@code/scripts/package_build.py
 -->
+
+
+### ABR-39 normal-launch mask source correction · 15 November 2026
+
+The fresh3d11c385 source/input review accepted the two earlier repair effects but still required changes: tool-entry signal unblocking was incorrectly shared with normal --driver-launch. Cold mask-plan review203ef8d accepted the narrow correction. Source `933e82ba7f9e41b1dff1f0cc7cbb05cd543b304f`, tree `81c65e4b169a8189f8b43c13c3a60f43186a0405`, now moves that one SIGINT/SIGTERM unblock call into validated driver-state dispatch, after the normal branch exits and before administrative parsing. The incoming normal mask is preserved through provider startup and both legacy/qualified child launches; the ignored-SIGINT and closed pre-journal checkpoint fixes remain intact. cli.entry's tool unblocking and Guardian/TTY/stop/termination handling are unchanged.
+
+Normal managed source/Origins/Justifications retain the correction for BLD-0.9/DRV-6.21. Both earlier rejected candidates and complete review evidence remain unchanged; the distinct new static-input release requires independent32 actual-source review before33completion. This is an implementation checkpoint only, without new fields, authority, owner policy, mask exception, accepted-row/status rewrite or runtime proof. No product/generator/package/native/API/sysctl/TTY/state/boot/test/gate/Build/deployment execution or actual M/D/acceptance occurs; ABR-38/final independent Arc Review retains all real qualification obligations. Other dated producer snapshots remain bound to their own recorded source/contract inputs.
+
+<!-- sources:
+arbol:@code/src/arbol_builds/driver_state.py#provider_entry
+arbol:@code/src/arbol_builds/cli.py#entry
+arbol:@code/src/arbol_builds/driver_process.py#SignalBridge
+-->
