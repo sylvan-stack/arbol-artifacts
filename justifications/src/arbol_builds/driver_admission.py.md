@@ -221,9 +221,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
 
 ## custody_loss
 
-Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+Reason: Keep independently admitted helper obligations counted through terminal reconciliation and closed archival, taint lost or corrupt custody
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+Origins: DRV-6.21, DRV-6.18 · Intention i-8ab6ff38 · 2026-11-15
 
 ## handoff_path
 
@@ -239,9 +239,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
 
 ## normal_control
 
-Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+Reason: Keep independently admitted helper obligations counted through terminal reconciliation and closed archival, taint lost or corrupt custody
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+Origins: DRV-6.21, DRV-6.18 · Intention i-8ab6ff38 · 2026-11-15
 
 ## read_handoff
 
@@ -266,4 +266,46 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
 Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
 
 Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+
+## Custody
+
+Reason: Keep independently admitted helper obligations counted through terminal reconciliation and closed archival, taint lost or corrupt custody
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-8ab6ff38 · 2026-11-15
+
+## Custody.resolved
+
+Reason: Keep independently admitted helper obligations counted through terminal reconciliation and closed archival, taint lost or corrupt custody
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-8ab6ff38 · 2026-11-15
+
+## _custody_payload
+
+Reason: Keep independently admitted helper obligations counted through terminal reconciliation and closed archival, taint lost or corrupt custody
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-8ab6ff38 · 2026-11-15
+
+## _documents
+
+Reason: Keep independently admitted helper obligations counted through terminal reconciliation and closed archival, taint lost or corrupt custody
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-8ab6ff38 · 2026-11-15
+
+## _exclusive
+
+Reason: Keep independently admitted helper obligations counted through terminal reconciliation and closed archival, taint lost or corrupt custody
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-8ab6ff38 · 2026-11-15
+
+## archive_terminal
+
+Reason: Keep independently admitted helper obligations counted through terminal reconciliation and closed archival, taint lost or corrupt custody
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-8ab6ff38 · 2026-11-15
+
+## reconcile
+
+Reason: Keep independently admitted helper obligations counted through terminal reconciliation and closed archival, taint lost or corrupt custody
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-8ab6ff38 · 2026-11-15
 
