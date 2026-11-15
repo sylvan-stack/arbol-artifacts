@@ -5,9 +5,9 @@ role: authored
 
 ## <before BsdInfo>
 
-Reason: Bind candidate Guardian creation and rechecks to verified scoped payload pins
+Reason: Add only the reviewed literal Mimo candidate death-fixture selectors and matching zero-argument Guardian guards; preserve existing admission, stdio, custody and lifecycle.
 
-Origins: DRV-6.18, DRV-6.21, BLD-0.9, BLD-0.11 · Intention i-b3bcaee7 · 2026-11-15
+Origins: DRV-5.11, DRV-6.18, DRV-6.21, BLD-0.9, BLD-0.15, MIM-6.13 · Intention i-0191280d · 2026-11-15
 
 ## BsdInfo
 
@@ -305,13 +305,13 @@ Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-e6e9ba05 · 2026-
 
 ## Guardian._spawn
 
-Reason: Reuse exact Guardian handoff for fixed candidate unit and native helpers
+Reason: Add only the reviewed literal Mimo candidate death-fixture selectors and matching zero-argument Guardian guards; preserve existing admission, stdio, custody and lifecycle.
 
-Origins: DRV-6.18, DRV-6.21, BLD-0.9 · Intention i-6e7a9952 · 2026-11-15
+Origins: DRV-5.11, DRV-6.18, DRV-6.21, BLD-0.9, BLD-0.15, MIM-6.13 · Intention i-0191280d · 2026-11-15
 
 ## Guardian.spawn_gate
 
-Reason: Reuse exact Guardian handoff for fixed candidate unit and native helpers
+Reason: Add only the reviewed literal Mimo candidate death-fixture selectors and matching zero-argument Guardian guards; preserve existing admission, stdio, custody and lifecycle.
 
-Origins: DRV-6.18, DRV-6.21, BLD-0.9 · Intention i-6e7a9952 · 2026-11-15
+Origins: DRV-5.11, DRV-6.18, DRV-6.21, BLD-0.9, BLD-0.15, MIM-6.13 · Intention i-0191280d · 2026-11-15
 

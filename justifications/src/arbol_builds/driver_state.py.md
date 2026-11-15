@@ -5,9 +5,9 @@ role: authored
 
 ## <before _route>
 
-Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
+Reason: Add only the reviewed literal Mimo candidate death-fixture selectors and matching zero-argument Guardian guards; preserve existing admission, stdio, custody and lifecycle.
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
+Origins: DRV-5.11, DRV-6.18, DRV-6.21, BLD-0.9, BLD-0.15, MIM-6.13 · Intention i-0191280d · 2026-11-15
 
 ## _admission_marker
 
@@ -473,9 +473,9 @@ Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-0af6afa0 · 2026-11-15
 
 ## launch_candidate
 
-Reason: Dispatch only fixed isolated candidate driver unit and Mimo-native entries
+Reason: Add only the reviewed literal Mimo candidate death-fixture selectors and matching zero-argument Guardian guards; preserve existing admission, stdio, custody and lifecycle.
 
-Origins: DRV-5.8, DRV-5.11, DRV-6.18, DRV-6.21, BLD-0.5, BLD-0.8, BLD-0.9, BLD-0.15 · Intention i-36b31e06 · 2026-11-15
+Origins: DRV-5.11, DRV-6.18, DRV-6.21, BLD-0.9, BLD-0.15, MIM-6.13 · Intention i-0191280d · 2026-11-15
 
 ## _request_scope
 
