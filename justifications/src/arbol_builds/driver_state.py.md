@@ -215,9 +215,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
 
 ## _rollout_bindings
 
-Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
+Reason: Verify four exact ready results under lexical control mutexes and independent EX leases, journal desired epochs before partial control publication and commit global complete last
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
 
 ## _rollout_folder
 
@@ -239,15 +239,15 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
 
 ## _verify_rollout
 
-Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
+Reason: Verify four exact ready results under lexical control mutexes and independent EX leases, journal desired epochs before partial control publication and commit global complete last
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
 
 ## deploy
 
-Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
+Reason: Verify four exact ready results under lexical control mutexes and independent EX leases, journal desired epochs before partial control publication and commit global complete last
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
 
 ## _boot_recovery_pending
 
@@ -431,7 +431,43 @@ Origins: DRV-6.21, DRV-6.18, DRV-6.19 · Intention i-ba424652 · 2026-11-15
 
 ## finish
 
-Reason: Verify exact exclusive finish result and operation-relative metadata, archive complete marker before removal, journal normal epoch and make interrupted finish idempotent without opening an all-four deployment
+Reason: Verify four exact ready results under lexical control mutexes and independent EX leases, journal desired epochs before partial control publication and commit global complete last
 
-Origins: DRV-6.21, DRV-6.18, DRV-6.19 · Intention i-ba424652 · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
+
+## _complete_deployment
+
+Reason: Verify four exact ready results under lexical control mutexes and independent EX leases, journal desired epochs before partial control publication and commit global complete last
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
+
+## _completion_request
+
+Reason: Verify four exact ready results under lexical control mutexes and independent EX leases, journal desired epochs before partial control publication and commit global complete last
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
+
+## _finish_component
+
+Reason: Verify four exact ready results under lexical control mutexes and independent EX leases, journal desired epochs before partial control publication and commit global complete last
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
+
+## _reopen_record
+
+Reason: Verify four exact ready results under lexical control mutexes and independent EX leases, journal desired epochs before partial control publication and commit global complete last
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
+
+## _reopen_row
+
+Reason: Verify four exact ready results under lexical control mutexes and independent EX leases, journal desired epochs before partial control publication and commit global complete last
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
+
+## _verified_complete
+
+Reason: Verify four exact ready results under lexical control mutexes and independent EX leases, journal desired epochs before partial control publication and commit global complete last
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
 
