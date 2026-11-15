@@ -65,9 +65,9 @@ Origins: DRV-6.21, BLD-0.16, BLD-0.9, BLD-0.15 · Intention i-6fbf8388 · 2026-1
 
 ## driver_launcher_source
 
-Reason: Generate immutable isolated Driver launcher bytes including spaced-path wrapper fallback and refuse ordinary gated-launcher replacement
+Reason: Finish Python 3.14 lazy annotation spelling in the pinned launcher source generator
 
-Origins: DRV-6.21, BLD-0.16, BLD-0.9, BLD-0.15 · Intention i-6fbf8388 · 2026-11-15
+Origins: DRV-6.21, BLD-0.16 · Intention i-9c1b219b · 2026-11-15
 
 ## early_driver_signals
 
