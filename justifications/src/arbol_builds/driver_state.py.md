@@ -5,9 +5,9 @@ role: authored
 
 ## <before _route>
 
-Reason: Prepare exact exclusive administrative attempts, immutable context/request retry binding, safe metadata backup verification and generation selection without executing child/state operations
+Reason: Implement fixed isolated administrative child argv, duplicate-only inherited exclusive OFD, bounded private output capture and exact-owner cancellation while retaining closed attempts on interruption
 
-Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-11-15
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-e6e9ba05 · 2026-11-15
 
 ## _admission_marker
 
@@ -347,7 +347,13 @@ Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-
 
 ## prepare_execute
 
-Reason: Prepare exact exclusive administrative attempts, immutable context/request retry binding, safe metadata backup verification and generation selection without executing child/state operations
+Reason: Implement fixed isolated administrative child argv, duplicate-only inherited exclusive OFD, bounded private output capture and exact-owner cancellation while retaining closed attempts on interruption
 
-Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-11-15
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-e6e9ba05 · 2026-11-15
+
+## supervise_execute
+
+Reason: Implement fixed isolated administrative child argv, duplicate-only inherited exclusive OFD, bounded private output capture and exact-owner cancellation while retaining closed attempts on interruption
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-e6e9ba05 · 2026-11-15
 

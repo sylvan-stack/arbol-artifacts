@@ -5,9 +5,9 @@ role: authored
 
 ## <before BsdInfo>
 
-Reason: Bound cooperative drain, request exact main SIGTERM through existing cancellation behavior, recheck exclusive custody and publish one-shot maintenance receipt without clearing unknown taint
+Reason: Implement fixed isolated administrative child argv, duplicate-only inherited exclusive OFD, bounded private output capture and exact-owner cancellation while retaining closed attempts on interruption
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-c8239ecc · 2026-11-15
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-e6e9ba05 · 2026-11-15
 
 ## BsdInfo
 
@@ -269,7 +269,37 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-c8239ecc · 2026-11-15
 
 ## request_cancellation
 
-Reason: Bound cooperative drain, request exact main SIGTERM through existing cancellation behavior, recheck exclusive custody and publish one-shot maintenance receipt without clearing unknown taint
+Reason: Implement fixed isolated administrative child argv, duplicate-only inherited exclusive OFD, bounded private output capture and exact-owner cancellation while retaining closed attempts on interruption
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-c8239ecc · 2026-11-15
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-e6e9ba05 · 2026-11-15
+
+## <end>
+
+Reason: Implement fixed isolated administrative child argv, duplicate-only inherited exclusive OFD, bounded private output capture and exact-owner cancellation while retaining closed attempts on interruption
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-e6e9ba05 · 2026-11-15
+
+## AdministrativeOutput
+
+Reason: Implement fixed isolated administrative child argv, duplicate-only inherited exclusive OFD, bounded private output capture and exact-owner cancellation while retaining closed attempts on interruption
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-e6e9ba05 · 2026-11-15
+
+## _signal_administrative
+
+Reason: Implement fixed isolated administrative child argv, duplicate-only inherited exclusive OFD, bounded private output capture and exact-owner cancellation while retaining closed attempts on interruption
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-e6e9ba05 · 2026-11-15
+
+## administrative_argv
+
+Reason: Implement fixed isolated administrative child argv, duplicate-only inherited exclusive OFD, bounded private output capture and exact-owner cancellation while retaining closed attempts on interruption
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-e6e9ba05 · 2026-11-15
+
+## run_administrative
+
+Reason: Implement fixed isolated administrative child argv, duplicate-only inherited exclusive OFD, bounded private output capture and exact-owner cancellation while retaining closed attempts on interruption
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-e6e9ba05 · 2026-11-15
 
