@@ -5,9 +5,9 @@ role: authored
 
 ## <before _write_new>
 
-Reason: Preserve actual restore before-images and prove format reconversion, generation rotation and same-attempt replay without touching unrelated private state.
+Reason: Qualify exact before-image absence for Claude and Mimo and discriminate it from an unsafe existing Subscription parent.
 
-Origins: DRV-5.11, DRV-6.17, DRV-6.19, DRV-6.21 · Intention i-06294033 · 2026-11-15
+Origins: DRV-5.11, DRV-6.17, DRV-6.19, CLD-1.22, MIM-6.13 · Intention i-1ae600af · 2026-11-15
 
 ## Execute
 
@@ -119,9 +119,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-
 
 ## Maintenance.execute_observed
 
-Reason: Preserve actual restore before-images and prove format reconversion, generation rotation and same-attempt replay without touching unrelated private state.
+Reason: Qualify exact before-image absence for Claude and Mimo and discriminate it from an unsafe existing Subscription parent.
 
-Origins: DRV-5.11, DRV-6.17, DRV-6.19, DRV-6.21 · Intention i-06294033 · 2026-11-15
+Origins: DRV-5.11, DRV-6.17, DRV-6.19, CLD-1.22, MIM-6.13 · Intention i-1ae600af · 2026-11-15
 
 ## Maintenance.finish
 
@@ -131,9 +131,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-
 
 ## Maintenance.image
 
-Reason: Qualify the sealed provider’s actual exclusive child dispatch, fail-closed substitution and crash recovery, and exact result replay through the external phase.
+Reason: Qualify exact before-image absence for Claude and Mimo and discriminate it from an unsafe existing Subscription parent.
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-11-15
+Origins: DRV-5.11, DRV-6.17, DRV-6.19, CLD-1.22, MIM-6.13 · Intention i-1ae600af · 2026-11-15
 
 ## Maintenance.lease
 
@@ -149,9 +149,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-
 
 ## Maintenance.preserve
 
-Reason: Qualify the sealed provider’s actual exclusive child dispatch, fail-closed substitution and crash recovery, and exact result replay through the external phase.
+Reason: Qualify exact before-image absence for Claude and Mimo and discriminate it from an unsafe existing Subscription parent.
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-11-15
+Origins: DRV-5.11, DRV-6.17, DRV-6.19, CLD-1.22, MIM-6.13 · Intention i-1ae600af · 2026-11-15
 
 ## Maintenance.record
 
@@ -302,4 +302,34 @@ Origins: DRV-5.11, DRV-6.17, DRV-6.19, DRV-6.21 · Intention i-06294033 · 2026-
 Reason: Preserve actual restore before-images and prove format reconversion, generation rotation and same-attempt replay without touching unrelated private state.
 
 Origins: DRV-5.11, DRV-6.17, DRV-6.19, DRV-6.21 · Intention i-06294033 · 2026-11-15
+
+## <before _unsafe_parent_image>
+
+Reason: Qualify exact before-image absence for Claude and Mimo and discriminate it from an unsafe existing Subscription parent.
+
+Origins: DRV-5.11, DRV-6.17, DRV-6.19, CLD-1.22, MIM-6.13 · Intention i-1ae600af · 2026-11-15
+
+## _source_only_parent
+
+Reason: Qualify exact before-image absence for Claude and Mimo and discriminate it from an unsafe existing Subscription parent.
+
+Origins: DRV-5.11, DRV-6.17, DRV-6.19, CLD-1.22, MIM-6.13 · Intention i-1ae600af · 2026-11-15
+
+## _unsafe_parent_image
+
+Reason: Qualify exact before-image absence for Claude and Mimo and discriminate it from an unsafe existing Subscription parent.
+
+Origins: DRV-5.11, DRV-6.17, DRV-6.19, CLD-1.22, MIM-6.13 · Intention i-1ae600af · 2026-11-15
+
+## source_only_archive_absence
+
+Reason: Qualify exact before-image absence for Claude and Mimo and discriminate it from an unsafe existing Subscription parent.
+
+Origins: DRV-5.11, DRV-6.17, DRV-6.19, CLD-1.22, MIM-6.13 · Intention i-1ae600af · 2026-11-15
+
+## unsafe_source_only_archive_parent
+
+Reason: Qualify exact before-image absence for Claude and Mimo and discriminate it from an unsafe existing Subscription parent.
+
+Origins: DRV-5.11, DRV-6.17, DRV-6.19, CLD-1.22, MIM-6.13 · Intention i-1ae600af · 2026-11-15
 
