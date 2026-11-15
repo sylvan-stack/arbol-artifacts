@@ -29,7 +29,7 @@ Origins: ARC-4.1, ARC-4.3, ARC-4.8 · Intention i-d1b0e71e · 2026-11-12
 
 ## <before inside>
 
-Reason: Route approved Driver selections through qualified custody or pre-execution legacy taint while preserving other launcher branches
+Reason: Generate immutable isolated Driver launcher bytes including spaced-path wrapper fallback and refuse ordinary gated-launcher replacement
 
-Origins: DRV-6.21, BLD-0.7, BLD-0.8, BLD-0.9, BLD-0.11 · Intention i-2499f246 · 2026-11-15
+Origins: DRV-6.21, BLD-0.16, BLD-0.9, BLD-0.15 · Intention i-6fbf8388 · 2026-11-15
 
