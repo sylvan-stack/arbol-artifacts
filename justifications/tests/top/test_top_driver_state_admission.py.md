@@ -89,9 +89,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-eb9a8860 · 2026-11-15
 
 ## begin_vs_independently_admitted_write
 
-Reason: Author prospective real admission and publication race cases with independently observed refusal and custody; no runtime use or gate wiring before body admission
+Reason: Repair bounded owned process cleanup on both positive and death failures and actual begin collection failure, preserving original errors and unowned-child uncertainty; source only
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-eb9a8860 · 2026-11-15
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-ca968244 · 2026-11-15
 
 ## cancel_at_real_wire_boundary
 
@@ -143,9 +143,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-59d10822 · 2026-11-15
 
 ## <before _collect_real>
 
-Reason: Complete prospective real Guardian-class late death and positive oracles with independently bound fixed frozen caller, public exact-implementation coupling and preserved offer/refusal/state custody observations; source only
+Reason: Repair bounded owned process cleanup on both positive and death failures and actual begin collection failure, preserving original errors and unowned-child uncertainty; source only
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-59d10822 · 2026-11-15
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-ca968244 · 2026-11-15
 
 ## <before complete_main_admission_inventory>
 
@@ -161,15 +161,15 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-59d10822 · 2026-11-15
 
 ## CallerPipe.__init__
 
-Reason: Complete prospective real Guardian-class late death and positive oracles with independently bound fixed frozen caller, public exact-implementation coupling and preserved offer/refusal/state custody observations; source only
+Reason: Repair bounded owned process cleanup on both positive and death failures and actual begin collection failure, preserving original errors and unowned-child uncertainty; source only
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-59d10822 · 2026-11-15
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-ca968244 · 2026-11-15
 
 ## CallerPipe.close
 
-Reason: Complete prospective real Guardian-class late death and positive oracles with independently bound fixed frozen caller, public exact-implementation coupling and preserved offer/refusal/state custody observations; source only
+Reason: Repair bounded owned process cleanup on both positive and death failures and actual begin collection failure, preserving original errors and unowned-child uncertainty; source only
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-59d10822 · 2026-11-15
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-ca968244 · 2026-11-15
 
 ## CallerPipe.frame
 
@@ -233,9 +233,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-59d10822 · 2026-11-15
 
 ## _collect_real
 
-Reason: Complete prospective real Guardian-class late death and positive oracles with independently bound fixed frozen caller, public exact-implementation coupling and preserved offer/refusal/state custody observations; source only
+Reason: Repair bounded owned process cleanup on both positive and death failures and actual begin collection failure, preserving original errors and unowned-child uncertainty; source only
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-59d10822 · 2026-11-15
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-ca968244 · 2026-11-15
 
 ## complete_main_admission_inventory
 
@@ -251,9 +251,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-59d10822 · 2026-11-15
 
 ## guardian_class_window
 
-Reason: Repair cleanup ownership by keeping claimed child identity separate until every real ownership and context binding passes; source only
+Reason: Repair bounded owned process cleanup on both positive and death failures and actual begin collection failure, preserving original errors and unowned-child uncertainty; source only
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-43ead0db · 2026-11-15
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-ca968244 · 2026-11-15
 
 ## prepare_sealed_candidate_coupling
 
@@ -266,4 +266,10 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-59d10822 · 2026-11-15
 Reason: Author only source-supported fixed runner helper lease and late new Guardian launch cases, preserving explicit missing H1 preterminal latch/schema obligations; source only
 
 Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-7d69571f · 2026-11-15
+
+## _cleanup_verified_window
+
+Reason: Repair bounded owned process cleanup on both positive and death failures and actual begin collection failure, preserving original errors and unowned-child uncertainty; source only
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-ca968244 · 2026-11-15
 
