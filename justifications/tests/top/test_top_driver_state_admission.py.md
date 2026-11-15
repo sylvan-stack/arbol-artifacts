@@ -11,9 +11,9 @@ Removed by Intention i-59d10822 · 2026-11-15
 
 ## <end>
 
-Removed: Complete prospective real Guardian-class late death and positive oracles with independently bound fixed frozen caller, public exact-implementation coupling and preserved offer/refusal/state custody observations; source only
+Reason: Author only source-supported fixed runner helper lease and late new Guardian launch cases, preserving explicit missing H1 preterminal latch/schema obligations; source only
 
-Removed by Intention i-59d10822 · 2026-11-15
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-7d69571f · 2026-11-15
 
 ## AdmissionSubject
 
@@ -239,9 +239,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-59d10822 · 2026-11-15
 
 ## complete_main_admission_inventory
 
-Reason: Complete prospective real Guardian-class late death and positive oracles with independently bound fixed frozen caller, public exact-implementation coupling and preserved offer/refusal/state custody observations; source only
+Reason: Author only source-supported fixed runner helper lease and late new Guardian launch cases, preserving explicit missing H1 preterminal latch/schema obligations; source only
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-59d10822 · 2026-11-15
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-7d69571f · 2026-11-15
 
 ## final_working_rendered_route_coupling
 
@@ -260,4 +260,10 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-59d10822 · 2026-11-15
 Reason: Complete prospective real Guardian-class late death and positive oracles with independently bound fixed frozen caller, public exact-implementation coupling and preserved offer/refusal/state custody observations; source only
 
 Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-59d10822 · 2026-11-15
+
+## late_new_guardian_gate_after_begin_refuses
+
+Reason: Author only source-supported fixed runner helper lease and late new Guardian launch cases, preserving explicit missing H1 preterminal latch/schema obligations; source only
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-7d69571f · 2026-11-15
 
