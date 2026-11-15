@@ -5,9 +5,9 @@ role: authored
 
 ## <before require>
 
-Reason: Retain verified H1 participants across failed positive spans and coordinate descendant cancellation with the existing owned-provider cleanup budget
+Reason: Bind canonical terminal settled intent and source evidence and coordinate the full positive H1 and terminal span
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-29492e60 · 2026-11-15
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
 
 ## Baseline
 
@@ -425,9 +425,9 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
 
 ## WholeCheckController.run_h1_positive
 
-Reason: Retain verified H1 participants across failed positive spans and coordinate descendant cancellation with the existing owned-provider cleanup budget
+Reason: Bind canonical terminal settled intent and source evidence and coordinate the full positive H1 and terminal span
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-29492e60 · 2026-11-15
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
 
 ## WholeCheckController.verify_h1_ready
 
@@ -452,4 +452,64 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
 Reason: Retain verified H1 participants across failed positive spans and coordinate descendant cancellation with the existing owned-provider cleanup budget
 
 Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-29492e60 · 2026-11-15
+
+## TerminalObservations
+
+Reason: Bind canonical terminal settled intent and source evidence and coordinate the full positive H1 and terminal span
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
+
+## TerminalObservations.finished
+
+Reason: Bind canonical terminal settled intent and source evidence and coordinate the full positive H1 and terminal span
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
+
+## TerminalObservations.interval
+
+Reason: Bind canonical terminal settled intent and source evidence and coordinate the full positive H1 and terminal span
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
+
+## TerminalObservations.precontinue
+
+Reason: Bind canonical terminal settled intent and source evidence and coordinate the full positive H1 and terminal span
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
+
+## TerminalSchedule
+
+Reason: Bind canonical terminal settled intent and source evidence and coordinate the full positive H1 and terminal span
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
+
+## TerminalSchedule.verify
+
+Reason: Bind canonical terminal settled intent and source evidence and coordinate the full positive H1 and terminal span
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
+
+## TerminalView
+
+Reason: Bind canonical terminal settled intent and source evidence and coordinate the full positive H1 and terminal span
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
+
+## TerminalView.recheck_files
+
+Reason: Bind canonical terminal settled intent and source evidence and coordinate the full positive H1 and terminal span
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
+
+## WholeCheckController.verify_terminal_armed
+
+Reason: Bind canonical terminal settled intent and source evidence and coordinate the full positive H1 and terminal span
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
+
+## WholeCheckController.verify_terminal_closure
+
+Reason: Bind canonical terminal settled intent and source evidence and coordinate the full positive H1 and terminal span
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
 
