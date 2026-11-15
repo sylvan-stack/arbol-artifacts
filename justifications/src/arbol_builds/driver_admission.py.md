@@ -305,7 +305,7 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-8ab6ff38 · 2026-11-15
 
 ## reconcile
 
-Reason: Keep independently admitted helper obligations counted through terminal reconciliation and closed archival, taint lost or corrupt custody
+Reason: Verify exact qualified component tuples, serialize begin with admission, preserve same-session epochs and report read-only bounded custody status
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-8ab6ff38 · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-e07374d3 · 2026-11-15
 

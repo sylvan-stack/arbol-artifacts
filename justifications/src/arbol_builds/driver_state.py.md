@@ -5,9 +5,9 @@ role: authored
 
 ## <before _route>
 
-Reason: Parse exact maintenance grammar and dispatch only through the verified isolated immutable provider while preserving ordinary commands
+Reason: Verify exact qualified component tuples, serialize begin with admission, preserve same-session epochs and report read-only bounded custody status
 
-Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-e07374d3 · 2026-11-15
 
 ## _admission_marker
 
@@ -119,7 +119,49 @@ Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
 
 ## provider_entry
 
-Reason: Parse exact maintenance grammar and dispatch only through the verified isolated immutable provider while preserving ordinary commands
+Reason: Verify exact qualified component tuples, serialize begin with admission, preserve same-session epochs and report read-only bounded custody status
 
-Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-e07374d3 · 2026-11-15
+
+## _component
+
+Reason: Verify exact qualified component tuples, serialize begin with admission, preserve same-session epochs and report read-only bounded custody status
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-e07374d3 · 2026-11-15
+
+## _control
+
+Reason: Verify exact qualified component tuples, serialize begin with admission, preserve same-session epochs and report read-only bounded custody status
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-e07374d3 · 2026-11-15
+
+## _recheck
+
+Reason: Verify exact qualified component tuples, serialize begin with admission, preserve same-session epochs and report read-only bounded custody status
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-e07374d3 · 2026-11-15
+
+## _status
+
+Reason: Verify exact qualified component tuples, serialize begin with admission, preserve same-session epochs and report read-only bounded custody status
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-e07374d3 · 2026-11-15
+
+## _tainted
+
+Reason: Verify exact qualified component tuples, serialize begin with admission, preserve same-session epochs and report read-only bounded custody status
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-e07374d3 · 2026-11-15
+
+## begin
+
+Reason: Verify exact qualified component tuples, serialize begin with admission, preserve same-session epochs and report read-only bounded custody status
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-e07374d3 · 2026-11-15
+
+## status
+
+Reason: Verify exact qualified component tuples, serialize begin with admission, preserve same-session epochs and report read-only bounded custody status
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-e07374d3 · 2026-11-15
 
