@@ -101,9 +101,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
 
 ## _driver_gate_authority
 
-Reason: Preflight existing gated routes before installer mutations, preserve exact recognized gate bytes and emit only the fixed verified provider sealed-entry dispatch for future explicit deployments
+Reason: Validate the existing Build ancestor before treating an absent legacy payload root as absence in the new read-only preservation preflight
 
-Origins: DRV-6.21, BLD-0.16, BLD-0.9 · Intention i-048579db · 2026-11-15
+Origins: DRV-6.21, BLD-0.16, BLD-0.9 · Intention i-3742dd7a · 2026-11-15
 
 ## driver_gate_identity
 
