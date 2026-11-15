@@ -119,9 +119,9 @@ Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
 
 ## provider_entry
 
-Reason: Verify exact qualified component tuples, serialize begin with admission, preserve same-session epochs and report read-only bounded custody status
+Reason: Preserve inherited ignored SIGINT through the sealed provider before legacy and qualified launch dispatch
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-e07374d3 · 2026-11-15
+Origins: BLD-0.9, DRV-6.21 · Intention i-73e69df8 · 2026-11-15
 
 ## _component
 
