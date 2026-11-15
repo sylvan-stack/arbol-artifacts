@@ -17,9 +17,9 @@ Origins: ARC-4.3 · Intention i-62e4abb1 · 2026-11-12
 
 ## launch
 
-Reason: Publish browser-only private Build selection in the shared launcher independently
+Reason: Route approved Driver selections through qualified custody or pre-execution legacy taint while preserving other launcher branches
 
-Origins: BRW-0.2, BRW-0.9, BRW-0.14 · Intention i-19200bf7 · 2026-11-14
+Origins: DRV-6.21, BLD-0.7, BLD-0.8, BLD-0.9, BLD-0.11 · Intention i-2499f246 · 2026-11-15
 
 ## backend_fits
 
@@ -29,7 +29,7 @@ Origins: ARC-4.1, ARC-4.3, ARC-4.8 · Intention i-d1b0e71e · 2026-11-12
 
 ## <before inside>
 
-Reason: Retire generation and installation of the Root runtime launchers
+Reason: Route approved Driver selections through qualified custody or pre-execution legacy taint while preserving other launcher branches
 
-Origins: ARC-4.1, ARC-4.8 · Intention i-de10fbd4 · 2026-11-12
+Origins: DRV-6.21, BLD-0.7, BLD-0.8, BLD-0.9, BLD-0.11 · Intention i-2499f246 · 2026-11-15
 
