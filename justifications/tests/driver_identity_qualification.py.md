@@ -5,9 +5,9 @@ role: authored
 
 ## <before require>
 
-Reason: Repair R2 by pinning original private authority and shared directory identities plus the independently owned genuine deployment lock descriptor; source only
+Reason: Author exact H1 report/source/custody validation and whole positive external-phase coordination on accepted bounded interactive collector, preserving full local inventory and all deferred assertions; source-only.
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-dad0fcec · 2026-11-15
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
 
 ## Baseline
 
@@ -125,9 +125,9 @@ Origins: DRV-5.11, DRV-6.21 · Intention i-d77c92b4 · 2026-11-15
 
 ## InventoryPhase.validate
 
-Reason: Author prospective external qualification controller and independent evidence primitives for exact admitted fixtures, current custody before-images and full-lifetime phases; no runtime or wiring before body review.
+Reason: Author exact H1 report/source/custody validation and whole positive external-phase coordination on accepted bounded interactive collector, preserving full local inventory and all deferred assertions; source-only.
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-d77c92b4 · 2026-11-15
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
 
 ## MarkerImage
 
@@ -392,4 +392,58 @@ Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
 Reason: Repair R3 by binding prior generation and immutable archive identities, permitting only captured real production additions and fresh per-transaction evidence lineage; source only
 
 Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
+
+## <before _span_ids>
+
+Reason: Author exact H1 report/source/custody validation and whole positive external-phase coordination on accepted bounded interactive collector, preserving full local inventory and all deferred assertions; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
+
+## H1Schedule
+
+Reason: Author exact H1 report/source/custody validation and whole positive external-phase coordination on accepted bounded interactive collector, preserving full local inventory and all deferred assertions; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
+
+## H1Schedule.verify
+
+Reason: Author exact H1 report/source/custody validation and whole positive external-phase coordination on accepted bounded interactive collector, preserving full local inventory and all deferred assertions; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
+
+## H1View
+
+Reason: Author exact H1 report/source/custody validation and whole positive external-phase coordination on accepted bounded interactive collector, preserving full local inventory and all deferred assertions; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
+
+## H1View.recheck_files
+
+Reason: Author exact H1 report/source/custody validation and whole positive external-phase coordination on accepted bounded interactive collector, preserving full local inventory and all deferred assertions; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
+
+## WholeCheckController.run_h1_positive
+
+Reason: Author exact H1 report/source/custody validation and whole positive external-phase coordination on accepted bounded interactive collector, preserving full local inventory and all deferred assertions; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
+
+## WholeCheckController.verify_h1_ready
+
+Reason: Author exact H1 report/source/custody validation and whole positive external-phase coordination on accepted bounded interactive collector, preserving full local inventory and all deferred assertions; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
+
+## _span_document
+
+Reason: Author exact H1 report/source/custody validation and whole positive external-phase coordination on accepted bounded interactive collector, preserving full local inventory and all deferred assertions; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
+
+## _span_ids
+
+Reason: Author exact H1 report/source/custody validation and whole positive external-phase coordination on accepted bounded interactive collector, preserving full local inventory and all deferred assertions; source-only.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
 
