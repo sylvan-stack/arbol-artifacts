@@ -5,9 +5,9 @@ role: authored
 
 ## <before _route>
 
-Reason: Carry explicit isolated candidate resolution through administrative delegation and pins
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
 
-Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-f3b18537 · 2026-11-15
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
 
 ## _admission_marker
 
@@ -65,9 +65,9 @@ Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
 
 ## Request
 
-Reason: Carry explicit isolated candidate resolution through administrative delegation and pins
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
 
-Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-f3b18537 · 2026-11-15
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
 
 ## Request.component
 
@@ -77,9 +77,9 @@ Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
 
 ## Request.session
 
-Reason: Parse exact maintenance grammar and dispatch only through the verified isolated immutable provider while preserving ordinary commands
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
 
-Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
 
 ## _maintenance_error
 
@@ -89,9 +89,9 @@ Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
 
 ## _provider
 
-Reason: Carry explicit isolated candidate resolution through administrative delegation and pins
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
 
-Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-f3b18537 · 2026-11-15
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
 
 ## _use_provider_guard
 
@@ -101,9 +101,9 @@ Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
 
 ## command
 
-Reason: Carry explicit isolated candidate resolution through administrative delegation and pins
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
 
-Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-f3b18537 · 2026-11-15
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
 
 ## handler
 
@@ -119,9 +119,9 @@ Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
 
 ## provider_entry
 
-Reason: Carry explicit isolated candidate resolution through administrative delegation and pins
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
 
-Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-f3b18537 · 2026-11-15
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
 
 ## _component
 
@@ -155,9 +155,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-e07374d3 · 2026-11-15
 
 ## begin
 
-Reason: Preserve the exact same-session closed boot checkpoint custody before the first recovery journal exists
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
 
-Origins: DRV-6.21 · Intention i-239b4b72 · 2026-11-15
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
 
 ## status
 
@@ -203,9 +203,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
 
 ## _qualified_candidates
 
-Reason: Recognize genuine optional legacy payload absence before private parent validation while retaining matching tuple verification
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
 
-Origins: DRV-6.18, DRV-6.21 · Intention i-425cae65 · 2026-11-15
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
 
 ## _rollback_rollout
 
@@ -239,27 +239,27 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
 
 ## _verify_rollout
 
-Reason: Verify completed deployment readback against archived checkpoint and current normal authority while permitting legitimate post-completion admissions; pending-boundary checks remain strict
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-7e8ff620 · 2026-11-15
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
 
 ## deploy
 
-Reason: Preserve deploy completed-phase reply while requiring the new complete all-four verification before caller-enable readiness
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-18d0693d · 2026-11-15
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
 
 ## _boot_recovery_pending
 
-Reason: Preserve the exact same-session closed boot checkpoint custody before the first recovery journal exists
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
 
-Origins: DRV-6.21 · Intention i-239b4b72 · 2026-11-15
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
 
 ## _recover_boot
 
-Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
 
 ## _recovery_journal
 
@@ -437,9 +437,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
 
 ## _complete_deployment
 
-Reason: Verify four exact ready results under lexical control mutexes and independent EX leases, journal desired epochs before partial control publication and commit global complete last
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
 
 ## _completion_request
 
@@ -467,9 +467,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
 
 ## _verified_complete
 
-Reason: Verify completed deployment readback against archived checkpoint and current normal authority while permitting legitimate post-completion admissions; pending-boundary checks remain strict
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-7e8ff620 · 2026-11-15
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
 
 ## launch_candidate
 
@@ -479,7 +479,55 @@ Origins: DRV-5.8, DRV-5.11, DRV-6.18, DRV-6.21, BLD-0.5, BLD-0.8, BLD-0.9, BLD-0
 
 ## _request_scope
 
-Reason: Carry explicit isolated candidate resolution through administrative delegation and pins
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
 
-Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-f3b18537 · 2026-11-15
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
+
+## CandidateStage
+
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
+
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
+
+## CandidateStage.execution_scope
+
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
+
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
+
+## CandidateStage.pins
+
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
+
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
+
+## CandidateStage.recheck
+
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
+
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
+
+## _candidate_stage
+
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
+
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
+
+## _execution_scope
+
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
+
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
+
+## _request_gate
+
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
+
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
+
+## _request_pins
+
+Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
+
+Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
 
