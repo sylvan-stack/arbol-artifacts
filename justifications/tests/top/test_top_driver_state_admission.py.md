@@ -251,9 +251,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-59d10822 · 2026-11-15
 
 ## guardian_class_window
 
-Reason: Complete prospective real Guardian-class late death and positive oracles with independently bound fixed frozen caller, public exact-implementation coupling and preserved offer/refusal/state custody observations; source only
+Reason: Repair cleanup ownership by keeping claimed child identity separate until every real ownership and context binding passes; source only
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-59d10822 · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-43ead0db · 2026-11-15
 
 ## prepare_sealed_candidate_coupling
 
