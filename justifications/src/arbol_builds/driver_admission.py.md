@@ -5,9 +5,9 @@ role: authored
 
 ## <before Refusal>
 
-Reason: Publish strict private component authority and stable admission/control locks before any writer or maintenance handoff
+Reason: Carry exact candidate scope through custody reconciliation without loss exceptions
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-f82fa399 · 2026-11-14
+Origins: DRV-6.18, DRV-6.21 · Intention i-7e2e6166 · 2026-11-15
 
 ## Authority
 
@@ -239,9 +239,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
 
 ## normal_control
 
-Reason: Keep independently admitted helper obligations counted through terminal reconciliation and closed archival, taint lost or corrupt custody
+Reason: Carry exact candidate scope through custody reconciliation without loss exceptions
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-8ab6ff38 · 2026-11-15
+Origins: DRV-6.18, DRV-6.21 · Intention i-7e2e6166 · 2026-11-15
 
 ## read_handoff
 
@@ -281,9 +281,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-8ab6ff38 · 2026-11-15
 
 ## _custody_payload
 
-Reason: Recognize genuine optional legacy payload absence before private parent validation while retaining matching tuple verification
+Reason: Carry exact candidate scope through custody reconciliation without loss exceptions
 
-Origins: DRV-6.18, DRV-6.21 · Intention i-425cae65 · 2026-11-15
+Origins: DRV-6.18, DRV-6.21 · Intention i-7e2e6166 · 2026-11-15
 
 ## _documents
 
@@ -305,9 +305,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
 
 ## reconcile
 
-Reason: Bound cooperative drain, request exact main SIGTERM through existing cancellation behavior, recheck exclusive custody and publish one-shot maintenance receipt without clearing unknown taint
+Reason: Carry exact candidate scope through custody reconciliation without loss exceptions
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-c8239ecc · 2026-11-15
+Origins: DRV-6.18, DRV-6.21 · Intention i-7e2e6166 · 2026-11-15
 
 ## admission_fingerprint
 
