@@ -587,15 +587,15 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-
 
 ## MimoMainSubject
 
-Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+Reason: Author the distinct verified-main SIGTERM, duplicate-signal suppression, and changed-reread refusal observations using the accepted Mimo setup and closure.
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-2fdb6512 · 2026-11-15
 
 ## MimoMainSubject.<before MimoMainSubject._source_coupling>
 
-Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+Removed: Author the distinct verified-main SIGTERM, duplicate-signal suppression, and changed-reread refusal observations using the accepted Mimo setup and closure.
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+Removed by Intention i-2fdb6512 · 2026-11-15
 
 ## MimoMainSubject.__init__
 
@@ -677,9 +677,9 @@ Origins: DRV-6.21 · Intention i-c74f79c9 · 2026-11-15
 
 ## MimoMainSubject.settle_after_ordinary_stop
 
-Reason: Require a paired public invocation and verify that the actual pinned admission check refuses the live draining session.
+Removed: Author the distinct verified-main SIGTERM, duplicate-signal suppression, and changed-reread refusal observations using the accepted Mimo setup and closure.
 
-Origins: DRV-6.21 · Intention i-1d8182dd · 2026-11-15
+Removed by Intention i-2fdb6512 · 2026-11-15
 
 ## MimoMainSubject.start_and_begin
 
@@ -731,9 +731,9 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-
 
 ## main_watcher_across_begin
 
-Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+Reason: Author the distinct verified-main SIGTERM, duplicate-signal suppression, and changed-reread refusal observations using the accepted Mimo setup and closure.
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-2fdb6512 · 2026-11-15
 
 ## MimoMainSubject._observe_draining_control
 
@@ -743,13 +743,37 @@ Origins: DRV-6.21 · Intention i-c74f79c9 · 2026-11-15
 
 ## MimoMainSubject._provider_sources
 
-Reason: Bind the observed Refusal to the exact pinned phase-check line in addition to its traceback shape.
+Reason: Author the distinct verified-main SIGTERM, duplicate-signal suppression, and changed-reread refusal observations using the accepted Mimo setup and closure.
 
-Origins: DRV-6.21 · Intention i-c74f79c9 · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-2fdb6512 · 2026-11-15
 
 ## MimoMainSubject._normal_admission_probe
 
 Reason: Bind the observed Refusal to the exact pinned phase-check line in addition to its traceback shape.
 
 Origins: DRV-6.21 · Intention i-c74f79c9 · 2026-11-15
+
+## MimoMainSubject.<before MimoMainSubject.verified_main_stop>
+
+Reason: Author the distinct verified-main SIGTERM, duplicate-signal suppression, and changed-reread refusal observations using the accepted Mimo setup and closure.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-2fdb6512 · 2026-11-15
+
+## MimoMainSubject.settle_after_cancellation
+
+Reason: Author the distinct verified-main SIGTERM, duplicate-signal suppression, and changed-reread refusal observations using the accepted Mimo setup and closure.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-2fdb6512 · 2026-11-15
+
+## MimoMainSubject.verified_main_stop
+
+Reason: Author the distinct verified-main SIGTERM, duplicate-signal suppression, and changed-reread refusal observations using the accepted Mimo setup and closure.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-2fdb6512 · 2026-11-15
+
+## verified_main_cancellation_across_begin
+
+Reason: Author the distinct verified-main SIGTERM, duplicate-signal suppression, and changed-reread refusal observations using the accepted Mimo setup and closure.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-2fdb6512 · 2026-11-15
 
