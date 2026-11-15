@@ -5,9 +5,9 @@ role: authored
 
 ## <before BsdInfo>
 
-Reason: Implement fixed isolated administrative child argv, duplicate-only inherited exclusive OFD, bounded private output capture and exact-owner cancellation while retaining closed attempts on interruption
+Reason: Bind candidate Guardian creation and rechecks to verified scoped payload pins
 
-Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-e6e9ba05 · 2026-11-15
+Origins: DRV-6.18, DRV-6.21, BLD-0.9, BLD-0.11 · Intention i-b3bcaee7 · 2026-11-15
 
 ## BsdInfo
 
@@ -119,9 +119,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
 
 ## Guardian
 
-Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+Reason: Bind candidate Guardian creation and rechecks to verified scoped payload pins
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+Origins: DRV-6.18, DRV-6.21, BLD-0.9, BLD-0.11 · Intention i-b3bcaee7 · 2026-11-15
 
 ## Guardian._bootstrap_writer
 
@@ -131,9 +131,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
 
 ## Guardian._check
 
-Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+Reason: Bind candidate Guardian creation and rechecks to verified scoped payload pins
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+Origins: DRV-6.18, DRV-6.21, BLD-0.9, BLD-0.11 · Intention i-b3bcaee7 · 2026-11-15
 
 ## Guardian._close_owned
 
@@ -149,9 +149,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
 
 ## Guardian.admit
 
-Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+Reason: Bind candidate Guardian creation and rechecks to verified scoped payload pins
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+Origins: DRV-6.18, DRV-6.21, BLD-0.9, BLD-0.11 · Intention i-b3bcaee7 · 2026-11-15
 
 ## Guardian.spawn_main
 
