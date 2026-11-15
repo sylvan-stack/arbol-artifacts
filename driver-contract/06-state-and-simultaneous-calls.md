@@ -471,3 +471,24 @@ Technical clarification review · 15 November 2026 · **accepted** by the indepe
 
 
 Pending-journal wording clarification · 15 November 2026 · Independent actual-contract review accepted the operation-relative definition above. The earlier result phrase "relevant journal" and blanket finish phrase "no other journals" were contradictory; this explicit correction follows the already accepted single-selector conservative recovery and same-Subscription refusal rules. No command, field/schema, caller authority, token/generation, native/credential action or all-four deployment condition changes. It is corpus clarification, not implementation or qualification evidence; all producer/provider results and ABR-38 must use the same scope.
+
+
+### Browser producer source checkpoints · 15 November 2026
+
+The dated specification/planning statements above describe their original inputs. Claude producer ABR-35 now completes its static implementation scope at `f38b90229a260a67c88e439a481c6074b90a15dc`, with independent full actual-source/static-candidate acceptance. Its local proof, independent writer/helper custody, lifetime-fenced updates, exact exclusive maintenance, metadata archives and operation-relative results are implemented in source. This does not qualify a registered payload, conversion, recovery, old-writer/helper race, genuine boot transition or installed route; DRV-6.17–6.21 verification remains pending ABR-38 and the final independent Arc Review.
+
+Mimo ABR-37's partial source through `b37938990537d1f3f8204f00684d3a3182690b74` supplies strict metadata-only immutable before entries, explicit paired presence/absence, source/union validation and same-attempt marker preparation. It remains partial, with later algorithms and final source review outstanding. Provider ABR-39's partial source through `3f1665ada289db20d04f0f1e18972003835a0651` supplies the six fixed handlers and packaging source for its independently copied runtime/committed verifier closure. Outer historical provenance excludes only the two exact nested generated M/D paths; complete provider M excludes only its own root M/D, and metadata is emitted after executable/provenance bytes settle. Existing Backend paths/full-gate commands remain intact. No provider packaging or runtime was executed to establish this checkpoint, and final installer/source/candidate review remains outstanding.
+
+These are source references and bounded publication records, not new contract fields, owner policy, qualification receipts or installed authority. Earlier failed evidence and all runtime/full-gate/recovery/boot obligations remain unchanged.
+
+<!-- sources:
+arbol-claude-driver:@code/src/arbol_claude_driver/identity.py
+arbol-claude-driver:@code/src/arbol_claude_driver/admission.py
+arbol-claude-driver:@code/src/arbol_claude_driver/maintenance.py
+arbol-mimo-driver:@code/src/arbol_mimo_driver/maintenance.py#Archive
+arbol-mimo-driver:@code/src/arbol_mimo_driver/maintenance.py#Maintenance.begin_attempt
+arbol:@code/scripts/package_backend.py#stage_provider
+arbol:@code/scripts/package_backend.py#finish_provider
+arbol:@code/scripts/backend_package.py#files
+arbol:@code/scripts/backend_package.py#verify
+-->
