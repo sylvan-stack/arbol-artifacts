@@ -492,3 +492,21 @@ arbol:@code/scripts/package_backend.py#finish_provider
 arbol:@code/scripts/backend_package.py#files
 arbol:@code/scripts/backend_package.py#verify
 -->
+
+
+### ABR-43 bounded source repair checkpoint ·15 November2026
+
+Explicit repair43 publishes Arbol `625fdd86f0d19baeb2e84250c99b1e0318553ed3`, Claude `a629f2c8105cb9481bcb4b70b55df2dd77e41161` and Mimo `6cb416d0eb56c1bc8a932ad04eb6f6ac76c719fb`. Optional legacy payload lookup now distinguishes genuine missing metadata before private-parent validation, retaining exact matching tuple checks, unsafe-path refusal and conservative custody/retention. Claude/Mimo before-image snapshots explicitly preserve absence of source-only Subscription parents without creating records/directories or swallowing unsafe-path refusal. Provider staging applies the existing early signal prelude to its sealed entry using the checked committed service/generator closure.
+
+The seven-leaf plan passed fresh independent cold review; source/static-input review and final43completion remain pending at this checkpoint. No new contract shape, auth-reaping policy, Owner Requirement, test/gate reduction, installed authority or runtime claim is introduced. Earlier35/36 source reviews/candidates remain bound to their recorded revisions. ABR-38 additionally waits for43 and must qualify exact repaired packages, legacy coexistence, restore union/absence and real signal/maintenance behavior through all five full gates and the genuine-transition scope.
+
+<!-- sources:
+arbol:@code/src/arbol_builds/driver_payload.py#optional_descriptor
+arbol:@code/src/arbol_builds/driver_payload.py#_retention_builds
+arbol:@code/src/arbol_builds/driver_admission.py#_custody_payload
+arbol:@code/src/arbol_builds/driver_state.py#_component
+arbol:@code/src/arbol_builds/driver_state.py#_qualified_candidates
+arbol:@code/scripts/package_backend.py#stage_provider
+arbol-claude-driver:@code/src/arbol_claude_driver/maintenance.py#snapshot_bytes
+arbol-mimo-driver:@code/src/arbol_mimo_driver/maintenance.py#snapshot_bytes
+-->
