@@ -5,9 +5,9 @@ role: authored
 
 ## <before _route>
 
-Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
+Reason: Prepare exact exclusive administrative attempts, immutable context/request retry binding, safe metadata backup verification and generation selection without executing child/state operations
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-11-15
 
 ## _admission_marker
 
@@ -269,7 +269,85 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
 
 ## _verify_boot_archive
 
-Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
+Reason: Prepare exact exclusive administrative attempts, immutable context/request retry binding, safe metadata backup verification and generation selection without executing child/state operations
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-11-15
+
+## Prepared
+
+Reason: Prepare exact exclusive administrative attempts, immutable context/request retry binding, safe metadata backup verification and generation selection without executing child/state operations
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-11-15
+
+## _attempt_history
+
+Reason: Prepare exact exclusive administrative attempts, immutable context/request retry binding, safe metadata backup verification and generation selection without executing child/state operations
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-11-15
+
+## _closed_attempt
+
+Reason: Prepare exact exclusive administrative attempts, immutable context/request retry binding, safe metadata backup verification and generation selection without executing child/state operations
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-11-15
+
+## _context_from_operation
+
+Reason: Prepare exact exclusive administrative attempts, immutable context/request retry binding, safe metadata backup verification and generation selection without executing child/state operations
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-11-15
+
+## _fresh_generation
+
+Reason: Prepare exact exclusive administrative attempts, immutable context/request retry binding, safe metadata backup verification and generation selection without executing child/state operations
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-11-15
+
+## _make_binding
+
+Reason: Prepare exact exclusive administrative attempts, immutable context/request retry binding, safe metadata backup verification and generation selection without executing child/state operations
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-11-15
+
+## _predecessor
+
+Reason: Prepare exact exclusive administrative attempts, immutable context/request retry binding, safe metadata backup verification and generation selection without executing child/state operations
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-11-15
+
+## _read_optional
+
+Reason: Prepare exact exclusive administrative attempts, immutable context/request retry binding, safe metadata backup verification and generation selection without executing child/state operations
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-11-15
+
+## _root_generation
+
+Reason: Prepare exact exclusive administrative attempts, immutable context/request retry binding, safe metadata backup verification and generation selection without executing child/state operations
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-11-15
+
+## _separate_metadata_roots
+
+Reason: Prepare exact exclusive administrative attempts, immutable context/request retry binding, safe metadata backup verification and generation selection without executing child/state operations
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-11-15
+
+## _session_folder
+
+Reason: Prepare exact exclusive administrative attempts, immutable context/request retry binding, safe metadata backup verification and generation selection without executing child/state operations
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-11-15
+
+## _state_format
+
+Reason: Prepare exact exclusive administrative attempts, immutable context/request retry binding, safe metadata backup verification and generation selection without executing child/state operations
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-11-15
+
+## prepare_execute
+
+Reason: Prepare exact exclusive administrative attempts, immutable context/request retry binding, safe metadata backup verification and generation selection without executing child/state operations
+
+Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-11-15
 
