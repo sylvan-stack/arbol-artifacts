@@ -313,3 +313,13 @@ A Build implementing the [local lifetime proof](01-subscriptions.md#local-subscr
 The source `subscriptionIdentity:1` declaration describes the complete implementation; positive Browser use additionally requires DRV-6's exact immutable M/D payload, gate and **qualified** acceptance tuple on the supported platform. The child validates its own D/M and accepted registry context without embedding a self-referential code hash. A candidate acceptance is usable only inside its explicitly isolated qualification registry and is never Browser authority. No field on ordinary `info` by itself proves qualification. Arbol alone keeps application UUID authority; ordinary catalogues and info remain database-independent. ABR-34–37 produce payload declarations; ABR-39 verifies shared authority; ABR-38 plus independent Arc Review produces final accepted evidence. This corrects technical composition only, without changing Contract2 or claiming implementation.
 
 ABR-40 actual-review correction: consume DRV-6's exact `-ISB` bootstrap/D.importRoots and normal/helper `ARBOL_DRIVER_ADMISSION_FD`/`ARBOL_DRIVER_ADMISSION_CONTEXT` wire. Validate registry/boot/epoch/own and parent process identity, exact payload/entry/acceptance and the offer/ready/go/started acknowledged handoff before any Driver state access. Each child opens its own independent lease; no inherited main lock or exclusive-maintenance receipt substitutes. Source/helper declarations and candidate state never become qualified Browser authority.
+
+
+### Codex Browser capability source checkpoint · 15 November 2026
+
+ABR-34 implements the additive revision-1 capability in Codex source `983b8fbd71f709e826fa5188ed1ef529fd0743b2`, tree `d81a4b80704f4c92748684f30a480962ae854047`. Ordinary info retains its existing fields and reports the capability independently of vendor credentials or state conversion. The declaration alone grants no Browser authority: exact immutable payload, admission, registered qualification and the complete producer Arc remain required. This dated source checkpoint leaves DRV-0.17 verification pending ABR-38 and independent Arc Review; no registered Build, executable payload or runtime acceptance is claimed.
+
+<!-- sources:
+arbol-codex-driver:@code/src/arbol_codex_driver/build.py#qualified_capabilities
+arbol-codex-driver:@code/src/arbol_codex_driver/cli.py
+-->

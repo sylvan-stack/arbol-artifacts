@@ -553,3 +553,25 @@ arbol:@code/src/arbol_builds/driver_state.py#_verify_rollout
 arbol:@code/src/arbol_builds/driver_state.py#_recover_boot
 arbol:@code/src/arbol_builds/driver_admission.py#archive_boot_custody
 -->
+
+
+### Codex complete source/input boundary · 15 November 2026
+
+ABR-34 source through README leaf34 is Codex `983b8fbd71f709e826fa5188ed1ef529fd0743b2`, tree `d81a4b80704f4c92748684f30a480962ae854047`. It implements independent normal/helper admission custody, strict root guard and short-lock proof capture, private lifetime-fenced auth/run/map updates, conservative fresh dead-owner recovery, durable pending/result settlement, metadata-only immutable paired-absence archives and the four exclusive maintenance algorithms. Legacy JSON, short-lock text and fallback tool-owner text readers establish a regular no-follow/nonblocking descriptor before reading, retaining existing parsing/error/size behavior. Packaging source supplies complete payload provenance before generated M/D; it retains the documented ordinary gate commands and legacy metadata fields except the explicit data-format change.
+
+This appendix binds implementation-only Source Refs for leaves35–37; final fresh whole-source/static-input review remains required before ABR-34 completion. No product, generator/package function, provider/helper/kernel/native API, test, gate, allocated Build or boot operation establishes this source checkpoint. Executable runtime, M/D, registered acceptance and deployment tuples are unproduced. All five complete ordinary gates, cross-component runtime/import/signal/TTY/helper-loss/metadata-recovery cases and genuine kernel-transition operational proposal/evidence remain ABR-38 obligations, followed by independent Arc Review. Existing failed evidence, native-home restrictions, owner hunks and all accepted contract/authority rules remain unchanged; no consumer prerequisite lifts.
+
+<!-- sources:
+arbol-codex-driver:@code/src/arbol_codex_driver/identity_protocol.py
+arbol-codex-driver:@code/src/arbol_codex_driver/identity.py
+arbol-codex-driver:@code/src/arbol_codex_driver/identity_backup.py
+arbol-codex-driver:@code/src/arbol_codex_driver/state_upgrade.py
+arbol-codex-driver:@code/src/arbol_codex_driver/admission.py
+arbol-codex-driver:@code/src/arbol_codex_driver/payload.py
+arbol-codex-driver:@code/src/arbol_codex_driver/state.py#read_json
+arbol-codex-driver:@code/src/arbol_codex_driver/state.py#read_lock
+arbol-codex-driver:@code/src/arbol_codex_driver/runs.py#orphan_groups
+arbol-codex-driver:@code/src/arbol_codex_driver/cli.py
+arbol-codex-driver:@code/scripts/identity_package.py
+arbol-codex-driver:@code/scripts/package_build.py
+-->

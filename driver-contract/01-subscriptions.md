@@ -395,3 +395,15 @@ arbol-mimo-driver:src/arbol_mimo_driver/binding.py#BindingState
 ### Normal proof admission · ABR-40 correction
 
 Capture/expect uses qualified normal launch admission plus its own format2 shared identity guard; it needs no maintenance receipt. Before first Driver state access, the invocation and every metadata-writing helper obey DRV-6's independent-lease preregistration/handoff protocol. All delayed auth/usage/run/recovery completions remain lifetime-bound; no detached writer may use inherited main admission after parent release. Legacy execution is tainted before execution and never establishes Browser proof. Missing/changed qualification, closed gate, incomplete conversion or unknown continuity refuses without a fallback. Supported restore/reset still invalidates proof before admission; boot recovery resolves writer uncertainty and does not validate copied identity. Canonical selector, exact output/refusal and application-only UUID rules above remain authoritative.
+
+
+### Codex lifetime-proof source checkpoint · 15 November 2026
+
+The preceding existing-source boundary describes its original planning inputs. ABR-34 now implements the local format-2 capture/expected-proof path, strict lifetime sidecar and conservative removal journal at Codex source `983b8fbd71f709e826fa5188ed1ef529fd0743b2`, tree `d81a4b80704f4c92748684f30a480962ae854047`. Its public proof remains exactly the five contract fields; capture/compare uses the short lock and admitted root without a vendor, credential or application database lookup. Native-managed removal restrictions remain intact. Authentication/run callbacks use a private lifetime snapshot rather than adopting a new Subscription lifetime; fresh dead-owner recovery preserves newer or ambiguous progress. These are implementation references, with fresh independent full-source review and ABR-38 qualification still pending. No verification row, binding UUID authority, installed acceptance or native credential behavior changes here.
+
+<!-- sources:
+arbol-codex-driver:@code/src/arbol_codex_driver/identity.py#IdentityState.capture_proof
+arbol-codex-driver:@code/src/arbol_codex_driver/identity.py#IdentityJournal
+arbol-codex-driver:@code/src/arbol_codex_driver/subscriptions.py
+arbol-codex-driver:@code/src/arbol_codex_driver/runs.py
+-->
