@@ -5,9 +5,9 @@ role: authored
 
 ## <before BsdInfo>
 
-Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
 
 ## BsdInfo
 
@@ -155,7 +155,115 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
 
 ## Guardian.spawn_main
 
-Reason: Preregister guardian and exact main handoff before isolated execution, require independently registered child and durable acknowledged transfer
+Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
+Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
+
+## SignalBridge
+
+Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
+
+Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
+
+## SignalBridge.__init__
+
+Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
+
+Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
+
+## SignalBridge._forward
+
+Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
+
+Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
+
+## SignalBridge._signal
+
+Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
+
+Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
+
+## SignalBridge.install
+
+Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
+
+Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
+
+## SignalBridge.interrupted
+
+Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
+
+Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
+
+## SignalBridge.prepared
+
+Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
+
+Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
+
+## SignalBridge.restore
+
+Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
+
+Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
+
+## SignalBridge.stopped
+
+Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
+
+Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
+
+## Terminal
+
+Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
+
+Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
+
+## Terminal.__init__
+
+Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
+
+Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
+
+## Terminal._current
+
+Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
+
+Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
+
+## Terminal._foreground
+
+Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
+
+Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
+
+## Terminal.claim
+
+Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
+
+Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
+
+## Terminal.close
+
+Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
+
+Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
+
+## Terminal.release
+
+Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
+
+Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
+
+## _terminate
+
+Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
+
+Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
+
+## supervise
+
+Reason: Supervise the admitted main with inherited streams, anchored signal forwarding and foreground stop/continue restoration
+
+Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
 
