@@ -5,9 +5,9 @@ role: authored
 
 ## <before ObservationFailed>
 
-Reason: Author prospective external qualification controller and independent evidence primitives for exact admitted fixtures, current custody before-images and full-lifetime phases; no runtime or wiring before body review.
+Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-d77c92b4 · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
 
 ## Captured
 
@@ -113,9 +113,9 @@ Origins: DRV-5.11, DRV-6.21 · Intention i-d77c92b4 · 2026-11-15
 
 ## OwnedChild.wait_owned
 
-Reason: Author prospective external qualification controller and independent evidence primitives for exact admitted fixtures, current custody before-images and full-lifetime phases; no runtime or wiring before body review.
+Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-d77c92b4 · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
 
 ## canonical
 
@@ -176,4 +176,82 @@ Origins: DRV-5.11, DRV-6.21 · Intention i-d77c92b4 · 2026-11-15
 Reason: Author prospective external qualification controller and independent evidence primitives for exact admitted fixtures, current custody before-images and full-lifetime phases; no runtime or wiring before body review.
 
 Origins: DRV-5.11, DRV-6.21 · Intention i-d77c92b4 · 2026-11-15
+
+## OwnedPTY
+
+Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+
+## OwnedPTY.__init__
+
+Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+
+## OwnedPTY.close
+
+Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+
+## OwnedPTY.read_until
+
+Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+
+## OwnedPTY.reap
+
+Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+
+## OwnedPTY.signal
+
+Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+
+## OwnedPTY.write
+
+Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+
+## SocketBarrier
+
+Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+
+## SocketBarrier.__init__
+
+Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+
+## SocketBarrier.checkpoint
+
+Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+
+## SocketBarrier.close
+
+Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+
+## SocketBarrier.reply
+
+Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+
+## _claim_owned_terminal
+
+Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
 
