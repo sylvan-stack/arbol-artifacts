@@ -323,3 +323,10 @@ ABR-34 implements the additive revision-1 capability in Codex source `983b8fbd71
 arbol-codex-driver:@code/src/arbol_codex_driver/build.py#qualified_capabilities
 arbol-codex-driver:@code/src/arbol_codex_driver/cli.py
 -->
+
+
+## Codex numeric contract and Browser capability clarification · 15 November 2026
+
+Fresh independent review of Forester5a82364 accepts this compatibility clarification without a source version bump or blanket Contract2 claim: the operative shared credential/native and revision-1 identity requirements apply to the exact Codex producer even while its retained numeric info/Build contract field remains1. That number alone supplies no proof of Contract2 compliance, capability or qualification. Evidence records numeric1, capability1, the exact DRV-browser-identity-1 tuple, applicable requirement dispositions and actual unsupported behavior separately. This follows the existing CDX per-Build capability rule and accepted source leaves preserving ordinary contract reporting; it changes no command, owner policy or historical result and waives no applicable requirement.
+
+The candidate-only Build bootstrap clarification in BLD-0/DRV-5/DRV-6 remains unimplemented pending ABR-45 and unqualified pending ABR-38/full gates/independent Arc Review. Ordinary installed/Browser consumers still require qualified exact authority; no candidate, static or retained failed result substitutes.

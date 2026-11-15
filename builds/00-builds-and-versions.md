@@ -659,3 +659,12 @@ arbol:@code/src/arbol_builds/driver_state.py#provider_entry
 arbol:@code/src/arbol_builds/cli.py#entry
 arbol:@code/src/arbol_builds/launcher.py#launch
 -->
+
+
+## Isolated qualification Build bootstrap clarification · 15 November 2026
+
+This technical clarification is accepted after fresh independent actual-contract/source review of Forester proposal `5a82364d0abafedd99105c96fbf83f06f096bc91` by `/root/abr45_spec_review`. It spells out bounded means for the existing candidate-only qualification/full-gate obligations; no owner-only policy choice was found. The earlier a0b9c9d proposal's missing Mimo native selector is corrected. ABR-45 implementation/full Plan and ABR-38 runner/fixture/actor bodies and runtime remain pending; this is no source, working-Build, qualified acceptance or operational permission claim. All existing genuine-profile/model, named mid-tier, owner-state maintenance/deployment and real kernel-transition scopes remain separately required.
+
+Preserve the existing ordinary lifecycle: allocate a real numbered building record, run the complete original build array, then the complete original check array, and mark working only after every own check succeeds. In an explicitly isolated qualification registry, an exact newly packaged still-building tuple may receive the candidate-only protocol admission specified by DRV-6 for **its own checks**. Public named/default selection still refuses every building record. Checks execute that Build's own payload through the fixed candidate admission boundary rather than selecting another Build through the public launcher. No pass record, D, status or failure history is copied or rewritten. A genuine retained failed tuple may support preparation/investigation but never supplies the new Build's own successful gates or promotion.
+
+The new sealed candidate dispatch and exact own-check/final-cohort evidence boundary are specified in [DRV-6](../driver-contract/06-state-and-simultaneous-calls.md#isolated-qualification-build-bootstrap-clarification--15-november-2026). No public stage/continue lifecycle, generic allow-building option or resumption/promotion API is introduced.
