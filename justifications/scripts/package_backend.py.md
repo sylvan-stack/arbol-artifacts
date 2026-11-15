@@ -5,9 +5,9 @@ role: authored
 
 ## package
 
-Reason: Verify the canonical packaged baseline digest, exercise a private installation at its singleton Bridge endpoint and preserve the chat publication race, with test inventory links and digest synchronized.
+Reason: Package the sealed provider closure with an independent pinned runtime and acyclic complete M/D while preserving Backend paths and gates
 
-Origins: ARC-4.6 · Intention i-51891c4f · 2026-11-12
+Origins: DRV-6.21 · Intention i-a705d492 · 2026-11-15
 
 ## <before package>
 
@@ -17,13 +17,37 @@ Removed by Intention i-668138b3 · 2026-11-12
 
 ## <before packaged_top>
 
-Reason: Verify the canonical packaged baseline digest, exercise a private installation at its singleton Bridge endpoint and preserve the chat publication race, with test inventory links and digest synchronized.
+Reason: Package the sealed provider closure with an independent pinned runtime and acyclic complete M/D while preserving Backend paths and gates
 
-Origins: ARC-4.6 · Intention i-51891c4f · 2026-11-12
+Origins: DRV-6.21 · Intention i-a705d492 · 2026-11-15
 
 ## packaged_top
 
 Reason: Run the relocated runtime cases in the packaged Arbol top tier and retain the separate legacy Root recovery gates.
 
 Origins: ARC-4.6 · Intention i-668138b3 · 2026-11-12
+
+## finish_provider
+
+Reason: Package the sealed provider closure with an independent pinned runtime and acyclic complete M/D while preserving Backend paths and gates
+
+Origins: DRV-6.21 · Intention i-a705d492 · 2026-11-15
+
+## freeze_provider
+
+Reason: Package the sealed provider closure with an independent pinned runtime and acyclic complete M/D while preserving Backend paths and gates
+
+Origins: DRV-6.21 · Intention i-a705d492 · 2026-11-15
+
+## provider_handlers
+
+Reason: Package the sealed provider closure with an independent pinned runtime and acyclic complete M/D while preserving Backend paths and gates
+
+Origins: DRV-6.21 · Intention i-a705d492 · 2026-11-15
+
+## stage_provider
+
+Reason: Package the sealed provider closure with an independent pinned runtime and acyclic complete M/D while preserving Backend paths and gates
+
+Origins: DRV-6.21 · Intention i-a705d492 · 2026-11-15
 
