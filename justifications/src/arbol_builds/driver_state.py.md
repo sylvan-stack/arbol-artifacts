@@ -5,9 +5,9 @@ role: authored
 
 ## <before _route>
 
-Reason: Implement fixed isolated administrative child argv, duplicate-only inherited exclusive OFD, bounded private output capture and exact-owner cancellation while retaining closed attempts on interruption
+Reason: Recognize genuine optional legacy payload absence before private parent validation while retaining matching tuple verification
 
-Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-e6e9ba05 · 2026-11-15
+Origins: DRV-6.18, DRV-6.21 · Intention i-425cae65 · 2026-11-15
 
 ## _admission_marker
 
@@ -125,9 +125,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-e07374d3 · 2026-11-15
 
 ## _component
 
-Reason: Verify exact qualified component tuples, serialize begin with admission, preserve same-session epochs and report read-only bounded custody status
+Reason: Recognize genuine optional legacy payload absence before private parent validation while retaining matching tuple verification
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-e07374d3 · 2026-11-15
+Origins: DRV-6.18, DRV-6.21 · Intention i-425cae65 · 2026-11-15
 
 ## _control
 
@@ -203,9 +203,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
 
 ## _qualified_candidates
 
-Reason: Implement static closed rollout, exact caller assertion, preserved launcher/selection before-images and resumable verified all-four checkpoint without executing deployment
+Reason: Recognize genuine optional legacy payload absence before private parent validation while retaining matching tuple verification
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
+Origins: DRV-6.18, DRV-6.21 · Intention i-425cae65 · 2026-11-15
 
 ## _rollback_rollout
 

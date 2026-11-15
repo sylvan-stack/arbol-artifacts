@@ -5,9 +5,9 @@ role: authored
 
 ## <before relative>
 
-Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
+Removed: Recognize genuine optional legacy payload absence before private parent validation while retaining matching tuple verification
 
-Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
+Removed by Intention i-425cae65 · 2026-11-15
 
 ## Payload
 
@@ -137,9 +137,9 @@ Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9
 
 ## _retention_builds
 
-Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
+Reason: Recognize genuine optional legacy payload absence before private parent validation while retaining matching tuple verification
 
-Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
+Origins: DRV-6.18, DRV-6.21 · Intention i-425cae65 · 2026-11-15
 
 ## _retention_component
 
@@ -236,4 +236,16 @@ Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-
 Reason: Prepare exact exclusive administrative attempts, immutable context/request retry binding, safe metadata backup verification and generation selection without executing child/state operations
 
 Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-11-15
+
+## <before optional_descriptor>
+
+Reason: Recognize genuine optional legacy payload absence before private parent validation while retaining matching tuple verification
+
+Origins: DRV-6.18, DRV-6.21 · Intention i-425cae65 · 2026-11-15
+
+## optional_descriptor
+
+Reason: Recognize genuine optional legacy payload absence before private parent validation while retaining matching tuple verification
+
+Origins: DRV-6.18, DRV-6.21 · Intention i-425cae65 · 2026-11-15
 

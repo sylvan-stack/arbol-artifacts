@@ -281,9 +281,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-8ab6ff38 · 2026-11-15
 
 ## _custody_payload
 
-Reason: Keep independently admitted helper obligations counted through terminal reconciliation and closed archival, taint lost or corrupt custody
+Reason: Recognize genuine optional legacy payload absence before private parent validation while retaining matching tuple verification
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-8ab6ff38 · 2026-11-15
+Origins: DRV-6.18, DRV-6.21 · Intention i-425cae65 · 2026-11-15
 
 ## _documents
 
