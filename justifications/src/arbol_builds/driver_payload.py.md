@@ -95,9 +95,9 @@ Origins: DRV-6.21, BLD-0.4, BLD-0.16 · Intention i-8e7e77f0 · 2026-11-14
 
 ## Gate
 
-Reason: Resolve exact registered payloads and verify gate, platform and scoped qualification authority before qualified execution
+Reason: Bind candidate gate acceptance and Build-use rechecks to the verified scope
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-b19c1bd3 · 2026-11-14
+Origins: DRV-6.18, DRV-6.21, BLD-0.3, BLD-0.11 · Intention i-2966bfe0 · 2026-11-15
 
 ## registered
 
@@ -113,15 +113,15 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-b19c1bd3 · 2026-11-14
 
 ## verify_acceptance
 
-Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
+Reason: Bind candidate gate acceptance and Build-use rechecks to the verified scope
 
-Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
+Origins: DRV-6.18, DRV-6.21, BLD-0.3, BLD-0.11 · Intention i-2966bfe0 · 2026-11-15
 
 ## verify_gate
 
-Reason: Resolve exact isolated candidate tuples without public building selection
+Reason: Bind candidate gate acceptance and Build-use rechecks to the verified scope
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21, BLD-0.4, BLD-0.5, BLD-0.15 · Intention i-f5dd2e70 · 2026-11-15
+Origins: DRV-6.18, DRV-6.21, BLD-0.3, BLD-0.11 · Intention i-2966bfe0 · 2026-11-15
 
 ## Retention
 
@@ -161,9 +161,9 @@ Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9
 
 ## pin_payloads
 
-Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
+Reason: Bind candidate gate acceptance and Build-use rechecks to the verified scope
 
-Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
+Origins: DRV-6.18, DRV-6.21, BLD-0.3, BLD-0.11 · Intention i-2966bfe0 · 2026-11-15
 
 ## protected_payloads
 
@@ -296,4 +296,16 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21, BLD-0.4, BLD-0.5, BLD-0.15 · I
 Reason: Resolve exact isolated candidate tuples without public building selection
 
 Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21, BLD-0.4, BLD-0.5, BLD-0.15 · Intention i-f5dd2e70 · 2026-11-15
+
+## CandidateScope.recheck
+
+Reason: Bind candidate gate acceptance and Build-use rechecks to the verified scope
+
+Origins: DRV-6.18, DRV-6.21, BLD-0.3, BLD-0.11 · Intention i-2966bfe0 · 2026-11-15
+
+## CandidateScope.registered
+
+Reason: Bind candidate gate acceptance and Build-use rechecks to the verified scope
+
+Origins: DRV-6.18, DRV-6.21, BLD-0.3, BLD-0.11 · Intention i-2966bfe0 · 2026-11-15
 
