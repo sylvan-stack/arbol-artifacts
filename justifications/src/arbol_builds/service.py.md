@@ -59,15 +59,15 @@ Origins: DRV-6.21, BLD-0.16, BLD-0.9, BLD-0.15 · Intention i-6fbf8388 · 2026-1
 
 ## _keep_driver_gate
 
-Reason: Generate immutable isolated Driver launcher bytes including spaced-path wrapper fallback and refuse ordinary gated-launcher replacement
+Reason: Preflight existing gated routes before installer mutations, preserve exact recognized gate bytes and emit only the fixed verified provider sealed-entry dispatch for future explicit deployments
 
-Origins: DRV-6.21, BLD-0.16, BLD-0.9, BLD-0.15 · Intention i-6fbf8388 · 2026-11-15
+Origins: DRV-6.21, BLD-0.16, BLD-0.9 · Intention i-048579db · 2026-11-15
 
 ## driver_launcher_source
 
-Reason: Finish Python 3.14 lazy annotation spelling in the pinned launcher source generator
+Reason: Preflight existing gated routes before installer mutations, preserve exact recognized gate bytes and emit only the fixed verified provider sealed-entry dispatch for future explicit deployments
 
-Origins: DRV-6.21, BLD-0.16 · Intention i-9c1b219b · 2026-11-15
+Origins: DRV-6.21, BLD-0.16, BLD-0.9 · Intention i-048579db · 2026-11-15
 
 ## early_driver_signals
 
@@ -98,4 +98,16 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
 Reason: Implement static closed rollout, exact caller assertion, preserved launcher/selection before-images and resumable verified all-four checkpoint without executing deployment
 
 Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
+
+## _driver_gate_authority
+
+Reason: Preflight existing gated routes before installer mutations, preserve exact recognized gate bytes and emit only the fixed verified provider sealed-entry dispatch for future explicit deployments
+
+Origins: DRV-6.21, BLD-0.16, BLD-0.9 · Intention i-048579db · 2026-11-15
+
+## driver_gate_identity
+
+Reason: Preflight existing gated routes before installer mutations, preserve exact recognized gate bytes and emit only the fixed verified provider sealed-entry dispatch for future explicit deployments
+
+Origins: DRV-6.21, BLD-0.16, BLD-0.9 · Intention i-048579db · 2026-11-15
 
