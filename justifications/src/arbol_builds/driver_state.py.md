@@ -215,9 +215,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
 
 ## _rollout_bindings
 
-Reason: Verify four exact ready results under lexical control mutexes and independent EX leases, journal desired epochs before partial control publication and commit global complete last
+Reason: Verify completed deployment readback against archived checkpoint and current normal authority while permitting legitimate post-completion admissions; pending-boundary checks remain strict
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-7e8ff620 · 2026-11-15
 
 ## _rollout_folder
 
@@ -239,9 +239,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
 
 ## _verify_rollout
 
-Reason: Verify four exact ready results under lexical control mutexes and independent EX leases, journal desired epochs before partial control publication and commit global complete last
+Reason: Verify completed deployment readback against archived checkpoint and current normal authority while permitting legitimate post-completion admissions; pending-boundary checks remain strict
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-7e8ff620 · 2026-11-15
 
 ## deploy
 
@@ -269,9 +269,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
 
 ## _verify_boot_archive
 
-Reason: Prepare exact exclusive administrative attempts, immutable context/request retry binding, safe metadata backup verification and generation selection without executing child/state operations
+Reason: Verify completed deployment readback against archived checkpoint and current normal authority while permitting legitimate post-completion admissions; pending-boundary checks remain strict
 
-Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-7e8ff620 · 2026-11-15
 
 ## Prepared
 
@@ -467,7 +467,7 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
 
 ## _verified_complete
 
-Reason: Verify four exact ready results under lexical control mutexes and independent EX leases, journal desired epochs before partial control publication and commit global complete last
+Reason: Verify completed deployment readback against archived checkpoint and current normal authority while permitting legitimate post-completion admissions; pending-boundary checks remain strict
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-7e8ff620 · 2026-11-15
 
