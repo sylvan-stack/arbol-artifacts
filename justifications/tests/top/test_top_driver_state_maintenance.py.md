@@ -5,9 +5,9 @@ role: authored
 
 ## <before _write_new>
 
-Reason: Qualify exact before-image absence for Claude and Mimo and discriminate it from an unsafe existing Subscription parent.
+Reason: Observe the real witness retirement before journal clearing and verify operation-relative finish against surviving pending metadata.
 
-Origins: DRV-5.11, DRV-6.17, DRV-6.19, CLD-1.22, MIM-6.13 · Intention i-1ae600af · 2026-11-15
+Origins: DRV-5.11, DRV-6.17, DRV-6.20, DRV-6.21 · Intention i-53a31cbe · 2026-11-15
 
 ## Execute
 
@@ -71,9 +71,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-
 
 ## Maintenance._verify_child
 
-Reason: Qualify the sealed provider’s actual exclusive child dispatch, fail-closed substitution and crash recovery, and exact result replay through the external phase.
+Reason: Observe the real witness retirement before journal clearing and verify operation-relative finish against surviving pending metadata.
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-11-15
+Origins: DRV-5.11, DRV-6.17, DRV-6.20, DRV-6.21 · Intention i-53a31cbe · 2026-11-15
 
 ## Maintenance._verify_child_output
 
@@ -89,9 +89,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-
 
 ## Maintenance.admitted_proof
 
-Reason: Preserve actual restore before-images and prove format reconversion, generation rotation and same-attempt replay without touching unrelated private state.
+Reason: Observe the real witness retirement before journal clearing and verify operation-relative finish against surviving pending metadata.
 
-Origins: DRV-5.11, DRV-6.17, DRV-6.19, DRV-6.21 · Intention i-06294033 · 2026-11-15
+Origins: DRV-5.11, DRV-6.17, DRV-6.20, DRV-6.21 · Intention i-53a31cbe · 2026-11-15
 
 ## Maintenance.argv
 
@@ -119,9 +119,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-
 
 ## Maintenance.execute_observed
 
-Reason: Qualify exact before-image absence for Claude and Mimo and discriminate it from an unsafe existing Subscription parent.
+Reason: Observe the real witness retirement before journal clearing and verify operation-relative finish against surviving pending metadata.
 
-Origins: DRV-5.11, DRV-6.17, DRV-6.19, CLD-1.22, MIM-6.13 · Intention i-1ae600af · 2026-11-15
+Origins: DRV-5.11, DRV-6.17, DRV-6.20, DRV-6.21 · Intention i-53a31cbe · 2026-11-15
 
 ## Maintenance.finish
 
@@ -155,9 +155,9 @@ Origins: DRV-5.11, DRV-6.17, DRV-6.19, CLD-1.22, MIM-6.13 · Intention i-1ae600a
 
 ## Maintenance.record
 
-Reason: Qualify the sealed provider’s actual exclusive child dispatch, fail-closed substitution and crash recovery, and exact result replay through the external phase.
+Reason: Observe the real witness retirement before journal clearing and verify operation-relative finish against surviving pending metadata.
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-11-15
+Origins: DRV-5.11, DRV-6.17, DRV-6.20, DRV-6.21 · Intention i-53a31cbe · 2026-11-15
 
 ## Maintenance.refuse_finish
 
@@ -263,9 +263,9 @@ Origins: DRV-5.11, DRV-6.17, DRV-6.19, DRV-6.21 · Intention i-06294033 · 2026-
 
 ## MetadataArchive.read
 
-Reason: Preserve actual restore before-images and prove format reconversion, generation rotation and same-attempt replay without touching unrelated private state.
+Reason: Observe the real witness retirement before journal clearing and verify operation-relative finish against surviving pending metadata.
 
-Origins: DRV-5.11, DRV-6.17, DRV-6.19, DRV-6.21 · Intention i-06294033 · 2026-11-15
+Origins: DRV-5.11, DRV-6.17, DRV-6.20, DRV-6.21 · Intention i-53a31cbe · 2026-11-15
 
 ## MetadataArchive.sha256
 
@@ -299,9 +299,9 @@ Origins: DRV-5.11, DRV-6.17, DRV-6.19, DRV-6.21 · Intention i-06294033 · 2026-
 
 ## metadata_only_restore
 
-Reason: Preserve actual restore before-images and prove format reconversion, generation rotation and same-attempt replay without touching unrelated private state.
+Reason: Observe the real witness retirement before journal clearing and verify operation-relative finish against surviving pending metadata.
 
-Origins: DRV-5.11, DRV-6.17, DRV-6.19, DRV-6.21 · Intention i-06294033 · 2026-11-15
+Origins: DRV-5.11, DRV-6.17, DRV-6.20, DRV-6.21 · Intention i-53a31cbe · 2026-11-15
 
 ## <before _unsafe_parent_image>
 
@@ -329,7 +329,43 @@ Origins: DRV-5.11, DRV-6.17, DRV-6.19, CLD-1.22, MIM-6.13 · Intention i-1ae600a
 
 ## unsafe_source_only_archive_parent
 
-Reason: Qualify exact before-image absence for Claude and Mimo and discriminate it from an unsafe existing Subscription parent.
+Reason: Observe the real witness retirement before journal clearing and verify operation-relative finish against surviving pending metadata.
 
-Origins: DRV-5.11, DRV-6.17, DRV-6.19, CLD-1.22, MIM-6.13 · Intention i-1ae600af · 2026-11-15
+Origins: DRV-5.11, DRV-6.17, DRV-6.20, DRV-6.21 · Intention i-53a31cbe · 2026-11-15
+
+## <before refuse_finish_with_pending>
+
+Reason: Observe the real witness retirement before journal clearing and verify operation-relative finish against surviving pending metadata.
+
+Origins: DRV-5.11, DRV-6.17, DRV-6.20, DRV-6.21 · Intention i-53a31cbe · 2026-11-15
+
+## _pending_path
+
+Reason: Observe the real witness retirement before journal clearing and verify operation-relative finish against surviving pending metadata.
+
+Origins: DRV-5.11, DRV-6.17, DRV-6.20, DRV-6.21 · Intention i-53a31cbe · 2026-11-15
+
+## _remove_journal
+
+Reason: Observe the real witness retirement before journal clearing and verify operation-relative finish against surviving pending metadata.
+
+Origins: DRV-5.11, DRV-6.17, DRV-6.20, DRV-6.21 · Intention i-53a31cbe · 2026-11-15
+
+## _retirement_source
+
+Reason: Observe the real witness retirement before journal clearing and verify operation-relative finish against surviving pending metadata.
+
+Origins: DRV-5.11, DRV-6.17, DRV-6.20, DRV-6.21 · Intention i-53a31cbe · 2026-11-15
+
+## refuse_finish_with_pending
+
+Reason: Observe the real witness retirement before journal clearing and verify operation-relative finish against surviving pending metadata.
+
+Origins: DRV-5.11, DRV-6.17, DRV-6.20, DRV-6.21 · Intention i-53a31cbe · 2026-11-15
+
+## targeted_pending_recovery
+
+Reason: Observe the real witness retirement before journal clearing and verify operation-relative finish against surviving pending metadata.
+
+Origins: DRV-5.11, DRV-6.17, DRV-6.20, DRV-6.21 · Intention i-53a31cbe · 2026-11-15
 
