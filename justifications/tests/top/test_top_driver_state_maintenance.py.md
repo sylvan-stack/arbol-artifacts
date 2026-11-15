@@ -5,9 +5,9 @@ role: authored
 
 ## <before _write_new>
 
-Reason: Qualify the sealed provider’s actual exclusive child dispatch, fail-closed substitution and crash recovery, and exact result replay through the external phase.
+Reason: Preserve actual restore before-images and prove format reconversion, generation rotation and same-attempt replay without touching unrelated private state.
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-11-15
+Origins: DRV-5.11, DRV-6.17, DRV-6.19, DRV-6.21 · Intention i-06294033 · 2026-11-15
 
 ## Execute
 
@@ -89,9 +89,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-
 
 ## Maintenance.admitted_proof
 
-Reason: Qualify the sealed provider’s actual exclusive child dispatch, fail-closed substitution and crash recovery, and exact result replay through the external phase.
+Reason: Preserve actual restore before-images and prove format reconversion, generation rotation and same-attempt replay without touching unrelated private state.
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-11-15
+Origins: DRV-5.11, DRV-6.17, DRV-6.19, DRV-6.21 · Intention i-06294033 · 2026-11-15
 
 ## Maintenance.argv
 
@@ -119,9 +119,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-
 
 ## Maintenance.execute_observed
 
-Reason: Qualify the sealed provider’s actual exclusive child dispatch, fail-closed substitution and crash recovery, and exact result replay through the external phase.
+Reason: Preserve actual restore before-images and prove format reconversion, generation rotation and same-attempt replay without touching unrelated private state.
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-11-15
+Origins: DRV-5.11, DRV-6.17, DRV-6.19, DRV-6.21 · Intention i-06294033 · 2026-11-15
 
 ## Maintenance.finish
 
@@ -233,9 +233,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-
 
 ## interrupted_supervisor_and_old_finish
 
-Reason: Qualify the sealed provider’s actual exclusive child dispatch, fail-closed substitution and crash recovery, and exact result replay through the external phase.
+Reason: Preserve actual restore before-images and prove format reconversion, generation rotation and same-attempt replay without touching unrelated private state.
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-11-15
+Origins: DRV-5.11, DRV-6.17, DRV-6.19, DRV-6.21 · Intention i-06294033 · 2026-11-15
 
 ## maintenance_child_substitution
 
@@ -254,4 +254,52 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-
 Reason: Qualify the sealed provider’s actual exclusive child dispatch, fail-closed substitution and crash recovery, and exact result replay through the external phase.
 
 Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-11-15
+
+## MetadataArchive
+
+Reason: Preserve actual restore before-images and prove format reconversion, generation rotation and same-attempt replay without touching unrelated private state.
+
+Origins: DRV-5.11, DRV-6.17, DRV-6.19, DRV-6.21 · Intention i-06294033 · 2026-11-15
+
+## MetadataArchive.read
+
+Reason: Preserve actual restore before-images and prove format reconversion, generation rotation and same-attempt replay without touching unrelated private state.
+
+Origins: DRV-5.11, DRV-6.17, DRV-6.19, DRV-6.21 · Intention i-06294033 · 2026-11-15
+
+## MetadataArchive.sha256
+
+Reason: Preserve actual restore before-images and prove format reconversion, generation rotation and same-attempt replay without touching unrelated private state.
+
+Origins: DRV-5.11, DRV-6.17, DRV-6.19, DRV-6.21 · Intention i-06294033 · 2026-11-15
+
+## _metadata_name
+
+Reason: Preserve actual restore before-images and prove format reconversion, generation rotation and same-attempt replay without touching unrelated private state.
+
+Origins: DRV-5.11, DRV-6.17, DRV-6.19, DRV-6.21 · Intention i-06294033 · 2026-11-15
+
+## _nonmetadata_state
+
+Reason: Preserve actual restore before-images and prove format reconversion, generation rotation and same-attempt replay without touching unrelated private state.
+
+Origins: DRV-5.11, DRV-6.17, DRV-6.19, DRV-6.21 · Intention i-06294033 · 2026-11-15
+
+## _restore_archive_order
+
+Reason: Preserve actual restore before-images and prove format reconversion, generation rotation and same-attempt replay without touching unrelated private state.
+
+Origins: DRV-5.11, DRV-6.17, DRV-6.19, DRV-6.21 · Intention i-06294033 · 2026-11-15
+
+## _restore_state_metadata
+
+Reason: Preserve actual restore before-images and prove format reconversion, generation rotation and same-attempt replay without touching unrelated private state.
+
+Origins: DRV-5.11, DRV-6.17, DRV-6.19, DRV-6.21 · Intention i-06294033 · 2026-11-15
+
+## metadata_only_restore
+
+Reason: Preserve actual restore before-images and prove format reconversion, generation rotation and same-attempt replay without touching unrelated private state.
+
+Origins: DRV-5.11, DRV-6.17, DRV-6.19, DRV-6.21 · Intention i-06294033 · 2026-11-15
 
