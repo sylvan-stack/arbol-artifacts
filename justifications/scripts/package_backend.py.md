@@ -47,7 +47,7 @@ Origins: DRV-6.21 · Intention i-a705d492 · 2026-11-15
 
 ## stage_provider
 
-Reason: Package the sealed provider closure with an independent pinned runtime and acyclic complete M/D while preserving Backend paths and gates
+Reason: Apply the existing early signal prelude to the sealed provider entry using verified committed service and generator bytes
 
-Origins: DRV-6.21 · Intention i-a705d492 · 2026-11-15
+Origins: DRV-6.21, BLD-0.16 · Intention i-3a893e5a · 2026-11-15
 
