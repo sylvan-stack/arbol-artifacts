@@ -945,3 +945,20 @@ arbol-claude-driver:@code/src/arbol_claude_driver/admission.py
 arbol-pi-driver:@code/src/arbol_pi_driver/admission.py
 arbol-mimo-driver:@code/src/arbol_mimo_driver/admission.py
 -->
+
+### H1 negative attribution sequencing · 15 November 2026
+
+This bounded clarification applies to the deliberate Suite-death case in the accepted preterminal H1 helper-span contract above. Before attributing a blocked original-inode EX probe to the stopped H1, the no-SH observer binds its actually owned provider Popen's captured PID/birth to the actual Guardian root writer and the Suite context's parent; an upstream wrapper is insufficient. It retains that verified identity independently of subsequent evidence writes.
+
+After independently confirming the same verified H1 stopped, the observer kills only the verified Suite as already specified and independently establishes that the exact Suite kernel identity is gone. It then actually waits/reaps that exact owned provider Popen within the remaining fixed span/cleanup budget, preserving its real exit/signal/output disposition. Actual provider reap excludes all provider descriptors even if it did not reach its ordinary admission-close path. A terminal provider writer, emitted stdio or a child report alone does not establish that exclusion. The failed producer attempt never becomes a producer gate pass.
+
+Only after actual provider reap does the observer freshly revalidate the same stopped H1 identity, required completed dispositions of all other admitted work and the unchanged original admission inode, and require the fresh independent EX|NB probe to remain blocked. Every failure, timeout or cancellation, including provider-reap failure, still performs the existing unconditional verified-H1 CONT and bounded cleanup. If provider reap cannot be established within the bound, retain the failed/unavailable subject and unresolved obligations; claim no holder-specific EX evidence. Only the owned provider is observer-reaped; Suite/H1 disappearance and provider-owned waits retain their truthful ownership descriptions.
+
+This clarifies ordering, without adding a Suite STOP exchange, provider protocol, actor mode, descriptor, selector, API or production change. The existing finite bounds, unknown/taint preservation and all cleanup obligations remain. Concrete unticked planning and independent prospective-body/integration admission still precede use or execution.
+
+**Publication provenance.** Fresh bounded source-backed review accepted the exact technical text (SHA-256 `ceb76b3a1246e52b41a41d482face6cf787ed9cc07b694e5ec18b10fcf552181`) before publication. This accepts the sequencing clarification only; prospective body planning, independent admission and actual qualification remain separate.
+
+<!-- sources:
+arbol:@code/src/arbol_builds/driver_process.py
+arbol:@code/src/arbol_builds/driver_admission.py
+-->
