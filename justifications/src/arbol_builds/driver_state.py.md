@@ -119,9 +119,9 @@ Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
 
 ## provider_entry
 
-Reason: Preserve inherited ignored SIGINT through the sealed provider before legacy and qualified launch dispatch
+Reason: Preserve inherited normal-launch signal masks and confine SIGINT/SIGTERM unblocking to administrative dispatch
 
-Origins: BLD-0.9, DRV-6.21 · Intention i-73e69df8 · 2026-11-15
+Origins: BLD-0.9, DRV-6.21 · Intention i-1d624c3d · 2026-11-15
 
 ## _component
 
