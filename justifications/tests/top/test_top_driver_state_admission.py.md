@@ -477,3 +477,261 @@ Reason: Observe the fixed root-owned OS sleep executable with dedicated bounded 
 
 Origins: DRV-5.11, DRV-6.21 · Intention i-761865e0 · 2026-11-15
 
+## <before _mimo_explicit_native_image>
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainRecipe
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainRecipe.options
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainRecipe.receipt
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainRecipe.request
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainRecipe.request_value
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainRecipe.run_id
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainRecipe.state
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainRecipe.tails
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainRecipe.tool
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainRecipe.work
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainStream
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainStream.__init__
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainStream._read
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainStream.join
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainStream.snapshot
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainStream.start
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainStream.stubborn_start
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainSubject
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainSubject.<before MimoMainSubject._source_coupling>
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainSubject.__init__
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainSubject._argv
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainSubject._data
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainSubject._directory_origins
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainSubject._lifetime
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainSubject._prep_call
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainSubject._public_context
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainSubject._resource_closure
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainSubject._source_coupling
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainSubject.abort
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainSubject.ordinary_stop
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainSubject.prepare
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainSubject.refuse_new_after_begin
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainSubject.settle_after_ordinary_stop
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainSubject.start_and_begin
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainSubject.verify_active
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoMainView
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoOfflineInput
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## MimoOfflineInput.verify
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## _mimo_explicit_native_image
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## _mimo_finite_data_call
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## _mimo_original_group_members
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
+## main_watcher_across_begin
+
+Reason: Publish the exact frozen Arbol13.1 source after unsupported mixed-repository publication Intention was normally superseded; no work/evidence abandoned and no runtime.
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21, MIM-6.13 · Intention i-cda49a45 · 2026-11-15
+
