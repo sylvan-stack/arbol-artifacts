@@ -5,9 +5,9 @@ role: authored
 
 ## <before _until>
 
-Reason: Author external observations of inherited signal dispositions and pending masks at the qualified launcher boundaries.
+Reason: Author bounded foreground, background, and stream observations for the existing launcher routes.
 
-Origins: DRV-5.11, DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-b584d6ff · 2026-11-15
+Origins: DRV-5.11, DRV-6.21, BLD-0.9 · Intention i-a8653e08 · 2026-11-15
 
 ## _collect
 
@@ -74,4 +74,52 @@ Origins: DRV-5.11, DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-b584d6ff · 2026-1
 Reason: Author external observations of inherited signal dispositions and pending masks at the qualified launcher boundaries.
 
 Origins: DRV-5.11, DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-b584d6ff · 2026-11-15
+
+## <before _terminal_state>
+
+Reason: Author bounded foreground, background, and stream observations for the existing launcher routes.
+
+Origins: DRV-5.11, DRV-6.21, BLD-0.9 · Intention i-a8653e08 · 2026-11-15
+
+## _active_launcher_main
+
+Reason: Author bounded foreground, background, and stream observations for the existing launcher routes.
+
+Origins: DRV-5.11, DRV-6.21, BLD-0.9 · Intention i-a8653e08 · 2026-11-15
+
+## _output_under_pressure
+
+Reason: Author bounded foreground, background, and stream observations for the existing launcher routes.
+
+Origins: DRV-5.11, DRV-6.21, BLD-0.9 · Intention i-a8653e08 · 2026-11-15
+
+## _terminal_state
+
+Reason: Author bounded foreground, background, and stream observations for the existing launcher routes.
+
+Origins: DRV-5.11, DRV-6.21, BLD-0.9 · Intention i-a8653e08 · 2026-11-15
+
+## _wait_terminal
+
+Reason: Author bounded foreground, background, and stream observations for the existing launcher routes.
+
+Origins: DRV-5.11, DRV-6.21, BLD-0.9 · Intention i-a8653e08 · 2026-11-15
+
+## non_driver_launcher_compatibility
+
+Reason: Author bounded foreground, background, and stream observations for the existing launcher routes.
+
+Origins: DRV-5.11, DRV-6.21, BLD-0.9 · Intention i-a8653e08 · 2026-11-15
+
+## qualified_pty_job
+
+Reason: Author bounded foreground, background, and stream observations for the existing launcher routes.
+
+Origins: DRV-5.11, DRV-6.21, BLD-0.9 · Intention i-a8653e08 · 2026-11-15
+
+## qualified_stdout_backpressure
+
+Reason: Author bounded foreground, background, and stream observations for the existing launcher routes.
+
+Origins: DRV-5.11, DRV-6.21, BLD-0.9 · Intention i-a8653e08 · 2026-11-15
 
