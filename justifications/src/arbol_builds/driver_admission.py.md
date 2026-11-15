@@ -209,9 +209,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-f82fa399 · 2026-11-14
 
 ## validate
 
-Reason: Publish strict private component authority and stable admission/control locks before any writer or maintenance handoff
+Reason: Implement static closed rollout, exact caller assertion, preserved launcher/selection before-images and resumable verified all-four checkpoint without executing deployment
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-f82fa399 · 2026-11-14
+Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
 
 ## <before without_authority>
 
@@ -299,13 +299,31 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-8ab6ff38 · 2026-11-15
 
 ## archive_terminal
 
-Reason: Keep independently admitted helper obligations counted through terminal reconciliation and closed archival, taint lost or corrupt custody
+Reason: Implement static closed rollout, exact caller assertion, preserved launcher/selection before-images and resumable verified all-four checkpoint without executing deployment
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-8ab6ff38 · 2026-11-15
+Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
 
 ## reconcile
 
 Reason: Bound cooperative drain, request exact main SIGTERM through existing cancellation behavior, recheck exclusive custody and publish one-shot maintenance receipt without clearing unknown taint
 
 Origins: DRV-6.21, DRV-6.18 · Intention i-c8239ecc · 2026-11-15
+
+## admission_fingerprint
+
+Reason: Implement static closed rollout, exact caller assertion, preserved launcher/selection before-images and resumable verified all-four checkpoint without executing deployment
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
+
+## deployment_mutex
+
+Reason: Implement static closed rollout, exact caller assertion, preserved launcher/selection before-images and resumable verified all-four checkpoint without executing deployment
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
+
+## lock_identity
+
+Reason: Implement static closed rollout, exact caller assertion, preserved launcher/selection before-images and resumable verified all-four checkpoint without executing deployment
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
 

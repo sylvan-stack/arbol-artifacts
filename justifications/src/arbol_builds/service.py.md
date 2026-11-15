@@ -81,3 +81,21 @@ Reason: Protect pinned provider, pending recovery and independent helper payload
 
 Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
 
+## <before driver_route_bytes>
+
+Reason: Implement static closed rollout, exact caller assertion, preserved launcher/selection before-images and resumable verified all-four checkpoint without executing deployment
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
+
+## driver_route_bytes
+
+Reason: Implement static closed rollout, exact caller assertion, preserved launcher/selection before-images and resumable verified all-four checkpoint without executing deployment
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
+
+## publish_driver_route
+
+Reason: Implement static closed rollout, exact caller assertion, preserved launcher/selection before-images and resumable verified all-four checkpoint without executing deployment
+
+Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
+
