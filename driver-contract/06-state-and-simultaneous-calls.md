@@ -535,3 +535,21 @@ arbol:@code/scripts/install_builds.py
 arbol:@code/scripts/package_backend.py
 arbol:@code/scripts/backend_package.py
 -->
+
+
+### ABR-39 source-review repairs · 15 November 2026
+
+The independently reviewed625fdd86 bundle above remains the exact rejected revision: fresh full source review required inherited-SIGINT preservation and preservation of preboot custody during same-session begin before recovery.json exists. Its50-file static-input manifest/evidence is unchanged. The cold-reviewed amendment27–31 implements those corrections solely in driver_state.py at source `3d11c3850882798e79ad88453eed558659236b3d`, tree `5bc117f79fb4169477555f7dacb2b9a55c5175f9`; fresh full repaired-source/static-input re-review remains pending.
+
+Provider entry now changes only Python's default_int_handler to SIG_DFL, retaining inherited SIG_IGN for both ordinary legacy exec and qualified Guardian. Begin's pending classification verifies the same closed session and complete existing registry/gate/caller/checkpoint/control/lock/normal-admission bindings before deferring reconciliation in awaiting-boot, including the pre-journal window. A present recovery journal must bind correctly; published newBoot without its journal refuses. No custody/taint bytes are changed in that deferred branch and no boot proof, exclusive receipt or mutation authority is issued there. Generic reconciliation, oldBoot taint validation and all four exclusive leases/journal/archive checks remain unchanged in drain recovery. Normal admission, failed-checkpoint/restaging and operation-relative result rules remain strict.
+
+Normal managed publications27/28 retain exact Origins/Justifications. The new immutable source/input release will retain the old failed-review candidate, both contract revisions and exact full-source/launcher/bootstrap/package-input hashes. This append records implementation/referral only: no accepted row/status, wire, Owner Requirement, policy, credential/native behavior or unsupported bypass scope changes. No generator/package/product/helper/API/sysctl/TTY/boot/test/gate/Build/state operation ran; all executable/M/D/acceptance/runtime tuples remain unproduced. Fresh source re-review precedes31completion; ABR-38 and independent Arc Review retain all actual qualification obligations.
+
+<!-- sources:
+arbol:@code/src/arbol_builds/driver_state.py#provider_entry
+arbol:@code/src/arbol_builds/driver_state.py#begin
+arbol:@code/src/arbol_builds/driver_state.py#_boot_recovery_pending
+arbol:@code/src/arbol_builds/driver_state.py#_verify_rollout
+arbol:@code/src/arbol_builds/driver_state.py#_recover_boot
+arbol:@code/src/arbol_builds/driver_admission.py#archive_boot_custody
+-->

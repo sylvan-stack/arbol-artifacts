@@ -631,3 +631,18 @@ arbol:@code/scripts/package_backend.py#finish_provider
 arbol:@code/scripts/backend_package.py#files
 arbol:@code/scripts/backend_package.py#verify
 -->
+
+
+## ABR-39 repaired source boundary · 15 November 2026
+
+The fresh full review of the source625fdd86/static-input bundle required two corrections; that exact candidate and failed-review evidence remain retained, not relabelled accepted. Reviewed amendment27–31 now has repaired source `3d11c3850882798e79ad88453eed558659236b3d`, tree `5bc117f79fb4169477555f7dacb2b9a55c5175f9`. Provider dispatch normalizes only Python's default_int_handler and preserves inherited ignored SIGINT before both legacy exec and qualified Guardian launch, following the existing launcher rule. Same-session begin preserves the verified closed awaiting-boot custody/checkpoint before the first recovery journal, while drain retains all actual boot verification, all-four EX and strict archival authority. No non-Driver selection, stream, exit, TTY or gate command behavior is changed.
+
+Managed source/Justifications for27 are `afbb7bf0e288decfe089de824265bf9828bb564b`/`bcc297eb96f1be1e263c104eb99897d3fd11c685`;28 are `3d11c3850882798e79ad88453eed558659236b3d`/`19e9c9ea37e31e7f12130234be52dbce4954ce50`. These are source corrections for existing BLD-0.9/DRV-6.21 obligations, not rewritten dated verification. A new static-input release and independent repaired-source review remain required before ABR-39 completion; runtime/full-gate/genuine-transition evidence remains ABR-38. No actual Build, executable package, M/D, acceptance or installed gate is emitted by this checkpoint.
+
+<!-- sources:
+arbol:@code/src/arbol_builds/driver_state.py#provider_entry
+arbol:@code/src/arbol_builds/driver_state.py#begin
+arbol:@code/src/arbol_builds/driver_state.py#_boot_recovery_pending
+arbol:@code/src/arbol_builds/launcher.py#launch
+arbol:@code/src/arbol_builds/driver_process.py#SignalBridge
+-->
