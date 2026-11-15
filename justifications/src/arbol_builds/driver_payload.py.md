@@ -101,9 +101,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-b19c1bd3 · 2026-11-14
 
 ## registered
 
-Reason: Resolve exact registered payloads and verify gate, platform and scoped qualification authority before qualified execution
+Reason: Factor exact registered payload validation while preserving named selection
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-b19c1bd3 · 2026-11-14
+Origins: DRV-6.21, BLD-0.3, BLD-0.4, BLD-0.8, BLD-0.15 · Intention i-e1feba76 · 2026-11-15
 
 ## resolve_provider
 
@@ -248,4 +248,10 @@ Origins: DRV-6.18, DRV-6.21 · Intention i-425cae65 · 2026-11-15
 Reason: Recognize genuine optional legacy payload absence before private parent validation while retaining matching tuple verification
 
 Origins: DRV-6.18, DRV-6.21 · Intention i-425cae65 · 2026-11-15
+
+## _registered_payload
+
+Reason: Factor exact registered payload validation while preserving named selection
+
+Origins: DRV-6.21, BLD-0.3, BLD-0.4, BLD-0.8, BLD-0.15 · Intention i-e1feba76 · 2026-11-15
 
