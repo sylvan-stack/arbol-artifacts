@@ -5,9 +5,9 @@ role: authored
 
 ## <before ObservationFailed>
 
-Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
+Reason: Add bounded H1-only interactive owned-child collection with exact ready/continue frames, preserved noninteractive semantics and independent verified cleanup; source-only under bounded accepted11.1 plan.
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+Origins: DRV-5.11, DRV-6.21 · Intention i-a26ec4d6 · 2026-11-15
 
 ## Captured
 
@@ -254,4 +254,94 @@ Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
 Reason: Finish prospective Step3 PTY/transaction bounds and evidence ownership self-review before independent body admission; no test/runtime use.
 
 Origins: DRV-5.11, DRV-6.21 · Intention i-683bb7aa · 2026-11-15
+
+## HelperSpanCollector
+
+Reason: Add bounded H1-only interactive owned-child collection with exact ready/continue frames, preserved noninteractive semantics and independent verified cleanup; source-only under bounded accepted11.1 plan.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-a26ec4d6 · 2026-11-15
+
+## HelperSpanCollector.__enter__
+
+Reason: Add bounded H1-only interactive owned-child collection with exact ready/continue frames, preserved noninteractive semantics and independent verified cleanup; source-only under bounded accepted11.1 plan.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-a26ec4d6 · 2026-11-15
+
+## HelperSpanCollector.__exit__
+
+Reason: Add bounded H1-only interactive owned-child collection with exact ready/continue frames, preserved noninteractive semantics and independent verified cleanup; source-only under bounded accepted11.1 plan.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-a26ec4d6 · 2026-11-15
+
+## HelperSpanCollector.__init__
+
+Reason: Add bounded H1-only interactive owned-child collection with exact ready/continue frames, preserved noninteractive semantics and independent verified cleanup; source-only under bounded accepted11.1 plan.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-a26ec4d6 · 2026-11-15
+
+## HelperSpanCollector._active
+
+Reason: Add bounded H1-only interactive owned-child collection with exact ready/continue frames, preserved noninteractive semantics and independent verified cleanup; source-only under bounded accepted11.1 plan.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-a26ec4d6 · 2026-11-15
+
+## HelperSpanCollector._capture
+
+Reason: Add bounded H1-only interactive owned-child collection with exact ready/continue frames, preserved noninteractive semantics and independent verified cleanup; source-only under bounded accepted11.1 plan.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-a26ec4d6 · 2026-11-15
+
+## HelperSpanCollector._close_endpoints
+
+Reason: Add bounded H1-only interactive owned-child collection with exact ready/continue frames, preserved noninteractive semantics and independent verified cleanup; source-only under bounded accepted11.1 plan.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-a26ec4d6 · 2026-11-15
+
+## HelperSpanCollector._pump
+
+Reason: Add bounded H1-only interactive owned-child collection with exact ready/continue frames, preserved noninteractive semantics and independent verified cleanup; source-only under bounded accepted11.1 plan.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-a26ec4d6 · 2026-11-15
+
+## HelperSpanCollector.abort
+
+Reason: Add bounded H1-only interactive owned-child collection with exact ready/continue frames, preserved noninteractive semantics and independent verified cleanup; source-only under bounded accepted11.1 plan.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-a26ec4d6 · 2026-11-15
+
+## HelperSpanCollector.capture_ended_failure
+
+Reason: Add bounded H1-only interactive owned-child collection with exact ready/continue frames, preserved noninteractive semantics and independent verified cleanup; source-only under bounded accepted11.1 plan.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-a26ec4d6 · 2026-11-15
+
+## HelperSpanCollector.continue_after_validation
+
+Reason: Add bounded H1-only interactive owned-child collection with exact ready/continue frames, preserved noninteractive semantics and independent verified cleanup; source-only under bounded accepted11.1 plan.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-a26ec4d6 · 2026-11-15
+
+## HelperSpanCollector.finish_positive
+
+Reason: Add bounded H1-only interactive owned-child collection with exact ready/continue frames, preserved noninteractive semantics and independent verified cleanup; source-only under bounded accepted11.1 plan.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-a26ec4d6 · 2026-11-15
+
+## HelperSpanCollector.raw_observation
+
+Reason: Add bounded H1-only interactive owned-child collection with exact ready/continue frames, preserved noninteractive semantics and independent verified cleanup; source-only under bounded accepted11.1 plan.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-a26ec4d6 · 2026-11-15
+
+## HelperSpanCollector.ready
+
+Reason: Add bounded H1-only interactive owned-child collection with exact ready/continue frames, preserved noninteractive semantics and independent verified cleanup; source-only under bounded accepted11.1 plan.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-a26ec4d6 · 2026-11-15
+
+## HelperSpanCollector.ready_observed_at
+
+Reason: Add bounded H1-only interactive owned-child collection with exact ready/continue frames, preserved noninteractive semantics and independent verified cleanup; source-only under bounded accepted11.1 plan.
+
+Origins: DRV-5.11, DRV-6.21 · Intention i-a26ec4d6 · 2026-11-15
 
