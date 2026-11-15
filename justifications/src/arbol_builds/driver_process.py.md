@@ -263,9 +263,9 @@ Origins: DRV-6.21, BLD-0.9 · Intention i-8d0d7ca9 · 2026-11-15
 
 ## supervise
 
-Reason: Bound cooperative drain, request exact main SIGTERM through existing cancellation behavior, recheck exclusive custody and publish one-shot maintenance receipt without clearing unknown taint
+Reason: Supervise fixed candidate helper with existing signal TTY and stream semantics
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-c8239ecc · 2026-11-15
+Origins: DRV-6.18, DRV-6.21, BLD-0.9 · Intention i-d29d9b90 · 2026-11-15
 
 ## request_cancellation
 
