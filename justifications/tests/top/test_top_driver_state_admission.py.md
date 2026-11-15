@@ -143,9 +143,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-59d10822 · 2026-11-15
 
 ## <before _collect_real>
 
-Reason: Observe actual provider stale-owner read-boundary refusal without any signal or metadata change
+Reason: Observe genuine terminal-before-original-close interval and complete positive closure for all four producer families
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-9b5ed949 · 2026-11-15
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-65392ebf · 2026-11-15
 
 ## <before complete_main_admission_inventory>
 
@@ -413,13 +413,61 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
 
 ## h1_active_loss_subject
 
-Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+Reason: Observe genuine terminal-before-original-close interval and complete positive closure for all four producer families
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-65392ebf · 2026-11-15
 
 ## provider_stale_owner_refuses
 
 Reason: Observe actual provider stale-owner read-boundary refusal without any signal or metadata change
 
 Origins: DRV-5.11, DRV-6.21 · Intention i-9b5ed949 · 2026-11-15
+
+## TerminalSpanObservation
+
+Reason: Observe genuine terminal-before-original-close interval and complete positive closure for all four producer families
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-65392ebf · 2026-11-15
+
+## TerminalSpanObservation.__init__
+
+Reason: Observe genuine terminal-before-original-close interval and complete positive closure for all four producer families
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-65392ebf · 2026-11-15
+
+## TerminalSpanObservation._helpers
+
+Reason: Observe genuine terminal-before-original-close interval and complete positive closure for all four producer families
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-65392ebf · 2026-11-15
+
+## TerminalSpanObservation._image
+
+Reason: Observe genuine terminal-before-original-close interval and complete positive closure for all four producer families
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-65392ebf · 2026-11-15
+
+## TerminalSpanObservation._provider_progress
+
+Reason: Observe genuine terminal-before-original-close interval and complete positive closure for all four producer families
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-65392ebf · 2026-11-15
+
+## TerminalSpanObservation.finished
+
+Reason: Observe genuine terminal-before-original-close interval and complete positive closure for all four producer families
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-65392ebf · 2026-11-15
+
+## TerminalSpanObservation.interval
+
+Reason: Observe genuine terminal-before-original-close interval and complete positive closure for all four producer families
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-65392ebf · 2026-11-15
+
+## TerminalSpanObservation.precontinue
+
+Reason: Observe genuine terminal-before-original-close interval and complete positive closure for all four producer families
+
+Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-65392ebf · 2026-11-15
 
