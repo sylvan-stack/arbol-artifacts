@@ -741,7 +741,6 @@ Any first-class Arbol citizen — an MR, a commit, a git [Branch](#branch), a ti
 | `flyer` | fly | note |
 | `branch` | brn | note |
 | `living_topic` | liv | note |
-| `mandate` | mnd | note |
 | `prompt` | pmt | mark |
 | `response` | rsp | mark |
 
