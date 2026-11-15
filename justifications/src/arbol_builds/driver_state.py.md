@@ -143,9 +143,9 @@ Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-f3b18537 · 2026-11-15
 
 ## _status
 
-Reason: Bound cooperative drain, request exact main SIGTERM through existing cancellation behavior, recheck exclusive custody and publish one-shot maintenance receipt without clearing unknown taint
+Reason: Preserve candidate scope through custody execution results and exact finish replay
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-c8239ecc · 2026-11-15
+Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-0af6afa0 · 2026-11-15
 
 ## _tainted
 
@@ -155,9 +155,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-e07374d3 · 2026-11-15
 
 ## begin
 
-Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
+Reason: Preserve candidate scope through custody execution results and exact finish replay
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
+Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-0af6afa0 · 2026-11-15
 
 ## status
 
@@ -179,9 +179,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-c8239ecc · 2026-11-15
 
 ## drain
 
-Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
+Reason: Preserve candidate scope through custody execution results and exact finish replay
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
+Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-0af6afa0 · 2026-11-15
 
 ## _before_route
 
@@ -287,9 +287,9 @@ Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-
 
 ## _closed_attempt
 
-Reason: Prepare exact exclusive administrative attempts, immutable context/request retry binding, safe metadata backup verification and generation selection without executing child/state operations
+Reason: Preserve candidate scope through custody execution results and exact finish replay
 
-Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-11-15
+Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-0af6afa0 · 2026-11-15
 
 ## _context_from_operation
 
@@ -437,15 +437,15 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
 
 ## _complete_deployment
 
-Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
+Reason: Preserve candidate scope through custody execution results and exact finish replay
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
+Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-0af6afa0 · 2026-11-15
 
 ## _completion_request
 
-Reason: Verify four exact ready results under lexical control mutexes and independent EX leases, journal desired epochs before partial control publication and commit global complete last
+Reason: Preserve candidate scope through custody execution results and exact finish replay
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
+Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-0af6afa0 · 2026-11-15
 
 ## _finish_component
 
@@ -467,9 +467,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-92eb39fa · 2026-11-15
 
 ## _verified_complete
 
-Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
+Reason: Preserve candidate scope through custody execution results and exact finish replay
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
+Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-0af6afa0 · 2026-11-15
 
 ## launch_candidate
 
