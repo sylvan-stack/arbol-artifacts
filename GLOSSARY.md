@@ -37,7 +37,7 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **R** — [Radar](#radar) · [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Release](#release) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Requirement](#requirement) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Runbook](#runbook)
 - **S** — [Saga](#saga) · [Saga Planning](#saga-planning) · [Scan](#scan) · [Signal](#signal) · [Signal Rule](#signal-rule) · [Signal Type](#signal-type) · [Seqoya Lab](#seqoya-lab) · [Source Ref](#source-ref) · [Sparse Retrieval](#sparse-retrieval) · [Spec Requirement](#spec-requirement) · [Spec Writing](#spec-writing) · [Spotlight](#spotlight) · [Stale](#stale) · [Stale Summary Regeneration](#stale-summary-regeneration) · [State Runtime Profile](#state-runtime-profile) · [Step Intention](#step-intention) · [Stint](#stint) · [Subscription](#subscription) · [Subscriptions Vigor](#subscriptions-vigor) · [Summary Node](#summary-node) · [Surface](#surface) · [Sync Pass](#sync-pass)
 - **T** — [Taproot](#taproot) · [Text Snapshot](#text-snapshot) · [Theme](#theme) · [Tool](#tool) · [Tool Request](#tool-request) · [Tracked Source](#tracked-source) · [Trivial Trunk](#trivial-trunk) · [Trunk Runtime](#trunk-runtime) · [Turn](#turn)
-- **U** — [UI](#ui) · [UIShell / Chrome](#uishell--chrome)
+- **U** — [UI](#ui) · [UIShell / Chrome](#uishell--chrome) · [User Demo](#user-demo)
 - **V** — [Velocity](#velocity) · [Vigor](#vigor) · [Visit](#visit)
 - **W** — [Willo Station](#willo-station) · [Working Directory](#working-directory) · [Workload](#workload) · [Workspace](#workspace) · [Workspace Booking](#workspace-booking) · [Workspace Ledger](#workspace-ledger) · [Worktree](#worktree) · [Worktree Container](#worktree-container)
 
@@ -1690,6 +1690,12 @@ A windowed [Surface](#surface) of Arbol. One [Arbol Swift App](#arbol-swift-app)
 The shared three-row window frame (Header / Viewport / Status Bar) every UI mounts, with `headerLead` / `headerExtras` slots.
 
 **Example:** The same header/status-bar frame wraps Elma Chat, Oaken, Seqoya Lab, and Willo Station, while each surface fills the viewport differently.
+
+## User Demo
+
+Showing a [Leather Bag](#leather-bag) the result of [Saga](#saga) work so that they can see for themselves that a feature seems to work: a visual smoke test, not a check that the work was done as specified. A Leather Bag cannot guarantee that, and a verified User Demo does not say the work was reliably checked or tested; that is the testing [Beat](#beat) and the [Arc Review](#arc-review). A Beat gets a User Demo, optionally, when it builds something a Leather Bag can see or follow: a screen, or business logic whose effect they can watch. It is written at [Implementation Planning](#implementation-planning) as a scenario that follows the specification's use cases, outside the Beat's plan, and it never keeps the Beat from being Done. Its status is `not_implemented`, `ready`, `verified` or `check_failed`; only the owner's word gives the last two, and `check_failed` carries the owner's account of what went wrong and leads to a new Beat that fixes it. A User Demo is *guided*, with an agent preparing and walking the owner through, or *autonomous*, with only the owner working the feature. The owner may check all of a Saga's demos at the end, when trivial ones may be combined into one walkthrough. Introduced by the owner on 16 November 2026 ([FOR-D139](../forester/decisions.md)); the procedure is the [User Demos guide](../forester/operations/user-demos.md). Not a demonstration to anyone outside the work, and not a test.
+
+**Example:** The Beat that adds a "Retry" button to a failed upload has a guided User Demo: upload a file with the network off, press Retry with it on, see the file listed. The Beat finishes with the demo `ready`; at the end of the Saga the owner follows it, the file appears twice, and the demo becomes `check_failed` with those words and a fix Beat in the Arc.
 
 ## Willo Station
 
