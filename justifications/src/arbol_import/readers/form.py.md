@@ -11,9 +11,9 @@ Removed by Intention i-503a5062 · 2026-11-18
 
 ## <before Usage>
 
-Reason: Unknown records by IMP-D10
+Reason: The reader contract the command finds by name
 
-Origins: IMP-1.1 · Intention i-ad4d8e01 · 2026-11-18
+Origins: IMP-1.1 · Intention i-a2e8af26 · 2026-11-18
 
 ## Response
 
@@ -203,7 +203,37 @@ Origins: IMP-1.1 · Intention i-ad4d8e01 · 2026-11-18
 
 ## unknown_record
 
-Reason: Unknown records by IMP-D10
+Reason: The reader contract the command finds by name
 
-Origins: IMP-1.1 · Intention i-ad4d8e01 · 2026-11-18
+Origins: IMP-1.1 · Intention i-a2e8af26 · 2026-11-18
+
+## Reader
+
+Reason: The reader contract the command finds by name
+
+Origins: IMP-1.1 · Intention i-a2e8af26 · 2026-11-18
+
+## Reader.read
+
+Reason: The reader contract the command finds by name
+
+Origins: IMP-1.1 · Intention i-a2e8af26 · 2026-11-18
+
+## Source
+
+Reason: The reader contract the command finds by name
+
+Origins: IMP-1.1 · Intention i-a2e8af26 · 2026-11-18
+
+## Source.wants
+
+Reason: The reader contract the command finds by name
+
+Origins: IMP-1.1 · Intention i-a2e8af26 · 2026-11-18
+
+## reader_module
+
+Reason: The reader contract the command finds by name
+
+Origins: IMP-1.1 · Intention i-a2e8af26 · 2026-11-18
 
