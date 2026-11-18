@@ -5,13 +5,25 @@ role: authored
 
 ## <before lines>
 
-Reason: Split line files only at newline bytes
+Reason: Decode line records and fail an unreadable session
 
-Origins: IMP-1.2 · Intention i-e54c9ded · 2026-11-18
+Origins: IMP-1.2 · Intention i-f4cfa755 · 2026-11-18
 
 ## lines
 
-Reason: Split line files only at newline bytes
+Reason: Decode line records and fail an unreadable session
 
-Origins: IMP-1.2 · Intention i-e54c9ded · 2026-11-18
+Origins: IMP-1.2 · Intention i-f4cfa755 · 2026-11-18
+
+## file_records
+
+Reason: Decode line records and fail an unreadable session
+
+Origins: IMP-1.2 · Intention i-f4cfa755 · 2026-11-18
+
+## records
+
+Reason: Decode line records and fail an unreadable session
+
+Origins: IMP-1.2 · Intention i-f4cfa755 · 2026-11-18
 
