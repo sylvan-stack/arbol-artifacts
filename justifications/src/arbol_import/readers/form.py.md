@@ -5,9 +5,9 @@ role: authored
 
 ## <end>
 
-Reason: Archive files as home files or exported database rows
+Removed: A session identified by its tool and native ID alone
 
-Origins: IMP-1.1 · Intention i-abfaaef4 · 2026-11-18
+Removed by Intention i-503a5062 · 2026-11-18
 
 ## <before Usage>
 
@@ -122,4 +122,34 @@ Origins: IMP-1.1 · Intention i-abfaaef4 · 2026-11-18
 Reason: Archive files as home files or exported database rows
 
 Origins: IMP-1.1 · Intention i-abfaaef4 · 2026-11-18
+
+## <before Session>
+
+Reason: A session identified by its tool and native ID alone
+
+Origins: IMP-1.11 · Intention i-503a5062 · 2026-11-18
+
+## Session
+
+Reason: A session identified by its tool and native ID alone
+
+Origins: IMP-1.11 · Intention i-503a5062 · 2026-11-18
+
+## Session.__eq__
+
+Reason: A session identified by its tool and native ID alone
+
+Origins: IMP-1.11 · Intention i-503a5062 · 2026-11-18
+
+## Session.__hash__
+
+Reason: A session identified by its tool and native ID alone
+
+Origins: IMP-1.11 · Intention i-503a5062 · 2026-11-18
+
+## Session.identity
+
+Reason: A session identified by its tool and native ID alone
+
+Origins: IMP-1.11 · Intention i-503a5062 · 2026-11-18
 
