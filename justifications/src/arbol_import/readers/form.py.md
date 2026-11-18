@@ -71,7 +71,25 @@ Origins: IMP-1.1 · Intention i-6e8cd65b · 2026-11-18
 
 ## Subagent
 
-Reason: One record per sub-agent with its own usage
+Reason: A turn with its key, trigger, state, usage, items, sub-agents and steers
 
-Origins: IMP-1.1 · Intention i-6e8cd65b · 2026-11-18
+Origins: IMP-1.1 · Intention i-44f1500e · 2026-11-18
+
+## Steer
+
+Reason: A turn with its key, trigger, state, usage, items, sub-agents and steers
+
+Origins: IMP-1.1 · Intention i-44f1500e · 2026-11-18
+
+## Turn
+
+Reason: A turn with its key, trigger, state, usage, items, sub-agents and steers
+
+Origins: IMP-1.1 · Intention i-44f1500e · 2026-11-18
+
+## Turn.__post_init__
+
+Reason: A turn with its key, trigger, state, usage, items, sub-agents and steers
+
+Origins: IMP-1.1 · Intention i-44f1500e · 2026-11-18
 
