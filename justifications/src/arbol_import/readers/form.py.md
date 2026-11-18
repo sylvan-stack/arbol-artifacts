@@ -11,9 +11,9 @@ Removed by Intention i-503a5062 · 2026-11-18
 
 ## <before Usage>
 
-Reason: Archive files as home files or exported database rows
+Reason: Liveness by modification time within 10 minutes
 
-Origins: IMP-1.1 · Intention i-abfaaef4 · 2026-11-18
+Origins: IMP-1.11 · Intention i-d919c7c0 · 2026-11-18
 
 ## Response
 
@@ -152,4 +152,16 @@ Origins: IMP-1.11 · Intention i-503a5062 · 2026-11-18
 Reason: A session identified by its tool and native ID alone
 
 Origins: IMP-1.11 · Intention i-503a5062 · 2026-11-18
+
+## <before live_by_mtime>
+
+Reason: Liveness by modification time within 10 minutes
+
+Origins: IMP-1.11 · Intention i-d919c7c0 · 2026-11-18
+
+## live_by_mtime
+
+Reason: Liveness by modification time within 10 minutes
+
+Origins: IMP-1.11 · Intention i-d919c7c0 · 2026-11-18
 
