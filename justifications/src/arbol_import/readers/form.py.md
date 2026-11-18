@@ -5,21 +5,21 @@ role: authored
 
 ## <end>
 
-Removed: Usage by the common rule and one model response
+Reason: Text blocks, tool calls and results of a turn
 
-Removed by Intention i-d6faa8ba · 2026-11-18
+Origins: IMP-1.1 · Intention i-6875a01a · 2026-11-18
 
 ## <before Usage>
 
-Reason: Usage by the common rule and one model response
+Reason: Text blocks, tool calls and results of a turn
 
-Origins: IMP-1.1 · Intention i-d6faa8ba · 2026-11-18
+Origins: IMP-1.1 · Intention i-6875a01a · 2026-11-18
 
 ## Response
 
-Reason: Usage by the common rule and one model response
+Reason: Text blocks, tool calls and results of a turn
 
-Origins: IMP-1.1 · Intention i-d6faa8ba · 2026-11-18
+Origins: IMP-1.1 · Intention i-6875a01a · 2026-11-18
 
 ## Usage
 
@@ -38,4 +38,28 @@ Origins: IMP-1.1 · Intention i-d6faa8ba · 2026-11-18
 Reason: Usage by the common rule and one model response
 
 Origins: IMP-1.1 · Intention i-d6faa8ba · 2026-11-18
+
+## Image
+
+Reason: Text blocks, tool calls and results of a turn
+
+Origins: IMP-1.1 · Intention i-6875a01a · 2026-11-18
+
+## Result
+
+Reason: Text blocks, tool calls and results of a turn
+
+Origins: IMP-1.1 · Intention i-6875a01a · 2026-11-18
+
+## TextBlock
+
+Reason: Text blocks, tool calls and results of a turn
+
+Origins: IMP-1.1 · Intention i-6875a01a · 2026-11-18
+
+## ToolCall
+
+Reason: Text blocks, tool calls and results of a turn
+
+Origins: IMP-1.1 · Intention i-6875a01a · 2026-11-18
 
