@@ -5,15 +5,15 @@ role: authored
 
 ## <end>
 
-Removed: One record per sub-agent with its own usage
+Reason: Archive files as home files or exported database rows
 
-Removed by Intention i-6e8cd65b · 2026-11-18
+Origins: IMP-1.1 · Intention i-abfaaef4 · 2026-11-18
 
 ## <before Usage>
 
-Reason: Text blocks, tool calls and results of a turn
+Reason: Archive files as home files or exported database rows
 
-Origins: IMP-1.1 · Intention i-6875a01a · 2026-11-18
+Origins: IMP-1.1 · Intention i-abfaaef4 · 2026-11-18
 
 ## Response
 
@@ -89,7 +89,37 @@ Origins: IMP-1.1 · Intention i-44f1500e · 2026-11-18
 
 ## Turn.__post_init__
 
-Reason: A turn with its key, trigger, state, usage, items, sub-agents and steers
+Reason: Archive files as home files or exported database rows
 
-Origins: IMP-1.1 · Intention i-44f1500e · 2026-11-18
+Origins: IMP-1.1 · Intention i-abfaaef4 · 2026-11-18
+
+## ExportedRows
+
+Reason: Archive files as home files or exported database rows
+
+Origins: IMP-1.1 · Intention i-abfaaef4 · 2026-11-18
+
+## ExportedRows.__post_init__
+
+Reason: Archive files as home files or exported database rows
+
+Origins: IMP-1.1 · Intention i-abfaaef4 · 2026-11-18
+
+## HomeFile
+
+Reason: Archive files as home files or exported database rows
+
+Origins: IMP-1.1 · Intention i-abfaaef4 · 2026-11-18
+
+## HomeFile.__post_init__
+
+Reason: Archive files as home files or exported database rows
+
+Origins: IMP-1.1 · Intention i-abfaaef4 · 2026-11-18
+
+## _relative
+
+Reason: Archive files as home files or exported database rows
+
+Origins: IMP-1.1 · Intention i-abfaaef4 · 2026-11-18
 
