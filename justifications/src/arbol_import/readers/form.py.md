@@ -11,9 +11,9 @@ Removed by Intention i-503a5062 · 2026-11-18
 
 ## <before Usage>
 
-Reason: Liveness by modification time within 10 minutes
+Reason: Unknown records by IMP-D10
 
-Origins: IMP-1.11 · Intention i-d919c7c0 · 2026-11-18
+Origins: IMP-1.1 · Intention i-ad4d8e01 · 2026-11-18
 
 ## Response
 
@@ -194,4 +194,16 @@ Origins: IMP-1.1 · Intention i-ad81a853 · 2026-11-18
 Reason: The failure of one session and the Failed value
 
 Origins: IMP-1.1 · Intention i-ad81a853 · 2026-11-18
+
+## <before unknown_record>
+
+Reason: Unknown records by IMP-D10
+
+Origins: IMP-1.1 · Intention i-ad4d8e01 · 2026-11-18
+
+## unknown_record
+
+Reason: Unknown records by IMP-D10
+
+Origins: IMP-1.1 · Intention i-ad4d8e01 · 2026-11-18
 
