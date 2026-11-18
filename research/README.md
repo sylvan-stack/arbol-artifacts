@@ -15,6 +15,7 @@ links. Code excerpts name the file, revision and line range. Runtime results,
 credentials and personal account data stay outside Git. Update an existing
 topic before creating another document and list new topics in
 [the corpus catalog](../INDEX.md).
+
 - [Importing native harness sessions](native-session-import.md): on-disk session
   formats of Claude Code, Codex, Kimi Code, Pi and Mimo, their mapping to the
   chat tables plus a raw archive, and the questions for Spec Writing.
