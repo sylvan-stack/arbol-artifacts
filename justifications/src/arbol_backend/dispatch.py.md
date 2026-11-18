@@ -35,9 +35,9 @@ Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
 
 ## selected_trunk
 
-Reason: Route Exchanges through the chosen Trunk and preserve its identity on replay
+Reason: chat.send and exchange.sendAgain refuse the reserved Trunk imported
 
-Origins: BKD-0.11, BKD-1.7 · Intention i-7975d6ee · 2026-11-11
+Origins: IMP-0.18 · Intention i-1f0af1a8 · 2026-11-18
 
 ## Dispatch.clean_startup
 
