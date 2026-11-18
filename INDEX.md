@@ -62,6 +62,13 @@ What the two tools do with a hook, the hooks on this Mac and the rules every hoo
 - [`00-hooks-of-claude-code-and-codex.md`](architecture/provider-hooks/00-hooks-of-claude-code-and-codex.md) (PHK-0): where each tool reads its hooks, the events and when each tool sends them, a hook's input, what its exit status and output do, time limits, Codex's trust, when a change takes effect, Codex's `notify`, what no hook sees, the live checks of 16 October 2026.
 - [`01-hooks-on-this-mac.md`](architecture/provider-hooks/01-hooks-on-this-mac.md) (PHK-1): the hooks installed and planned and who owns each, watching and steering hooks, sessions that run no hooks of the Leather Bag's, the rules for installing and running a hook, hooks of different owners side by side.
 
+### `session-import/`: importing the vendor tools' saved sessions
+
+Claude Code, Codex, Kimi Code, Pi and Mimo sessions as read-only, archived Arbol chats with a raw archive of each native session. Start at its [README](session-import/README.md).
+
+- [`00-the-import.md`](session-import/00-the-import.md) (IMP-0, accepted): the `arbol import` command, which sessions are imported, from a session to a chat and its Exchanges, sub-agents, provenance tables, the raw archive, importing again, read-only chats, admission and failures.
+- [`01-reading-each-tool.md`](session-import/01-reading-each-tool.md) (IMP-1, accepted): for each tool, where its sessions live, their kinds, duplicate records, turns, items, sub-agents, usage and liveness.
+
 ## Conventions
 
 - Every artifact goes into a chapter folder, never directly into the corpus root. `README.md`, `INDEX.md` and a `GLOSSARY.md` are the exceptions.
@@ -73,4 +80,5 @@ What the two tools do with a hook, the hooks on this Mac and the rules every hoo
 ### `research/`: context for future specifications
 
 - [Arbol with one database](research/arbol-single-database.md): dependencies and transition decisions for retiring Arbol Roots and migrating one database in place.
+- [Importing native harness sessions](research/native-session-import.md): native session formats of five tools and how they map into Arbol's chat tables and a raw archive.
 Mimo Driver: [dedicated accepted originals](../arbol-mimo-driver/specs/README.md), relocated by SYL-312; implementation started, release gates pending.
