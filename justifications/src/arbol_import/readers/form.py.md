@@ -161,7 +161,37 @@ Origins: IMP-1.11 · Intention i-d919c7c0 · 2026-11-18
 
 ## live_by_mtime
 
-Reason: Liveness by modification time within 10 minutes
+Reason: The failure of one session and the Failed value
 
-Origins: IMP-1.11 · Intention i-d919c7c0 · 2026-11-18
+Origins: IMP-1.1 · Intention i-ad81a853 · 2026-11-18
+
+## Failed
+
+Reason: The failure of one session and the Failed value
+
+Origins: IMP-1.1 · Intention i-ad81a853 · 2026-11-18
+
+## Failed.__post_init__
+
+Reason: The failure of one session and the Failed value
+
+Origins: IMP-1.1 · Intention i-ad81a853 · 2026-11-18
+
+## Failed.of
+
+Reason: The failure of one session and the Failed value
+
+Origins: IMP-1.1 · Intention i-ad81a853 · 2026-11-18
+
+## SessionFailure
+
+Reason: The failure of one session and the Failed value
+
+Origins: IMP-1.1 · Intention i-ad81a853 · 2026-11-18
+
+## SessionFailure.__init__
+
+Reason: The failure of one session and the Failed value
+
+Origins: IMP-1.1 · Intention i-ad81a853 · 2026-11-18
 
