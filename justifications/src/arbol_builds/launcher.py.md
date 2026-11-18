@@ -29,7 +29,13 @@ Origins: ARC-4.1, ARC-4.3, ARC-4.8 · Intention i-d1b0e71e · 2026-11-12
 
 ## <before inside>
 
-Reason: Generate immutable isolated Driver launcher bytes including spaced-path wrapper fallback and refuse ordinary gated-launcher replacement
+Reason: No Trunk Build can take the reserved code name imported
 
-Origins: DRV-6.21, BLD-0.16, BLD-0.9, BLD-0.15 · Intention i-6fbf8388 · 2026-11-15
+Origins: IMP-0.18 · Intention i-cc3001b4 · 2026-11-18
+
+## code_name
+
+Reason: No Trunk Build can take the reserved code name imported
+
+Origins: IMP-0.18 · Intention i-cc3001b4 · 2026-11-18
 

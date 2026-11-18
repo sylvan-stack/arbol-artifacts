@@ -21,3 +21,9 @@ Reason: Record each database-dependent Build's declared schema compatibility and
 
 Origins: ARC-4.3 · Intention i-62e4abb1 · 2026-11-12
 
+## component_name
+
+Reason: No Trunk Build can take the reserved code name imported
+
+Origins: IMP-0.18 · Intention i-cc3001b4 · 2026-11-18
+
