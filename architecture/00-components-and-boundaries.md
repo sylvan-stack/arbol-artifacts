@@ -9,6 +9,15 @@ Arbol 2 is a few programs with one job each: the Arbol Swift App, `arbol`, `arbo
 
 It follows the conventions of the [Driver Contract](../driver-contract/README.md#conventions) and the additions in this chapter's [README](README.md#conventions).
 
+## Session import amendment
+
+For [IMP-0](../session-import/00-the-import.md), accepted on 18 November 2026, Arbol imports the saved sessions of Claude Code, Codex, Kimi Code, Pi and Mimo as read-only, archived chats. For this specification:
+
+- *The command line*: `arbol` has a third use, `arbol import`, which turns a tool's saved sessions into chats and needs no running backend ([IMP-0 The command](../session-import/00-the-import.md#the-command)).
+- *Who writes what*: the importer is a further named exception to ARC-D10, next to the chat title. It writes the chat tables only for the chats it creates, writes `chat_marks` once when it creates a chat, and is the only writer of `chat_imports` and `exchange_imports` ([IMP-0 Provenance](../session-import/00-the-import.md#provenance)).
+
+This amendment applies from migration revision 3 and the `arbol` Build that declares `minRevision: 3`. The prior text, IDs and Decisions below keep their original scope.
+
 ## Scope
 
 Covered: the components and what each owns, the direction of dependence, the processes and their lifetimes, the two parts of Arbol, the command line, small model calls, accounts, secrets, Brain Recipes and the resolved route, what Arbol Root does, what any Trunk must offer, who writes which data, the database server, the languages, what fails together.

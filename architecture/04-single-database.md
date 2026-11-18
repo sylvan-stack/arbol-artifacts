@@ -7,6 +7,17 @@ status: draft
 
 Arbol uses one installed PostgreSQL database. Trunks keep their identities and independent Builds as the database changes. A breaking schema change ships with compatible Builds of the Trunks and other consumers it affects. The owner chose this architecture on 12 November 2026, accepted maintenance windows, and authorized an empty start after backing up the existing databases. The specification is drafted in ASD-1 of the Arbol Single Database Saga.
 
+## Session import amendment
+
+For [IMP-0](../session-import/00-the-import.md), accepted on 18 November 2026, Arbol imports the saved sessions of Claude Code, Codex, Kimi Code, Pi and Mimo as read-only, archived chats. For this specification:
+
+- *One installation and one migration authority*: migration revision 3 adds `chat_imports`, `exchange_imports` and an insert trigger on `exchanges`. It is additive under compatibility version 1 and is applied by the fenced procedure (IMP-0.11).
+- *Build selection and release compatibility*: only a Build that reads or writes the new tables declares `minRevision: 3`; every other Build keeps its declaration, and an older `arbol` Build keeps working on revision 3 ([IMP-0 Builds that change](../session-import/00-the-import.md#builds-that-change), IMP-D14).
+- *Maintenance and writer admission*: the importer is a writer. It checks the installed schema pair, takes one writer permit per session, stops with `maintenance` at draining or exclusive admission, and refuses a dry run under exclusive admission ([IMP-0 Admission, maintenance and failures](../session-import/00-the-import.md#admission-maintenance-and-failures), IMP-0.19). It is a writer exception of the chat tables and the only writer of the two provenance tables, as ARC-0's Session import amendment says.
+- *Release records, verification and recovery*: the session import's raw archive on Mercury is not part of the database snapshots, so restoring an older snapshot can leave archive objects that no row names ([IMP-0 Known problems](../session-import/00-the-import.md#known-problems)).
+
+This amendment applies from migration revision 3 and the `arbol` Build that declares `minRevision: 3`. The prior text, IDs and Decisions below keep their original scope.
+
 ## Scope
 
 The installed database, schema changes and compatibility, Exchange drainage during maintenance, backup and recovery, the one-time clean start, and removal of Root identity from the running product. Once accepted, this specification replaces the operating model in [ARC-1](01-roots.md) and governs amendments to ARC-0/2/3, Builds, the Trunk runtime, the backend and Bridge, Driver chat identity, Subscriptions Vigor, the App and Forester integrations. The existing specifications retain their historical decisions and evidence.

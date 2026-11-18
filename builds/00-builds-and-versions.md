@@ -9,6 +9,15 @@ Every component of Arbol 2 is built into numbered [Builds](../GLOSSARY.md#build)
 
 It follows the conventions of the [Driver Contract](../driver-contract/README.md#conventions).
 
+## Session import amendment
+
+For [IMP-0](../session-import/00-the-import.md), accepted on 18 November 2026, Arbol imports the saved sessions of Claude Code, Codex, Kimi Code, Pi and Mimo as read-only, archived chats. For this specification:
+
+- The Trunk code name `imported` is reserved: no Trunk Build may take it. An Exchange with `trunk = 'imported'` and Build `0` is an imported Exchange, not BLD-0.14's program outside a Build, and is never resolved to a Trunk Build (IMP-0.18, IMP-D15).
+- Each Build declares the minimum schema revision it needs. The `arbol` Build that carries the import declares `minRevision: 3`; every other Build keeps its declaration. The Single-database amendment's `minRevision: 3` for every database-dependent component is read that way ([IMP-0 Builds that change](../session-import/00-the-import.md#builds-that-change), IMP-D14).
+
+This amendment applies from migration revision 3 and the `arbol` Build that declares `minRevision: 3`. The prior text, IDs and Decisions below keep their original scope.
+
 ## Scope
 
 Covered: components and Builds, build numbers and package versions, the registry and its records, when a Build counts as working, the default Build, running a named Build, Root associations and Trunk compatibility, building, withdrawing and pruning, data shared by several Builds.

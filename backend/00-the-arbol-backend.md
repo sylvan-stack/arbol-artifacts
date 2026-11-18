@@ -9,6 +9,16 @@ The *Arbol backend* is the one process of a [Root](../GLOSSARY.md#arbol-root)'s 
 
 It follows the conventions of the [Driver Contract](../driver-contract/README.md#conventions) and the additions in this chapter's [README](README.md#conventions). It makes exact what [ARC-0](../architecture/00-components-and-boundaries.md#arbol-the-swift-app-and-the-backend) to [ARC-3](../architecture/03-stuck-trunks.md) say of the backend, and is one party of the [Root Contract](../../arbol-root/contract/README.md), version 1: it reads the Exchange folder of [RCT-1](../../arbol-root/contract/01-the-exchange-folder.md) and the chat tables of [RCT-3](../../arbol-root/contract/03-the-chat-tables.md), and writes answers into `control`. The forms are technical choices made on 18 October 2026; the questions only the owner can settle are rows of the Decisions table with a proposed answer.
 
+## Session import amendment
+
+For [IMP-0](../session-import/00-the-import.md), accepted on 18 November 2026, Arbol imports the saved sessions of Claude Code, Codex, Kimi Code, Pi and Mimo as read-only, archived chats. For this specification:
+
+- `chat.send`, `exchange.sendAgain` and every other path that would start an Exchange refuse an imported chat with `imported_chat` before starting anything, and no Draft is created for it (IMP-0.16).
+- The chat list and the chat snapshot carry the `imported` field, `{tool, kind}`, for an imported chat. An imported chat stays read-only after the owner unarchives it (IMP-0.17).
+- `chat_marks`: "nothing archives or deletes a chat by itself" gives way to the import, which archives each chat it creates ([IMP-0 Imported chats are read-only and archived](../session-import/00-the-import.md#imported-chats-are-read-only-and-archived)).
+
+This amendment applies from migration revision 3 and the `arbol` Build that declares `minRevision: 3`. The prior text, IDs and Decisions below keep their original scope.
+
 ## Scope
 
 Covered: the process, its socket and its lifetime, other programs it starts, the database and the backend's own tables, Drafts, sending a message and sending it again, an Exchange in progress, stopping and answering the agent's questions, settling, stuck Exchanges, restarts and discovery across Roots, a database that cannot be reached, accounts, the working folder of a chat, health and storage, the program and its Build, tests.
