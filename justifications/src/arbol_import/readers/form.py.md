@@ -5,9 +5,9 @@ role: authored
 
 ## <end>
 
-Reason: Text blocks, tool calls and results of a turn
+Removed: One record per sub-agent with its own usage
 
-Origins: IMP-1.1 · Intention i-6875a01a · 2026-11-18
+Removed by Intention i-6e8cd65b · 2026-11-18
 
 ## <before Usage>
 
@@ -62,4 +62,16 @@ Origins: IMP-1.1 · Intention i-6875a01a · 2026-11-18
 Reason: Text blocks, tool calls and results of a turn
 
 Origins: IMP-1.1 · Intention i-6875a01a · 2026-11-18
+
+## <before Subagent>
+
+Reason: One record per sub-agent with its own usage
+
+Origins: IMP-1.1 · Intention i-6e8cd65b · 2026-11-18
+
+## Subagent
+
+Reason: One record per sub-agent with its own usage
+
+Origins: IMP-1.1 · Intention i-6e8cd65b · 2026-11-18
 
