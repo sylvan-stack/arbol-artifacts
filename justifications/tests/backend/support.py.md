@@ -17,9 +17,9 @@ Origins: ARC-4.6 · Intention i-51891c4f · 2026-11-12
 
 ## Cluster.__init__
 
-Reason: Verify the canonical packaged baseline digest, exercise a private installation at its singleton Bridge endpoint and preserve the chat publication race, with test inventory links and digest synchronized.
+Reason: An empty private cluster for the isolated restore of the fixture's fenced upgrade
 
-Origins: ARC-4.6 · Intention i-51891c4f · 2026-11-12
+Origins: ARC-4.5 · Intention i-846c32a6 · 2026-11-19
 
 ## Cluster.address
 
