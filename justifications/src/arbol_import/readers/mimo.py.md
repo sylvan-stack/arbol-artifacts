@@ -5,9 +5,9 @@ role: authored
 
 ## <before _unreadable>
 
-Reason: Group real Mimo prompts and their assistant continuations into turns
+Reason: Use saved Mimo response endings and the first assistant model
 
-Origins: IMP-1.5, IMP-D30 · Intention i-52072457 · 2026-11-19
+Origins: IMP-1.5, IMP-D32 · Intention i-1f7abf86 · 2026-11-19
 
 ## _copy_database
 
@@ -83,9 +83,9 @@ Origins: IMP-1.3, IMP-D16 · Intention i-a2ec86e3 · 2026-11-19
 
 ## _Message
 
-Reason: Validate Mimo conversation rows and retain their native timestamps
+Reason: Use saved Mimo response endings and the first assistant model
 
-Origins: IMP-1.1, IMP-D10, IMP-D16 · Intention i-e5c234a2 · 2026-11-19
+Origins: IMP-1.5, IMP-D32 · Intention i-1f7abf86 · 2026-11-19
 
 ## _Part
 
@@ -119,9 +119,9 @@ Origins: IMP-1.1, IMP-D10, IMP-D16 · Intention i-e5c234a2 · 2026-11-19
 
 ## _message
 
-Reason: Classify Mimo sessions from validated Driver and probe records
+Reason: Use saved Mimo response endings and the first assistant model
 
-Origins: IMP-1.3, IMP-D16 · Intention i-a2ec86e3 · 2026-11-19
+Origins: IMP-1.5, IMP-D32 · Intention i-1f7abf86 · 2026-11-19
 
 ## _object
 
@@ -209,9 +209,9 @@ Origins: IMP-1.5, IMP-D30 · Intention i-52072457 · 2026-11-19
 
 ## _main_turns
 
-Reason: Group real Mimo prompts and their assistant continuations into turns
+Reason: Use saved Mimo response endings and the first assistant model
 
-Origins: IMP-1.5, IMP-D30 · Intention i-52072457 · 2026-11-19
+Origins: IMP-1.5, IMP-D32 · Intention i-1f7abf86 · 2026-11-19
 
 ## _prompt
 
@@ -224,4 +224,40 @@ Origins: IMP-1.5, IMP-D30 · Intention i-52072457 · 2026-11-19
 Reason: Group real Mimo prompts and their assistant continuations into turns
 
 Origins: IMP-1.5, IMP-D30 · Intention i-52072457 · 2026-11-19
+
+## _assistant_model
+
+Reason: Use saved Mimo response endings and the first assistant model
+
+Origins: IMP-1.5, IMP-D32 · Intention i-1f7abf86 · 2026-11-19
+
+## _message_error
+
+Reason: Use saved Mimo response endings and the first assistant model
+
+Origins: IMP-1.5, IMP-D32 · Intention i-1f7abf86 · 2026-11-19
+
+## _optional_string
+
+Reason: Use saved Mimo response endings and the first assistant model
+
+Origins: IMP-1.5, IMP-D32 · Intention i-1f7abf86 · 2026-11-19
+
+## _optional_time
+
+Reason: Use saved Mimo response endings and the first assistant model
+
+Origins: IMP-1.5, IMP-D32 · Intention i-1f7abf86 · 2026-11-19
+
+## _state
+
+Reason: Use saved Mimo response endings and the first assistant model
+
+Origins: IMP-1.5, IMP-D32 · Intention i-1f7abf86 · 2026-11-19
+
+## _turn_end
+
+Reason: Use saved Mimo response endings and the first assistant model
+
+Origins: IMP-1.5, IMP-D32 · Intention i-1f7abf86 · 2026-11-19
 
