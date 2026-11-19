@@ -101,21 +101,21 @@ Origins: IMP-1.2, IMP-1.4 · Intention i-8b93be51 · 2026-11-19
 
 ## _order_file
 
-Reason: Validate records before retaining their UUID and classification evidence
+Reason: Expose the reader and isolate failures with the kind from each validated prefix
 
-Origins: IMP-1.1, IMP-0.21, IMP-D16 · Intention i-753a9fd8 · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-0.21, IMP-D16 · Intention i-7abd097f · 2026-11-19
 
 ## _ordered_sessions
 
-Reason: Preserve native title and origin and give empty Claude sessions their earliest file time
+Reason: Expose the reader and isolate failures with the kind from each validated prefix
 
-Origins: IMP-1.12, IMP-1.1, IMP-D17 · Intention i-e5c2ec27 · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-0.21, IMP-D16 · Intention i-7abd097f · 2026-11-19
 
 ## _read_records
 
-Reason: Stream complete records in file time order and track duplicate UUIDs across copies
+Reason: Expose the reader and isolate failures with the kind from each validated prefix
 
-Origins: IMP-1.2, IMP-1.4 · Intention i-8b93be51 · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-0.21, IMP-D16 · Intention i-7abd097f · 2026-11-19
 
 ## _time
 
@@ -293,9 +293,9 @@ Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
 
 ## _result_fields
 
-Reason: Join calls with results and resolve safe spilled text and image descriptions
+Reason: Expose the reader and isolate failures with the kind from each validated prefix
 
-Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-0.21, IMP-D16 · Intention i-7abd097f · 2026-11-19
 
 ## _result_image
 
@@ -377,9 +377,9 @@ Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
 
 ## _json_file
 
-Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
+Reason: Expose the reader and isolate failures with the kind from each validated prefix
 
-Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-0.21, IMP-D16 · Intention i-7abd097f · 2026-11-19
 
 ## _launches
 
@@ -491,13 +491,31 @@ Origins: IMP-1.12, IMP-1.1, IMP-D17 · Intention i-e5c2ec27 · 2026-11-19
 
 ## _session
 
-Reason: Preserve native title and origin and give empty Claude sessions their earliest file time
+Reason: Expose the reader and isolate failures with the kind from each validated prefix
 
-Origins: IMP-1.12, IMP-1.1, IMP-D17 · Intention i-e5c2ec27 · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-0.21, IMP-D16 · Intention i-7abd097f · 2026-11-19
 
 ## _title
 
 Reason: Preserve native title and origin and give empty Claude sessions their earliest file time
 
 Origins: IMP-1.12, IMP-1.1, IMP-D17 · Intention i-e5c2ec27 · 2026-11-19
+
+## _context_files
+
+Reason: Expose the reader and isolate failures with the kind from each validated prefix
+
+Origins: IMP-1.1, IMP-1.11, IMP-0.21, IMP-D16 · Intention i-7abd097f · 2026-11-19
+
+## _data_file
+
+Reason: Expose the reader and isolate failures with the kind from each validated prefix
+
+Origins: IMP-1.1, IMP-1.11, IMP-0.21, IMP-D16 · Intention i-7abd097f · 2026-11-19
+
+## read
+
+Reason: Expose the reader and isolate failures with the kind from each validated prefix
+
+Origins: IMP-1.1, IMP-1.11, IMP-0.21, IMP-D16 · Intention i-7abd097f · 2026-11-19
 
