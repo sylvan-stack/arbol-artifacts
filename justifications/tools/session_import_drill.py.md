@@ -11,9 +11,9 @@ Origins: IMP-0.11 · Intention i-ecccb1fb · 2026-11-19
 
 ## <before DrillError>
 
-Reason: Drill population through each Build's Bridge and the trivial Trunk
+Reason: Archive all standalone drill evidence after teardown before handing off the dedicated output directory.
 
-Origins: IMP-0.11 · Intention i-a13d750f · 2026-11-19
+Origins: BLD-1.3 · Intention i-d5f990e2 · 2026-11-19
 
 ## Cluster
 
@@ -65,9 +65,9 @@ Origins: IMP-0.11 · Intention i-ecccb1fb · 2026-11-19
 
 ## Cluster.stop
 
-Reason: Drill setup and observation: disposable clusters, private home, launchers and an independent psql image
+Reason: Archive all standalone drill evidence after teardown before handing off the dedicated output directory.
 
-Origins: IMP-0.11 · Intention i-ecccb1fb · 2026-11-19
+Origins: BLD-1.3 · Intention i-d5f990e2 · 2026-11-19
 
 ## Cluster.value
 
@@ -83,15 +83,15 @@ Origins: IMP-0.11 · Intention i-ecccb1fb · 2026-11-19
 
 ## Drill.__init__
 
-Reason: Drill setup and observation: disposable clusters, private home, launchers and an independent psql image
+Reason: Archive all standalone drill evidence after teardown before handing off the dedicated output directory.
 
-Origins: IMP-0.11 · Intention i-ecccb1fb · 2026-11-19
+Origins: BLD-1.3 · Intention i-d5f990e2 · 2026-11-19
 
 ## Drill.build
 
-Reason: Drill setup and observation: disposable clusters, private home, launchers and an independent psql image
+Reason: Archive all standalone drill evidence after teardown before handing off the dedicated output directory.
 
-Origins: IMP-0.11 · Intention i-ecccb1fb · 2026-11-19
+Origins: BLD-1.3 · Intention i-d5f990e2 · 2026-11-19
 
 ## Drill.checked
 
@@ -191,9 +191,9 @@ Origins: IMP-0.11 · Intention i-abc1a6fb · 2026-11-19
 
 ## Drill.fenced_upgrade
 
-Reason: Drill fenced upgrade: release records, exclusive session, snapshot, verified isolated restore, upgrade and reopen
+Reason: Archive all standalone drill evidence after teardown before handing off the dedicated output directory.
 
-Origins: IMP-0.11 · Intention i-abc1a6fb · 2026-11-19
+Origins: BLD-1.3 · Intention i-d5f990e2 · 2026-11-19
 
 ## Drill.maintenance
 
@@ -227,9 +227,9 @@ Origins: IMP-0.11 · Intention i-a13d750f · 2026-11-19
 
 ## Drill.backend
 
-Reason: Drill population through each Build's Bridge and the trivial Trunk
+Reason: Archive all standalone drill evidence after teardown before handing off the dedicated output directory.
 
-Origins: IMP-0.11 · Intention i-a13d750f · 2026-11-19
+Origins: BLD-1.3 · Intention i-d5f990e2 · 2026-11-19
 
 ## Drill.bridge
 
@@ -257,9 +257,9 @@ Origins: IMP-0.11 · Intention i-a13d750f · 2026-11-19
 
 ## Drill.settled
 
-Reason: Drill population through each Build's Bridge and the trivial Trunk
+Reason: Archive all standalone drill evidence after teardown before handing off the dedicated output directory.
 
-Origins: IMP-0.11 · Intention i-a13d750f · 2026-11-19
+Origins: BLD-1.3 · Intention i-d5f990e2 · 2026-11-19
 
 ## Drill.state
 
@@ -287,9 +287,9 @@ Origins: IMP-0.16 · Intention i-741cf904 · 2026-11-19
 
 ## Drill.close
 
-Reason: Drill checks of 8.5 and 8.6 as result lines without chat text
+Reason: Archive all standalone drill evidence after teardown before handing off the dedicated output directory.
 
-Origins: IMP-0.16 · Intention i-741cf904 · 2026-11-19
+Origins: BLD-1.3 · Intention i-d5f990e2 · 2026-11-19
 
 ## Drill.count
 
@@ -341,7 +341,13 @@ Origins: IMP-0.16 · Intention i-741cf904 · 2026-11-19
 
 ## main
 
-Reason: Drill checks of 8.5 and 8.6 as result lines without chat text
+Reason: Archive all standalone drill evidence after teardown before handing off the dedicated output directory.
 
-Origins: IMP-0.16 · Intention i-741cf904 · 2026-11-19
+Origins: BLD-1.3 · Intention i-d5f990e2 · 2026-11-19
+
+## Drill.finalize
+
+Reason: Archive all standalone drill evidence after teardown before handing off the dedicated output directory.
+
+Origins: BLD-1.3 · Intention i-d5f990e2 · 2026-11-19
 
