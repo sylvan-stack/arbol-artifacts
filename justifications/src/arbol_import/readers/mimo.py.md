@@ -89,9 +89,9 @@ Origins: IMP-1.7, IMP-D31 · Intention i-c99a446d · 2026-11-19
 
 ## _Part
 
-Reason: Project saved Mimo tool states, results and inline image descriptors
+Reason: Place Mimo actor lanes in their proven launch turn or native time fallback
 
-Origins: IMP-1.6, IMP-0.10 · Intention i-1a06af71 · 2026-11-19
+Origins: IMP-0.9, IMP-D31 · Intention i-2f32a64d · 2026-11-19
 
 ## _SessionInfo
 
@@ -137,9 +137,9 @@ Origins: IMP-1.1, IMP-D10, IMP-D16 · Intention i-e5c234a2 · 2026-11-19
 
 ## _part
 
-Reason: Project saved Mimo tool states, results and inline image descriptors
+Reason: Place Mimo actor lanes in their proven launch turn or native time fallback
 
-Origins: IMP-1.6, IMP-0.10 · Intention i-1a06af71 · 2026-11-19
+Origins: IMP-0.9, IMP-D31 · Intention i-2f32a64d · 2026-11-19
 
 ## _read_messages
 
@@ -293,13 +293,37 @@ Origins: IMP-1.7, IMP-D31 · Intention i-c99a446d · 2026-11-19
 
 ## _responses
 
-Reason: Account for native usage once per Mimo assistant message
+Reason: Place Mimo actor lanes in their proven launch turn or native time fallback
 
-Origins: IMP-1.7, IMP-D31 · Intention i-c99a446d · 2026-11-19
+Origins: IMP-0.9, IMP-D31 · Intention i-2f32a64d · 2026-11-19
 
 ## _usage
 
 Reason: Account for native usage once per Mimo assistant message
 
 Origins: IMP-1.7, IMP-D31 · Intention i-c99a446d · 2026-11-19
+
+## _Actor
+
+Reason: Place Mimo actor lanes in their proven launch turn or native time fallback
+
+Origins: IMP-0.9, IMP-D31 · Intention i-2f32a64d · 2026-11-19
+
+## _Launch
+
+Reason: Place Mimo actor lanes in their proven launch turn or native time fallback
+
+Origins: IMP-0.9, IMP-D31 · Intention i-2f32a64d · 2026-11-19
+
+## _actor_owners
+
+Reason: Place Mimo actor lanes in their proven launch turn or native time fallback
+
+Origins: IMP-0.9, IMP-D31 · Intention i-2f32a64d · 2026-11-19
+
+## _message_order
+
+Reason: Place Mimo actor lanes in their proven launch turn or native time fallback
+
+Origins: IMP-0.9, IMP-D31 · Intention i-2f32a64d · 2026-11-19
 
