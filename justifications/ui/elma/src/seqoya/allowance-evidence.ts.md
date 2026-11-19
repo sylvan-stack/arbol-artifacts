@@ -47,9 +47,9 @@ Origins: BKD-3.17 · Intention i-278c310f · 2026-11-18
 
 ## UsageEvidence
 
-Reason: Project newer verified dashboard quota and exact credit observations with source and reset precision
+Reason: Refresh confirmed Browser dashboard evidence on entering Subscriptions and project it onto the matching cards.
 
-Origins: BKD-3.17 · Intention i-278c310f · 2026-11-18
+Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
 
 ## allowance
 
@@ -77,9 +77,9 @@ Origins: BKD-3.17 · Intention i-1ecb43ee · 2026-11-12
 
 ## mimoQuota
 
-Reason: Project newer verified dashboard quota and exact credit observations with source and reset precision
+Reason: Refresh confirmed Browser dashboard evidence on entering Subscriptions and project it onto the matching cards.
 
-Origins: BKD-3.17 · Intention i-278c310f · 2026-11-18
+Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
 
 ## validCredits
 
@@ -95,9 +95,9 @@ Origins: BKD-3.17 · Intention i-a65374d0 · 2026-11-12
 
 ## withAllowances
 
-Reason: Synchronize the published shared card and date formatter. Use scoped window evidence to derive model estimates for Claude, Kimi, Pi ChatGPT and z.ai, preserving source, date and numerical basis. Use the recorded used share for the selected window and match the current account, identity check and window label. For z.ai use the current bound account’s verified model credit caps and the GLM-5.3 Standard conversion of credits × 10,000 ÷ 24. Preserve MCP call windows separately. Explain missing or invalidated evidence. Show z.ai’s zero-use rolling period as starting with its next use. Use specific states for closed periods and recurring expiry, and retain DeepSeek’s unavailable values. Serves BKD-3.17.
+Reason: Refresh confirmed Browser dashboard evidence on entering Subscriptions and project it onto the matching cards.
 
-Origins: BKD-3.17 · Intention i-d3d8c042 · 2026-11-12
+Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
 
 ## Capacity
 
@@ -131,9 +131,9 @@ Origins: BKD-3.17 · Intention i-d3d8c042 · 2026-11-12
 
 ## subscriptionMetrics
 
-Reason: Project newer verified dashboard quota and exact credit observations with source and reset precision
+Reason: Refresh confirmed Browser dashboard evidence on entering Subscriptions and project it onto the matching cards.
 
-Origins: BKD-3.17 · Intention i-278c310f · 2026-11-18
+Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
 
 ## <before windowCapacity>
 
@@ -209,9 +209,9 @@ Origins: BKD-3.17 · Intention i-278c310f · 2026-11-18
 
 ## DriverWindow
 
-Reason: Project newer verified dashboard quota and exact credit observations with source and reset precision
+Reason: Refresh confirmed Browser dashboard evidence on entering Subscriptions and project it onto the matching cards.
 
-Origins: BKD-3.17 · Intention i-278c310f · 2026-11-18
+Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
 
 ## matchingClaudeDashboard
 
@@ -224,4 +224,28 @@ Origins: BKD-3.17 · Intention i-278c310f · 2026-11-18
 Reason: Project newer verified dashboard quota and exact credit observations with source and reset precision
 
 Origins: BKD-3.17 · Intention i-278c310f · 2026-11-18
+
+## BrowserReport
+
+Reason: Refresh confirmed Browser dashboard evidence on entering Subscriptions and project it onto the matching cards.
+
+Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
+
+## matchingBrowserReport
+
+Reason: Refresh confirmed Browser dashboard evidence on entering Subscriptions and project it onto the matching cards.
+
+Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
+
+## mergeUsageEvidence
+
+Reason: Refresh confirmed Browser dashboard evidence on entering Subscriptions and project it onto the matching cards.
+
+Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
+
+## newerReading
+
+Reason: Refresh confirmed Browser dashboard evidence on entering Subscriptions and project it onto the matching cards.
+
+Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
 

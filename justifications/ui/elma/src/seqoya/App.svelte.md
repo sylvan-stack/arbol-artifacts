@@ -11,7 +11,7 @@ Origins: BKD-3.17 · Intention i-0f0c306a · 2026-11-13
 
 ## script
 
-Reason: Compare the stored reactive request reference so a stale completion clears only its own pending marker.
+Reason: Refresh confirmed Browser dashboard evidence on entering Subscriptions and project it onto the matching cards.
 
-Origins: BKD-3.17 · Intention i-1466d68b · 2026-11-13
+Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
 
