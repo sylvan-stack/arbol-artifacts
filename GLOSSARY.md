@@ -1383,17 +1383,23 @@ The Radar is also the gathering point for work statistics (under design): the [W
 
 ## RAPTOR Rebuild
 
+Historical. Mycel retired repository summary trees on 19 November 2026.
+
 Clear-and-rebuild of the whole [RAPTOR Tree](#raptor-tree): delete all [Summary Nodes](#summary-node), re-cluster the corpus embeddings **globally**, and run [RAPTOR Summarization](#raptor-summarization) tier by tier. Needed when cluster *membership* should change — above all when new [Chunks](#chunk) have joined the corpus (clustering is global, so newcomers can't be slotted into an existing tree). Guarded by a plan/approve gate: clicking Rebuild first shows the predicted shape (chunks in, summaries out, per tier); [Generation](#generation) starts only on "Approve & Run". Contrast [Stale Summary Regeneration](#stale-summary-regeneration), which keeps the tree's structure.
 
 **Example:** After ingesting a new [Artifact Chapter](#artifact-chapter), the plan predicts `1,431 chunks → ~36 summaries across 2 tiers`; approving rebuilds the tree with the new material clustered in.
 
 ## RAPTOR Summarization
 
+Historical. Mycel retired repository summary trees on 19 November 2026.
+
 [Mycel](#mycel)'s built instance of [Generation](#generation): producing one [Summary Node](#summary-node) per cluster of related [Chunks](#chunk). Each cluster's member texts are sent through a [Completion](#completion) using the configured summariser [Brain Recipe](#brain-recipe); the returned summary is stored as a derived Chunk with **generation edges** to every member (each edge pinning the member's hash — what lets [Detection](#detection) notice when a summary goes [Stale](#stale)). Summaries within a tier run concurrently. The clustering itself (soft GMM over [Embeddings](#embedding), BIC-chosen cluster count, capped so upper tiers converge) is mechanical; only the summarising spends model calls.
 
 **Example:** A cluster of 42 auth-related chunks becomes one retrievable paragraph summarising how authentication works — findable by a query too broad for any single leaf chunk to answer.
 
 ## RAPTOR Tree
+
+Historical. Mycel retired repository summary trees on 19 November 2026.
 
 The hierarchical summary layer over a [Corpus](#corpus): tier 0 is the corpus [Chunks](#chunk) themselves (leaves); tier 1 groups them into clusters and gives each a [Summary Node](#summary-node) via [RAPTOR Summarization](#raptor-summarization); tier 2 clusters *those* summaries; and so on until few enough nodes remain. [Retrieval](#retrieval) searches the **collapsed** tree — leaves and summaries together — so a broad question can land on a tier-1 theme summary while a specific one lands on a leaf. Built for the [Artifact Corpus](#artifact-corpus); a structure-aware variant for code (along the real file/module tree rather than embedding clusters) is a considered future step.
 
@@ -1458,7 +1464,7 @@ An [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) dispatched to r
 
 ## Retrieval
 
-[Mycel](#mycel)'s capability for **querying** the [Corpora](#corpus) — finding the right [Chunks](#chunk) to answer a question or feed an agent's context — as opposed to maintaining them ([Sync Pass](#sync-pass)) or producing them ([Generation](#generation)). Built: semantic search over the [Artifact Corpus](#artifact-corpus) (collapsed [RAPTOR Tree](#raptor-tree) — leaves and summaries together) and **hybrid code search** over the [Code Corpus](#code-corpus) (meaning via [Embeddings](#embedding) + exact identifiers via BM25, rank-fused), exposed to agents as `mycel search --only code`.
+[Mycel](#mycel)'s capability for querying its corpora. Mycel searches original artifact sections, code chunks and generated overview sections. Code search combines exact identifiers and embedding similarity. Use `mycel search --only code` for code. Standalone Narrator can generate summaries and short labels on request.
 
 **Example:** A [Research Trip](#research-trip) uses Retrieval to pull only the chunks relevant to "how are turns persisted" instead of reading whole files.
 
@@ -1565,6 +1571,8 @@ One of the two states of a [Chunk](#chunk)'s up-to-dateness; the other is **fres
 
 ## Stale Summary Regeneration
 
+Historical. Mycel retired repository summary trees on 19 November 2026.
+
 The **incremental** path for repairing a [RAPTOR Tree](#raptor-tree): re-run [RAPTOR Summarization](#raptor-summarization) for only the [Summary Nodes](#summary-node) that [Detection](#detection) marked [Stale](#stale) — **in place** (each keeps its id and its cluster membership), tier-ascending so a refreshed tier-1 summary feeds its tier-2 parent. Handles edited and deleted members; what it *cannot* do is admit **new** [Chunks](#chunk) into the tree — membership is fixed, so new material waits for a [RAPTOR Rebuild](#raptor-rebuild). Triggered by the "Regenerate stale (N)" button; a form of [Generation](#generation), so it never runs automatically.
 
 **Example:** An edit to one plan section makes 2 of 34 summaries Stale; regeneration re-summarises exactly those 2 — seconds and pennies instead of rebuilding the whole tree.
@@ -1605,6 +1613,8 @@ The [Radar](#radar)'s view of [Vigor](#vigor) across every [Subscription](#subsc
 **Example:** "Subscriptions Vigor: 0.47, Kimi Code" with Alex's Claude at 0.37, Codex at 0.16, and a fourth Subscription shown as unknown, allowance not supported for its family.
 
 ## Summary Node
+
+Historical. Mycel retired repository summary trees on 19 November 2026.
 
 One node of a [RAPTOR Tree](#raptor-tree): a `derived` [Chunk](#chunk) holding the summary of one cluster, at a given **tier** (1 = summarises corpus leaves; 2 = summarises tier-1 summaries; …). Joined to every member it summarises by a **generation edge** ([Derivation](#derivation)) pinning that member's hash — which is exactly what lets [Detection](#detection) mark the summary [Stale](#stale) when a member changes. A Summary Node is a full citizen: it has an [Embedding](#embedding) (so [Retrieval](#retrieval) finds it), stable identity, and appears in the Chunks Viewer under the RAPTOR toggle.
 
