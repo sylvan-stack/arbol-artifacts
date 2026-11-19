@@ -5,9 +5,9 @@ role: authored
 
 ## <before directory>
 
-Reason: Sweep only released run directories in the installed backend without blocking requests or crossing filesystem mounts.
+Reason: Archive the terminal Build record and log before handing a dedicated isolated run to cleanup.
 
-Origins: BLD-1.2 · Intention i-b875e4f0 · 2026-11-19
+Origins: BLD-1.3 · Intention i-ae12822b · 2026-11-19
 
 ## attached_paths
 
@@ -29,9 +29,9 @@ Origins: BLD-1.1 · Intention i-d0ffdf59 · 2026-11-19
 
 ## release_run
 
-Reason: Sweep only released run directories in the installed backend without blocking requests or crossing filesystem mounts.
+Reason: Archive the terminal Build record and log before handing a dedicated isolated run to cleanup.
 
-Origins: BLD-1.2 · Intention i-b875e4f0 · 2026-11-19
+Origins: BLD-1.3 · Intention i-ae12822b · 2026-11-19
 
 ## remove_run
 
@@ -50,4 +50,28 @@ Origins: BLD-1.2 · Intention i-b875e4f0 · 2026-11-19
 Reason: Sweep only released run directories in the installed backend without blocking requests or crossing filesystem mounts.
 
 Origins: BLD-1.2 · Intention i-b875e4f0 · 2026-11-19
+
+## empty_run
+
+Reason: Archive the terminal Build record and log before handing a dedicated isolated run to cleanup.
+
+Origins: BLD-1.3 · Intention i-ae12822b · 2026-11-19
+
+## evidence_destination
+
+Reason: Archive the terminal Build record and log before handing a dedicated isolated run to cleanup.
+
+Origins: BLD-1.3 · Intention i-ae12822b · 2026-11-19
+
+## open_run
+
+Reason: Archive the terminal Build record and log before handing a dedicated isolated run to cleanup.
+
+Origins: BLD-1.3 · Intention i-ae12822b · 2026-11-19
+
+## save_evidence
+
+Reason: Archive the terminal Build record and log before handing a dedicated isolated run to cleanup.
+
+Origins: BLD-1.3 · Intention i-ae12822b · 2026-11-19
 

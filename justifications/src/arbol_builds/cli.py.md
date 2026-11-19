@@ -5,13 +5,13 @@ role: authored
 
 ## <before unicode_text>
 
-Reason: Release a completed run only after the runner saves evidence and the disk image check permits the handoff.
+Reason: Archive the terminal Build record and log before handing a dedicated isolated run to cleanup.
 
-Origins: BLD-1.1 · Intention i-d0ffdf59 · 2026-11-19
+Origins: BLD-1.3 · Intention i-ae12822b · 2026-11-19
 
 ## main
 
-Reason: Release a completed run only after the runner saves evidence and the disk image check permits the handoff.
+Reason: Archive the terminal Build record and log before handing a dedicated isolated run to cleanup.
 
-Origins: BLD-1.1 · Intention i-d0ffdf59 · 2026-11-19
+Origins: BLD-1.3 · Intention i-ae12822b · 2026-11-19
 
