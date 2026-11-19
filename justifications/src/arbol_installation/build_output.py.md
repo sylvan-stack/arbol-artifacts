@@ -5,9 +5,9 @@ role: authored
 
 ## <before directory>
 
-Reason: Archive the terminal Build record and log before handing a dedicated isolated run to cleanup.
+Reason: Unseal only owned directories beneath a released run so the saved evidence and mounted filesystems remain protected.
 
-Origins: BLD-1.3 · Intention i-ae12822b · 2026-11-19
+Origins: BLD-1.2 · Intention i-5e7234dc · 2026-11-19
 
 ## attached_paths
 
@@ -35,15 +35,15 @@ Origins: BLD-1.3 · Intention i-ae12822b · 2026-11-19
 
 ## remove_run
 
-Reason: Sweep only released run directories in the installed backend without blocking requests or crossing filesystem mounts.
+Reason: Unseal only owned directories beneath a released run so the saved evidence and mounted filesystems remain protected.
 
-Origins: BLD-1.2 · Intention i-b875e4f0 · 2026-11-19
+Origins: BLD-1.2 · Intention i-5e7234dc · 2026-11-19
 
 ## sweep
 
-Reason: Sweep only released run directories in the installed backend without blocking requests or crossing filesystem mounts.
+Reason: Unseal only owned directories beneath a released run so the saved evidence and mounted filesystems remain protected.
 
-Origins: BLD-1.2 · Intention i-b875e4f0 · 2026-11-19
+Origins: BLD-1.2 · Intention i-5e7234dc · 2026-11-19
 
 ## sweep_periodically
 
@@ -74,4 +74,16 @@ Origins: BLD-1.3 · Intention i-ae12822b · 2026-11-19
 Reason: Archive the terminal Build record and log before handing a dedicated isolated run to cleanup.
 
 Origins: BLD-1.3 · Intention i-ae12822b · 2026-11-19
+
+## remove_on_device
+
+Reason: Unseal only owned directories beneath a released run so the saved evidence and mounted filesystems remain protected.
+
+Origins: BLD-1.2 · Intention i-5e7234dc · 2026-11-19
+
+## unseal_directories
+
+Reason: Unseal only owned directories beneath a released run so the saved evidence and mounted filesystems remain protected.
+
+Origins: BLD-1.2 · Intention i-5e7234dc · 2026-11-19
 
