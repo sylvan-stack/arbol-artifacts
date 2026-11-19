@@ -5,9 +5,9 @@ role: authored
 
 ## <before SessionFile>
 
-Reason: Project native Claude prompts, steers, and endings into turns
+Reason: Join calls with results and resolve safe spilled text and image descriptions
 
-Origins: IMP-1.5, IMP-0.7 · Intention i-265f7763 · 2026-11-19
+Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
 
 ## SessionFile
 
@@ -77,15 +77,15 @@ Origins: IMP-1.2, IMP-1.4 · Intention i-8b93be51 · 2026-11-19
 
 ## Record
 
-Reason: Stream complete records in file time order and track duplicate UUIDs across copies
+Reason: Join calls with results and resolve safe spilled text and image descriptions
 
-Origins: IMP-1.2, IMP-1.4 · Intention i-8b93be51 · 2026-11-19
+Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
 
 ## Record.where
 
-Reason: Stream complete records in file time order and track duplicate UUIDs across copies
+Reason: Join calls with results and resolve safe spilled text and image descriptions
 
-Origins: IMP-1.2, IMP-1.4 · Intention i-8b93be51 · 2026-11-19
+Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
 
 ## SessionRecords
 
@@ -167,9 +167,9 @@ Origins: IMP-1.3, IMP-D16 · Intention i-fb1bee8d · 2026-11-19
 
 ## _validated
 
-Reason: Validate records before retaining their UUID and classification evidence
+Reason: Join calls with results and resolve safe spilled text and image descriptions
 
-Origins: IMP-1.1, IMP-0.21, IMP-D16 · Intention i-753a9fd8 · 2026-11-19
+Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
 
 ## <before _blocks>
 
@@ -257,13 +257,67 @@ Origins: IMP-1.5, IMP-0.7 · Intention i-265f7763 · 2026-11-19
 
 ## _turn
 
-Reason: Project native Claude prompts, steers, and endings into turns
+Reason: Join calls with results and resolve safe spilled text and image descriptions
 
-Origins: IMP-1.5, IMP-0.7 · Intention i-265f7763 · 2026-11-19
+Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
 
 ## _turn_records
 
 Reason: Project native Claude prompts, steers, and endings into turns
 
 Origins: IMP-1.5, IMP-0.7 · Intention i-265f7763 · 2026-11-19
+
+## <before _spill_path>
+
+Reason: Join calls with results and resolve safe spilled text and image descriptions
+
+Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
+
+## NativeResult
+
+Reason: Join calls with results and resolve safe spilled text and image descriptions
+
+Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
+
+## _items
+
+Reason: Join calls with results and resolve safe spilled text and image descriptions
+
+Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
+
+## _native_results
+
+Reason: Join calls with results and resolve safe spilled text and image descriptions
+
+Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
+
+## _result_fields
+
+Reason: Join calls with results and resolve safe spilled text and image descriptions
+
+Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
+
+## _result_image
+
+Reason: Join calls with results and resolve safe spilled text and image descriptions
+
+Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
+
+## _results
+
+Reason: Join calls with results and resolve safe spilled text and image descriptions
+
+Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
+
+## _spill_path
+
+Reason: Join calls with results and resolve safe spilled text and image descriptions
+
+Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
+
+## _spill_text
+
+Reason: Join calls with results and resolve safe spilled text and image descriptions
+
+Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
 
