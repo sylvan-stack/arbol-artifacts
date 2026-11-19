@@ -167,21 +167,21 @@ Origins: IMP-1.1 · Intention i-ad81a853 · 2026-11-18
 
 ## Failed
 
-Reason: The failure of one session and the Failed value
+Reason: A failed session keeps the kind read before its failure, and one named by its file has none
 
-Origins: IMP-1.1 · Intention i-ad81a853 · 2026-11-18
+Origins: IMP-1.1, IMP-D13, IMP-D16 · Intention i-206f6d1f · 2026-11-19
 
 ## Failed.__post_init__
 
-Reason: The failure of one session and the Failed value
+Reason: A failed session keeps the kind read before its failure, and one named by its file has none
 
-Origins: IMP-1.1 · Intention i-ad81a853 · 2026-11-18
+Origins: IMP-1.1, IMP-D13, IMP-D16 · Intention i-206f6d1f · 2026-11-19
 
 ## Failed.of
 
-Reason: The failure of one session and the Failed value
+Reason: A failed session keeps the kind read before its failure, and one named by its file has none
 
-Origins: IMP-1.1 · Intention i-ad81a853 · 2026-11-18
+Origins: IMP-1.1, IMP-D13, IMP-D16 · Intention i-206f6d1f · 2026-11-19
 
 ## SessionFailure
 
