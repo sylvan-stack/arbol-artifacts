@@ -5,9 +5,9 @@ role: authored
 
 ## <before _unreadable>
 
-Reason: Classify Mimo sessions from validated Driver and probe records
+Reason: Group real Mimo prompts and their assistant continuations into turns
 
-Origins: IMP-1.3, IMP-D16 · Intention i-a2ec86e3 · 2026-11-19
+Origins: IMP-1.5, IMP-D30 · Intention i-52072457 · 2026-11-19
 
 ## _copy_database
 
@@ -194,4 +194,34 @@ Origins: IMP-1.3, IMP-D16 · Intention i-a2ec86e3 · 2026-11-19
 Reason: Classify Mimo sessions from validated Driver and probe records
 
 Origins: IMP-1.3, IMP-D16 · Intention i-a2ec86e3 · 2026-11-19
+
+## <before _Turn>
+
+Reason: Group real Mimo prompts and their assistant continuations into turns
+
+Origins: IMP-1.5, IMP-D30 · Intention i-52072457 · 2026-11-19
+
+## _Turn
+
+Reason: Group real Mimo prompts and their assistant continuations into turns
+
+Origins: IMP-1.5, IMP-D30 · Intention i-52072457 · 2026-11-19
+
+## _main_turns
+
+Reason: Group real Mimo prompts and their assistant continuations into turns
+
+Origins: IMP-1.5, IMP-D30 · Intention i-52072457 · 2026-11-19
+
+## _prompt
+
+Reason: Group real Mimo prompts and their assistant continuations into turns
+
+Origins: IMP-1.5, IMP-D30 · Intention i-52072457 · 2026-11-19
+
+## _synthetic_user
+
+Reason: Group real Mimo prompts and their assistant continuations into turns
+
+Origins: IMP-1.5, IMP-D30 · Intention i-52072457 · 2026-11-19
 
