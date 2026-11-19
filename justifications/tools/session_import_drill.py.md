@@ -11,9 +11,9 @@ Origins: IMP-0.11 · Intention i-ecccb1fb · 2026-11-19
 
 ## <before DrillError>
 
-Reason: Drill setup and observation: disposable clusters, private home, launchers and an independent psql image
+Reason: Drill fenced upgrade: release records, exclusive session, snapshot, verified isolated restore, upgrade and reopen
 
-Origins: IMP-0.11 · Intention i-ecccb1fb · 2026-11-19
+Origins: IMP-0.11 · Intention i-abc1a6fb · 2026-11-19
 
 ## Cluster
 
@@ -176,4 +176,46 @@ Origins: IMP-0.11 · Intention i-ecccb1fb · 2026-11-19
 Reason: Drill setup and observation: disposable clusters, private home, launchers and an independent psql image
 
 Origins: IMP-0.11 · Intention i-ecccb1fb · 2026-11-19
+
+## Drill.<before Drill.context>
+
+Reason: Drill fenced upgrade: release records, exclusive session, snapshot, verified isolated restore, upgrade and reopen
+
+Origins: IMP-0.11 · Intention i-abc1a6fb · 2026-11-19
+
+## Drill.context
+
+Reason: Drill fenced upgrade: release records, exclusive session, snapshot, verified isolated restore, upgrade and reopen
+
+Origins: IMP-0.11 · Intention i-abc1a6fb · 2026-11-19
+
+## Drill.fenced_upgrade
+
+Reason: Drill fenced upgrade: release records, exclusive session, snapshot, verified isolated restore, upgrade and reopen
+
+Origins: IMP-0.11 · Intention i-abc1a6fb · 2026-11-19
+
+## Drill.maintenance
+
+Reason: Drill fenced upgrade: release records, exclusive session, snapshot, verified isolated restore, upgrade and reopen
+
+Origins: IMP-0.11 · Intention i-abc1a6fb · 2026-11-19
+
+## Drill.open_admission
+
+Reason: Drill fenced upgrade: release records, exclusive session, snapshot, verified isolated restore, upgrade and reopen
+
+Origins: IMP-0.11 · Intention i-abc1a6fb · 2026-11-19
+
+## Drill.release
+
+Reason: Drill fenced upgrade: release records, exclusive session, snapshot, verified isolated restore, upgrade and reopen
+
+Origins: IMP-0.11 · Intention i-abc1a6fb · 2026-11-19
+
+## Drill.verified
+
+Reason: Drill fenced upgrade: release records, exclusive session, snapshot, verified isolated restore, upgrade and reopen
+
+Origins: IMP-0.11 · Intention i-abc1a6fb · 2026-11-19
 
