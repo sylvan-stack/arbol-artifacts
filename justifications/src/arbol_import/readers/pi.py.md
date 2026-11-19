@@ -5,9 +5,9 @@ role: authored
 
 ## <before _iso_time>
 
-Reason: Read only eligible in-home Pi spills and preserve the inline result and truncation for outside references
+Reason: Record each Pi response's native start and token counts, and take the model route from the first assistant
 
-Origins: IMP-1.6, IMP-1.8, IMP-1.9, IMP-0.2, IMP-D13, IMP-D29 · Intention i-de55f95c · 2026-11-19
+Origins: IMP-1.1, IMP-1.7, IMP-D12, PI-2.5 · Intention i-a66f6733 · 2026-11-19
 
 ## _Header
 
@@ -167,9 +167,9 @@ Origins: IMP-1.1, IMP-1.5, IMP-1.11, IMP-0.7, IMP-0.15, IMP-D10 · Intention i-7
 
 ## _turn
 
-Reason: Read only eligible in-home Pi spills and preserve the inline result and truncation for outside references
+Reason: Record each Pi response's native start and token counts, and take the model route from the first assistant
 
-Origins: IMP-1.6, IMP-1.8, IMP-1.9, IMP-0.2, IMP-D13, IMP-D29 · Intention i-de55f95c · 2026-11-19
+Origins: IMP-1.1, IMP-1.7, IMP-D12, PI-2.5 · Intention i-a66f6733 · 2026-11-19
 
 ## _turn_end
 
@@ -242,4 +242,22 @@ Origins: IMP-1.6, IMP-1.8, IMP-1.9, IMP-0.2, IMP-D13, IMP-D29 · Intention i-de5
 Reason: Read only eligible in-home Pi spills and preserve the inline result and truncation for outside references
 
 Origins: IMP-1.6, IMP-1.8, IMP-1.9, IMP-0.2, IMP-D13, IMP-D29 · Intention i-de55f95c · 2026-11-19
+
+## _response
+
+Reason: Record each Pi response's native start and token counts, and take the model route from the first assistant
+
+Origins: IMP-1.1, IMP-1.7, IMP-D12, PI-2.5 · Intention i-a66f6733 · 2026-11-19
+
+## _route
+
+Reason: Record each Pi response's native start and token counts, and take the model route from the first assistant
+
+Origins: IMP-1.1, IMP-1.7, IMP-D12, PI-2.5 · Intention i-a66f6733 · 2026-11-19
+
+## _tokens
+
+Reason: Record each Pi response's native start and token counts, and take the model route from the first assistant
+
+Origins: IMP-1.1, IMP-1.7, IMP-D12, PI-2.5 · Intention i-a66f6733 · 2026-11-19
 
