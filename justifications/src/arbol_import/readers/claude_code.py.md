@@ -107,9 +107,9 @@ Origins: IMP-1.1, IMP-0.21, IMP-D16 · Intention i-753a9fd8 · 2026-11-19
 
 ## _ordered_sessions
 
-Reason: Validate records before retaining their UUID and classification evidence
+Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
 
-Origins: IMP-1.1, IMP-0.21, IMP-D16 · Intention i-753a9fd8 · 2026-11-19
+Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
 
 ## _read_records
 
@@ -323,7 +323,91 @@ Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
 
 ## _responses
 
-Reason: Retain one timestamped usage entry per native response
+Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
 
-Origins: IMP-1.7, IMP-1.4 · Intention i-85ff0905 · 2026-11-19
+Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+
+## <before _launches>
+
+Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
+
+Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+
+## AgentLog
+
+Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
+
+Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+
+## AgentLog.first_at
+
+Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
+
+Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+
+## Launch
+
+Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
+
+Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+
+## _agent_files
+
+Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
+
+Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+
+## _agent_link
+
+Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
+
+Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+
+## _agent_logs
+
+Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
+
+Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+
+## _children
+
+Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
+
+Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+
+## _json_file
+
+Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
+
+Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+
+## _launches
+
+Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
+
+Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+
+## _locate_turn
+
+Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
+
+Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+
+## _ordered_rows
+
+Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
+
+Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+
+## _placements
+
+Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
+
+Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+
+## _present
+
+Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
+
+Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
 
