@@ -109,9 +109,11 @@ arbol:tests/backend/test_bridge.py#Wire.test_identifiers_before_effects_and_reus
 
 ### Exchange details
 
-`exchange.phaseDetails` reads Steady's phase details for an unreplaced Exchange while it is open or after it has ended. It takes the Exchange UUID, optional `after` position of the most recent complete entry and optional `offset` for a partial next entry. Both default to zero. The response is `{ entries: [{ position, text, nextOffset? }] }`. Concatenate the text for an entry in offset order and decode that entry as JSON once it has no `nextOffset`. Continue after each complete position. An empty page means there are no new entries. During an open Exchange the reading popup can request another page from the current position.
+`exchange.phaseDetails` reads Steady's phase details for an unreplaced Exchange while it is open or after it has ended. It takes the Exchange UUID, optional `after` position of the most recent complete entry and optional `offset` for the next entry. Both are nonnegative integers and default to zero. An offset counts Unicode code points in the stored record text. The response is `{ entries: [{ position, text, nextOffset? }] }`. A fragment with `nextOffset` advances the offset at the same position. Concatenate fragments and decode the entry as JSON after its terminal fragment. Continue after that position with offset zero. An out-of-range offset on an existing entry is refused. An empty page means there are no new entries, including for unknown, replaced or non-Steady Exchanges.
 
 Schema revision 4 stores the immutable entries alongside their Exchange. Earlier supported revisions return an empty page. Each page fits the Bridge message limit, including when one entry spans multiple replies. The Bridge sends the stored arguments and text in full. Elma shortens the display of long text payloads as specified in [STE-0.24](../../arbol-trunk/trunks/steady/specs/00-the-steady-trunk.md#requirements).
+
+Elma can poll this call while the detail popup for an open Exchange is visible. It reads through the end after settlement and stops polling when the popup closes. This call exposes only the phase detail records defined by Steady. Credential stores and process environments are outside those records.
 
 ### Subscriptions
 
