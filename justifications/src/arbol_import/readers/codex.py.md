@@ -5,9 +5,9 @@ role: authored
 
 ## <before _id>
 
-Reason: Classify Codex sessions from validated root evidence
+Reason: Project Codex turn bounds, prompts and steers
 
-Origins: IMP-1.3, IMP-D6, IMP-D16, IMP-D19, IMP-D20 · Intention i-12b5f8be · 2026-11-19
+Origins: IMP-1.4, IMP-1.5, IMP-0.7, IMP-0.8, IMP-D8, IMP-D11 · Intention i-edb3f045 · 2026-11-19
 
 ## Rollout
 
@@ -209,9 +209,9 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16
 
 ## _body
 
-Reason: Validate and stream Codex conversation records
+Reason: Project Codex turn bounds, prompts and steers
 
-Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
+Origins: IMP-1.4, IMP-1.5, IMP-0.7, IMP-0.8, IMP-D8, IMP-D11 · Intention i-edb3f045 · 2026-11-19
 
 ## _conversation
 
@@ -287,7 +287,49 @@ Origins: IMP-1.3, IMP-D6, IMP-D16, IMP-D19, IMP-D20 · Intention i-12b5f8be · 2
 
 ## _kind
 
-Reason: Classify Codex sessions from validated root evidence
+Reason: Project Codex turn bounds, prompts and steers
 
-Origins: IMP-1.3, IMP-D6, IMP-D16, IMP-D19, IMP-D20 · Intention i-12b5f8be · 2026-11-19
+Origins: IMP-1.4, IMP-1.5, IMP-0.7, IMP-0.8, IMP-D8, IMP-D11 · Intention i-edb3f045 · 2026-11-19
+
+## NativeTurn
+
+Reason: Project Codex turn bounds, prompts and steers
+
+Origins: IMP-1.4, IMP-1.5, IMP-0.7, IMP-0.8, IMP-D8, IMP-D11 · Intention i-edb3f045 · 2026-11-19
+
+## NativeTurn.end_at
+
+Reason: Project Codex turn bounds, prompts and steers
+
+Origins: IMP-1.4, IMP-1.5, IMP-0.7, IMP-0.8, IMP-D8, IMP-D11 · Intention i-edb3f045 · 2026-11-19
+
+## NativeTurn.first_at
+
+Reason: Project Codex turn bounds, prompts and steers
+
+Origins: IMP-1.4, IMP-1.5, IMP-0.7, IMP-0.8, IMP-D8, IMP-D11 · Intention i-edb3f045 · 2026-11-19
+
+## _prompt
+
+Reason: Project Codex turn bounds, prompts and steers
+
+Origins: IMP-1.4, IMP-1.5, IMP-0.7, IMP-0.8, IMP-D8, IMP-D11 · Intention i-edb3f045 · 2026-11-19
+
+## _read_lane
+
+Reason: Project Codex turn bounds, prompts and steers
+
+Origins: IMP-1.4, IMP-1.5, IMP-0.7, IMP-0.8, IMP-D8, IMP-D11 · Intention i-edb3f045 · 2026-11-19
+
+## _terminal
+
+Reason: Project Codex turn bounds, prompts and steers
+
+Origins: IMP-1.4, IMP-1.5, IMP-0.7, IMP-0.8, IMP-D8, IMP-D11 · Intention i-edb3f045 · 2026-11-19
+
+## _trigger
+
+Reason: Project Codex turn bounds, prompts and steers
+
+Origins: IMP-1.4, IMP-1.5, IMP-0.7, IMP-0.8, IMP-D8, IMP-D11 · Intention i-edb3f045 · 2026-11-19
 
