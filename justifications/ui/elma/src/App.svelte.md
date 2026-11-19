@@ -5,7 +5,13 @@ role: authored
 
 ## <before style>
 
-Reason: Publish the installation Bridge 2 renderer and scoped chat, Draft, pending request and administration adapters
+Reason: Connect the live Elma phase inspector to persisted details
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
+Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
+
+## script
+
+Reason: Connect the live Elma phase inspector to persisted details
+
+Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
 
