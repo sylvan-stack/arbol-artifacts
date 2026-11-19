@@ -5,9 +5,9 @@ role: authored
 
 ## <before _iso_time>
 
-Reason: Record Pi's first-entry Driver marker and latest title while scanning native entry metadata
+Reason: Project only the raw ancestry of Pi's last saved leaf and refuse an invalid active graph
 
-Origins: IMP-1.1, IMP-1.3, IMP-1.12, IMP-0.5, IMP-D6, IMP-D16 · Intention i-dc9bc565 · 2026-11-19
+Origins: IMP-1.1, IMP-1.4, IMP-1.10, IMP-0.7, IMP-0.21, IMP-D10 · Intention i-aff35457 · 2026-11-19
 
 ## _Header
 
@@ -77,9 +77,9 @@ Origins: IMP-1.1, IMP-1.3, IMP-1.12, IMP-0.5, IMP-D6, IMP-D16 · Intention i-dc9
 
 ## _Entry.has_parent
 
-Reason: Record Pi's first-entry Driver marker and latest title while scanning native entry metadata
+Reason: Project only the raw ancestry of Pi's last saved leaf and refuse an invalid active graph
 
-Origins: IMP-1.1, IMP-1.3, IMP-1.12, IMP-0.5, IMP-D6, IMP-D16 · Intention i-dc9bc565 · 2026-11-19
+Origins: IMP-1.1, IMP-1.4, IMP-1.10, IMP-0.7, IMP-0.21, IMP-D10 · Intention i-aff35457 · 2026-11-19
 
 ## _Entry.native_id
 
@@ -95,13 +95,37 @@ Origins: IMP-1.1, IMP-1.3, IMP-1.12, IMP-0.5, IMP-D6, IMP-D16 · Intention i-dc9
 
 ## _Scan.add
 
-Reason: Record Pi's first-entry Driver marker and latest title while scanning native entry metadata
+Reason: Project only the raw ancestry of Pi's last saved leaf and refuse an invalid active graph
 
-Origins: IMP-1.1, IMP-1.3, IMP-1.12, IMP-0.5, IMP-D6, IMP-D16 · Intention i-dc9bc565 · 2026-11-19
+Origins: IMP-1.1, IMP-1.4, IMP-1.10, IMP-0.7, IMP-0.21, IMP-D10 · Intention i-aff35457 · 2026-11-19
 
 ## _string
 
 Reason: Record Pi's first-entry Driver marker and latest title while scanning native entry metadata
 
 Origins: IMP-1.1, IMP-1.3, IMP-1.12, IMP-0.5, IMP-D6, IMP-D16 · Intention i-dc9bc565 · 2026-11-19
+
+## _Entry.bad
+
+Reason: Project only the raw ancestry of Pi's last saved leaf and refuse an invalid active graph
+
+Origins: IMP-1.1, IMP-1.4, IMP-1.10, IMP-0.7, IMP-0.21, IMP-D10 · Intention i-aff35457 · 2026-11-19
+
+## _Entry.where
+
+Reason: Project only the raw ancestry of Pi's last saved leaf and refuse an invalid active graph
+
+Origins: IMP-1.1, IMP-1.4, IMP-1.10, IMP-0.7, IMP-0.21, IMP-D10 · Intention i-aff35457 · 2026-11-19
+
+## _active_messages
+
+Reason: Project only the raw ancestry of Pi's last saved leaf and refuse an invalid active graph
+
+Origins: IMP-1.1, IMP-1.4, IMP-1.10, IMP-0.7, IMP-0.21, IMP-D10 · Intention i-aff35457 · 2026-11-19
+
+## _active_path
+
+Reason: Project only the raw ancestry of Pi's last saved leaf and refuse an invalid active graph
+
+Origins: IMP-1.1, IMP-1.4, IMP-1.10, IMP-0.7, IMP-0.21, IMP-D10 · Intention i-aff35457 · 2026-11-19
 
