@@ -5,9 +5,9 @@ role: authored
 
 ## <before _SavedSession>
 
-Reason: Form Kimi turns, steers, and endings in wire order
+Reason: Project timed Kimi assistant text from loop records
 
-Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
+Origins: IMP-1.4, IMP-0.7 · Intention i-4c113390 · 2026-11-19
 
 ## _SavedSession
 
@@ -167,9 +167,9 @@ Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
 
 ## _Lane.append
 
-Reason: Form Kimi turns, steers, and endings in wire order
+Reason: Project timed Kimi assistant text from loop records
 
-Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
+Origins: IMP-1.4, IMP-0.7 · Intention i-4c113390 · 2026-11-19
 
 ## _NativeTurn
 
@@ -212,4 +212,16 @@ Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
 Reason: Form Kimi turns, steers, and endings in wire order
 
 Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
+
+## _content
+
+Reason: Project timed Kimi assistant text from loop records
+
+Origins: IMP-1.4, IMP-0.7 · Intention i-4c113390 · 2026-11-19
+
+## _items
+
+Reason: Project timed Kimi assistant text from loop records
+
+Origins: IMP-1.4, IMP-0.7 · Intention i-4c113390 · 2026-11-19
 
