@@ -5,9 +5,9 @@ role: authored
 
 ## <before _unreadable>
 
-Reason: Validate Mimo conversation rows and retain their native timestamps
+Reason: Classify Mimo sessions from validated Driver and probe records
 
-Origins: IMP-1.1, IMP-D10, IMP-D16 · Intention i-e5c234a2 · 2026-11-19
+Origins: IMP-1.3, IMP-D16 · Intention i-a2ec86e3 · 2026-11-19
 
 ## _copy_database
 
@@ -77,9 +77,9 @@ Origins: IMP-1.1, IMP-D10, IMP-D16 · Intention i-e5c234a2 · 2026-11-19
 
 ## _KindFacts
 
-Reason: Validate Mimo conversation rows and retain their native timestamps
+Reason: Classify Mimo sessions from validated Driver and probe records
 
-Origins: IMP-1.1, IMP-D10, IMP-D16 · Intention i-e5c234a2 · 2026-11-19
+Origins: IMP-1.3, IMP-D16 · Intention i-a2ec86e3 · 2026-11-19
 
 ## _Message
 
@@ -119,9 +119,9 @@ Origins: IMP-1.1, IMP-D10, IMP-D16 · Intention i-e5c234a2 · 2026-11-19
 
 ## _message
 
-Reason: Validate Mimo conversation rows and retain their native timestamps
+Reason: Classify Mimo sessions from validated Driver and probe records
 
-Origins: IMP-1.1, IMP-D10, IMP-D16 · Intention i-e5c234a2 · 2026-11-19
+Origins: IMP-1.3, IMP-D16 · Intention i-a2ec86e3 · 2026-11-19
 
 ## _object
 
@@ -137,15 +137,15 @@ Origins: IMP-1.1, IMP-D10, IMP-D16 · Intention i-e5c234a2 · 2026-11-19
 
 ## _part
 
-Reason: Validate Mimo conversation rows and retain their native timestamps
+Reason: Classify Mimo sessions from validated Driver and probe records
 
-Origins: IMP-1.1, IMP-D10, IMP-D16 · Intention i-e5c234a2 · 2026-11-19
+Origins: IMP-1.3, IMP-D16 · Intention i-a2ec86e3 · 2026-11-19
 
 ## _read_messages
 
-Reason: Validate Mimo conversation rows and retain their native timestamps
+Reason: Classify Mimo sessions from validated Driver and probe records
 
-Origins: IMP-1.1, IMP-D10, IMP-D16 · Intention i-e5c234a2 · 2026-11-19
+Origins: IMP-1.3, IMP-D16 · Intention i-a2ec86e3 · 2026-11-19
 
 ## _session_info
 
@@ -170,4 +170,28 @@ Origins: IMP-1.1, IMP-D10, IMP-D16 · Intention i-e5c234a2 · 2026-11-19
 Reason: Validate Mimo conversation rows and retain their native timestamps
 
 Origins: IMP-1.1, IMP-D10, IMP-D16 · Intention i-e5c234a2 · 2026-11-19
+
+## <before _kind>
+
+Reason: Classify Mimo sessions from validated Driver and probe records
+
+Origins: IMP-1.3, IMP-D16 · Intention i-a2ec86e3 · 2026-11-19
+
+## _claude_scratchpad
+
+Reason: Classify Mimo sessions from validated Driver and probe records
+
+Origins: IMP-1.3, IMP-D16 · Intention i-a2ec86e3 · 2026-11-19
+
+## _kind
+
+Reason: Classify Mimo sessions from validated Driver and probe records
+
+Origins: IMP-1.3, IMP-D16 · Intention i-a2ec86e3 · 2026-11-19
+
+## _read_actor_facts
+
+Reason: Classify Mimo sessions from validated Driver and probe records
+
+Origins: IMP-1.3, IMP-D16 · Intention i-a2ec86e3 · 2026-11-19
 
