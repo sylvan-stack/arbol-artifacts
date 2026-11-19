@@ -131,7 +131,19 @@ Origins: IMP-1.8, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D12, IMP-D19, IMP-D34 · Inten
 
 ## _titles
 
-Reason: Read independent Codex title index entries
+Reason: Identify sessions from the Codex Driver chat map
 
-Origins: IMP-1.2, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D19 · Intention i-791e2ced · 2026-11-19
+Origins: IMP-1.3, IMP-1.9, IMP-0.2, IMP-D16, IMP-D19 · Intention i-f8f1add5 · 2026-11-19
+
+## _directory_entries
+
+Reason: Identify sessions from the Codex Driver chat map
+
+Origins: IMP-1.3, IMP-1.9, IMP-0.2, IMP-D16, IMP-D19 · Intention i-f8f1add5 · 2026-11-19
+
+## _driver_ids
+
+Reason: Identify sessions from the Codex Driver chat map
+
+Origins: IMP-1.3, IMP-1.9, IMP-0.2, IMP-D16, IMP-D19 · Intention i-f8f1add5 · 2026-11-19
 
