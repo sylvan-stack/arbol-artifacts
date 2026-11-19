@@ -107,6 +107,12 @@ arbol:tests/backend/test_bridge.py#Wire.test_calls_independent_one_reply_and_add
 arbol:tests/backend/test_bridge.py#Wire.test_identifiers_before_effects_and_reused_id
 -->
 
+### Exchange details
+
+`exchange.phaseDetails` reads Steady's phase details for an unreplaced Exchange while it is open or after it has ended. It takes the Exchange UUID, optional `after` position of the most recent complete entry and optional `offset` for a partial next entry. Both default to zero. The response is `{ entries: [{ position, text, nextOffset? }] }`. Concatenate the text for an entry in offset order and decode that entry as JSON once it has no `nextOffset`. Continue after each complete position. An empty page means there are no new entries. During an open Exchange the reading popup can request another page from the current position.
+
+Schema revision 4 stores the immutable entries alongside their Exchange. Earlier supported revisions return an empty page. Each page fits the Bridge message limit, including when one entry spans multiple replies. The Bridge sends the stored arguments and text in full. Elma shortens the display of long text payloads as specified in [STE-0.24](../../arbol-trunk/trunks/steady/specs/00-the-steady-trunk.md#requirements).
+
 ### Subscriptions
 
 A subscription starts with one event that holds the present state of its topic, the *snapshot*, and goes on with the changes. Every event of a subscription carries `seq`, which counts from 1 without gaps:
@@ -467,6 +473,7 @@ The calls:
 | `chats.page` | `before?`: `{ activityAt, chat }` of the oldest chat shown; `limit?`, at most 200, 100 by default; `archived?`: boolean, true for archived chats only | `{ chats: ChatSummary[] }`, active chats when `archived` is omitted or false, archived chats when true. Both modes return chats older than `before`, ordered by `activityAt` and then `chat`, both newest first ([IMP-D33](../session-import/00-the-import.md#decisions)). | 30 s |
 | `chat.exchanges` | `chat`, `beforeNumber`, `limit?`, at most 50, 12 by default | `{ exchanges: SavedExchange[]; more: boolean }` | 30 s |
 | `toolCall.get` | `exchange`, `position` | the tool call whole: `{ input, result?, error? }` | 30 s |
+| `exchange.phaseDetails` | `exchange`, `after?`, `offset?` | `{ entries: PhaseDetailEntry[] }`, see [Exchange details](#exchange-details) | 30 s |
 | `subscriptions.check` | — | `{ subscriptions: Array<{ id: string; seq: number }> }`: the last `seq` sent on each | 30 s |
 | `chat.send` | `chat`, `exchange`, `message`, `route`, `workingFolder`, `draft?`: `{ revision, folder? }`, the Draft it was sent from, the chat's own or, for a new chat, the Draft of the repository folder | `Accepted` | 150 s |
 | `exchange.sendAgain` | `exchange` (the one replaced), `newExchange`, `route` | `Accepted` | 150 s |
