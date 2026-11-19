@@ -42,12 +42,12 @@ arbol import <tool> [--session <native id>]... [--dry-run] [--include arbol_driv
 
 - `<tool>` is one of `claude-code`, `codex`, `kimi-code`, `pi` and `mimo`.
 - Without `--session`, it considers every session in the tool's home.
-- `--dry-run` reads and maps everything and writes nothing. It prints the report a real import would print.
+- `--dry-run` reads and maps everything. It writes nothing to the installed database, the raw archive or the tool's home. A private SQLite copy may exist in the importer's work folder for the reading pass, and is removed afterwards. The command prints the report a real import would print ([IMP-D34](#decisions)).
 - `--include` adds a kind of session the default leaves out ([Which sessions](#which-sessions)).
 
 The command prints one JSON report on standard output. The exit status is 0 when no session failed and 1 otherwise.
 
-**The tool's home is only read.** An importer never writes to a tool's home: it reads files and opens databases there read-only. It reads Mimo's SQLite database from a private copy of the database and its write-ahead log ([IMP-1](01-reading-each-tool.md#mimo)).
+**The tool's home is only read.** An importer never writes to a tool's home: it reads files and opens databases there read-only. It reads Mimo's SQLite database and Codex's state catalogue from private copies taken under the rules for [Mimo](01-reading-each-tool.md#mimo) and [Codex](01-reading-each-tool.md#codex).
 
 **Outcomes.** Every session considered gets one outcome:
 
@@ -238,7 +238,7 @@ The archive keeps every file of a native session, so that nothing the tables lea
   manifests/12/34ab….json              one manifest, named by the sha256 of its own bytes
 ~/.arbol/imports/                      the importer's own working files, beside Arbol's settings (ARC-5)
   import.lock                          held while an import runs
-  tmp/                                 the private copy of Mimo's database during a run, removed when the run ends
+  tmp/                                 private Mimo database and Codex catalogue copies during a run, removed afterwards
 ```
 
 Folders are created with mode 0700 and files with 0600. Mercury is FileVault-encrypted APFS with ownership disabled, so those modes protect nothing on Mercury itself. The drive's encryption protects the archive at rest.
@@ -279,6 +279,7 @@ An imported chat is archived when it is created and never takes a new message ([
 
 **What the Bridge and Elma show.**
 - The Bridge gives each chat of the chat list and each chat snapshot an `imported` field: `{"tool", "kind"}` for an imported chat, and absent otherwise.
+- Elma's Archived chats list uses an opt-in archived-only `chats.page` request. The existing Latest chats page and subscription still start with active chats. An archived page uses the same ordering, cursor and limit as the active page. Its summaries carry `archived: true` and carry the import metadata when applicable ([IMP-D33](#decisions), [BKD-1](../backend/01-the-bridge.md#interface)).
 - Elma shows an imported chat like any archived chat, names the tool it came from, and shows no composer for it.
 - The owner can unarchive an imported chat, but it stays read-only.
 
@@ -309,7 +310,7 @@ BLD-0 reserves the Trunk code name `imported`, and no Trunk Build may take it. A
 | ID | Arbol must | Origin | Verified by |
 |---|---|---|---|
 | IMP-0.1 | Offer `arbol import <tool>` for `claude-code`, `codex`, `kimi-code`, `pi` and `mimo`, with `--session`, `--dry-run` and `--include`, printing one JSON report with one outcome per session and exiting 1 when any session failed | New; IMP-D5 | unit; probe |
-| IMP-0.2 | Never write to a tool's home; read Mimo from a private copy of its database and write-ahead log | New; research | probe |
+| IMP-0.2 | Never write to a tool's home; read Mimo's database and Codex's state catalogue and write-ahead logs from private copies | New; research, IMP-D34 | probe |
 | IMP-0.3 | Give every top-level session one kind by IMP-1's rules; import `owner`, `agent_launched` and `scheduled` and exclude `arbol_driver` and `probe` unless `--include` names them | New; IMP-D6 | unit; probe |
 | IMP-0.4 | Write one chat per top-level session and one Exchange, with exactly one run, per turn or segment, with the values of [From a session to a chat](#from-a-session-to-a-chat), including a failure error exactly for failed Exchanges and runs | New; IMP-D1, RCT-3 | unit; journey |
 | IMP-0.5 | Set the title from IMP-1's rule, trimmed, cut to 240 characters, and NULL when empty | New; BKD-0 `chat.rename` | unit |
@@ -324,7 +325,7 @@ BLD-0 reserves the Trunk code name `imported`, and no Trunk Build may take it. A
 | IMP-0.14 | Import a session again without duplicating rows: report `unchanged`, `extended` or `rearchived`; add only turns with new keys; never rewrite an imported turn; match moved files by session identity | New; research | unit; drill |
 | IMP-0.15 | Withhold a live session's last turn, and import an unfinished turn of a session that is not live as `interrupted` | New; research | unit |
 | IMP-0.16 | Refuse every new Exchange for an imported chat in the backend with `imported_chat`, and in the database through the insert trigger; create no Draft for it | New; IMP-D4 | contract; journey |
-| IMP-0.17 | Archive an imported chat on import; give the Bridge's chat list and snapshot the `imported` field; Elma names the tool and shows no composer | New; IMP-D4 | journey |
+| IMP-0.17 | Archive an imported chat on import; give the Bridge's chat list and snapshot the `imported` field; provide an archived-only chat page for Elma; Elma names the tool and shows no composer | New; IMP-D4, IMP-D33 | journey |
 | IMP-0.18 | Reserve the Trunk code name `imported` in BLD-0, and in every reader accept `trunk = 'imported'` with Build `0` as an import, never resolve it to a Trunk Build, and take its facts from `chat_imports` | New; IMP-D7, IMP-D15 | unit |
 | IMP-0.19 | Check the installed schema pair and refuse with `incompatible_schema`; take one writer permit per session; stop at draining or exclusive admission with `maintenance`; refuse a dry run under exclusive admission; allow one import at a time; import each session in its own transaction | New; ARC-4.4 | drill |
 | IMP-0.20 | Replace U+0000 and lone surrogate halves with U+FFFD in stored text and JSON, leaving the archive byte-exact | New; RCT-3 | unit |
@@ -343,7 +344,7 @@ BLD-0 reserves the Trunk code name `imported`, and no Trunk Build may take it. A
   - A session that fails before its native ID is known is reported with the name of its file as `native` and no `kind`.
   - A session that fails after its native ID is known is reported with the kind its tool's table in IMP-1 gives for the records read before the failure ([IMP-D16](#decisions)).
 - **Database:** the tables and trigger of [Provenance](#provenance), and the error object of a failed imported Exchange.
-- **Bridge:** the `imported` field of a chat, and the send refusal `imported_chat`.
+- **Bridge:** the `imported` field of a chat, the archived-only page through `chats.page {archived: true}`, and the send refusal `imported_chat`.
 - **Archive:** the layout, places and manifest of [The raw archive](#the-raw-archive).
 
 ## Known problems
@@ -378,3 +379,14 @@ BLD-0 reserves the Trunk code name `imported`, and no Trunk Build may take it. A
 | IMP-D21 | Which of several Codex rollout files with the same native ID supplies the conversation? Found while planning SIM-6 | Prefer the path in the state catalogue, matching with and without `.zst`. When there is no matching copy, prefer the most recently modified one. Project one copy and keep the verified same-ID rollout files in the archive. | Decided 19 November 2026 by the owner |
 | IMP-D22 | Which time assigns Codex response usage to a segment when the response start is absent? Found while planning SIM-6 | Use the saved usage record's time for segment assignment when no response start time was saved. | Decided 19 November 2026 by the owner |
 | IMP-D23 | Where does a reused Codex sub-agent's work go if a later root turn owns it? Found while planning SIM-6 | Assign it to the later native root turn. In that turn use the existing sub-agent fallback if the launching call belongs to an earlier turn. | Decided 19 November 2026 by the owner |
+| IMP-D24 | What if a Kimi Code fork's source cannot be read? | Report `unreadable_session` for the fork alone. Its copied records cannot be distinguished from its new records without a readable source. | Decided 19 November 2026 by the owner |
+| IMP-D25 | How is a readable Kimi Code wire with no complete record imported? | Report it as `empty`. Use the session's recorded `state.json.createdAt` as its internal creation time when available, otherwise the main wire's modification time. | Decided 19 November 2026 by the owner |
+| IMP-D26 | Which of several loop requests supplies a Kimi Code turn's model and effort? | Use the model and effort together from the last retained `llm.request` of kind `loop` in the turn. | Decided 19 November 2026 by the owner |
+| IMP-D27 | What if a Kimi Code image reference has no local evidence of media type and size? | Leave the reference in the raw archive. Emit an image descriptor only when native metadata or an eligible in-home file provides both values. Make no network request. | Decided 19 November 2026 by the owner |
+| IMP-D28 | Which Kimi Code prompts count as Forester hook probes? | Use exact prompts from documented Forester hook-installation probes in the one-turn, no-tool-call rule. An unmatched prompt is `owner`. | Decided 19 November 2026 by the owner |
+| IMP-D29 | Does the Pi reader read a spilled tool result outside the Pi home? | Keep the saved inline result and its truncation flag and count the named file in `filesNotArchived`. Read spills only from eligible paths resolved inside the supplied Pi home. | Decided 19 November 2026 by the owner |
+| IMP-D30 | Do synthetic-only Mimo user messages form turns? | Keep the synthetic prompt in the archive. Attach its subsequent main-lane responses to the preceding real main turn, or keep the continuation archive-only if no real turn precedes it. A real non-text prompt still starts a turn. | Decided 19 November 2026 by the owner |
+| IMP-D31 | Which turn owns a Mimo actor's work? | Use the turn of its proven launching call. Without a link, use the existing fallback in the main turn containing the actor's first record. Keep unassignable actor work in the raw archive. | Decided 19 November 2026 by the owner |
+| IMP-D32 | Which Mimo response supplies the turn model? | Use the first main-lane assistant's native `providerID/modelID` pair, leaving the model absent if there is no assistant or the pair is unavailable. | Decided 19 November 2026 by the owner |
+| IMP-D33 | How does Elma list imported chats while they are archived? | Offer an archived-only mode on `chats.page` through `archived: true` and use it for Elma's Archived chats list. Use the existing sort, cursor and limit. Summaries in this mode carry `archived: true`, with import metadata when present. Omitted or false keeps the existing page. The Latest chats subscription keeps its current scope. | Decided 19 November 2026 by the owner |
+| IMP-D34 | May the Codex reader use private scratch to read the live state catalogue? | Take a verified private DB and WAL copy in the importer's work folder, including during dry runs. Open it read-only and remove it and any private sidecars after reading. Original files remain untouched. If a consistent copy cannot be verified, use IMP-D19. | Decided 19 November 2026 by the owner |

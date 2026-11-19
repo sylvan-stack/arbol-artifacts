@@ -464,7 +464,7 @@ The calls:
 | `root.get` | — | `{ root: RootInfo, layoutComplete: boolean }` | 30 s |
 | `workspace.get` | — | `{ repositories: Array<{name: string; folder: string; route: object}>; route: object }`, read-only slots/defaults as above | 30 s |
 | `roots.list` | — | `Discovery` | 30 s |
-| `chats.page` | `before?`: `{ activityAt, chat }` of the oldest chat shown; `limit?`, at most 200, 100 by default | `{ chats: ChatSummary[] }`, without archived chats, older than `before`, by `activityAt` and then `chat`, both newest first | 30 s |
+| `chats.page` | `before?`: `{ activityAt, chat }` of the oldest chat shown; `limit?`, at most 200, 100 by default; `archived?`: boolean, true for archived chats only | `{ chats: ChatSummary[] }`, active chats when `archived` is omitted or false, archived chats when true. Both modes return chats older than `before`, ordered by `activityAt` and then `chat`, both newest first ([IMP-D33](../session-import/00-the-import.md#decisions)). | 30 s |
 | `chat.exchanges` | `chat`, `beforeNumber`, `limit?`, at most 50, 12 by default | `{ exchanges: SavedExchange[]; more: boolean }` | 30 s |
 | `toolCall.get` | `exchange`, `position` | the tool call whole: `{ input, result?, error? }` | 30 s |
 | `subscriptions.check` | — | `{ subscriptions: Array<{ id: string; seq: number }> }`: the last `seq` sent on each | 30 s |
@@ -530,7 +530,8 @@ interface ChatSummary {
   route?: object;                       // of the last Exchange, for the row of the latest chats
   ongoing: boolean;
   migration?: { fromRoot: string; fromChat: string; stale: boolean }; // only when this Root has provenance
-  archived?: true;                      // only in a changed event, when the chat was archived
+  archived?: true;                      // in an archived page or for an archived chat in a changed event
+  imported?: { tool: string; kind: string }; // present when the chat has import provenance (IMP-0)
 }
 
 interface ChatSettings { route?: object; workingFolder?: string }   // picked for the next message; absent: the last Exchange's (BKD-0)
@@ -541,6 +542,7 @@ interface ChatInfo {
   title: string | null;
   createdAt?: string;
   firstMessage?: string;                // first200 characters of the first unreplaced prompt; additive BKD-D36
+  imported?: { tool: string; kind: string }; // present when the chat has import provenance (IMP-0)
   migration?: { fromRoot: string; fromChat: string; stale: boolean }; // the same own-Root provenance as ChatSummary
   exchangeCount: number;                // every Exchange of the chat that was not replaced, for "Turn n of N"
   usage: { inputTokens: number; outputTokens: number };   // the sum over the chat's runs, for the cockpit

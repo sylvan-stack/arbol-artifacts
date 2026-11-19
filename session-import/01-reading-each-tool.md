@@ -134,8 +134,8 @@ If the supplied Driver chat-map directory or an entry cannot be read or decoded,
 **Where.**
 - One top-level session is one rollout whose `session_meta` names no parent thread: `~/.codex/sessions/YYYY/MM/DD/rollout-*.jsonl[.zst]` or a rollout in `~/.codex/archived_sessions/`. Its identity is `session_meta.id`, so a rollout moved between the two folders is the same session.
 - A `.zst` file is decompressed as a stream.
-- `~/.codex/state_5.sqlite`, opened read-only, gives the title (`threads.title`, else the name in `session_index.jsonl`) and archival. A thread's `rollout_path` is matched with and without `.zst`.
-- An unavailable part of the shared state catalogue, session title index or Driver chat map supplies no evidence. Continue with the parts that can be read and the evidence in the rollouts. Unavailable shared metadata causes no session failure. Read-only SQLite access includes its sidecars. [IMP-D19](00-the-import.md#decisions)
+- A verified private copy of `~/.codex/state_5.sqlite` and any write-ahead log, opened read-only, gives the title (`threads.title`, else the name in `session_index.jsonl`) and archival. A thread's `rollout_path` is matched with and without `.zst`.
+- An unavailable part of the shared state catalogue, session title index or Driver chat map supplies no evidence. Continue with the parts that can be read and the evidence in the rollouts. Unavailable shared metadata causes no session failure. Take a consistent copy of the catalogue and its write-ahead log in the supplied private work folder, including for a dry run. Do not open the originals with SQLite. If bounded attempts cannot verify a consistent copy, apply IMP-D19. Remove the copy and any private sidecars after reading ([IMP-D19 and IMP-D34](00-the-import.md#decisions)).
 - When rollout files have the same validated native ID, use the catalogue's matching path for conversation projection. When no copy matches it, use the most recently modified copy. The raw archive keeps the verified copies. [IMP-D21](00-the-import.md#decisions)
 
 The archive takes the rollout files of the session and of all its sub-agent threads, plus the session's rows of `threads` and `thread_spawn_edges` exported as JSON. Nothing else in `~/.codex` is archived, including `auth.json`, `config.toml`, `thread_history_1.sqlite` (derived from the rollouts) and the logs.
@@ -212,14 +212,15 @@ It also takes the files under `~/.kimi-code/files/` that the session's `kimi-fil
 **Kind.**
 | Kind | Rule |
 |---|---|
-| `probe` | A one-turn session with no tool calls whose prompt is a recorded probe of the Forester hook installation |
+| `probe` | A one-turn session with no tool calls whose prompt exactly matches a documented Forester hook-installation probe ([IMP-D28](00-the-import.md#decisions)) |
 | `owner` | Everything else, the `*-test` workspaces included |
 
 Kimi Code has no Arbol Driver, so no session is `arbol_driver`. `origin` keeps the workspace folder name and the first prompt's `origin.kind`.
 
 **Records read.**
 - Only these are read: `turn.*`, `prompt.*`, `context.append_message`, `context.append_loop_event`, `context.apply_compaction`, `context.undo`, `context.clear`, `llm.request`, `subagent.*`, and `metadata`. The legacy `agent.*` stream of versions before 1.3.5 repeats the conversation and is not read.
-- **Forks.** A forked session (`forkedFrom`) drops every record whose `uuid` also appears in the session it was forked from, because a fork copies its source's records.
+- **Forks.** A forked session (`forkedFrom`) drops every record whose `uuid` also appears in the session it was forked from, because a fork copies its source's records. If that source is missing or unreadable, report just the fork as `unreadable_session` ([IMP-D24](00-the-import.md#decisions)).
+- **Empty session.** If the main wire is readable but has no complete record, the session has no turns and the importer reports it as `empty`. Use `state.json.createdAt` when available, otherwise the main wire's modification time, as the internal creation time ([IMP-D25](00-the-import.md#decisions)).
 - **Undo and clear.** `context.undo` with count N removes the previous N messages from the turn being read. `context.clear` ends the readable history before it. Both are honoured even though no session uses them today.
 
 **Turns.**
@@ -233,12 +234,12 @@ Kimi Code has no Arbol Driver, so no session is `arbol_driver`. `origin` keeps t
 - A `tool.call` (`toolCallId`, `name`, `args`) is joined with the `tool.result` whose `parentUuid` is the call's `uuid`.
   - `isError` sets `ok` false and `error`.
   - Output spilled to `tool-results/` is read from there.
-  - `blobref:`, `data:`, `kimi-file://` and `ms://` images are described as IMP-0 says.
+  - `blobref:`, `data:`, `kimi-file://` and `ms://` images are described as IMP-0 says when native metadata or an eligible in-home file gives their media type and size. Otherwise the reference stays in the archive. The reader does not fetch remote images ([IMP-D27](00-the-import.md#decisions)).
 - Injected `context.append_message` records whose `origin.kind` is not `user` stay in the archive.
 
 **Sub-agents.** `subagent.spawned.parentToolCallId` names the call. The sub-agent's wire is read the same way, with `agent` set to its agent ID, and its calls are nested under that call.
 
-**Usage, model and folder.** Usage is the sum of the turn's `step.end.usage`, with input `inputOther + inputCacheRead + inputCacheCreation`. `model` and `effort` come from the turn's `llm.request` of kind `loop`. The working folder is `state.json.cwd`, and `toolVersion` the version `metadata` records.
+**Usage, model and folder.** Usage is the sum of the turn's `step.end.usage`, with input `inputOther + inputCacheRead + inputCacheCreation`. `model` and `effort` come together from the last retained `llm.request` of kind `loop` in the turn ([IMP-D26](00-the-import.md#decisions)). The working folder is `state.json.cwd`, and `toolVersion` the version `metadata` records.
 
 **Live.** The session's lock in `~/.kimi-code/locks/sessions/` is held, or a wire changed in the last 10 minutes.
 
@@ -246,7 +247,7 @@ Kimi Code has no Arbol Driver, so no session is `arbol_driver`. `origin` keeps t
 
 **Where.**
 - One session is `~/.pi/agent/sessions/<folder>/<time>_<id>.jsonl`, and its identity is the header's `id`.
-- The archive takes that file, plus any file that a result's `details.fullOutputPath` names, but only when that file is inside `~/.pi/agent`. A path outside it is not archived, and the report counts it as `filesNotArchived` ([IMP-0 Interface](00-the-import.md#interface)).
+- The archive takes that file, plus any file that a result's `details.fullOutputPath` names, but only when that file is inside `~/.pi/agent`. Read a spilled result only from an eligible file whose resolved path stays inside the supplied Pi home. For an outside-home path, use the saved inline result and its truncation flag and count the file in `filesNotArchived` ([IMP-D29](00-the-import.md#decisions)).
 - Never archived: `auth.json`, `models*.json`, `settings.json`, `install/` and `bin/`.
 
 **Kind.**
@@ -297,7 +298,7 @@ The archive takes the session's rows exported as JSON, and its `storage/session_
 `origin` keeps `directory`, `title_source` and `slug`.
 
 **Turns.**
-- **Bounds and key.** A turn is one user message of the main lane, the main agent's `agent_id`, together with the main-lane assistant messages whose `parentID` names it. `turnKey` is the user message's `id`, and the trigger is `typed`.
+- **Bounds and key.** A turn is one real user message of the main lane, the main agent's `agent_id`, together with the main-lane assistant messages whose `parentID` names it. `turnKey` is the user message's `id`, and the trigger is `typed`. A main-lane user message with recorded synthetic input and no real user input contributes no prompt or turn. Attach responses to it to the preceding real main turn. If none precedes it, its responses stay in the archive. A real prompt that contains only non-text input still starts a turn ([IMP-D30](00-the-import.md#decisions)).
 - **Prompt.** The user message's text parts that are not `synthetic`.
 - **State.**
   - `failed` when the last assistant message has an `error`, with its kind;
@@ -311,9 +312,9 @@ The archive takes the session's rows exported as JSON, and its `storage/session_
   - `error` sets `ok` false with `error`.
   - `pending` and `running` give an interrupted call.
 
-**Sub-agents.** An actor lane's messages belong to the `actor` tool call whose `state.metadata.actorId` is that lane's `agent_id`. Its calls are nested under that call, with `agent` set to the actor ID. Each assistant message's tokens are counted once, in the lane that holds it.
+**Sub-agents.** An actor lane's messages belong to the `actor` tool call whose `state.metadata.actorId` is that lane's `agent_id`. Its calls are nested under that call in the launch turn, with `agent` set to the actor ID. If there is no proven launch link, use IMP-0's fallback in the main turn containing the actor's first record. Keep the actor's work in the archive if no turn owns it. Each assistant message's tokens are counted once, in the lane that holds it ([IMP-D31](00-the-import.md#decisions)).
 
-**Usage, model and folder.** Usage is the sum of the assistant messages' `tokens`: `input`, `cache.read`, `cache.write`, `output` and `reasoning`. `model` is `providerID/modelID`. The working folder is `session.directory`, the title `session.title`, and `toolVersion` `session.version`.
+**Usage, model and folder.** Usage is the sum of the assistant messages' `tokens`: `input`, `cache.read`, `cache.write`, `output` and `reasoning`. `model` is the first main-lane assistant message's `providerID/modelID`, when that pair is available ([IMP-D32](00-the-import.md#decisions)). The working folder is `session.directory`, the title `session.title`, and `toolVersion` `session.version`.
 
 **Live.** `time_updated` within the last 10 minutes.
 
@@ -326,10 +327,10 @@ The archive takes the session's rows exported as JSON, and its `storage/session_
 | IMP-1.3 | Classify every session by its tool's kind table, and keep the origin facts it names | New; IMP-D6 | unit; probe |
 | IMP-1.4 | Drop each tool's duplicates: Claude by line `uuid` across files read in time order and by `message.id`; Codex by its single sources, skipped compaction and fork prefix; Kimi by ignoring `agent.*` and by fork `uuid`s | New; research | unit; probe |
 | IMP-1.5 | Form turns, turn keys, prompts, steers, triggers and states by each tool's rule, ending an unended Codex turn at the next start, and mapping an unnamed ending to `failed` with its kind | New; research | unit; probe |
-| IMP-1.6 | Join each tool call with its result by the tool's identifier, read spilled outputs from their files, and nest sub-agent calls and Codex `exec` work under their parent call | New; IMP-D3 | unit; probe |
+| IMP-1.6 | Join each tool call with its result by the tool's identifier, read spilled outputs by each tool's rules, and nest sub-agent calls and Codex `exec` work under their parent call | New; IMP-D3 | unit; probe |
 | IMP-1.7 | Sum usage by each tool's rule, counting no repeated record twice, and never import Pi's estimated cost | New; research, PI-2 | unit |
 | IMP-1.8 | Archive exactly each tool's listed session files, and never its credentials, tokens, device identifiers, configuration, derived caches, logs, unreferenced uploads or files outside its home | New; IMP-D1 | unit; probe |
-| IMP-1.9 | Open Codex's `state_5.sqlite` read-only and Mimo's database only from a private copy, and never open a file for writing in a tool's home | New; IMP-0.2 | probe |
+| IMP-1.9 | Open private copies of Codex's `state_5.sqlite` and Mimo's database read-only, and never open a file for writing in a tool's home | New; IMP-0.2, IMP-D34 | probe |
 | IMP-1.10 | Read only Pi's active path, and honour Kimi's `context.undo` and `context.clear` | New; research | unit |
 | IMP-1.11 | Identify a session by its native identity, not its path, and report liveness by each tool's rule | New; IMP-0.14, IMP-0.15 | unit |
 | IMP-1.12 | Take each title by its tool's rule | New; IMP-0.5 | unit |
