@@ -5,9 +5,9 @@ role: authored
 
 ## <before _SavedSession>
 
-Reason: Decode native wire envelopes and Kimi state with source positions and read-only file access.
+Reason: Form Kimi turns, steers, and endings in wire order
 
-Origins: IMP-1.1, IMP-1.2, IMP-1.12 · Intention i-52593c79 · 2026-11-19
+Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
 
 ## _SavedSession
 
@@ -152,4 +152,64 @@ Origins: IMP-1.10, IMP-1.5 · Intention i-32a60dd7 · 2026-11-19
 Reason: Remove Kimi context messages and their contributions on undo
 
 Origins: IMP-1.10, IMP-1.5 · Intention i-32a60dd7 · 2026-11-19
+
+## <before _turn_key>
+
+Reason: Form Kimi turns, steers, and endings in wire order
+
+Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
+
+## _Lane
+
+Reason: Form Kimi turns, steers, and endings in wire order
+
+Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
+
+## _Lane.append
+
+Reason: Form Kimi turns, steers, and endings in wire order
+
+Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
+
+## _NativeTurn
+
+Reason: Form Kimi turns, steers, and endings in wire order
+
+Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
+
+## _NativeTurn.project
+
+Reason: Form Kimi turns, steers, and endings in wire order
+
+Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
+
+## _error
+
+Reason: Form Kimi turns, steers, and endings in wire order
+
+Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
+
+## _parts
+
+Reason: Form Kimi turns, steers, and endings in wire order
+
+Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
+
+## _prompt
+
+Reason: Form Kimi turns, steers, and endings in wire order
+
+Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
+
+## _text
+
+Reason: Form Kimi turns, steers, and endings in wire order
+
+Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
+
+## _turn_key
+
+Reason: Form Kimi turns, steers, and endings in wire order
+
+Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
 
