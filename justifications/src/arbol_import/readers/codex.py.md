@@ -5,9 +5,9 @@ role: authored
 
 ## <before _id>
 
-Reason: Project Codex turn bounds, prompts and steers
+Reason: Project Codex assistant text from response items
 
-Origins: IMP-1.4, IMP-1.5, IMP-0.7, IMP-0.8, IMP-D8, IMP-D11 · Intention i-edb3f045 · 2026-11-19
+Origins: IMP-1.1, IMP-1.4, IMP-0.7, IMP-D12 · Intention i-c686f9bb · 2026-11-19
 
 ## Rollout
 
@@ -311,9 +311,9 @@ Origins: IMP-1.4, IMP-1.5, IMP-0.7, IMP-0.8, IMP-D8, IMP-D11 · Intention i-edb3
 
 ## _prompt
 
-Reason: Project Codex turn bounds, prompts and steers
+Reason: Project Codex assistant text from response items
 
-Origins: IMP-1.4, IMP-1.5, IMP-0.7, IMP-0.8, IMP-D8, IMP-D11 · Intention i-edb3f045 · 2026-11-19
+Origins: IMP-1.1, IMP-1.4, IMP-0.7, IMP-D12 · Intention i-c686f9bb · 2026-11-19
 
 ## _read_lane
 
@@ -332,4 +332,10 @@ Origins: IMP-1.4, IMP-1.5, IMP-0.7, IMP-0.8, IMP-D8, IMP-D11 · Intention i-edb3
 Reason: Project Codex turn bounds, prompts and steers
 
 Origins: IMP-1.4, IMP-1.5, IMP-0.7, IMP-0.8, IMP-D8, IMP-D11 · Intention i-edb3f045 · 2026-11-19
+
+## _assistant_text
+
+Reason: Project Codex assistant text from response items
+
+Origins: IMP-1.1, IMP-1.4, IMP-0.7, IMP-D12 · Intention i-c686f9bb · 2026-11-19
 
