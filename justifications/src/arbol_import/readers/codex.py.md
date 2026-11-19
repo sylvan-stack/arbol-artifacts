@@ -455,9 +455,9 @@ Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, 
 
 ## _agents
 
-Reason: Assign Codex sub-agent work to root turns
+Reason: Assemble Codex session metadata
 
-Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, IMP-D23 · Intention i-dddeb829 · 2026-11-19
+Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-1.12, IMP-0.5, IMP-D19 · Intention i-2ea1f7b1 · 2026-11-19
 
 ## _assigned_turn
 
@@ -488,4 +488,10 @@ Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, 
 Reason: Assign Codex sub-agent work to root turns
 
 Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, IMP-D23 · Intention i-dddeb829 · 2026-11-19
+
+## _session_metadata
+
+Reason: Assemble Codex session metadata
+
+Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-1.12, IMP-0.5, IMP-D19 · Intention i-2ea1f7b1 · 2026-11-19
 
