@@ -5,9 +5,9 @@ role: authored
 
 ## <before SessionFile>
 
-Reason: Attach nested calls and separate sub-agent usage to their parent turns
+Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
 
-Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-3fded0f5 · 2026-11-19
+Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
 
 ## SessionFile
 
@@ -125,9 +125,9 @@ Origins: IMP-1.2, IMP-1.4 · Intention i-8b93be51 · 2026-11-19
 
 ## <before _object>
 
-Reason: Validate records before retaining their UUID and classification evidence
+Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
 
-Origins: IMP-1.1, IMP-0.21, IMP-D16 · Intention i-753a9fd8 · 2026-11-19
+Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
 
 ## _bad_record
 
@@ -269,9 +269,9 @@ Origins: IMP-1.5, IMP-0.7 · Intention i-265f7763 · 2026-11-19
 
 ## <before _spill_path>
 
-Reason: Join calls with results and resolve safe spilled text and image descriptions
+Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
 
-Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
+Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
 
 ## NativeResult
 
@@ -311,15 +311,15 @@ Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
 
 ## _spill_path
 
-Reason: Join calls with results and resolve safe spilled text and image descriptions
+Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
 
-Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
+Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
 
 ## _spill_text
 
-Reason: Join calls with results and resolve safe spilled text and image descriptions
+Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
 
-Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
+Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
 
 ## _responses
 
@@ -422,4 +422,64 @@ Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-3fded0f5 · 2026-11-19
 Reason: Attach nested calls and separate sub-agent usage to their parent turns
 
 Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-3fded0f5 · 2026-11-19
+
+## <before _archive_name>
+
+Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
+
+Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
+
+## ArchiveFiles
+
+Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
+
+Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
+
+## ArchiveFiles.include
+
+Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
+
+Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
+
+## ArchiveFiles.resolve
+
+Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
+
+Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
+
+## ArchiveFiles.session_tree
+
+Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
+
+Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
+
+## _archive
+
+Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
+
+Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
+
+## _archive_name
+
+Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
+
+Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
+
+## _archive_refs
+
+Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
+
+Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
+
+## _backup_names
+
+Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
+
+Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
+
+## _history_path
+
+Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
+
+Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
 
