@@ -5,9 +5,9 @@ role: authored
 
 ## <before _unreadable>
 
-Reason: Project saved Mimo tool states, results and inline image descriptors
+Reason: Account for native usage once per Mimo assistant message
 
-Origins: IMP-1.6, IMP-0.10 · Intention i-1a06af71 · 2026-11-19
+Origins: IMP-1.7, IMP-D31 · Intention i-c99a446d · 2026-11-19
 
 ## _copy_database
 
@@ -83,9 +83,9 @@ Origins: IMP-1.3, IMP-D16 · Intention i-a2ec86e3 · 2026-11-19
 
 ## _Message
 
-Reason: Project timestamped main-lane text and retain auxiliary parts in the archive
+Reason: Account for native usage once per Mimo assistant message
 
-Origins: IMP-0.7, IMP-1.5 · Intention i-79e93db3 · 2026-11-19
+Origins: IMP-1.7, IMP-D31 · Intention i-c99a446d · 2026-11-19
 
 ## _Part
 
@@ -119,9 +119,9 @@ Origins: IMP-1.1, IMP-D10, IMP-D16 · Intention i-e5c234a2 · 2026-11-19
 
 ## _message
 
-Reason: Project timestamped main-lane text and retain auxiliary parts in the archive
+Reason: Account for native usage once per Mimo assistant message
 
-Origins: IMP-0.7, IMP-1.5 · Intention i-79e93db3 · 2026-11-19
+Origins: IMP-1.7, IMP-D31 · Intention i-c99a446d · 2026-11-19
 
 ## _object
 
@@ -281,7 +281,25 @@ Origins: IMP-1.6, IMP-0.10 · Intention i-1a06af71 · 2026-11-19
 
 ## _tool_call
 
-Reason: Project saved Mimo tool states, results and inline image descriptors
+Reason: Account for native usage once per Mimo assistant message
 
-Origins: IMP-1.6, IMP-0.10 · Intention i-1a06af71 · 2026-11-19
+Origins: IMP-1.7, IMP-D31 · Intention i-c99a446d · 2026-11-19
+
+## _count
+
+Reason: Account for native usage once per Mimo assistant message
+
+Origins: IMP-1.7, IMP-D31 · Intention i-c99a446d · 2026-11-19
+
+## _responses
+
+Reason: Account for native usage once per Mimo assistant message
+
+Origins: IMP-1.7, IMP-D31 · Intention i-c99a446d · 2026-11-19
+
+## _usage
+
+Reason: Account for native usage once per Mimo assistant message
+
+Origins: IMP-1.7, IMP-D31 · Intention i-c99a446d · 2026-11-19
 
