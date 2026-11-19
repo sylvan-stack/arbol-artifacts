@@ -5,9 +5,9 @@ role: authored
 
 ## <before _iso_time>
 
-Reason: Record each Pi response's native start and token counts, and take the model route from the first assistant
+Reason: Archive the session and deduplicated eligible spills across all branches, counting outside references and file liveness
 
-Origins: IMP-1.1, IMP-1.7, IMP-D12, PI-2.5 · Intention i-a66f6733 · 2026-11-19
+Origins: IMP-1.8, IMP-1.9, IMP-1.10, IMP-1.11, IMP-0.2, IMP-0.13, IMP-0.15, IMP-D29 · Intention i-794180cb · 2026-11-19
 
 ## _Header
 
@@ -191,9 +191,9 @@ Origins: IMP-1.1, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-03b51a30 ·
 
 ## _items
 
-Reason: Read only eligible in-home Pi spills and preserve the inline result and truncation for outside references
+Reason: Archive the session and deduplicated eligible spills across all branches, counting outside references and file liveness
 
-Origins: IMP-1.6, IMP-1.8, IMP-1.9, IMP-0.2, IMP-D13, IMP-D29 · Intention i-de55f95c · 2026-11-19
+Origins: IMP-1.8, IMP-1.9, IMP-1.10, IMP-1.11, IMP-0.2, IMP-0.13, IMP-0.15, IMP-D29 · Intention i-794180cb · 2026-11-19
 
 ## _result
 
@@ -260,4 +260,10 @@ Origins: IMP-1.1, IMP-1.7, IMP-D12, PI-2.5 · Intention i-a66f6733 · 2026-11-19
 Reason: Record each Pi response's native start and token counts, and take the model route from the first assistant
 
 Origins: IMP-1.1, IMP-1.7, IMP-D12, PI-2.5 · Intention i-a66f6733 · 2026-11-19
+
+## _archive
+
+Reason: Archive the session and deduplicated eligible spills across all branches, counting outside references and file liveness
+
+Origins: IMP-1.8, IMP-1.9, IMP-1.10, IMP-1.11, IMP-0.2, IMP-0.13, IMP-0.15, IMP-D29 · Intention i-794180cb · 2026-11-19
 
