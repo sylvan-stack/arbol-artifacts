@@ -29,9 +29,9 @@ Origins: IMP-1.11, IMP-0.2 · Intention i-7968d176 · 2026-11-19
 
 ## _discover
 
-Reason: Stream complete records in file time order and track duplicate UUIDs across copies
+Reason: Keep malformed result sidecars local to their session and project spilled image descriptions safely
 
-Origins: IMP-1.2, IMP-1.4 · Intention i-8b93be51 · 2026-11-19
+Origins: IMP-1.1, IMP-0.21 · Intention i-a96da6a2 · 2026-11-19
 
 ## _inside
 
@@ -287,9 +287,9 @@ Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-3fded0f5 · 2026-11-19
 
 ## _native_results
 
-Reason: Join calls with results and resolve safe spilled text and image descriptions
+Reason: Keep malformed result sidecars local to their session and project spilled image descriptions safely
 
-Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
+Origins: IMP-1.1, IMP-0.21 · Intention i-a96da6a2 · 2026-11-19
 
 ## _result_fields
 
@@ -317,9 +317,9 @@ Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
 
 ## _spill_text
 
-Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
+Removed: Keep malformed result sidecars local to their session and project spilled image descriptions safely
 
-Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
+Removed by Intention i-a96da6a2 · 2026-11-19
 
 ## _responses
 
@@ -467,9 +467,9 @@ Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
 
 ## _archive_refs
 
-Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
+Reason: Keep malformed result sidecars local to their session and project spilled image descriptions safely
 
-Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
+Origins: IMP-1.1, IMP-0.21 · Intention i-a96da6a2 · 2026-11-19
 
 ## _backup_names
 
@@ -518,4 +518,28 @@ Origins: IMP-1.1, IMP-1.11, IMP-0.21, IMP-D16 · Intention i-7abd097f · 2026-11
 Reason: Expose the reader and isolate failures with the kind from each validated prefix
 
 Origins: IMP-1.1, IMP-1.11, IMP-0.21, IMP-D16 · Intention i-7abd097f · 2026-11-19
+
+## _result_blocks
+
+Reason: Keep malformed result sidecars local to their session and project spilled image descriptions safely
+
+Origins: IMP-1.1, IMP-0.21 · Intention i-a96da6a2 · 2026-11-19
+
+## _result_images
+
+Reason: Keep malformed result sidecars local to their session and project spilled image descriptions safely
+
+Origins: IMP-1.1, IMP-0.21 · Intention i-a96da6a2 · 2026-11-19
+
+## _result_texts
+
+Reason: Keep malformed result sidecars local to their session and project spilled image descriptions safely
+
+Origins: IMP-1.1, IMP-0.21 · Intention i-a96da6a2 · 2026-11-19
+
+## _spill_result
+
+Reason: Keep malformed result sidecars local to their session and project spilled image descriptions safely
+
+Origins: IMP-1.1, IMP-0.21 · Intention i-a96da6a2 · 2026-11-19
 
