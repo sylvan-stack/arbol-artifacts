@@ -5,9 +5,9 @@ role: authored
 
 ## <before AdmissionRefusal>
 
-Reason: The backend and admission must agree on the new runtime directory and PostgreSQL guards while preserving isolated overrides.
+Reason: Bind active writer admission to the installed layout and allow an exclusive operator to convert or reverse the marker without replacing locks.
 
-Origins: ARC-5.1, ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-7edd5e18 · 2026-11-19
+Origins: ARC-5.6, ARC-5.7, ARC-5.8 · Intention i-dd047d30 · 2026-11-19
 
 ## Admission
 
@@ -107,9 +107,9 @@ Origins: ARC-4.4, ARC-4.5 · Intention i-e245baed · 2026-11-12
 
 ## read_state
 
-Reason: Use the same installation lease to protect Build recovery inputs and stage its private module in both consumers.
+Reason: Bind active writer admission to the installed layout and allow an exclusive operator to convert or reverse the marker without replacing locks.
 
-Origins: ARC-4.4, ARC-4.5 · Intention i-e245baed · 2026-11-12
+Origins: ARC-5.6, ARC-5.7, ARC-5.8 · Intention i-dd047d30 · 2026-11-19
 
 ## runtime_folder
 
@@ -119,13 +119,19 @@ Origins: ARC-5.1, ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-7edd5e18 · 2026-11-1
 
 ## staged_state
 
-Reason: Use the same installation lease to protect Build recovery inputs and stage its private module in both consumers.
+Reason: Bind active writer admission to the installed layout and allow an exclusive operator to convert or reverse the marker without replacing locks.
 
-Origins: ARC-4.4, ARC-4.5 · Intention i-e245baed · 2026-11-12
+Origins: ARC-5.6, ARC-5.7, ARC-5.8 · Intention i-dd047d30 · 2026-11-19
 
 ## write_state
 
-Reason: Use the same installation lease to protect Build recovery inputs and stage its private module in both consumers.
+Reason: Bind active writer admission to the installed layout and allow an exclusive operator to convert or reverse the marker without replacing locks.
 
-Origins: ARC-4.4, ARC-4.5 · Intention i-e245baed · 2026-11-12
+Origins: ARC-5.6, ARC-5.7, ARC-5.8 · Intention i-dd047d30 · 2026-11-19
+
+## convert_admission_layout
+
+Reason: Bind active writer admission to the installed layout and allow an exclusive operator to convert or reverse the marker without replacing locks.
+
+Origins: ARC-5.6, ARC-5.7, ARC-5.8 · Intention i-dd047d30 · 2026-11-19
 
