@@ -5,9 +5,9 @@ role: authored
 
 ## <before timestamp>
 
-Reason: Require a successful isolated restore and validate its archive, data, release and maintenance bindings before authorizing a change
+Reason: Bind the recovery snapshot and its release record to the verified Mercury archive before the snapshot lease.
 
-Origins: ARC-4.5, ARC-4.8 · Intention i-c84db912 · 2026-11-12
+Origins: ARC-5.4 · Intention i-eb4f61a5 · 2026-11-19
 
 ## <end>
 
@@ -17,9 +17,9 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-67d8e913 · 2026-11-12
 
 ## capture
 
-Reason: Capture the named database with its exact snapshot, verified release and exclusive maintenance session
+Reason: Bind the recovery snapshot and its release record to the verified Mercury archive before the snapshot lease.
 
-Origins: ARC-4.5, ARC-4.8 · Intention i-67d8e913 · 2026-11-12
+Origins: ARC-5.4 · Intention i-eb4f61a5 · 2026-11-19
 
 ## check_archive_name
 
@@ -35,9 +35,9 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-67d8e913 · 2026-11-12
 
 ## cluster_identity
 
-Reason: Capture the named database with its exact snapshot, verified release and exclusive maintenance session
+Reason: Bind the recovery snapshot and its release record to the verified Mercury archive before the snapshot lease.
 
-Origins: ARC-4.5, ARC-4.8 · Intention i-67d8e913 · 2026-11-12
+Origins: ARC-5.4 · Intention i-eb4f61a5 · 2026-11-19
 
 ## connection_arguments
 
@@ -53,15 +53,15 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-67d8e913 · 2026-11-12
 
 ## installation_cluster
 
-Reason: Capture the named database with its exact snapshot, verified release and exclusive maintenance session
+Reason: Bind the recovery snapshot and its release record to the verified Mercury archive before the snapshot lease.
 
-Origins: ARC-4.5, ARC-4.8 · Intention i-67d8e913 · 2026-11-12
+Origins: ARC-5.4 · Intention i-eb4f61a5 · 2026-11-19
 
 ## main
 
-Reason: Require a successful isolated restore and validate its archive, data, release and maintenance bindings before authorizing a change
+Reason: Bind the recovery snapshot and its release record to the verified Mercury archive before the snapshot lease.
 
-Origins: ARC-4.5, ARC-4.8 · Intention i-c84db912 · 2026-11-12
+Origins: ARC-5.4 · Intention i-eb4f61a5 · 2026-11-19
 
 ## observations
 
@@ -107,25 +107,25 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-c84db912 · 2026-11-12
 
 ## read_private
 
-Reason: Require a successful isolated restore and validate its archive, data, release and maintenance bindings before authorizing a change
+Reason: Bind the recovery snapshot and its release record to the verified Mercury archive before the snapshot lease.
 
-Origins: ARC-4.5, ARC-4.8 · Intention i-c84db912 · 2026-11-12
+Origins: ARC-5.4 · Intention i-eb4f61a5 · 2026-11-19
 
 ## restore
 
-Reason: Require a successful isolated restore and validate its archive, data, release and maintenance bindings before authorizing a change
+Reason: Bind the recovery snapshot and its release record to the verified Mercury archive before the snapshot lease.
 
-Origins: ARC-4.5, ARC-4.8 · Intention i-c84db912 · 2026-11-12
+Origins: ARC-5.4 · Intention i-eb4f61a5 · 2026-11-19
 
 ## validate_snapshot
 
-Reason: Require a successful isolated restore and validate its archive, data, release and maintenance bindings before authorizing a change
+Reason: Bind the recovery snapshot and its release record to the verified Mercury archive before the snapshot lease.
 
-Origins: ARC-4.5, ARC-4.8 · Intention i-c84db912 · 2026-11-12
+Origins: ARC-5.4 · Intention i-eb4f61a5 · 2026-11-19
 
 ## verify_recovery
 
-Reason: Require a successful isolated restore and validate its archive, data, release and maintenance bindings before authorizing a change
+Reason: Bind the recovery snapshot and its release record to the verified Mercury archive before the snapshot lease.
 
-Origins: ARC-4.5, ARC-4.8 · Intention i-c84db912 · 2026-11-12
+Origins: ARC-5.4 · Intention i-eb4f61a5 · 2026-11-19
 
