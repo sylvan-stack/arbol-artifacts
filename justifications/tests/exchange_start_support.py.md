@@ -41,7 +41,7 @@ Origins: ARC-4.6 · Intention i-f3c7c9ab · 2026-11-12
 
 ## Starting.setUp
 
-Reason: Exercise the rootless start coordinator with a real detached subprocess and controlled receipt lookup, preserving fragmented acceptance, timeout request retention and late child completion.
+Reason: Let both existing detached-start regressions reach the current JSON request path
 
-Origins: ARC-4.6 · Intention i-f3c7c9ab · 2026-11-12
+Origins: ARC-4.4, ARC-4.6 · Intention i-8fb846d6 · 2026-11-19
 
