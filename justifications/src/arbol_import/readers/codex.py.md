@@ -5,9 +5,9 @@ role: authored
 
 ## <before _id>
 
-Reason: Describe the Codex session archive and liveness
+Reason: Expose the Codex reader through the shared importer form
 
-Origins: IMP-1.8, IMP-1.9, IMP-1.11, IMP-1.12, IMP-0.5, IMP-0.13, IMP-0.15, IMP-D12, IMP-D19, IMP-D21 · Intention i-813984f5 · 2026-11-19
+Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16, IMP-D19, IMP-D20 · Intention i-1a28a66c · 2026-11-19
 
 ## Rollout
 
@@ -503,7 +503,25 @@ Origins: IMP-1.8, IMP-1.9, IMP-1.11, IMP-1.12, IMP-0.5, IMP-0.13, IMP-0.15, IMP-
 
 ## _session_archive
 
-Reason: Describe the Codex session archive and liveness
+Reason: Expose the Codex reader through the shared importer form
 
-Origins: IMP-1.8, IMP-1.9, IMP-1.11, IMP-1.12, IMP-0.5, IMP-0.13, IMP-0.15, IMP-D12, IMP-D19, IMP-D21 · Intention i-813984f5 · 2026-11-19
+Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16, IMP-D19, IMP-D20 · Intention i-1a28a66c · 2026-11-19
+
+## _assemble_turns
+
+Reason: Expose the Codex reader through the shared importer form
+
+Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16, IMP-D19, IMP-D20 · Intention i-1a28a66c · 2026-11-19
+
+## _read_session
+
+Reason: Expose the Codex reader through the shared importer form
+
+Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16, IMP-D19, IMP-D20 · Intention i-1a28a66c · 2026-11-19
+
+## read
+
+Reason: Expose the Codex reader through the shared importer form
+
+Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16, IMP-D19, IMP-D20 · Intention i-1a28a66c · 2026-11-19
 
