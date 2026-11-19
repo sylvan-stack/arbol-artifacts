@@ -5,9 +5,9 @@ role: authored
 
 ## <before _iso_time>
 
-Reason: Form typed turns from active Pi user messages using native time and assistant stop state
+Reason: Join Pi tool results within each turn and retain text, image descriptions and the native call order
 
-Origins: IMP-1.1, IMP-1.5, IMP-1.11, IMP-0.7, IMP-0.15, IMP-D10 · Intention i-70eab74c · 2026-11-19
+Origins: IMP-1.1, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-03b51a30 · 2026-11-19
 
 ## _Header
 
@@ -167,9 +167,9 @@ Origins: IMP-1.1, IMP-1.5, IMP-1.11, IMP-0.7, IMP-0.15, IMP-D10 · Intention i-7
 
 ## _turn
 
-Reason: Form typed turns from active Pi user messages using native time and assistant stop state
+Reason: Join Pi tool results within each turn and retain text, image descriptions and the native call order
 
-Origins: IMP-1.1, IMP-1.5, IMP-1.11, IMP-0.7, IMP-0.15, IMP-D10 · Intention i-70eab74c · 2026-11-19
+Origins: IMP-1.1, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-03b51a30 · 2026-11-19
 
 ## _turn_end
 
@@ -182,4 +182,34 @@ Origins: IMP-1.1, IMP-1.5, IMP-1.11, IMP-0.7, IMP-0.15, IMP-D10 · Intention i-7
 Reason: Form typed turns from active Pi user messages using native time and assistant stop state
 
 Origins: IMP-1.1, IMP-1.5, IMP-1.11, IMP-0.7, IMP-0.15, IMP-D10 · Intention i-70eab74c · 2026-11-19
+
+## _image
+
+Reason: Join Pi tool results within each turn and retain text, image descriptions and the native call order
+
+Origins: IMP-1.1, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-03b51a30 · 2026-11-19
+
+## _items
+
+Reason: Join Pi tool results within each turn and retain text, image descriptions and the native call order
+
+Origins: IMP-1.1, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-03b51a30 · 2026-11-19
+
+## _result
+
+Reason: Join Pi tool results within each turn and retain text, image descriptions and the native call order
+
+Origins: IMP-1.1, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-03b51a30 · 2026-11-19
+
+## _results
+
+Reason: Join Pi tool results within each turn and retain text, image descriptions and the native call order
+
+Origins: IMP-1.1, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-03b51a30 · 2026-11-19
+
+## _without_image_bytes
+
+Reason: Join Pi tool results within each turn and retain text, image descriptions and the native call order
+
+Origins: IMP-1.1, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-03b51a30 · 2026-11-19
 
