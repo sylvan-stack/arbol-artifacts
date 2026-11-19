@@ -5,9 +5,9 @@ role: authored
 
 ## <before _id>
 
-Reason: Discover and validate Codex rollout headers from the supplied home
+Reason: Read the Codex catalogue through a verified private snapshot
 
-Origins: IMP-1.1, IMP-1.2, IMP-1.9, IMP-1.11, IMP-0.2, IMP-D10, IMP-D13 · Intention i-21b8f614 · 2026-11-19
+Origins: IMP-1.8, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D12, IMP-D19, IMP-D34 · Intention i-277a82b7 · 2026-11-19
 
 ## Rollout
 
@@ -56,4 +56,76 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.9, IMP-1.11, IMP-0.2, IMP-D10, IMP-D13 · Inten
 Reason: Discover and validate Codex rollout headers from the supplied home
 
 Origins: IMP-1.1, IMP-1.2, IMP-1.9, IMP-1.11, IMP-0.2, IMP-D10, IMP-D13 · Intention i-21b8f614 · 2026-11-19
+
+## <before Catalogue>
+
+Reason: Read the Codex catalogue through a verified private snapshot
+
+Origins: IMP-1.8, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D12, IMP-D19, IMP-D34 · Intention i-277a82b7 · 2026-11-19
+
+## Catalogue
+
+Reason: Read the Codex catalogue through a verified private snapshot
+
+Origins: IMP-1.8, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D12, IMP-D19, IMP-D34 · Intention i-277a82b7 · 2026-11-19
+
+## _catalogue_file
+
+Reason: Read the Codex catalogue through a verified private snapshot
+
+Origins: IMP-1.8, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D12, IMP-D19, IMP-D34 · Intention i-277a82b7 · 2026-11-19
+
+## _catalogue_pair
+
+Reason: Read the Codex catalogue through a verified private snapshot
+
+Origins: IMP-1.8, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D12, IMP-D19, IMP-D34 · Intention i-277a82b7 · 2026-11-19
+
+## _catalogue_rows
+
+Reason: Read the Codex catalogue through a verified private snapshot
+
+Origins: IMP-1.8, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D12, IMP-D19, IMP-D34 · Intention i-277a82b7 · 2026-11-19
+
+## _copy_catalogue
+
+Reason: Read the Codex catalogue through a verified private snapshot
+
+Origins: IMP-1.8, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D12, IMP-D19, IMP-D34 · Intention i-277a82b7 · 2026-11-19
+
+## _open_catalogue
+
+Reason: Read the Codex catalogue through a verified private snapshot
+
+Origins: IMP-1.8, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D12, IMP-D19, IMP-D34 · Intention i-277a82b7 · 2026-11-19
+
+## _pair_stamp
+
+Reason: Read the Codex catalogue through a verified private snapshot
+
+Origins: IMP-1.8, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D12, IMP-D19, IMP-D34 · Intention i-277a82b7 · 2026-11-19
+
+## _read_catalogue
+
+Reason: Read the Codex catalogue through a verified private snapshot
+
+Origins: IMP-1.8, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D12, IMP-D19, IMP-D34 · Intention i-277a82b7 · 2026-11-19
+
+## _stamp
+
+Reason: Read the Codex catalogue through a verified private snapshot
+
+Origins: IMP-1.8, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D12, IMP-D19, IMP-D34 · Intention i-277a82b7 · 2026-11-19
+
+## _verify_catalogue
+
+Reason: Read the Codex catalogue through a verified private snapshot
+
+Origins: IMP-1.8, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D12, IMP-D19, IMP-D34 · Intention i-277a82b7 · 2026-11-19
+
+## _wal_checksum
+
+Reason: Read the Codex catalogue through a verified private snapshot
+
+Origins: IMP-1.8, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D12, IMP-D19, IMP-D34 · Intention i-277a82b7 · 2026-11-19
 
