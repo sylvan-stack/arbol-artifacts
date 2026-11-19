@@ -5,9 +5,9 @@ role: authored
 
 ## <before Frame>
 
-Reason: The fixture computes the lowest revision the package's schemaCompatibility admits
+Reason: A child on the package's interpreter runs each fenced step with the fixture's own exclusive context
 
-Origins: ARC-4.3 · Intention i-642ad330 · 2026-11-19
+Origins: ARC-4.4, ARC-4.5 · Intention i-51b89919 · 2026-11-19
 
 ## Cluster
 
@@ -119,7 +119,25 @@ Origins: ARC-4.3 · Intention i-642ad330 · 2026-11-19
 
 ## reach
 
-Reason: The fixture computes the lowest revision the package's schemaCompatibility admits
+Reason: A child on the package's interpreter runs each fenced step with the fixture's own exclusive context
 
-Origins: ARC-4.3 · Intention i-642ad330 · 2026-11-19
+Origins: ARC-4.4, ARC-4.5 · Intention i-51b89919 · 2026-11-19
+
+## <before fenced_step>
+
+Reason: A child on the package's interpreter runs each fenced step with the fixture's own exclusive context
+
+Origins: ARC-4.4, ARC-4.5 · Intention i-51b89919 · 2026-11-19
+
+## SingleInstallation.fenced
+
+Reason: A child on the package's interpreter runs each fenced step with the fixture's own exclusive context
+
+Origins: ARC-4.4, ARC-4.5 · Intention i-51b89919 · 2026-11-19
+
+## fenced_step
+
+Reason: A child on the package's interpreter runs each fenced step with the fixture's own exclusive context
+
+Origins: ARC-4.4, ARC-4.5 · Intention i-51b89919 · 2026-11-19
 
