@@ -59,9 +59,9 @@ Origins: ARC-5.4 · Intention i-eb4f61a5 · 2026-11-19
 
 ## main
 
-Reason: Bind the recovery snapshot and its release record to the verified Mercury archive before the snapshot lease.
+Reason: Verify Mercury and the recovery receipt paths before connecting to the isolated restore target.
 
-Origins: ARC-5.4 · Intention i-eb4f61a5 · 2026-11-19
+Origins: ARC-5.4 · Intention i-19900d69 · 2026-11-19
 
 ## observations
 
@@ -113,9 +113,9 @@ Origins: ARC-5.4 · Intention i-eb4f61a5 · 2026-11-19
 
 ## restore
 
-Reason: Bind the recovery snapshot and its release record to the verified Mercury archive before the snapshot lease.
+Reason: Verify Mercury and the recovery receipt paths before connecting to the isolated restore target.
 
-Origins: ARC-5.4 · Intention i-eb4f61a5 · 2026-11-19
+Origins: ARC-5.4 · Intention i-19900d69 · 2026-11-19
 
 ## validate_snapshot
 
@@ -125,7 +125,7 @@ Origins: ARC-5.4 · Intention i-eb4f61a5 · 2026-11-19
 
 ## verify_recovery
 
-Reason: Bind the recovery snapshot and its release record to the verified Mercury archive before the snapshot lease.
+Reason: Verify Mercury and the recovery receipt paths before connecting to the isolated restore target.
 
-Origins: ARC-5.4 · Intention i-eb4f61a5 · 2026-11-19
+Origins: ARC-5.4 · Intention i-19900d69 · 2026-11-19
 
