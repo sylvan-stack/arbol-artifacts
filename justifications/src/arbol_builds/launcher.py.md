@@ -5,9 +5,9 @@ role: authored
 
 ## valid_record
 
-Reason: Stage the schema-compatible Arbol Build and its Exchange command
+Reason: Record the Build layout independently from its schema declaration, preserving readability of existing records.
 
-Origins: ARC-4.1, ARC-4.3, ARC-4.8 · Intention i-d1b0e71e · 2026-11-12
+Origins: ARC-5.6 · Intention i-1c7ef6e6 · 2026-11-19
 
 ## schema_compatibility
 
@@ -38,4 +38,10 @@ Origins: IMP-0.18 · Intention i-cc3001b4 · 2026-11-18
 Reason: No Trunk Build can take the reserved code name imported
 
 Origins: IMP-0.18 · Intention i-cc3001b4 · 2026-11-18
+
+## installation_layout
+
+Reason: Record the Build layout independently from its schema declaration, preserving readability of existing records.
+
+Origins: ARC-5.6 · Intention i-1c7ef6e6 · 2026-11-19
 

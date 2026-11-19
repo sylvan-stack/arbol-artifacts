@@ -11,15 +11,15 @@ Origins: ARC-4.1, ARC-4.8 · Intention i-de10fbd4 · 2026-11-12
 
 ## build_component
 
-Reason: Retire generation and installation of the Root runtime launchers
+Reason: Record the Build layout independently from its schema declaration, preserving readability of existing records.
 
-Origins: ARC-4.1, ARC-4.8 · Intention i-de10fbd4 · 2026-11-12
+Origins: ARC-5.6 · Intention i-1c7ef6e6 · 2026-11-19
 
 ## <before now>
 
-Reason: Build reservations, guards and generated launchers must find the same installed registry and settings while retaining isolated registries.
+Reason: Record the Build layout independently from its schema declaration, preserving readability of existing records.
 
-Origins: ARC-5.1, ARC-5.2, ARC-5.5 · Intention i-c5d7328f · 2026-11-19
+Origins: ARC-5.6 · Intention i-1c7ef6e6 · 2026-11-19
 
 ## launcher_source
 

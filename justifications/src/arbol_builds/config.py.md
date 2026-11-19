@@ -11,15 +11,15 @@ Origins: FOR-D2 · Intention i-eb96f142 · 2026-11-09
 
 ## <before Locations>
 
-Reason: Build reservations, guards and generated launchers must find the same installed registry and settings while retaining isolated registries.
+Reason: Record the Build layout independently from its schema declaration, preserving readability of existing records.
 
-Origins: ARC-5.1, ARC-5.2, ARC-5.5 · Intention i-c5d7328f · 2026-11-19
+Origins: ARC-5.6 · Intention i-1c7ef6e6 · 2026-11-19
 
 ## description
 
-Reason: Record each database-dependent Build's declared schema compatibility and retain legacy Build history.
+Reason: Record the Build layout independently from its schema declaration, preserving readability of existing records.
 
-Origins: ARC-4.3 · Intention i-62e4abb1 · 2026-11-12
+Origins: ARC-5.6 · Intention i-1c7ef6e6 · 2026-11-19
 
 ## component_name
 
