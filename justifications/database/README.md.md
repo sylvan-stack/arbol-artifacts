@@ -5,9 +5,9 @@ role: authored
 
 ## Arbol's database server
 
-Reason: Document the fenced archive and isolated restore gates and how to recover the exact prior release before reopening
+Reason: The Build and database guides must describe the new working paths and preserve their isolated entry points.
 
-Origins: ARC-4.5, ARC-4.8 · Intention i-eb91651f · 2026-11-12
+Origins: ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-5c983db1 · 2026-11-19
 
 ## Arbol's database server > Database recovery before reopening
 
