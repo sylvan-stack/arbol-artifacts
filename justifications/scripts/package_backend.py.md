@@ -5,9 +5,9 @@ role: authored
 
 ## package
 
-Reason: The numbered Backend package must carry the same layout declaration as its source and registry record.
+Reason: Ship the Mercury preflight beside the recovery commands.
 
-Origins: ARC-5.6 · Intention i-593341be · 2026-11-19
+Origins: ARC-5.4 · Intention i-165a643d · 2026-11-19
 
 ## <before package>
 
