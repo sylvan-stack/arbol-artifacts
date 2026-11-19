@@ -35,3 +35,11 @@ Each record uses the current local `subscription` ID and an ISO 8601 `observedAt
 ## Stop conditions
 
 Preserve the prior reading and report the issue if the selected profile or account cannot be verified, the page requires sign-in, the numbers are missing or ambiguous, or the Subscription changes during the operation. For sign-in, use the private handoff in the Browser procedure. Continue with the other verified Subscriptions.
+
+## Automatic refresh in Seqoya
+
+When the Subscriptions tab opens, Seqoya can execute this operation locally against the running Arbol Browser preview. It uses the documented preview controller and the current format-1 Driver records. One refresh can run at a time. A recent successful reading can be reused for two minutes.
+
+Use the owner-confirmed mapping from Driver and Subscription ID to the exact named preview profile. Check the current Subscription creation time, the physical profile directory and the verified Browser tab and dashboard before saving. Keep the separate ChatGPT profiles and check their expected plans. When any target fails, preserve that Subscription's last valid reading and report its issue on the card. A Browser session that needs sign-in stays with the owner. Preserve open drafts and restore the previous tab selection and visibility.
+
+Use the existing typed evidence for Claude, Pi/ChatGPT and MiMo. Store Codex, Kimi and z.ai quota windows and the DeepSeek API balance as bounded, dated Browser readings. Prefer verified current Browser readings while keeping the existing Driver path available for other readings. Keep approximate times marked. This operation only reads provider dashboards and preserves Driver credentials and the installation schema.
