@@ -73,6 +73,8 @@ A reader yields one **session**, a list of **turns** and the session's archive f
 
 The archive takes the `.jsonl` file and that whole folder, plus the `~/.claude/file-history/` entries its `file-history-*` records name. Nothing else under `~/.claude` is archived: not settings, credentials, `memory/` or other projects.
 
+A readable session with no complete record still yields a session with no turns, so the importer reports `empty`. Its internal creation time is the earliest modification time of its top-level session files. A file with no complete record contributes no line to time ordering or deduplication. [IMP-D17](00-the-import.md#decisions)
+
 **Kind.**
 | Kind | Rule |
 |---|---|
