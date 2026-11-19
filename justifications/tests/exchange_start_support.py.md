@@ -5,9 +5,9 @@ role: authored
 
 ## <before Starting>
 
-Reason: Exercise the rootless start coordinator with a real detached subprocess and controlled receipt lookup, preserving fragmented acceptance, timeout request retention and late child completion.
+Reason: Keep the existing detached-start cases reaching the same real child after layout-aware selection.
 
-Origins: ARC-4.6 · Intention i-f3c7c9ab · 2026-11-12
+Origins: ARC-5.6, ARC-4.6 · Intention i-15ddd450 · 2026-11-19
 
 ## Starting
 
@@ -17,9 +17,9 @@ Origins: ARC-4.6 · Intention i-f3c7c9ab · 2026-11-12
 
 ## Starting.begin
 
-Reason: Exercise the rootless start coordinator with a real detached subprocess and controlled receipt lookup, preserving fragmented acceptance, timeout request retention and late child completion.
+Reason: Keep the existing detached-start cases reaching the same real child after layout-aware selection.
 
-Origins: ARC-4.6 · Intention i-f3c7c9ab · 2026-11-12
+Origins: ARC-5.6, ARC-4.6 · Intention i-15ddd450 · 2026-11-19
 
 ## Starting.clean_child
 
@@ -41,7 +41,7 @@ Origins: ARC-4.6 · Intention i-f3c7c9ab · 2026-11-12
 
 ## Starting.setUp
 
-Reason: Let both existing detached-start regressions reach the current JSON request path
+Reason: Keep the existing detached-start cases reaching the same real child after layout-aware selection.
 
-Origins: ARC-4.4, ARC-4.6 · Intention i-8fb846d6 · 2026-11-19
+Origins: ARC-5.6, ARC-4.6 · Intention i-15ddd450 · 2026-11-19
 
