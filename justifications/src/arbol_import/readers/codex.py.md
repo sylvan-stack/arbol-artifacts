@@ -5,9 +5,9 @@ role: authored
 
 ## <before _id>
 
-Reason: Nest Codex code-mode work inside exec spans
+Reason: Account for distinct Codex response usage
 
-Origins: IMP-1.4, IMP-1.6, IMP-0.9, IMP-D3 · Intention i-c714f1fe · 2026-11-19
+Origins: IMP-1.1, IMP-1.4, IMP-1.7, IMP-0.8, IMP-D12, IMP-D22 · Intention i-f6344978 · 2026-11-19
 
 ## Rollout
 
@@ -275,9 +275,9 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16
 
 ## _usage_fields
 
-Reason: Validate and stream Codex conversation records
+Reason: Account for distinct Codex response usage
 
-Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
+Origins: IMP-1.1, IMP-1.4, IMP-1.7, IMP-0.8, IMP-D12, IMP-D22 · Intention i-f6344978 · 2026-11-19
 
 ## <before _kind>
 
@@ -401,9 +401,9 @@ Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa
 
 ## _code_mode_work
 
-Reason: Nest Codex code-mode work inside exec spans
+Reason: Account for distinct Codex response usage
 
-Origins: IMP-1.4, IMP-1.6, IMP-0.9, IMP-D3 · Intention i-c714f1fe · 2026-11-19
+Origins: IMP-1.1, IMP-1.4, IMP-1.7, IMP-0.8, IMP-D12, IMP-D22 · Intention i-f6344978 · 2026-11-19
 
 ## _completed_work
 
@@ -422,4 +422,16 @@ Origins: IMP-1.4, IMP-1.6, IMP-0.9, IMP-D3 · Intention i-c714f1fe · 2026-11-19
 Reason: Nest Codex code-mode work inside exec spans
 
 Origins: IMP-1.4, IMP-1.6, IMP-0.9, IMP-D3 · Intention i-c714f1fe · 2026-11-19
+
+## _responses
+
+Reason: Account for distinct Codex response usage
+
+Origins: IMP-1.1, IMP-1.4, IMP-1.7, IMP-0.8, IMP-D12, IMP-D22 · Intention i-f6344978 · 2026-11-19
+
+## _turn_context
+
+Reason: Account for distinct Codex response usage
+
+Origins: IMP-1.1, IMP-1.4, IMP-1.7, IMP-0.8, IMP-D12, IMP-D22 · Intention i-f6344978 · 2026-11-19
 
