@@ -5,9 +5,9 @@ role: authored
 
 ## <before _SavedSession>
 
-Reason: Link Kimi descendant calls and account for subagent usage separately
+Reason: Classify Kimi probes only from exact tracked prompt evidence
 
-Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
+Origins: IMP-1.3, IMP-0.3 · Intention i-74761544 · 2026-11-19
 
 ## _SavedSession
 
@@ -350,4 +350,22 @@ Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
 Reason: Link Kimi descendant calls and account for subagent usage separately
 
 Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
+
+## <before _kind>
+
+Reason: Classify Kimi probes only from exact tracked prompt evidence
+
+Origins: IMP-1.3, IMP-0.3 · Intention i-74761544 · 2026-11-19
+
+## _kind
+
+Reason: Classify Kimi probes only from exact tracked prompt evidence
+
+Origins: IMP-1.3, IMP-0.3 · Intention i-74761544 · 2026-11-19
+
+## _origin
+
+Reason: Classify Kimi probes only from exact tracked prompt evidence
+
+Origins: IMP-1.3, IMP-0.3 · Intention i-74761544 · 2026-11-19
 
