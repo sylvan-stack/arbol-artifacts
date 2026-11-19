@@ -5,9 +5,9 @@ role: authored
 
 ## <before _id>
 
-Reason: Join Codex tool calls with their native results
+Reason: Nest Codex code-mode work inside exec spans
 
-Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa268852 · 2026-11-19
+Origins: IMP-1.4, IMP-1.6, IMP-0.9, IMP-D3 · Intention i-c714f1fe · 2026-11-19
 
 ## Rollout
 
@@ -221,9 +221,9 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16
 
 ## _event_fields
 
-Reason: Join Codex tool calls with their native results
+Reason: Nest Codex code-mode work inside exec spans
 
-Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa268852 · 2026-11-19
+Origins: IMP-1.4, IMP-1.6, IMP-0.9, IMP-D3 · Intention i-c714f1fe · 2026-11-19
 
 ## _first_string
 
@@ -383,9 +383,9 @@ Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa
 
 ## _turn_items
 
-Reason: Join Codex tool calls with their native results
+Reason: Nest Codex code-mode work inside exec spans
 
-Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa268852 · 2026-11-19
+Origins: IMP-1.4, IMP-1.6, IMP-0.9, IMP-D3 · Intention i-c714f1fe · 2026-11-19
 
 ## _without_images
 
@@ -398,4 +398,28 @@ Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa
 Reason: Join Codex tool calls with their native results
 
 Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa268852 · 2026-11-19
+
+## _code_mode_work
+
+Reason: Nest Codex code-mode work inside exec spans
+
+Origins: IMP-1.4, IMP-1.6, IMP-0.9, IMP-D3 · Intention i-c714f1fe · 2026-11-19
+
+## _completed_work
+
+Reason: Nest Codex code-mode work inside exec spans
+
+Origins: IMP-1.4, IMP-1.6, IMP-0.9, IMP-D3 · Intention i-c714f1fe · 2026-11-19
+
+## _work_call
+
+Reason: Nest Codex code-mode work inside exec spans
+
+Origins: IMP-1.4, IMP-1.6, IMP-0.9, IMP-D3 · Intention i-c714f1fe · 2026-11-19
+
+## _work_times
+
+Reason: Nest Codex code-mode work inside exec spans
+
+Origins: IMP-1.4, IMP-1.6, IMP-0.9, IMP-D3 · Intention i-c714f1fe · 2026-11-19
 
