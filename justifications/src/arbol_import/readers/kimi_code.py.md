@@ -5,9 +5,9 @@ role: authored
 
 ## <before _SavedSession>
 
-Reason: Collect Kimi archive files and determine session liveness read-only
+Reason: Expose the Kimi Code reader with session-local failures
 
-Origins: IMP-1.8, IMP-0.2, IMP-0.15 · Intention i-7e93dbc9 · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
 
 ## _SavedSession
 
@@ -35,9 +35,9 @@ Origins: IMP-1.11, IMP-1.8, IMP-0.2 · Intention i-32c1c233 · 2026-11-19
 
 ## _discover
 
-Reason: Locate UUID-named Kimi sessions and eligible wire and state files within the supplied home.
+Reason: Expose the Kimi Code reader with session-local failures
 
-Origins: IMP-1.11, IMP-1.8, IMP-0.2 · Intention i-32c1c233 · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
 
 ## _eligible
 
@@ -77,9 +77,9 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.12 · Intention i-52593c79 · 2026-11-19
 
 ## _State
 
-Reason: Decode native wire envelopes and Kimi state with source positions and read-only file access.
+Reason: Expose the Kimi Code reader with session-local failures
 
-Origins: IMP-1.1, IMP-1.2, IMP-1.12 · Intention i-52593c79 · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
 
 ## _object
 
@@ -101,9 +101,9 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.12 · Intention i-52593c79 · 2026-11-19
 
 ## _state
 
-Reason: Decode native wire envelopes and Kimi state with source positions and read-only file access.
+Reason: Expose the Kimi Code reader with session-local failures
 
-Origins: IMP-1.1, IMP-1.2, IMP-1.12 · Intention i-52593c79 · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
 
 ## _string
 
@@ -119,9 +119,9 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.12 · Intention i-52593c79 · 2026-11-19
 
 ## _fork_ids
 
-Reason: Remove Kimi context messages and their contributions on undo
+Reason: Expose the Kimi Code reader with session-local failures
 
-Origins: IMP-1.10, IMP-1.5 · Intention i-32a60dd7 · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
 
 ## _record_ids
 
@@ -131,15 +131,15 @@ Origins: IMP-1.4, IMP-1.11 · Intention i-d1927aa2 · 2026-11-19
 
 ## _records
 
-Reason: Filter copied Kimi fork records against their source wires
+Removed: Expose the Kimi Code reader with session-local failures
 
-Origins: IMP-1.4, IMP-1.11 · Intention i-d1927aa2 · 2026-11-19
+Removed by Intention i-38db81b8 · 2026-11-19
 
 ## _context_edit
 
-Reason: Remove Kimi context messages and their contributions on undo
+Reason: Expose the Kimi Code reader with session-local failures
 
-Origins: IMP-1.10, IMP-1.5 · Intention i-32a60dd7 · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
 
 ## _step_number
 
@@ -149,27 +149,27 @@ Origins: IMP-1.10, IMP-1.5 · Intention i-32a60dd7 · 2026-11-19
 
 ## _undo
 
-Reason: Remove Kimi context messages and their contributions on undo
+Reason: Expose the Kimi Code reader with session-local failures
 
-Origins: IMP-1.10, IMP-1.5 · Intention i-32a60dd7 · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
 
 ## <before _turn_key>
 
-Reason: Form Kimi turns, steers, and endings in wire order
+Reason: Expose the Kimi Code reader with session-local failures
 
-Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
 
 ## _Lane
 
-Reason: Link Kimi descendant calls and account for subagent usage separately
+Reason: Expose the Kimi Code reader with session-local failures
 
-Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
 
 ## _Lane.append
 
-Reason: Link Kimi descendant calls and account for subagent usage separately
+Reason: Expose the Kimi Code reader with session-local failures
 
-Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
 
 ## _NativeTurn
 
@@ -185,15 +185,15 @@ Origins: IMP-1.7, IMP-0.8 · Intention i-37a6b1f2 · 2026-11-19
 
 ## _error
 
-Reason: Form Kimi turns, steers, and endings in wire order
+Reason: Expose the Kimi Code reader with session-local failures
 
-Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
 
 ## _parts
 
-Reason: Form Kimi turns, steers, and endings in wire order
+Reason: Expose the Kimi Code reader with session-local failures
 
-Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
 
 ## _prompt
 
@@ -269,9 +269,9 @@ Origins: IMP-1.6, IMP-0.10 · Intention i-8dedb74f · 2026-11-19
 
 ## _image
 
-Reason: Collect Kimi archive files and determine session liveness read-only
+Reason: Expose the Kimi Code reader with session-local failures
 
-Origins: IMP-1.8, IMP-0.2, IMP-0.15 · Intention i-7e93dbc9 · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
 
 ## _size
 
@@ -317,9 +317,9 @@ Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
 
 ## _Launch
 
-Reason: Link Kimi descendant calls and account for subagent usage separately
+Reason: Expose the Kimi Code reader with session-local failures
 
-Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
 
 ## _item_time
 
@@ -329,9 +329,9 @@ Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
 
 ## _launches
 
-Reason: Link Kimi descendant calls and account for subagent usage separately
+Reason: Expose the Kimi Code reader with session-local failures
 
-Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
 
 ## _project
 
@@ -341,9 +341,9 @@ Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
 
 ## _route
 
-Reason: Link Kimi descendant calls and account for subagent usage separately
+Reason: Expose the Kimi Code reader with session-local failures
 
-Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
 
 ## _turn_at
 
@@ -413,7 +413,37 @@ Origins: IMP-1.8, IMP-0.2, IMP-0.15 · Intention i-7e93dbc9 · 2026-11-19
 
 ## _locked
 
-Reason: Collect Kimi archive files and determine session liveness read-only
+Reason: Expose the Kimi Code reader with session-local failures
 
-Origins: IMP-1.8, IMP-0.2, IMP-0.15 · Intention i-7e93dbc9 · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
+
+## _ForkIndex
+
+Reason: Expose the Kimi Code reader with session-local failures
+
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
+
+## _ForkIndex.has
+
+Reason: Expose the Kimi Code reader with session-local failures
+
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
+
+## _copy_signature
+
+Reason: Expose the Kimi Code reader with session-local failures
+
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
+
+## _erased_launches
+
+Reason: Expose the Kimi Code reader with session-local failures
+
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
+
+## read
+
+Reason: Expose the Kimi Code reader with session-local failures
+
+Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
 
