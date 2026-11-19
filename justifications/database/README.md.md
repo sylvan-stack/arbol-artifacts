@@ -11,13 +11,13 @@ Origins: ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-5c983db1 · 2026-11-19
 
 ## Arbol's database server > Database recovery before reopening
 
-Reason: Document the no-loss recovery boundary for writes accepted after reopening
+Reason: Make the archive preflight the first operator gate for schema change and restore, and document the signed App recovery inputs.
 
-Origins: ARC-4.5 · Intention i-defab2b1 · 2026-11-12
+Origins: ARC-5.4 · Intention i-db3488a0 · 2026-11-19
 
 ## Arbol's database server > Recovery after reopening
 
-Reason: Document the no-loss recovery boundary for writes accepted after reopening
+Reason: Make the archive preflight the first operator gate for schema change and restore, and document the signed App recovery inputs.
 
-Origins: ARC-4.5 · Intention i-defab2b1 · 2026-11-12
+Origins: ARC-5.4 · Intention i-db3488a0 · 2026-11-19
 
