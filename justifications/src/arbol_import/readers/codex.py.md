@@ -5,9 +5,9 @@ role: authored
 
 ## <before _id>
 
-Reason: Read the Codex catalogue through a verified private snapshot
+Reason: Read independent Codex title index entries
 
-Origins: IMP-1.8, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D12, IMP-D19, IMP-D34 · Intention i-277a82b7 · 2026-11-19
+Origins: IMP-1.2, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D19 · Intention i-791e2ced · 2026-11-19
 
 ## Rollout
 
@@ -107,9 +107,9 @@ Origins: IMP-1.8, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D12, IMP-D19, IMP-D34 · Inten
 
 ## _read_catalogue
 
-Reason: Read the Codex catalogue through a verified private snapshot
+Reason: Read independent Codex title index entries
 
-Origins: IMP-1.8, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D12, IMP-D19, IMP-D34 · Intention i-277a82b7 · 2026-11-19
+Origins: IMP-1.2, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D19 · Intention i-791e2ced · 2026-11-19
 
 ## _stamp
 
@@ -128,4 +128,10 @@ Origins: IMP-1.8, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D12, IMP-D19, IMP-D34 · Inten
 Reason: Read the Codex catalogue through a verified private snapshot
 
 Origins: IMP-1.8, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D12, IMP-D19, IMP-D34 · Intention i-277a82b7 · 2026-11-19
+
+## _titles
+
+Reason: Read independent Codex title index entries
+
+Origins: IMP-1.2, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D19 · Intention i-791e2ced · 2026-11-19
 
