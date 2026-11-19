@@ -5,9 +5,9 @@ role: authored
 
 ## <before _unreadable>
 
-Reason: Export Mimo session rows and bound the native archive references
+Reason: Expose the Mimo reader with session liveness and scoped failures
 
-Origins: IMP-1.8, IMP-0.13 · Intention i-d948f709 · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-D16 · Intention i-814aa57d · 2026-11-19
 
 ## _copy_database
 
@@ -29,9 +29,9 @@ Origins: IMP-0.2, IMP-1.9 · Intention i-7958e28b · 2026-11-19
 
 ## _snapshot
 
-Reason: Query selected Mimo sessions and their native rows
+Reason: Expose the Mimo reader with session liveness and scoped failures
 
-Origins: IMP-1.11, IMP-1.8, IMP-1.3 · Intention i-1b903318 · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-D16 · Intention i-814aa57d · 2026-11-19
 
 ## _unreadable
 
@@ -137,15 +137,15 @@ Origins: IMP-1.1, IMP-D10, IMP-D16 · Intention i-e5c234a2 · 2026-11-19
 
 ## _part
 
-Reason: Place Mimo actor lanes in their proven launch turn or native time fallback
+Reason: Expose the Mimo reader with session liveness and scoped failures
 
-Origins: IMP-0.9, IMP-D31 · Intention i-2f32a64d · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-D16 · Intention i-814aa57d · 2026-11-19
 
 ## _read_messages
 
-Reason: Classify Mimo sessions from validated Driver and probe records
+Reason: Expose the Mimo reader with session liveness and scoped failures
 
-Origins: IMP-1.3, IMP-D16 · Intention i-a2ec86e3 · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-D16 · Intention i-814aa57d · 2026-11-19
 
 ## _session_info
 
@@ -257,9 +257,9 @@ Origins: IMP-0.7, IMP-1.5 · Intention i-79e93db3 · 2026-11-19
 
 ## _turn_end
 
-Reason: Project timestamped main-lane text and retain auxiliary parts in the archive
+Reason: Expose the Mimo reader with session liveness and scoped failures
 
-Origins: IMP-0.7, IMP-1.5 · Intention i-79e93db3 · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-D16 · Intention i-814aa57d · 2026-11-19
 
 ## _text_block
 
@@ -341,9 +341,9 @@ Origins: IMP-1.8, IMP-0.13 · Intention i-d948f709 · 2026-11-19
 
 ## _archive
 
-Reason: Export Mimo session rows and bound the native archive references
+Reason: Expose the Mimo reader with session liveness and scoped failures
 
-Origins: IMP-1.8, IMP-0.13 · Intention i-d948f709 · 2026-11-19
+Origins: IMP-1.1, IMP-1.11, IMP-D16 · Intention i-814aa57d · 2026-11-19
 
 ## _diff_paths
 
@@ -374,4 +374,28 @@ Origins: IMP-1.8, IMP-0.13 · Intention i-d948f709 · 2026-11-19
 Reason: Export Mimo session rows and bound the native archive references
 
 Origins: IMP-1.8, IMP-0.13 · Intention i-d948f709 · 2026-11-19
+
+## _read_session
+
+Reason: Expose the Mimo reader with session liveness and scoped failures
+
+Origins: IMP-1.1, IMP-1.11, IMP-D16 · Intention i-814aa57d · 2026-11-19
+
+## _turns
+
+Reason: Expose the Mimo reader with session liveness and scoped failures
+
+Origins: IMP-1.1, IMP-1.11, IMP-D16 · Intention i-814aa57d · 2026-11-19
+
+## _work_directory
+
+Reason: Expose the Mimo reader with session liveness and scoped failures
+
+Origins: IMP-1.1, IMP-1.11, IMP-D16 · Intention i-814aa57d · 2026-11-19
+
+## read
+
+Reason: Expose the Mimo reader with session liveness and scoped failures
+
+Origins: IMP-1.1, IMP-1.11, IMP-D16 · Intention i-814aa57d · 2026-11-19
 
