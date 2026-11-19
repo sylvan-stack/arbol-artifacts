@@ -5,9 +5,9 @@ role: authored
 
 ## <before _id>
 
-Reason: Project Codex assistant text from response items
+Reason: Join Codex tool calls with their native results
 
-Origins: IMP-1.1, IMP-1.4, IMP-0.7, IMP-D12 · Intention i-c686f9bb · 2026-11-19
+Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa268852 · 2026-11-19
 
 ## Rollout
 
@@ -209,9 +209,9 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16
 
 ## _body
 
-Reason: Project Codex turn bounds, prompts and steers
+Reason: Join Codex tool calls with their native results
 
-Origins: IMP-1.4, IMP-1.5, IMP-0.7, IMP-0.8, IMP-D8, IMP-D11 · Intention i-edb3f045 · 2026-11-19
+Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa268852 · 2026-11-19
 
 ## _conversation
 
@@ -221,9 +221,9 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16
 
 ## _event_fields
 
-Reason: Validate and stream Codex conversation records
+Reason: Join Codex tool calls with their native results
 
-Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
+Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa268852 · 2026-11-19
 
 ## _first_string
 
@@ -257,9 +257,9 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16
 
 ## _response_fields
 
-Reason: Validate and stream Codex conversation records
+Reason: Join Codex tool calls with their native results
 
-Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
+Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa268852 · 2026-11-19
 
 ## _string
 
@@ -335,7 +335,67 @@ Origins: IMP-1.4, IMP-1.5, IMP-0.7, IMP-0.8, IMP-D8, IMP-D11 · Intention i-edb3
 
 ## _assistant_text
 
-Reason: Project Codex assistant text from response items
+Reason: Join Codex tool calls with their native results
 
-Origins: IMP-1.1, IMP-1.4, IMP-0.7, IMP-D12 · Intention i-c686f9bb · 2026-11-19
+Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa268852 · 2026-11-19
+
+## ProjectedCall
+
+Reason: Join Codex tool calls with their native results
+
+Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa268852 · 2026-11-19
+
+## _direct_calls
+
+Reason: Join Codex tool calls with their native results
+
+Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa268852 · 2026-11-19
+
+## _inline_image
+
+Reason: Join Codex tool calls with their native results
+
+Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa268852 · 2026-11-19
+
+## _json_object_or_list
+
+Reason: Join Codex tool calls with their native results
+
+Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa268852 · 2026-11-19
+
+## _native_error
+
+Reason: Join Codex tool calls with their native results
+
+Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa268852 · 2026-11-19
+
+## _result_text
+
+Reason: Join Codex tool calls with their native results
+
+Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa268852 · 2026-11-19
+
+## _tool_result
+
+Reason: Join Codex tool calls with their native results
+
+Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa268852 · 2026-11-19
+
+## _turn_items
+
+Reason: Join Codex tool calls with their native results
+
+Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa268852 · 2026-11-19
+
+## _without_images
+
+Reason: Join Codex tool calls with their native results
+
+Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa268852 · 2026-11-19
+
+## _work_link
+
+Reason: Join Codex tool calls with their native results
+
+Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa268852 · 2026-11-19
 
