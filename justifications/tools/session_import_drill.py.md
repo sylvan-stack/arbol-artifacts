@@ -11,9 +11,9 @@ Origins: IMP-0.11 · Intention i-ecccb1fb · 2026-11-19
 
 ## <before DrillError>
 
-Reason: Drill fenced upgrade: release records, exclusive session, snapshot, verified isolated restore, upgrade and reopen
+Reason: Drill population through each Build's Bridge and the trivial Trunk
 
-Origins: IMP-0.11 · Intention i-abc1a6fb · 2026-11-19
+Origins: IMP-0.11 · Intention i-a13d750f · 2026-11-19
 
 ## Cluster
 
@@ -218,4 +218,52 @@ Origins: IMP-0.11 · Intention i-abc1a6fb · 2026-11-19
 Reason: Drill fenced upgrade: release records, exclusive session, snapshot, verified isolated restore, upgrade and reopen
 
 Origins: IMP-0.11 · Intention i-abc1a6fb · 2026-11-19
+
+## Drill.<before Drill.backend>
+
+Reason: Drill population through each Build's Bridge and the trivial Trunk
+
+Origins: IMP-0.11 · Intention i-a13d750f · 2026-11-19
+
+## Drill.backend
+
+Reason: Drill population through each Build's Bridge and the trivial Trunk
+
+Origins: IMP-0.11 · Intention i-a13d750f · 2026-11-19
+
+## Drill.bridge
+
+Reason: Drill population through each Build's Bridge and the trivial Trunk
+
+Origins: IMP-0.11 · Intention i-a13d750f · 2026-11-19
+
+## Drill.exchange_round
+
+Reason: Drill population through each Build's Bridge and the trivial Trunk
+
+Origins: IMP-0.11 · Intention i-a13d750f · 2026-11-19
+
+## Drill.populate
+
+Reason: Drill population through each Build's Bridge and the trivial Trunk
+
+Origins: IMP-0.11 · Intention i-a13d750f · 2026-11-19
+
+## Drill.send
+
+Reason: Drill population through each Build's Bridge and the trivial Trunk
+
+Origins: IMP-0.11 · Intention i-a13d750f · 2026-11-19
+
+## Drill.settled
+
+Reason: Drill population through each Build's Bridge and the trivial Trunk
+
+Origins: IMP-0.11 · Intention i-a13d750f · 2026-11-19
+
+## Drill.state
+
+Reason: Drill population through each Build's Bridge and the trivial Trunk
+
+Origins: IMP-0.11 · Intention i-a13d750f · 2026-11-19
 
