@@ -137,9 +137,9 @@ Origins: ARC-4.4, ARC-4.5 · Intention i-51b89919 · 2026-11-19
 
 ## fenced_step
 
-Reason: Disposable prior and upgrade release records in the format verify_release checks (owner decision 19 November 2026)
+Reason: Keep the existing genuine fenced recovery fixture disposable while continuing to exercise normal recovery and migration code.
 
-Origins: ARC-4.5 · Intention i-3acf0e55 · 2026-11-19
+Origins: ARC-5.4, ARC-5.6 · Intention i-2e86b3d5 · 2026-11-19
 
 ## SingleInstallation.release_records
 
