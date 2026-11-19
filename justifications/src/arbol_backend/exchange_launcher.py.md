@@ -41,7 +41,7 @@ Origins: ARC-4.6 · Intention i-4ae5d249 · 2026-11-12
 
 ## select_build
 
-Reason: Require verified layout and schema fit for every runtime start, including explicitly named Builds.
+Reason: A historical Root-Contract-only record belongs in inventory and must not block selection of a compatible Build.
 
-Origins: ARC-5.6, ARC-4.3 · Intention i-9e38ebde · 2026-11-19
+Origins: ARC-5.6, ARC-4.3 · Intention i-3b661412 · 2026-11-19
 
