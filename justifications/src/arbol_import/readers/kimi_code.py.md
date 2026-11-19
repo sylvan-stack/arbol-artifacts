@@ -5,9 +5,9 @@ role: authored
 
 ## <before _SavedSession>
 
-Reason: Join Kimi tool calls, results, and eligible spilled text
+Reason: Describe Kimi result images from local evidence
 
-Origins: IMP-1.6, IMP-1.8 · Intention i-2635f14d · 2026-11-19
+Origins: IMP-1.6, IMP-0.10 · Intention i-8dedb74f · 2026-11-19
 
 ## _SavedSession
 
@@ -239,9 +239,9 @@ Origins: IMP-1.6, IMP-1.8 · Intention i-2635f14d · 2026-11-19
 
 ## _result
 
-Reason: Join Kimi tool calls, results, and eligible spilled text
+Reason: Describe Kimi result images from local evidence
 
-Origins: IMP-1.6, IMP-1.8 · Intention i-2635f14d · 2026-11-19
+Origins: IMP-1.6, IMP-0.10 · Intention i-8dedb74f · 2026-11-19
 
 ## _spill_name
 
@@ -254,4 +254,34 @@ Origins: IMP-1.6, IMP-1.8 · Intention i-2635f14d · 2026-11-19
 Reason: Join Kimi tool calls, results, and eligible spilled text
 
 Origins: IMP-1.6, IMP-1.8 · Intention i-2635f14d · 2026-11-19
+
+## <before _file_name>
+
+Reason: Describe Kimi result images from local evidence
+
+Origins: IMP-1.6, IMP-0.10 · Intention i-8dedb74f · 2026-11-19
+
+## _file_name
+
+Reason: Describe Kimi result images from local evidence
+
+Origins: IMP-1.6, IMP-0.10 · Intention i-8dedb74f · 2026-11-19
+
+## _image
+
+Reason: Describe Kimi result images from local evidence
+
+Origins: IMP-1.6, IMP-0.10 · Intention i-8dedb74f · 2026-11-19
+
+## _size
+
+Reason: Describe Kimi result images from local evidence
+
+Origins: IMP-1.6, IMP-0.10 · Intention i-8dedb74f · 2026-11-19
+
+## _upload
+
+Reason: Describe Kimi result images from local evidence
+
+Origins: IMP-1.6, IMP-0.10 · Intention i-8dedb74f · 2026-11-19
 
