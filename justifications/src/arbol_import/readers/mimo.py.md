@@ -5,9 +5,9 @@ role: authored
 
 ## <before _unreadable>
 
-Reason: Account for native usage once per Mimo assistant message
+Reason: Project Mimo actor calls, last-turn failures and separate usage
 
-Origins: IMP-1.7, IMP-D31 · Intention i-c99a446d · 2026-11-19
+Origins: IMP-1.6, IMP-1.7, IMP-D31 · Intention i-5e4913a7 · 2026-11-19
 
 ## _copy_database
 
@@ -317,13 +317,25 @@ Origins: IMP-0.9, IMP-D31 · Intention i-2f32a64d · 2026-11-19
 
 ## _actor_owners
 
-Reason: Place Mimo actor lanes in their proven launch turn or native time fallback
+Reason: Project Mimo actor calls, last-turn failures and separate usage
 
-Origins: IMP-0.9, IMP-D31 · Intention i-2f32a64d · 2026-11-19
+Origins: IMP-1.6, IMP-1.7, IMP-D31 · Intention i-5e4913a7 · 2026-11-19
 
 ## _message_order
 
 Reason: Place Mimo actor lanes in their proven launch turn or native time fallback
 
 Origins: IMP-0.9, IMP-D31 · Intention i-2f32a64d · 2026-11-19
+
+## _items
+
+Reason: Project Mimo actor calls, last-turn failures and separate usage
+
+Origins: IMP-1.6, IMP-1.7, IMP-D31 · Intention i-5e4913a7 · 2026-11-19
+
+## _subagent
+
+Reason: Project Mimo actor calls, last-turn failures and separate usage
+
+Origins: IMP-1.6, IMP-1.7, IMP-D31 · Intention i-5e4913a7 · 2026-11-19
 
