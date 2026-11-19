@@ -89,9 +89,9 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.12 · Intention i-52593c79 · 2026-11-19
 
 ## _record
 
-Reason: Decode native wire envelopes and Kimi state with source positions and read-only file access.
+Reason: Filter copied Kimi fork records against their source wires
 
-Origins: IMP-1.1, IMP-1.2, IMP-1.12 · Intention i-52593c79 · 2026-11-19
+Origins: IMP-1.4, IMP-1.11 · Intention i-d1927aa2 · 2026-11-19
 
 ## _rows
 
@@ -116,4 +116,22 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.12 · Intention i-52593c79 · 2026-11-19
 Reason: Decode native wire envelopes and Kimi state with source positions and read-only file access.
 
 Origins: IMP-1.1, IMP-1.2, IMP-1.12 · Intention i-52593c79 · 2026-11-19
+
+## _fork_ids
+
+Reason: Filter copied Kimi fork records against their source wires
+
+Origins: IMP-1.4, IMP-1.11 · Intention i-d1927aa2 · 2026-11-19
+
+## _record_ids
+
+Reason: Filter copied Kimi fork records against their source wires
+
+Origins: IMP-1.4, IMP-1.11 · Intention i-d1927aa2 · 2026-11-19
+
+## _records
+
+Reason: Filter copied Kimi fork records against their source wires
+
+Origins: IMP-1.4, IMP-1.11 · Intention i-d1927aa2 · 2026-11-19
 
