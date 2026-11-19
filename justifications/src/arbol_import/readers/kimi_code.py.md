@@ -5,9 +5,9 @@ role: authored
 
 ## <before _SavedSession>
 
-Reason: Classify Kimi probes only from exact tracked prompt evidence
+Reason: Collect Kimi archive files and determine session liveness read-only
 
-Origins: IMP-1.3, IMP-0.3 · Intention i-74761544 · 2026-11-19
+Origins: IMP-1.8, IMP-0.2, IMP-0.15 · Intention i-7e93dbc9 · 2026-11-19
 
 ## _SavedSession
 
@@ -239,9 +239,9 @@ Origins: IMP-1.6, IMP-1.8 · Intention i-2635f14d · 2026-11-19
 
 ## _result
 
-Reason: Describe Kimi result images from local evidence
+Reason: Collect Kimi archive files and determine session liveness read-only
 
-Origins: IMP-1.6, IMP-0.10 · Intention i-8dedb74f · 2026-11-19
+Origins: IMP-1.8, IMP-0.2, IMP-0.15 · Intention i-7e93dbc9 · 2026-11-19
 
 ## _spill_name
 
@@ -269,9 +269,9 @@ Origins: IMP-1.6, IMP-0.10 · Intention i-8dedb74f · 2026-11-19
 
 ## _image
 
-Reason: Describe Kimi result images from local evidence
+Reason: Collect Kimi archive files and determine session liveness read-only
 
-Origins: IMP-1.6, IMP-0.10 · Intention i-8dedb74f · 2026-11-19
+Origins: IMP-1.8, IMP-0.2, IMP-0.15 · Intention i-7e93dbc9 · 2026-11-19
 
 ## _size
 
@@ -281,9 +281,9 @@ Origins: IMP-1.6, IMP-0.10 · Intention i-8dedb74f · 2026-11-19
 
 ## _upload
 
-Reason: Describe Kimi result images from local evidence
+Reason: Collect Kimi archive files and determine session liveness read-only
 
-Origins: IMP-1.6, IMP-0.10 · Intention i-8dedb74f · 2026-11-19
+Origins: IMP-1.8, IMP-0.2, IMP-0.15 · Intention i-7e93dbc9 · 2026-11-19
 
 ## <before _usage>
 
@@ -368,4 +368,52 @@ Origins: IMP-1.3, IMP-0.3 · Intention i-74761544 · 2026-11-19
 Reason: Classify Kimi probes only from exact tracked prompt evidence
 
 Origins: IMP-1.3, IMP-0.3 · Intention i-74761544 · 2026-11-19
+
+## <before _forbidden>
+
+Reason: Collect Kimi archive files and determine session liveness read-only
+
+Origins: IMP-1.8, IMP-0.2, IMP-0.15 · Intention i-7e93dbc9 · 2026-11-19
+
+## _RawFiles
+
+Reason: Collect Kimi archive files and determine session liveness read-only
+
+Origins: IMP-1.8, IMP-0.2, IMP-0.15 · Intention i-7e93dbc9 · 2026-11-19
+
+## _RawFiles.archive
+
+Reason: Collect Kimi archive files and determine session liveness read-only
+
+Origins: IMP-1.8, IMP-0.2, IMP-0.15 · Intention i-7e93dbc9 · 2026-11-19
+
+## _RawFiles.escapes
+
+Reason: Collect Kimi archive files and determine session liveness read-only
+
+Origins: IMP-1.8, IMP-0.2, IMP-0.15 · Intention i-7e93dbc9 · 2026-11-19
+
+## _RawFiles.observe
+
+Reason: Collect Kimi archive files and determine session liveness read-only
+
+Origins: IMP-1.8, IMP-0.2, IMP-0.15 · Intention i-7e93dbc9 · 2026-11-19
+
+## _claim_is_live
+
+Reason: Collect Kimi archive files and determine session liveness read-only
+
+Origins: IMP-1.8, IMP-0.2, IMP-0.15 · Intention i-7e93dbc9 · 2026-11-19
+
+## _forbidden
+
+Reason: Collect Kimi archive files and determine session liveness read-only
+
+Origins: IMP-1.8, IMP-0.2, IMP-0.15 · Intention i-7e93dbc9 · 2026-11-19
+
+## _locked
+
+Reason: Collect Kimi archive files and determine session liveness read-only
+
+Origins: IMP-1.8, IMP-0.2, IMP-0.15 · Intention i-7e93dbc9 · 2026-11-19
 
