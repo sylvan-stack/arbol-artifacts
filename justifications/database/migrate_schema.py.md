@@ -197,7 +197,7 @@ Origins: ARC-4.2, ARC-4.4, ARC-4.5 · Intention i-e62a95ce · 2026-11-12
 
 ## upgrade
 
-Reason: Require the exclusive maintenance handoff and pin the verified recovery point through migration and retry
+Reason: Require the archive and original restore proof before the requested schema change may acquire its lease or write SQL.
 
-Origins: ARC-4.2, ARC-4.4, ARC-4.5 · Intention i-e62a95ce · 2026-11-12
+Origins: ARC-5.4 · Intention i-f415797e · 2026-11-19
 
