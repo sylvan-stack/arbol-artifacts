@@ -46,6 +46,11 @@ run under `~/Builds/<repository>/<run-id>` or
 regular file outside `~/Builds`. On success the command returns the original
 and queued paths in JSON. A refusal leaves the run at its original path.
 
+Call the command at the end of each runner that produces disposable output,
+after joining its processes and writing the saved report. The runner can
+release a failed run after writing its failure evidence. Follow-up work that
+needs the run's files keeps the run at its original path until that work ends.
+
 ## Known problems
 
 Older directories contain a mixture of completed and active work. Arbol Browser
@@ -57,6 +62,9 @@ before releasing it, even if the process that created the output already exited.
 arbol-browser:@code/scripts/package-host.mjs#preservedStockArchive
 arbol:@code/src/arbol_backend/server.py#Backend.run
 arbol:@code/src/arbol_builds/cli.py#main
+arbol:@code/src/arbol_installation/build_output.py#release_run
+arbol:@code/src/arbol_installation/build_output.py#sweep
+arbol:@code/src/arbol_installation/build_output.py#sweep_periodically
 -->
 
 ## Decisions
