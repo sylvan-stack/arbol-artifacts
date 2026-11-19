@@ -53,13 +53,25 @@ Origins: ARC-4.1, ARC-4.7 · Intention i-cab7bebd · 2026-11-12
 
 ## <before refuse_imported>
 
-Reason: Refuse imported send targets after identifier checks and recheck under admission before touching Drafts, receipts, or runtime.
+Reason: Read complete phase detail records through the Bridge
 
-Origins: IMP-0.16, BKD-1.4, ARC-4.4 · Intention i-a3d509d8 · 2026-11-19
+Origins: STE-0.26 · Intention i-22b99be9 · 2026-11-19
 
 ## refuse_imported
 
 Reason: Refuse imported send targets after identifier checks and recheck under admission before touching Drafts, receipts, or runtime.
 
 Origins: IMP-0.16, BKD-1.4, ARC-4.4 · Intention i-a3d509d8 · 2026-11-19
+
+## Reader.tool
+
+Reason: Read complete phase detail records through the Bridge
+
+Origins: STE-0.26 · Intention i-22b99be9 · 2026-11-19
+
+## Reader.phase_details
+
+Reason: Read complete phase detail records through the Bridge
+
+Origins: STE-0.26 · Intention i-22b99be9 · 2026-11-19
 

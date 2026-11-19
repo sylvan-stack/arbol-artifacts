@@ -5,9 +5,9 @@ role: authored
 
 ## Chats.__init__
 
-Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
+Reason: Read complete phase detail records through the Bridge
 
-Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
+Origins: STE-0.26 · Intention i-22b99be9 · 2026-11-19
 
 ## <before page_params>
 
@@ -86,4 +86,10 @@ Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
 Reason: Apply the archived-only filter from IMP-D33 before the existing chat page cursor and limit.
 
 Origins: IMP-0.17 · Intention i-7b19a2a9 · 2026-11-19
+
+## phase_detail_params
+
+Reason: Read complete phase detail records through the Bridge
+
+Origins: STE-0.26 · Intention i-22b99be9 · 2026-11-19
 
