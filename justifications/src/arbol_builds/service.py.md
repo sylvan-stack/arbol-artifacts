@@ -111,3 +111,15 @@ Reason: Preflight existing gated routes before installer mutations, preserve exa
 
 Origins: DRV-6.21, BLD-0.16, BLD-0.9 · Intention i-048579db · 2026-11-15
 
+## Stop.__init__
+
+Reason: An output directory can be released only after the Build runner has confirmed its command groups ended.
+
+Origins: BLD-1.3 · Intention i-6d5ed220 · 2026-11-19
+
+## command
+
+Reason: An output directory can be released only after the Build runner has confirmed its command groups ended.
+
+Origins: BLD-1.3 · Intention i-6d5ed220 · 2026-11-19
+
