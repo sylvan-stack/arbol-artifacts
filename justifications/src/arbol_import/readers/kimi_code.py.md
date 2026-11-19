@@ -119,9 +119,9 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.12 · Intention i-52593c79 · 2026-11-19
 
 ## _fork_ids
 
-Reason: Filter copied Kimi fork records against their source wires
+Reason: Remove Kimi context messages and their contributions on undo
 
-Origins: IMP-1.4, IMP-1.11 · Intention i-d1927aa2 · 2026-11-19
+Origins: IMP-1.10, IMP-1.5 · Intention i-32a60dd7 · 2026-11-19
 
 ## _record_ids
 
@@ -134,4 +134,22 @@ Origins: IMP-1.4, IMP-1.11 · Intention i-d1927aa2 · 2026-11-19
 Reason: Filter copied Kimi fork records against their source wires
 
 Origins: IMP-1.4, IMP-1.11 · Intention i-d1927aa2 · 2026-11-19
+
+## _context_edit
+
+Reason: Remove Kimi context messages and their contributions on undo
+
+Origins: IMP-1.10, IMP-1.5 · Intention i-32a60dd7 · 2026-11-19
+
+## _step_number
+
+Reason: Remove Kimi context messages and their contributions on undo
+
+Origins: IMP-1.10, IMP-1.5 · Intention i-32a60dd7 · 2026-11-19
+
+## _undo
+
+Reason: Remove Kimi context messages and their contributions on undo
+
+Origins: IMP-1.10, IMP-1.5 · Intention i-32a60dd7 · 2026-11-19
 
