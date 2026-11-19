@@ -29,9 +29,9 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
 
 ## capture_build
 
-Reason: Recovery needs the exact signed App bundle even when earlier Builds are otherwise reproduced from source.
+Reason: Retain an authentic recoverable Git checkout of each selected component, including committed shared and sibling sources.
 
-Origins: ARC-5.4 · Intention i-30c9eb4b · 2026-11-19
+Origins: ARC-4.5, ARC-D95, BLD-0.4 · Intention i-082a07c2 · 2026-11-19
 
 ## check_hashes
 
@@ -113,9 +113,9 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
 
 ## save_sources
 
-Reason: Record exact selected Builds, verify source and package evidence, and retain the recovery inputs privately
+Reason: Retain an authentic recoverable Git checkout of each selected component, including committed shared and sibling sources.
 
-Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
+Origins: ARC-4.5, ARC-D95, BLD-0.4 · Intention i-082a07c2 · 2026-11-19
 
 ## sha
 
@@ -158,4 +158,16 @@ Origins: ARC-5.4 · Intention i-3a3f6a76 · 2026-11-19
 Reason: Recovery needs the exact signed App bundle even when earlier Builds are otherwise reproduced from source.
 
 Origins: ARC-5.4 · Intention i-30c9eb4b · 2026-11-19
+
+## repository_root
+
+Reason: Retain an authentic recoverable Git checkout of each selected component, including committed shared and sibling sources.
+
+Origins: ARC-4.5, ARC-D95, BLD-0.4 · Intention i-082a07c2 · 2026-11-19
+
+## retain_source
+
+Reason: Retain an authentic recoverable Git checkout of each selected component, including committed shared and sibling sources.
+
+Origins: ARC-4.5, ARC-D95, BLD-0.4 · Intention i-082a07c2 · 2026-11-19
 
