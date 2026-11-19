@@ -5,9 +5,9 @@ role: authored
 
 ## <before RecoveryError>
 
-Reason: Record exact selected Builds, verify source and package evidence, and retain the recovery inputs privately
+Reason: Record clean reproducible release inputs on the verified Mercury volume and preserve verification of older release records.
 
-Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
+Origins: ARC-5.4 · Intention i-3a3f6a76 · 2026-11-19
 
 ## <end>
 
@@ -29,9 +29,9 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
 
 ## capture_build
 
-Reason: Capture the native bundle declared by the source-verified Build entry so the renamed signed App can be preserved with its renderer and source inputs
+Reason: Record clean reproducible release inputs on the verified Mercury volume and preserve verification of older release records.
 
-Origins: ARC-4.5 · Intention i-6dd60169 · 2026-11-12
+Origins: ARC-5.4 · Intention i-3a3f6a76 · 2026-11-19
 
 ## check_hashes
 
@@ -71,9 +71,9 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
 
 ## main
 
-Reason: Record exact selected Builds, verify source and package evidence, and retain the recovery inputs privately
+Reason: Record clean reproducible release inputs on the verified Mercury volume and preserve verification of older release records.
 
-Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
+Origins: ARC-5.4 · Intention i-3a3f6a76 · 2026-11-19
 
 ## private_dir
 
@@ -83,21 +83,21 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
 
 ## publish_directory
 
-Reason: Record exact selected Builds, verify source and package evidence, and retain the recovery inputs privately
+Reason: Record clean reproducible release inputs on the verified Mercury volume and preserve verification of older release records.
 
-Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
+Origins: ARC-5.4 · Intention i-3a3f6a76 · 2026-11-19
 
 ## python_evidence
 
-Reason: Record exact selected Builds, verify source and package evidence, and retain the recovery inputs privately
+Reason: Record clean reproducible release inputs on the verified Mercury volume and preserve verification of older release records.
 
-Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
+Origins: ARC-5.4 · Intention i-3a3f6a76 · 2026-11-19
 
 ## record_release
 
-Reason: Record exact selected Builds, verify source and package evidence, and retain the recovery inputs privately
+Reason: Record clean reproducible release inputs on the verified Mercury volume and preserve verification of older release records.
 
-Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
+Origins: ARC-5.4 · Intention i-3a3f6a76 · 2026-11-19
 
 ## relative
 
@@ -137,13 +137,19 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
 
 ## verify_release
 
-Reason: Record exact selected Builds, verify source and package evidence, and retain the recovery inputs privately
+Reason: Record clean reproducible release inputs on the verified Mercury volume and preserve verification of older release records.
 
-Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
+Origins: ARC-5.4 · Intention i-3a3f6a76 · 2026-11-19
 
 ## write_private
 
 Reason: Record exact selected Builds, verify source and package evidence, and retain the recovery inputs privately
 
 Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
+
+## recovery_dir
+
+Reason: Record clean reproducible release inputs on the verified Mercury volume and preserve verification of older release records.
+
+Origins: ARC-5.4 · Intention i-3a3f6a76 · 2026-11-19
 
