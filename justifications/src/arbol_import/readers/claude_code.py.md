@@ -5,9 +5,9 @@ role: authored
 
 ## <before SessionFile>
 
-Reason: Join calls with results and resolve safe spilled text and image descriptions
+Reason: Retain one timestamped usage entry per native response
 
-Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
+Origins: IMP-1.7, IMP-1.4 · Intention i-85ff0905 · 2026-11-19
 
 ## SessionFile
 
@@ -257,9 +257,9 @@ Origins: IMP-1.5, IMP-0.7 · Intention i-265f7763 · 2026-11-19
 
 ## _turn
 
-Reason: Join calls with results and resolve safe spilled text and image descriptions
+Reason: Retain one timestamped usage entry per native response
 
-Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
+Origins: IMP-1.7, IMP-1.4 · Intention i-85ff0905 · 2026-11-19
 
 ## _turn_records
 
@@ -281,9 +281,9 @@ Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
 
 ## _items
 
-Reason: Join calls with results and resolve safe spilled text and image descriptions
+Reason: Retain one timestamped usage entry per native response
 
-Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
+Origins: IMP-1.7, IMP-1.4 · Intention i-85ff0905 · 2026-11-19
 
 ## _native_results
 
@@ -320,4 +320,10 @@ Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
 Reason: Join calls with results and resolve safe spilled text and image descriptions
 
 Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
+
+## _responses
+
+Reason: Retain one timestamped usage entry per native response
+
+Origins: IMP-1.7, IMP-1.4 · Intention i-85ff0905 · 2026-11-19
 
