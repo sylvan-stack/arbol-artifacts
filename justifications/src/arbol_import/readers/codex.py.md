@@ -5,9 +5,9 @@ role: authored
 
 ## <before _id>
 
-Reason: Read independent Codex title index entries
+Reason: Inventory Codex roots, descendants and rollout copies
 
-Origins: IMP-1.2, IMP-1.9, IMP-1.12, IMP-0.2, IMP-D19 · Intention i-791e2ced · 2026-11-19
+Origins: IMP-1.3, IMP-1.4, IMP-1.8, IMP-1.11, IMP-D13, IMP-D16, IMP-D21 · Intention i-14a1098b · 2026-11-19
 
 ## Rollout
 
@@ -17,9 +17,9 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.9, IMP-1.11, IMP-0.2, IMP-D10, IMP-D13 · Inten
 
 ## _discover
 
-Reason: Discover and validate Codex rollout headers from the supplied home
+Reason: Inventory Codex roots, descendants and rollout copies
 
-Origins: IMP-1.1, IMP-1.2, IMP-1.9, IMP-1.11, IMP-0.2, IMP-D10, IMP-D13 · Intention i-21b8f614 · 2026-11-19
+Origins: IMP-1.3, IMP-1.4, IMP-1.8, IMP-1.11, IMP-D13, IMP-D16, IMP-D21 · Intention i-14a1098b · 2026-11-19
 
 ## _header
 
@@ -143,7 +143,49 @@ Origins: IMP-1.3, IMP-1.9, IMP-0.2, IMP-D16, IMP-D19 · Intention i-f8f1add5 · 
 
 ## _driver_ids
 
-Reason: Identify sessions from the Codex Driver chat map
+Reason: Inventory Codex roots, descendants and rollout copies
 
-Origins: IMP-1.3, IMP-1.9, IMP-0.2, IMP-D16, IMP-D19 · Intention i-f8f1add5 · 2026-11-19
+Origins: IMP-1.3, IMP-1.4, IMP-1.8, IMP-1.11, IMP-D13, IMP-D16, IMP-D21 · Intention i-14a1098b · 2026-11-19
+
+## Inventory
+
+Reason: Inventory Codex roots, descendants and rollout copies
+
+Origins: IMP-1.3, IMP-1.4, IMP-1.8, IMP-1.11, IMP-D13, IMP-D16, IMP-D21 · Intention i-14a1098b · 2026-11-19
+
+## Inventory.family
+
+Reason: Inventory Codex roots, descendants and rollout copies
+
+Origins: IMP-1.3, IMP-1.4, IMP-1.8, IMP-1.11, IMP-D13, IMP-D16, IMP-D21 · Intention i-14a1098b · 2026-11-19
+
+## Thread
+
+Reason: Inventory Codex roots, descendants and rollout copies
+
+Origins: IMP-1.3, IMP-1.4, IMP-1.8, IMP-1.11, IMP-D13, IMP-D16, IMP-D21 · Intention i-14a1098b · 2026-11-19
+
+## _catalogue_path
+
+Reason: Inventory Codex roots, descendants and rollout copies
+
+Origins: IMP-1.3, IMP-1.4, IMP-1.8, IMP-1.11, IMP-D13, IMP-D16, IMP-D21 · Intention i-14a1098b · 2026-11-19
+
+## _copy_preference
+
+Reason: Inventory Codex roots, descendants and rollout copies
+
+Origins: IMP-1.3, IMP-1.4, IMP-1.8, IMP-1.11, IMP-D13, IMP-D16, IMP-D21 · Intention i-14a1098b · 2026-11-19
+
+## _inventory
+
+Reason: Inventory Codex roots, descendants and rollout copies
+
+Origins: IMP-1.3, IMP-1.4, IMP-1.8, IMP-1.11, IMP-D13, IMP-D16, IMP-D21 · Intention i-14a1098b · 2026-11-19
+
+## _rollout_paths
+
+Reason: Inventory Codex roots, descendants and rollout copies
+
+Origins: IMP-1.3, IMP-1.4, IMP-1.8, IMP-1.11, IMP-D13, IMP-D16, IMP-D21 · Intention i-14a1098b · 2026-11-19
 
