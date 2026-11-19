@@ -137,7 +137,19 @@ Origins: ARC-4.4, ARC-4.5 · Intention i-51b89919 · 2026-11-19
 
 ## fenced_step
 
-Reason: A child on the package's interpreter runs each fenced step with the fixture's own exclusive context
+Reason: Disposable prior and upgrade release records in the format verify_release checks (owner decision 19 November 2026)
 
-Origins: ARC-4.4, ARC-4.5 · Intention i-51b89919 · 2026-11-19
+Origins: ARC-4.5 · Intention i-3acf0e55 · 2026-11-19
+
+## SingleInstallation.release_records
+
+Reason: Disposable prior and upgrade release records in the format verify_release checks (owner decision 19 November 2026)
+
+Origins: ARC-4.5 · Intention i-3acf0e55 · 2026-11-19
+
+## SingleInstallation.source_commit
+
+Reason: Disposable prior and upgrade release records in the format verify_release checks (owner decision 19 November 2026)
+
+Origins: ARC-4.5 · Intention i-3acf0e55 · 2026-11-19
 
