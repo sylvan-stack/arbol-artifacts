@@ -5,9 +5,9 @@ role: authored
 
 ## <before SessionFile>
 
-Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
+Reason: Preserve native title and origin and give empty Claude sessions their earliest file time
 
-Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
+Origins: IMP-1.12, IMP-1.1, IMP-D17 · Intention i-e5c2ec27 · 2026-11-19
 
 ## SessionFile
 
@@ -89,9 +89,9 @@ Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
 
 ## SessionRecords
 
-Reason: Stream complete records in file time order and track duplicate UUIDs across copies
+Reason: Preserve native title and origin and give empty Claude sessions their earliest file time
 
-Origins: IMP-1.2, IMP-1.4 · Intention i-8b93be51 · 2026-11-19
+Origins: IMP-1.12, IMP-1.1, IMP-D17 · Intention i-e5c2ec27 · 2026-11-19
 
 ## _mtime
 
@@ -107,9 +107,9 @@ Origins: IMP-1.1, IMP-0.21, IMP-D16 · Intention i-753a9fd8 · 2026-11-19
 
 ## _ordered_sessions
 
-Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
+Reason: Preserve native title and origin and give empty Claude sessions their earliest file time
 
-Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+Origins: IMP-1.12, IMP-1.1, IMP-D17 · Intention i-e5c2ec27 · 2026-11-19
 
 ## _read_records
 
@@ -455,9 +455,9 @@ Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
 
 ## _archive
 
-Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
+Reason: Preserve native title and origin and give empty Claude sessions their earliest file time
 
-Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
+Origins: IMP-1.12, IMP-1.1, IMP-D17 · Intention i-e5c2ec27 · 2026-11-19
 
 ## _archive_name
 
@@ -482,4 +482,22 @@ Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
 Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
 
 Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
+
+## _last_title
+
+Reason: Preserve native title and origin and give empty Claude sessions their earliest file time
+
+Origins: IMP-1.12, IMP-1.1, IMP-D17 · Intention i-e5c2ec27 · 2026-11-19
+
+## _session
+
+Reason: Preserve native title and origin and give empty Claude sessions their earliest file time
+
+Origins: IMP-1.12, IMP-1.1, IMP-D17 · Intention i-e5c2ec27 · 2026-11-19
+
+## _title
+
+Reason: Preserve native title and origin and give empty Claude sessions their earliest file time
+
+Origins: IMP-1.12, IMP-1.1, IMP-D17 · Intention i-e5c2ec27 · 2026-11-19
 
