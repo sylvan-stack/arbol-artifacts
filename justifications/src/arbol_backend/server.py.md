@@ -11,9 +11,9 @@ Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
 
 ## <before Backend>
 
-Reason: Sweep only released run directories in the installed backend without blocking requests or crossing filesystem mounts.
+Reason: Bring the published cleanup worker and startup hook to the clean revision-1-compatible Build c source.
 
-Origins: BLD-1.2 · Intention i-b875e4f0 · 2026-11-19
+Origins: BLD-1.2 · Intention i-ee37678f · 2026-11-19
 
 ## Backend.monitor
 
@@ -23,9 +23,9 @@ Origins: ARC-4.4, ARC-4.7 · Intention i-fded1ae6 · 2026-11-12
 
 ## Backend.run
 
-Reason: Sweep only released run directories in the installed backend without blocking requests or crossing filesystem mounts.
+Reason: Bring the published cleanup worker and startup hook to the clean revision-1-compatible Build c source.
 
-Origins: BLD-1.2 · Intention i-b875e4f0 · 2026-11-19
+Origins: BLD-1.2 · Intention i-ee37678f · 2026-11-19
 
 ## Backend.initial_catalogue
 
