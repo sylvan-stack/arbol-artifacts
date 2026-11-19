@@ -5,9 +5,9 @@ role: authored
 
 ## <before SessionFile>
 
-Reason: Stream complete records in file time order and track duplicate UUIDs across copies
+Reason: Validate records before retaining their UUID and classification evidence
 
-Origins: IMP-1.2, IMP-1.4 · Intention i-8b93be51 · 2026-11-19
+Origins: IMP-1.1, IMP-0.21, IMP-D16 · Intention i-753a9fd8 · 2026-11-19
 
 ## SessionFile
 
@@ -101,15 +101,15 @@ Origins: IMP-1.2, IMP-1.4 · Intention i-8b93be51 · 2026-11-19
 
 ## _order_file
 
-Reason: Stream complete records in file time order and track duplicate UUIDs across copies
+Reason: Validate records before retaining their UUID and classification evidence
 
-Origins: IMP-1.2, IMP-1.4 · Intention i-8b93be51 · 2026-11-19
+Origins: IMP-1.1, IMP-0.21, IMP-D16 · Intention i-753a9fd8 · 2026-11-19
 
 ## _ordered_sessions
 
-Reason: Stream complete records in file time order and track duplicate UUIDs across copies
+Reason: Validate records before retaining their UUID and classification evidence
 
-Origins: IMP-1.2, IMP-1.4 · Intention i-8b93be51 · 2026-11-19
+Origins: IMP-1.1, IMP-0.21, IMP-D16 · Intention i-753a9fd8 · 2026-11-19
 
 ## _read_records
 
@@ -122,4 +122,52 @@ Origins: IMP-1.2, IMP-1.4 · Intention i-8b93be51 · 2026-11-19
 Reason: Stream complete records in file time order and track duplicate UUIDs across copies
 
 Origins: IMP-1.2, IMP-1.4 · Intention i-8b93be51 · 2026-11-19
+
+## <before _object>
+
+Reason: Validate records before retaining their UUID and classification evidence
+
+Origins: IMP-1.1, IMP-0.21, IMP-D16 · Intention i-753a9fd8 · 2026-11-19
+
+## _bad_record
+
+Reason: Validate records before retaining their UUID and classification evidence
+
+Origins: IMP-1.1, IMP-0.21, IMP-D16 · Intention i-753a9fd8 · 2026-11-19
+
+## _check_content
+
+Reason: Validate records before retaining their UUID and classification evidence
+
+Origins: IMP-1.1, IMP-0.21, IMP-D16 · Intention i-753a9fd8 · 2026-11-19
+
+## _object
+
+Reason: Validate records before retaining their UUID and classification evidence
+
+Origins: IMP-1.1, IMP-0.21, IMP-D16 · Intention i-753a9fd8 · 2026-11-19
+
+## _record_time
+
+Reason: Validate records before retaining their UUID and classification evidence
+
+Origins: IMP-1.1, IMP-0.21, IMP-D16 · Intention i-753a9fd8 · 2026-11-19
+
+## _string
+
+Reason: Validate records before retaining their UUID and classification evidence
+
+Origins: IMP-1.1, IMP-0.21, IMP-D16 · Intention i-753a9fd8 · 2026-11-19
+
+## _validate_message
+
+Reason: Validate records before retaining their UUID and classification evidence
+
+Origins: IMP-1.1, IMP-0.21, IMP-D16 · Intention i-753a9fd8 · 2026-11-19
+
+## _validated
+
+Reason: Validate records before retaining their UUID and classification evidence
+
+Origins: IMP-1.1, IMP-0.21, IMP-D16 · Intention i-753a9fd8 · 2026-11-19
 
