@@ -5,9 +5,9 @@ role: authored
 
 ## <before _SavedSession>
 
-Reason: Match Kimi model responses and select the last retained loop request
+Reason: Link Kimi descendant calls and account for subagent usage separately
 
-Origins: IMP-1.7, IMP-0.8 · Intention i-37a6b1f2 · 2026-11-19
+Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
 
 ## _SavedSession
 
@@ -161,15 +161,15 @@ Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
 
 ## _Lane
 
-Reason: Match Kimi model responses and select the last retained loop request
+Reason: Link Kimi descendant calls and account for subagent usage separately
 
-Origins: IMP-1.7, IMP-0.8 · Intention i-37a6b1f2 · 2026-11-19
+Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
 
 ## _Lane.append
 
-Reason: Match Kimi model responses and select the last retained loop request
+Reason: Link Kimi descendant calls and account for subagent usage separately
 
-Origins: IMP-1.7, IMP-0.8 · Intention i-37a6b1f2 · 2026-11-19
+Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
 
 ## _NativeTurn
 
@@ -299,13 +299,55 @@ Origins: IMP-1.7, IMP-0.8 · Intention i-37a6b1f2 · 2026-11-19
 
 ## _responses
 
-Reason: Match Kimi model responses and select the last retained loop request
+Reason: Link Kimi descendant calls and account for subagent usage separately
 
-Origins: IMP-1.7, IMP-0.8 · Intention i-37a6b1f2 · 2026-11-19
+Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
 
 ## _usage
 
 Reason: Match Kimi model responses and select the last retained loop request
 
 Origins: IMP-1.7, IMP-0.8 · Intention i-37a6b1f2 · 2026-11-19
+
+## _ChildWork
+
+Reason: Link Kimi descendant calls and account for subagent usage separately
+
+Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
+
+## _Launch
+
+Reason: Link Kimi descendant calls and account for subagent usage separately
+
+Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
+
+## _item_time
+
+Reason: Link Kimi descendant calls and account for subagent usage separately
+
+Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
+
+## _launches
+
+Reason: Link Kimi descendant calls and account for subagent usage separately
+
+Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
+
+## _project
+
+Reason: Link Kimi descendant calls and account for subagent usage separately
+
+Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
+
+## _route
+
+Reason: Link Kimi descendant calls and account for subagent usage separately
+
+Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
+
+## _turn_at
+
+Reason: Link Kimi descendant calls and account for subagent usage separately
+
+Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
 
