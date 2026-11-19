@@ -11,9 +11,9 @@ Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
 
 ## <before Backend>
 
-Reason: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
+Reason: Sweep only released run directories in the installed backend without blocking requests or crossing filesystem mounts.
 
-Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
+Origins: BLD-1.2 · Intention i-b875e4f0 · 2026-11-19
 
 ## Backend.monitor
 
@@ -23,9 +23,9 @@ Origins: ARC-4.4, ARC-4.7 · Intention i-fded1ae6 · 2026-11-12
 
 ## Backend.run
 
-Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
+Reason: Sweep only released run directories in the installed backend without blocking requests or crossing filesystem mounts.
 
-Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
+Origins: BLD-1.2 · Intention i-b875e4f0 · 2026-11-19
 
 ## Backend.initial_catalogue
 
