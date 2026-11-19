@@ -29,9 +29,9 @@ Removed by Intention i-fd7b43a3 · 2026-11-12
 
 ## <before Schema>
 
-Reason: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
+Reason: The backend and admission must agree on the new runtime directory and PostgreSQL guards while preserving isolated overrides.
 
-Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
+Origins: ARC-5.1, ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-7edd5e18 · 2026-11-19
 
 ## Database.read_schema
 
@@ -101,9 +101,9 @@ Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
 
 ## configured_target
 
-Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
+Reason: The backend and admission must agree on the new runtime directory and PostgreSQL guards while preserving isolated overrides.
 
-Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
+Origins: ARC-5.1, ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-7edd5e18 · 2026-11-19
 
 ## database_fields
 
@@ -119,9 +119,9 @@ Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
 
 ## private_socket
 
-Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
+Reason: The backend and admission must agree on the new runtime directory and PostgreSQL guards while preserving isolated overrides.
 
-Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
+Origins: ARC-5.1, ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-7edd5e18 · 2026-11-19
 
 ## Database.connection
 

@@ -5,13 +5,13 @@ role: authored
 
 ## <before main>
 
-Reason: Validate disposable database arguments before child launch and avoid starting a contender while a backend holds the lifetime lock.
+Reason: The backend and admission must agree on the new runtime directory and PostgreSQL guards while preserving isolated overrides.
 
-Origins: ARC-4.4 · Intention i-40f262b4 · 2026-11-12
+Origins: ARC-5.1, ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-7edd5e18 · 2026-11-19
 
 ## main
 
-Reason: Validate disposable database arguments before child launch and avoid starting a contender while a backend holds the lifetime lock.
+Reason: The backend and admission must agree on the new runtime directory and PostgreSQL guards while preserving isolated overrides.
 
-Origins: ARC-4.4 · Intention i-40f262b4 · 2026-11-12
+Origins: ARC-5.1, ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-7edd5e18 · 2026-11-19
 

@@ -5,9 +5,9 @@ role: authored
 
 ## <before AdmissionRefusal>
 
-Reason: Use the same installation lease to protect Build recovery inputs and stage its private module in both consumers.
+Reason: The backend and admission must agree on the new runtime directory and PostgreSQL guards while preserving isolated overrides.
 
-Origins: ARC-4.4, ARC-4.5 · Intention i-e245baed · 2026-11-12
+Origins: ARC-5.1, ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-7edd5e18 · 2026-11-19
 
 ## Admission
 
@@ -89,9 +89,9 @@ Origins: ARC-4.4, ARC-4.5 · Intention i-e245baed · 2026-11-12
 
 ## prepare_directory
 
-Reason: Use the same installation lease to protect Build recovery inputs and stage its private module in both consumers.
+Reason: The backend and admission must agree on the new runtime directory and PostgreSQL guards while preserving isolated overrides.
 
-Origins: ARC-4.4, ARC-4.5 · Intention i-e245baed · 2026-11-12
+Origins: ARC-5.1, ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-7edd5e18 · 2026-11-19
 
 ## private_dir
 
@@ -113,9 +113,9 @@ Origins: ARC-4.4, ARC-4.5 · Intention i-e245baed · 2026-11-12
 
 ## runtime_folder
 
-Reason: Use the same installation lease to protect Build recovery inputs and stage its private module in both consumers.
+Reason: The backend and admission must agree on the new runtime directory and PostgreSQL guards while preserving isolated overrides.
 
-Origins: ARC-4.4, ARC-4.5 · Intention i-e245baed · 2026-11-12
+Origins: ARC-5.1, ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-7edd5e18 · 2026-11-19
 
 ## staged_state
 

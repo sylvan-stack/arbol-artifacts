@@ -5,9 +5,9 @@ role: authored
 
 ## <before Refused>
 
-Reason: Make App and CLI acquisition share the private installation lifetime lock and readiness contract.
+Reason: The backend and admission must agree on the new runtime directory and PostgreSQL guards while preserving isolated overrides.
 
-Origins: ARC-4.1 · Intention i-961a1afa · 2026-11-12
+Origins: ARC-5.1, ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-7edd5e18 · 2026-11-19
 
 ## Identity
 
@@ -17,9 +17,9 @@ Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
 
 ## identity
 
-Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
+Reason: The backend and admission must agree on the new runtime directory and PostgreSQL guards while preserving isolated overrides.
 
-Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
+Origins: ARC-5.1, ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-7edd5e18 · 2026-11-19
 
 ## parse
 
