@@ -31,6 +31,12 @@ a mounted disk image. Removal cannot cross a filesystem mount. A failed or
 interrupted removal leaves its remaining files queued for a later sweep.
 An isolated backend never sweeps the installation's queue.
 
+Some runs contain packaged output with owner-readable, read-only directories.
+The worker may add owner-write permission to those directories inside the
+released tree so it can remove them. It opens directories without following
+symlinks, stays on the run's device, and makes permission changes only to
+directories owned by the current user.
+
 ## Requirements
 
 | ID | Arbol must | Origin | Verified by |
