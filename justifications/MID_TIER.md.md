@@ -5,9 +5,9 @@ role: authored
 
 ## Mid-tier tests: arbol
 
-Reason: Describe C44 UUID continuity, child Forester ownership and exact legacy settlement while preserving historical qualification scope
+Reason: Register SIM-3's top-tier and mid-tier cases in the four test inventories
 
-Origins: ARC-4.7, ARC-4.8 · Intention i-c43f57a6 · 2026-11-12
+Origins: IMP-0.16, IMP-1.2 · Intention i-706b599b · 2026-11-19
 
 ## Mid-tier tests: arbol > Separate testing and low-tier history — SYL-330
 

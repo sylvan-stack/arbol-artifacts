@@ -5,21 +5,21 @@ role: authored
 
 ## Tests: arbol > Selection and limits
 
-Reason: Restore complete source checks using canonical installation fixtures while preserving current guarantees and retired Root evidence
+Reason: Register SIM-3's top-tier and mid-tier cases in the four test inventories
 
-Origins: ARC-4.1, ARC-4.3, ARC-4.4, ARC-4.6, ARC-4.7 · Intention i-a24cfd8e · 2026-11-12
+Origins: IMP-0.16, IMP-1.2 · Intention i-706b599b · 2026-11-19
 
 ## Tests: arbol > Builds
 
-Reason: Run the relocated runtime cases in the packaged Arbol top tier and retain the separate legacy Root recovery gates.
+Reason: Register SIM-3's top-tier and mid-tier cases in the four test inventories
 
-Origins: ARC-4.6 · Intention i-668138b3 · 2026-11-12
+Origins: IMP-0.16, IMP-1.2 · Intention i-706b599b · 2026-11-19
 
 ## Tests: arbol > Active top tier
 
-Reason: Verify the canonical packaged baseline digest, exercise a private installation at its singleton Bridge endpoint and preserve the chat publication race, with test inventory links and digest synchronized.
+Reason: Register SIM-3's top-tier and mid-tier cases in the four test inventories
 
-Origins: ARC-4.6 · Intention i-51891c4f · 2026-11-12
+Origins: IMP-0.16, IMP-1.2 · Intention i-706b599b · 2026-11-19
 
 ## Tests: arbol > Owner-controlled testing and archived examples — SYL-330
 
