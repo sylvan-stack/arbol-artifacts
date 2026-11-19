@@ -5,9 +5,9 @@ role: authored
 
 ## <before _SavedSession>
 
-Reason: Project timed Kimi assistant text from loop records
+Reason: Join Kimi tool calls, results, and eligible spilled text
 
-Origins: IMP-1.4, IMP-0.7 · Intention i-4c113390 · 2026-11-19
+Origins: IMP-1.6, IMP-1.8 · Intention i-2635f14d · 2026-11-19
 
 ## _SavedSession
 
@@ -167,9 +167,9 @@ Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
 
 ## _Lane.append
 
-Reason: Project timed Kimi assistant text from loop records
+Reason: Join Kimi tool calls, results, and eligible spilled text
 
-Origins: IMP-1.4, IMP-0.7 · Intention i-4c113390 · 2026-11-19
+Origins: IMP-1.6, IMP-1.8 · Intention i-2635f14d · 2026-11-19
 
 ## _NativeTurn
 
@@ -221,7 +221,37 @@ Origins: IMP-1.4, IMP-0.7 · Intention i-4c113390 · 2026-11-19
 
 ## _items
 
-Reason: Project timed Kimi assistant text from loop records
+Reason: Join Kimi tool calls, results, and eligible spilled text
 
-Origins: IMP-1.4, IMP-0.7 · Intention i-4c113390 · 2026-11-19
+Origins: IMP-1.6, IMP-1.8 · Intention i-2635f14d · 2026-11-19
+
+## <before _spill_name>
+
+Reason: Join Kimi tool calls, results, and eligible spilled text
+
+Origins: IMP-1.6, IMP-1.8 · Intention i-2635f14d · 2026-11-19
+
+## _check_tool
+
+Reason: Join Kimi tool calls, results, and eligible spilled text
+
+Origins: IMP-1.6, IMP-1.8 · Intention i-2635f14d · 2026-11-19
+
+## _result
+
+Reason: Join Kimi tool calls, results, and eligible spilled text
+
+Origins: IMP-1.6, IMP-1.8 · Intention i-2635f14d · 2026-11-19
+
+## _spill_name
+
+Reason: Join Kimi tool calls, results, and eligible spilled text
+
+Origins: IMP-1.6, IMP-1.8 · Intention i-2635f14d · 2026-11-19
+
+## _spill_path
+
+Reason: Join Kimi tool calls, results, and eligible spilled text
+
+Origins: IMP-1.6, IMP-1.8 · Intention i-2635f14d · 2026-11-19
 
