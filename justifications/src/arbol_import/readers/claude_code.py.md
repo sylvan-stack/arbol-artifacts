@@ -5,9 +5,9 @@ role: authored
 
 ## <before SessionFile>
 
-Reason: Validate records before retaining their UUID and classification evidence
+Reason: Classify from each session’s validated native evidence and recorded probe prompts
 
-Origins: IMP-1.1, IMP-0.21, IMP-D16 · Intention i-753a9fd8 · 2026-11-19
+Origins: IMP-1.3, IMP-D16 · Intention i-fb1bee8d · 2026-11-19
 
 ## SessionFile
 
@@ -161,13 +161,61 @@ Origins: IMP-1.1, IMP-0.21, IMP-D16 · Intention i-753a9fd8 · 2026-11-19
 
 ## _validate_message
 
-Reason: Validate records before retaining their UUID and classification evidence
+Reason: Classify from each session’s validated native evidence and recorded probe prompts
 
-Origins: IMP-1.1, IMP-0.21, IMP-D16 · Intention i-753a9fd8 · 2026-11-19
+Origins: IMP-1.3, IMP-D16 · Intention i-fb1bee8d · 2026-11-19
 
 ## _validated
 
 Reason: Validate records before retaining their UUID and classification evidence
 
 Origins: IMP-1.1, IMP-0.21, IMP-D16 · Intention i-753a9fd8 · 2026-11-19
+
+## <before _blocks>
+
+Reason: Classify from each session’s validated native evidence and recorded probe prompts
+
+Origins: IMP-1.3, IMP-D16 · Intention i-fb1bee8d · 2026-11-19
+
+## _blocks
+
+Reason: Classify from each session’s validated native evidence and recorded probe prompts
+
+Origins: IMP-1.3, IMP-D16 · Intention i-fb1bee8d · 2026-11-19
+
+## _first_field
+
+Reason: Classify from each session’s validated native evidence and recorded probe prompts
+
+Origins: IMP-1.3, IMP-D16 · Intention i-fb1bee8d · 2026-11-19
+
+## _interruption
+
+Reason: Classify from each session’s validated native evidence and recorded probe prompts
+
+Origins: IMP-1.3, IMP-D16 · Intention i-fb1bee8d · 2026-11-19
+
+## _kind
+
+Reason: Classify from each session’s validated native evidence and recorded probe prompts
+
+Origins: IMP-1.3, IMP-D16 · Intention i-fb1bee8d · 2026-11-19
+
+## _message
+
+Reason: Classify from each session’s validated native evidence and recorded probe prompts
+
+Origins: IMP-1.3, IMP-D16 · Intention i-fb1bee8d · 2026-11-19
+
+## _text
+
+Reason: Classify from each session’s validated native evidence and recorded probe prompts
+
+Origins: IMP-1.3, IMP-D16 · Intention i-fb1bee8d · 2026-11-19
+
+## _user_prompt
+
+Reason: Classify from each session’s validated native evidence and recorded probe prompts
+
+Origins: IMP-1.3, IMP-D16 · Intention i-fb1bee8d · 2026-11-19
 
