@@ -257,6 +257,8 @@ DRV-2.14 switched off the vendor tool's own memory and the instructions of the w
 
 ## Interface
 
+For [Steady's Cue Card delivery](../../arbol-trunk/trunks/steady/specs/00-the-steady-trunk.md#cue-cards-in-intake), a Driver advertising `capabilities.cueContext: 1` accepts an optional UTF-8 `cueContext` string of up to 8,000 characters. It delivers nonempty text in the current native turn as a labelled Cue Card block and uses the canonical input and history for continuity. Claude and Codex require the validated Arbol chat marker for this field and set `ARBOL_CUE_CARD_DELIVERY=steady` for that native invocation even when the string is empty. They derive the marker from the request after cleaning the inherited environment.
+
 Types are given in TypeScript. Times are ISO 8601 strings in UTC.
 
 ```ts
@@ -271,6 +273,7 @@ interface RunRequest {
   additionalDirectories?: string[];
   history: HistoryItem[];            // the earlier conversation of this branch, oldest first
   input: Message;                    // the new message, role "user"
+  cueContext?: string;               // when advertised, Steady's context for this turn
   rootId?: string;                   // Arbol Root identifier; requires an Arbol chat UUID
   chatSessionId?: string;            // the caller's chat identifier; opaque when rootId is absent
   tools: Tools;                      // DRV-3: "all" or "none"
