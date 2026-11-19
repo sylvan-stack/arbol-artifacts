@@ -5,9 +5,9 @@ role: authored
 
 ## <before SessionFile>
 
-Reason: Retain one timestamped usage entry per native response
+Reason: Attach nested calls and separate sub-agent usage to their parent turns
 
-Origins: IMP-1.7, IMP-1.4 · Intention i-85ff0905 · 2026-11-19
+Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-3fded0f5 · 2026-11-19
 
 ## SessionFile
 
@@ -281,9 +281,9 @@ Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
 
 ## _items
 
-Reason: Retain one timestamped usage entry per native response
+Reason: Attach nested calls and separate sub-agent usage to their parent turns
 
-Origins: IMP-1.7, IMP-1.4 · Intention i-85ff0905 · 2026-11-19
+Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-3fded0f5 · 2026-11-19
 
 ## _native_results
 
@@ -401,13 +401,25 @@ Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
 
 ## _placements
 
-Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
+Reason: Attach nested calls and separate sub-agent usage to their parent turns
 
-Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-3fded0f5 · 2026-11-19
 
 ## _present
 
 Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
 
 Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+
+## _project_turns
+
+Reason: Attach nested calls and separate sub-agent usage to their parent turns
+
+Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-3fded0f5 · 2026-11-19
+
+## _subagent
+
+Reason: Attach nested calls and separate sub-agent usage to their parent turns
+
+Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-3fded0f5 · 2026-11-19
 
