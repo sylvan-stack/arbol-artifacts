@@ -5,9 +5,9 @@ role: authored
 
 ## <before _SavedSession>
 
-Reason: Describe Kimi result images from local evidence
+Reason: Match Kimi model responses and select the last retained loop request
 
-Origins: IMP-1.6, IMP-0.10 · Intention i-8dedb74f · 2026-11-19
+Origins: IMP-1.7, IMP-0.8 · Intention i-37a6b1f2 · 2026-11-19
 
 ## _SavedSession
 
@@ -161,15 +161,15 @@ Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
 
 ## _Lane
 
-Reason: Form Kimi turns, steers, and endings in wire order
+Reason: Match Kimi model responses and select the last retained loop request
 
-Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
+Origins: IMP-1.7, IMP-0.8 · Intention i-37a6b1f2 · 2026-11-19
 
 ## _Lane.append
 
-Reason: Join Kimi tool calls, results, and eligible spilled text
+Reason: Match Kimi model responses and select the last retained loop request
 
-Origins: IMP-1.6, IMP-1.8 · Intention i-2635f14d · 2026-11-19
+Origins: IMP-1.7, IMP-0.8 · Intention i-37a6b1f2 · 2026-11-19
 
 ## _NativeTurn
 
@@ -179,9 +179,9 @@ Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
 
 ## _NativeTurn.project
 
-Reason: Form Kimi turns, steers, and endings in wire order
+Reason: Match Kimi model responses and select the last retained loop request
 
-Origins: IMP-1.5, IMP-0.8 · Intention i-ef4fde7e · 2026-11-19
+Origins: IMP-1.7, IMP-0.8 · Intention i-37a6b1f2 · 2026-11-19
 
 ## _error
 
@@ -284,4 +284,28 @@ Origins: IMP-1.6, IMP-0.10 · Intention i-8dedb74f · 2026-11-19
 Reason: Describe Kimi result images from local evidence
 
 Origins: IMP-1.6, IMP-0.10 · Intention i-8dedb74f · 2026-11-19
+
+## <before _usage>
+
+Reason: Match Kimi model responses and select the last retained loop request
+
+Origins: IMP-1.7, IMP-0.8 · Intention i-37a6b1f2 · 2026-11-19
+
+## _request_turn
+
+Reason: Match Kimi model responses and select the last retained loop request
+
+Origins: IMP-1.7, IMP-0.8 · Intention i-37a6b1f2 · 2026-11-19
+
+## _responses
+
+Reason: Match Kimi model responses and select the last retained loop request
+
+Origins: IMP-1.7, IMP-0.8 · Intention i-37a6b1f2 · 2026-11-19
+
+## _usage
+
+Reason: Match Kimi model responses and select the last retained loop request
+
+Origins: IMP-1.7, IMP-0.8 · Intention i-37a6b1f2 · 2026-11-19
 
