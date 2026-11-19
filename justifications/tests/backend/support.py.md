@@ -5,9 +5,9 @@ role: authored
 
 ## <before Frame>
 
-Reason: A child on the package's interpreter runs each fenced step with the fixture's own exclusive context
+Reason: Open admission through the fenced upgrade: freeze, snapshot, isolated restore, upgrade, reopen
 
-Origins: ARC-4.4, ARC-4.5 · Intention i-51b89919 · 2026-11-19
+Origins: ARC-4.4, ARC-4.5, ARC-4.2 · Intention i-7c239e8e · 2026-11-19
 
 ## Cluster
 
@@ -89,9 +89,9 @@ Origins: ARC-4.6 · Intention i-51891c4f · 2026-11-12
 
 ## SingleInstallation.open_admission
 
-Reason: The fixture computes the lowest revision the package's schemaCompatibility admits
+Reason: Open admission through the fenced upgrade: freeze, snapshot, isolated restore, upgrade, reopen
 
-Origins: ARC-4.3 · Intention i-642ad330 · 2026-11-19
+Origins: ARC-4.4, ARC-4.5, ARC-4.2 · Intention i-7c239e8e · 2026-11-19
 
 ## SingleInstallation.options
 
