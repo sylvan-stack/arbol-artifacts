@@ -29,9 +29,9 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
 
 ## capture_build
 
-Reason: Bind Browser recovery to the exact signed host, published source admission, and retained pinned inputs consumed by its unchanged recipe and gate.
+Reason: Use the independently verified layout from the committed description and working record when the classifier manifest format omits it.
 
-Origins: ARC-4.5, ARC-5.4, ARC-D95, ARC-D96 · Intention i-c535ce9e · 2026-11-19
+Origins: ARC-4.5, ARC-5.6, BLD-0.4 · Intention i-8a8d4893 · 2026-11-19
 
 ## check_hashes
 
