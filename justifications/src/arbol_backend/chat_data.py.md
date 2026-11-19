@@ -23,9 +23,9 @@ Origins: ARC-4.1, ARC-4.7 · Intention i-b2f8b6f1 · 2026-11-12
 
 ## Reader.chat
 
-Reason: Remove migration and stale copy data from the active chat and backend contracts.
+Reason: Read public import provenance with the saved chat and declare the required schema revision in both Build metadata sources.
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-b2f8b6f1 · 2026-11-12
+Origins: IMP-0.17, IMP-0.18, ARC-4.5 · Intention i-42e32257 · 2026-11-19
 
 ## Reader.session
 
@@ -35,9 +35,9 @@ Origins: ARC-4.1, ARC-4.7 · Intention i-b2f8b6f1 · 2026-11-12
 
 ## Reader.summaries
 
-Reason: Read saved chat history and recover notes by UUID while preserving the accepted Trunk Build.
+Reason: Read public import provenance with the saved chat and declare the required schema revision in both Build metadata sources.
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-cab7bebd · 2026-11-12
+Origins: IMP-0.17, IMP-0.18, ARC-4.5 · Intention i-42e32257 · 2026-11-19
 
 ## provenance
 
