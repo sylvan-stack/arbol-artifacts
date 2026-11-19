@@ -135,3 +135,9 @@ Reason: Build reservations, guards and generated launchers must find the same in
 
 Origins: ARC-5.1, ARC-5.2, ARC-5.5 · Intention i-c5d7328f · 2026-11-19
 
+## build_details
+
+Reason: The launcher and registry must select only compatible Builds and report the available compatible alternatives.
+
+Origins: ARC-5.6, ARC-4.3 · Intention i-e3135619 · 2026-11-19
+

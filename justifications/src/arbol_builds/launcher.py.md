@@ -17,9 +17,9 @@ Origins: ARC-4.3 · Intention i-62e4abb1 · 2026-11-12
 
 ## launch
 
-Reason: Route approved Driver selections through qualified custody or pre-execution legacy taint while preserving other launcher branches
+Reason: The launcher and registry must select only compatible Builds and report the available compatible alternatives.
 
-Origins: DRV-6.21, BLD-0.7, BLD-0.8, BLD-0.9, BLD-0.11 · Intention i-2499f246 · 2026-11-15
+Origins: ARC-5.6, ARC-4.3 · Intention i-e3135619 · 2026-11-19
 
 ## backend_fits
 
@@ -29,9 +29,9 @@ Origins: ARC-4.1, ARC-4.3, ARC-4.8 · Intention i-d1b0e71e · 2026-11-12
 
 ## <before inside>
 
-Reason: No Trunk Build can take the reserved code name imported
+Reason: The launcher and registry must select only compatible Builds and report the available compatible alternatives.
 
-Origins: IMP-0.18 · Intention i-cc3001b4 · 2026-11-18
+Origins: ARC-5.6, ARC-4.3 · Intention i-e3135619 · 2026-11-19
 
 ## code_name
 
@@ -44,4 +44,16 @@ Origins: IMP-0.18 · Intention i-cc3001b4 · 2026-11-18
 Reason: Record the Build layout independently from its schema declaration, preserving readability of existing records.
 
 Origins: ARC-5.6 · Intention i-1c7ef6e6 · 2026-11-19
+
+## default_record
+
+Reason: The launcher and registry must select only compatible Builds and report the available compatible alternatives.
+
+Origins: ARC-5.6, ARC-4.3 · Intention i-e3135619 · 2026-11-19
+
+## layout_fits
+
+Reason: The launcher and registry must select only compatible Builds and report the available compatible alternatives.
+
+Origins: ARC-5.6, ARC-4.3 · Intention i-e3135619 · 2026-11-19
 

@@ -11,9 +11,9 @@ Removed by Intention i-fa05f54d · 2026-11-12
 
 ## <before Refused>
 
-Reason: Drop the obsolete Root reader from the generated Trunk launcher and remove an unused import in the embedded schema reader.
+Reason: The launcher and registry must select only compatible Builds and report the available compatible alternatives.
 
-Origins: ARC-4.1, ARC-4.3 · Intention i-fa05f54d · 2026-11-12
+Origins: ARC-5.6, ARC-4.3 · Intention i-e3135619 · 2026-11-19
 
 ## Call
 
@@ -41,9 +41,9 @@ Origins: ARC-4.1, ARC-4.3 · Intention i-fa05f54d · 2026-11-12
 
 ## fits
 
-Reason: Drop the obsolete Root reader from the generated Trunk launcher and remove an unused import in the embedded schema reader.
+Reason: The launcher and registry must select only compatible Builds and report the available compatible alternatives.
 
-Origins: ARC-4.1, ARC-4.3 · Intention i-fa05f54d · 2026-11-12
+Origins: ARC-5.6, ARC-4.3 · Intention i-e3135619 · 2026-11-19
 
 ## known_trunk
 
@@ -59,9 +59,9 @@ Origins: ARC-4.1, ARC-4.3 · Intention i-fa05f54d · 2026-11-12
 
 ## pick_build
 
-Reason: Drop the obsolete Root reader from the generated Trunk launcher and remove an unused import in the embedded schema reader.
+Reason: The launcher and registry must select only compatible Builds and report the available compatible alternatives.
 
-Origins: ARC-4.1, ARC-4.3 · Intention i-fa05f54d · 2026-11-12
+Origins: ARC-5.6, ARC-4.3 · Intention i-e3135619 · 2026-11-19
 
 ## read_call
 
@@ -77,7 +77,7 @@ Origins: ARC-4.1, ARC-4.3 · Intention i-fa05f54d · 2026-11-12
 
 ## trunk_list
 
-Reason: Drop the obsolete Root reader from the generated Trunk launcher and remove an unused import in the embedded schema reader.
+Reason: The launcher and registry must select only compatible Builds and report the available compatible alternatives.
 
-Origins: ARC-4.1, ARC-4.3 · Intention i-fa05f54d · 2026-11-12
+Origins: ARC-5.6, ARC-4.3 · Intention i-e3135619 · 2026-11-19
 
