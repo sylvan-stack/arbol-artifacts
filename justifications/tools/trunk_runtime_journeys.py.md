@@ -5,9 +5,9 @@ role: authored
 
 ## <before Build>
 
-Reason: Read public detached acceptance without waiting for the live Trunk to exit and bind harness source separately
+Reason: Verify generated launchers and actual Exchange settlement in a private layout-2 installation.
 
-Origins: ARC-4.3, ARC-4.6 · Intention i-644fb5a4 · 2026-11-12
+Origins: ARC-5.1, ARC-5.4, ARC-5.5, ARC-5.6 · Intention i-7bc138d5 · 2026-11-19
 
 ## <end>
 
@@ -35,9 +35,9 @@ Origins: ARC-4.3, ARC-4.4, ARC-4.6 · Intention i-48e23304 · 2026-11-12
 
 ## JourneyInstallation.__init__
 
-Reason: Read public detached acceptance without waiting for the live Trunk to exit and bind harness source separately
+Reason: Verify generated launchers and actual Exchange settlement in a private layout-2 installation.
 
-Origins: ARC-4.3, ARC-4.6 · Intention i-644fb5a4 · 2026-11-12
+Origins: ARC-5.1, ARC-5.4, ARC-5.5, ARC-5.6 · Intention i-7bc138d5 · 2026-11-19
 
 ## JourneyInstallation._call
 
@@ -83,9 +83,9 @@ Origins: ARC-4.3, ARC-4.4, ARC-4.6 · Intention i-48e23304 · 2026-11-12
 
 ## JourneyInstallation.stage_tools
 
-Reason: Stage the real numbered packages, generated launchers, canonical schema and controlled Driver in one disposable installation with explicit target checks.
+Reason: Verify generated launchers and actual Exchange settlement in a private layout-2 installation.
 
-Origins: ARC-4.3, ARC-4.4, ARC-4.6 · Intention i-48e23304 · 2026-11-12
+Origins: ARC-5.1, ARC-5.4, ARC-5.5, ARC-5.6 · Intention i-7bc138d5 · 2026-11-19
 
 ## JourneyInstallation.start
 
@@ -113,9 +113,9 @@ Origins: ARC-4.3, ARC-4.4, ARC-4.6 · Intention i-48e23304 · 2026-11-12
 
 ## main
 
-Reason: Read public detached acceptance without waiting for the live Trunk to exit and bind harness source separately
+Reason: Verify generated launchers and actual Exchange settlement in a private layout-2 installation.
 
-Origins: ARC-4.3, ARC-4.6 · Intention i-644fb5a4 · 2026-11-12
+Origins: ARC-5.1, ARC-5.4, ARC-5.5, ARC-5.6 · Intention i-7bc138d5 · 2026-11-19
 
 ## object_file
 
@@ -134,4 +134,16 @@ Origins: ARC-4.3, ARC-4.4, ARC-4.6 · Intention i-48e23304 · 2026-11-12
 Reason: Read public detached acceptance without waiting for the live Trunk to exit and bind harness source separately
 
 Origins: ARC-4.3, ARC-4.6 · Intention i-644fb5a4 · 2026-11-12
+
+## check_admission_layout
+
+Reason: Verify generated launchers and actual Exchange settlement in a private layout-2 installation.
+
+Origins: ARC-5.1, ARC-5.4, ARC-5.5, ARC-5.6 · Intention i-7bc138d5 · 2026-11-19
+
+## verify_layout
+
+Reason: Verify generated launchers and actual Exchange settlement in a private layout-2 installation.
+
+Origins: ARC-5.1, ARC-5.4, ARC-5.5, ARC-5.6 · Intention i-7bc138d5 · 2026-11-19
 
