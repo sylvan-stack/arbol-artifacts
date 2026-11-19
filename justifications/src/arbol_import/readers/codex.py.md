@@ -5,9 +5,9 @@ role: authored
 
 ## <before _id>
 
-Reason: Inventory Codex roots, descendants and rollout copies
+Reason: Classify Codex sessions from validated root evidence
 
-Origins: IMP-1.3, IMP-1.4, IMP-1.8, IMP-1.11, IMP-D13, IMP-D16, IMP-D21 · Intention i-14a1098b · 2026-11-19
+Origins: IMP-1.3, IMP-D6, IMP-D16, IMP-D19, IMP-D20 · Intention i-12b5f8be · 2026-11-19
 
 ## Rollout
 
@@ -278,4 +278,16 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16
 Reason: Validate and stream Codex conversation records
 
 Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
+
+## <before _kind>
+
+Reason: Classify Codex sessions from validated root evidence
+
+Origins: IMP-1.3, IMP-D6, IMP-D16, IMP-D19, IMP-D20 · Intention i-12b5f8be · 2026-11-19
+
+## _kind
+
+Reason: Classify Codex sessions from validated root evidence
+
+Origins: IMP-1.3, IMP-D6, IMP-D16, IMP-D19, IMP-D20 · Intention i-12b5f8be · 2026-11-19
 
