@@ -131,15 +131,15 @@ Origins: ARC-4.4, ARC-4.5 · Intention i-51b89919 · 2026-11-19
 
 ## SingleInstallation.fenced
 
-Reason: A child on the package's interpreter runs each fenced step with the fixture's own exclusive context
+Reason: Give the fenced release child the disposable cluster archive path independently of the mock HOME runtime.
 
-Origins: ARC-4.4, ARC-4.5 · Intention i-51b89919 · 2026-11-19
+Origins: ARC-5.4, ARC-5.6 · Intention i-bd45cea4 · 2026-11-19
 
 ## fenced_step
 
-Reason: Keep the existing genuine fenced recovery fixture disposable while continuing to exercise normal recovery and migration code.
+Reason: Give the fenced release child the disposable cluster archive path independently of the mock HOME runtime.
 
-Origins: ARC-5.4, ARC-5.6 · Intention i-2e86b3d5 · 2026-11-19
+Origins: ARC-5.4, ARC-5.6 · Intention i-bd45cea4 · 2026-11-19
 
 ## SingleInstallation.release_records
 
