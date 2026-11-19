@@ -35,9 +35,9 @@ An isolated backend never sweeps the installation's queue.
 
 | ID | Arbol must | Origin | Verified by |
 |---|---|---|---|
-| BLD-1.1 | Give build and test runners one finalization command that queues an individual completed run after its evidence is saved, and refuses an unsafe path or an attached disk image. Only the runner's release makes output eligible. | New · owner, 19 November 2026; [OG-2](../../goals/OG-2.md), [OG-3](../../goals/OG-3.md), [OG-4](../../goals/OG-4.md) | Disposable run cleanup drill · pending |
-| BLD-1.2 | Sweep released runs from the installed backend on startup and every 25 minutes, without delaying requests or following mounts. Serialize sweeps and retry remaining queued files after failures or interruptions. | New · owner, 19 November 2026 | Disposable run cleanup drill · pending |
-| BLD-1.3 | Let a runner explicitly declare that it owns a disposable output directory. Save its original evidence at a new location outside `~/Builds` before releasing it. Preserve outputs when ownership or shutdown is uncertain or when saving evidence fails. | New · owner, 19 November 2026 | Runner completion and isolated backend qualification · pending |
+| BLD-1.1 | Give build and test runners one finalization command that queues an individual completed run after its evidence is saved, and refuses an unsafe path or an attached disk image. Only the runner's release makes output eligible. | New · owner, 19 November 2026; [OG-2](../../goals/OG-2.md), [OG-3](../../goals/OG-3.md), [OG-4](../../goals/OG-4.md) | BOC-3 handoffs and packaged release refusals passed on disposable state. [Runner receipts](/Users/msix/.local/share/arbol-backend-evidence/BOC-3-2026-11-19/runner-verification.json) · [Worker receipts](/Users/msix/.local/share/arbol-backend-evidence/BOC-3-2026-11-19/worker-results.jsonl) |
+| BLD-1.2 | Sweep released runs from the installed backend on startup and every 25 minutes, without delaying requests or following mounts. Serialize sweeps and retry remaining queued files after failures or interruptions. | New · owner, 19 November 2026 | BOC-3 packaged backend passed startup, isolation, concurrent sweep, responsive Bridge, real mount and deferred removal checks. The retry used a controlled clock. [Worker receipts](/Users/msix/.local/share/arbol-backend-evidence/BOC-3-2026-11-19/worker-results.jsonl) |
+| BLD-1.3 | Let a runner explicitly declare that it owns a disposable output directory. Save its original evidence at a new location outside `~/Builds` before releasing it. Preserve outputs when ownership or shutdown is uncertain or when saving evidence fails. | New · owner, 19 November 2026 | BOC-3 verified the archived Build record and log, the full drill's shutdown and exact evidence copy, and retention of a baseline-only drill. [Runner receipts](/Users/msix/.local/share/arbol-backend-evidence/BOC-3-2026-11-19/runner-verification.json) |
 
 ## Interface
 
@@ -75,6 +75,8 @@ arbol:@code/src/arbol_builds/cli.py#main
 arbol:@code/src/arbol_installation/build_output.py#release_run
 arbol:@code/src/arbol_installation/build_output.py#sweep
 arbol:@code/src/arbol_installation/build_output.py#sweep_periodically
+arbol:@code/tools/session_import_drill.py#Drill.finalize
+arbol:@code/tools/session_import_drill.py#main
 -->
 
 ## Decisions
