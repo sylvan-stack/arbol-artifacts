@@ -5,9 +5,9 @@ role: authored
 
 ## <before _id>
 
-Reason: Assign Codex sub-agent work to root turns
+Reason: Describe the Codex session archive and liveness
 
-Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, IMP-D23 · Intention i-dddeb829 · 2026-11-19
+Origins: IMP-1.8, IMP-1.9, IMP-1.11, IMP-1.12, IMP-0.5, IMP-0.13, IMP-0.15, IMP-D12, IMP-D19, IMP-D21 · Intention i-813984f5 · 2026-11-19
 
 ## Rollout
 
@@ -179,9 +179,9 @@ Origins: IMP-1.3, IMP-1.4, IMP-1.8, IMP-1.11, IMP-D13, IMP-D16, IMP-D21 · Inten
 
 ## _inventory
 
-Reason: Validate and stream Codex conversation records
+Reason: Describe the Codex session archive and liveness
 
-Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
+Origins: IMP-1.8, IMP-1.9, IMP-1.11, IMP-1.12, IMP-0.5, IMP-0.13, IMP-0.15, IMP-D12, IMP-D19, IMP-D21 · Intention i-813984f5 · 2026-11-19
 
 ## _rollout_paths
 
@@ -494,4 +494,16 @@ Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, 
 Reason: Assemble Codex session metadata
 
 Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-1.12, IMP-0.5, IMP-D19 · Intention i-2ea1f7b1 · 2026-11-19
+
+## <before _session_archive>
+
+Reason: Describe the Codex session archive and liveness
+
+Origins: IMP-1.8, IMP-1.9, IMP-1.11, IMP-1.12, IMP-0.5, IMP-0.13, IMP-0.15, IMP-D12, IMP-D19, IMP-D21 · Intention i-813984f5 · 2026-11-19
+
+## _session_archive
+
+Reason: Describe the Codex session archive and liveness
+
+Origins: IMP-1.8, IMP-1.9, IMP-1.11, IMP-1.12, IMP-0.5, IMP-0.13, IMP-0.15, IMP-D12, IMP-D19, IMP-D21 · Intention i-813984f5 · 2026-11-19
 
