@@ -29,9 +29,9 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
 
 ## capture_build
 
-Reason: Record clean reproducible release inputs on the verified Mercury volume and preserve verification of older release records.
+Reason: Recovery needs the exact signed App bundle even when earlier Builds are otherwise reproduced from source.
 
-Origins: ARC-5.4 · Intention i-3a3f6a76 · 2026-11-19
+Origins: ARC-5.4 · Intention i-30c9eb4b · 2026-11-19
 
 ## check_hashes
 
@@ -152,4 +152,10 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
 Reason: Record clean reproducible release inputs on the verified Mercury volume and preserve verification of older release records.
 
 Origins: ARC-5.4 · Intention i-3a3f6a76 · 2026-11-19
+
+## retain_signed_app
+
+Reason: Recovery needs the exact signed App bundle even when earlier Builds are otherwise reproduced from source.
+
+Origins: ARC-5.4 · Intention i-30c9eb4b · 2026-11-19
 
