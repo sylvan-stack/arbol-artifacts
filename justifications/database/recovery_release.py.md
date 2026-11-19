@@ -5,9 +5,9 @@ role: authored
 
 ## <before RecoveryError>
 
-Reason: Record clean reproducible release inputs on the verified Mercury volume and preserve verification of older release records.
+Reason: Read the existing immutable package identity from the actual sealed payload and bind it to the committed Git tree.
 
-Origins: ARC-5.4 · Intention i-3a3f6a76 · 2026-11-19
+Origins: ARC-4.5, ARC-D95, BLD-0.4 · Intention i-a5ad7556 · 2026-11-19
 
 ## <end>
 
@@ -29,9 +29,9 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
 
 ## capture_build
 
-Reason: Require the selected numbered Build to have the exact complete successful check list for its committed configuration.
+Reason: Read the existing immutable package identity from the actual sealed payload and bind it to the committed Git tree.
 
-Origins: ARC-4.5, BLD-0.4, ARC-D95 · Intention i-86f50eac · 2026-11-19
+Origins: ARC-4.5, ARC-D95, BLD-0.4 · Intention i-a5ad7556 · 2026-11-19
 
 ## check_hashes
 
@@ -170,4 +170,10 @@ Origins: ARC-4.5, ARC-D95, BLD-0.4 · Intention i-082a07c2 · 2026-11-19
 Reason: Retain an authentic recoverable Git checkout of each selected component, including committed shared and sibling sources.
 
 Origins: ARC-4.5, ARC-D95, BLD-0.4 · Intention i-082a07c2 · 2026-11-19
+
+## sealed_payload_evidence
+
+Reason: Read the existing immutable package identity from the actual sealed payload and bind it to the committed Git tree.
+
+Origins: ARC-4.5, ARC-D95, BLD-0.4 · Intention i-a5ad7556 · 2026-11-19
 
