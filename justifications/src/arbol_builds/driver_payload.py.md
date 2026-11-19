@@ -113,9 +113,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-b19c1bd3 · 2026-11-14
 
 ## verify_acceptance
 
-Reason: Bind candidate gate acceptance and Build-use rechecks to the verified scope
+Reason: Build reservations, guards and generated launchers must find the same installed registry and settings while retaining isolated registries.
 
-Origins: DRV-6.18, DRV-6.21, BLD-0.3, BLD-0.11 · Intention i-2966bfe0 · 2026-11-15
+Origins: ARC-5.1, ARC-5.2, ARC-5.5 · Intention i-c5d7328f · 2026-11-19
 
 ## verify_gate
 
@@ -239,9 +239,9 @@ Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-
 
 ## <before optional_descriptor>
 
-Reason: Recognize genuine optional legacy payload absence before private parent validation while retaining matching tuple verification
+Reason: Build reservations, guards and generated launchers must find the same installed registry and settings while retaining isolated registries.
 
-Origins: DRV-6.18, DRV-6.21 · Intention i-425cae65 · 2026-11-15
+Origins: ARC-5.1, ARC-5.2, ARC-5.5 · Intention i-c5d7328f · 2026-11-19
 
 ## optional_descriptor
 
@@ -275,9 +275,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21, BLD-0.4, BLD-0.5, BLD-0.15 · I
 
 ## _candidate_acceptance
 
-Reason: Resolve exact isolated candidate tuples without public building selection
+Reason: Build reservations, guards and generated launchers must find the same installed registry and settings while retaining isolated registries.
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21, BLD-0.4, BLD-0.5, BLD-0.15 · Intention i-f5dd2e70 · 2026-11-15
+Origins: ARC-5.1, ARC-5.2, ARC-5.5 · Intention i-c5d7328f · 2026-11-19
 
 ## _candidate_payload
 

@@ -5,9 +5,9 @@ role: authored
 
 ## <before read_days>
 
-Reason: Build retention reads an imported Exchange, trunk imported with Build 0, without resolving a Build
+Reason: Build reservations, guards and generated launchers must find the same installed registry and settings while retaining isolated registries.
 
-Origins: IMP-0.18 · Intention i-99165683 · 2026-11-18
+Origins: ARC-5.1, ARC-5.2, ARC-5.5 · Intention i-c5d7328f · 2026-11-19
 
 ## prune_unused
 
@@ -56,4 +56,10 @@ Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9
 Reason: Build retention reads an imported Exchange, trunk imported with Build 0, without resolving a Build
 
 Origins: IMP-0.18 · Intention i-99165683 · 2026-11-18
+
+## read_days
+
+Reason: Build reservations, guards and generated launchers must find the same installed registry and settings while retaining isolated registries.
+
+Origins: ARC-5.1, ARC-5.2, ARC-5.5 · Intention i-c5d7328f · 2026-11-19
 

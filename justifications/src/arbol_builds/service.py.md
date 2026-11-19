@@ -17,15 +17,15 @@ Origins: ARC-4.1, ARC-4.8 · Intention i-de10fbd4 · 2026-11-12
 
 ## <before now>
 
-Reason: Generate immutable isolated Driver launcher bytes including spaced-path wrapper fallback and refuse ordinary gated-launcher replacement
+Reason: Build reservations, guards and generated launchers must find the same installed registry and settings while retaining isolated registries.
 
-Origins: DRV-6.21, BLD-0.16, BLD-0.9, BLD-0.15 · Intention i-6fbf8388 · 2026-11-15
+Origins: ARC-5.1, ARC-5.2, ARC-5.5 · Intention i-c5d7328f · 2026-11-19
 
 ## launcher_source
 
-Reason: Retire generation and installation of the Root runtime launchers
+Reason: Build reservations, guards and generated launchers must find the same installed registry and settings while retaining isolated registries.
 
-Origins: ARC-4.1, ARC-4.8 · Intention i-de10fbd4 · 2026-11-12
+Origins: ARC-5.1, ARC-5.2, ARC-5.5 · Intention i-c5d7328f · 2026-11-19
 
 ## prune_protections
 
@@ -122,4 +122,16 @@ Origins: BLD-1.3 · Intention i-6d5ed220 · 2026-11-19
 Reason: An output directory can be released only after the Build runner has confirmed its command groups ended.
 
 Origins: BLD-1.3 · Intention i-6d5ed220 · 2026-11-19
+
+## module_text
+
+Reason: Build reservations, guards and generated launchers must find the same installed registry and settings while retaining isolated registries.
+
+Origins: ARC-5.1, ARC-5.2, ARC-5.5 · Intention i-c5d7328f · 2026-11-19
+
+## reserve
+
+Reason: Build reservations, guards and generated launchers must find the same installed registry and settings while retaining isolated registries.
+
+Origins: ARC-5.1, ARC-5.2, ARC-5.5 · Intention i-c5d7328f · 2026-11-19
 
