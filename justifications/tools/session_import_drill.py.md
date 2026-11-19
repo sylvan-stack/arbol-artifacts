@@ -267,3 +267,81 @@ Reason: Drill population through each Build's Bridge and the trivial Trunk
 
 Origins: IMP-0.11 · Intention i-a13d750f · 2026-11-19
 
+## <end>
+
+Reason: Drill checks of 8.5 and 8.6 as result lines without chat text
+
+Origins: IMP-0.16 · Intention i-741cf904 · 2026-11-19
+
+## Drill.<before Drill.phases>
+
+Reason: Drill checks of 8.5 and 8.6 as result lines without chat text
+
+Origins: IMP-0.16 · Intention i-741cf904 · 2026-11-19
+
+## Drill.<before Drill.write_import>
+
+Reason: Drill checks of 8.5 and 8.6 as result lines without chat text
+
+Origins: IMP-0.16 · Intention i-741cf904 · 2026-11-19
+
+## Drill.close
+
+Reason: Drill checks of 8.5 and 8.6 as result lines without chat text
+
+Origins: IMP-0.16 · Intention i-741cf904 · 2026-11-19
+
+## Drill.count
+
+Reason: Drill checks of 8.5 and 8.6 as result lines without chat text
+
+Origins: IMP-0.16 · Intention i-741cf904 · 2026-11-19
+
+## Drill.phases
+
+Reason: Drill checks of 8.5 and 8.6 as result lines without chat text
+
+Origins: IMP-0.16 · Intention i-741cf904 · 2026-11-19
+
+## Drill.read_imported
+
+Reason: Drill checks of 8.5 and 8.6 as result lines without chat text
+
+Origins: IMP-0.16 · Intention i-741cf904 · 2026-11-19
+
+## Drill.refused_insert
+
+Reason: Drill checks of 8.5 and 8.6 as result lines without chat text
+
+Origins: IMP-0.16 · Intention i-741cf904 · 2026-11-19
+
+## Drill.reserved
+
+Reason: Drill checks of 8.5 and 8.6 as result lines without chat text
+
+Origins: IMP-0.16 · Intention i-741cf904 · 2026-11-19
+
+## Drill.reserved_bridge
+
+Reason: Drill checks of 8.5 and 8.6 as result lines without chat text
+
+Origins: IMP-0.16 · Intention i-741cf904 · 2026-11-19
+
+## Drill.switch
+
+Reason: Drill checks of 8.5 and 8.6 as result lines without chat text
+
+Origins: IMP-0.16 · Intention i-741cf904 · 2026-11-19
+
+## Drill.write_import
+
+Reason: Drill checks of 8.5 and 8.6 as result lines without chat text
+
+Origins: IMP-0.16 · Intention i-741cf904 · 2026-11-19
+
+## main
+
+Reason: Drill checks of 8.5 and 8.6 as result lines without chat text
+
+Origins: IMP-0.16 · Intention i-741cf904 · 2026-11-19
+
