@@ -29,9 +29,9 @@ Origins: ARC-4.1, ARC-4.7 · Intention i-b2f8b6f1 · 2026-11-12
 
 ## Chats.page
 
-Reason: Remove migration and stale copy data from the active chat and backend contracts.
+Reason: Apply the archived-only filter from IMP-D33 before the existing chat page cursor and limit.
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-b2f8b6f1 · 2026-11-12
+Origins: IMP-0.17 · Intention i-7b19a2a9 · 2026-11-19
 
 ## Chats.mark
 
@@ -80,4 +80,10 @@ Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
 Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
 
 Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
+
+## page_params
+
+Reason: Apply the archived-only filter from IMP-D33 before the existing chat page cursor and limit.
+
+Origins: IMP-0.17 · Intention i-7b19a2a9 · 2026-11-19
 
