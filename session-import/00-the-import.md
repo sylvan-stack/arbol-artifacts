@@ -163,7 +163,7 @@ In the tool, one turn:                         In Arbol, two Exchanges:
 The specification calls each piece of such a turn a **segment**. A turn without added input is one segment. Each segment becomes one Exchange:
 - The first segment's `turnKey` is the turn's key. The n-th added message starts a segment with the key `<turn key>#<n>`, counting from 1.
 - Every segment except the last has state `completed`, and its `ended_at` is the time of the message that ends it. The last segment takes the turn's state, end and error.
-- Work is assigned by where it started. A tool call belongs to the segment in which it started, a model response's usage to the segment in which the response started, and a text block to the segment in which it was written.
+- Work is assigned by where it started. A tool call belongs to the segment in which it started, a model response's usage to the segment in which the response started, and a text block to the segment in which it was written. For a Codex response without a saved start time, use the usage record's time ([IMP-D22](#decisions)).
 
 ### Images and large results
 
@@ -189,7 +189,7 @@ A sub-agent's work is nested in the parent Exchange, as a live chat keeps it ([I
 - `input` is `{"agent": <native agent id>}` and `result` is `{"output": ""}`;
 - `ok` is false only when the sub-agent's last turn failed.
 
-That row becomes the parent of the sub-agent's calls, and the report counts each such fallback.
+That row becomes the parent of the sub-agent's calls, and the report counts each such fallback. Reused Codex sub-agents' work stays with its recorded root turn. In that turn, use the same fallback if the original launching call belongs to an earlier turn ([IMP-D23](#decisions)).
 
 Nested calls are hidden in Elma's chat view, as a live sub-agent's are. Elma reads only calls without `parent_call_id`.
 
@@ -373,3 +373,8 @@ BLD-0 reserves the Trunk code name `imported`, and no Trunk Build may take it. A
 | IMP-D16 | What kind is reported for a session that fails after its native ID is known, when its tool's kind rule depends on records after the failure? Found while planning SIM-24 | The kind its tool's table gives for the records read before the failure, so every session with a known ID is reported with a kind | Decided 19 November 2026 by the owner: the proposed default |
 | IMP-D17 | How does the Claude Code reader represent a readable session with no complete record? Found while planning SIM-5 | Report it as `empty`. Use the earliest modification time of its top-level session files as the reader form's internal creation time. An empty session creates no chat. | Decided 19 November 2026 by the owner |
 | IMP-D18 | How does the Claude Code reader classify sessions when the supplied Driver chat-map directory or an entry is unreadable or cannot be decoded? Found while planning SIM-5 | Continue with the readable map entries and evidence in the session files. An unavailable portion of the shared map contributes no classification evidence and produces no session failure. | Decided 19 November 2026 by the owner |
+| IMP-D19 | How does Codex import when shared metadata is unavailable? Found while planning SIM-6 | Continue with readable state catalogue rows, title index entries, Driver map entries and rollout evidence. Missing, busy, unreadable or unrecognised shared metadata supplies no evidence for the affected portion and causes no session failure. | Decided 19 November 2026 by the owner |
+| IMP-D20 | What kind does Codex give a thread with zero validated turn starts when no earlier kind rule matches? Found while planning SIM-6 | Give it `owner`. The `scheduled` rule requires at least one validated root turn start. Use the same condition when classifying the prefix of a failed session. | Decided 19 November 2026 by the owner |
+| IMP-D21 | Which of several Codex rollout files with the same native ID supplies the conversation? Found while planning SIM-6 | Prefer the path in the state catalogue, matching with and without `.zst`. When there is no matching copy, prefer the most recently modified one. Project one copy and keep the verified same-ID rollout files in the archive. | Decided 19 November 2026 by the owner |
+| IMP-D22 | Which time assigns Codex response usage to a segment when the response start is absent? Found while planning SIM-6 | Use the saved usage record's time for segment assignment when no response start time was saved. | Decided 19 November 2026 by the owner |
+| IMP-D23 | Where does a reused Codex sub-agent's work go if a later root turn owns it? Found while planning SIM-6 | Assign it to the later native root turn. In that turn use the existing sub-agent fallback if the launching call belongs to an earlier turn. | Decided 19 November 2026 by the owner |

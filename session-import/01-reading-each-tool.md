@@ -46,7 +46,7 @@ A reader yields one **session**, a list of **turns** and the session's archive f
 - `startedAt` and `endedAt`;
 - `state` (`completed`, `failed`, `cancelled` or `interrupted`) and, for `failed`, the tool's error text and kind;
 - `workingFolder`, `model` and `effort`;
-- `usage`: one entry per model response of the main agent, each with the response's `startedAt`, so that IMP-0 can assign it to a segment ([IMP-D12](#decisions));
+- `usage`: one entry per model response of the main agent, each with the response's `startedAt`, so that IMP-0 can assign it to a segment ([IMP-D12](#decisions)). Codex uses the usage record's time if the response start was not saved ([IMP-D22](00-the-import.md#decisions));
 - `items`, an ordered list of:
   - text blocks of the main agent, each with the time it was written;
   - tool calls: `callId`, `agent`, `name`, `input`, `result`, `ok`, `error`, `parentCallId` and `startedAt`;
@@ -135,6 +135,8 @@ If the supplied Driver chat-map directory or an entry cannot be read or decoded,
 - One top-level session is one rollout whose `session_meta` names no parent thread: `~/.codex/sessions/YYYY/MM/DD/rollout-*.jsonl[.zst]` or a rollout in `~/.codex/archived_sessions/`. Its identity is `session_meta.id`, so a rollout moved between the two folders is the same session.
 - A `.zst` file is decompressed as a stream.
 - `~/.codex/state_5.sqlite`, opened read-only, gives the title (`threads.title`, else the name in `session_index.jsonl`) and archival. A thread's `rollout_path` is matched with and without `.zst`.
+- An unavailable part of the shared state catalogue, session title index or Driver chat map supplies no evidence. Continue with the parts that can be read and the evidence in the rollouts. Unavailable shared metadata causes no session failure. Read-only SQLite access includes its sidecars. [IMP-D19](00-the-import.md#decisions)
+- When rollout files have the same validated native ID, use the catalogue's matching path for conversation projection. When no copy matches it, use the most recently modified copy. The raw archive keeps the verified copies. [IMP-D21](00-the-import.md#decisions)
 
 The archive takes the rollout files of the session and of all its sub-agent threads, plus the session's rows of `threads` and `thread_spawn_edges` exported as JSON. Nothing else in `~/.codex` is archived, including `auth.json`, `config.toml`, `thread_history_1.sqlite` (derived from the rollouts) and the logs.
 
@@ -144,7 +146,7 @@ The archive takes the rollout files of the session and of all its sub-agent thre
 | `arbol_driver` | `originator` is `arbol-codex-driver`, or the thread is named in a Codex Driver chat map |
 | `probe` | `originator` is `hook-probe`, or the agent role begins `probe_` |
 | `agent_launched` | `originator` is `codex_exec`, or the `source` is `agent_created_thread` |
-| `scheduled` | Every turn's trigger is `automation_heartbeat_scheduled` |
+| `scheduled` | At least one root turn start was validated and every validated root turn's trigger is `automation_heartbeat_scheduled` ([IMP-D20](00-the-import.md#decisions)) |
 | `owner` | Everything else: Codex Desktop, `codex_work_desktop` and `codex-tui` |
 
 `origin` keeps `originator`, `source`, `thread_source` and the session's working folder.
@@ -182,8 +184,9 @@ The archive takes the rollout files of the session and of all its sub-agent thre
 - A thread whose `session_meta.source.subagent.thread_spawn.parent_thread_id` names a thread of this session is a sub-agent. Its items have `agent` set to its thread ID.
 - They are nested under the call that spawned the thread, found through `thread_spawn_edges` and the spawning call's output. Otherwise IMP-0's fallback applies.
 - Deeper sub-agents are nested the same way.
+- When the native root turn ID places a reused sub-agent's later work in a different turn, assign its work and usage there. Use IMP-0's fallback in that turn if the spawning call belongs to an earlier turn. [IMP-D23](00-the-import.md#decisions)
 
-**Usage, model and folder.** Usage is the sum of `token_usage_record.usage` with the turn's `turn_id`: `input`, `cached_input`, `cache_write_input`, `output` and `reasoning_output`. `model`, `effort` and the working folder come from the turn's last `turn_context`, and `toolVersion` from `session_meta.cli_version`.
+**Usage, model and folder.** Usage is the sum of `token_usage_record.usage` with the turn's `turn_id`: `input`, `cached_input`, `cache_write_input`, `output` and `reasoning_output`. Use the response start when present, else the usage record's time for segment assignment ([IMP-D22](00-the-import.md#decisions)). `model`, `effort` and the working folder come from the turn's last `turn_context`, and `toolVersion` from `session_meta.cli_version`.
 
 **Live.** By modification time only. A turn with no end in a session that is not live is `interrupted`.
 
