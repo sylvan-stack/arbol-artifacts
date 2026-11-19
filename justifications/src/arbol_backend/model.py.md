@@ -5,9 +5,9 @@ role: authored
 
 ## <before Refused>
 
-Reason: The backend and admission must agree on the new runtime directory and PostgreSQL guards while preserving isolated overrides.
+Reason: Require verified layout and schema fit for every runtime start, including explicitly named Builds.
 
-Origins: ARC-5.1, ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-7edd5e18 · 2026-11-19
+Origins: ARC-5.6, ARC-4.3 · Intention i-9e38ebde · 2026-11-19
 
 ## Identity
 
@@ -17,9 +17,9 @@ Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
 
 ## identity
 
-Reason: The backend and admission must agree on the new runtime directory and PostgreSQL guards while preserving isolated overrides.
+Reason: Require verified layout and schema fit for every runtime start, including explicitly named Builds.
 
-Origins: ARC-5.1, ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-7edd5e18 · 2026-11-19
+Origins: ARC-5.6, ARC-4.3 · Intention i-9e38ebde · 2026-11-19
 
 ## parse
 

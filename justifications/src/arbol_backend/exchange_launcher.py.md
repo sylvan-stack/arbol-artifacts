@@ -5,9 +5,9 @@ role: authored
 
 ## <before Reply>
 
-Reason: Hold controlled admission throughout the runtime stop and settlement operations and hand their generation to the child.
+Reason: Require verified layout and schema fit for every runtime start, including explicitly named Builds.
 
-Origins: ARC-4.4 · Intention i-2497be8c · 2026-11-12
+Origins: ARC-5.6, ARC-4.3 · Intention i-9e38ebde · 2026-11-19
 
 ## Reply
 
@@ -41,7 +41,7 @@ Origins: ARC-4.6 · Intention i-4ae5d249 · 2026-11-12
 
 ## select_build
 
-Reason: Recover committed receipts before selecting and launching the exact detached Trunk
+Reason: Require verified layout and schema fit for every runtime start, including explicitly named Builds.
 
-Origins: ARC-4.6 · Intention i-4ae5d249 · 2026-11-12
+Origins: ARC-5.6, ARC-4.3 · Intention i-9e38ebde · 2026-11-19
 
