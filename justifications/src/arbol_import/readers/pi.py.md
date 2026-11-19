@@ -5,9 +5,9 @@ role: authored
 
 ## <before _iso_time>
 
-Reason: Join Pi tool results within each turn and retain text, image descriptions and the native call order
+Reason: Read only eligible in-home Pi spills and preserve the inline result and truncation for outside references
 
-Origins: IMP-1.1, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-03b51a30 · 2026-11-19
+Origins: IMP-1.6, IMP-1.8, IMP-1.9, IMP-0.2, IMP-D13, IMP-D29 · Intention i-de55f95c · 2026-11-19
 
 ## _Header
 
@@ -17,9 +17,9 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.9, IMP-1.11, IMP-0.2, IMP-D10, IMP-D13 · Inten
 
 ## _children
 
-Reason: Discover Pi sessions inside the supplied home and validate native v3 identity before reading any selected body
+Reason: Read only eligible in-home Pi spills and preserve the inline result and truncation for outside references
 
-Origins: IMP-1.1, IMP-1.2, IMP-1.9, IMP-1.11, IMP-0.2, IMP-D10, IMP-D13 · Intention i-046ccf9e · 2026-11-19
+Origins: IMP-1.6, IMP-1.8, IMP-1.9, IMP-0.2, IMP-D13, IMP-D29 · Intention i-de55f95c · 2026-11-19
 
 ## _header
 
@@ -47,9 +47,9 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.9, IMP-1.11, IMP-0.2, IMP-D10, IMP-D13 · Inten
 
 ## _session_path
 
-Reason: Discover Pi sessions inside the supplied home and validate native v3 identity before reading any selected body
+Reason: Read only eligible in-home Pi spills and preserve the inline result and truncation for outside references
 
-Origins: IMP-1.1, IMP-1.2, IMP-1.9, IMP-1.11, IMP-0.2, IMP-D10, IMP-D13 · Intention i-046ccf9e · 2026-11-19
+Origins: IMP-1.6, IMP-1.8, IMP-1.9, IMP-0.2, IMP-D13, IMP-D29 · Intention i-de55f95c · 2026-11-19
 
 ## _session_records
 
@@ -167,9 +167,9 @@ Origins: IMP-1.1, IMP-1.5, IMP-1.11, IMP-0.7, IMP-0.15, IMP-D10 · Intention i-7
 
 ## _turn
 
-Reason: Join Pi tool results within each turn and retain text, image descriptions and the native call order
+Reason: Read only eligible in-home Pi spills and preserve the inline result and truncation for outside references
 
-Origins: IMP-1.1, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-03b51a30 · 2026-11-19
+Origins: IMP-1.6, IMP-1.8, IMP-1.9, IMP-0.2, IMP-D13, IMP-D29 · Intention i-de55f95c · 2026-11-19
 
 ## _turn_end
 
@@ -191,15 +191,15 @@ Origins: IMP-1.1, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-03b51a30 ·
 
 ## _items
 
-Reason: Join Pi tool results within each turn and retain text, image descriptions and the native call order
+Reason: Read only eligible in-home Pi spills and preserve the inline result and truncation for outside references
 
-Origins: IMP-1.1, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-03b51a30 · 2026-11-19
+Origins: IMP-1.6, IMP-1.8, IMP-1.9, IMP-0.2, IMP-D13, IMP-D29 · Intention i-de55f95c · 2026-11-19
 
 ## _result
 
-Reason: Join Pi tool results within each turn and retain text, image descriptions and the native call order
+Reason: Read only eligible in-home Pi spills and preserve the inline result and truncation for outside references
 
-Origins: IMP-1.1, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-03b51a30 · 2026-11-19
+Origins: IMP-1.6, IMP-1.8, IMP-1.9, IMP-0.2, IMP-D13, IMP-D29 · Intention i-de55f95c · 2026-11-19
 
 ## _results
 
@@ -212,4 +212,34 @@ Origins: IMP-1.1, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-03b51a30 ·
 Reason: Join Pi tool results within each turn and retain text, image descriptions and the native call order
 
 Origins: IMP-1.1, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-03b51a30 · 2026-11-19
+
+## _eligible_path
+
+Reason: Read only eligible in-home Pi spills and preserve the inline result and truncation for outside references
+
+Origins: IMP-1.6, IMP-1.8, IMP-1.9, IMP-0.2, IMP-D13, IMP-D29 · Intention i-de55f95c · 2026-11-19
+
+## _full_output
+
+Reason: Read only eligible in-home Pi spills and preserve the inline result and truncation for outside references
+
+Origins: IMP-1.6, IMP-1.8, IMP-1.9, IMP-0.2, IMP-D13, IMP-D29 · Intention i-de55f95c · 2026-11-19
+
+## _session_layout
+
+Reason: Read only eligible in-home Pi spills and preserve the inline result and truncation for outside references
+
+Origins: IMP-1.6, IMP-1.8, IMP-1.9, IMP-0.2, IMP-D13, IMP-D29 · Intention i-de55f95c · 2026-11-19
+
+## _spill_failure
+
+Reason: Read only eligible in-home Pi spills and preserve the inline result and truncation for outside references
+
+Origins: IMP-1.6, IMP-1.8, IMP-1.9, IMP-0.2, IMP-D13, IMP-D29 · Intention i-de55f95c · 2026-11-19
+
+## _spill_path
+
+Reason: Read only eligible in-home Pi spills and preserve the inline result and truncation for outside references
+
+Origins: IMP-1.6, IMP-1.8, IMP-1.9, IMP-0.2, IMP-D13, IMP-D29 · Intention i-de55f95c · 2026-11-19
 
