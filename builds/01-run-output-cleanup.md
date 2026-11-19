@@ -37,6 +37,7 @@ An isolated backend never sweeps the installation's queue.
 |---|---|---|---|
 | BLD-1.1 | Give build and test runners one finalization command that queues an individual completed run after its evidence is saved, and refuses an unsafe path or an attached disk image. Only the runner's release makes output eligible. | New · owner, 19 November 2026; [OG-2](../../goals/OG-2.md), [OG-3](../../goals/OG-3.md), [OG-4](../../goals/OG-4.md) | Disposable run cleanup drill · pending |
 | BLD-1.2 | Sweep released runs from the installed backend on startup and every 25 minutes, without delaying requests or following mounts. Serialize sweeps and retry remaining queued files after failures or interruptions. | New · owner, 19 November 2026 | Disposable run cleanup drill · pending |
+| BLD-1.3 | Let a runner explicitly declare that it owns a disposable output directory. Save its original evidence at a new location outside `~/Builds` before releasing it. Preserve outputs when ownership or shutdown is uncertain or when saving evidence fails. | New · owner, 19 November 2026 | Runner completion and isolated backend qualification · pending |
 
 ## Interface
 
@@ -50,6 +51,15 @@ Call the command at the end of each runner that produces disposable output,
 after joining its processes and writing the saved report. The runner can
 release a failed run after writing its failure evidence. Follow-up work that
 needs the run's files keeps the run at its original path until that work ends.
+
+For the Build runner and its packaged checks, give a new run's `registry` and
+`bin` children as the isolated locations and pass `--release-to <new-evidence-directory>`.
+The runner saves the terminal Build record and full Build log, including its
+checks, then queues the run. A normal installed Build keeps its registry.
+For the standalone session import drill, `--release-to <new-evidence-directory>`
+saves the evidence tree of a completed drill with a dedicated `--run` folder
+and external Build inputs. A partial phase or uncertain shutdown keeps the run.
+A handoff failure reports the cleanup error separately from the check result.
 
 ## Known problems
 
