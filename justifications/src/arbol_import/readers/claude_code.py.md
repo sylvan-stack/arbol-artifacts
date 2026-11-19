@@ -5,9 +5,9 @@ role: authored
 
 ## <before SessionFile>
 
-Reason: Classify from each session’s validated native evidence and recorded probe prompts
+Reason: Project native Claude prompts, steers, and endings into turns
 
-Origins: IMP-1.3, IMP-D16 · Intention i-fb1bee8d · 2026-11-19
+Origins: IMP-1.5, IMP-0.7 · Intention i-265f7763 · 2026-11-19
 
 ## SessionFile
 
@@ -197,9 +197,9 @@ Origins: IMP-1.3, IMP-D16 · Intention i-fb1bee8d · 2026-11-19
 
 ## _kind
 
-Reason: Classify from each session’s validated native evidence and recorded probe prompts
+Reason: Project native Claude prompts, steers, and endings into turns
 
-Origins: IMP-1.3, IMP-D16 · Intention i-fb1bee8d · 2026-11-19
+Origins: IMP-1.5, IMP-0.7 · Intention i-265f7763 · 2026-11-19
 
 ## _message
 
@@ -218,4 +218,52 @@ Origins: IMP-1.3, IMP-D16 · Intention i-fb1bee8d · 2026-11-19
 Reason: Classify from each session’s validated native evidence and recorded probe prompts
 
 Origins: IMP-1.3, IMP-D16 · Intention i-fb1bee8d · 2026-11-19
+
+## Ending
+
+Reason: Project native Claude prompts, steers, and endings into turns
+
+Origins: IMP-1.5, IMP-0.7 · Intention i-265f7763 · 2026-11-19
+
+## TurnRecords
+
+Reason: Project native Claude prompts, steers, and endings into turns
+
+Origins: IMP-1.5, IMP-0.7 · Intention i-265f7763 · 2026-11-19
+
+## _at
+
+Reason: Project native Claude prompts, steers, and endings into turns
+
+Origins: IMP-1.5, IMP-0.7 · Intention i-265f7763 · 2026-11-19
+
+## _ending
+
+Reason: Project native Claude prompts, steers, and endings into turns
+
+Origins: IMP-1.5, IMP-0.7 · Intention i-265f7763 · 2026-11-19
+
+## _steers
+
+Reason: Project native Claude prompts, steers, and endings into turns
+
+Origins: IMP-1.5, IMP-0.7 · Intention i-265f7763 · 2026-11-19
+
+## _trigger
+
+Reason: Project native Claude prompts, steers, and endings into turns
+
+Origins: IMP-1.5, IMP-0.7 · Intention i-265f7763 · 2026-11-19
+
+## _turn
+
+Reason: Project native Claude prompts, steers, and endings into turns
+
+Origins: IMP-1.5, IMP-0.7 · Intention i-265f7763 · 2026-11-19
+
+## _turn_records
+
+Reason: Project native Claude prompts, steers, and endings into turns
+
+Origins: IMP-1.5, IMP-0.7 · Intention i-265f7763 · 2026-11-19
 
