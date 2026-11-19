@@ -5,9 +5,9 @@ role: authored
 
 ## <before _iso_time>
 
-Reason: Archive the session and deduplicated eligible spills across all branches, counting outside references and file liveness
+Reason: Expose the Pi reader and preserve selection, safe diagnostics and prefix classification when a session fails
 
-Origins: IMP-1.8, IMP-1.9, IMP-1.10, IMP-1.11, IMP-0.2, IMP-0.13, IMP-0.15, IMP-D29 · Intention i-794180cb · 2026-11-19
+Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-64ffd77f · 2026-11-19
 
 ## _Header
 
@@ -263,7 +263,25 @@ Origins: IMP-1.1, IMP-1.7, IMP-D12, PI-2.5 · Intention i-a66f6733 · 2026-11-19
 
 ## _archive
 
-Reason: Archive the session and deduplicated eligible spills across all branches, counting outside references and file liveness
+Reason: Expose the Pi reader and preserve selection, safe diagnostics and prefix classification when a session fails
 
-Origins: IMP-1.8, IMP-1.9, IMP-1.10, IMP-1.11, IMP-0.2, IMP-0.13, IMP-0.15, IMP-D29 · Intention i-794180cb · 2026-11-19
+Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-64ffd77f · 2026-11-19
+
+## _discover
+
+Reason: Expose the Pi reader and preserve selection, safe diagnostics and prefix classification when a session fails
+
+Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-64ffd77f · 2026-11-19
+
+## _read_session
+
+Reason: Expose the Pi reader and preserve selection, safe diagnostics and prefix classification when a session fails
+
+Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-64ffd77f · 2026-11-19
+
+## read
+
+Reason: Expose the Pi reader and preserve selection, safe diagnostics and prefix classification when a session fails
+
+Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-64ffd77f · 2026-11-19
 
