@@ -5,9 +5,9 @@ role: authored
 
 ## <before chat>
 
-Reason: Verify the canonical packaged baseline digest, exercise a private installation at its singleton Bridge endpoint and preserve the chat publication race, with test inventory links and digest synchronized.
+Reason: The hello check expects the schema pair the fixture reached
 
-Origins: ARC-4.6 · Intention i-51891c4f · 2026-11-12
+Origins: ARC-4.3 · Intention i-07bfb3f3 · 2026-11-19
 
 ## WindowFixture
 
@@ -119,7 +119,7 @@ Origins: ARC-4.6 · Intention i-51891c4f · 2026-11-12
 
 ## InstallationWindows.check_hello
 
-Reason: Verify the canonical packaged baseline digest, exercise a private installation at its singleton Bridge endpoint and preserve the chat publication race, with test inventory links and digest synchronized.
+Reason: The hello check expects the schema pair the fixture reached
 
-Origins: ARC-4.6 · Intention i-51891c4f · 2026-11-12
+Origins: ARC-4.3 · Intention i-07bfb3f3 · 2026-11-19
 
