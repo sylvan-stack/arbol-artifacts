@@ -5,15 +5,15 @@ role: authored
 
 ## <before _id>
 
-Reason: Account for distinct Codex response usage
+Reason: Assign Codex sub-agent work to root turns
 
-Origins: IMP-1.1, IMP-1.4, IMP-1.7, IMP-0.8, IMP-D12, IMP-D22 · Intention i-f6344978 · 2026-11-19
+Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, IMP-D23 · Intention i-dddeb829 · 2026-11-19
 
 ## Rollout
 
-Reason: Discover and validate Codex rollout headers from the supplied home
+Reason: Assign Codex sub-agent work to root turns
 
-Origins: IMP-1.1, IMP-1.2, IMP-1.9, IMP-1.11, IMP-0.2, IMP-D10, IMP-D13 · Intention i-21b8f614 · 2026-11-19
+Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, IMP-D23 · Intention i-dddeb829 · 2026-11-19
 
 ## _discover
 
@@ -23,9 +23,9 @@ Origins: IMP-1.3, IMP-1.4, IMP-1.8, IMP-1.11, IMP-D13, IMP-D16, IMP-D21 · Inten
 
 ## _header
 
-Reason: Discover and validate Codex rollout headers from the supplied home
+Reason: Assign Codex sub-agent work to root turns
 
-Origins: IMP-1.1, IMP-1.2, IMP-1.9, IMP-1.11, IMP-0.2, IMP-D10, IMP-D13 · Intention i-21b8f614 · 2026-11-19
+Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, IMP-D23 · Intention i-dddeb829 · 2026-11-19
 
 ## _id
 
@@ -383,9 +383,9 @@ Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa
 
 ## _turn_items
 
-Reason: Nest Codex code-mode work inside exec spans
+Removed: Assign Codex sub-agent work to root turns
 
-Origins: IMP-1.4, IMP-1.6, IMP-0.9, IMP-D3 · Intention i-c714f1fe · 2026-11-19
+Removed by Intention i-dddeb829 · 2026-11-19
 
 ## _without_images
 
@@ -431,7 +431,61 @@ Origins: IMP-1.1, IMP-1.4, IMP-1.7, IMP-0.8, IMP-D12, IMP-D22 · Intention i-f63
 
 ## _turn_context
 
-Reason: Account for distinct Codex response usage
+Reason: Assign Codex sub-agent work to root turns
 
-Origins: IMP-1.1, IMP-1.4, IMP-1.7, IMP-0.8, IMP-D12, IMP-D22 · Intention i-f6344978 · 2026-11-19
+Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, IMP-D23 · Intention i-dddeb829 · 2026-11-19
+
+## AgentWork
+
+Reason: Assign Codex sub-agent work to root turns
+
+Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, IMP-D23 · Intention i-dddeb829 · 2026-11-19
+
+## AgentWork.info
+
+Reason: Assign Codex sub-agent work to root turns
+
+Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, IMP-D23 · Intention i-dddeb829 · 2026-11-19
+
+## Lane
+
+Reason: Assign Codex sub-agent work to root turns
+
+Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, IMP-D23 · Intention i-dddeb829 · 2026-11-19
+
+## _agents
+
+Reason: Assign Codex sub-agent work to root turns
+
+Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, IMP-D23 · Intention i-dddeb829 · 2026-11-19
+
+## _assigned_turn
+
+Reason: Assign Codex sub-agent work to root turns
+
+Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, IMP-D23 · Intention i-dddeb829 · 2026-11-19
+
+## _identifies_spawn
+
+Reason: Assign Codex sub-agent work to root turns
+
+Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, IMP-D23 · Intention i-dddeb829 · 2026-11-19
+
+## _launch
+
+Reason: Assign Codex sub-agent work to root turns
+
+Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, IMP-D23 · Intention i-dddeb829 · 2026-11-19
+
+## _project_lane
+
+Reason: Assign Codex sub-agent work to root turns
+
+Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, IMP-D23 · Intention i-dddeb829 · 2026-11-19
+
+## _root_turn_at
+
+Reason: Assign Codex sub-agent work to root turns
+
+Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, IMP-D23 · Intention i-dddeb829 · 2026-11-19
 
