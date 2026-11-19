@@ -179,13 +179,103 @@ Origins: IMP-1.3, IMP-1.4, IMP-1.8, IMP-1.11, IMP-D13, IMP-D16, IMP-D21 · Inten
 
 ## _inventory
 
-Reason: Inventory Codex roots, descendants and rollout copies
+Reason: Validate and stream Codex conversation records
 
-Origins: IMP-1.3, IMP-1.4, IMP-1.8, IMP-1.11, IMP-D13, IMP-D16, IMP-D21 · Intention i-14a1098b · 2026-11-19
+Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
 
 ## _rollout_paths
 
 Reason: Inventory Codex roots, descendants and rollout copies
 
 Origins: IMP-1.3, IMP-1.4, IMP-1.8, IMP-1.11, IMP-D13, IMP-D16, IMP-D21 · Intention i-14a1098b · 2026-11-19
+
+## <before _Shape>
+
+Reason: Validate and stream Codex conversation records
+
+Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
+
+## Record
+
+Reason: Validate and stream Codex conversation records
+
+Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
+
+## _Shape
+
+Reason: Validate and stream Codex conversation records
+
+Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
+
+## _body
+
+Reason: Validate and stream Codex conversation records
+
+Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
+
+## _conversation
+
+Reason: Validate and stream Codex conversation records
+
+Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
+
+## _event_fields
+
+Reason: Validate and stream Codex conversation records
+
+Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
+
+## _first_string
+
+Reason: Validate and stream Codex conversation records
+
+Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
+
+## _object
+
+Reason: Validate and stream Codex conversation records
+
+Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
+
+## _optional_int
+
+Reason: Validate and stream Codex conversation records
+
+Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
+
+## _optional_string
+
+Reason: Validate and stream Codex conversation records
+
+Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
+
+## _required_id
+
+Reason: Validate and stream Codex conversation records
+
+Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
+
+## _response_fields
+
+Reason: Validate and stream Codex conversation records
+
+Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
+
+## _string
+
+Reason: Validate and stream Codex conversation records
+
+Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
+
+## _unix_time
+
+Reason: Validate and stream Codex conversation records
+
+Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
+
+## _usage_fields
+
+Reason: Validate and stream Codex conversation records
+
+Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-0cbc9aba · 2026-11-19
 
