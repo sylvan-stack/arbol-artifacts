@@ -5,9 +5,9 @@ role: authored
 
 ## <before _unreadable>
 
-Reason: Project Mimo actor calls, last-turn failures and separate usage
+Reason: Export Mimo session rows and bound the native archive references
 
-Origins: IMP-1.6, IMP-1.7, IMP-D31 · Intention i-5e4913a7 · 2026-11-19
+Origins: IMP-1.8, IMP-0.13 · Intention i-d948f709 · 2026-11-19
 
 ## _copy_database
 
@@ -335,7 +335,43 @@ Origins: IMP-1.6, IMP-1.7, IMP-D31 · Intention i-5e4913a7 · 2026-11-19
 
 ## _subagent
 
-Reason: Project Mimo actor calls, last-turn failures and separate usage
+Reason: Export Mimo session rows and bound the native archive references
 
-Origins: IMP-1.6, IMP-1.7, IMP-D31 · Intention i-5e4913a7 · 2026-11-19
+Origins: IMP-1.8, IMP-0.13 · Intention i-d948f709 · 2026-11-19
+
+## _archive
+
+Reason: Export Mimo session rows and bound the native archive references
+
+Origins: IMP-1.8, IMP-0.13 · Intention i-d948f709 · 2026-11-19
+
+## _diff_paths
+
+Reason: Export Mimo session rows and bound the native archive references
+
+Origins: IMP-1.8, IMP-0.13 · Intention i-d948f709 · 2026-11-19
+
+## _file_urls
+
+Reason: Export Mimo session rows and bound the native archive references
+
+Origins: IMP-1.8, IMP-0.13 · Intention i-d948f709 · 2026-11-19
+
+## _outside_files
+
+Reason: Export Mimo session rows and bound the native archive references
+
+Origins: IMP-1.8, IMP-0.13 · Intention i-d948f709 · 2026-11-19
+
+## _outside_reference
+
+Reason: Export Mimo session rows and bound the native archive references
+
+Origins: IMP-1.8, IMP-0.13 · Intention i-d948f709 · 2026-11-19
+
+## _part_files
+
+Reason: Export Mimo session rows and bound the native archive references
+
+Origins: IMP-1.8, IMP-0.13 · Intention i-d948f709 · 2026-11-19
 
