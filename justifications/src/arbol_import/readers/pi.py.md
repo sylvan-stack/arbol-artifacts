@@ -5,9 +5,9 @@ role: authored
 
 ## <before _iso_time>
 
-Reason: Project only the raw ancestry of Pi's last saved leaf and refuse an invalid active graph
+Reason: Form typed turns from active Pi user messages using native time and assistant stop state
 
-Origins: IMP-1.1, IMP-1.4, IMP-1.10, IMP-0.7, IMP-0.21, IMP-D10 · Intention i-aff35457 · 2026-11-19
+Origins: IMP-1.1, IMP-1.5, IMP-1.11, IMP-0.7, IMP-0.15, IMP-D10 · Intention i-70eab74c · 2026-11-19
 
 ## _Header
 
@@ -128,4 +128,58 @@ Origins: IMP-1.1, IMP-1.4, IMP-1.10, IMP-0.7, IMP-0.21, IMP-D10 · Intention i-a
 Reason: Project only the raw ancestry of Pi's last saved leaf and refuse an invalid active graph
 
 Origins: IMP-1.1, IMP-1.4, IMP-1.10, IMP-0.7, IMP-0.21, IMP-D10 · Intention i-aff35457 · 2026-11-19
+
+## <before _entry_time>
+
+Reason: Form typed turns from active Pi user messages using native time and assistant stop state
+
+Origins: IMP-1.1, IMP-1.5, IMP-1.11, IMP-0.7, IMP-0.15, IMP-D10 · Intention i-70eab74c · 2026-11-19
+
+## _ending
+
+Reason: Form typed turns from active Pi user messages using native time and assistant stop state
+
+Origins: IMP-1.1, IMP-1.5, IMP-1.11, IMP-0.7, IMP-0.15, IMP-D10 · Intention i-70eab74c · 2026-11-19
+
+## _entry_time
+
+Reason: Form typed turns from active Pi user messages using native time and assistant stop state
+
+Origins: IMP-1.1, IMP-1.5, IMP-1.11, IMP-0.7, IMP-0.15, IMP-D10 · Intention i-70eab74c · 2026-11-19
+
+## _native_time
+
+Reason: Form typed turns from active Pi user messages using native time and assistant stop state
+
+Origins: IMP-1.1, IMP-1.5, IMP-1.11, IMP-0.7, IMP-0.15, IMP-D10 · Intention i-70eab74c · 2026-11-19
+
+## _parts
+
+Reason: Form typed turns from active Pi user messages using native time and assistant stop state
+
+Origins: IMP-1.1, IMP-1.5, IMP-1.11, IMP-0.7, IMP-0.15, IMP-D10 · Intention i-70eab74c · 2026-11-19
+
+## _prompt
+
+Reason: Form typed turns from active Pi user messages using native time and assistant stop state
+
+Origins: IMP-1.1, IMP-1.5, IMP-1.11, IMP-0.7, IMP-0.15, IMP-D10 · Intention i-70eab74c · 2026-11-19
+
+## _turn
+
+Reason: Form typed turns from active Pi user messages using native time and assistant stop state
+
+Origins: IMP-1.1, IMP-1.5, IMP-1.11, IMP-0.7, IMP-0.15, IMP-D10 · Intention i-70eab74c · 2026-11-19
+
+## _turn_end
+
+Reason: Form typed turns from active Pi user messages using native time and assistant stop state
+
+Origins: IMP-1.1, IMP-1.5, IMP-1.11, IMP-0.7, IMP-0.15, IMP-D10 · Intention i-70eab74c · 2026-11-19
+
+## _turn_messages
+
+Reason: Form typed turns from active Pi user messages using native time and assistant stop state
+
+Origins: IMP-1.1, IMP-1.5, IMP-1.11, IMP-0.7, IMP-0.15, IMP-D10 · Intention i-70eab74c · 2026-11-19
 
