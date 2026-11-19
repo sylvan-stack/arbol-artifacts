@@ -5,7 +5,7 @@ role: authored
 
 ## <before Error>
 
-Reason: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
+Reason: Refuse imported send targets after identifier checks and recheck under admission before touching Drafts, receipts, or runtime.
 
-Origins: ARC-4.6 · Intention i-6607cbec · 2026-11-12
+Origins: IMP-0.16, BKD-1.4, ARC-4.4 · Intention i-a3d509d8 · 2026-11-19
 

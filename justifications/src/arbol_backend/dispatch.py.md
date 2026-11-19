@@ -5,9 +5,9 @@ role: authored
 
 ## Dispatch.again_params
 
-Reason: Route Exchanges through the chosen Trunk and preserve its identity on replay
+Reason: Refuse imported send targets after identifier checks and recheck under admission before touching Drafts, receipts, or runtime.
 
-Origins: BKD-0.11, BKD-1.7 · Intention i-7975d6ee · 2026-11-11
+Origins: IMP-0.16, BKD-1.4, ARC-4.4 · Intention i-a3d509d8 · 2026-11-19
 
 ## Dispatch.run
 
@@ -17,9 +17,9 @@ Origins: ARC-4.4 · Intention i-b70c1b8e · 2026-11-12
 
 ## Dispatch.send_params
 
-Reason: Route Exchanges through the chosen Trunk and preserve its identity on replay
+Reason: Refuse imported send targets after identifier checks and recheck under admission before touching Drafts, receipts, or runtime.
 
-Origins: BKD-0.11, BKD-1.7 · Intention i-7975d6ee · 2026-11-11
+Origins: IMP-0.16, BKD-1.4, ARC-4.4 · Intention i-a3d509d8 · 2026-11-19
 
 ## <before Forwarded>
 
@@ -29,9 +29,9 @@ Removed by Intention i-7975d6ee · 2026-11-11
 
 ## <before selected_trunk>
 
-Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
+Reason: Refuse imported send targets after identifier checks and recheck under admission before touching Drafts, receipts, or runtime.
 
-Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
+Origins: IMP-0.16, BKD-1.4, ARC-4.4 · Intention i-a3d509d8 · 2026-11-19
 
 ## selected_trunk
 
@@ -59,9 +59,9 @@ Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
 
 ## Dispatch.dispatch
 
-Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
+Reason: Refuse imported send targets after identifier checks and recheck under admission before touching Drafts, receipts, or runtime.
 
-Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
+Origins: IMP-0.16, BKD-1.4, ARC-4.4 · Intention i-a3d509d8 · 2026-11-19
 
 ## Dispatch.cleanup
 
@@ -71,9 +71,9 @@ Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
 
 ## Dispatch.result
 
-Reason: Start and retry the same Exchange through the installation runtime and preserve the concrete acceptance receipt.
+Reason: Refuse imported send targets after identifier checks and recheck under admission before touching Drafts, receipts, or runtime.
 
-Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
+Origins: IMP-0.16, BKD-1.4, ARC-4.4 · Intention i-a3d509d8 · 2026-11-19
 
 ## Dispatch.send
 
