@@ -5,9 +5,9 @@ role: authored
 
 ## <before _unreadable>
 
-Reason: Project timestamped main-lane text and retain auxiliary parts in the archive
+Reason: Project saved Mimo tool states, results and inline image descriptors
 
-Origins: IMP-0.7, IMP-1.5 · Intention i-79e93db3 · 2026-11-19
+Origins: IMP-1.6, IMP-0.10 · Intention i-1a06af71 · 2026-11-19
 
 ## _copy_database
 
@@ -89,9 +89,9 @@ Origins: IMP-0.7, IMP-1.5 · Intention i-79e93db3 · 2026-11-19
 
 ## _Part
 
-Reason: Project timestamped main-lane text and retain auxiliary parts in the archive
+Reason: Project saved Mimo tool states, results and inline image descriptors
 
-Origins: IMP-0.7, IMP-1.5 · Intention i-79e93db3 · 2026-11-19
+Origins: IMP-1.6, IMP-0.10 · Intention i-1a06af71 · 2026-11-19
 
 ## _SessionInfo
 
@@ -137,9 +137,9 @@ Origins: IMP-1.1, IMP-D10, IMP-D16 · Intention i-e5c234a2 · 2026-11-19
 
 ## _part
 
-Reason: Project timestamped main-lane text and retain auxiliary parts in the archive
+Reason: Project saved Mimo tool states, results and inline image descriptors
 
-Origins: IMP-0.7, IMP-1.5 · Intention i-79e93db3 · 2026-11-19
+Origins: IMP-1.6, IMP-0.10 · Intention i-1a06af71 · 2026-11-19
 
 ## _read_messages
 
@@ -263,7 +263,25 @@ Origins: IMP-0.7, IMP-1.5 · Intention i-79e93db3 · 2026-11-19
 
 ## _text_block
 
-Reason: Project timestamped main-lane text and retain auxiliary parts in the archive
+Reason: Project saved Mimo tool states, results and inline image descriptors
 
-Origins: IMP-0.7, IMP-1.5 · Intention i-79e93db3 · 2026-11-19
+Origins: IMP-1.6, IMP-0.10 · Intention i-1a06af71 · 2026-11-19
+
+## _attachments
+
+Reason: Project saved Mimo tool states, results and inline image descriptors
+
+Origins: IMP-1.6, IMP-0.10 · Intention i-1a06af71 · 2026-11-19
+
+## _inline_image
+
+Reason: Project saved Mimo tool states, results and inline image descriptors
+
+Origins: IMP-1.6, IMP-0.10 · Intention i-1a06af71 · 2026-11-19
+
+## _tool_call
+
+Reason: Project saved Mimo tool states, results and inline image descriptors
+
+Origins: IMP-1.6, IMP-0.10 · Intention i-1a06af71 · 2026-11-19
 
