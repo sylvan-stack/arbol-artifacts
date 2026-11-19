@@ -29,9 +29,9 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
 
 ## capture_build
 
-Reason: Read the existing immutable package identity from the actual sealed payload and bind it to the committed Git tree.
+Reason: Validate the Pi and Mimo package metadata and retain the exact pinned Mimo native qualification input.
 
-Origins: ARC-4.5, ARC-D95, BLD-0.4 · Intention i-a5ad7556 · 2026-11-19
+Origins: ARC-4.5, ARC-D95, BLD-0.4 · Intention i-f92a7d08 · 2026-11-19
 
 ## check_hashes
 
@@ -176,4 +176,16 @@ Origins: ARC-4.5, ARC-D95, BLD-0.4 · Intention i-082a07c2 · 2026-11-19
 Reason: Read the existing immutable package identity from the actual sealed payload and bind it to the committed Git tree.
 
 Origins: ARC-4.5, ARC-D95, BLD-0.4 · Intention i-a5ad7556 · 2026-11-19
+
+## driver_metadata_evidence
+
+Reason: Validate the Pi and Mimo package metadata and retain the exact pinned Mimo native qualification input.
+
+Origins: ARC-4.5, ARC-D95, BLD-0.4 · Intention i-f92a7d08 · 2026-11-19
+
+## retain_pinned_input
+
+Reason: Validate the Pi and Mimo package metadata and retain the exact pinned Mimo native qualification input.
+
+Origins: ARC-4.5, ARC-D95, BLD-0.4 · Intention i-f92a7d08 · 2026-11-19
 
