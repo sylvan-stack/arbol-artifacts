@@ -60,6 +60,7 @@ A reader yields one **session**, a list of **turns** and the session's archive f
 - Duplicate records are dropped by the tool's rule below before turns are formed.
 - **Usage** gives `inputTokens` as input + cache read + cache write, with `cachedInputTokens` (cache read) and `cacheWriteTokens` beside it, and `outputTokens`, as IMP-0 stores them.
 - A turn can end in a way that the tool's state rule below does not name. It is then `failed`, and its error kind is the tool's word for that ending.
+- A session that fails after its native ID is known keeps the kind its tool's table gives for the records read before the failure ([IMP-D16](00-the-import.md#decisions)).
 
 ### Claude Code
 

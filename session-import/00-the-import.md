@@ -341,6 +341,7 @@ BLD-0 reserves the Trunk code name `imported`, and no Trunk Build may take it. A
     - `unknown_format` when a record parses but a conversation record has an unknown shape (IMP-D10);
     - `rows_refused` when the database refuses the session's rows.
   - A session that fails before its native ID is known is reported with the name of its file as `native` and no `kind`.
+  - A session that fails after its native ID is known is reported with the kind its tool's table in IMP-1 gives for the records read before the failure ([IMP-D16](#decisions)).
 - **Database:** the tables and trigger of [Provenance](#provenance), and the error object of a failed imported Exchange.
 - **Bridge:** the `imported` field of a chat, and the send refusal `imported_chat`.
 - **Archive:** the layout, places and manifest of [The raw archive](#the-raw-archive).
@@ -369,3 +370,4 @@ BLD-0 reserves the Trunk code name `imported`, and no Trunk Build may take it. A
 | IMP-D13 | Which error does a session get when its files are broken, and how is a session reported that fails before its ID is known? Found while planning SIM-4 | `unreadable_session` when a file cannot be read or decoded; `unknown_format` only when a record parses but has an unknown shape; such a session is reported by its file name, with no kind | Decided 18 November 2026 by the owner: the proposed default |
 | IMP-D14 | BLD-0's Single-database amendment says database-dependent components declare `minRevision: 3`. Does every Build move to revision 3? Found while planning SIM-1 | No. Each Build declares the revision it needs; only the `arbol` Build with the import declares 3 | Decided 18 November 2026 by the owner: the proposed default |
 | IMP-D15 | What does "treat the Exchange as imported" ask of a reader? Found while planning SIM-2 | Accept Trunk `imported` with Build `0`, never resolve it to a Trunk Build, and take the import's facts from `chat_imports` | Decided 18 November 2026 by the owner: the proposed default |
+| IMP-D16 | What kind is reported for a session that fails after its native ID is known, when its tool's kind rule depends on records after the failure? Found while planning SIM-24 | The kind its tool's table gives for the records read before the failure, so every session with a known ID is reported with a kind | Decided 19 November 2026 by the owner: the proposed default |
