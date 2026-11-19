@@ -5,9 +5,9 @@ role: authored
 
 ## <before _unreadable>
 
-Reason: Use saved Mimo response endings and the first assistant model
+Reason: Project timestamped main-lane text and retain auxiliary parts in the archive
 
-Origins: IMP-1.5, IMP-D32 · Intention i-1f7abf86 · 2026-11-19
+Origins: IMP-0.7, IMP-1.5 · Intention i-79e93db3 · 2026-11-19
 
 ## _copy_database
 
@@ -83,15 +83,15 @@ Origins: IMP-1.3, IMP-D16 · Intention i-a2ec86e3 · 2026-11-19
 
 ## _Message
 
-Reason: Use saved Mimo response endings and the first assistant model
+Reason: Project timestamped main-lane text and retain auxiliary parts in the archive
 
-Origins: IMP-1.5, IMP-D32 · Intention i-1f7abf86 · 2026-11-19
+Origins: IMP-0.7, IMP-1.5 · Intention i-79e93db3 · 2026-11-19
 
 ## _Part
 
-Reason: Validate Mimo conversation rows and retain their native timestamps
+Reason: Project timestamped main-lane text and retain auxiliary parts in the archive
 
-Origins: IMP-1.1, IMP-D10, IMP-D16 · Intention i-e5c234a2 · 2026-11-19
+Origins: IMP-0.7, IMP-1.5 · Intention i-79e93db3 · 2026-11-19
 
 ## _SessionInfo
 
@@ -119,9 +119,9 @@ Origins: IMP-1.1, IMP-D10, IMP-D16 · Intention i-e5c234a2 · 2026-11-19
 
 ## _message
 
-Reason: Use saved Mimo response endings and the first assistant model
+Reason: Project timestamped main-lane text and retain auxiliary parts in the archive
 
-Origins: IMP-1.5, IMP-D32 · Intention i-1f7abf86 · 2026-11-19
+Origins: IMP-0.7, IMP-1.5 · Intention i-79e93db3 · 2026-11-19
 
 ## _object
 
@@ -137,9 +137,9 @@ Origins: IMP-1.1, IMP-D10, IMP-D16 · Intention i-e5c234a2 · 2026-11-19
 
 ## _part
 
-Reason: Classify Mimo sessions from validated Driver and probe records
+Reason: Project timestamped main-lane text and retain auxiliary parts in the archive
 
-Origins: IMP-1.3, IMP-D16 · Intention i-a2ec86e3 · 2026-11-19
+Origins: IMP-0.7, IMP-1.5 · Intention i-79e93db3 · 2026-11-19
 
 ## _read_messages
 
@@ -251,13 +251,19 @@ Origins: IMP-1.5, IMP-D32 · Intention i-1f7abf86 · 2026-11-19
 
 ## _state
 
-Reason: Use saved Mimo response endings and the first assistant model
+Reason: Project timestamped main-lane text and retain auxiliary parts in the archive
 
-Origins: IMP-1.5, IMP-D32 · Intention i-1f7abf86 · 2026-11-19
+Origins: IMP-0.7, IMP-1.5 · Intention i-79e93db3 · 2026-11-19
 
 ## _turn_end
 
-Reason: Use saved Mimo response endings and the first assistant model
+Reason: Project timestamped main-lane text and retain auxiliary parts in the archive
 
-Origins: IMP-1.5, IMP-D32 · Intention i-1f7abf86 · 2026-11-19
+Origins: IMP-0.7, IMP-1.5 · Intention i-79e93db3 · 2026-11-19
+
+## _text_block
+
+Reason: Project timestamped main-lane text and retain auxiliary parts in the archive
+
+Origins: IMP-0.7, IMP-1.5 · Intention i-79e93db3 · 2026-11-19
 
