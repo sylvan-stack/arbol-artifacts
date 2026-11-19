@@ -83,6 +83,8 @@ A readable session with no complete record still yields a session with no turns,
 | `agent_launched` | Any other `sdk-cli` session |
 | `owner` | Everything else: `claude-desktop` and `cli` |
 
+If the supplied Driver chat-map directory or an entry cannot be read or decoded, continue with the readable entries and the session records. Unavailable map data contributes no evidence and produces no session failure. [IMP-D18](00-the-import.md#decisions)
+
 `origin` keeps `entrypoint`, `permissionMode`, the folder name and the first `turnOrigin`.
 
 **Duplicates.**
