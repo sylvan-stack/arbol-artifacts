@@ -47,9 +47,9 @@ Removed by Intention i-b2f8b6f1 · 2026-11-12
 
 ## Reader.exchanges
 
-Reason: Read saved chat history and recover notes by UUID while preserving the accepted Trunk Build.
+Reason: Project Intake updates and actual saved runs through the existing bounded Bridge
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-cab7bebd · 2026-11-12
+Origins: STE-0.27 · Intention i-503ce91b · 2026-11-20
 
 ## <before refuse_imported>
 
@@ -71,7 +71,7 @@ Origins: STE-0.26 · Intention i-22b99be9 · 2026-11-19
 
 ## Reader.phase_details
 
-Reason: Read complete phase detail records through the Bridge
+Reason: Project Intake updates and actual saved runs through the existing bounded Bridge
 
-Origins: STE-0.26 · Intention i-22b99be9 · 2026-11-19
+Origins: STE-0.27 · Intention i-503ce91b · 2026-11-20
 

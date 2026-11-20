@@ -89,7 +89,7 @@ Origins: IMP-0.17 · Intention i-7b19a2a9 · 2026-11-19
 
 ## phase_detail_params
 
-Reason: Read complete phase detail records through the Bridge
+Reason: Project Intake updates and actual saved runs through the existing bounded Bridge
 
-Origins: STE-0.26 · Intention i-22b99be9 · 2026-11-19
+Origins: STE-0.27 · Intention i-503ce91b · 2026-11-20
 
