@@ -17,9 +17,9 @@ Origins: ARC-5.6 · Intention i-1c7ef6e6 · 2026-11-19
 
 ## <before now>
 
-Reason: Record the Build layout independently from its schema declaration, preserving readability of existing records.
+Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
 
-Origins: ARC-5.6 · Intention i-1c7ef6e6 · 2026-11-19
+Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
 
 ## launcher_source
 
@@ -77,9 +77,9 @@ Origins: DRV-6.21, BLD-0.16, BLD-0.9, BLD-0.15 · Intention i-6fbf8388 · 2026-1
 
 ## remove_build_payload
 
-Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
+Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
 
-Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
+Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
 
 ## <before driver_route_bytes>
 
@@ -131,9 +131,9 @@ Origins: ARC-5.1, ARC-5.2, ARC-5.5 · Intention i-c5d7328f · 2026-11-19
 
 ## reserve
 
-Reason: Build reservations, guards and generated launchers must find the same installed registry and settings while retaining isolated registries.
+Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
 
-Origins: ARC-5.1, ARC-5.2, ARC-5.5 · Intention i-c5d7328f · 2026-11-19
+Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
 
 ## build_details
 

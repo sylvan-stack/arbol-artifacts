@@ -33,3 +33,15 @@ Reason: The staged database installer, migration tool and probe must resolve the
 
 Origins: ARC-5.1, ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-f1e3f3c8 · 2026-11-19
 
+## build_payload_directory
+
+Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
+
+Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
+
+## build_registry
+
+Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
+
+Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
+

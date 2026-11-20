@@ -29,9 +29,9 @@ Origins: ARC-4.1, ARC-4.3, ARC-4.8 · Intention i-d1b0e71e · 2026-11-12
 
 ## <before inside>
 
-Reason: Resolve the signed stable app executable independently of its registry folder
+Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
 
-Origins: FOR-2.4 · Intention i-23d4d346 · 2026-11-20
+Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
 
 ## code_name
 
@@ -65,9 +65,9 @@ Origins: FOR-2.4 · Intention i-23d4d346 · 2026-11-20
 
 ## registered_entry
 
-Reason: After stable installation, keep explicit and default registry launches on the qualified Applications bundle
+Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
 
-Origins: FOR-2.4 · Intention i-834f5287 · 2026-11-20
+Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
 
 ## named_runnable
 

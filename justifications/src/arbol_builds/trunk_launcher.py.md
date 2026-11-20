@@ -11,9 +11,9 @@ Removed by Intention i-fa05f54d · 2026-11-12
 
 ## <before Refused>
 
-Reason: The launcher and registry must select only compatible Builds and report the available compatible alternatives.
+Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
 
-Origins: ARC-5.6, ARC-4.3 · Intention i-e3135619 · 2026-11-19
+Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
 
 ## Call
 
@@ -53,9 +53,9 @@ Origins: ARC-4.1, ARC-4.3 · Intention i-fa05f54d · 2026-11-12
 
 ## launch_trunk
 
-Reason: Drop the obsolete Root reader from the generated Trunk launcher and remove an unused import in the embedded schema reader.
+Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
 
-Origins: ARC-4.1, ARC-4.3 · Intention i-fa05f54d · 2026-11-12
+Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
 
 ## pick_build
 

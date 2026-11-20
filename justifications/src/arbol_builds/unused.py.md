@@ -5,9 +5,9 @@ role: authored
 
 ## <before read_days>
 
-Reason: Build reservations, guards and generated launchers must find the same installed registry and settings while retaining isolated registries.
+Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
 
-Origins: ARC-5.1, ARC-5.2, ARC-5.5 · Intention i-c5d7328f · 2026-11-19
+Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
 
 ## prune_unused
 
@@ -35,9 +35,9 @@ Origins: IMP-0.18 · Intention i-99165683 · 2026-11-18
 
 ## usage_snapshot
 
-Reason: Retire generation and installation of the Root runtime launchers
+Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
 
-Origins: ARC-4.1, ARC-4.8 · Intention i-de10fbd4 · 2026-11-12
+Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
 
 ## Usage.retains
 

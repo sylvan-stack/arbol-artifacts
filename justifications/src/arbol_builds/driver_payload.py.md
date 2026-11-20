@@ -107,15 +107,15 @@ Origins: DRV-6.21, BLD-0.3, BLD-0.4, BLD-0.8, BLD-0.15 · Intention i-e1feba76 �
 
 ## resolve_provider
 
-Reason: Resolve exact registered payloads and verify gate, platform and scoped qualification authority before qualified execution
+Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-b19c1bd3 · 2026-11-14
+Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
 
 ## verify_acceptance
 
-Reason: Build reservations, guards and generated launchers must find the same installed registry and settings while retaining isolated registries.
+Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
 
-Origins: ARC-5.1, ARC-5.2, ARC-5.5 · Intention i-c5d7328f · 2026-11-19
+Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
 
 ## verify_gate
 
@@ -137,9 +137,9 @@ Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9
 
 ## _retention_builds
 
-Reason: Recognize genuine optional legacy payload absence before private parent validation while retaining matching tuple verification
+Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
 
-Origins: DRV-6.18, DRV-6.21 · Intention i-425cae65 · 2026-11-15
+Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
 
 ## _retention_component
 
@@ -239,9 +239,9 @@ Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-
 
 ## <before optional_descriptor>
 
-Reason: Build reservations, guards and generated launchers must find the same installed registry and settings while retaining isolated registries.
+Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
 
-Origins: ARC-5.1, ARC-5.2, ARC-5.5 · Intention i-c5d7328f · 2026-11-19
+Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
 
 ## optional_descriptor
 
@@ -251,9 +251,9 @@ Origins: DRV-6.18, DRV-6.21 · Intention i-425cae65 · 2026-11-15
 
 ## _registered_payload
 
-Reason: Factor exact registered payload validation while preserving named selection
+Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
 
-Origins: DRV-6.21, BLD-0.3, BLD-0.4, BLD-0.8, BLD-0.15 · Intention i-e1feba76 · 2026-11-15
+Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
 
 ## CandidateScope
 
@@ -275,9 +275,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21, BLD-0.4, BLD-0.5, BLD-0.15 · I
 
 ## _candidate_acceptance
 
-Reason: Build reservations, guards and generated launchers must find the same installed registry and settings while retaining isolated registries.
+Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
 
-Origins: ARC-5.1, ARC-5.2, ARC-5.5 · Intention i-c5d7328f · 2026-11-19
+Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
 
 ## _candidate_payload
 
