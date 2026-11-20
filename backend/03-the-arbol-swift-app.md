@@ -115,7 +115,7 @@ Register the global keys from the one resident App. Register Option+E and Option
 | Shortcut | Action |
 |---|---|
 | ⌥E | Open or raise Elma Chat |
-| ⌃⌥⇧⌘W | Open or raise Willo Station when its bundle ships |
+| ⌥L or ⌃⌥⇧⌘W | Open or raise Willo Station when its bundle ships |
 | ⌥Q | Open or raise Seqoya Lab when its bundle ships |
 | ⌃⇧⌘C | Open or dismiss Latest chats |
 
@@ -195,7 +195,7 @@ Kimi quota ratios and normalized limits are not absolute token quantities or imp
 
 ### Willo Station recent Chat Sessions
 
-Open Willo Station from the Arbol tray or with Control+Option+Shift+Command+W. Raise its existing window when it is already open. The first Willo Station view uses the shared workspace header and shows a read-only list of saved, unarchived Chat Sessions in the installation, including the Chat Session open in Elma Chat. Order rows by latest activity with the Bridge's stable tie-breaker. Show each title and activity time. Use the first message as a title fallback and “Untitled Chat Session” when both are missing. A visible Load older action reads the next page until the list ends.
+Open Willo Station from the Arbol tray or with Option+L or Control+Option+Shift+Command+W. Raise its existing window when it is already open. The first Willo Station view uses the shared workspace header and shows a read-only list of saved, unarchived Chat Sessions in the installation, including the Chat Session open in Elma Chat. Order rows by latest activity with the Bridge's stable tie-breaker. Show each title and activity time. Use the first message as a title fallback and “Untitled Chat Session” when both are missing. A visible Load older action reads the next page until the list ends.
 
 Read the first page on opening and reconnecting. Distinguish loading, an empty collection and a failed read. Retry an unsuccessful page without discarding the rows already shown. Unsubmitted Drafts without a saved Chat Session have no row in this first view.
 
@@ -254,7 +254,7 @@ The Seqoya-only operation accepts an empty object and returns bounded `evidence`
 | BKD-3.18 <!-- f9b70c2f-a809-4208-b534-211d8219d961 --> | Show the bound Root’s Vigor as ranked, expandable rows with substituted numerical calculations, Pi and MiMo Root activity, quota and capacity evidence, and clearly marked estimates for active accounts lacking a saved score. Account for available token capacity in the estimate for a balance with no reported reset. Reserve Unavailable for accounts known to be inactive | Changed · owner request | Open Vigor in the installed App and inspect calculated, estimated, exhausted and inactive rows |
 | BKD-3.19 <!-- 65d6ad2f-1881-4322-b00a-b35d902e8347 --> | Offer no Stewardship, Stewards or Steward Output surface and no Mandate entity kind in Seqoya Lab, Willo Station, the native surfaces and the shared design system they use | Changed · owner request, 15 November 2026 | Design catalog, native surface list and entity registry of the maintained design system and the Elma copy, with no Stewardship, Stewards, Steward Output or Mandate entry |
 | BKD-3.20 <!-- 2b12a45a-79a2-40ad-9a52-a3e41fa954bf --> | While the Arbol Swift App is running, refresh the usage metrics for every Seqoya Subscription every five minutes in the background from its own signed-in Arbol Browser profile in headless mode. Run these refreshes even when the Subscriptions tab or the Seqoya Lab window is closed. Save each successful reading so it is available when Subscriptions opens | New · owner request | Close Seqoya Lab and observe two scheduled refresh cycles with all configured subscriptions, including two logins at the same provider. Verify that the Browser stays hidden, another app keeps focus, and reopening Subscriptions shows the saved readings. Verify that an expired sign-in retains that subscription’s last valid reading while the other profiles refresh |
-| BKD-3.21 | Open or raise Willo Station from the tray or the existing Willo shortcut. Show a read-only list of the installation's saved, unarchived Chat Sessions ordered by latest activity, with title, activity time, pagination and clear loading, empty and retry states | New · owner request, 20 November 2026 | Open Willo Station with several saved Chat Sessions, check their order and load older rows |
+| BKD-3.21 | Open or raise Willo Station from the tray, with Option+L, or with Control+Option+Shift+Command+W. Show a read-only list of the installation's saved, unarchived Chat Sessions ordered by latest activity, with title, activity time, pagination and clear loading, empty and retry states | New · owner request, 20 November 2026 | Open Willo Station with several saved Chat Sessions, check their order and load older rows |
 
 Verification descriptions name future evidence. The App implementation will follow the owner's separate testing and Build policy.
 
