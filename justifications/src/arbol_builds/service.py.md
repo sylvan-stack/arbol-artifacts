@@ -17,9 +17,9 @@ Origins: ARC-5.6 · Intention i-1c7ef6e6 · 2026-11-19
 
 ## <before now>
 
-Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
+Reason: Select stable Trunks only from Applications and preserve installed runtime use guards during registry maintenance
 
-Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
+Origins: FOR-2.6 · Intention i-0775d715 · 2026-11-20
 
 ## launcher_source
 
@@ -77,9 +77,9 @@ Origins: DRV-6.21, BLD-0.16, BLD-0.9, BLD-0.15 · Intention i-6fbf8388 · 2026-1
 
 ## remove_build_payload
 
-Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
+Reason: Select stable Trunks only from Applications and preserve installed runtime use guards during registry maintenance
 
-Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
+Origins: FOR-2.6 · Intention i-0775d715 · 2026-11-20
 
 ## <before driver_route_bytes>
 

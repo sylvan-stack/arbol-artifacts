@@ -11,9 +11,9 @@ Removed by Intention i-fa05f54d · 2026-11-12
 
 ## <before Refused>
 
-Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
+Reason: Select stable Trunks only from Applications and preserve installed runtime use guards during registry maintenance
 
-Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
+Origins: FOR-2.6 · Intention i-0775d715 · 2026-11-20
 
 ## Call
 
@@ -77,7 +77,25 @@ Origins: ARC-4.1, ARC-4.3 · Intention i-fa05f54d · 2026-11-12
 
 ## trunk_list
 
-Reason: The launcher and registry must select only compatible Builds and report the available compatible alternatives.
+Reason: Select stable Trunks only from Applications and preserve installed runtime use guards during registry maintenance
 
-Origins: ARC-5.6, ARC-4.3 · Intention i-e3135619 · 2026-11-19
+Origins: FOR-2.6 · Intention i-0775d715 · 2026-11-20
+
+## installed_trunks
+
+Reason: Select stable Trunks only from Applications and preserve installed runtime use guards during registry maintenance
+
+Origins: FOR-2.6 · Intention i-0775d715 · 2026-11-20
+
+## launch_installed_trunk
+
+Reason: Select stable Trunks only from Applications and preserve installed runtime use guards during registry maintenance
+
+Origins: FOR-2.6 · Intention i-0775d715 · 2026-11-20
+
+## schema_view
+
+Reason: Select stable Trunks only from Applications and preserve installed runtime use guards during registry maintenance
+
+Origins: FOR-2.6 · Intention i-0775d715 · 2026-11-20
 
