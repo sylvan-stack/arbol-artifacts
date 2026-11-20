@@ -196,6 +196,8 @@ arbol:ui/elma/src/preferences.ts
 
 ### Editable subscription cards and allowance layout
 
+Show one Refresh action for the Subscriptions page. Each supported card has an Open in provider action that opens the fixed provider usage destination in its owner-confirmed, existing Arbol Browser profile. The action uses the same Browser session as usage collection, reuses its dashboard tab when safe and preserves other tabs. If the profile or active Browser controller cannot be verified, report the problem on the card. The former WebKit and system-browser usage routes are superseded for these cards.
+
 Order the known cards by Driver and vendor family: Claude Code, Codex, Pi/ChatGPT, Kimi Code, z.ai, MiMo, DeepSeek and MiniMax. Editable display names do not affect this order. Other accounts follow in the existing stable alphabetical order.
 
 For the pay-as-you-go DeepSeek and MiniMax cards, display used and available output-token equivalents and one balance progress bar for the period since the latest successful top-up. Use the paid balance and payment history from the confirmed provider profile. Use a known carry-over balance when available or the last payment amount as the approximate starting balance. Estimate the percentage spent as the reduction in paid balance divided by the estimated starting balance. Convert both amounts at the published model output rate and disclose the rate and assumptions. Use the current balance to estimate available tokens when the top-up period cannot be established. Do not synthesize a timed allowance for an API balance.
