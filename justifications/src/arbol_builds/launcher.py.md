@@ -65,9 +65,9 @@ Origins: FOR-2.4 · Intention i-23d4d346 · 2026-11-20
 
 ## registered_entry
 
-Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
+Reason: Resolve installed Arbol App Build records against the canonical Seqoya Lab bundle
 
-Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
+Origins: BKD-3.24 · Intention i-072b5de9 · 2026-11-20
 
 ## named_runnable
 
