@@ -41,9 +41,9 @@ Origins: IMP-0.17, IMP-D33, BKD-1.7, BKD-1.9, BKD-2.8, BKD-2.18, BKD-2.22 · Int
 
 ## Chats.receive
 
-Reason: Read archived chat pages through an independent Bridge cursor and use the Draft-safe switch
+Reason: Discard a pending archive page when an unarchived chat enters the active list before any archive row has loaded
 
-Origins: IMP-0.17, IMP-D33, BKD-1.7, BKD-1.9, BKD-2.8, BKD-2.18, BKD-2.22 · Intention i-b3d815b4 · 2026-11-20
+Origins: IMP-D33, BKD-2.18 · Intention i-6dfa780e · 2026-11-20
 
 ## newest
 
