@@ -11,9 +11,9 @@ Origins: BKD-3.17 · Intention i-9cd567d4 · 2026-11-12
 
 ## script
 
-Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
+Reason: Adopt the verified subscription order from the published design-system source.
 
-Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
+Origins: BKD-3.17 · Intention i-c6e3b1c4 · 2026-11-20
 
 ## style
 
