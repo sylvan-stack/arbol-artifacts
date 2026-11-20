@@ -5,9 +5,9 @@ role: authored
 
 ## <before Fields>
 
-Reason: Connect the live Elma phase inspector to persisted details
+Reason: Show live and saved findings and recorded inference times in Elma
 
-Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
+Origins: STE-0.27 · Intention i-b02fb913 · 2026-11-20
 
 ## Fields
 
@@ -23,9 +23,9 @@ Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
 
 ## Page
 
-Reason: Connect the live Elma phase inspector to persisted details
+Reason: Show live and saved findings and recorded inference times in Elma
 
-Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
+Origins: STE-0.27 · Intention i-b02fb913 · 2026-11-20
 
 ## Phase
 
@@ -35,9 +35,9 @@ Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
 
 ## PhaseDetailsReader
 
-Reason: Connect the live Elma phase inspector to persisted details
+Reason: Show live and saved findings and recorded inference times in Elma
 
-Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
+Origins: STE-0.27 · Intention i-b02fb913 · 2026-11-20
 
 ## PhaseDetailsReader.<end>
 
@@ -47,9 +47,9 @@ Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
 
 ## PhaseDetailsReader.constructor
 
-Reason: Connect the live Elma phase inspector to persisted details
+Reason: Show live and saved findings and recorded inference times in Elma
 
-Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
+Origins: STE-0.27 · Intention i-b02fb913 · 2026-11-20
 
 ## PhaseDetailsReader.phases
 
@@ -65,9 +65,9 @@ Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
 
 ## PhaseDetailsReader.read
 
-Reason: Connect the live Elma phase inspector to persisted details
+Reason: Show live and saved findings and recorded inference times in Elma
 
-Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
+Origins: STE-0.27 · Intention i-b02fb913 · 2026-11-20
 
 ## PhaseDetailsReader.snapshot
 
@@ -77,9 +77,9 @@ Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
 
 ## PhaseDetailsReader.take
 
-Reason: Connect the live Elma phase inspector to persisted details
+Reason: Show live and saved findings and recorded inference times in Elma
 
-Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
+Origins: STE-0.27 · Intention i-b02fb913 · 2026-11-20
 
 ## isSteadyExchange
 
@@ -92,4 +92,10 @@ Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
 Reason: Connect the live Elma phase inspector to persisted details
 
 Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
+
+## PhaseDetailsReader.readFindings
+
+Reason: Show live and saved findings and recorded inference times in Elma
+
+Origins: STE-0.27 · Intention i-b02fb913 · 2026-11-20
 

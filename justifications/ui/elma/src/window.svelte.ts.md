@@ -267,3 +267,21 @@ Removed: Publish the installation Bridge 2 renderer and scoped chat, Draft, pend
 
 Removed by Intention i-3bf8d557 · 2026-11-12
 
+## ElmaWindow.startedAt
+
+Reason: Show live and saved findings and recorded inference times in Elma
+
+Origins: STE-0.27 · Intention i-b02fb913 · 2026-11-20
+
+## ElmaWindow.inferenceEndedAt
+
+Reason: Show live and saved findings and recorded inference times in Elma
+
+Origins: STE-0.27 · Intention i-b02fb913 · 2026-11-20
+
+## ElmaWindow.inferenceRuns
+
+Reason: Show live and saved findings and recorded inference times in Elma
+
+Origins: STE-0.27 · Intention i-b02fb913 · 2026-11-20
+

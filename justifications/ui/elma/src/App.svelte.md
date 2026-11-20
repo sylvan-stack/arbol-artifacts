@@ -5,13 +5,13 @@ role: authored
 
 ## <before style>
 
-Reason: Connect the live Elma phase inspector to persisted details
+Reason: Show live and saved findings and recorded inference times in Elma
 
-Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
+Origins: STE-0.27 · Intention i-b02fb913 · 2026-11-20
 
 ## script
 
-Reason: Connect the live Elma phase inspector to persisted details
+Reason: Show live and saved findings and recorded inference times in Elma
 
-Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
+Origins: STE-0.27 · Intention i-b02fb913 · 2026-11-20
 
