@@ -71,7 +71,7 @@ Origins: STE-0.26 · Intention i-22b99be9 · 2026-11-19
 
 ## Reader.phase_details
 
-Reason: Project Intake updates and actual saved runs through the existing bounded Bridge
+Reason: Include bounded Execution updates in the existing Bridge read
 
-Origins: STE-0.27 · Intention i-503ce91b · 2026-11-20
+Origins: STE-0.30 · Intention i-501d536e · 2026-11-20
 
