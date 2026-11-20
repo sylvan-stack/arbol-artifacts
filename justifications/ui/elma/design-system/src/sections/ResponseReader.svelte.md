@@ -5,19 +5,19 @@ role: authored
 
 ## <before style>
 
-Reason: Connect the live Elma phase inspector to persisted details
+Reason: Ship the shared Ripples design in live Elma and open Exchange Details at the clicked phase
 
-Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
+Origins: STE-0.29 · Intention i-3f7a4844 · 2026-11-20
 
 ## script
 
-Reason: Connect the live Elma phase inspector to persisted details
+Reason: Ship the shared Ripples design in live Elma and open Exchange Details at the clicked phase
 
-Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
+Origins: STE-0.29 · Intention i-3f7a4844 · 2026-11-20
 
 ## style
 
-Reason: Connect the live Elma phase inspector to persisted details
+Reason: Ship the shared Ripples design in live Elma and open Exchange Details at the clicked phase
 
-Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
+Origins: STE-0.29 · Intention i-3f7a4844 · 2026-11-20
 
