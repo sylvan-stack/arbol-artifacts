@@ -5,21 +5,21 @@ role: authored
 
 ## <before style>
 
-Reason: Bundle the simplified Willo Station and both workspace Insignia from the maintained design source.
+Reason: Include the two-tab layout and restored Willo card design in the renderer.
 
-Origins: BKD-3.21, BKD-3.17 · Intention i-59e18ab5 · 2026-11-20
+Origins: BKD-3.21 · Intention i-8b17e34a · 2026-11-20
 
 ## script
 
-Reason: Render live Chat Session summaries with the committed Stations design
+Reason: Include the two-tab layout and restored Willo card design in the renderer.
 
-Origins: BKD-3.21 · Intention i-57904941 · 2026-11-20
+Origins: BKD-3.21 · Intention i-8b17e34a · 2026-11-20
 
 ## script:2
 
-Reason: Bundle the simplified Willo Station and both workspace Insignia from the maintained design source.
+Reason: Include the two-tab layout and restored Willo card design in the renderer.
 
-Origins: BKD-3.21, BKD-3.17 · Intention i-59e18ab5 · 2026-11-20
+Origins: BKD-3.21 · Intention i-8b17e34a · 2026-11-20
 
 ## style
 

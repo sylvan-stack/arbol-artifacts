@@ -17,15 +17,15 @@ Origins: BKD-3.21 · Intention i-3202b333 · 2026-11-20
 
 ## script:2
 
-Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
+Reason: Include the two-tab layout and restored Willo card design in the renderer.
 
-Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
+Origins: BKD-3.21 · Intention i-8b17e34a · 2026-11-20
 
 ## <before style>
 
-Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
+Reason: Include the two-tab layout and restored Willo card design in the renderer.
 
-Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
+Origins: BKD-3.21 · Intention i-8b17e34a · 2026-11-20
 
 ## style
 
