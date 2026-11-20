@@ -5,9 +5,9 @@ role: authored
 
 ## <before Fields>
 
-Reason: Show live and saved findings and recorded inference times in Elma
+Reason: Read live and saved Forester callback counts for the selected Exchange
 
-Origins: STE-0.27 · Intention i-b02fb913 · 2026-11-20
+Origins: STE-0.30, STE-0.31 · Intention i-be784457 · 2026-11-20
 
 ## Fields
 
@@ -35,9 +35,9 @@ Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
 
 ## PhaseDetailsReader
 
-Reason: Show live and saved findings and recorded inference times in Elma
+Reason: Read live and saved Forester callback counts for the selected Exchange
 
-Origins: STE-0.27 · Intention i-b02fb913 · 2026-11-20
+Origins: STE-0.30, STE-0.31 · Intention i-be784457 · 2026-11-20
 
 ## PhaseDetailsReader.<end>
 
@@ -77,9 +77,9 @@ Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
 
 ## PhaseDetailsReader.take
 
-Reason: Show live and saved findings and recorded inference times in Elma
+Reason: Read live and saved Forester callback counts for the selected Exchange
 
-Origins: STE-0.27 · Intention i-b02fb913 · 2026-11-20
+Origins: STE-0.30, STE-0.31 · Intention i-be784457 · 2026-11-20
 
 ## isSteadyExchange
 
@@ -95,7 +95,13 @@ Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
 
 ## PhaseDetailsReader.readFindings
 
-Reason: Show live and saved findings and recorded inference times in Elma
+Removed: Read live and saved Forester callback counts for the selected Exchange
 
-Origins: STE-0.27 · Intention i-b02fb913 · 2026-11-20
+Removed by Intention i-be784457 · 2026-11-20
+
+## PhaseDetailsReader.readUpdates
+
+Reason: Read live and saved Forester callback counts for the selected Exchange
+
+Origins: STE-0.30, STE-0.31 · Intention i-be784457 · 2026-11-20
 
