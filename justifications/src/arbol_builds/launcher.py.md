@@ -65,7 +65,13 @@ Origins: FOR-2.4 · Intention i-23d4d346 · 2026-11-20
 
 ## registered_entry
 
-Reason: Resolve the signed stable app executable independently of its registry folder
+Reason: After stable installation, keep explicit and default registry launches on the qualified Applications bundle
 
-Origins: FOR-2.4 · Intention i-23d4d346 · 2026-11-20
+Origins: FOR-2.4 · Intention i-834f5287 · 2026-11-20
+
+## named_runnable
+
+Reason: After stable installation, keep explicit and default registry launches on the qualified Applications bundle
+
+Origins: FOR-2.4 · Intention i-834f5287 · 2026-11-20
 
