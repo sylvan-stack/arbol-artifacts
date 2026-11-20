@@ -5,7 +5,7 @@ role: authored
 
 ## <before digest>
 
-Reason: Connect the live Elma phase inspector to persisted details
+Reason: Read and page saved Chat Sessions from the existing Bridge in Willo Station
 
-Origins: STE-0.26 · Intention i-0cd4b204 · 2026-11-19
+Origins: BKD-3.21 · Intention i-67978ec1 · 2026-11-20
 
