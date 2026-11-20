@@ -47,15 +47,15 @@ Removed by Intention i-b2f8b6f1 · 2026-11-12
 
 ## Reader.exchanges
 
-Reason: Project Intake updates and actual saved runs through the existing bounded Bridge
+Reason: Derive saved shell labels from the canonical command before previewing the input
 
-Origins: STE-0.27 · Intention i-503ce91b · 2026-11-20
+Origins: STE-0.33 · Intention i-bb58a938 · 2026-11-20
 
 ## <before refuse_imported>
 
-Reason: Read complete phase detail records through the Bridge
+Reason: Derive saved shell labels from the canonical command before previewing the input
 
-Origins: STE-0.26 · Intention i-22b99be9 · 2026-11-19
+Origins: STE-0.33 · Intention i-bb58a938 · 2026-11-20
 
 ## refuse_imported
 
