@@ -5,7 +5,7 @@ role: authored
 
 ## Numbered Builds
 
-Reason: The Build and database guides must describe the new working paths and preserve their isolated entry points.
+Reason: Reject temporary builds and releases that target the protected registry or installed paths
 
-Origins: ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-5c983db1 · 2026-11-19
+Origins: FOR-2.5 · Intention i-71f99122 · 2026-11-20
 

@@ -65,9 +65,9 @@ Origins: BLD-1.2 · Intention i-ee37678f · 2026-11-19
 
 ## open_run
 
-Reason: Bring the published cleanup worker and startup hook to the clean revision-1-compatible Build c source.
+Reason: Reject temporary builds and releases that target the protected registry or installed paths
 
-Origins: BLD-1.2 · Intention i-ee37678f · 2026-11-19
+Origins: FOR-2.5 · Intention i-71f99122 · 2026-11-20
 
 ## save_evidence
 

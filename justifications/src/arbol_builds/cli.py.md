@@ -5,13 +5,13 @@ role: authored
 
 ## <before unicode_text>
 
-Reason: Archive the terminal Build record and log before handing a dedicated isolated run to cleanup.
+Reason: Reject temporary builds and releases that target the protected registry or installed paths
 
-Origins: BLD-1.3 · Intention i-ae12822b · 2026-11-19
+Origins: FOR-2.5 · Intention i-71f99122 · 2026-11-20
 
 ## main
 
-Reason: Archive the terminal Build record and log before handing a dedicated isolated run to cleanup.
+Reason: Reject temporary builds and releases that target the protected registry or installed paths
 
-Origins: BLD-1.3 · Intention i-ae12822b · 2026-11-19
+Origins: FOR-2.5 · Intention i-71f99122 · 2026-11-20
 
