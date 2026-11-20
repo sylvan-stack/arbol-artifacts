@@ -846,6 +846,12 @@ This replaces the legacy assignment to a resident Trunk Runtime generation. Ther
 
 **Example:** First Sapling's manager starts research Trunk Build `a3` for Exchange E4. The Trunk records E4's First Sapling `root`, Build and process, writes its input and acknowledges acceptance. Opening a second Root later does not move E4; it finishes in First Sapling.
 
+## Exchange Update
+
+A short, Arbol-authored entry in the Elma Chat transcript that reports a fact about a [Chat Exchange](#chat-exchange). An Exchange Phase can publish an update with what it found or a timestamp for work it performed. The transcript preserves recorded updates when the [Chat Session](#chat-session) reopens.
+
+**Example:** Intake reports “Glossary terms found: Cue Card, Operational Artifact” and “Operational artifacts included: Working in Sagas.” Execution reports when inference started, and Finalization reports when it ended.
+
 ## Exhausted Subscription
 
 A [Subscription](#subscription) whose vendor refuses every request because a window that gates inference is reached, whatever that window counts, until it resets; a reached window with paid overage, or one scoped to a single tool, does not exhaust it. Its [Vigor](#vigor) is 0, shown with its recovery: the moment its last reached inference-gating window resets and the Vigor at that moment. Specified in [SGM-1](sagas/01-subscriptions-vigor.md); computed and recorded by Arbol since 27 October 2026.

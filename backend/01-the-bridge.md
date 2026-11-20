@@ -494,6 +494,8 @@ The calls:
 | `accounts.activity` | `driver`, `subscription` | `{runCount, inputTokens?, outputTokens?, lastRunAt?}`. Read this Root's saved agent runs ending in the last 30 days. Attribute by the agent route's Driver and the started event's Subscription when present, or the route's Subscription otherwise. Sum only reported counts and return token totals as decimal strings. Zero runs and unreported tokens stay distinct. | 30 s |
 | `health.measure` | — | `Measurement` (BKD-0) | 30 s |
 
+The bounded `exchange.phaseDetails` call also accepts `updatesOnly: true` to return only the Intake `exchangeUpdates` journal records with their existing positions and offsets. Saved run summaries include `endedAt`, the stored run end time. Elma uses it for the inference finish update when a top-level Driver run recorded its finish.
+
 <!-- sources:
 arbol:src/arbol_backend/chats.py#Chats.__init__
 arbol:src/arbol_backend/chats.py#page_params
