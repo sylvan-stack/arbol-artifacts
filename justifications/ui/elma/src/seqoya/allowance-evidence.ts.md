@@ -47,9 +47,9 @@ Origins: BKD-3.17 · Intention i-278c310f · 2026-11-18
 
 ## UsageEvidence
 
-Reason: Refresh confirmed Browser dashboard evidence on entering Subscriptions and project it onto the matching cards.
+Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
 
-Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
+Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
 
 ## allowance
 
@@ -131,15 +131,15 @@ Origins: BKD-3.17 · Intention i-d3d8c042 · 2026-11-12
 
 ## subscriptionMetrics
 
-Reason: Project bound MiniMax reports into the published shared subscription card.
+Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
 
-Origins: BKD-3.20 · Intention i-3eb65d56 · 2026-11-20
+Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
 
 ## <before windowCapacity>
 
-Reason: Synchronize the published shared card and date formatter. Use scoped window evidence to derive model estimates for Claude, Kimi, Pi ChatGPT and z.ai, preserving source, date and numerical basis. Use the recorded used share for the selected window and match the current account, identity check and window label. For z.ai use the current bound account’s verified model credit caps and the GLM-5.3 Standard conversion of credits × 10,000 ÷ 24. Preserve MCP call windows separately. Explain missing or invalidated evidence. Show z.ai’s zero-use rolling period as starting with its next use. Use specific states for closed periods and recurring expiry, and retain DeepSeek’s unavailable values. Serves BKD-3.17.
+Removed: Calculate current allowance figures and use the shared balance presentation from the published design source.
 
-Origins: BKD-3.17 · Intention i-d3d8c042 · 2026-11-12
+Removed by Intention i-f60c05e4 · 2026-11-20
 
 ## EstimateBasis
 
@@ -155,9 +155,9 @@ Origins: BKD-3.17 · Intention i-c83ebb41 · 2026-11-13
 
 ## windowCapacity
 
-Reason: Keep explicitly marked plan-capacity references across routine checks while preserving current quota and plan/incarnation/age guards
+Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
 
-Origins: BKD-3.17 · Intention i-c83ebb41 · 2026-11-13
+Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
 
 ## Rollover
 
@@ -227,9 +227,9 @@ Origins: BKD-3.17 · Intention i-278c310f · 2026-11-18
 
 ## BrowserReport
 
-Reason: Project bound MiniMax reports into the published shared subscription card.
+Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
 
-Origins: BKD-3.20 · Intention i-3eb65d56 · 2026-11-20
+Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
 
 ## matchingBrowserReport
 
@@ -239,9 +239,9 @@ Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
 
 ## mergeUsageEvidence
 
-Reason: Refresh confirmed Browser dashboard evidence on entering Subscriptions and project it onto the matching cards.
+Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
 
-Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
+Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
 
 ## newerReading
 
@@ -251,13 +251,49 @@ Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
 
 ## MiniMaxUsage
 
-Reason: Project bound MiniMax reports into the published shared subscription card.
+Removed: Calculate current allowance figures and use the shared balance presentation from the published design source.
 
-Origins: BKD-3.20 · Intention i-3eb65d56 · 2026-11-20
+Removed by Intention i-f60c05e4 · 2026-11-20
 
 ## miniMaxDashboard
 
-Reason: Project bound MiniMax reports into the published shared subscription card.
+Removed: Calculate current allowance figures and use the shared balance presentation from the published design source.
 
-Origins: BKD-3.20 · Intention i-3eb65d56 · 2026-11-20
+Removed by Intention i-f60c05e4 · 2026-11-20
+
+## <before piPlusReference>
+
+Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
+
+Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
+
+## ApiBalanceReading
+
+Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
+
+Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
+
+## BrowserWindow
+
+Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
+
+Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
+
+## apiBalance
+
+Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
+
+Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
+
+## piPlusReference
+
+Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
+
+Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
+
+## zaiCapacity
+
+Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
+
+Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
 

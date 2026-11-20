@@ -17,15 +17,15 @@ Origins: BKD-3.21 · Intention i-3202b333 · 2026-11-20
 
 ## script:2
 
-Reason: Bundle the simplified Willo Station and both workspace Insignia from the maintained design source.
+Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
 
-Origins: BKD-3.21, BKD-3.17 · Intention i-59e18ab5 · 2026-11-20
+Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
 
 ## <before style>
 
-Reason: Bundle the simplified Willo Station and both workspace Insignia from the maintained design source.
+Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
 
-Origins: BKD-3.21, BKD-3.17 · Intention i-59e18ab5 · 2026-11-20
+Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
 
 ## style
 
