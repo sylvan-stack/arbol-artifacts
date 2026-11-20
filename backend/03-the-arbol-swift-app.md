@@ -232,26 +232,27 @@ The Seqoya-only operation accepts an empty object and returns bounded `evidence`
 
 ### Applications entry points for Elma, Seqoya and Willo
 
-Install a signed `Elma Chat.app` with a native executable under
-`~/Applications/Elma Chat/` alongside the stable `Seqoya Lab.app` host.
-Opening it in Finder starts that host when needed and opens or raises its
-Elma Chat window through the same path as Option+E. Keep the launcher in
-the same numbered package as the host and install its matching version.
-Each launcher opens the installed host by its Applications path. A fixed
-macOS URL event carries the requested surface.
+Install the actual native host at
+`~/Applications/Seqoya Lab/Seqoya Lab.app`. Opening it from Finder opens
+or raises Seqoya Lab. The login job runs its executable directly with
+`--background`. The `arbol-app` command uses that same installed
+bundle, and the Build tool and Forester identify it there.
 
-Install `Seqoya Lab.app` under `~/Applications/Seqoya Lab/` and
-`Willo Station.app` under `~/Applications/Willo Station/` as signed
-launchers in the same numbered package. Each starts or activates its
-surface in the same installed host through the route its hotkey uses.
-The package retains its existing host entry for login and Build tools.
-Install the host and all three launchers at the matching Build version.
+Install signed `Elma Chat.app` and `Willo Station.app` under their own
+Applications folders. Each sends a fixed macOS URL event to the installed
+Seqoya Lab bundle to open or raise its own window through the same route
+as the hotkey. Promote the host and both launchers at the matching Build
+version. The package keeps its existing relative host entry for numbered
+Build records.
 
 <!-- sources:
 arbol-app:@code/Sources/ArbolApp.swift#application
+arbol-app:@code/Sources/AppBuilds.swift
 arbol-app:@code/Launcher/SurfaceLauncher.swift
 arbol-app:@code/Resources/Info.plist
 arbol-app:@code/Resources/SurfaceLauncherInfo.plist
+arbol:@code/src/arbol_builds/launcher.py#registered_entry
+forester:@code/src/forester/registry_maintenance.py#_arbol_installed
 -->
 
 ## Requirements
@@ -280,7 +281,8 @@ arbol-app:@code/Resources/SurfaceLauncherInfo.plist
 | BKD-3.20 <!-- 2b12a45a-79a2-40ad-9a52-a3e41fa954bf --> | While the Arbol Swift App is running, refresh the usage metrics for every Seqoya Subscription every five minutes in the background from its own signed-in Arbol Browser profile in headless mode. Run these refreshes even when the Subscriptions tab or the Seqoya Lab window is closed. Save each successful reading so it is available when Subscriptions opens | New · owner request | Close Seqoya Lab and observe two scheduled refresh cycles with all configured subscriptions, including two logins at the same provider. Verify that the Browser stays hidden, another app keeps focus, and reopening Subscriptions shows the saved readings. Verify that an expired sign-in retains that subscription’s last valid reading while the other profiles refresh |
 | BKD-3.21 | Open or raise Willo Station from the tray, with Option+L, or with Control+Option+Shift+Command+W. Use the maintained Stations composition to show saved, unarchived Chat Sessions in status groups ordered by latest activity within each group. Provide loaded-list search, density, pagination and clear loading, empty and retry states | New · owner request, 20 November 2026 | Open Willo Station with several saved Chat Sessions, check their order and load older rows |
 | BKD-3.22 <!-- b34bdccd-cf9d-4fdc-88cd-2a09c4a3e10b --> | Install a native Elma Chat application entry point under `~/Applications/Elma Chat/`. Start or raise the installed host's Elma window without consulting temporary Builds or a registry. Keep one resident host and reuse its existing Elma window. | New · owner request, 20 November 2026 | [Installed App Build `b`](../../forester/sagas/sylvan-stack/arbol-2-specs-implementation/arbol-swift-app/ECL-1.md#hand-over) |
-| BKD-3.23 <!-- 3bf2e2ff-475b-4aa1-b9c7-1abe58096b5c --> | Install signed Willo Station and Seqoya Lab application entry points under their own Applications folders. Each opens or raises its own window in the same installed host as Elma Chat and accesses no temporary Builds or Build registry. Package all three launchers with the host at the same Build version. | New · owner request, 20 November 2026 | [Installed App Build `c`](../../forester/sagas/sylvan-stack/arbol-2-specs-implementation/arbol-swift-app/SAL-1.md#hand-over) |
+| BKD-3.23 <!-- 3bf2e2ff-475b-4aa1-b9c7-1abe58096b5c --> | Install signed Willo Station and Seqoya Lab application entry points under their own Applications folders. Each opens or raises its own window in the same installed host as Elma Chat and accesses no temporary Builds or Build registry. | New · owner request, 20 November 2026 | [Installed App Build `c`](../../forester/sagas/sylvan-stack/arbol-2-specs-implementation/arbol-swift-app/SAL-1.md#hand-over) |
+| BKD-3.24 <!-- cd6b635e-f8ef-4d40-87e5-ff62b357a4d1 --> | Run the actual shared native host from `~/Applications/Seqoya Lab/Seqoya Lab.app` and retire the previous installed host path. Finder, login, `arbol-app`, the Elma and Willo launchers, and installed Build maintenance use the same canonical bundle. Finder opens Seqoya Lab, login remains background-only, and Elma and Willo each open their own window. | New · owner request, 20 November 2026 | Installed launch and running executable path |
 
 Verification descriptions name future evidence. The App implementation will follow the owner's separate testing and Build policy.
 
