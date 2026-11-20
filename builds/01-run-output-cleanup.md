@@ -24,12 +24,14 @@ The command refuses symlinked run paths, a missing evidence report and runs
 with attached disk images. Unreleased directories already on disk remain
 eligible for a later explicit release by their owner or runner.
 
-The installed backend sweeps the shared queue when it starts and every 25
-minutes while running. Sweeps stay off the request path, cannot overlap and
-skip a run if attachment information is unavailable or the run is in use by
-a mounted disk image. Removal cannot cross a filesystem mount. A failed or
-interrupted removal leaves its remaining files queued for a later sweep.
-An isolated backend never sweeps the installation's queue.
+Forester sweeps the installed queue under the
+[Sylvan Stack build policy](../../forester/operations/sylvan-stack-builds.md#when-forester-cleans-up).
+It waits for two hours without build activity at or below 10 GB, and
+reclaims eligible older output under pressure above 10 GB. Sweeps cannot
+overlap and skip a run if usage or attachment information is unavailable
+or the run is still in use. Removal cannot cross a filesystem mount. A
+failed or interrupted removal leaves the remaining files queued for a
+later sweep. An isolated backend still services its own isolated queue.
 
 Some runs contain packaged output with owner-readable, read-only directories.
 The worker may add owner-write permission to those directories inside the
@@ -41,8 +43,8 @@ directories owned by the current user.
 
 | ID | Arbol must | Origin | Verified by |
 |---|---|---|---|
-| BLD-1.1 | Give build and test runners one finalization command that queues an individual completed run after its evidence is saved, and refuses an unsafe path or an attached disk image. Only the runner's release makes output eligible. | New · owner, 19 November 2026; [OG-2](../../goals/OG-2.md), [OG-3](../../goals/OG-3.md), [OG-4](../../goals/OG-4.md) | BOC-3 runner handoffs passed. The corrected package refused an unsafe path, an attached image and unavailable attachment inventory. [Runner receipts](/Users/msix/.local/share/arbol-backend-evidence/BOC-3-2026-11-19/runner-verification.json) · [Corrected worker receipts](/Users/msix/.local/share/arbol-backend-evidence/BOC-3-2026-11-19/corrected/worker-results.jsonl) |
-| BLD-1.2 | Sweep released runs from the installed backend on startup and every 25 minutes, without delaying requests or following mounts. Serialize sweeps and retry remaining queued files after failures or interruptions. | New · owner, 19 November 2026 | Focused BOC-3 checks passed on packaged BOC-5 revision `2c6b012`. The worker cleared real sealed output, stayed within the filesystem, held the lock through interruption, kept the Bridge responsive and retried deferred work on a controlled clock. The qualification summary records the separate main Build gate failure. [Corrected qualification summary](/Users/msix/.local/share/arbol-backend-evidence/BOC-3-2026-11-19/corrected/qualification-summary.json) |
+| BLD-1.1 | Give build and test runners one finalization command that queues an individual completed run after its evidence is saved, and refuses an unsafe path or an attached disk image. The runner's explicit release places output in this queue. | New · owner, 19 November 2026; [OG-2](../../goals/OG-2.md), [OG-3](../../goals/OG-3.md), [OG-4](../../goals/OG-4.md) | BOC-3 runner handoffs passed. The corrected package refused an unsafe path, an attached image and unavailable attachment inventory. [Runner receipts](/Users/msix/.local/share/arbol-backend-evidence/BOC-3-2026-11-19/runner-verification.json) · [Corrected worker receipts](/Users/msix/.local/share/arbol-backend-evidence/BOC-3-2026-11-19/corrected/worker-results.jsonl) |
+| BLD-1.2 | Give Forester sole ownership of the installed released-run queue under FOR-2.7. Serialize sweeps, stay within the run's filesystem, and retry remaining queued files after failures or interruptions. | Owner, 20 November 2026 | [Installed policy and qualification](../../forester/sagas/sylvan-stack/arbol-2-specs-implementation/build-output-cleanup/BOC-10.md#hand-over) |
 | BLD-1.3 | Let a runner explicitly declare that it owns a disposable output directory. Save its original evidence at a new location outside `~/Builds` before releasing it. Preserve outputs when ownership or shutdown is uncertain or when saving evidence fails. | New · owner, 19 November 2026 | BOC-3 verified the archived Build record and log, the full drill's shutdown and exact evidence copy, and retention of a baseline-only drill. [Runner receipts](/Users/msix/.local/share/arbol-backend-evidence/BOC-3-2026-11-19/runner-verification.json) |
 
 ## Interface
@@ -91,5 +93,5 @@ arbol:@code/tools/session_import_drill.py#main
 
 | Decision | Outcome |
 |---|---|
-| Cadence and location | Arbol's backend checks every 25 minutes. The owner selected completed build and test runs under `~/Builds` on 19 November 2026. |
+| Cadence and location | Forester checks allocated space under `~/Builds` every five minutes. The owner selected the 10 GB and two-hour policy on 20 November 2026. |
 | Authority to release | Build and test runners release output after saving evidence, as selected by the owner on 19 November 2026. |
