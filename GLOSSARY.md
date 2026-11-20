@@ -1083,6 +1083,8 @@ The actor that started a [Chat Session](#chat-session) — a property of every s
 
 ## Instructions Hub
 
+**Deprecated.** The owner decided on 9 November 2026 to replace the Hub with precise injection by [Cue Cards](#cue-card) (MYC-D82), and it is switched off for new sessions. No new Skill, guide or route points to it. The rest of this entry describes how it worked.
+
 The **one stable address every knowledge consumer memorizes**: `~/Artifacts/mycel/README.md` — in the Mycel corpus, which owns everything about *how to work* (operations, tools, blueprints, chains, skills). (`~/Artifacts/Arbol/README.md` is now a redirect stub, so the old address still resolves.) Claude Code skills, codex agents, Arbol [Chat Sessions](#chat-session), and humans all point there and only there; the file is a **router** — a route-by-need table into [Operations](#mycel-operation), [Blueprints](#blueprint), [Runbooks](#runbook), and the glossary — so documents move freely underneath without any consumer changing. Its rows are **task shapes, never individual documents** (~ten, stable); document growth is absorbed by the families, selection within a family belongs to retrieval (`arbol search`). Invariant: if the table outgrows one screen, a family is missing — add a family, not rows. Deliberately NOT a catalog (that is [INDEX](#index)'s job) and not a monolith — each routed document keeps its own [Source Refs](#source-ref) and [Detection](#detection) coverage. Each repo's glossary carries a single pointer to it, closing the repo-scoped-retrieval gap (this knowledge lives in repo `mycel`, invisible to another repo's scoped search).
 
 **Example:** a codex agent in a repo worktree searches "how to run deep research", hits that glossary's pointer entry, opens `~/Artifacts/mycel/README.md`, and routes to the deep-research Blueprint — three hops, zero per-feature pointers.
@@ -1225,11 +1227,11 @@ A Mycel Operation defines **what should happen and why** independently of the to
 
 ## Mycel Skill
 
-A provider-agnostic, named **activation and dispatch contract** for a task shape. Native Codex CLI and Claude Code CLI expose the same capability through thin adapters that route through the [Instructions Hub](#instructions-hub). The portable process lives in Mycel, not in the adapters.
+A provider-agnostic, named **activation and dispatch contract** for a task shape. Native Codex CLI and Claude Code CLI expose the same capability through thin adapters whose body names the one Mycel document that owns the process, an operation guide or a Tool manual. The portable process lives in that document, not in the adapters.
 
 Creating or changing a Mycel Skill means supporting **both native Codex CLI and Claude Code CLI**. Universe is deprecated. The canonical shared adapter lives at `~/Artifacts/mycel/skills/<name>/SKILL.md`, linked into `~/.agents/skills/<name>` for Codex and `~/.claude/skills/<name>` for Claude. Provider-specific metadata may require a separate thin adapter, but never a copied process. Follow the [creation guide](../mycel/operations/create-skill.md) for layout, invocation policy, and validation.
 
-**Example:** `code-research` is one Mycel Skill, invoked as `$code-research` in Codex or `/code-research` in Claude. Both discover the same activation contract and route through the Hub to `operations/code-research.md`.
+**Example:** `code-research` is one Mycel Skill, invoked as `$code-research` in Codex or `/code-research` in Claude. Both discover the same activation contract, and `~/Artifacts/mycel/operations/code-research.md` owns its process.
 
 ## Nex
 
