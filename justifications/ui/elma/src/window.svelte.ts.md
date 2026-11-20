@@ -5,9 +5,9 @@ role: authored
 
 ## ElmaWindow
 
-Reason: Publish the installation Bridge 2 renderer and scoped chat, Draft, pending request and administration adapters
+Reason: Read archived chat pages through an independent Bridge cursor and use the Draft-safe switch
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
+Origins: IMP-0.17, IMP-D33, BKD-1.7, BKD-1.9, BKD-2.8, BKD-2.18, BKD-2.22 · Intention i-b3d815b4 · 2026-11-20
 
 ## ElmaWindow.afterChatState
 
@@ -17,9 +17,9 @@ Origins: BKD-0.11, BKD-1.7, BKD-3.16 · Intention i-3d376ddd · 2026-11-11
 
 ## ElmaWindow.constructor
 
-Reason: Publish the installation Bridge 2 renderer and scoped chat, Draft, pending request and administration adapters
+Reason: Read archived chat pages through an independent Bridge cursor and use the Draft-safe switch
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
+Origins: IMP-0.17, IMP-D33, BKD-1.7, BKD-1.9, BKD-2.8, BKD-2.18, BKD-2.22 · Intention i-b3d815b4 · 2026-11-20
 
 ## ElmaWindow.prepareSend
 
@@ -53,9 +53,9 @@ Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
 
 ## <before ChatInfo>
 
-Reason: Publish the installation Bridge 2 renderer and scoped chat, Draft, pending request and administration adapters
+Reason: Read archived chat pages through an independent Bridge cursor and use the Draft-safe switch
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
+Origins: IMP-0.17, IMP-D33, BKD-1.7, BKD-1.9, BKD-2.8, BKD-2.18, BKD-2.22 · Intention i-b3d815b4 · 2026-11-20
 
 ## ArchiveIntent
 
@@ -131,9 +131,9 @@ Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
 
 ## ElmaWindow.latestRows
 
-Reason: Publish the installation Bridge 2 renderer and scoped chat, Draft, pending request and administration adapters
+Reason: Read archived chat pages through an independent Bridge cursor and use the Draft-safe switch
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
+Origins: IMP-0.17, IMP-D33, BKD-1.7, BKD-1.9, BKD-2.8, BKD-2.18, BKD-2.22 · Intention i-b3d815b4 · 2026-11-20
 
 ## ElmaWindow.loadAccounts
 
@@ -284,4 +284,52 @@ Origins: STE-0.27 · Intention i-b02fb913 · 2026-11-20
 Reason: Show live and saved findings and recorded inference times in Elma
 
 Origins: STE-0.27 · Intention i-b02fb913 · 2026-11-20
+
+## ElmaWindow.clear
+
+Reason: Read archived chat pages through an independent Bridge cursor and use the Draft-safe switch
+
+Origins: IMP-0.17, IMP-D33, BKD-1.7, BKD-1.9, BKD-2.8, BKD-2.18, BKD-2.22 · Intention i-b3d815b4 · 2026-11-20
+
+## ElmaWindow.openChat
+
+Reason: Read archived chat pages through an independent Bridge cursor and use the Draft-safe switch
+
+Origins: IMP-0.17, IMP-D33, BKD-1.7, BKD-1.9, BKD-2.8, BKD-2.18, BKD-2.22 · Intention i-b3d815b4 · 2026-11-20
+
+## ElmaWindow.archivedRows
+
+Reason: Read archived chat pages through an independent Bridge cursor and use the Draft-safe switch
+
+Origins: IMP-0.17, IMP-D33, BKD-1.7, BKD-1.9, BKD-2.8, BKD-2.18, BKD-2.22 · Intention i-b3d815b4 · 2026-11-20
+
+## ElmaWindow.chooseArchived
+
+Reason: Read archived chat pages through an independent Bridge cursor and use the Draft-safe switch
+
+Origins: IMP-0.17, IMP-D33, BKD-1.7, BKD-1.9, BKD-2.8, BKD-2.18, BKD-2.22 · Intention i-b3d815b4 · 2026-11-20
+
+## ElmaWindow.closeArchived
+
+Reason: Read archived chat pages through an independent Bridge cursor and use the Draft-safe switch
+
+Origins: IMP-0.17, IMP-D33, BKD-1.7, BKD-1.9, BKD-2.8, BKD-2.18, BKD-2.22 · Intention i-b3d815b4 · 2026-11-20
+
+## ElmaWindow.listDetail
+
+Reason: Read archived chat pages through an independent Bridge cursor and use the Draft-safe switch
+
+Origins: IMP-0.17, IMP-D33, BKD-1.7, BKD-1.9, BKD-2.8, BKD-2.18, BKD-2.22 · Intention i-b3d815b4 · 2026-11-20
+
+## ElmaWindow.openArchived
+
+Reason: Read archived chat pages through an independent Bridge cursor and use the Draft-safe switch
+
+Origins: IMP-0.17, IMP-D33, BKD-1.7, BKD-1.9, BKD-2.8, BKD-2.18, BKD-2.22 · Intention i-b3d815b4 · 2026-11-20
+
+## ElmaWindow.setArchived
+
+Reason: Read archived chat pages through an independent Bridge cursor and use the Draft-safe switch
+
+Origins: IMP-0.17, IMP-D33, BKD-1.7, BKD-1.9, BKD-2.8, BKD-2.18, BKD-2.22 · Intention i-b3d815b4 · 2026-11-20
 

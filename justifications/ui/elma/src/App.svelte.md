@@ -5,9 +5,9 @@ role: authored
 
 ## <before style>
 
-Reason: Read live and saved Forester callback counts for the selected Exchange
+Reason: Read archived chat pages through an independent Bridge cursor and use the Draft-safe switch
 
-Origins: STE-0.30, STE-0.31 · Intention i-be784457 · 2026-11-20
+Origins: IMP-0.17, IMP-D33, BKD-1.7, BKD-1.9, BKD-2.8, BKD-2.18, BKD-2.22 · Intention i-b3d815b4 · 2026-11-20
 
 ## script
 
