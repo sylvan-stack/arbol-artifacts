@@ -107,9 +107,9 @@ Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
 
 ## ElmaWindow.confirmArchive
 
-Reason: Publish the installation Bridge 2 renderer and scoped chat, Draft, pending request and administration adapters
+Reason: Observe and change archive membership without reopening imported history for editing
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
+Origins: IMP-0.17, IMP-D4, IMP-D33, BKD-2.17, BKD-2.18 · Intention i-474d85dd · 2026-11-20
 
 ## ElmaWindow.confirmRepository
 
@@ -167,9 +167,9 @@ Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2
 
 ## ElmaWindow.quickAction
 
-Reason: Publish the installation Bridge 2 renderer and scoped chat, Draft, pending request and administration adapters
+Reason: Observe and change archive membership without reopening imported history for editing
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
+Origins: IMP-0.17, IMP-D4, IMP-D33, BKD-2.17, BKD-2.18 · Intention i-474d85dd · 2026-11-20
 
 ## ElmaWindow.refused
 
@@ -209,9 +209,9 @@ Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.7, BKD-2.8, BKD-2.9, BKD-2.19, BKD-2.
 
 ## ElmaWindow.startArchive
 
-Reason: Publish the installation Bridge 2 renderer and scoped chat, Draft, pending request and administration adapters
+Reason: Observe and change archive membership without reopening imported history for editing
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
+Origins: IMP-0.17, IMP-D4, IMP-D33, BKD-2.17, BKD-2.18 · Intention i-474d85dd · 2026-11-20
 
 ## ElmaWindow.startRename
 
@@ -380,4 +380,16 @@ Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2
 Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
 
 Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
+
+## ElmaWindow.observeArchiveReceipt
+
+Reason: Observe and change archive membership without reopening imported history for editing
+
+Origins: IMP-0.17, IMP-D4, IMP-D33, BKD-2.17, BKD-2.18 · Intention i-474d85dd · 2026-11-20
+
+## ElmaWindow.unarchive
+
+Reason: Observe and change archive membership without reopening imported history for editing
+
+Origins: IMP-0.17, IMP-D4, IMP-D33, BKD-2.17, BKD-2.18 · Intention i-474d85dd · 2026-11-20
 

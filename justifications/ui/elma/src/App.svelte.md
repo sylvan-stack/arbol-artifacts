@@ -5,9 +5,9 @@ role: authored
 
 ## <before style>
 
-Reason: Use authoritative import provenance to detach the Draft and present saved Exchanges and routes
+Reason: Observe and change archive membership without reopening imported history for editing
 
-Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.7, BKD-2.8, BKD-2.9, BKD-2.19, BKD-2.22 · Intention i-b594f9d0 · 2026-11-20
+Origins: IMP-0.17, IMP-D4, IMP-D33, BKD-2.17, BKD-2.18 · Intention i-474d85dd · 2026-11-20
 
 ## script
 
