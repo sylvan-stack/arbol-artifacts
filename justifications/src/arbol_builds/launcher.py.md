@@ -17,9 +17,9 @@ Origins: ARC-4.3 · Intention i-62e4abb1 · 2026-11-12
 
 ## launch
 
-Reason: The launcher and registry must select only compatible Builds and report the available compatible alternatives.
+Reason: Resolve the signed stable app executable independently of its registry folder
 
-Origins: ARC-5.6, ARC-4.3 · Intention i-e3135619 · 2026-11-19
+Origins: FOR-2.4 · Intention i-23d4d346 · 2026-11-20
 
 ## backend_fits
 
@@ -29,9 +29,9 @@ Origins: ARC-4.1, ARC-4.3, ARC-4.8 · Intention i-d1b0e71e · 2026-11-12
 
 ## <before inside>
 
-Reason: The launcher and registry must select only compatible Builds and report the available compatible alternatives.
+Reason: Resolve the signed stable app executable independently of its registry folder
 
-Origins: ARC-5.6, ARC-4.3 · Intention i-e3135619 · 2026-11-19
+Origins: FOR-2.4 · Intention i-23d4d346 · 2026-11-20
 
 ## code_name
 
@@ -56,4 +56,16 @@ Origins: ARC-5.6, ARC-4.3 · Intention i-e3135619 · 2026-11-19
 Reason: The launcher and registry must select only compatible Builds and report the available compatible alternatives.
 
 Origins: ARC-5.6, ARC-4.3 · Intention i-e3135619 · 2026-11-19
+
+## runnable
+
+Reason: Resolve the signed stable app executable independently of its registry folder
+
+Origins: FOR-2.4 · Intention i-23d4d346 · 2026-11-20
+
+## registered_entry
+
+Reason: Resolve the signed stable app executable independently of its registry folder
+
+Origins: FOR-2.4 · Intention i-23d4d346 · 2026-11-20
 
