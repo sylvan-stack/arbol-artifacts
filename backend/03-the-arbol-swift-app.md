@@ -230,6 +230,22 @@ When Subscriptions opens or is refreshed, use the seven owner-confirmed, named A
 
 The Seqoya-only operation accepts an empty object and returns bounded `evidence` and `issues` maps. Evidence carries the existing typed Claude, Pi/ChatGPT and MiMo shapes, and typed window and balance reports for Codex, Kimi, DeepSeek and z.ai with Driver, Subscription ID, creation time, optional identity-check time, observation time and approximate-reset labels. Issues carry fixed diagnostic text keyed by Driver and Subscription ID. No page text or credentials cross the app channel. The reader serializes controller commands, defers to a focused or manually handed-off Browser, and restores the prior selection when safe. An uncertain command retains its reply position until resolved or until the preview is replaced. This operation uses the existing format-1 installation catalogue. It leaves the signed Browser application and Driver format unchanged.
 
+### Elma Chat application entry point
+
+Install a signed `Elma Chat.app` with a native executable under
+`~/Applications/Elma Chat/` alongside the stable `Seqoya Lab.app` host.
+Opening it in Finder starts that host when needed and opens or raises its
+Elma Chat window through the same path as Option+E. Keep the launcher in
+the same numbered package as the host and install its matching version.
+The launcher opens the installed host by its Applications path. A fixed
+macOS URL event carries only the request to open Elma.
+
+<!-- sources:
+arbol-app:@code/Sources/ArbolApp.swift#application
+arbol-app:@code/Launcher/ElmaChat.swift
+arbol-app:@code/scripts/package-app
+-->
+
 ## Requirements
 
 | ID | The App must | Origin and basis | Verified by |
@@ -255,6 +271,7 @@ The Seqoya-only operation accepts an empty object and returns bounded `evidence`
 | BKD-3.19 <!-- 65d6ad2f-1881-4322-b00a-b35d902e8347 --> | Offer no Stewardship, Stewards or Steward Output surface and no Mandate entity kind in Seqoya Lab, Willo Station, the native surfaces and the shared design system they use | Changed · owner request, 15 November 2026 | Design catalog, native surface list and entity registry of the maintained design system and the Elma copy, with no Stewardship, Stewards, Steward Output or Mandate entry |
 | BKD-3.20 <!-- 2b12a45a-79a2-40ad-9a52-a3e41fa954bf --> | While the Arbol Swift App is running, refresh the usage metrics for every Seqoya Subscription every five minutes in the background from its own signed-in Arbol Browser profile in headless mode. Run these refreshes even when the Subscriptions tab or the Seqoya Lab window is closed. Save each successful reading so it is available when Subscriptions opens | New · owner request | Close Seqoya Lab and observe two scheduled refresh cycles with all configured subscriptions, including two logins at the same provider. Verify that the Browser stays hidden, another app keeps focus, and reopening Subscriptions shows the saved readings. Verify that an expired sign-in retains that subscription’s last valid reading while the other profiles refresh |
 | BKD-3.21 | Open or raise Willo Station from the tray, with Option+L, or with Control+Option+Shift+Command+W. Use the maintained Stations composition to show saved, unarchived Chat Sessions in status groups ordered by latest activity within each group. Provide loaded-list search, density, pagination and clear loading, empty and retry states | New · owner request, 20 November 2026 | Open Willo Station with several saved Chat Sessions, check their order and load older rows |
+| BKD-3.22 | Install a native Elma Chat application entry point under `~/Applications/Elma Chat/`. Start or raise the installed host's Elma window without consulting temporary Builds or a registry. Keep one resident host and reuse its existing Elma window. | New · owner request, 20 November 2026 | Installed Finder launch with the host stopped and with Elma already open |
 
 Verification descriptions name future evidence. The App implementation will follow the owner's separate testing and Build policy.
 
