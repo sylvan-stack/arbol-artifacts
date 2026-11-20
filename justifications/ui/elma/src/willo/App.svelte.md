@@ -5,13 +5,13 @@ role: authored
 
 ## <end>
 
-Reason: Read and page saved Chat Sessions from the existing Bridge in Willo Station
+Reason: Read live and imported Chat Sessions from the installed Bridge with separate pagination and canonical harness provenance.
 
-Origins: BKD-3.21 · Intention i-67978ec1 · 2026-11-20
+Origins: BKD-3.21, IMP-0.17 · Intention i-6b94e714 · 2026-11-20
 
 ## script
 
-Reason: Render live Chat Session summaries with the committed Stations design
+Reason: Read live and imported Chat Sessions from the installed Bridge with separate pagination and canonical harness provenance.
 
-Origins: BKD-3.21 · Intention i-57904941 · 2026-11-20
+Origins: BKD-3.21, IMP-0.17 · Intention i-6b94e714 · 2026-11-20
 
