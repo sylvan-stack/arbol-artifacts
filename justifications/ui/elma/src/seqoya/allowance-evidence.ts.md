@@ -53,15 +53,15 @@ Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
 
 ## allowance
 
-Reason: Project newer verified dashboard quota and exact credit observations with source and reset precision
+Reason: Connect the shared provider controls to the signed app channel while preserving automatic usage reads.
 
-Origins: BKD-3.17 · Intention i-278c310f · 2026-11-18
+Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
 
 ## chatGPTQuota
 
-Reason: Project newer verified dashboard quota and exact credit observations with source and reset precision
+Reason: Connect the shared provider controls to the signed app channel while preserving automatic usage reads.
 
-Origins: BKD-3.17 · Intention i-278c310f · 2026-11-18
+Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
 
 ## codexCapacity
 
@@ -77,9 +77,9 @@ Origins: BKD-3.17 · Intention i-1ecb43ee · 2026-11-12
 
 ## mimoQuota
 
-Reason: Refresh confirmed Browser dashboard evidence on entering Subscriptions and project it onto the matching cards.
+Reason: Connect the shared provider controls to the signed app channel while preserving automatic usage reads.
 
-Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
+Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
 
 ## validCredits
 

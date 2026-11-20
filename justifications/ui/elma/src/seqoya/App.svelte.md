@@ -5,13 +5,13 @@ role: authored
 
 ## <end>
 
-Reason: Adopt the value-only tooltip and start pending windows once per cycle, with identity-fenced genuine usage rereads and explicit retry.
+Reason: Connect the shared provider controls to the signed app channel while preserving automatic usage reads.
 
-Origins: BKD-3.17 · Intention i-0f0c306a · 2026-11-13
+Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
 
 ## script
 
-Reason: Render the saved quota before starting the live dashboard refresh and keep the first read in its loading state until it resolves.
+Reason: Connect the shared provider controls to the signed app channel while preserving automatic usage reads.
 
-Origins: BKD-3.17, BKD-3.20 · Intention i-33af36e0 · 2026-11-20
+Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
 

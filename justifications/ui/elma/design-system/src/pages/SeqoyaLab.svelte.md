@@ -5,15 +5,15 @@ role: authored
 
 ## <before style>
 
-Reason: Import the published tab and insignia design into the Arbol renderer.
+Reason: Connect the shared provider controls to the signed app channel while preserving automatic usage reads.
 
-Origins: BKD-3.17 · Intention i-527dbaf8 · 2026-11-20
+Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
 
 ## script
 
-Reason: Import the published tab and insignia design into the Arbol renderer.
+Reason: Connect the shared provider controls to the signed app channel while preserving automatic usage reads.
 
-Origins: BKD-3.17 · Intention i-527dbaf8 · 2026-11-20
+Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
 
 ## style
 

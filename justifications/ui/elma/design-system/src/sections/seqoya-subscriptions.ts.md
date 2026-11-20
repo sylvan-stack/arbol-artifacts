@@ -17,9 +17,9 @@ Origins: BKD-3.17 · Intention i-9cd567d4 · 2026-11-12
 
 ## SubscriptionView
 
-Reason: Synchronize the published shared design. Wire native renaming with connection and subscription-identity fencing, retain input on refusal and reread saved accounts on success. Remove the invalid Kimi calls conversion and use a matching local-output/share calibration; normalize display order without discarding vendor windows or scope. Add the native app-channel method and explicit browser-preview refusal. Serves BKD-3.17.
+Reason: Connect the shared provider controls to the signed app channel while preserving automatic usage reads.
 
-Origins: BKD-3.17 · Intention i-9cd567d4 · 2026-11-12
+Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
 
 ## SubscriptionActivity
 
@@ -53,9 +53,9 @@ Removed by Intention i-f7d7cbad · 2026-11-12
 
 ## <before subscriptionVendor>
 
-Reason: Sync the published shared design and connect tab entry and Refresh to `app.readVigor({})` through the 30-second App channel. Coalesce reads in flight, validate the reply, retain the last answer on failure and discard replies after disposal. Report a missing host method in the browser or on an older host. Serves BKD-3.18.
+Reason: Connect the shared provider controls to the signed app channel while preserving automatic usage reads.
 
-Origins: BKD-3.18 · Intention i-ea002c00 · 2026-11-12
+Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
 
 ## formatSubscriptionTime
 
@@ -77,9 +77,9 @@ Origins: BKD-3.17 · Intention i-278c310f · 2026-11-18
 
 ## UsageDestination
 
-Reason: Synchronize the shared design including the icon. Replace elapsed readings with the next allowance: project a documented recurring date and initial allowance where possible, leave start-on-use windows undated until use, and wait for a confirmed new grant if renewal cannot be inferred. Keep a newer provider reading authoritative and leave all elapsed metrics out of the cards. On the active Subscriptions tab attempt one live usage read per passed observed boundary for capable accounts, including Codex and Kimi Code. Coalesce due boundaries per account, deduplicate by binding and boundary in the open renderer, fence replies by connection, and retain a manual retry. Send ChatGPT to the Seqoya-only host method with account identity; preserve the separate MiMo console action. Serves BKD-3.17.
+Removed: Connect the shared provider controls to the signed app channel while preserving automatic usage reads.
 
-Origins: BKD-3.17 · Intention i-9dbf0f62 · 2026-11-12
+Removed by Intention i-6286b00e · 2026-11-20
 
 ## SubscriptionMetrics
 
@@ -107,9 +107,9 @@ Origins: BKD-3.17 · Intention i-f7d7cbad · 2026-11-12
 
 ## OpenSubscriptionUsage
 
-Reason: Synchronize the shared design including the icon. Replace elapsed readings with the next allowance: project a documented recurring date and initial allowance where possible, leave start-on-use windows undated until use, and wait for a confirmed new grant if renewal cannot be inferred. Keep a newer provider reading authoritative and leave all elapsed metrics out of the cards. On the active Subscriptions tab attempt one live usage read per passed observed boundary for capable accounts, including Codex and Kimi Code. Coalesce due boundaries per account, deduplicate by binding and boundary in the open renderer, fence replies by connection, and retain a manual retry. Send ChatGPT to the Seqoya-only host method with account identity; preserve the separate MiMo console action. Serves BKD-3.17.
+Reason: Connect the shared provider controls to the signed app channel while preserving automatic usage reads.
 
-Origins: BKD-3.17 · Intention i-9dbf0f62 · 2026-11-12
+Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
 
 ## canRefreshSubscriptionUsage
 

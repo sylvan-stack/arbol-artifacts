@@ -11,9 +11,9 @@ Origins: BKD-0.11, BKD-1.7, BKD-3.16 · Intention i-3d376ddd · 2026-11-11
 
 ## AppChannel.call
 
-Reason: Render the saved quota before starting the live dashboard refresh and keep the first read in its loading state until it resolves.
+Reason: Connect the shared provider controls to the signed app channel while preserving automatic usage reads.
 
-Origins: BKD-3.17, BKD-3.20 · Intention i-33af36e0 · 2026-11-20
+Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
 
 ## <before AppChannel>
 
