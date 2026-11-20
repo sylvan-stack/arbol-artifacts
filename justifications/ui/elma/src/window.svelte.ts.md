@@ -5,9 +5,9 @@ role: authored
 
 ## ElmaWindow
 
-Reason: Use authoritative import provenance to detach the Draft and present saved Exchanges and routes
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
 
-Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.7, BKD-2.8, BKD-2.9, BKD-2.19, BKD-2.22 · Intention i-b594f9d0 · 2026-11-20
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
 
 ## ElmaWindow.afterChatState
 
@@ -17,33 +17,33 @@ Origins: BKD-0.11, BKD-1.7, BKD-3.16 · Intention i-3d376ddd · 2026-11-11
 
 ## ElmaWindow.constructor
 
-Reason: Use authoritative import provenance to detach the Draft and present saved Exchanges and routes
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
 
-Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.7, BKD-2.8, BKD-2.9, BKD-2.19, BKD-2.22 · Intention i-b594f9d0 · 2026-11-20
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
 
 ## ElmaWindow.prepareSend
 
-Reason: Publish the installation Bridge 2 renderer and scoped chat, Draft, pending request and administration adapters
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
 
 ## ElmaWindow.recoverFailure
 
-Reason: Publish the installation Bridge 2 renderer and scoped chat, Draft, pending request and administration adapters
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
 
 ## ElmaWindow.dispatchQueued
 
-Reason: Wire the shared header to the window Trunk and retain it on dispatch replay
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
 
-Origins: BKD-0.11, BKD-1.7, BKD-3.16 · Intention i-3d376ddd · 2026-11-11
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
 
 ## ElmaWindow.dispatchWithTrunk
 
-Reason: Publish the installation Bridge 2 renderer and scoped chat, Draft, pending request and administration adapters
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
 
 ## ElmaWindow.readTrunk
 
@@ -53,9 +53,9 @@ Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
 
 ## <before ChatInfo>
 
-Reason: Use authoritative import provenance to detach the Draft and present saved Exchanges and routes
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
 
-Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.7, BKD-2.8, BKD-2.9, BKD-2.19, BKD-2.22 · Intention i-b594f9d0 · 2026-11-20
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
 
 ## ArchiveIntent
 
@@ -71,9 +71,9 @@ Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.7, BKD-2.8, BKD-2.9, BKD-2.19, BKD-2.
 
 ## ElmaWindow.accepted
 
-Reason: Use authoritative import provenance to detach the Draft and present saved Exchanges and routes
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
 
-Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.7, BKD-2.8, BKD-2.9, BKD-2.19, BKD-2.22 · Intention i-b594f9d0 · 2026-11-20
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
 
 ## ElmaWindow.answerKey
 
@@ -95,9 +95,9 @@ Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.7, BKD-2.8, BKD-2.9, BKD-2.19, BKD-2.
 
 ## ElmaWindow.chooseRepository
 
-Reason: Publish the installation Bridge 2 renderer and scoped chat, Draft, pending request and administration adapters
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
 
 ## ElmaWindow.composerBusy
 
@@ -119,9 +119,9 @@ Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
 
 ## ElmaWindow.confirmStopSend
 
-Reason: Publish the installation Bridge 2 renderer and scoped chat, Draft, pending request and administration adapters
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
 
 ## ElmaWindow.copySession
 
@@ -155,15 +155,15 @@ Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
 
 ## ElmaWindow.pickOther
 
-Reason: Publish the installation Bridge 2 renderer and scoped chat, Draft, pending request and administration adapters
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
 
 ## ElmaWindow.provisional
 
-Reason: Publish the installation Bridge 2 renderer and scoped chat, Draft, pending request and administration adapters
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
 
 ## ElmaWindow.quickAction
 
@@ -173,9 +173,9 @@ Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
 
 ## ElmaWindow.refused
 
-Reason: Publish the installation Bridge 2 renderer and scoped chat, Draft, pending request and administration adapters
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
 
 ## ElmaWindow.savePreferences
 
@@ -191,9 +191,9 @@ Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
 
 ## ElmaWindow.saveSettings
 
-Reason: Publish the installation Bridge 2 renderer and scoped chat, Draft, pending request and administration adapters
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
 
 ## ElmaWindow.selectDraft
 
@@ -293,9 +293,9 @@ Origins: IMP-0.17, IMP-D33, BKD-1.7, BKD-1.9, BKD-2.8, BKD-2.18, BKD-2.22 · Int
 
 ## ElmaWindow.openChat
 
-Reason: Use authoritative import provenance to detach the Draft and present saved Exchanges and routes
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
 
-Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.7, BKD-2.8, BKD-2.9, BKD-2.19, BKD-2.22 · Intention i-b594f9d0 · 2026-11-20
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
 
 ## ElmaWindow.archivedRows
 
@@ -341,7 +341,43 @@ Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.7, BKD-2.8, BKD-2.9, BKD-2.19, BKD-2.
 
 ## ElmaWindow.readOnly
 
-Reason: Use authoritative import provenance to detach the Draft and present saved Exchanges and routes
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
 
-Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.7, BKD-2.8, BKD-2.9, BKD-2.19, BKD-2.22 · Intention i-b594f9d0 · 2026-11-20
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
+
+## ElmaWindow.answer
+
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
+
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
+
+## ElmaWindow.cancelStop
+
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
+
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
+
+## ElmaWindow.failureActions
+
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
+
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
+
+## ElmaWindow.requestSend
+
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
+
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
+
+## ElmaWindow.stopCurrent
+
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
+
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
+
+## ElmaWindow.observeImported
+
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
+
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
 

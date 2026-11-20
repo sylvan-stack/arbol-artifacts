@@ -17,15 +17,15 @@ Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
 
 ## Drafts.constructor
 
-Reason: Publish the installation Bridge 2 renderer and scoped chat, Draft, pending request and administration adapters
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
 
 ## Drafts.owner
 
-Reason: Publish the installation Bridge 2 renderer and scoped chat, Draft, pending request and administration adapters
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
 
-Origins: ARC-4.1, ARC-4.7 · Intention i-3bf8d557 · 2026-11-12
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
 
 ## Drafts.select
 
@@ -56,4 +56,10 @@ Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.7, BKD-2.8, BKD-2.9, BKD-2.19, BKD-2.
 Reason: Use authoritative import provenance to detach the Draft and present saved Exchanges and routes
 
 Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.7, BKD-2.8, BKD-2.9, BKD-2.19, BKD-2.22 · Intention i-b594f9d0 · 2026-11-20
+
+## Drafts.blockChat
+
+Reason: Fence queued route, Draft and Exchange operations by the imported target UUID
+
+Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.8, BKD-2.9, BKD-2.11, BKD-2.12, BKD-2.14, BKD-D37 · Intention i-7abab0fe · 2026-11-20
 
