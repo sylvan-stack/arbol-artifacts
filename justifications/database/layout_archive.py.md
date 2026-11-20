@@ -5,9 +5,9 @@ role: authored
 
 ## <before opened>
 
-Reason: Record and verify retired file contents on Mercury before making them eligible for removal.
+Reason: Verify the published archive again and retire only originals that still match the recorded identities and contents.
 
-Origins: ARC-5.4, ARC-5.10 · Intention i-1cca2f58 · 2026-11-20
+Origins: ARC-5.4, ARC-5.10 · Intention i-71ec9b08 · 2026-11-20
 
 ## <end>
 
@@ -41,9 +41,9 @@ Origins: ARC-5.4, ARC-5.10 · Intention i-1cca2f58 · 2026-11-20
 
 ## ensure_unused
 
-Reason: Record and verify retired file contents on Mercury before making them eligible for removal.
+Reason: Verify the published archive again and retire only originals that still match the recorded identities and contents.
 
-Origins: ARC-5.4, ARC-5.10 · Intention i-1cca2f58 · 2026-11-20
+Origins: ARC-5.4, ARC-5.10 · Intention i-71ec9b08 · 2026-11-20
 
 ## identity
 
@@ -65,9 +65,9 @@ Origins: ARC-5.4, ARC-5.10 · Intention i-1cca2f58 · 2026-11-20
 
 ## main
 
-Reason: Record and verify retired file contents on Mercury before making them eligible for removal.
+Reason: Verify the published archive again and retire only originals that still match the recorded identities and contents.
 
-Origins: ARC-5.4, ARC-5.10 · Intention i-1cca2f58 · 2026-11-20
+Origins: ARC-5.4, ARC-5.10 · Intention i-71ec9b08 · 2026-11-20
 
 ## opened
 
@@ -98,4 +98,22 @@ Origins: ARC-5.4, ARC-5.10 · Intention i-1cca2f58 · 2026-11-20
 Reason: Record and verify retired file contents on Mercury before making them eligible for removal.
 
 Origins: ARC-5.4, ARC-5.10 · Intention i-1cca2f58 · 2026-11-20
+
+## remove_empty_old_root
+
+Reason: Verify the published archive again and retire only originals that still match the recorded identities and contents.
+
+Origins: ARC-5.4, ARC-5.10 · Intention i-71ec9b08 · 2026-11-20
+
+## remove_entry
+
+Reason: Verify the published archive again and retire only originals that still match the recorded identities and contents.
+
+Origins: ARC-5.4, ARC-5.10 · Intention i-71ec9b08 · 2026-11-20
+
+## retire
+
+Reason: Verify the published archive again and retire only originals that still match the recorded identities and contents.
+
+Origins: ARC-5.4, ARC-5.10 · Intention i-71ec9b08 · 2026-11-20
 
