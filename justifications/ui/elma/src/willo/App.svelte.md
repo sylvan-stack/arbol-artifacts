@@ -11,7 +11,7 @@ Origins: BKD-3.21 · Intention i-67978ec1 · 2026-11-20
 
 ## script
 
-Reason: Read and page saved Chat Sessions from the existing Bridge in Willo Station
+Reason: Render live Chat Session summaries with the committed Stations design
 
-Origins: BKD-3.21 · Intention i-67978ec1 · 2026-11-20
+Origins: BKD-3.21 · Intention i-57904941 · 2026-11-20
 
