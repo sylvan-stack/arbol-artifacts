@@ -131,9 +131,9 @@ Origins: BKD-3.17 · Intention i-d3d8c042 · 2026-11-12
 
 ## subscriptionMetrics
 
-Reason: Refresh confirmed Browser dashboard evidence on entering Subscriptions and project it onto the matching cards.
+Reason: Project bound MiniMax reports into the published shared subscription card.
 
-Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
+Origins: BKD-3.20 · Intention i-3eb65d56 · 2026-11-20
 
 ## <before windowCapacity>
 
@@ -227,9 +227,9 @@ Origins: BKD-3.17 · Intention i-278c310f · 2026-11-18
 
 ## BrowserReport
 
-Reason: Refresh confirmed Browser dashboard evidence on entering Subscriptions and project it onto the matching cards.
+Reason: Project bound MiniMax reports into the published shared subscription card.
 
-Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
+Origins: BKD-3.20 · Intention i-3eb65d56 · 2026-11-20
 
 ## matchingBrowserReport
 
@@ -248,4 +248,16 @@ Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
 Reason: Refresh confirmed Browser dashboard evidence on entering Subscriptions and project it onto the matching cards.
 
 Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
+
+## MiniMaxUsage
+
+Reason: Project bound MiniMax reports into the published shared subscription card.
+
+Origins: BKD-3.20 · Intention i-3eb65d56 · 2026-11-20
+
+## miniMaxDashboard
+
+Reason: Project bound MiniMax reports into the published shared subscription card.
+
+Origins: BKD-3.20 · Intention i-3eb65d56 · 2026-11-20
 
