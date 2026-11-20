@@ -5,9 +5,9 @@ role: authored
 
 ## <before directory>
 
-Reason: Bring the published cleanup worker and startup hook to the clean revision-1-compatible Build c source.
+Reason: Leave installed released-run deletion to the size-aware Forester sweeper
 
-Origins: BLD-1.2 · Intention i-ee37678f · 2026-11-19
+Origins: FOR-2.7 · Intention i-abf211cc · 2026-11-20
 
 ## attached_paths
 
@@ -29,9 +29,9 @@ Origins: BLD-1.2 · Intention i-ee37678f · 2026-11-19
 
 ## release_run
 
-Reason: Bring the published cleanup worker and startup hook to the clean revision-1-compatible Build c source.
+Reason: Leave installed released-run deletion to the size-aware Forester sweeper
 
-Origins: BLD-1.2 · Intention i-ee37678f · 2026-11-19
+Origins: FOR-2.7 · Intention i-abf211cc · 2026-11-20
 
 ## remove_run
 
@@ -41,9 +41,9 @@ Origins: BLD-1.2 · Intention i-ee37678f · 2026-11-19
 
 ## sweep
 
-Reason: Bring the published cleanup worker and startup hook to the clean revision-1-compatible Build c source.
+Reason: Leave installed released-run deletion to the size-aware Forester sweeper
 
-Origins: BLD-1.2 · Intention i-ee37678f · 2026-11-19
+Origins: FOR-2.7 · Intention i-abf211cc · 2026-11-20
 
 ## sweep_periodically
 
