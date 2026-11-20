@@ -5,9 +5,9 @@ role: authored
 
 ## <before digest>
 
-Reason: Bundle the same Seqoya layout as a verified App entry while preserving the legacy Elma package.
+Reason: Package the Willo renderer in the shared App bundle while retaining prior bundle formats
 
-Origins: BKD-3.17, BKD-3.16 · Intention i-eaa9cb74 · 2026-11-11
+Origins: BKD-3.21 · Intention i-ca59615e · 2026-11-20
 
 ## package
 
@@ -41,7 +41,7 @@ Origins: BKD-3.17, BKD-3.16 · Intention i-eaa9cb74 · 2026-11-11
 
 ## verify
 
-Reason: Bundle the same Seqoya layout as a verified App entry while preserving the legacy Elma package.
+Reason: Package the Willo renderer in the shared App bundle while retaining prior bundle formats
 
-Origins: BKD-3.17, BKD-3.16 · Intention i-eaa9cb74 · 2026-11-11
+Origins: BKD-3.21 · Intention i-ca59615e · 2026-11-20
 
