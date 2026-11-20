@@ -11,9 +11,9 @@ Origins: BKD-0.11, BKD-1.7, BKD-3.16 · Intention i-3d376ddd · 2026-11-11
 
 ## AppChannel.call
 
-Reason: Refresh confirmed Browser dashboard evidence on entering Subscriptions and project it onto the matching cards.
+Reason: Render the saved quota before starting the live dashboard refresh and keep the first read in its loading state until it resolves.
 
-Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
+Origins: BKD-3.17, BKD-3.20 · Intention i-33af36e0 · 2026-11-20
 
 ## <before AppChannel>
 
