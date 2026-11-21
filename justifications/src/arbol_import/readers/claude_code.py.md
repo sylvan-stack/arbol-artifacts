@@ -5,9 +5,9 @@ role: authored
 
 ## <before SessionFile>
 
-Reason: Preserve native title and origin and give empty Claude sessions their earliest file time
+Reason: Preserve the proven Claude Code parent lane and call ID
 
-Origins: IMP-1.12, IMP-1.1, IMP-D17 · Intention i-e5c2ec27 · 2026-11-19
+Origins: IMP-0.9, IMP-D3 · Intention i-adaf7be8 · 2026-11-21
 
 ## SessionFile
 
@@ -401,9 +401,9 @@ Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
 
 ## _placements
 
-Reason: Attach nested calls and separate sub-agent usage to their parent turns
+Reason: Preserve the proven Claude Code parent lane and call ID
 
-Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-3fded0f5 · 2026-11-19
+Origins: IMP-0.9, IMP-D3 · Intention i-adaf7be8 · 2026-11-21
 
 ## _present
 
@@ -413,15 +413,15 @@ Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
 
 ## _project_turns
 
-Reason: Attach nested calls and separate sub-agent usage to their parent turns
+Reason: Preserve the proven Claude Code parent lane and call ID
 
-Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-3fded0f5 · 2026-11-19
+Origins: IMP-0.9, IMP-D3 · Intention i-adaf7be8 · 2026-11-21
 
 ## _subagent
 
-Reason: Attach nested calls and separate sub-agent usage to their parent turns
+Reason: Preserve the proven Claude Code parent lane and call ID
 
-Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-3fded0f5 · 2026-11-19
+Origins: IMP-0.9, IMP-D3 · Intention i-adaf7be8 · 2026-11-21
 
 ## <before _archive_name>
 
