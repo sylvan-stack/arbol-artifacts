@@ -5,9 +5,9 @@ role: authored
 
 ## <before _unreadable>
 
-Reason: Bind Mimo diff archives to the observed file identity
+Reason: Keep one verified Mimo SQLite snapshot for the import catalogue
 
-Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-98c2c50f · 2026-11-21
+Origins: IMP-0.1, IMP-0.2, IMP-0.3, IMP-0.19, IMP-0.21 · Intention i-ffc40850 · 2026-11-21
 
 ## _copy_database
 
@@ -395,13 +395,19 @@ Origins: IMP-1.1, IMP-1.11, IMP-D16 · Intention i-814aa57d · 2026-11-19
 
 ## read
 
-Reason: Expose the Mimo reader with session liveness and scoped failures
+Reason: Keep one verified Mimo SQLite snapshot for the import catalogue
 
-Origins: IMP-1.1, IMP-1.11, IMP-D16 · Intention i-814aa57d · 2026-11-19
+Origins: IMP-0.1, IMP-0.2, IMP-0.3, IMP-0.19, IMP-0.21 · Intention i-ffc40850 · 2026-11-21
 
 ## _Launch.link
 
 Reason: Preserve the proven Mimo parent lane and call ID
 
 Origins: IMP-0.9, IMP-D31 · Intention i-82b22468 · 2026-11-21
+
+## catalogue
+
+Reason: Keep one verified Mimo SQLite snapshot for the import catalogue
+
+Origins: IMP-0.1, IMP-0.2, IMP-0.3, IMP-0.19, IMP-0.21 · Intention i-ffc40850 · 2026-11-21
 
