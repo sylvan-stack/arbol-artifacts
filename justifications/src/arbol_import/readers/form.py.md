@@ -23,21 +23,21 @@ Origins: IMP-1.1 · Intention i-6875a01a · 2026-11-18
 
 ## Usage
 
-Reason: Usage by the common rule and one model response
+Reason: Keep absent native cache writes distinct from a recorded zero when mapping usage
 
-Origins: IMP-1.1 · Intention i-d6faa8ba · 2026-11-18
+Origins: IMP-0.4, IMP-1.7, IMP-D12 · Intention i-e5b961b8 · 2026-11-21
 
 ## Usage.__add__
 
-Reason: Usage by the common rule and one model response
+Reason: Keep absent native cache writes distinct from a recorded zero when mapping usage
 
-Origins: IMP-1.1 · Intention i-d6faa8ba · 2026-11-18
+Origins: IMP-0.4, IMP-1.7, IMP-D12 · Intention i-e5b961b8 · 2026-11-21
 
 ## Usage.native
 
-Reason: Usage by the common rule and one model response
+Reason: Keep absent native cache writes distinct from a recorded zero when mapping usage
 
-Origins: IMP-1.1 · Intention i-d6faa8ba · 2026-11-18
+Origins: IMP-0.4, IMP-1.7, IMP-D12 · Intention i-e5b961b8 · 2026-11-21
 
 ## Image
 
@@ -236,4 +236,10 @@ Origins: IMP-1.1 · Intention i-a2e8af26 · 2026-11-18
 Reason: The reader contract the command finds by name
 
 Origins: IMP-1.1 · Intention i-a2e8af26 · 2026-11-18
+
+## _sum_counter
+
+Reason: Keep absent native cache writes distinct from a recorded zero when mapping usage
+
+Origins: IMP-0.4, IMP-1.7, IMP-D12 · Intention i-e5b961b8 · 2026-11-21
 
