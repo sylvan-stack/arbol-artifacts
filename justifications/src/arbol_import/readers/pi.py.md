@@ -5,9 +5,9 @@ role: authored
 
 ## <before _iso_time>
 
-Reason: Expose the Pi reader and preserve selection, safe diagnostics and prefix classification when a session fails
+Reason: Bind Pi session and result files to archive observations
 
-Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-64ffd77f · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13, IMP-D29 · Intention i-ef2adb64 · 2026-11-21
 
 ## _Header
 
@@ -53,9 +53,9 @@ Origins: IMP-1.6, IMP-1.8, IMP-1.9, IMP-0.2, IMP-D13, IMP-D29 · Intention i-de5
 
 ## _session_records
 
-Reason: Discover Pi sessions inside the supplied home and validate native v3 identity before reading any selected body
+Reason: Bind Pi session and result files to archive observations
 
-Origins: IMP-1.1, IMP-1.2, IMP-1.9, IMP-1.11, IMP-0.2, IMP-D10, IMP-D13 · Intention i-046ccf9e · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13, IMP-D29 · Intention i-ef2adb64 · 2026-11-21
 
 ## _unreadable
 
@@ -167,9 +167,9 @@ Origins: IMP-1.1, IMP-1.5, IMP-1.11, IMP-0.7, IMP-0.15, IMP-D10 · Intention i-7
 
 ## _turn
 
-Reason: Record each Pi response's native start and token counts, and take the model route from the first assistant
+Reason: Bind Pi session and result files to archive observations
 
-Origins: IMP-1.1, IMP-1.7, IMP-D12, PI-2.5 · Intention i-a66f6733 · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13, IMP-D29 · Intention i-ef2adb64 · 2026-11-21
 
 ## _turn_end
 
@@ -191,15 +191,15 @@ Origins: IMP-1.1, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-03b51a30 ·
 
 ## _items
 
-Reason: Archive the session and deduplicated eligible spills across all branches, counting outside references and file liveness
+Reason: Bind Pi session and result files to archive observations
 
-Origins: IMP-1.8, IMP-1.9, IMP-1.10, IMP-1.11, IMP-0.2, IMP-0.13, IMP-0.15, IMP-D29 · Intention i-794180cb · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13, IMP-D29 · Intention i-ef2adb64 · 2026-11-21
 
 ## _result
 
-Reason: Read only eligible in-home Pi spills and preserve the inline result and truncation for outside references
+Reason: Bind Pi session and result files to archive observations
 
-Origins: IMP-1.6, IMP-1.8, IMP-1.9, IMP-0.2, IMP-D13, IMP-D29 · Intention i-de55f95c · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13, IMP-D29 · Intention i-ef2adb64 · 2026-11-21
 
 ## _results
 
@@ -221,9 +221,9 @@ Origins: IMP-1.6, IMP-1.8, IMP-1.9, IMP-0.2, IMP-D13, IMP-D29 · Intention i-de5
 
 ## _full_output
 
-Reason: Read only eligible in-home Pi spills and preserve the inline result and truncation for outside references
+Reason: Bind Pi session and result files to archive observations
 
-Origins: IMP-1.6, IMP-1.8, IMP-1.9, IMP-0.2, IMP-D13, IMP-D29 · Intention i-de55f95c · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13, IMP-D29 · Intention i-ef2adb64 · 2026-11-21
 
 ## _session_layout
 
@@ -263,9 +263,9 @@ Origins: IMP-1.1, IMP-1.7, IMP-D12, PI-2.5 · Intention i-a66f6733 · 2026-11-19
 
 ## _archive
 
-Reason: Expose the Pi reader and preserve selection, safe diagnostics and prefix classification when a session fails
+Reason: Bind Pi session and result files to archive observations
 
-Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-64ffd77f · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13, IMP-D29 · Intention i-ef2adb64 · 2026-11-21
 
 ## _discover
 
@@ -275,9 +275,9 @@ Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Inte
 
 ## _read_session
 
-Reason: Expose the Pi reader and preserve selection, safe diagnostics and prefix classification when a session fails
+Reason: Bind Pi session and result files to archive observations
 
-Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-64ffd77f · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13, IMP-D29 · Intention i-ef2adb64 · 2026-11-21
 
 ## read
 
