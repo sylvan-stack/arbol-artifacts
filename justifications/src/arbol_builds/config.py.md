@@ -17,9 +17,9 @@ Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
 
 ## description
 
-Reason: Record the Build layout independently from its schema declaration, preserving readability of existing records.
+Reason: Select and record declared promotion unit checks in Common Build and require explicit opt-in for a named verification check.
 
-Origins: ARC-5.6 · Intention i-1c7ef6e6 · 2026-11-19
+Origins: BLD-0.15 · Intention i-7591c502 · 2026-11-21
 
 ## component_name
 
@@ -32,4 +32,10 @@ Origins: IMP-0.18 · Intention i-cc3001b4 · 2026-11-18
 Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
 
 Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
+
+## selected_checks
+
+Reason: Select and record declared promotion unit checks in Common Build and require explicit opt-in for a named verification check.
+
+Origins: BLD-0.15 · Intention i-7591c502 · 2026-11-21
 
