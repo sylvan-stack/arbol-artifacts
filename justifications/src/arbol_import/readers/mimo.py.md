@@ -299,9 +299,9 @@ Origins: IMP-0.9, IMP-D31 · Intention i-2f32a64d · 2026-11-19
 
 ## _usage
 
-Reason: Account for native usage once per Mimo assistant message
+Reason: Retain Mimo cache-write presence and native input totals
 
-Origins: IMP-1.7, IMP-D31 · Intention i-c99a446d · 2026-11-19
+Origins: IMP-0.4, IMP-1.7 · Intention i-7027e9bd · 2026-11-21
 
 ## _Actor
 
