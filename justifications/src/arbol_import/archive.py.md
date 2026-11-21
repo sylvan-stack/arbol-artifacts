@@ -5,9 +5,9 @@ role: authored
 
 ## <before UnreadableInput>
 
-Reason: Durably publish verified content objects with atomic no-replace operations
+Reason: Publish archive manifests only after objects and verify prior session identity when loading a manifest
 
-Origins: IMP-0.13, IMP-0.21, IMP-D1, IMP-D9 · Intention i-60c6685a · 2026-11-21
+Origins: IMP-0.12, IMP-0.13, IMP-0.14, IMP-0.22, IMP-D1, IMP-D9, IMP-D35 · Intention i-a575689e · 2026-11-21
 
 ## FileEntry
 
@@ -119,9 +119,9 @@ Origins: IMP-0.13, IMP-0.21, IMP-D1, IMP-D9 · Intention i-60c6685a · 2026-11-2
 
 ## _directory_at
 
-Reason: Durably publish verified content objects with atomic no-replace operations
+Reason: Publish archive manifests only after objects and verify prior session identity when loading a manifest
 
-Origins: IMP-0.13, IMP-0.21, IMP-D1, IMP-D9 · Intention i-60c6685a · 2026-11-21
+Origins: IMP-0.12, IMP-0.13, IMP-0.14, IMP-0.22, IMP-D1, IMP-D9, IMP-D35 · Intention i-a575689e · 2026-11-21
 
 ## _publish
 
@@ -149,7 +149,43 @@ Origins: IMP-0.13, IMP-0.21, IMP-D1, IMP-D9 · Intention i-60c6685a · 2026-11-2
 
 ## _write_object
 
-Reason: Durably publish verified content objects with atomic no-replace operations
+Reason: Publish archive manifests only after objects and verify prior session identity when loading a manifest
 
-Origins: IMP-0.13, IMP-0.21, IMP-D1, IMP-D9 · Intention i-60c6685a · 2026-11-21
+Origins: IMP-0.12, IMP-0.13, IMP-0.14, IMP-0.22, IMP-D1, IMP-D9, IMP-D35 · Intention i-a575689e · 2026-11-21
+
+## PublishedArchive
+
+Reason: Publish archive manifests only after objects and verify prior session identity when loading a manifest
+
+Origins: IMP-0.12, IMP-0.13, IMP-0.14, IMP-0.22, IMP-D1, IMP-D9, IMP-D35 · Intention i-a575689e · 2026-11-21
+
+## _manifest_inventory
+
+Reason: Publish archive manifests only after objects and verify prior session identity when loading a manifest
+
+Origins: IMP-0.12, IMP-0.13, IMP-0.14, IMP-0.22, IMP-D1, IMP-D9, IMP-D35 · Intention i-a575689e · 2026-11-21
+
+## _timestamp
+
+Reason: Publish archive manifests only after objects and verify prior session identity when loading a manifest
+
+Origins: IMP-0.12, IMP-0.13, IMP-0.14, IMP-0.22, IMP-D1, IMP-D9, IMP-D35 · Intention i-a575689e · 2026-11-21
+
+## _write_manifest
+
+Reason: Publish archive manifests only after objects and verify prior session identity when loading a manifest
+
+Origins: IMP-0.12, IMP-0.13, IMP-0.14, IMP-0.22, IMP-D1, IMP-D9, IMP-D35 · Intention i-a575689e · 2026-11-21
+
+## publish_session
+
+Reason: Publish archive manifests only after objects and verify prior session identity when loading a manifest
+
+Origins: IMP-0.12, IMP-0.13, IMP-0.14, IMP-0.22, IMP-D1, IMP-D9, IMP-D35 · Intention i-a575689e · 2026-11-21
+
+## read_manifest
+
+Reason: Publish archive manifests only after objects and verify prior session identity when loading a manifest
+
+Origins: IMP-0.12, IMP-0.13, IMP-0.14, IMP-0.22, IMP-D1, IMP-D9, IMP-D35 · Intention i-a575689e · 2026-11-21
 
