@@ -11,15 +11,15 @@ Origins: ARC-4.1, ARC-4.8 · Intention i-de10fbd4 · 2026-11-12
 
 ## build_component
 
-Reason: Bind the canonical release reservation to a private Build and route ordinary Browser starts before any registry inspection
+Reason: Select and record declared promotion unit checks in Common Build and require explicit opt-in for a named verification check.
 
-Origins: BRW-0.12, OG-3 · Intention i-5fd3d205 · 2026-11-21
+Origins: BLD-0.15 · Intention i-7591c502 · 2026-11-21
 
 ## <before now>
 
-Reason: Read the stable selection without mounting it and retire only exact historical images with no live or persisted Profile reference
+Reason: Select and record declared promotion unit checks in Common Build and require explicit opt-in for a named verification check.
 
-Origins: BRW-0.10, BRW-1.7, OG-2 · Intention i-b51ffca3 · 2026-11-21
+Origins: BLD-0.15 · Intention i-7591c502 · 2026-11-21
 
 ## launcher_source
 
@@ -167,9 +167,9 @@ Origins: BRW-0.12, OG-3 · Intention i-5fd3d205 · 2026-11-21
 
 ## build_allocated
 
-Reason: Bind the canonical release reservation to a private Build and route ordinary Browser starts before any registry inspection
+Reason: Select and record declared promotion unit checks in Common Build and require explicit opt-in for a named verification check.
 
-Origins: BRW-0.12, OG-3 · Intention i-5fd3d205 · 2026-11-21
+Origins: BLD-0.15 · Intention i-7591c502 · 2026-11-21
 
 ## release_artifact
 

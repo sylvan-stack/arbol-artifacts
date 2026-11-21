@@ -5,13 +5,13 @@ role: authored
 
 ## <before unicode_text>
 
-Reason: Read the stable selection without mounting it and retire only exact historical images with no live or persisted Profile reference
+Reason: Select and record declared promotion unit checks in Common Build and require explicit opt-in for a named verification check.
 
-Origins: BRW-0.10, BRW-1.7, OG-2 · Intention i-b51ffca3 · 2026-11-21
+Origins: BLD-0.15 · Intention i-7591c502 · 2026-11-21
 
 ## main
 
-Reason: Read the stable selection without mounting it and retire only exact historical images with no live or persisted Profile reference
+Reason: Select and record declared promotion unit checks in Common Build and require explicit opt-in for a named verification check.
 
-Origins: BRW-0.10, BRW-1.7, OG-2 · Intention i-b51ffca3 · 2026-11-21
+Origins: BLD-0.15 · Intention i-7591c502 · 2026-11-21
 

@@ -5,9 +5,9 @@ role: authored
 
 ## valid_record
 
-Reason: Record the Build layout independently from its schema declaration, preserving readability of existing records.
+Reason: Select and record declared promotion unit checks in Common Build and require explicit opt-in for a named verification check.
 
-Origins: ARC-5.6 · Intention i-1c7ef6e6 · 2026-11-19
+Origins: BLD-0.15 · Intention i-7591c502 · 2026-11-21
 
 ## schema_compatibility
 
