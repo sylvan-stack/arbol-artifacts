@@ -305,9 +305,9 @@ Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
 
 ## _usage
 
-Reason: Match Kimi model responses and select the last retained loop request
+Reason: Retain Kimi Code cache-write presence and native input totals
 
-Origins: IMP-1.7, IMP-0.8 · Intention i-37a6b1f2 · 2026-11-19
+Origins: IMP-0.4, IMP-1.7 · Intention i-c250a550 · 2026-11-21
 
 ## _ChildWork
 
