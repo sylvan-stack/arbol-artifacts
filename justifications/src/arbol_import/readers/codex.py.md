@@ -5,9 +5,9 @@ role: authored
 
 ## <before _id>
 
-Reason: Expose the Codex reader through the shared importer form
+Reason: Preserve the proven Codex parent lane and call ID
 
-Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16, IMP-D19, IMP-D20 · Intention i-1a28a66c · 2026-11-19
+Origins: IMP-0.9, IMP-D23 · Intention i-6d0938df · 2026-11-21
 
 ## Rollout
 
@@ -413,9 +413,9 @@ Origins: IMP-1.4, IMP-1.6, IMP-0.9, IMP-D3 · Intention i-c714f1fe · 2026-11-19
 
 ## _work_call
 
-Reason: Nest Codex code-mode work inside exec spans
+Reason: Preserve the proven Codex parent lane and call ID
 
-Origins: IMP-1.4, IMP-1.6, IMP-0.9, IMP-D3 · Intention i-c714f1fe · 2026-11-19
+Origins: IMP-0.9, IMP-D23 · Intention i-6d0938df · 2026-11-21
 
 ## _work_times
 
@@ -443,9 +443,9 @@ Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, 
 
 ## AgentWork.info
 
-Reason: Assign Codex sub-agent work to root turns
+Reason: Preserve the proven Codex parent lane and call ID
 
-Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, IMP-D23 · Intention i-dddeb829 · 2026-11-19
+Origins: IMP-0.9, IMP-D23 · Intention i-6d0938df · 2026-11-21
 
 ## Lane
 
@@ -455,9 +455,9 @@ Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, 
 
 ## _agents
 
-Reason: Assemble Codex session metadata
+Reason: Preserve the proven Codex parent lane and call ID
 
-Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-1.12, IMP-0.5, IMP-D19 · Intention i-2ea1f7b1 · 2026-11-19
+Origins: IMP-0.9, IMP-D23 · Intention i-6d0938df · 2026-11-21
 
 ## _assigned_turn
 
