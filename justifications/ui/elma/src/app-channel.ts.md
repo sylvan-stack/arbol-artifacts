@@ -11,9 +11,9 @@ Origins: BKD-0.11, BKD-1.7, BKD-3.16 · Intention i-3d376ddd · 2026-11-11
 
 ## AppChannel.call
 
-Reason: Connect the shared provider controls to the signed app channel while preserving automatic usage reads.
+Reason: Carry the selected Willo UUID through the app channel and report launch errors in the shared page.
 
-Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
+Origins: BKD-3.21, BKD-3.12, BKD-2.19 · Intention i-23fe820b · 2026-11-21
 
 ## <before AppChannel>
 
@@ -35,9 +35,9 @@ Removed by Intention i-3d376ddd · 2026-11-11
 
 ## AppMethod
 
-Reason: Refresh confirmed Browser dashboard evidence on entering Subscriptions and project it onto the matching cards.
+Reason: Carry the selected Willo UUID through the app channel and report launch errors in the shared page.
 
-Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
+Origins: BKD-3.21, BKD-3.12, BKD-2.19 · Intention i-23fe820b · 2026-11-21
 
 ## RootMethod
 

@@ -17,15 +17,15 @@ Origins: BKD-3.21 · Intention i-3202b333 · 2026-11-20
 
 ## script:2
 
-Reason: Include the two-tab layout and restored Willo card design in the renderer.
+Reason: Carry the selected Willo UUID through the app channel and report launch errors in the shared page.
 
-Origins: BKD-3.21 · Intention i-8b17e34a · 2026-11-20
+Origins: BKD-3.21, BKD-3.12, BKD-2.19 · Intention i-23fe820b · 2026-11-21
 
 ## <before style>
 
-Reason: Include the two-tab layout and restored Willo card design in the renderer.
+Reason: Carry the selected Willo UUID through the app channel and report launch errors in the shared page.
 
-Origins: BKD-3.21 · Intention i-8b17e34a · 2026-11-20
+Origins: BKD-3.21, BKD-3.12, BKD-2.19 · Intention i-23fe820b · 2026-11-21
 
 ## style
 
