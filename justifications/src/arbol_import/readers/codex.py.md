@@ -425,9 +425,9 @@ Origins: IMP-1.4, IMP-1.6, IMP-0.9, IMP-D3 · Intention i-c714f1fe · 2026-11-19
 
 ## _responses
 
-Reason: Account for distinct Codex response usage
+Reason: Retain Codex cache-write presence and native input totals
 
-Origins: IMP-1.1, IMP-1.4, IMP-1.7, IMP-0.8, IMP-D12, IMP-D22 · Intention i-f6344978 · 2026-11-19
+Origins: IMP-0.4, IMP-1.7 · Intention i-bfdaaa30 · 2026-11-21
 
 ## _turn_context
 
