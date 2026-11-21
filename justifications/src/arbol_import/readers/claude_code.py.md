@@ -5,9 +5,9 @@ role: authored
 
 ## <before SessionFile>
 
-Reason: Preserve the proven Claude Code parent lane and call ID
+Reason: Bind Claude logs and projected sidecar reads to their archived identities
 
-Origins: IMP-0.9, IMP-D3 · Intention i-adaf7be8 · 2026-11-21
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
 
 ## SessionFile
 
@@ -95,27 +95,27 @@ Origins: IMP-1.12, IMP-1.1, IMP-D17 · Intention i-e5c2ec27 · 2026-11-19
 
 ## _mtime
 
-Reason: Stream complete records in file time order and track duplicate UUIDs across copies
+Removed: Bind Claude logs and projected sidecar reads to their archived identities
 
-Origins: IMP-1.2, IMP-1.4 · Intention i-8b93be51 · 2026-11-19
+Removed by Intention i-fe4723fa · 2026-11-21
 
 ## _order_file
 
-Reason: Expose the reader and isolate failures with the kind from each validated prefix
+Reason: Bind Claude logs and projected sidecar reads to their archived identities
 
-Origins: IMP-1.1, IMP-1.11, IMP-0.21, IMP-D16 · Intention i-7abd097f · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
 
 ## _ordered_sessions
 
-Reason: Expose the reader and isolate failures with the kind from each validated prefix
+Reason: Bind Claude logs and projected sidecar reads to their archived identities
 
-Origins: IMP-1.1, IMP-1.11, IMP-0.21, IMP-D16 · Intention i-7abd097f · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
 
 ## _read_records
 
-Reason: Expose the reader and isolate failures with the kind from each validated prefix
+Reason: Bind Claude logs and projected sidecar reads to their archived identities
 
-Origins: IMP-1.1, IMP-1.11, IMP-0.21, IMP-D16 · Intention i-7abd097f · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
 
 ## _time
 
@@ -167,9 +167,9 @@ Origins: IMP-1.3, IMP-D16 · Intention i-fb1bee8d · 2026-11-19
 
 ## _validated
 
-Reason: Join calls with results and resolve safe spilled text and image descriptions
+Reason: Bind Claude logs and projected sidecar reads to their archived identities
 
-Origins: IMP-1.6, IMP-0.10 · Intention i-88f0a5da · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
 
 ## <before _blocks>
 
@@ -287,9 +287,9 @@ Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-3fded0f5 · 2026-11-19
 
 ## _native_results
 
-Reason: Keep malformed result sidecars local to their session and project spilled image descriptions safely
+Reason: Bind Claude logs and projected sidecar reads to their archived identities
 
-Origins: IMP-1.1, IMP-0.21 · Intention i-a96da6a2 · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
 
 ## _result_fields
 
@@ -359,15 +359,15 @@ Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
 
 ## _agent_link
 
-Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
+Reason: Bind Claude logs and projected sidecar reads to their archived identities
 
-Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
 
 ## _agent_logs
 
-Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
+Reason: Bind Claude logs and projected sidecar reads to their archived identities
 
-Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
 
 ## _children
 
@@ -377,9 +377,9 @@ Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
 
 ## _json_file
 
-Reason: Expose the reader and isolate failures with the kind from each validated prefix
+Reason: Bind Claude logs and projected sidecar reads to their archived identities
 
-Origins: IMP-1.1, IMP-1.11, IMP-0.21, IMP-D16 · Intention i-7abd097f · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
 
 ## _launches
 
@@ -395,9 +395,9 @@ Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
 
 ## _ordered_rows
 
-Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
+Reason: Bind Claude logs and projected sidecar reads to their archived identities
 
-Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
 
 ## _placements
 
@@ -431,15 +431,15 @@ Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
 
 ## ArchiveFiles
 
-Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
+Reason: Bind Claude logs and projected sidecar reads to their archived identities
 
-Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
 
 ## ArchiveFiles.include
 
-Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
+Reason: Bind Claude logs and projected sidecar reads to their archived identities
 
-Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
 
 ## ArchiveFiles.resolve
 
@@ -455,9 +455,9 @@ Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
 
 ## _archive
 
-Reason: Preserve native title and origin and give empty Claude sessions their earliest file time
+Reason: Bind Claude logs and projected sidecar reads to their archived identities
 
-Origins: IMP-1.12, IMP-1.1, IMP-D17 · Intention i-e5c2ec27 · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
 
 ## _archive_name
 
@@ -491,15 +491,15 @@ Origins: IMP-1.12, IMP-1.1, IMP-D17 · Intention i-e5c2ec27 · 2026-11-19
 
 ## _session
 
-Reason: Expose the reader and isolate failures with the kind from each validated prefix
+Reason: Bind Claude logs and projected sidecar reads to their archived identities
 
-Origins: IMP-1.1, IMP-1.11, IMP-0.21, IMP-D16 · Intention i-7abd097f · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
 
 ## _title
 
-Reason: Preserve native title and origin and give empty Claude sessions their earliest file time
+Reason: Bind Claude logs and projected sidecar reads to their archived identities
 
-Origins: IMP-1.12, IMP-1.1, IMP-D17 · Intention i-e5c2ec27 · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
 
 ## _context_files
 
@@ -515,9 +515,9 @@ Origins: IMP-1.1, IMP-1.11, IMP-0.21, IMP-D16 · Intention i-7abd097f · 2026-11
 
 ## read
 
-Reason: Expose the reader and isolate failures with the kind from each validated prefix
+Reason: Bind Claude logs and projected sidecar reads to their archived identities
 
-Origins: IMP-1.1, IMP-1.11, IMP-0.21, IMP-D16 · Intention i-7abd097f · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
 
 ## _result_blocks
 
@@ -539,7 +539,13 @@ Origins: IMP-1.1, IMP-0.21 · Intention i-a96da6a2 · 2026-11-19
 
 ## _spill_result
 
-Reason: Keep malformed result sidecars local to their session and project spilled image descriptions safely
+Reason: Bind Claude logs and projected sidecar reads to their archived identities
 
-Origins: IMP-1.1, IMP-0.21 · Intention i-a96da6a2 · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
+
+## _bind_input
+
+Reason: Bind Claude logs and projected sidecar reads to their archived identities
+
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
 
