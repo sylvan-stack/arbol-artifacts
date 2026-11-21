@@ -5,9 +5,9 @@ role: authored
 
 ## <before read_days>
 
-Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
+Reason: Read the stable selection without mounting it and retire only exact historical images with no live or persisted Profile reference
 
-Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
+Origins: BRW-0.10, BRW-1.7, OG-2 · Intention i-b51ffca3 · 2026-11-21
 
 ## prune_unused
 
@@ -62,4 +62,40 @@ Origins: IMP-0.18 · Intention i-99165683 · 2026-11-18
 Reason: Build reservations, guards and generated launchers must find the same installed registry and settings while retaining isolated registries.
 
 Origins: ARC-5.1, ARC-5.2, ARC-5.5 · Intention i-c5d7328f · 2026-11-19
+
+## _browser_document
+
+Reason: Read the stable selection without mounting it and retire only exact historical images with no live or persisted Profile reference
+
+Origins: BRW-0.10, BRW-1.7, OG-2 · Intention i-b51ffca3 · 2026-11-21
+
+## _browser_references
+
+Reason: Read the stable selection without mounting it and retire only exact historical images with no live or persisted Profile reference
+
+Origins: BRW-0.10, BRW-1.7, OG-2 · Intention i-b51ffca3 · 2026-11-21
+
+## _image_command
+
+Reason: Read the stable selection without mounting it and retire only exact historical images with no live or persisted Profile reference
+
+Origins: BRW-0.10, BRW-1.7, OG-2 · Intention i-b51ffca3 · 2026-11-21
+
+## _profile_claims
+
+Reason: Read the stable selection without mounting it and retire only exact historical images with no live or persisted Profile reference
+
+Origins: BRW-0.10, BRW-1.7, OG-2 · Intention i-b51ffca3 · 2026-11-21
+
+## _unmount_browser_image
+
+Reason: Read the stable selection without mounting it and retire only exact historical images with no live or persisted Profile reference
+
+Origins: BRW-0.10, BRW-1.7, OG-2 · Intention i-b51ffca3 · 2026-11-21
+
+## prune_browser_releases
+
+Reason: Read the stable selection without mounting it and retire only exact historical images with no live or persisted Profile reference
+
+Origins: BRW-0.10, BRW-1.7, OG-2 · Intention i-b51ffca3 · 2026-11-21
 

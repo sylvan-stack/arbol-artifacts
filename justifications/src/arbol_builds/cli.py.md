@@ -5,13 +5,13 @@ role: authored
 
 ## <before unicode_text>
 
-Reason: Bind the canonical release reservation to a private Build and route ordinary Browser starts before any registry inspection
+Reason: Read the stable selection without mounting it and retire only exact historical images with no live or persisted Profile reference
 
-Origins: BRW-0.12, OG-3 · Intention i-5fd3d205 · 2026-11-21
+Origins: BRW-0.10, BRW-1.7, OG-2 · Intention i-b51ffca3 · 2026-11-21
 
 ## main
 
-Reason: Bind the canonical release reservation to a private Build and route ordinary Browser starts before any registry inspection
+Reason: Read the stable selection without mounting it and retire only exact historical images with no live or persisted Profile reference
 
-Origins: BRW-0.12, OG-3 · Intention i-5fd3d205 · 2026-11-21
+Origins: BRW-0.10, BRW-1.7, OG-2 · Intention i-b51ffca3 · 2026-11-21
 
