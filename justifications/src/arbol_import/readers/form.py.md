@@ -107,15 +107,15 @@ Origins: IMP-1.1 · Intention i-abfaaef4 · 2026-11-18
 
 ## HomeFile
 
-Reason: Archive files as home files or exported database rows
+Reason: Represent the verified physical archive input
 
-Origins: IMP-1.1 · Intention i-abfaaef4 · 2026-11-18
+Origins: IMP-0.13, IMP-D12 · Intention i-4c9225d6 · 2026-11-21
 
 ## HomeFile.__post_init__
 
-Reason: Archive files as home files or exported database rows
+Reason: Represent the verified physical archive input
 
-Origins: IMP-1.1 · Intention i-abfaaef4 · 2026-11-18
+Origins: IMP-0.13, IMP-D12 · Intention i-4c9225d6 · 2026-11-21
 
 ## _relative
 
