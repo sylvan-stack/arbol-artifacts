@@ -59,9 +59,9 @@ Origins: IMP-1.1 · Intention i-6875a01a · 2026-11-18
 
 ## ToolCall
 
-Reason: Text blocks, tool calls and results of a turn
+Reason: Represent proven parents by lane and native call ID
 
-Origins: IMP-1.1 · Intention i-6875a01a · 2026-11-18
+Origins: IMP-0.9, IMP-D12 · Intention i-7d8f8cd7 · 2026-11-21
 
 ## <before Subagent>
 
@@ -71,9 +71,9 @@ Origins: IMP-1.1 · Intention i-6e8cd65b · 2026-11-18
 
 ## Subagent
 
-Reason: A turn with its key, trigger, state, usage, items, sub-agents and steers
+Reason: Represent proven parents by lane and native call ID
 
-Origins: IMP-1.1 · Intention i-44f1500e · 2026-11-18
+Origins: IMP-0.9, IMP-D12 · Intention i-7d8f8cd7 · 2026-11-21
 
 ## Steer
 
@@ -242,4 +242,10 @@ Origins: IMP-1.1 · Intention i-a2e8af26 · 2026-11-18
 Reason: Keep absent native cache writes distinct from a recorded zero when mapping usage
 
 Origins: IMP-0.4, IMP-1.7, IMP-D12 · Intention i-e5b961b8 · 2026-11-21
+
+## CallLink
+
+Reason: Represent proven parents by lane and native call ID
+
+Origins: IMP-0.9, IMP-D12 · Intention i-7d8f8cd7 · 2026-11-21
 
