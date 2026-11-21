@@ -125,7 +125,13 @@ Removed by Intention i-e245baed · 2026-11-12
 
 ## <before Admission>
 
-Reason: Use the same installation lease to protect Build recovery inputs and stage its private module in both consumers.
+Reason: Hold the admission gate for bounded import reads without acquiring a writer permit
 
-Origins: ARC-4.4, ARC-4.5 · Intention i-e245baed · 2026-11-12
+Origins: IMP-0.19, ARC-4.4 · Intention i-f2f30b63 · 2026-11-21
+
+## Admission.import_read
+
+Reason: Hold the admission gate for bounded import reads without acquiring a writer permit
+
+Origins: IMP-0.19, ARC-4.4 · Intention i-f2f30b63 · 2026-11-21
 
