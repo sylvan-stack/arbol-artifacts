@@ -5,9 +5,9 @@ role: authored
 
 ## <before _ready>
 
-Reason: Qualify real packaged imports, replay and the populated fingerprint migration on disposable state
+Reason: Exercise real import refusal, maintenance, interruption and archive fault boundaries on disposable state
 
-Origins: IMP-0.1, IMP-0.11, IMP-0.12, IMP-0.13, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-5bae89b2 · 2026-11-21
+Origins: IMP-0.2, IMP-0.13, IMP-0.14, IMP-0.19, IMP-0.21, IMP-0.22 · Intention i-eb527e9d · 2026-11-21
 
 ## <end>
 
@@ -185,13 +185,37 @@ Origins: IMP-0.1, IMP-0.11, IMP-0.12, IMP-0.13, IMP-0.14, IMP-0.15, IMP-0.19, IM
 
 ## main
 
-Reason: Qualify real packaged imports, replay and the populated fingerprint migration on disposable state
+Reason: Exercise real import refusal, maintenance, interruption and archive fault boundaries on disposable state
 
-Origins: IMP-0.1, IMP-0.11, IMP-0.12, IMP-0.13, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-5bae89b2 · 2026-11-21
+Origins: IMP-0.2, IMP-0.13, IMP-0.14, IMP-0.19, IMP-0.21, IMP-0.22 · Intention i-eb527e9d · 2026-11-21
 
 ## positive
 
 Reason: Qualify real packaged imports, replay and the populated fingerprint migration on disposable state
 
 Origins: IMP-0.1, IMP-0.11, IMP-0.12, IMP-0.13, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-5bae89b2 · 2026-11-21
+
+## Qualification.import_child
+
+Reason: Exercise real import refusal, maintenance, interruption and archive fault boundaries on disposable state
+
+Origins: IMP-0.2, IMP-0.13, IMP-0.14, IMP-0.19, IMP-0.21, IMP-0.22 · Intention i-eb527e9d · 2026-11-21
+
+## Qualification.sessions
+
+Reason: Exercise real import refusal, maintenance, interruption and archive fault boundaries on disposable state
+
+Origins: IMP-0.2, IMP-0.13, IMP-0.14, IMP-0.19, IMP-0.21, IMP-0.22 · Intention i-eb527e9d · 2026-11-21
+
+## _outcomes
+
+Reason: Exercise real import refusal, maintenance, interruption and archive fault boundaries on disposable state
+
+Origins: IMP-0.2, IMP-0.13, IMP-0.14, IMP-0.19, IMP-0.21, IMP-0.22 · Intention i-eb527e9d · 2026-11-21
+
+## negative
+
+Reason: Exercise real import refusal, maintenance, interruption and archive fault boundaries on disposable state
+
+Origins: IMP-0.2, IMP-0.13, IMP-0.14, IMP-0.19, IMP-0.21, IMP-0.22 · Intention i-eb527e9d · 2026-11-21
 
