@@ -11,15 +11,15 @@ Origins: ARC-4.1, ARC-4.8 · Intention i-de10fbd4 · 2026-11-12
 
 ## build_component
 
-Reason: Record the Build layout independently from its schema declaration, preserving readability of existing records.
+Reason: Bind the canonical release reservation to a private Build and route ordinary Browser starts before any registry inspection
 
-Origins: ARC-5.6 · Intention i-1c7ef6e6 · 2026-11-19
+Origins: BRW-0.12, OG-3 · Intention i-5fd3d205 · 2026-11-21
 
 ## <before now>
 
-Reason: Select stable Trunks only from Applications and preserve installed runtime use guards during registry maintenance
+Reason: Bind the canonical release reservation to a private Build and route ordinary Browser starts before any registry inspection
 
-Origins: FOR-2.6 · Intention i-0775d715 · 2026-11-20
+Origins: BRW-0.12, OG-3 · Intention i-5fd3d205 · 2026-11-21
 
 ## launcher_source
 
@@ -158,4 +158,22 @@ Origins: BRW-0.9, OG-3 · Intention i-42550058 · 2026-11-21
 Reason: Keep production Browser Build numbers unique under the canonical registry writer lock after payload pruning.
 
 Origins: BRW-0.9, OG-3 · Intention i-42550058 · 2026-11-21
+
+## browser_release_allocation
+
+Reason: Bind the canonical release reservation to a private Build and route ordinary Browser starts before any registry inspection
+
+Origins: BRW-0.12, OG-3 · Intention i-5fd3d205 · 2026-11-21
+
+## build_allocated
+
+Reason: Bind the canonical release reservation to a private Build and route ordinary Browser starts before any registry inspection
+
+Origins: BRW-0.12, OG-3 · Intention i-5fd3d205 · 2026-11-21
+
+## release_artifact
+
+Reason: Bind the canonical release reservation to a private Build and route ordinary Browser starts before any registry inspection
+
+Origins: BRW-0.12, OG-3 · Intention i-5fd3d205 · 2026-11-21
 

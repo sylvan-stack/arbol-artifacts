@@ -5,13 +5,13 @@ role: authored
 
 ## <before unicode_text>
 
-Reason: Reject temporary builds and releases that target the protected registry or installed paths
+Reason: Bind the canonical release reservation to a private Build and route ordinary Browser starts before any registry inspection
 
-Origins: FOR-2.5 · Intention i-71f99122 · 2026-11-20
+Origins: BRW-0.12, OG-3 · Intention i-5fd3d205 · 2026-11-21
 
 ## main
 
-Reason: Reject temporary builds and releases that target the protected registry or installed paths
+Reason: Bind the canonical release reservation to a private Build and route ordinary Browser starts before any registry inspection
 
-Origins: FOR-2.5 · Intention i-71f99122 · 2026-11-20
+Origins: BRW-0.12, OG-3 · Intention i-5fd3d205 · 2026-11-21
 

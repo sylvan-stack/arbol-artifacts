@@ -17,9 +17,9 @@ Origins: ARC-4.3 · Intention i-62e4abb1 · 2026-11-12
 
 ## launch
 
-Reason: Resolve the signed stable app executable independently of its registry folder
+Reason: Bind the canonical release reservation to a private Build and route ordinary Browser starts before any registry inspection
 
-Origins: FOR-2.4 · Intention i-23d4d346 · 2026-11-20
+Origins: BRW-0.12, OG-3 · Intention i-5fd3d205 · 2026-11-21
 
 ## backend_fits
 
@@ -29,9 +29,9 @@ Origins: ARC-4.1, ARC-4.3, ARC-4.8 · Intention i-d1b0e71e · 2026-11-12
 
 ## <before inside>
 
-Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
+Reason: Bind the canonical release reservation to a private Build and route ordinary Browser starts before any registry inspection
 
-Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
+Origins: BRW-0.12, OG-3 · Intention i-5fd3d205 · 2026-11-21
 
 ## code_name
 
