@@ -5,21 +5,21 @@ role: authored
 
 ## <before MessageRow>
 
-Reason: Project Driver tool shapes and byte-bounded stored results while preserving raw archive inputs
+Reason: Assemble import-only Exchange route, failure outcome and a single immutable run
 
-Origins: IMP-0.6, IMP-0.10, IMP-0.20, IMP-0.21, DRV-2.22 · Intention i-9890ea41 · 2026-11-21
+Origins: IMP-0.4, IMP-0.8, IMP-0.9, IMP-0.20, IMP-1.7, IMP-D7 · Intention i-a7fdb47f · 2026-11-21
 
 ## MappedSegment
 
-Reason: Keep nested tool calls with their parent Exchange and project dense shared positions
+Reason: Assemble import-only Exchange route, failure outcome and a single immutable run
 
-Origins: IMP-0.6, IMP-0.7, IMP-0.9, IMP-D3, IMP-D23 · Intention i-3a1cec31 · 2026-11-21
+Origins: IMP-0.4, IMP-0.8, IMP-0.9, IMP-0.20, IMP-1.7, IMP-D7 · Intention i-a7fdb47f · 2026-11-21
 
 ## MappedSession
 
-Reason: Project stored text and recursively preserve valid native JSON with content-free refusals
+Reason: Assemble import-only Exchange route, failure outcome and a single immutable run
 
-Origins: IMP-0.20, IMP-0.21 · Intention i-2aa23768 · 2026-11-21
+Origins: IMP-0.4, IMP-0.8, IMP-0.9, IMP-0.20, IMP-1.7, IMP-D7 · Intention i-a7fdb47f · 2026-11-21
 
 ## MessageRow
 
@@ -35,9 +35,9 @@ Origins: IMP-0.4, IMP-0.5, IMP-0.8, IMP-0.20 · Intention i-9e425914 · 2026-11-
 
 ## map_session
 
-Reason: Project Driver tool shapes and byte-bounded stored results while preserving raw archive inputs
+Reason: Assemble import-only Exchange route, failure outcome and a single immutable run
 
-Origins: IMP-0.6, IMP-0.10, IMP-0.20, IMP-0.21, DRV-2.22 · Intention i-9890ea41 · 2026-11-21
+Origins: IMP-0.4, IMP-0.8, IMP-0.9, IMP-0.20, IMP-1.7, IMP-D7 · Intention i-a7fdb47f · 2026-11-21
 
 ## stored_text
 
@@ -77,9 +77,9 @@ Origins: IMP-0.6, IMP-0.7, IMP-0.9, IMP-D3, IMP-D23 · Intention i-3a1cec31 · 2
 
 ## _map_turn
 
-Reason: Project Driver tool shapes and byte-bounded stored results while preserving raw archive inputs
+Reason: Assemble import-only Exchange route, failure outcome and a single immutable run
 
-Origins: IMP-0.6, IMP-0.10, IMP-0.20, IMP-0.21, DRV-2.22 · Intention i-9890ea41 · 2026-11-21
+Origins: IMP-0.4, IMP-0.8, IMP-0.9, IMP-0.20, IMP-1.7, IMP-D7 · Intention i-a7fdb47f · 2026-11-21
 
 ## _split_turn
 
@@ -152,4 +152,28 @@ Origins: IMP-0.6, IMP-0.10, IMP-0.20, IMP-0.21, DRV-2.22 · Intention i-9890ea41
 Reason: Project Driver tool shapes and byte-bounded stored results while preserving raw archive inputs
 
 Origins: IMP-0.6, IMP-0.10, IMP-0.20, IMP-0.21, DRV-2.22 · Intention i-9890ea41 · 2026-11-21
+
+## MappedSegment.run_for
+
+Reason: Assemble import-only Exchange route, failure outcome and a single immutable run
+
+Origins: IMP-0.4, IMP-0.8, IMP-0.9, IMP-0.20, IMP-1.7, IMP-D7 · Intention i-a7fdb47f · 2026-11-21
+
+## RunRow
+
+Reason: Assemble import-only Exchange route, failure outcome and a single immutable run
+
+Origins: IMP-0.4, IMP-0.8, IMP-0.9, IMP-0.20, IMP-1.7, IMP-D7 · Intention i-a7fdb47f · 2026-11-21
+
+## _failure
+
+Reason: Assemble import-only Exchange route, failure outcome and a single immutable run
+
+Origins: IMP-0.4, IMP-0.8, IMP-0.9, IMP-0.20, IMP-1.7, IMP-D7 · Intention i-a7fdb47f · 2026-11-21
+
+## _run_usage
+
+Reason: Assemble import-only Exchange route, failure outcome and a single immutable run
+
+Origins: IMP-0.4, IMP-0.8, IMP-0.9, IMP-0.20, IMP-1.7, IMP-D7 · Intention i-a7fdb47f · 2026-11-21
 
