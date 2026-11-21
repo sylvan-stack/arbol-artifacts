@@ -5,9 +5,9 @@ role: authored
 
 ## <before _id>
 
-Reason: Check the same Codex rollout identity at discovery, projection and archive nomination
+Reason: Expose native Codex roots before transcript projection
 
-Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13, IMP-D34 · Intention i-e3d5bf82 · 2026-11-21
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21, IMP-D34 · Intention i-a7428ca1 · 2026-11-21
 
 ## Rollout
 
@@ -521,13 +521,25 @@ Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16, IMP-D1
 
 ## read
 
-Reason: Expose the Codex reader through the shared importer form
+Reason: Expose native Codex roots before transcript projection
 
-Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16, IMP-D19, IMP-D20 · Intention i-1a28a66c · 2026-11-19
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21, IMP-D34 · Intention i-a7428ca1 · 2026-11-21
 
 ## _observed_target
 
 Reason: Check the same Codex rollout identity at discovery, projection and archive nomination
 
 Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13, IMP-D34 · Intention i-e3d5bf82 · 2026-11-21
+
+## _entries
+
+Reason: Expose native Codex roots before transcript projection
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21, IMP-D34 · Intention i-a7428ca1 · 2026-11-21
+
+## catalogue
+
+Reason: Expose native Codex roots before transcript projection
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21, IMP-D34 · Intention i-a7428ca1 · 2026-11-21
 
