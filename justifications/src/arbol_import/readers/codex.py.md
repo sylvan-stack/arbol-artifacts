@@ -11,15 +11,15 @@ Origins: IMP-0.9, IMP-D23 · Intention i-6d0938df · 2026-11-21
 
 ## Rollout
 
-Reason: Assign Codex sub-agent work to root turns
+Reason: Retain verified Codex rollout alias targets
 
-Origins: IMP-1.1, IMP-1.6, IMP-1.7, IMP-0.7, IMP-0.9, IMP-D3, IMP-D12, IMP-D19, IMP-D23 · Intention i-dddeb829 · 2026-11-19
+Origins: IMP-0.13, IMP-1.9, IMP-D21 · Intention i-ff5d047f · 2026-11-21
 
 ## _discover
 
-Reason: Inventory Codex roots, descendants and rollout copies
+Reason: Retain verified Codex rollout alias targets
 
-Origins: IMP-1.3, IMP-1.4, IMP-1.8, IMP-1.11, IMP-D13, IMP-D16, IMP-D21 · Intention i-14a1098b · 2026-11-19
+Origins: IMP-0.13, IMP-1.9, IMP-D21 · Intention i-ff5d047f · 2026-11-21
 
 ## _header
 
@@ -41,9 +41,9 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.9, IMP-1.11, IMP-0.2, IMP-D10, IMP-D13 · Inten
 
 ## _records
 
-Reason: Discover and validate Codex rollout headers from the supplied home
+Reason: Retain verified Codex rollout alias targets
 
-Origins: IMP-1.1, IMP-1.2, IMP-1.9, IMP-1.11, IMP-0.2, IMP-D10, IMP-D13 · Intention i-21b8f614 · 2026-11-19
+Origins: IMP-0.13, IMP-1.9, IMP-D21 · Intention i-ff5d047f · 2026-11-21
 
 ## _rollout_target
 
@@ -209,9 +209,9 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16
 
 ## _body
 
-Reason: Join Codex tool calls with their native results
+Reason: Retain verified Codex rollout alias targets
 
-Origins: IMP-1.1, IMP-1.4, IMP-1.6, IMP-0.7, IMP-0.10, IMP-D12 · Intention i-aa268852 · 2026-11-19
+Origins: IMP-0.13, IMP-1.9, IMP-D21 · Intention i-ff5d047f · 2026-11-21
 
 ## _conversation
 
@@ -503,9 +503,9 @@ Origins: IMP-1.8, IMP-1.9, IMP-1.11, IMP-1.12, IMP-0.5, IMP-0.13, IMP-0.15, IMP-
 
 ## _session_archive
 
-Reason: Expose the Codex reader through the shared importer form
+Reason: Retain verified Codex rollout alias targets
 
-Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16, IMP-D19, IMP-D20 · Intention i-1a28a66c · 2026-11-19
+Origins: IMP-0.13, IMP-1.9, IMP-D21 · Intention i-ff5d047f · 2026-11-21
 
 ## _assemble_turns
 
