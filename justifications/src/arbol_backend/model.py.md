@@ -5,9 +5,9 @@ role: authored
 
 ## <before Refused>
 
-Reason: Require verified layout and schema fit for every runtime start, including explicitly named Builds.
+Reason: Validate the import command’s closed public argument vocabulary
 
-Origins: ARC-5.6, ARC-4.3 · Intention i-9e38ebde · 2026-11-19
+Origins: IMP-0.1, IMP-0.3, IMP-0.13, IMP-0.21 · Intention i-2281eb85 · 2026-11-21
 
 ## Identity
 
@@ -50,4 +50,16 @@ Origins: ARC-4.1, ARC-4.4 · Intention i-fd7b43a3 · 2026-11-12
 Removed: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
 
 Removed by Intention i-6607cbec · 2026-11-12
+
+## ImportOptions
+
+Reason: Validate the import command’s closed public argument vocabulary
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.13, IMP-0.21 · Intention i-2281eb85 · 2026-11-21
+
+## parse_import
+
+Reason: Validate the import command’s closed public argument vocabulary
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.13, IMP-0.21 · Intention i-2281eb85 · 2026-11-21
 
