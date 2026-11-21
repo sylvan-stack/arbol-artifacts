@@ -5,6 +5,26 @@ status: accepted
 ---
 # Builds · 00 Builds and versions
 
+## Stable promotion and requested verification
+
+For the [unit-only stable promotion policy](/Users/msix/Artifacts/goals/OG-6.md),
+a non-Driver recipe can declare `promotionUnitTests`, an ordered list of
+distinct names from its `kind: "unit"` checks. `[]` explicitly declares an
+empty unit selection. When this field is present, Common Build runs the
+untyped artifact checks followed by the selected units. It records the
+selection and every executed check in the Build record. A working or
+withdrawn record requires a passing result for each selected unit. If the
+selection was explicitly empty, the recorded check list may also be empty.
+
+On a recipe with this field, `arbol-builds build --check <name>` adds one
+declared check to a separately requested verification run. Common Build
+refuses an unknown name before reserving output. Existing recipes without
+the field keep their original gates, including the standalone Driver gates.
+The production Browser recipe requires an explicit selection. A normal
+promotion uses its unit selection and the signed artifact and installer
+procedures. See the [operational build policy](/Users/msix/Artifacts/forester/operations/sylvan-stack-builds.md#build-and-promote).
+
+
 Every component of Arbol 2 is built into numbered [Builds](../GLOSSARY.md#build). The Builds of a component are kept side by side on the machine and listed in one registry. Whoever starts a component gets its newest eligible working Build, or names another one; for `arbol` and `arbol-root`, eligibility is restricted to the selected [Root](../architecture/01-roots.md). This specification states the numbering, the registry, the rule for the default and how a Build or a Root is named on the command line. It matters because version 1 could run only what was installed last, named its builds with a timestamp nobody could type, and grew upgrade machinery larger than the product. Here a Build is a folder and a number, and choosing one means reading a few small files.
 
 It follows the conventions of the [Driver Contract](../driver-contract/README.md#conventions).
@@ -458,6 +478,7 @@ interface BuildRecord {                // build.json
   source: { repository: string; branch: string; commit: string; uncommittedChanges: boolean };
   entry?: string;                      // the program the launcher starts, relative to the Build's folder
   checks: Array<{ name: string; passed: boolean }>;
+  promotionUnitTests?: string[];        // exact declared promotion unit selection
   root?: string;                       // required for arbol and arbol-root; absent for the App, Drivers and Trunks
   contract?: number;                   // a Driver: Driver Contract; arbol-classifier: its own contract
   rootContracts?: number[];            // required for a Trunk: the versions of the Root Contract it implements, [1]
@@ -492,6 +513,7 @@ interface BuildDescription {           // arbol-build.json
   build: string[];                     // nonempty POSIX shell commands
   entry: string;                       // executable within the Build
   checks: Array<{ name: string; command: string; kind?: "unit" | "contract" | "live" }>;
+  promotionUnitTests?: string[];        // ordered names of declared unit checks
   contract?: number;                   // required positive whole number for a Driver; absent for a Trunk (RCT-D3)
   rootContracts?: number[];            // required for a Trunk: the versions of the Root Contract it implements, distinct positive whole numbers, at least one; absent for every other component
   dataFormat?: number;                 // required positive whole number for a Driver
