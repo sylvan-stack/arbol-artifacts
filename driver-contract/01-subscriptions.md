@@ -5,15 +5,21 @@ status: accepted
 ---
 # Driver Contract · 01 Subscriptions
 
-A [Subscription](../GLOSSARY.md#subscription) is one signed-in account with a vendor. This specification states what every Driver offers for managing Subscriptions: creating them, signing in and out, telling whether an account still works, reading its usage and listing its models. It matters because a Subscription is the unit that gets billed and rate-limited, and because an account that Arbol believes is signed in but is not produces failures that look like vendor outages.
+A [Subscription](../GLOSSARY.md#subscription) is a local binding to a native harness account. This specification states what every Driver offers for managing Subscriptions: creating them, signing in and out, telling whether an account still works, reading its usage and listing its models. It matters because a Subscription is the unit that gets billed and rate-limited, and because an account that Arbol believes is signed in but is not produces failures that look like vendor outages.
 
 ## Contract 2 amendment — accepted 20 October 2026
 
 The accepted [Pi specifications](../../sagas/pi-integration-specs/overview.md) and [A1/A2 cutover](../../sagas/pi-integration-specs/cutover.md) add Pi for z.ai Coding Plan and DeepSeek using existing OpenCode-owned keys. Claude serves Anthropic subscriptions only. P5 compatibility qualification is complete. The operative requirements below target contract 2; dated probes, legacy maps, decisions and Build verification remain historical evidence of their stated versions, not contract-2 verification. Installed routes change only after the coordinated release and migration gates. No automatic fallback or key migration.
 
+## Harness-owned authentication · owner decision, 21 November 2026
+
+The [Driver boundary](00-overview-and-boundary.md#harness-owned-authentication--owner-decision-21-november-2026) and [OG-5](/Users/msix/Artifacts/goals/OG-5.md) govern every Subscription. A Subscription records a local reference to a harness account. Reading status and persisting nonsecret metadata do not authorize an authentication attempt.
+
+The owner completes sign-in or sign-out in the harness. Arbol’s existing `subscriptions sign-in` entry point may confirm or attach an already signed-in, eligible native account and report `done` or `failed`. If action is needed, its remedy directs the owner to the harness. `check` may refresh nonsecret status. No Arbol command or UI presents an authentication URL, forwards an authorization code or requests a credential under this boundary. Old wire fields and credential-taking routes belong to historical Builds.
+
 ## Scope
 
-Covered: the Subscription record and its states, every Subscription operation, the sign-in exchange with the caller, credential rules, usage reports, model catalogs.
+Covered: the Subscription record and its states, every Subscription operation, native account attachment, usage reports and model catalogues.
 
 Not covered: what each vendor tool is asked to do ([Claude Driver](../../arbol-claude-driver/specs/01-subscriptions.md), [Codex Driver](../../arbol-codex-driver/specs/01-subscriptions.md)); using a Subscription for inference, including what happens when a run meets a rate limit (DRV-2, DRV-4); which Subscription a chat uses, and which models are enabled, which stay with the caller's route settings; default models and efforts, which are in the Driver's settings file (DRV-0); the named-secret store and integration credentials, which are not Subscriptions.
 
@@ -36,7 +42,7 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 | State | Meaning | Usable for inference |
 |---|---|---|
 | `signed_out` | No credential | No |
-| `signing_in` | A sign-in attempt is pending | No |
+| `signing_in` | An older Build recorded a pending sign-in. An OG-5 route consults native status on refresh | No |
 | `signed_in` | A credential is stored and the last check or use did not reject it | Yes |
 | `needs_attention` | A credential is stored and the vendor rejected it. The record carries the reason and what to do | No |
 
@@ -61,7 +67,9 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 - `arbol_deprecated_v1:daemons/core/arbol_core/db/subscriptions.py#set_subscription_auth`
 - `arbol_deprecated_v1:daemons/core/arbol_core/rpc/subscription.py#_await_login_completion`
 
-### Signing in
+### Historical sign-in exchange
+
+The following exchange predates OG-5.
 
 Signing in is an exchange in steps. The Driver says what the caller must show or collect; the caller never knows which vendor mechanism is behind it.
 
@@ -91,13 +99,17 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 - `arbol_deprecated_v1:daemons/core/arbol_core/rpc/subscription.py#_set_token`
 - `arbol_deprecated_v1:daemons/core/arbol_core/universe_import.py#import_from_auth_json`
 
-### Native-managed key bindings
+### Historical native-managed key bindings
+
+The existing key bridges below predate OG-5. A native binding under OG-5 may use a nonsecret identifier only.
 
 Pi's `kimi-coding` family extends this attachment mechanism to an existing Pi-managed OAuth login (owner request, 26 October 2026; PI-1.7). It advertises `vendor_login`, pins the native account identity and local revision, and delegates refresh to Pi's normal locked credential store. The Driver does not store or delete OAuth tokens, initiate a replacement login, or fall back to an API key. Its sign-in attaches the current account after a qualified non-inference check; account changes require explicit reattachment. Existing native-managed-key families retain their rules below.
 
 A native-managed-key family attaches a specific credential ID/revision in its native owner's store and validates it without inference. It never offers `store_secret`, migrates the key or deletes a rejected native credential. Its supported targeted export is captured in a private pipe; the Driver's public interface never exports it. Resolve once for a run, with no fallback to another ID/account. Transient private memory/pipes are allowed, OS arguments and durable copies are not. Bound records refuse sign-out/removal even with force; unbound additional records remain removable. These mode-specific rules refine the generic key rules below; Keychain-managed and native-login modes keep their existing behaviour. PI-1 specifies OpenCode/Pi binding and rotation.
 
-### Credentials
+### Historical credential handling
+
+The credential access in this section predates OG-5 and is superseded by DRV-0.3 and DRV-0.14.
 
 `anthropic` and `chatgpt` use the owner's own sign-in of the tool, which the tool keeps and renews in its default home ([DRV-0](00-overview-and-boundary.md#the-vendor-tools-home)). The Driver does not copy it. A further Subscription of the Anthropic family uses a long-lived token instead: its sign-in runs `claude setup-token` in a temporary home that is removed afterwards, so the owner's own sign-in is never touched, and the Driver keeps the token like a key. A token is not renewed by the tool; when the vendor rejects it, the Subscription needs attention and is signed in again. A key or a token is in the Keychain, one item per Subscription, under the Driver's own service name with the Subscription's identifier as the account. The caller or the owner puts it there. The Driver reads it there and nowhere else: a key is never an argument, never on standard input and never in a file. A Driver that runs with another state directory than the default one uses a service name of its own for it: the usual name, a dot, and the first 12 hexadecimal digits of the SHA-256 of that directory's real path. A test or a second installation therefore never touches the owner's items. The owner can name another source in the settings file: a command that prints the key. The Driver then runs that command whenever it needs the key and keeps what it prints nowhere.
 
@@ -162,18 +174,18 @@ Current records and source/package provenance: `~/Artifacts/arbol-codex-driver/r
 | ID | A Driver must… | Origin | Verified by |
 |---|---|---|---|
 | DRV-1.1 | have one Subscription per vendor family from the start, named after the family, with one of them as its default; let further ones be created, relabelled and removed through its commands | Changed | Claude Python: `C1`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C1`, `Accounts.test_local_concurrent_creation_update_preserves_owner_settings_and_remove_isolated` |
-| DRV-1.2 | give every Subscription its own credential and apply it to its own runs only: the owner's own sign-in of the tool for `anthropic` and `chatgpt`, and for other families a token/key in the environment or private memory/pipes of that run's owned child alone. Native-managed-key families attach their pinned native credential without copying or replacing it. Refuse to create a second Subscription of the ChatGPT family with `invalid_input`, except the test Subscription `test-chatgpt` (DRV-5), which alone keeps a home of its own | Changed | contract |
-| DRV-1.3 | never return, log or emit a credential value. No public Driver operation exports one; internal targeted native-owner resolution is privately captured | Kept | Claude Python: `C7`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C7`, `C37`, `Accounts.test_unsigned_refusals_and_malformed_state_do_not_start_vendor_or_disclose_contents`, `EventPrivacy.test_every_event_and_text_output_scrubs_nested_private_values`, `EventPrivacy.test_split_values_and_open_suffixes_are_hidden_in_all_delta_streams` |
-| DRV-1.4 | check a key when it reads it at sign-in and reject anything but printable ASCII without spaces, naming up to three offending characters | Kept | Claude Python: `C3`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C3` |
-| DRV-1.5 | keep one pending sign-in per Subscription; a new one replaces it; an unfinished one ends after five minutes and leaves the Subscription `signed_out` | Kept | Claude Python: `C2`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C2`, `Accounts.test_login_replacement_cancels_pending_and_sign_out_clears_credentials` |
-| DRV-1.6 | tell the caller which hosts a sign-in page may visit, so the caller's window can refuse all others | Kept | Claude Python: `C2`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C2` |
+| DRV-1.2 | bind a Subscription to an eligible native account using only supported nonsecret selection. Refuse any selection the harness cannot honor before inference, without falling back to another account | Changed by OG-5 | pending native-boundary qualification |
+| DRV-1.3 | never obtain, return, log or emit a credential value | Changed by OG-5 | pending native-boundary qualification |
+| DRV-1.4 | leave key validation to the harness | Changed by OG-5 | pending native-boundary qualification |
+| DRV-1.5 | leave authentication attempts and their lifetime to the harness | Changed by OG-5 | pending native-boundary qualification |
+| DRV-1.6 | direct the owner to sign in in the harness when a native account is unavailable | Changed by OG-5 | pending native-boundary qualification |
 | DRV-1.7 | move a Subscription to `needs_attention`, with the reason and the remedy, as soon as the vendor rejects its credential in any operation or run | Changed | Claude Python: `C4`, `C28`; Codex Python: `C4`, `Accounts.test_usage_last_good_cache_rejection_and_catalog_fallback`, `ErrorRuns.test_rejected_retry_before_turn_start_reply_interrupts_accepted_turn`, `Foundation.test_catalog_pagination_fallback_usage_and_unknown_identifiers` |
-| DRV-1.8 | never hold a durable copy of a credential owned/renewed by a native tool; a bound native-managed key may be resolved transiently for its operation | Changed | Claude Python: `C7`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C7`, `Accounts.test_login_replacement_cancels_pending_and_sign_out_clears_credentials` |
-| DRV-1.10 | serialise sign-in, sign-out and removal of one Subscription across processes | Kept | Claude Python: `C38`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C38`, `Accounts.test_login_replacement_cancels_pending_and_sign_out_clears_credentials` |
-| DRV-1.11 | refuse a run and a request for the model catalog for a Subscription that is not `signed_in`, with the error `not_signed_in`, before any vendor tool is started. `check` works in every state but `signed_out`, and `usage` answers a Subscription that is not signed in with the outcome `needs_sign_in` | Changed | Claude Python: `C4`, `C40`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C4`, `C40`, `Accounts.test_unsigned_refusals_and_malformed_state_do_not_start_vendor_or_disclose_contents` |
-| DRV-1.12 | on supported sign-out remove the Driver-owned credential, account details and stored usage report; refuse bound native-owned modes even with force. Sign-out and removal are refused while a run uses the Subscription, unless forced, in which case the runs are cancelled first | Changed | Claude Python: `C5`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C5`, `Accounts.test_login_replacement_cancels_pending_and_sign_out_clears_credentials` |
-| DRV-1.13 | on removal delete the Subscription's Keychain item. Refuse to sign out or remove a Subscription that uses the owner's own sign-in or a bound native-managed key, including with force, with `invalid_input` (DRV-D43) | New | contract |
-| DRV-1.14 | answer `list` from stored state without contacting a vendor, and contact a vendor only in `check`, `usage`, `models` and sign-in | New | Claude Python: `C1`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C1` |
+| DRV-1.8 | leave all native credential reads and writes, including transient use, to the harness | Changed by OG-5 | pending native-boundary qualification |
+| DRV-1.10 | serialize writes to a Subscription’s local binding and record across processes | Changed by OG-5 | pending native-boundary qualification |
+| DRV-1.11 | refuse inference and model catalogue access where the requested native account cannot be used. Permit a non-inference status refresh and report `not_signed_in` when the harness requires sign-in | Changed by OG-5 | pending native-boundary qualification |
+| DRV-1.12 | leave native sign-out to the harness. A local disconnect, where supported, changes only Arbol’s binding and nonsecret metadata and keeps the existing in-use protection | Changed by OG-5 | pending native-boundary qualification |
+| DRV-1.13 | remove only an eligible local binding and record. Never access native credentials during removal. Preserve protected default and bound-route refusals (DRV-D43) | Changed by OG-5 | pending native-boundary qualification |
+| DRV-1.14 | answer `list` from stored state. Use the harness for nonsecret `check`, `usage`, `models` and native account attachment metadata | Changed by OG-5 | pending native-boundary qualification |
 | DRV-1.15 | apply a partial update by changing only the fields given | Changed | Claude Python: `C1`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C1`, `Accounts.test_local_concurrent_creation_update_preserves_owner_settings_and_remove_isolated` |
 | DRV-1.16 | fetch usage only when asked; never poll | Kept | Claude Python: `C41`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C41` |
 | DRV-1.17 | report usage with one of the four outcomes; an unknown value is absent, never zero | Kept | Claude Python: `C41`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C41`, `Accounts.test_usage_last_good_cache_rejection_and_catalog_fallback`, `Foundation.test_catalog_pagination_fallback_usage_and_unknown_identifiers` |
@@ -183,9 +195,9 @@ Current records and source/package provenance: `~/Artifacts/arbol-codex-driver/r
 | DRV-1.21 | report per model the effort levels the vendor tool accepts, in the vendor's own words, where the tool exposes them | Changed | Claude Python: `C41`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C41`, `Foundation.test_catalog_pagination_fallback_usage_and_unknown_identifiers` |
 | DRV-1.22 | take account name, e-mail, organisation and plan only from the vendor and clear them at sign-out | Kept | Claude Python: `C41`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C41` |
 | DRV-1.23 | print the new record as the result of every command that changes a Subscription | New | Claude Python: `C1`, `C32`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C1`, `C32` |
-| DRV-1.24 | treat a Subscription recorded as `signing_in` whose `sign-in` command no longer runs as `signed_out` | New | Claude Python: `C6`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C6`, `Accounts.test_live_progress_dead_and_reused_owner_recovery` |
-| DRV-1.25 | carry a sign-in attempt in one `sign-in` command: steps as lines on standard output, the code of an `enter_code` step as a line on standard input, and the attempt cancelled when the command is ended | New | Claude Python: `C2`, `C6`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C2`, `C6`, `Accounts.test_login_replacement_cancels_pending_and_sign_out_clears_credentials` |
-| DRV-1.26 | read a key only from the source its settings file names for the Subscription. For the Keychain, which is the default: name the Subscription's item in the `store_secret` step, go on by itself once the item is filled, and remove from it a key that fails the check of DRV-1.4 or that the vendor rejects at sign-in. For a command: run it whenever the key is needed, keep what it prints only transiently in private operation memory/pipes, and fail sign-in on a refused key. For a bound native-managed key, attach/check its pinned ID without store_secret and never delete the native key | Changed | Claude Python: `C3`, `C32`, `test_runtime.StateTests`, `test_runtime.CompatibilityTests`; Codex Python: `C3`, `C32` |
+| DRV-1.24 | handle a retained obsolete `signing_in` record as local state. Consult native status for attachment. Do not resume its earlier authentication exchange | Changed by OG-5 | pending native-boundary qualification |
+| DRV-1.25 | use the existing `sign-in` command to confirm or attach an already signed-in native account where supported. Return success or a typed remedy without taking input or starting a sign-in | Changed by OG-5 | pending native-boundary qualification |
+| DRV-1.26 | refuse secret-backed attachment or import routes that would require credential access by an Arbol component | Changed by OG-5 | pending native-boundary qualification |
 | DRV-1.27 | say on each usage window what it counts, `tokens`, `credits` or `calls`, and leave the field absent rather than guess | New | contract: `C41`, `C30`; Claude Python: `C41`, `C30`, `test_runtime.CompatibilityTests.test_limit_report_windows_count_tokens_and_map_nothing_else`, `test_runtime.CompatibilityTests.test_key_validation_and_quota_math_resets_and_order` (CLD-1.21); Codex Python: `C41`, `C30`, `Foundation.test_usage_windows_carry_no_resource_the_app_server_does_not_state` (CDX-1.16: absent, the app server names no unit, CDX-D31); Pi: `C41`, `C30`, `test_allowance.Mapping.test_windows_say_what_they_count`, L6 (PI-1.5, PI-D46: `calls` for the five-hour window, `credits` for the monthly windows) |
 
 DRV-1.9 had a Driver renew a credential. It was withdrawn on 6 October 2026: the vendor tools renew their own logins and a key is never renewed, so no family has a credential a Driver could renew. Its number is not used again.
@@ -217,6 +229,7 @@ interface Family {
   settings: object;                 // JSON Schema of the family's settings, with defaults
 }
 
+// Legacy variants are decodable for old Builds. An OG-5 route emits done or failed.
 type SignIn =
   | { step: "open_url"; url: string; allowedHosts: string[]; userCode?: string; expiresAt: string }
   | { step: "enter_code"; prompt: string; expiresAt: string }
@@ -266,13 +279,13 @@ The commands, under the rules of the command line in [DRV-0](00-overview-and-bou
 | `subscriptions create` | `--family <family>`, `--label <text>`, optionally `--id <name>` | `Subscription` in state `signed_out` | No |
 | `subscriptions update <id>` | `--label <text>` | `Subscription` | No |
 | `subscriptions remove <id>` | `--force` | nothing | No |
-| `subscriptions sign-in <id>` | The code of an `enter_code` step, as one line on standard input: `{ "input": string }`. Never a secret. With the option `--by-code` the sign-in uses a code typed on another device, where the family has such a sign-in | One `SignIn` step per line; the last is `done` or `failed` | Yes |
-| `subscriptions sign-out <id>` | `--force` | `Subscription` | Where the vendor tool offers a sign-out |
+| `subscriptions sign-in <id>` | none | `done` for an eligible native account or `failed` with a remedy | Native status only |
+| `subscriptions sign-out <id>` | `--force` | Local detach where supported, or typed refusal | No |
 | `subscriptions check <id>` | none | `Subscription` | Yes, without inference |
 | `subscriptions usage <id>` | none | `UsageReport` | Yes |
 | `subscriptions models <id>` | none | `ModelCatalog` | Yes, or the vendor tool |
 
-A sign-in is cancelled by ending its command; there is no command to continue or cancel one from another invocation.
+Native authentication remains in the harness when Arbol commands end.
 
 Errors, from the list in DRV-4: `not_found`, `invalid_input`, `not_signed_in`, `credential_rejected`, `in_use`, `vendor_unavailable`, `tool_missing`, `tool_unsupported`, `unsupported`.
 
@@ -304,7 +317,7 @@ SYL-95 verification is recorded in the requirement-level `~/Artifacts/arbol/driv
 
 | ID | Question | Proposed default | Outcome |
 |---|---|---|---|
-| DRV-D43 | `anthropic` and `chatgpt` use the owner's own sign-in of the tool (DRV-D42). What do sign-out and removal do to them? | Both are refused with `invalid_input`, and the message says to sign out in the tool itself. Signing out would sign out every session of that tool on the Mac, the owner's own included. `sign-in` stays: it runs the tool's own sign-in in its default home, which is what the owner would do by hand. `check` reports what the tool says about its sign-in | Open: technical consequence of DRV-D42, proposed 19 October 2026 |
+| DRV-D43 | Who signs out the native account used by `anthropic` or `chatgpt`? | The harness. Arbol refuses sign-out and removal of these protected records with `invalid_input`. Nonsecret status remains available through the harness | Updated 21 November 2026 by the owner (OG-5) |
 | DRV-D6 | Does version 1's "Open in VS Code" for an account belong to a Driver? | No. It would need an operation that hands out a credential, which DRV-1.3 forbids. If wanted later, the caller can start an editor with the Subscription's home in its environment | Decided 6 October 2026 by the owner: no (SYL-39) |
 | DRV-D7 | How many Subscriptions per family must work in the first release? | The design allows any number. The first release is accepted with one per family; two accounts of one family running at once is a `live` check that may follow | Decided 6 October 2026 by the owner: further accounts of a family stay possible. One per family is enough for the first release |
 | DRV-D8 | Should per-run token and cost records be kept by the Driver? | No. A run reports its usage in its final event (DRV-2) and the caller keeps the history | Decided 6 October 2026 by the owner: the proposed default (SYL-40) |
