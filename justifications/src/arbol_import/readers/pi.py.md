@@ -245,9 +245,9 @@ Origins: IMP-1.6, IMP-1.8, IMP-1.9, IMP-0.2, IMP-D13, IMP-D29 · Intention i-de5
 
 ## _response
 
-Reason: Record each Pi response's native start and token counts, and take the model route from the first assistant
+Reason: Retain Pi cache-write presence and native input totals
 
-Origins: IMP-1.1, IMP-1.7, IMP-D12, PI-2.5 · Intention i-a66f6733 · 2026-11-19
+Origins: IMP-0.4, IMP-1.7 · Intention i-a559af24 · 2026-11-21
 
 ## _route
 
