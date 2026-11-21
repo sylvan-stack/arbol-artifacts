@@ -5,9 +5,9 @@ role: authored
 
 ## <before SessionFile>
 
-Reason: Bind Claude logs and projected sidecar reads to their archived identities
+Reason: Discover Claude session identities first and preserve accepted UUID context during lazy projection
 
-Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21, IMP-1.4 · Intention i-7cc29127 · 2026-11-21
 
 ## SessionFile
 
@@ -107,9 +107,9 @@ Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11
 
 ## _ordered_sessions
 
-Reason: Bind Claude logs and projected sidecar reads to their archived identities
+Removed: Discover Claude session identities first and preserve accepted UUID context during lazy projection
 
-Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
+Removed by Intention i-7cc29127 · 2026-11-21
 
 ## _read_records
 
@@ -515,9 +515,9 @@ Origins: IMP-1.1, IMP-1.11, IMP-0.21, IMP-D16 · Intention i-7abd097f · 2026-11
 
 ## read
 
-Reason: Bind Claude logs and projected sidecar reads to their archived identities
+Reason: Discover Claude session identities first and preserve accepted UUID context during lazy projection
 
-Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21, IMP-1.4 · Intention i-7cc29127 · 2026-11-21
 
 ## _result_blocks
 
@@ -548,4 +548,52 @@ Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11
 Reason: Bind Claude logs and projected sidecar reads to their archived identities
 
 Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
+
+## _Context
+
+Reason: Discover Claude session identities first and preserve accepted UUID context during lazy projection
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21, IMP-1.4 · Intention i-7cc29127 · 2026-11-21
+
+## _Context.__init__
+
+Reason: Discover Claude session identities first and preserve accepted UUID context during lazy projection
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21, IMP-1.4 · Intention i-7cc29127 · 2026-11-21
+
+## _Context._scan
+
+Reason: Discover Claude session identities first and preserve accepted UUID context during lazy projection
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21, IMP-1.4 · Intention i-7cc29127 · 2026-11-21
+
+## _Context.project
+
+Reason: Discover Claude session identities first and preserve accepted UUID context during lazy projection
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21, IMP-1.4 · Intention i-7cc29127 · 2026-11-21
+
+## _ScannedFile
+
+Reason: Discover Claude session identities first and preserve accepted UUID context during lazy projection
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21, IMP-1.4 · Intention i-7cc29127 · 2026-11-21
+
+## _entries
+
+Reason: Discover Claude session identities first and preserve accepted UUID context during lazy projection
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21, IMP-1.4 · Intention i-7cc29127 · 2026-11-21
+
+## _read_entry
+
+Reason: Discover Claude session identities first and preserve accepted UUID context during lazy projection
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21, IMP-1.4 · Intention i-7cc29127 · 2026-11-21
+
+## catalogue
+
+Reason: Discover Claude session identities first and preserve accepted UUID context during lazy projection
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21, IMP-1.4 · Intention i-7cc29127 · 2026-11-21
 
