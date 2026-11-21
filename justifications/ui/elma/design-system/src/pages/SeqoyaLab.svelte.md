@@ -5,9 +5,9 @@ role: authored
 
 ## <before style>
 
-Reason: Connect the shared provider controls to the signed app channel while preserving automatic usage reads.
+Reason: Import the compact Seqoya insignia from the published design source.
 
-Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
+Origins: BKD-3.17 · Intention i-50d3af33 · 2026-11-21
 
 ## script
 

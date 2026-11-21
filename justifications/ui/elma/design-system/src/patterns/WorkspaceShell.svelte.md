@@ -5,19 +5,19 @@ role: authored
 
 ## <before style>
 
-Reason: Bundle the simplified Willo Station and both workspace Insignia from the maintained design source.
+Reason: Import the compact Seqoya insignia from the published design source.
 
-Origins: BKD-3.21, BKD-3.17 · Intention i-59e18ab5 · 2026-11-20
+Origins: BKD-3.17 · Intention i-50d3af33 · 2026-11-21
 
 ## script
 
-Reason: Bundle the simplified Willo Station and both workspace Insignia from the maintained design source.
+Reason: Import the compact Seqoya insignia from the published design source.
 
-Origins: BKD-3.21, BKD-3.17 · Intention i-59e18ab5 · 2026-11-20
+Origins: BKD-3.17 · Intention i-50d3af33 · 2026-11-21
 
 ## style
 
-Reason: Bundle the simplified Willo Station and both workspace Insignia from the maintained design source.
+Reason: Import the compact Seqoya insignia from the published design source.
 
-Origins: BKD-3.21, BKD-3.17 · Intention i-59e18ab5 · 2026-11-20
+Origins: BKD-3.17 · Intention i-50d3af33 · 2026-11-21
 
