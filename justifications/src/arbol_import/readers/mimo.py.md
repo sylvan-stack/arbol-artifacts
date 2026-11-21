@@ -5,9 +5,9 @@ role: authored
 
 ## <before _unreadable>
 
-Reason: Expose the Mimo reader with session liveness and scoped failures
+Reason: Preserve the proven Mimo parent lane and call ID
 
-Origins: IMP-1.1, IMP-1.11, IMP-D16 · Intention i-814aa57d · 2026-11-19
+Origins: IMP-0.9, IMP-D31 · Intention i-82b22468 · 2026-11-21
 
 ## _copy_database
 
@@ -311,9 +311,9 @@ Origins: IMP-0.9, IMP-D31 · Intention i-2f32a64d · 2026-11-19
 
 ## _Launch
 
-Reason: Place Mimo actor lanes in their proven launch turn or native time fallback
+Reason: Preserve the proven Mimo parent lane and call ID
 
-Origins: IMP-0.9, IMP-D31 · Intention i-2f32a64d · 2026-11-19
+Origins: IMP-0.9, IMP-D31 · Intention i-82b22468 · 2026-11-21
 
 ## _actor_owners
 
@@ -329,15 +329,15 @@ Origins: IMP-0.9, IMP-D31 · Intention i-2f32a64d · 2026-11-19
 
 ## _items
 
-Reason: Project Mimo actor calls, last-turn failures and separate usage
+Reason: Preserve the proven Mimo parent lane and call ID
 
-Origins: IMP-1.6, IMP-1.7, IMP-D31 · Intention i-5e4913a7 · 2026-11-19
+Origins: IMP-0.9, IMP-D31 · Intention i-82b22468 · 2026-11-21
 
 ## _subagent
 
-Reason: Export Mimo session rows and bound the native archive references
+Reason: Preserve the proven Mimo parent lane and call ID
 
-Origins: IMP-1.8, IMP-0.13 · Intention i-d948f709 · 2026-11-19
+Origins: IMP-0.9, IMP-D31 · Intention i-82b22468 · 2026-11-21
 
 ## _archive
 
@@ -398,4 +398,10 @@ Origins: IMP-1.1, IMP-1.11, IMP-D16 · Intention i-814aa57d · 2026-11-19
 Reason: Expose the Mimo reader with session liveness and scoped failures
 
 Origins: IMP-1.1, IMP-1.11, IMP-D16 · Intention i-814aa57d · 2026-11-19
+
+## _Launch.link
+
+Reason: Preserve the proven Mimo parent lane and call ID
+
+Origins: IMP-0.9, IMP-D31 · Intention i-82b22468 · 2026-11-21
 
