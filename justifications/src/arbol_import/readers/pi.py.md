@@ -5,9 +5,9 @@ role: authored
 
 ## <before _iso_time>
 
-Reason: Bind Pi session and result files to archive observations
+Reason: Verify Pi catalogue headers before deferred transcript reads
 
-Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13, IMP-D29 · Intention i-ef2adb64 · 2026-11-21
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21 · Intention i-74b6daf8 · 2026-11-21
 
 ## _Header
 
@@ -275,13 +275,31 @@ Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Inte
 
 ## _read_session
 
-Reason: Bind Pi session and result files to archive observations
+Reason: Verify Pi catalogue headers before deferred transcript reads
 
-Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13, IMP-D29 · Intention i-ef2adb64 · 2026-11-21
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21 · Intention i-74b6daf8 · 2026-11-21
 
 ## read
 
-Reason: Expose the Pi reader and preserve selection, safe diagnostics and prefix classification when a session fails
+Reason: Verify Pi catalogue headers before deferred transcript reads
 
-Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16 · Intention i-64ffd77f · 2026-11-19
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21 · Intention i-74b6daf8 · 2026-11-21
+
+## _entries
+
+Reason: Verify Pi catalogue headers before deferred transcript reads
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21 · Intention i-74b6daf8 · 2026-11-21
+
+## _entry
+
+Reason: Verify Pi catalogue headers before deferred transcript reads
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21 · Intention i-74b6daf8 · 2026-11-21
+
+## catalogue
+
+Reason: Verify Pi catalogue headers before deferred transcript reads
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21 · Intention i-74b6daf8 · 2026-11-21
 
