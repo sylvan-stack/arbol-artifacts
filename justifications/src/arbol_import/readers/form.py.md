@@ -11,9 +11,9 @@ Removed by Intention i-503a5062 · 2026-11-18
 
 ## <before Usage>
 
-Reason: The reader contract the command finds by name
+Reason: Record one descriptor identity from native reads through archive nomination
 
-Origins: IMP-1.1 · Intention i-a2e8af26 · 2026-11-18
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-0.21, IMP-D13 · Intention i-40f76348 · 2026-11-21
 
 ## Response
 
@@ -107,9 +107,9 @@ Origins: IMP-1.1 · Intention i-abfaaef4 · 2026-11-18
 
 ## HomeFile
 
-Reason: Represent the verified physical archive input
+Reason: Record one descriptor identity from native reads through archive nomination
 
-Origins: IMP-0.13, IMP-D12 · Intention i-4c9225d6 · 2026-11-21
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-0.21, IMP-D13 · Intention i-40f76348 · 2026-11-21
 
 ## HomeFile.__post_init__
 
@@ -248,4 +248,46 @@ Origins: IMP-0.4, IMP-1.7, IMP-D12 · Intention i-e5b961b8 · 2026-11-21
 Reason: Represent proven parents by lane and native call ID
 
 Origins: IMP-0.9, IMP-D12 · Intention i-7d8f8cd7 · 2026-11-21
+
+## FileObservation
+
+Reason: Record one descriptor identity from native reads through archive nomination
+
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-0.21, IMP-D13 · Intention i-40f76348 · 2026-11-21
+
+## FileObservation.from_stat
+
+Reason: Record one descriptor identity from native reads through archive nomination
+
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-0.21, IMP-D13 · Intention i-40f76348 · 2026-11-21
+
+## FileObservation.modified_at
+
+Reason: Record one descriptor identity from native reads through archive nomination
+
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-0.21, IMP-D13 · Intention i-40f76348 · 2026-11-21
+
+## FileObservations
+
+Reason: Record one descriptor identity from native reads through archive nomination
+
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-0.21, IMP-D13 · Intention i-40f76348 · 2026-11-21
+
+## FileObservations.__init__
+
+Reason: Record one descriptor identity from native reads through archive nomination
+
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-0.21, IMP-D13 · Intention i-40f76348 · 2026-11-21
+
+## FileObservations.nominate
+
+Reason: Record one descriptor identity from native reads through archive nomination
+
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-0.21, IMP-D13 · Intention i-40f76348 · 2026-11-21
+
+## FileObservations.record
+
+Reason: Record one descriptor identity from native reads through archive nomination
+
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-0.21, IMP-D13 · Intention i-40f76348 · 2026-11-21
 
