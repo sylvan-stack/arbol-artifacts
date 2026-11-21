@@ -5,21 +5,21 @@ role: authored
 
 ## <before _id>
 
-Reason: Preserve the proven Codex parent lane and call ID
+Reason: Check the same Codex rollout identity at discovery, projection and archive nomination
 
-Origins: IMP-0.9, IMP-D23 · Intention i-6d0938df · 2026-11-21
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13, IMP-D34 · Intention i-e3d5bf82 · 2026-11-21
 
 ## Rollout
 
-Reason: Retain verified Codex rollout alias targets
+Reason: Check the same Codex rollout identity at discovery, projection and archive nomination
 
-Origins: IMP-0.13, IMP-1.9, IMP-D21 · Intention i-ff5d047f · 2026-11-21
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13, IMP-D34 · Intention i-e3d5bf82 · 2026-11-21
 
 ## _discover
 
-Reason: Retain verified Codex rollout alias targets
+Reason: Check the same Codex rollout identity at discovery, projection and archive nomination
 
-Origins: IMP-0.13, IMP-1.9, IMP-D21 · Intention i-ff5d047f · 2026-11-21
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13, IMP-D34 · Intention i-e3d5bf82 · 2026-11-21
 
 ## _header
 
@@ -41,9 +41,9 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.9, IMP-1.11, IMP-0.2, IMP-D10, IMP-D13 · Inten
 
 ## _records
 
-Reason: Retain verified Codex rollout alias targets
+Reason: Check the same Codex rollout identity at discovery, projection and archive nomination
 
-Origins: IMP-0.13, IMP-1.9, IMP-D21 · Intention i-ff5d047f · 2026-11-21
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13, IMP-D34 · Intention i-e3d5bf82 · 2026-11-21
 
 ## _rollout_target
 
@@ -209,9 +209,9 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.4, IMP-0.7, IMP-0.21, IMP-D10, IMP-D13, IMP-D16
 
 ## _body
 
-Reason: Retain verified Codex rollout alias targets
+Reason: Check the same Codex rollout identity at discovery, projection and archive nomination
 
-Origins: IMP-0.13, IMP-1.9, IMP-D21 · Intention i-ff5d047f · 2026-11-21
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13, IMP-D34 · Intention i-e3d5bf82 · 2026-11-21
 
 ## _conversation
 
@@ -503,9 +503,9 @@ Origins: IMP-1.8, IMP-1.9, IMP-1.11, IMP-1.12, IMP-0.5, IMP-0.13, IMP-0.15, IMP-
 
 ## _session_archive
 
-Reason: Retain verified Codex rollout alias targets
+Reason: Check the same Codex rollout identity at discovery, projection and archive nomination
 
-Origins: IMP-0.13, IMP-1.9, IMP-D21 · Intention i-ff5d047f · 2026-11-21
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13, IMP-D34 · Intention i-e3d5bf82 · 2026-11-21
 
 ## _assemble_turns
 
@@ -524,4 +524,10 @@ Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16, IMP-D1
 Reason: Expose the Codex reader through the shared importer form
 
 Origins: IMP-1.1, IMP-1.3, IMP-1.11, IMP-0.21, IMP-D10, IMP-D13, IMP-D16, IMP-D19, IMP-D20 · Intention i-1a28a66c · 2026-11-19
+
+## _observed_target
+
+Reason: Check the same Codex rollout identity at discovery, projection and archive nomination
+
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13, IMP-D34 · Intention i-e3d5bf82 · 2026-11-21
 
