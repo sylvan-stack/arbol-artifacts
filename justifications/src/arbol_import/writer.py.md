@@ -5,9 +5,9 @@ role: authored
 
 ## <before Previous>
 
-Reason: Check the installed fingerprint revision and use bounded native-key lookups for dry runs
+Reason: Apply imports as one admitted PostgreSQL transaction per native Chat Session
 
-Origins: IMP-0.14, IMP-0.19, IMP-0.22 · Intention i-dac72a9e · 2026-11-21
+Origins: IMP-0.4, IMP-0.12, IMP-0.14, IMP-0.17, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-0a8a8d6c · 2026-11-21
 
 ## ImportStore
 
@@ -41,9 +41,9 @@ Origins: IMP-0.14, IMP-0.19, IMP-0.22 · Intention i-dac72a9e · 2026-11-21
 
 ## ImportStore.previous
 
-Reason: Check the installed fingerprint revision and use bounded native-key lookups for dry runs
+Reason: Apply imports as one admitted PostgreSQL transaction per native Chat Session
 
-Origins: IMP-0.14, IMP-0.19, IMP-0.22 · Intention i-dac72a9e · 2026-11-21
+Origins: IMP-0.4, IMP-0.12, IMP-0.14, IMP-0.17, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-0a8a8d6c · 2026-11-21
 
 ## Previous
 
@@ -68,4 +68,46 @@ Origins: IMP-0.14, IMP-0.19, IMP-0.22 · Intention i-dac72a9e · 2026-11-21
 Reason: Check the installed fingerprint revision and use bounded native-key lookups for dry runs
 
 Origins: IMP-0.14, IMP-0.19, IMP-0.22 · Intention i-dac72a9e · 2026-11-21
+
+## ImportStore.apply
+
+Reason: Apply imports as one admitted PostgreSQL transaction per native Chat Session
+
+Origins: IMP-0.4, IMP-0.12, IMP-0.14, IMP-0.17, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-0a8a8d6c · 2026-11-21
+
+## WritePlan
+
+Reason: Apply imports as one admitted PostgreSQL transaction per native Chat Session
+
+Origins: IMP-0.4, IMP-0.12, IMP-0.14, IMP-0.17, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-0a8a8d6c · 2026-11-21
+
+## _create_chat
+
+Reason: Apply imports as one admitted PostgreSQL transaction per native Chat Session
+
+Origins: IMP-0.4, IMP-0.12, IMP-0.14, IMP-0.17, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-0a8a8d6c · 2026-11-21
+
+## _write_plan
+
+Reason: Apply imports as one admitted PostgreSQL transaction per native Chat Session
+
+Origins: IMP-0.4, IMP-0.12, IMP-0.14, IMP-0.17, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-0a8a8d6c · 2026-11-21
+
+## _write_segment
+
+Reason: Apply imports as one admitted PostgreSQL transaction per native Chat Session
+
+Origins: IMP-0.4, IMP-0.12, IMP-0.14, IMP-0.17, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-0a8a8d6c · 2026-11-21
+
+## rows_refused
+
+Reason: Apply imports as one admitted PostgreSQL transaction per native Chat Session
+
+Origins: IMP-0.4, IMP-0.12, IMP-0.14, IMP-0.17, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-0a8a8d6c · 2026-11-21
+
+## validate_rows
+
+Reason: Apply imports as one admitted PostgreSQL transaction per native Chat Session
+
+Origins: IMP-0.4, IMP-0.12, IMP-0.14, IMP-0.17, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-0a8a8d6c · 2026-11-21
 
