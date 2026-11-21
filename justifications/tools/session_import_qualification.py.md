@@ -215,7 +215,7 @@ Origins: IMP-0.2, IMP-0.13, IMP-0.14, IMP-0.19, IMP-0.21, IMP-0.22 · Intention 
 
 ## negative
 
-Reason: Exercise real import refusal, maintenance, interruption and archive fault boundaries on disposable state
+Reason: Prove that a damaged known Driver session is excluded by default and reports its projection failure when explicitly included.
 
-Origins: IMP-0.2, IMP-0.13, IMP-0.14, IMP-0.19, IMP-0.21, IMP-0.22 · Intention i-eb527e9d · 2026-11-21
+Origins: IMP-0.21 · Intention i-f0cc5f74 · 2026-11-21
 
