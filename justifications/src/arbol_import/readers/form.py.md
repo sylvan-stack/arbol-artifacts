@@ -11,9 +11,9 @@ Removed by Intention i-503a5062 · 2026-11-18
 
 ## <before Usage>
 
-Reason: Record one descriptor identity from native reads through archive nomination
+Reason: Separate catalogue attribution from lazy per-session transcript projection
 
-Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-0.21, IMP-D13 · Intention i-40f76348 · 2026-11-21
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21, IMP-D16 · Intention i-5ebb65db · 2026-11-21
 
 ## Response
 
@@ -215,9 +215,9 @@ Origins: IMP-1.1 · Intention i-a2e8af26 · 2026-11-18
 
 ## Reader.read
 
-Reason: The reader contract the command finds by name
+Reason: Separate catalogue attribution from lazy per-session transcript projection
 
-Origins: IMP-1.1 · Intention i-a2e8af26 · 2026-11-18
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21, IMP-D16 · Intention i-5ebb65db · 2026-11-21
 
 ## Source
 
@@ -290,4 +290,34 @@ Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-0.21, IMP-D13 · Intention i-40f76348 
 Reason: Record one descriptor identity from native reads through archive nomination
 
 Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-0.21, IMP-D13 · Intention i-40f76348 · 2026-11-21
+
+## <before Reader>
+
+Reason: Separate catalogue attribution from lazy per-session transcript projection
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21, IMP-D16 · Intention i-5ebb65db · 2026-11-21
+
+## CatalogueEntry
+
+Reason: Separate catalogue attribution from lazy per-session transcript projection
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21, IMP-D16 · Intention i-5ebb65db · 2026-11-21
+
+## CatalogueEntry.failed
+
+Reason: Separate catalogue attribution from lazy per-session transcript projection
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21, IMP-D16 · Intention i-5ebb65db · 2026-11-21
+
+## Reader.catalogue
+
+Reason: Separate catalogue attribution from lazy per-session transcript projection
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21, IMP-D16 · Intention i-5ebb65db · 2026-11-21
+
+## read_catalogue
+
+Reason: Separate catalogue attribution from lazy per-session transcript projection
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21, IMP-D16 · Intention i-5ebb65db · 2026-11-21
 
