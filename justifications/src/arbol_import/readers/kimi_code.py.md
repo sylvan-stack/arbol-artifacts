@@ -5,9 +5,9 @@ role: authored
 
 ## <before _SavedSession>
 
-Reason: Bind Kimi state, wire activity and projected result files to archive observations
+Reason: Expose Kimi session identities before reading saved wires
 
-Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-d47634f8 · 2026-11-21
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21 · Intention i-a06aaede · 2026-11-21
 
 ## _SavedSession
 
@@ -443,7 +443,25 @@ Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-1
 
 ## read
 
-Reason: Bind Kimi state, wire activity and projected result files to archive observations
+Reason: Expose Kimi session identities before reading saved wires
 
-Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-d47634f8 · 2026-11-21
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21 · Intention i-a06aaede · 2026-11-21
+
+## _entries
+
+Reason: Expose Kimi session identities before reading saved wires
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21 · Intention i-a06aaede · 2026-11-21
+
+## _read_session
+
+Reason: Expose Kimi session identities before reading saved wires
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21 · Intention i-a06aaede · 2026-11-21
+
+## catalogue
+
+Reason: Expose Kimi session identities before reading saved wires
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.19, IMP-0.21 · Intention i-a06aaede · 2026-11-21
 
