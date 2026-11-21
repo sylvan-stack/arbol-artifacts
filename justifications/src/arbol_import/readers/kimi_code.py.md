@@ -5,9 +5,9 @@ role: authored
 
 ## <before _SavedSession>
 
-Reason: Expose the Kimi Code reader with session-local failures
+Reason: Preserve the proven Kimi Code parent lane and call ID
 
-Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
+Origins: IMP-0.9, IMP-D3 · Intention i-93a96490 · 2026-11-21
 
 ## _SavedSession
 
@@ -221,9 +221,9 @@ Origins: IMP-1.4, IMP-0.7 · Intention i-4c113390 · 2026-11-19
 
 ## _items
 
-Reason: Join Kimi tool calls, results, and eligible spilled text
+Reason: Preserve the proven Kimi Code parent lane and call ID
 
-Origins: IMP-1.6, IMP-1.8 · Intention i-2635f14d · 2026-11-19
+Origins: IMP-0.9, IMP-D3 · Intention i-93a96490 · 2026-11-21
 
 ## <before _spill_name>
 
@@ -311,9 +311,9 @@ Origins: IMP-0.4, IMP-1.7 · Intention i-c250a550 · 2026-11-21
 
 ## _ChildWork
 
-Reason: Link Kimi descendant calls and account for subagent usage separately
+Reason: Preserve the proven Kimi Code parent lane and call ID
 
-Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
+Origins: IMP-0.9, IMP-D3 · Intention i-93a96490 · 2026-11-21
 
 ## _Launch
 
@@ -335,15 +335,15 @@ Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-1
 
 ## _project
 
-Reason: Link Kimi descendant calls and account for subagent usage separately
+Reason: Preserve the proven Kimi Code parent lane and call ID
 
-Origins: IMP-1.6, IMP-1.7, IMP-0.9 · Intention i-23c0a52f · 2026-11-19
+Origins: IMP-0.9, IMP-D3 · Intention i-93a96490 · 2026-11-21
 
 ## _route
 
-Reason: Expose the Kimi Code reader with session-local failures
+Reason: Preserve the proven Kimi Code parent lane and call ID
 
-Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
+Origins: IMP-0.9, IMP-D3 · Intention i-93a96490 · 2026-11-21
 
 ## _turn_at
 
