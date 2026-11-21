@@ -5,9 +5,9 @@ role: authored
 
 ## package
 
-Reason: Ship the Mercury preflight beside the recovery commands.
+Reason: Ship the importer with Arbol and declare the additive fingerprint minimum schema revision
 
-Origins: ARC-5.4 · Intention i-165a643d · 2026-11-19
+Origins: IMP-0.1, IMP-0.11, IMP-0.19, IMP-0.22, IMP-D35 · Intention i-e7d3aef4 · 2026-11-21
 
 ## <before package>
 
