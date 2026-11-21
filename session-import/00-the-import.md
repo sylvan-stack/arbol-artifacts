@@ -42,7 +42,7 @@ arbol import <tool> [--session <native id>]... [--dry-run] [--include arbol_driv
 
 - `<tool>` is one of `claude-code`, `codex`, `kimi-code`, `pi` and `mimo`.
 - Without `--session`, it considers every session in the tool's home.
-- `--dry-run` reads and maps everything. It writes nothing to the installed database, the raw archive or the tool's home. A private SQLite copy may exist in the importer's work folder for the reading pass, and is removed afterwards. The command prints the report a real import would print ([IMP-D34](#decisions)).
+- `--dry-run` reads and maps everything. It writes nothing to the installed database, the raw archive or the tool's home. A private SQLite copy may exist in the importer's work folder for the reading pass, and is removed afterwards. The command predicts the same session outcomes and row counts as a real import from the same inputs. Its archive bytes written are zero, and it does not allocate IDs for new chats ([IMP-D34, IMP-D35](#decisions)).
 - `--include` adds a kind of session the default leaves out ([Which sessions](#which-sessions)).
 
 The command prints one JSON report on standard output. The exit status is 0 when no session failed and 1 otherwise.
@@ -195,7 +195,7 @@ Nested calls are hidden in Elma's chat view, as a live sub-agent's are. Elma rea
 
 ### Provenance
 
-Migration revision 3 adds two tables and one trigger. The migration is additive and changes no existing table, so `compatibility_version` stays 1 ([ARC-4](../architecture/04-single-database.md#build-selection-and-release-compatibility)). Only a Build that reads or writes the new tables declares `minRevision: 3`. Every other Build keeps its declaration ([Builds that change](#builds-that-change)).
+Migration revision 3 adds two tables and one trigger. The later additive import fingerprint migration adds `chat_imports.files_fingerprint` and keeps `compatibility_version` at 1 ([ARC-4](../architecture/04-single-database.md#build-selection-and-release-compatibility)). A Build that only reads the original import fields still requires revision 3. The importer requires the revision containing the fingerprint ([Builds that change](#builds-that-change)).
 
 ```sql
 CREATE TABLE chat_imports (
@@ -223,6 +223,9 @@ CREATE TABLE exchange_imports (
 - `trigger` says what started the Exchange: typed by the owner, steered in during a turn, a task notification, a schedule, or the tool itself.
 - `turn_key` is the Exchange's native identity from IMP-1 and [Input added during a turn](#input-added-during-a-turn).
 - `manifest` names the session's current archive manifest.
+- `files_fingerprint` is the SHA-256 of the compact JSON array of `[relative path, lowercase content SHA-256]` pairs, sorted by path. Use UTF-8 JSON with non-ASCII characters escaped. Compute the content digest from the exact bytes the manifest describes before archive compression. The fingerprint excludes modification and import times. A move changes the manifest path and fingerprint while preserving the chat's identity ([IMP-D35](#decisions)).
+
+The additive migration preserves earlier provenance rows with an absent fingerprint. The database requires a 64-character lowercase hexadecimal fingerprint on new or updated provenance rows. A real import can fill an absent fingerprint from the saved manifest after verifying its digest and session identity on Mercury. It records this repair in the session transaction. When the session is otherwise unchanged, the repair keeps the manifest and import timestamps. A dry run reports a row failure for a legacy session whose outcome requires an absent fingerprint, with a fixed message to run a real import with Mercury mounted. The first importer release creates new provenance with a fingerprint.
 
 **Writers.** The importer is the only writer of both tables. It is also a named exception to the single writers of the chat tables (ARC-D10, RCT-3), next to the chat title:
 - it writes `chats`, `exchanges`, `messages`, `tool_calls` and `runs` only for the chats it creates;
@@ -243,7 +246,7 @@ The archive keeps every file of a native session, so that nothing the tables lea
 
 Folders are created with mode 0700 and files with 0600. Mercury is FileVault-encrypted APFS with ownership disabled, so those modes protect nothing on Mercury itself. The drive's encryption protects the archive at rest.
 
-**When Mercury is not mounted.** A real import refuses with `archive_unavailable` before it reads a session, because no session may be committed before its objects are on the drive. A dry run needs no archive and runs without Mercury. The chat tables never depend on the archive: imported chats open in Elma whether Mercury is mounted or not.
+**When Mercury is not mounted.** A real import refuses with `archive_unavailable` before it reads a session, because no session may be committed before its objects are on the drive. A dry run runs without Mercury and compares current files with the saved PostgreSQL fingerprint. The chat tables never depend on the archive: imported chats open in Elma whether Mercury is mounted or not.
 
 A manifest is a JSON object:
 - `{"tool", "nativeId", "takenAt", "toolVersion", "files": [...]}`;
@@ -257,11 +260,12 @@ IMP-1 lists, for each tool, which files belong to a session and which are never 
 ### Importing a session again
 
 Running the import again is safe. A session already in `chat_imports`:
-- whose files hash to its manifest's files is `unchanged`;
-- with turns whose turn keys are not yet imported is `extended`. Those turns become Exchanges numbered after the last one;
-- whose files changed but which has no new turn is `rearchived`.
+- with eligible turns whose turn keys are not yet imported is `extended`. Those turns become Exchanges numbered after the last one;
+- with only a live withheld turn left to import is `deferred`;
+- with no turn left to import and matching fingerprints is `unchanged`;
+- with no turn left to import and differing fingerprints is `rearchived`.
 
-An `extended` or `rearchived` session records a new manifest and updates `manifest` and `last_imported`.
+An `extended` or `rearchived` session records a new manifest and updates `manifest`, `files_fingerprint` and `last_imported` together in its transaction. When an import publishes a manifest, the written fingerprint comes from that same manifest's file inventory.
 
 **Earlier turns are fixed.** An imported turn is never rewritten. A turn whose native records changed after its import keeps its imported rows. Its new bytes are kept only in the new manifest. A file the tool moved, such as a Codex rollout moved to `archived_sessions/`, is matched to its session by IMP-1's identity rule, not by its path.
 
@@ -289,17 +293,17 @@ This amends the backend's table description that "nothing archives or deletes a 
 
 | Build | Change | Schema declaration |
 |---|---|---|
-| `arbol` | The `arbol import` command; migration revision 3; the backend's refusal, the `imported` field and its reads of `chat_imports` | `minRevision: 3` |
+| `arbol` | The `arbol import` command, fingerprint migration, backend refusal and import provenance reads | `minRevision` is the fingerprint migration revision |
 | Elma's renderer, with the shared design system | Show the tool of an imported chat and hide its composer | Follows `arbol` through the Bridge |
 | Trivial Trunk | No change is required. A later Build may report the trigger's refusal as `imported_chat` | unchanged |
 
-Each Build declares the minimum revision it actually needs. Only the `arbol` Build that carries the import declares `minRevision: 3`; every other Build keeps its declaration, and BLD-0's Single-database amendment, which names `minRevision: 3` for every database-dependent component, is read that way ([IMP-D14](#decisions)). An `arbol` Build older than this release still works on revision 3. It shows imported chats as ordinary archived chats with a composer, and a send to one fails at the trigger with `database_unavailable`.
+Each Build declares the minimum revision it actually needs ([IMP-D14, IMP-D35](#decisions)). The first importer Build requires the fingerprint migration. Builds that already read import provenance keep their earlier declaration and still read the original fields after the additive migration.
 
 BLD-0 reserves the Trunk code name `imported`, and no Trunk Build may take it. A reader that meets `trunk = 'imported'` treats the Exchange as imported: it accepts the Trunk `imported` with Build `0`, never resolves it to a Trunk Build, and takes the import's facts from `chat_imports` ([IMP-D15](#decisions)). Build `0` otherwise means a program outside a Build ([BLD-0](../builds/00-builds-and-versions.md)).
 
 ### Admission, maintenance and failures
 
-- **Schema check.** Before reading any session, the importer checks the installed schema pair. It refuses with `incompatible_schema` unless the compatibility version is 1 and the revision is at least 3. That check takes no writer permit.
+- **Schema check.** Before reading any session, the importer checks the installed schema pair. It refuses with `incompatible_schema` unless the compatibility version is 1 and the revision includes the import fingerprint migration. That check takes no writer permit.
 - **Writer admission.** The importer passes installation writer admission ([ARC-4](../architecture/04-single-database.md#maintenance-and-writer-admission)) once per session, holding the permit only for that session's transaction. When admission is draining or exclusive, it finishes the session in hand, takes no further permit, and ends with `maintenance`. The sessions it did not reach are listed with no outcome.
 - **Dry runs.** A dry run takes no writer permit, but reads the database to tell new sessions from imported ones. It refuses with `maintenance` while admission is exclusive.
 - **One import at a time.** A second import refuses with `busy`.
@@ -330,6 +334,7 @@ BLD-0 reserves the Trunk code name `imported`, and no Trunk Build may take it. A
 | IMP-0.19 | Check the installed schema pair and refuse with `incompatible_schema`; take one writer permit per session; stop at draining or exclusive admission with `maintenance`; refuse a dry run under exclusive admission; allow one import at a time; import each session in its own transaction | New; ARC-4.4 | drill |
 | IMP-0.20 | Replace U+0000 and lone surrogate halves with U+FFFD in stored text and JSON, leaving the archive byte-exact | New; RCT-3 | unit |
 | IMP-0.21 | Never quote session content in an error message or report | New; research | unit |
+| IMP-0.22 | Store the file fingerprint with the current archived manifest and use it to compare files on a repeat dry run without Mercury. Keep the prior import schema compatible and use the fenced migration procedure. | New; IMP-D35, IMP-0.14 | unit; drill |
 
 ## Interface
 
@@ -340,7 +345,7 @@ BLD-0 reserves the Trunk code name `imported`, and no Trunk Build may take it. A
   - `unreadable_session`, `unknown_format` and `rows_refused` belong to one session ([IMP-D13](#decisions)):
     - `unreadable_session` when a file of the session cannot be read or decoded: an I/O error, a corrupt compressed stream, a complete line that is not JSON, or a file that disappears while it is read;
     - `unknown_format` when a record parses but a conversation record has an unknown shape (IMP-D10);
-    - `rows_refused` when the database refuses the session's rows.
+    - `rows_refused` when the database refuses the session's rows or a legacy dry run needs a fingerprint that has not been recorded.
   - A session that fails before its native ID is known is reported with the name of its file as `native` and no `kind`.
   - A session that fails after its native ID is known is reported with the kind its tool's table in IMP-1 gives for the records read before the failure ([IMP-D16](#decisions)).
 - **Database:** the tables and trigger of [Provenance](#provenance), and the error object of a failed imported Exchange.
@@ -390,3 +395,4 @@ BLD-0 reserves the Trunk code name `imported`, and no Trunk Build may take it. A
 | IMP-D32 | Which Mimo response supplies the turn model? | Use the first main-lane assistant's native `providerID/modelID` pair, leaving the model absent if there is no assistant or the pair is unavailable. | Decided 19 November 2026 by the owner |
 | IMP-D33 | How does Elma list imported chats while they are archived? | Offer an archived-only mode on `chats.page` through `archived: true` and use it for Elma's Archived chats list. Use the existing sort, cursor and limit. Summaries in this mode carry `archived: true`, with import metadata when present. Omitted or false keeps the existing page. The Latest chats subscription keeps its current scope. | Decided 19 November 2026 by the owner |
 | IMP-D34 | May the Codex reader use private scratch to read the live state catalogue? | Take a verified private DB and WAL copy in the importer's work folder, including during dry runs. Open it read-only and remove it and any private sidecars after reading. Original files remain untouched. If a consistent copy cannot be verified, use IMP-D19. | Decided 19 November 2026 by the owner |
+| IMP-D35 | How can a repeat dry run report the exact file-change outcome with Mercury unmounted? | Store the fingerprint of the current manifest's relative file paths and content digests in PostgreSQL. Use the same comparison in real and dry runs, and update the fingerprint and manifest together. Add it through an additive migration. | Approved 21 November 2026 by the owner |
