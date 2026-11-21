@@ -323,9 +323,9 @@ Removed by Intention i-a96da6a2 · 2026-11-19
 
 ## _responses
 
-Reason: Read ordinary and workflow agent logs and resolve their launch ancestry
+Reason: Retain Claude Code cache-write presence and native input totals
 
-Origins: IMP-1.6, IMP-0.9 · Intention i-9c040dc4 · 2026-11-19
+Origins: IMP-0.4, IMP-1.7 · Intention i-1d49add9 · 2026-11-21
 
 ## <before _launches>
 
