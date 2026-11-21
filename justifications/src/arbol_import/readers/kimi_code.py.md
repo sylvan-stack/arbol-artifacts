@@ -5,9 +5,9 @@ role: authored
 
 ## <before _SavedSession>
 
-Reason: Preserve the proven Kimi Code parent lane and call ID
+Reason: Bind Kimi state, wire activity and projected result files to archive observations
 
-Origins: IMP-0.9, IMP-D3 · Intention i-93a96490 · 2026-11-21
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-d47634f8 · 2026-11-21
 
 ## _SavedSession
 
@@ -95,15 +95,15 @@ Origins: IMP-1.4, IMP-1.11 · Intention i-d1927aa2 · 2026-11-19
 
 ## _rows
 
-Reason: Decode native wire envelopes and Kimi state with source positions and read-only file access.
+Reason: Bind Kimi state, wire activity and projected result files to archive observations
 
-Origins: IMP-1.1, IMP-1.2, IMP-1.12 · Intention i-52593c79 · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-d47634f8 · 2026-11-21
 
 ## _state
 
-Reason: Expose the Kimi Code reader with session-local failures
+Reason: Bind Kimi state, wire activity and projected result files to archive observations
 
-Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-d47634f8 · 2026-11-21
 
 ## _string
 
@@ -119,9 +119,9 @@ Origins: IMP-1.1, IMP-1.2, IMP-1.12 · Intention i-52593c79 · 2026-11-19
 
 ## _fork_ids
 
-Reason: Expose the Kimi Code reader with session-local failures
+Reason: Bind Kimi state, wire activity and projected result files to archive observations
 
-Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-d47634f8 · 2026-11-21
 
 ## _record_ids
 
@@ -221,9 +221,9 @@ Origins: IMP-1.4, IMP-0.7 · Intention i-4c113390 · 2026-11-19
 
 ## _items
 
-Reason: Preserve the proven Kimi Code parent lane and call ID
+Reason: Bind Kimi state, wire activity and projected result files to archive observations
 
-Origins: IMP-0.9, IMP-D3 · Intention i-93a96490 · 2026-11-21
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-d47634f8 · 2026-11-21
 
 ## <before _spill_name>
 
@@ -239,9 +239,9 @@ Origins: IMP-1.6, IMP-1.8 · Intention i-2635f14d · 2026-11-19
 
 ## _result
 
-Reason: Collect Kimi archive files and determine session liveness read-only
+Reason: Bind Kimi state, wire activity and projected result files to archive observations
 
-Origins: IMP-1.8, IMP-0.2, IMP-0.15 · Intention i-7e93dbc9 · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-d47634f8 · 2026-11-21
 
 ## _spill_name
 
@@ -269,9 +269,9 @@ Origins: IMP-1.6, IMP-0.10 · Intention i-8dedb74f · 2026-11-19
 
 ## _image
 
-Reason: Expose the Kimi Code reader with session-local failures
+Reason: Bind Kimi state, wire activity and projected result files to archive observations
 
-Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-d47634f8 · 2026-11-21
 
 ## _size
 
@@ -281,9 +281,9 @@ Origins: IMP-1.6, IMP-0.10 · Intention i-8dedb74f · 2026-11-19
 
 ## _upload
 
-Reason: Collect Kimi archive files and determine session liveness read-only
+Reason: Bind Kimi state, wire activity and projected result files to archive observations
 
-Origins: IMP-1.8, IMP-0.2, IMP-0.15 · Intention i-7e93dbc9 · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-d47634f8 · 2026-11-21
 
 ## <before _usage>
 
@@ -335,9 +335,9 @@ Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-1
 
 ## _project
 
-Reason: Preserve the proven Kimi Code parent lane and call ID
+Reason: Bind Kimi state, wire activity and projected result files to archive observations
 
-Origins: IMP-0.9, IMP-D3 · Intention i-93a96490 · 2026-11-21
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-d47634f8 · 2026-11-21
 
 ## _route
 
@@ -377,15 +377,15 @@ Origins: IMP-1.8, IMP-0.2, IMP-0.15 · Intention i-7e93dbc9 · 2026-11-19
 
 ## _RawFiles
 
-Reason: Collect Kimi archive files and determine session liveness read-only
+Reason: Bind Kimi state, wire activity and projected result files to archive observations
 
-Origins: IMP-1.8, IMP-0.2, IMP-0.15 · Intention i-7e93dbc9 · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-d47634f8 · 2026-11-21
 
 ## _RawFiles.archive
 
-Reason: Collect Kimi archive files and determine session liveness read-only
+Reason: Bind Kimi state, wire activity and projected result files to archive observations
 
-Origins: IMP-1.8, IMP-0.2, IMP-0.15 · Intention i-7e93dbc9 · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-d47634f8 · 2026-11-21
 
 ## _RawFiles.escapes
 
@@ -443,7 +443,7 @@ Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-1
 
 ## read
 
-Reason: Expose the Kimi Code reader with session-local failures
+Reason: Bind Kimi state, wire activity and projected result files to archive observations
 
-Origins: IMP-1.1, IMP-1.11, IMP-1.12, IMP-0.21 · Intention i-38db81b8 · 2026-11-19
+Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-d47634f8 · 2026-11-21
 
