@@ -233,7 +233,7 @@ Origins: BRW-0.10, BRW-1.7, OG-2 · Intention i-b51ffca3 · 2026-11-21
 
 ## installed_browser_selection
 
-Reason: Read the stable selection without mounting it and retire only exact historical images with no live or persisted Profile reference
+Reason: Refuse to report provisional selections as installed and census every legal Browser profile identity consistently
 
-Origins: BRW-0.10, BRW-1.7, OG-2 · Intention i-b51ffca3 · 2026-11-21
+Origins: BRW-0.12, BRW-1.7, OG-3 · Intention i-ebeffebe · 2026-11-21
 
