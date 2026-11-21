@@ -5,9 +5,9 @@ role: authored
 
 ## <before _Run>
 
-Reason: Select native sessions under admission and withhold the complete live final turn
+Reason: Use the same key and fingerprint decisions in dry runs and admitted durable imports
 
-Origins: IMP-0.1, IMP-0.2, IMP-0.3, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21 · Intention i-444da653 · 2026-11-21
+Origins: IMP-0.13, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-d9ad676d · 2026-11-21
 
 ## _Run
 
@@ -71,7 +71,61 @@ Origins: IMP-0.1, IMP-0.2, IMP-0.3, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21 · In
 
 ## _select
 
-Reason: Select native sessions under admission and withhold the complete live final turn
+Reason: Use the same key and fingerprint decisions in dry runs and admitted durable imports
 
-Origins: IMP-0.1, IMP-0.2, IMP-0.3, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21 · Intention i-444da653 · 2026-11-21
+Origins: IMP-0.13, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-d9ad676d · 2026-11-21
+
+## ImportReport
+
+Reason: Use the same key and fingerprint decisions in dry runs and admitted durable imports
+
+Origins: IMP-0.13, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-d9ad676d · 2026-11-21
+
+## ImportReport.document
+
+Reason: Use the same key and fingerprint decisions in dry runs and admitted durable imports
+
+Origins: IMP-0.13, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-d9ad676d · 2026-11-21
+
+## ImportReport.exit_status
+
+Reason: Use the same key and fingerprint decisions in dry runs and admitted durable imports
+
+Origins: IMP-0.13, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-d9ad676d · 2026-11-21
+
+## _import_one
+
+Reason: Use the same key and fingerprint decisions in dry runs and admitted durable imports
+
+Origins: IMP-0.13, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-d9ad676d · 2026-11-21
+
+## _outcome
+
+Reason: Use the same key and fingerprint decisions in dry runs and admitted durable imports
+
+Origins: IMP-0.13, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-d9ad676d · 2026-11-21
+
+## _plan
+
+Reason: Use the same key and fingerprint decisions in dry runs and admitted durable imports
+
+Origins: IMP-0.13, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-d9ad676d · 2026-11-21
+
+## _process
+
+Reason: Use the same key and fingerprint decisions in dry runs and admitted durable imports
+
+Origins: IMP-0.13, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-d9ad676d · 2026-11-21
+
+## _session_attribution
+
+Reason: Use the same key and fingerprint decisions in dry runs and admitted durable imports
+
+Origins: IMP-0.13, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-d9ad676d · 2026-11-21
+
+## run_import
+
+Reason: Use the same key and fingerprint decisions in dry runs and admitted durable imports
+
+Origins: IMP-0.13, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-d9ad676d · 2026-11-21
 
