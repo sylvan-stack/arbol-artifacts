@@ -5,15 +5,15 @@ role: authored
 
 ## <before style>
 
-Reason: Observe and change archive membership without reopening imported history for editing
+Reason: Synchronize the maintained status bar and bind it to the live composer visibility and response reader.
 
-Origins: IMP-0.17, IMP-D4, IMP-D33, BKD-2.17, BKD-2.18 · Intention i-474d85dd · 2026-11-20
+Origins: BKD-2.2, BKD-2.7, BKD-2.23 · Intention i-435b23d5 · 2026-11-21
 
 ## script
 
-Reason: Use authoritative import provenance to detach the Draft and present saved Exchanges and routes
+Reason: Synchronize the maintained status bar and bind it to the live composer visibility and response reader.
 
-Origins: IMP-0.16, IMP-0.17, IMP-D4, BKD-2.7, BKD-2.8, BKD-2.9, BKD-2.19, BKD-2.22 · Intention i-b594f9d0 · 2026-11-20
+Origins: BKD-2.2, BKD-2.7, BKD-2.23 · Intention i-435b23d5 · 2026-11-21
 
 ## style
 
