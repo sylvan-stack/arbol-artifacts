@@ -5,9 +5,9 @@ role: authored
 
 ## <before MessageRow>
 
-Reason: Keep nested tool calls with their parent Exchange and project dense shared positions
+Reason: Project Driver tool shapes and byte-bounded stored results while preserving raw archive inputs
 
-Origins: IMP-0.6, IMP-0.7, IMP-0.9, IMP-D3, IMP-D23 · Intention i-3a1cec31 · 2026-11-21
+Origins: IMP-0.6, IMP-0.10, IMP-0.20, IMP-0.21, DRV-2.22 · Intention i-9890ea41 · 2026-11-21
 
 ## MappedSegment
 
@@ -35,9 +35,9 @@ Origins: IMP-0.4, IMP-0.5, IMP-0.8, IMP-0.20 · Intention i-9e425914 · 2026-11-
 
 ## map_session
 
-Reason: Keep nested tool calls with their parent Exchange and project dense shared positions
+Reason: Project Driver tool shapes and byte-bounded stored results while preserving raw archive inputs
 
-Origins: IMP-0.6, IMP-0.7, IMP-0.9, IMP-D3, IMP-D23 · Intention i-3a1cec31 · 2026-11-21
+Origins: IMP-0.6, IMP-0.10, IMP-0.20, IMP-0.21, DRV-2.22 · Intention i-9890ea41 · 2026-11-21
 
 ## stored_text
 
@@ -77,9 +77,9 @@ Origins: IMP-0.6, IMP-0.7, IMP-0.9, IMP-D3, IMP-D23 · Intention i-3a1cec31 · 2
 
 ## _map_turn
 
-Reason: Keep nested tool calls with their parent Exchange and project dense shared positions
+Reason: Project Driver tool shapes and byte-bounded stored results while preserving raw archive inputs
 
-Origins: IMP-0.6, IMP-0.7, IMP-0.9, IMP-D3, IMP-D23 · Intention i-3a1cec31 · 2026-11-21
+Origins: IMP-0.6, IMP-0.10, IMP-0.20, IMP-0.21, DRV-2.22 · Intention i-9890ea41 · 2026-11-21
 
 ## _split_turn
 
@@ -107,9 +107,9 @@ Origins: IMP-0.6, IMP-0.7, IMP-0.9, IMP-D3, IMP-D23 · Intention i-3a1cec31 · 2
 
 ## _call_row
 
-Reason: Keep nested tool calls with their parent Exchange and project dense shared positions
+Reason: Project Driver tool shapes and byte-bounded stored results while preserving raw archive inputs
 
-Origins: IMP-0.6, IMP-0.7, IMP-0.9, IMP-D3, IMP-D23 · Intention i-3a1cec31 · 2026-11-21
+Origins: IMP-0.6, IMP-0.10, IMP-0.20, IMP-0.21, DRV-2.22 · Intention i-9890ea41 · 2026-11-21
 
 ## _call_tree
 
@@ -122,4 +122,34 @@ Origins: IMP-0.6, IMP-0.7, IMP-0.9, IMP-D3, IMP-D23 · Intention i-3a1cec31 · 2
 Reason: Keep nested tool calls with their parent Exchange and project dense shared positions
 
 Origins: IMP-0.6, IMP-0.7, IMP-0.9, IMP-D3, IMP-D23 · Intention i-3a1cec31 · 2026-11-21
+
+## _bounded_result
+
+Reason: Project Driver tool shapes and byte-bounded stored results while preserving raw archive inputs
+
+Origins: IMP-0.6, IMP-0.10, IMP-0.20, IMP-0.21, DRV-2.22 · Intention i-9890ea41 · 2026-11-21
+
+## _call_input
+
+Reason: Project Driver tool shapes and byte-bounded stored results while preserving raw archive inputs
+
+Origins: IMP-0.6, IMP-0.10, IMP-0.20, IMP-0.21, DRV-2.22 · Intention i-9890ea41 · 2026-11-21
+
+## _codex_command
+
+Reason: Project Driver tool shapes and byte-bounded stored results while preserving raw archive inputs
+
+Origins: IMP-0.6, IMP-0.10, IMP-0.20, IMP-0.21, DRV-2.22 · Intention i-9890ea41 · 2026-11-21
+
+## _json_size
+
+Reason: Project Driver tool shapes and byte-bounded stored results while preserving raw archive inputs
+
+Origins: IMP-0.6, IMP-0.10, IMP-0.20, IMP-0.21, DRV-2.22 · Intention i-9890ea41 · 2026-11-21
+
+## _output_prefix
+
+Reason: Project Driver tool shapes and byte-bounded stored results while preserving raw archive inputs
+
+Origins: IMP-0.6, IMP-0.10, IMP-0.20, IMP-0.21, DRV-2.22 · Intention i-9890ea41 · 2026-11-21
 
