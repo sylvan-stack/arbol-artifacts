@@ -131,13 +131,31 @@ Origins: ARC-5.1, ARC-5.2, ARC-5.5 · Intention i-c5d7328f · 2026-11-19
 
 ## reserve
 
-Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
+Reason: Keep production Browser Build numbers unique under the canonical registry writer lock after payload pruning.
 
-Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
+Origins: BRW-0.9, OG-3 · Intention i-42550058 · 2026-11-21
 
 ## build_details
 
 Reason: The launcher and registry must select only compatible Builds and report the available compatible alternatives.
 
 Origins: ARC-5.6, ARC-4.3 · Intention i-e3135619 · 2026-11-19
+
+## atomic_write
+
+Reason: Keep production Browser Build numbers unique under the canonical registry writer lock after payload pruning.
+
+Origins: BRW-0.9, OG-3 · Intention i-42550058 · 2026-11-21
+
+## browser_production_high_water
+
+Reason: Keep production Browser Build numbers unique under the canonical registry writer lock after payload pruning.
+
+Origins: BRW-0.9, OG-3 · Intention i-42550058 · 2026-11-21
+
+## reserve_numbered_folder
+
+Reason: Keep production Browser Build numbers unique under the canonical registry writer lock after payload pruning.
+
+Origins: BRW-0.9, OG-3 · Intention i-42550058 · 2026-11-21
 
