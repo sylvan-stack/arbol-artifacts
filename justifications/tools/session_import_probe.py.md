@@ -23,15 +23,15 @@ Origins: IMP-0.2, IMP-0.21, IMP-1.9, IMP-D34 · Intention i-914fc205 · 2026-11-
 
 ## Ledger.__init__
 
-Reason: Probe native readers with pre-read fingerprints and content-free findings
+Reason: Identify whether macOS sandboxing affected the native Kimi process-claim check while protecting the native inputs.
 
-Origins: IMP-0.2, IMP-0.21, IMP-1.9, IMP-D34 · Intention i-914fc205 · 2026-11-21
+Origins: IMP-1.11, IMP-1.9 · Intention i-4d0ff3aa · 2026-11-21
 
 ## Ledger.audit
 
-Reason: Probe native readers with pre-read fingerprints and content-free findings
+Reason: Identify whether macOS sandboxing affected the native Kimi process-claim check while protecting the native inputs.
 
-Origins: IMP-0.2, IMP-0.21, IMP-1.9, IMP-D34 · Intention i-914fc205 · 2026-11-21
+Origins: IMP-1.11, IMP-1.9 · Intention i-4d0ff3aa · 2026-11-21
 
 ## Ledger.capture
 
@@ -89,9 +89,9 @@ Origins: IMP-0.2, IMP-0.21, IMP-1.9, IMP-D34 · Intention i-914fc205 · 2026-11-
 
 ## run
 
-Reason: Probe native readers with pre-read fingerprints and content-free findings
+Reason: Identify whether macOS sandboxing affected the native Kimi process-claim check while protecting the native inputs.
 
-Origins: IMP-0.2, IMP-0.21, IMP-1.9, IMP-D34 · Intention i-914fc205 · 2026-11-21
+Origins: IMP-1.11, IMP-1.9 · Intention i-4d0ff3aa · 2026-11-21
 
 ## stamp
 
