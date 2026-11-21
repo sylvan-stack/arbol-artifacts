@@ -5,9 +5,9 @@ role: authored
 
 ## <before read_days>
 
-Reason: Read the stable selection without mounting it and retire only exact historical images with no live or persisted Profile reference
+Reason: Recognize the normal lock-only tombstone produced by completed Browser profile removal while preserving interrupted deletions
 
-Origins: BRW-0.10, BRW-1.7, OG-2 · Intention i-b51ffca3 · 2026-11-21
+Origins: BRW-1.7, OG-2 · Intention i-0deffa73 · 2026-11-21
 
 ## prune_unused
 
@@ -71,9 +71,9 @@ Origins: BRW-0.10, BRW-1.7, OG-2 · Intention i-b51ffca3 · 2026-11-21
 
 ## _browser_references
 
-Reason: Read the stable selection without mounting it and retire only exact historical images with no live or persisted Profile reference
+Reason: Recognize the normal lock-only tombstone produced by completed Browser profile removal while preserving interrupted deletions
 
-Origins: BRW-0.10, BRW-1.7, OG-2 · Intention i-b51ffca3 · 2026-11-21
+Origins: BRW-1.7, OG-2 · Intention i-0deffa73 · 2026-11-21
 
 ## _image_command
 
