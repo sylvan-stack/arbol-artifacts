@@ -32,9 +32,9 @@ Observed in version 1: one Elma window, which closing did not quit. Arbol 2 has 
 │  Newer turn ⌘]               │ It compiles the three packages and copies them to      │
 │  Jump to turn… ⌘P            │ dist/.                                      Completed  │
 │  Quick actions… ⇧⏎           │                                                        │
-│ + Intelligence               │ Press Enter to start new message ⏎                     │
+│ + Intelligence               │                                                        │
 ├──────────────────────────────┴────────────────────────────────────────────────────────┤
-│ arbol-trunk – claude · anthropic – sonnet::high                                        │
+│ arbol-trunk – claude · anthropic – sonnet::high  Press Enter to start new message ⏎ ↑ ↓ │
 └────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -43,7 +43,7 @@ Observed in version 1: one Elma window, which closing did not quit. Arbol 2 has 
 | The header | The shared WorkspaceShell header shows the Elma glyph, chat title, working mark and the window’s selected Trunk. The selector changes the Trunk for new Exchanges in that window (BKD-3.16). On the right are reading width, text size (A+, A−) and the theme |
 | The navigation panel | On the left, top to bottom: the chat's title and "Turn n of N"; the chat's own panel, *the cockpit*, once the chat exists; "Repositories"; "History · N turns"; "Intelligence" ([below](#the-navigation-panel)) |
 | The chat | On the right: the pinned message, the answer, the questions of the agent above the composer, and the composer ([below](#the-exchange-shown)) |
-| The status bar | At the bottom: "<repository> – <Driver> · <Subscription> – <model>::<effort>", such as "arbol-trunk – claude · anthropic – sonnet::high" |
+| The status bar | The left side shows "<repository> – <Driver> · <Subscription> – <model>::<effort>". The right side shows the start-message hint and scroll buttons when the composer is collapsed |
 | Attention | A line across the top of the chat for each attention item of the Root ([below](#attention)) |
 
 The window shows what the backend says. In the page's own storage it keeps only conveniences: the chat shown last, the last chat shown for each repository, the 16 repositories used last, the 100 chats shown last, the reading width, the text size and the theme, and text typed and not yet saved ([below](#the-composer)).
@@ -189,7 +189,7 @@ The composer is the field below the answer in which the next message is typed.
 | Part | Detail |
 |---|---|
 | An empty chat | The line "<repository> · <Driver> · <Subscription> · model: <model> · thinking: <effort>", then the composer of at least 10 lines, in the middle, with "Message <repository>…" and the hint "⌘⏎ to Send". There are no buttons |
-| A chat with Exchanges | The composer is closed to the line "Press Enter to start new message ⏎", with "Scroll to top" and "Scroll to bottom"; Return opens it, at least 3 lines, with the hint "⌘⏎ to Send · Esc to collapse", and Escape closes it again. A chat whose Draft holds text opens with the composer open and in focus |
+| A chat with Exchanges | With the composer closed, the status bar shows "Press Enter to start new message ⏎", "Scroll to top" and "Scroll to bottom". The hint or plain Return opens the field of at least 3 lines with "⌘⏎ to Send · Esc to collapse". Escape closes it again. A chat whose Draft holds text opens with the composer open and in focus |
 | Keys | ⌘⏎ or ⌃⏎ sends; Return makes a new line; Escape closes the composer |
 | A long paste | Text of 10,000 characters or more that is pasted is saved as a file (`paste.save`, BKD-1), and the composer gets `[Pasted text (12,345 characters)](<path>)` in its place. Meanwhile the hint says "Saving pasted text…", and a ⌘⏎ pressed meanwhile sends once the link is in. Changed from version 1: the file stays in the Root's folder `pastes/`, not in the system's temporary folder, because the chat names it |
 
@@ -208,6 +208,7 @@ arbol:ui/elma/src/wire-json.ts
 arbol:ui/elma/src/drafts.svelte.ts
 arbol:ui/elma/src/pastes.svelte.ts
 arbol:ui/elma/design-system/src/sections/Composer.svelte
+arbol:ui/elma/design-system/src/sections/ElmaStatus.svelte
 arbol:tests/ui/drafts.mjs
 arbol:tests/ui/draft_browser.mjs
 arbol:tests/ui/draft_recovery.mjs
