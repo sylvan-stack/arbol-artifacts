@@ -114,7 +114,7 @@ If the supplied Driver chat-map directory or an entry cannot be read or decoded,
 
 **Items.**
 - Assistant `text` blocks are text blocks.
-- A `tool_use` block is joined with the `tool_result` that names its ID. The result's content is read as text. A result that points to a `tool-results/` file takes that file's text, and image parts are described as IMP-0 says.
+- A `tool_use` block is joined with the `tool_result` that names its ID. The result's content is read as text. A result that points to an eligible `tool-results/` file takes that file's text, and image parts are described as IMP-0 says. If the eligible file is absent at its first check and Claude saved a preview in the transcript, use the preview, mark the tool result truncated, and continue importing the Chat Session. The archive keeps the original transcript and available files. [IMP-D36](00-the-import.md#decisions)
 - `is_error` sets `ok` false and `error` to the result text.
 
 **Sub-agents.**

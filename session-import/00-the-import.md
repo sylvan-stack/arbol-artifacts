@@ -171,7 +171,7 @@ Images stay out of the tables and in the archive, where the tool stored them: in
 - A prompt's images are left out of its message text.
 - A tool result's image parts become `"images": [{"mediaType", "size"}]` in `result`. Each entry records that an image existed and its size in bytes; the image is read from the archive.
 
-A tool result is cut to 200 KiB, whatever its shape, with `truncated` true, as DRV-2.22 cuts a live result. A message's text is never cut. The archive keeps every result whole.
+A tool result is cut to 200 KiB, whatever its shape, with `truncated` true, as DRV-2.22 cuts a live result. A message's text is never cut. The archive preserves the available native result bytes in full. When a Claude Code spill is missing, the saved preview is already truncated and remains in its raw transcript ([IMP-D36](#decisions)).
 
 ### Sub-agents
 
@@ -343,7 +343,7 @@ BLD-0 reserves the Trunk code name `imported`, and no Trunk Build may take it. A
 - **Errors**, as `{"code", "message"}`:
   - `maintenance`, `busy`, `incompatible_schema`, `archive_unavailable` and `database_unavailable` end the command.
   - `unreadable_session`, `unknown_format` and `rows_refused` belong to one session ([IMP-D13](#decisions)):
-    - `unreadable_session` when a file of the session cannot be read or decoded: an I/O error, a corrupt compressed stream, a complete line that is not JSON, or a file that disappears while it is read;
+    - `unreadable_session` when a file of the session cannot be read or decoded: an I/O error, a corrupt compressed stream, a complete line that is not JSON, or a file that disappears while it is read. An initially absent Claude Code spill with a saved preview follows [IMP-D36](#decisions);
     - `unknown_format` when a record parses but a conversation record has an unknown shape (IMP-D10);
     - `rows_refused` when the database refuses the session's rows or a legacy dry run needs a fingerprint that has not been recorded.
   - A session that fails before its native ID is known is reported with the name of its file as `native` and no `kind`.
@@ -396,3 +396,4 @@ BLD-0 reserves the Trunk code name `imported`, and no Trunk Build may take it. A
 | IMP-D33 | How does Elma list imported chats while they are archived? | Offer an archived-only mode on `chats.page` through `archived: true` and use it for Elma's Archived chats list. Use the existing sort, cursor and limit. Summaries in this mode carry `archived: true`, with import metadata when present. Omitted or false keeps the existing page. The Latest chats subscription keeps its current scope. | Decided 19 November 2026 by the owner |
 | IMP-D34 | May the Codex reader use private scratch to read the live state catalogue? | Take a verified private DB and WAL copy in the importer's work folder, including during dry runs. Open it read-only and remove it and any private sidecars after reading. Original files remain untouched. If a consistent copy cannot be verified, use IMP-D19. | Decided 19 November 2026 by the owner |
 | IMP-D35 | How can a repeat dry run report the exact file-change outcome with Mercury unmounted? | Store the fingerprint of the current manifest's relative file paths and content digests in PostgreSQL. Use the same comparison in real and dry runs, and update the fingerprint and manifest together. Add it through an additive migration. | Approved 21 November 2026 by the owner |
+| IMP-D36 | What happens when Claude Code saved a tool-result preview and the eligible full output file is missing? | Read the full result when available. If the file is absent when first checked and its transcript contains a saved preview, keep that preview as a truncated tool result and continue importing the Chat Session. Archive the transcript and the available files. A missing file without a saved preview, an unreadable or nonregular file, or an input that changes after it is observed still causes an individual session failure. | Approved 21 November 2026 by the owner |
