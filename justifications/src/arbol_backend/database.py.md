@@ -29,9 +29,9 @@ Removed by Intention i-fd7b43a3 · 2026-11-12
 
 ## <before Schema>
 
-Reason: The backend and admission must agree on the new runtime directory and PostgreSQL guards while preserving isolated overrides.
+Reason: Verify import reads against the admitted connection identity and the installed migration ledger
 
-Origins: ARC-5.1, ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-7edd5e18 · 2026-11-19
+Origins: IMP-0.19, IMP-0.22, ARC-4.4 · Intention i-15647c06 · 2026-11-21
 
 ## Database.read_schema
 
@@ -125,9 +125,9 @@ Origins: ARC-5.1, ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-7edd5e18 · 2026-11-1
 
 ## Database.connection
 
-Reason: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
+Reason: Verify import reads against the admitted connection identity and the installed migration ledger
 
-Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
+Origins: IMP-0.19, IMP-0.22, ARC-4.4 · Intention i-15647c06 · 2026-11-21
 
 ## Database.observe_maintenance
 
@@ -152,4 +152,10 @@ Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
 Reason: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
 
 Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
+
+## Database.import_read
+
+Reason: Verify import reads against the admitted connection identity and the installed migration ledger
+
+Origins: IMP-0.19, IMP-0.22, ARC-4.4 · Intention i-15647c06 · 2026-11-21
 
