@@ -5,9 +5,9 @@ role: authored
 
 ## <before _Run>
 
-Reason: Use the same key and fingerprint decisions in dry runs and admitted durable imports
+Reason: Dispatch arbol import without starting a Backend and return one structured report
 
-Origins: IMP-0.13, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-d9ad676d · 2026-11-21
+Origins: IMP-0.1, IMP-0.3, IMP-0.13, IMP-0.19, IMP-0.21 · Intention i-b4203bed · 2026-11-21
 
 ## _Run
 
@@ -128,4 +128,10 @@ Origins: IMP-0.13, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · 
 Reason: Use the same key and fingerprint decisions in dry runs and admitted durable imports
 
 Origins: IMP-0.13, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-d9ad676d · 2026-11-21
+
+## import_main
+
+Reason: Dispatch arbol import without starting a Backend and return one structured report
+
+Origins: IMP-0.1, IMP-0.3, IMP-0.13, IMP-0.19, IMP-0.21 · Intention i-b4203bed · 2026-11-21
 

@@ -5,13 +5,13 @@ role: authored
 
 ## <before main>
 
-Reason: The backend and admission must agree on the new runtime directory and PostgreSQL guards while preserving isolated overrides.
+Reason: Dispatch arbol import without starting a Backend and return one structured report
 
-Origins: ARC-5.1, ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-7edd5e18 · 2026-11-19
+Origins: IMP-0.1, IMP-0.3, IMP-0.13, IMP-0.19, IMP-0.21 · Intention i-b4203bed · 2026-11-21
 
 ## main
 
-Reason: The backend and admission must agree on the new runtime directory and PostgreSQL guards while preserving isolated overrides.
+Reason: Dispatch arbol import without starting a Backend and return one structured report
 
-Origins: ARC-5.1, ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-7edd5e18 · 2026-11-19
+Origins: IMP-0.1, IMP-0.3, IMP-0.13, IMP-0.19, IMP-0.21 · Intention i-b4203bed · 2026-11-21
 
