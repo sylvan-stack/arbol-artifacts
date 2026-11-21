@@ -65,9 +65,9 @@ Origins: IMP-0.2, IMP-0.21, IMP-1.9, IMP-D34 · Intention i-914fc205 · 2026-11-
 
 ## Ledger.watch
 
-Reason: Probe native readers with pre-read fingerprints and content-free findings
+Reason: Observe archive-only Kimi uploads when Python 3.14 checks regular files without going through Path.stat.
 
-Origins: IMP-0.2, IMP-0.21, IMP-1.9, IMP-D34 · Intention i-914fc205 · 2026-11-21
+Origins: IMP-1.8, IMP-1.9 · Intention i-454b202f · 2026-11-21
 
 ## as_path
 
