@@ -125,9 +125,9 @@ Origins: IMP-1.2, IMP-1.4 · Intention i-8b93be51 · 2026-11-19
 
 ## <before _object>
 
-Reason: Enumerate permitted raw Claude files and compute liveness inside the supplied home
+Reason: Ignore Claude request replay records before conversation validation while preserving their raw transcript.
 
-Origins: IMP-1.8, IMP-1.11, IMP-0.13 · Intention i-64a8b6e9 · 2026-11-19
+Origins: IMP-1.1, IMP-1.5, IMP-D10 · Intention i-4b8ac953 · 2026-11-21
 
 ## _bad_record
 
@@ -167,9 +167,9 @@ Origins: IMP-1.3, IMP-D16 · Intention i-fb1bee8d · 2026-11-19
 
 ## _validated
 
-Reason: Bind Claude logs and projected sidecar reads to their archived identities
+Reason: Ignore Claude request replay records before conversation validation while preserving their raw transcript.
 
-Origins: IMP-0.2, IMP-0.13, IMP-0.15, IMP-D13 · Intention i-fe4723fa · 2026-11-21
+Origins: IMP-1.1, IMP-1.5, IMP-D10 · Intention i-4b8ac953 · 2026-11-21
 
 ## <before _blocks>
 
