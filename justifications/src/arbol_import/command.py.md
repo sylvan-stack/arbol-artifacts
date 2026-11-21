@@ -71,9 +71,9 @@ Origins: IMP-0.1, IMP-0.2, IMP-0.3, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21 · In
 
 ## _select
 
-Reason: Use the same key and fingerprint decisions in dry runs and admitted durable imports
+Reason: Apply a known excluded kind before reader projection so a damaged out-of-scope transcript does not fail the import.
 
-Origins: IMP-0.13, IMP-0.14, IMP-0.15, IMP-0.19, IMP-0.21, IMP-0.22, IMP-D35 · Intention i-d9ad676d · 2026-11-21
+Origins: IMP-0.3, IMP-D16 · Intention i-0d0fbc47 · 2026-11-21
 
 ## ImportReport
 
