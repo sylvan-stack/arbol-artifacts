@@ -227,9 +227,9 @@ Origins: RCT-0.17, BKD-0.34 · Intention i-4cc0d525 · 2026-11-23
 
 ## exchange_transition_evidence
 
-Reason: Validate exact stable packaging checks, independently qualified unit gates and archived Exchange transition evidence.
+Reason: Preserve version 1 archive verification and bind version 2 qualification to recorded optional promotion units.
 
-Origins: RCT-0.17, RCT-4.6, ARC-D89 · Intention i-31bea7dc · 2026-11-23
+Origins: RCT-0.17, RCT-4.6 · Intention i-5ca6e8d7 · 2026-11-23
 
 ## exchange_transition_spec
 
@@ -245,19 +245,25 @@ Origins: RCT-0.17, RCT-0.18, RCT-0.19, ARC-D89 · Intention i-df33c211 · 2026-1
 
 ## required_unit_checks
 
-Reason: Validate exact stable packaging checks, independently qualified unit gates and archived Exchange transition evidence.
+Removed: Preserve version 1 archive verification and bind version 2 qualification to recorded optional promotion units.
 
-Origins: RCT-0.17, RCT-4.6, ARC-D89 · Intention i-31bea7dc · 2026-11-23
+Removed by Intention i-5ca6e8d7 · 2026-11-23
 
 ## verify_exchange_transition
 
-Reason: Validate exact stable packaging checks, independently qualified unit gates and archived Exchange transition evidence.
+Reason: Preserve version 1 archive verification and bind version 2 qualification to recorded optional promotion units.
 
-Origins: RCT-0.17, RCT-4.6, ARC-D89 · Intention i-31bea7dc · 2026-11-23
+Origins: RCT-0.17, RCT-4.6 · Intention i-5ca6e8d7 · 2026-11-23
 
 ## verify_qualification
 
-Reason: Validate exact stable packaging checks, independently qualified unit gates and archived Exchange transition evidence.
+Reason: Preserve version 1 archive verification and bind version 2 qualification to recorded optional promotion units.
 
-Origins: RCT-0.17, RCT-4.6, ARC-D89 · Intention i-31bea7dc · 2026-11-23
+Origins: RCT-0.17, RCT-4.6 · Intention i-5ca6e8d7 · 2026-11-23
+
+## unit_checks
+
+Reason: Preserve version 1 archive verification and bind version 2 qualification to recorded optional promotion units.
+
+Origins: RCT-0.17, RCT-4.6 · Intention i-5ca6e8d7 · 2026-11-23
 
