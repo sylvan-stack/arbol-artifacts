@@ -1185,11 +1185,16 @@ The first concrete [Communicado Species](#communicado-species). It accepts a `ti
 
 ## Mach Speed
 
-The fixed rate of output-token equivalents per hour that would use an allowance window’s full budget exactly as the window ends, starting at the beginning and producing evenly throughout. Calculate it as the **full allowance divided by the full window duration in hours**. A window’s Mach speed is always Mach 1 on its own scale. The reference stays fixed as time passes and the allowance is used.
+The constant reference rate of output-token equivalents per hour for a given [Subscription](#subscription) and allowance window duration. Calculate it as the **full quota divided by the full window duration in hours**. At this rate, an agent producing evenly from the start of the window would use the full quota exactly as the window ends. For the same Subscription and window duration, the reference changes only when the [Provider](#provider) changes the full quota. It stays fixed as tokens are used and when a reset starts a fresh window with the same quota and duration.
 
-Always identify the window when naming a Mach speed or quoting a Mach value. Use **short-window Mach speed** for the five-hour window, **weekly Mach speed** for the weekly window, and **monthly Mach speed** for the monthly window. A heading or table row can supply the window context for the figures it labels. To compare Mach speeds across windows, divide their reference rates in equivalents per hour. A short-window Mach speed of 90,000/h is three times a weekly Mach speed of 30,000/h.
+A window’s Mach speed is **Mach 1** on its own scale. Express a measured or [required pace](#required-pace) in Mach by dividing the pace in equivalents per hour by the window’s reference rate. Always identify the window. Use **short-window Mach speed** for the five-hour window, **weekly Mach speed** for the weekly window, and **monthly Mach speed** for the monthly window. A heading or table row can supply that context.
 
-**Example.** A short window with 250,000 output-token equivalents over five hours has a short-window Mach speed of 50,000 equivalents per hour. See the [Required Pace example](#required-pace) for how that reference is used alongside weekly and monthly references.
+**Examples.**
+
+- A Subscription with a short quota of 250,000 output-token equivalents over five hours has a short-window Mach speed of 50,000 equivalents per hour. A response averaging 170,000 equivalents per hour during generation was generated **at short Mach 3.4**.
+- For another Subscription, a short-window Mach speed of 90,000 equivalents per hour is three times its weekly Mach speed of 30,000 equivalents per hour. Compare the underlying rates to express one window’s Mach speed in units of the other.
+
+See the [Required Pace example](#required-pace) for a worked comparison of three overlapping windows.
 
 ## Mycel
 
