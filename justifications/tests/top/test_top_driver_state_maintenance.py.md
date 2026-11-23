@@ -5,9 +5,9 @@ role: authored
 
 ## <before _write_new>
 
-Reason: Bind the ten original Claude create subjects to terminal helper evidence
+Reason: Bind original create custody to real terminal archive across drains
 
-Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
+Origins: DRV-6.21 · Intention i-cb84947c · 2026-11-23
 
 ## Execute
 
@@ -419,15 +419,15 @@ Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
 
 ## ClaudeCreateWalk.__init__
 
-Reason: Bind the ten original Claude create subjects to terminal helper evidence
+Reason: Bind original create custody to real terminal archive across drains
 
-Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
+Origins: DRV-6.21 · Intention i-cb84947c · 2026-11-23
 
 ## ClaudeCreateWalk.execute
 
-Reason: Bind the ten original Claude create subjects to terminal helper evidence
+Reason: Bind original create custody to real terminal archive across drains
 
-Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
+Origins: DRV-6.21 · Intention i-cb84947c · 2026-11-23
 
 ## ClaudeCreateWalk.metadata
 
@@ -437,19 +437,31 @@ Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
 
 ## ClaudeCreateWalk.prepare
 
-Reason: Bind the ten original Claude create subjects to terminal helper evidence
+Reason: Bind original create custody to real terminal archive across drains
 
-Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
+Origins: DRV-6.21 · Intention i-cb84947c · 2026-11-23
 
 ## ClaudeCreateWalk.unchanged
 
-Reason: Bind external observer to original sibling create subjects
+Reason: Bind original create custody to real terminal archive across drains
 
-Origins: DRV-6.20 · Intention i-70ee6eda · 2026-11-23
+Origins: DRV-6.21 · Intention i-cb84947c · 2026-11-23
 
 ## claude_create_subjects
 
 Reason: Bind external observer to original sibling create subjects
 
 Origins: DRV-6.20 · Intention i-70ee6eda · 2026-11-23
+
+## ClaudeCreateWalk.archived
+
+Reason: Bind original create custody to real terminal archive across drains
+
+Origins: DRV-6.21 · Intention i-cb84947c · 2026-11-23
+
+## ClaudeCreateWalk.check_custody
+
+Reason: Bind original create custody to real terminal archive across drains
+
+Origins: DRV-6.21 · Intention i-cb84947c · 2026-11-23
 
