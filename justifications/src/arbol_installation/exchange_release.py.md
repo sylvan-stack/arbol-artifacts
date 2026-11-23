@@ -29,9 +29,9 @@ Origins: RCT-0.17, RCT-0.18, BKD-0.34, ARC-D89 · Intention i-fd2996e2 · 2026-1
 
 ## authorization_from_release
 
-Reason: Replace the local archival release copy with exact compact authorization bound to admission and verified payloads.
+Reason: Bind derived compact authorization to the exact canonical archived release record digest.
 
-Origins: RCT-0.17, RCT-0.18, BKD-0.34, ARC-D89 · Intention i-fd2996e2 · 2026-11-23
+Origins: RCT-0.17, ARC-D89 · Intention i-72d3bc75 · 2026-11-23
 
 ## canonical
 
