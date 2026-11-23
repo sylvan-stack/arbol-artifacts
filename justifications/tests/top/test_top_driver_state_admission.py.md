@@ -437,9 +437,9 @@ Origins: DRV-5.11, DRV-6.21, BLD-0.5 · Intention i-34ad2202 · 2026-11-23
 
 ## TerminalSpanObservation._helpers
 
-Reason: Observe genuine terminal-before-original-close interval and complete positive closure for all four producer families
+Reason: Observe fixed Claude broker result using private accepted context
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-65392ebf · 2026-11-15
+Origins: DRV-6.21 · Intention i-0a85a2c4 · 2026-11-23
 
 ## TerminalSpanObservation._image
 
