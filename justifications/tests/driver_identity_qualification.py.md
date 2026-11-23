@@ -545,15 +545,15 @@ Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 
 ## WholeCheckController._public_invocations
 
-Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
+Reason: Verify reviewed Claude and Mimo case-bound public evidence
 
-Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
+Origins: DRV-6.21 · Intention i-b4c6fec0 · 2026-11-23
 
 ## codex_public_case
 
-Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
+Removed: Verify reviewed Claude and Mimo case-bound public evidence
 
-Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
+Removed by Intention i-b4c6fec0 · 2026-11-23
 
 ## pi_public_case
 
@@ -572,4 +572,22 @@ Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
 
 Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
+
+## codex_public_scenarios
+
+Reason: Verify reviewed Claude and Mimo case-bound public evidence
+
+Origins: DRV-6.21 · Intention i-b4c6fec0 · 2026-11-23
+
+## local_public_scenarios
+
+Reason: Verify reviewed Claude and Mimo case-bound public evidence
+
+Origins: DRV-6.21 · Intention i-b4c6fec0 · 2026-11-23
+
+## verify_public_case
+
+Reason: Verify reviewed Claude and Mimo case-bound public evidence
+
+Origins: DRV-6.21 · Intention i-b4c6fec0 · 2026-11-23
 
