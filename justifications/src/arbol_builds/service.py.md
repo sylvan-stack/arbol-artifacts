@@ -65,9 +65,9 @@ Origins: DRV-6.21, BLD-0.16, BLD-0.9 · Intention i-048579db · 2026-11-15
 
 ## driver_launcher_source
 
-Reason: Preflight existing gated routes before installer mutations, preserve exact recognized gate bytes and emit only the fixed verified provider sealed-entry dispatch for future explicit deployments
+Reason: Resolve immutable installed Driver payloads separately from numbered Build records.
 
-Origins: DRV-6.21, BLD-0.16, BLD-0.9 · Intention i-048579db · 2026-11-15
+Origins: DRV-6.18, DRV-6.21 · Intention i-da51c66f · 2026-11-23
 
 ## early_driver_signals
 
@@ -101,9 +101,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
 
 ## _driver_gate_authority
 
-Reason: Validate the existing Build ancestor before treating an absent legacy payload root as absence in the new read-only preservation preflight
+Reason: Resolve immutable installed Driver payloads separately from numbered Build records.
 
-Origins: DRV-6.21, BLD-0.16, BLD-0.9 · Intention i-3742dd7a · 2026-11-15
+Origins: DRV-6.18, DRV-6.21 · Intention i-da51c66f · 2026-11-23
 
 ## driver_gate_identity
 

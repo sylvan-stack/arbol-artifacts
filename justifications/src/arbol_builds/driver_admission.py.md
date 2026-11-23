@@ -281,9 +281,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-8ab6ff38 · 2026-11-15
 
 ## _custody_payload
 
-Reason: Carry exact candidate scope through custody reconciliation without loss exceptions
+Reason: Resolve immutable installed Driver payloads separately from numbered Build records.
 
-Origins: DRV-6.18, DRV-6.21 · Intention i-7e2e6166 · 2026-11-15
+Origins: DRV-6.18, DRV-6.21 · Intention i-da51c66f · 2026-11-23
 
 ## _documents
 

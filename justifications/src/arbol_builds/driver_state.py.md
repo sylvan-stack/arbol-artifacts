@@ -5,9 +5,9 @@ role: authored
 
 ## <before _route>
 
-Reason: Require the current Driver state layout and exact acceptance before the shared launcher starts a Driver.
+Reason: Resolve immutable installed Driver payloads separately from numbered Build records.
 
-Origins: DRV-6.18, DRV-6.21 · Intention i-43aafbed · 2026-11-23
+Origins: DRV-6.18, DRV-6.21 · Intention i-da51c66f · 2026-11-23
 
 ## _admission_marker
 
@@ -125,9 +125,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-
 
 ## _component
 
-Reason: Carry explicit isolated candidate resolution through administrative delegation and pins
+Reason: Resolve immutable installed Driver payloads separately from numbered Build records.
 
-Origins: DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-f3b18537 · 2026-11-15
+Origins: DRV-6.18, DRV-6.21 · Intention i-da51c66f · 2026-11-23
 
 ## _control
 
@@ -203,9 +203,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
 
 ## _qualified_candidates
 
-Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
+Reason: Resolve immutable installed Driver payloads separately from numbered Build records.
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
+Origins: DRV-6.18, DRV-6.21 · Intention i-da51c66f · 2026-11-23
 
 ## _rollback_rollout
 
