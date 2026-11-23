@@ -7,23 +7,11 @@ status: accepted
 
 ## Stable promotion and requested verification
 
-For the [unit-only stable promotion policy](/Users/msix/Artifacts/goals/OG-6.md),
-a non-Driver recipe can declare `promotionUnitTests`, an ordered list of
-distinct names from its `kind: "unit"` checks. `[]` explicitly declares an
-empty unit selection. When this field is present, Common Build runs the
-untyped artifact checks followed by the selected units. It records the
-selection and every executed check in the Build record. A working or
-withdrawn record requires a passing result for each selected unit. If the
-selection was explicitly empty, the recorded check list may also be empty.
+Stable candidate assembly and promotion are test-free by default. When the owner requests tests as part of stable promotion, run only the component's declared unit selection on the exact candidate. Use `promotionUnitTests`, an ordered list of distinct `kind: "unit"` checks. An explicit `[]` is an empty unit selection. Record whether units were requested, the exact selection, and the results. A selected unit failure stops that requested promotion.
 
-On a recipe with this field, `arbol-builds build --check <name>` adds one
-declared check to a separately requested verification run. Common Build
-refuses an unknown name before reserving output. Existing recipes without
-the field keep their original gates, including the standalone Driver gates.
-The production Browser recipe requires an explicit selection. A normal
-promotion uses its unit selection and the signed artifact and installer
-procedures. See the [operational build policy](/Users/msix/Artifacts/forester/operations/sylvan-stack-builds.md#build-and-promote).
+This rule applies to every component, including Drivers and recipes that still list older full gates. Packaging, artifact integrity and the component's signing and installer checks are part of promotion. Conformance, integration, native, live-provider and end-to-end checks can run in separately requested verification. Their execution and results are independent of stable promotion. A verification command reports only the scope it ran. See the [Owner Goal](/Users/msix/Artifacts/goals/OG-6.md) and [operational build policy](/Users/msix/Artifacts/forester/operations/sylvan-stack-builds.md#build-and-promote).
 
+`arbol-builds build --check <name>` adds a declared check to separately requested verification. Common Build refuses an unknown name before reserving output. Production Browser packaging and promotion still follow its signed artifact and installer procedures.
 
 Every component of Arbol 2 is built into numbered [Builds](../GLOSSARY.md#build). The Builds of a component are kept side by side on the machine and listed in one registry. Whoever starts a component gets its newest eligible working Build, or names another one; for `arbol` and `arbol-root`, eligibility is restricted to the selected [Root](../architecture/01-roots.md). This specification states the numbering, the registry, the rule for the default and how a Build or a Root is named on the command line. It matters because version 1 could run only what was installed last, named its builds with a timestamp nobody could type, and grew upgrade machinery larger than the product. Here a Build is a folder and a number, and choosing one means reading a few small files.
 
@@ -85,15 +73,11 @@ A Trunk's Builds lie in `builds/arbol-trunk/<code name>/<build>/`: `builds/arbol
 | Status | Meaning | Can be run |
 |---|---|---|
 | `building` | The build has started and not finished | No |
-| `failed` | The build did not finish, or one of the component's checks did not pass. The record and the log are kept | Only when named, and only when its program is there |
-| `working` | The build finished and every check passed | Yes |
+| `failed` | Packaging or a check selected for this operation failed. The record and the log are kept | Only when named, and only when its program is there |
+| `working` | The build and the operations selected for it succeeded | Yes |
 | `withdrawn` | Was `working` and was later marked as not to be used, with a reason | Only when named |
 
-The checks of a Driver come in two parts, and both must pass. The first needs no network, no account and no quota: its unit tests and the contract suite of [DRV-5](../driver-contract/05-conformance.md). The second is one real message: one prompt, as small as possible, sent through the installed vendor tool on the Driver's test Subscription. It spends a little quota on every build.
-
-A build whose real message could not be sent at all, because there was no network, the test Subscription was signed out or its allowance was used up, is `failed` like any other, and its record names the check that stopped it. The component is built again when the cause is gone; build numbers are not scarce.
-
-A component with no vendor tool behind it has only the first part, until its own specification says otherwise.
+Driver conformance and real-provider checks are separately requested verification under [DRV-5](../driver-contract/05-conformance.md). The stable workflow does not require provider access, a live prompt, or an earlier verification run.
 
 A Build that passed its checks and then proves bad in use is withdrawn. Nothing is deleted: the Build can still be run by its build number, to look into what went wrong.
 
@@ -425,7 +409,7 @@ The existing check names below verify the Driver and shared build-tool behaviour
 | BLD-0.2 | give a number when a build starts and never give it twice, also after a failed build and after pruning | New | SYL-95 Python: `build.relocated-unit`, `build.folder-alone`, `build.launcher-default-and-named`, `build.failed-check-preserves-default`, `build.withdrawal-rollback`; production `build.unit`, `build.contract`, `dev.build-check` and launcher records; Codex was a candidate at SYL-95; current numbered verification is below; prior verification: `builds.concurrent`, `builds.concurrent-mutations`, `builds.failed-check`, `builds.prune`, `builds.interrupted-build`; Codex SYL-94 Build 1: `build.failed-check-preserves-default` |
 | BLD-0.3 | keep each Build in a folder of its own with its record, and need nothing but that folder to run it | Changed | SYL-95 Python: `build.relocated-unit`, `build.folder-alone`, `build.launcher-default-and-named`, `build.failed-check-preserves-default`, `build.withdrawal-rollback`; production `build.unit`, `build.contract`, `dev.build-check` and launcher records; Codex was a candidate at SYL-95; current numbered verification is below; prior verification: `builds.folder-alone`; Codex SYL-94 Build 1: `build.folder-alone`, `build.source-and-runtime` |
 | BLD-0.4 | record for every Build its package version and its source: repository, branch, commit, and whether the checkout held uncommitted changes | Kept | SYL-95 Python: `build.relocated-unit`, `build.folder-alone`, `build.launcher-default-and-named`, `build.failed-check-preserves-default`, `build.withdrawal-rollback`; production `build.unit`, `build.contract`, `dev.build-check` and launcher records; Codex was a candidate at SYL-95; current numbered verification is below; prior verification: `builds.source`; Codex SYL-94 Build 1: `build.clean-working`, `build.source-and-runtime` |
-| BLD-0.5 | mark a Build `working` only when the build finished and every check the component runs on each build passed, for a Driver the one real message through the installed vendor tool included | New | SYL-95 Python: `build.relocated-unit`, `build.folder-alone`, `build.launcher-default-and-named`, `build.failed-check-preserves-default`, `build.withdrawal-rollback`; production `build.unit`, `build.contract`, `dev.build-check` and launcher records; Codex was a candidate at SYL-95; current numbered verification is below; prior verification: `builds.description`, `builds.driver-checks` (scripted live outcome); Claude: `build.clean-working`, `build.checks`, `dev.build-check` (Build 1, one real Haiku message), `build.failed-check`; Codex SYL-94 Build 1: `build.clean-working`, `build.checks`, `dev.build-check`, `build.failed-check-preserves-default` |
+| BLD-0.5 | mark a stable candidate or stable Build `working` when assembly and required artifact checks succeed and all unit tests selected for an explicitly requested promotion pass. Allow promotion without non-unit verification or a separate qualification result | [OG-6](/Users/msix/Artifacts/goals/OG-6.md) | Stable candidate/promotion selection and Build record |
 | BLD-0.6 | keep the record and the log of a failed build | New | SYL-95 Python: `build.relocated-unit`, `build.folder-alone`, `build.launcher-default-and-named`, `build.failed-check-preserves-default`, `build.withdrawal-rollback`; production `build.unit`, `build.contract`, `dev.build-check` and launcher records; Codex was a candidate at SYL-95; current numbered verification is below; prior verification: `builds.failed-check`, `builds.failed-command`, `builds.interrupted-build`; Codex SYL-94 Build 1: `build.failed-check-preserves-default` |
 | BLD-0.7 | for a component outside Roots, take as the default the `working` Build with the highest build number, worked out from the records at every start, with no stored setting | Changed | SYL-95 Python: `build.relocated-unit`, `build.folder-alone`, `build.launcher-default-and-named`, `build.failed-check-preserves-default`, `build.withdrawal-rollback`; production `build.unit`, `build.contract`, `dev.build-check` and launcher records; Codex was a candidate at SYL-95; current numbered verification is below; prior verification: `builds.two-builds`, `builds.withdraw`, `builds.damaged-record`; Codex SYL-94 Build 1: `build.launcher-default`, `build.failed-check-preserves-default` |
 | BLD-0.8 | for a component outside Roots, run the named Build when the launcher's first argument is `-v <build number>`, refuse a Build that cannot be run, and list those that can | New | SYL-95 Python: `build.relocated-unit`, `build.folder-alone`, `build.launcher-default-and-named`, `build.failed-check-preserves-default`, `build.withdrawal-rollback`; production `build.unit`, `build.contract`, `dev.build-check` and launcher records; Codex was a candidate at SYL-95; current numbered verification is below; prior verification: `builds.launch-refusal`, `builds.prune`; Codex SYL-94 Build 1: `build.launcher-named`, `build.failed-check-preserves-default`; a named `failed` Build (BLD-D13): `builds.failed-check`, passed 14 October 2026 |
