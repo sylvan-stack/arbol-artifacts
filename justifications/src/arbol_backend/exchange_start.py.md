@@ -35,9 +35,9 @@ Origins: ARC-4.1, ARC-4.6 · Intention i-b28581e9 · 2026-11-12
 
 ## start
 
-Reason: Preserve UUID receipt recovery while refusing imported start targets before locking or launch and hand the Trunk the exact checked request bytes.
+Reason: Verify selected Trunk payload and release before start effects under the current admission generation.
 
-Origins: IMP-0.16, IMP-0.18, RCT-0.4, RCT-2.13, ARC-4.4, ARC-4.6 · Intention i-f05c01ac · 2026-11-19
+Origins: RCT-0.17, RCT-0.18 · Intention i-ccaaa8ee · 2026-11-23
 
 ## wait_reply
 
@@ -56,4 +56,10 @@ Origins: IMP-0.16, IMP-0.18, RCT-0.4, RCT-2.13, ARC-4.4, ARC-4.6 · Intention i-
 Reason: Preserve UUID receipt recovery while refusing imported start targets before locking or launch and hand the Trunk the exact checked request bytes.
 
 Origins: IMP-0.16, IMP-0.18, RCT-0.4, RCT-2.13, ARC-4.4, ARC-4.6 · Intention i-f05c01ac · 2026-11-19
+
+## verify_selection
+
+Reason: Verify selected Trunk payload and release before start effects under the current admission generation.
+
+Origins: RCT-0.17, RCT-0.18 · Intention i-ccaaa8ee · 2026-11-23
 
