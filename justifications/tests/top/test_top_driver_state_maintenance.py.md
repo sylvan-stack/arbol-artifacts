@@ -5,9 +5,9 @@ role: authored
 
 ## <before _write_new>
 
-Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
+Reason: Bind reviewed fixed deferred observations to the original whole-unit controller
 
-Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
+Origins: DRV-6.21 · Intention i-b773b88d · 2026-11-23
 
 ## Execute
 
@@ -614,4 +614,10 @@ Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
 
 Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
+
+## fixed_unit_observations
+
+Reason: Bind reviewed fixed deferred observations to the original whole-unit controller
+
+Origins: DRV-6.21 · Intention i-b773b88d · 2026-11-23
 

@@ -395,9 +395,9 @@ Origins: DRV-5.11, DRV-6.21 · Intention i-d4e641b1 · 2026-11-15
 
 ## <before _span_ids>
 
-Reason: Author exact H1 report/source/custody validation and whole positive external-phase coordination on accepted bounded interactive collector, preserving full local inventory and all deferred assertions; source-only.
+Reason: Bind reviewed fixed deferred observations to the original whole-unit controller
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
+Origins: DRV-6.21 · Intention i-b773b88d · 2026-11-23
 
 ## H1Schedule
 
@@ -425,15 +425,15 @@ Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 
 ## WholeCheckController.run_h1_positive
 
-Reason: Protect private broker registration in shared reports
+Reason: Bind reviewed fixed deferred observations to the original whole-unit controller
 
-Origins: DRV-6.21 · Intention i-fcd8f9c6 · 2026-11-23
+Origins: DRV-6.21 · Intention i-b773b88d · 2026-11-23
 
 ## WholeCheckController.verify_h1_ready
 
-Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
+Reason: Bind reviewed fixed deferred observations to the original whole-unit controller
 
-Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
+Origins: DRV-6.21 · Intention i-b773b88d · 2026-11-23
 
 ## _span_document
 
@@ -479,9 +479,9 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
 
 ## TerminalSchedule
 
-Reason: Bind canonical terminal settled intent and source evidence and coordinate the full positive H1 and terminal span
+Reason: Bind reviewed fixed deferred observations to the original whole-unit controller
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
+Origins: DRV-6.21 · Intention i-b773b88d · 2026-11-23
 
 ## TerminalSchedule.verify
 
