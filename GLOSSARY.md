@@ -1412,7 +1412,7 @@ Two distinct layers carry a provider value, and they deliberately differ for gat
 
 A designation for a weekly allowance window whose goal is to use its full weekly quota as quickly as useful work and applicable limits allow. During a Quota Dash planned for a limit reset, apply the reset as soon as the weekly quota is fully used. A large unused balance approaching expiration is another reason to designate the window. In that case, the goal is to use as much of the remaining quota as possible before it expires.
 
-The rules for designating a window, handling expiration deadlines, and applying resets are planned for later implementation.
+Seqoya Vigor applies manual designations and automatic rules for reset expiry and configurable thresholds. See [Seqoya Vigor ranking](backend/03-the-arbol-swift-app.md#seqoya-vigor-ranking).
 
 **Example.** A full weekly quota can be used in 3½ days at weekly Mach 2 if other limits allow it. If a limit reset is available, apply it once the quota is used and continue in the fresh weekly window. A weekly window with a large balance expiring tomorrow can also be designated a Quota Dash so that useful work can use the balance before the deadline.
 
