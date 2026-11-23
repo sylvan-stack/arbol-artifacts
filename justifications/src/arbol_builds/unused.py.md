@@ -29,9 +29,9 @@ Origins: ARC-4.6 · Intention i-2fff8f61 · 2026-11-12
 
 ## listed_exchanges
 
-Reason: Build retention reads an imported Exchange, trunk imported with Build 0, without resolving a Build
+Reason: Accept and preserve both validated Exchange formats in downstream listing and Build retention before enabling raw format 2.
 
-Origins: IMP-0.18 · Intention i-99165683 · 2026-11-18
+Origins: RCT-1.14 · Intention i-65edc292 · 2026-11-23
 
 ## usage_snapshot
 
