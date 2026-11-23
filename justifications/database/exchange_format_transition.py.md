@@ -5,9 +5,9 @@ role: authored
 
 ## <before VerifiedDeployment>
 
-Reason: Verify complete managed Exchange deployment and retained writer evidence
+Reason: Compose verified closed Exchange transition operator
 
-Origins: RCT-0.17, RCT-0.18, RCT-4.6, ARC-D89 · Intention i-d66b4600 · 2026-11-23
+Origins: RCT-0.17, RCT-0.18, RCT-0.19, ARC-D89 · Intention i-0caa25c2 · 2026-11-23
 
 ## VerifiedDeployment
 
@@ -50,4 +50,46 @@ Origins: RCT-0.17, RCT-0.18, RCT-0.19, RCT-4.6, ARC-D89 · Intention i-5871a087 
 Reason: Correct installed deployment verifier and prior rollback evidence
 
 Origins: RCT-0.17, RCT-0.18, RCT-0.19, RCT-4.6, ARC-D89 · Intention i-5871a087 · 2026-11-23
+
+## <before request>
+
+Reason: Compose verified closed Exchange transition operator
+
+Origins: RCT-0.17, RCT-0.18, RCT-0.19, ARC-D89 · Intention i-0caa25c2 · 2026-11-23
+
+## <end>
+
+Reason: Compose verified closed Exchange transition operator
+
+Origins: RCT-0.17, RCT-0.18, RCT-0.19, ARC-D89 · Intention i-0caa25c2 · 2026-11-23
+
+## main
+
+Reason: Compose verified closed Exchange transition operator
+
+Origins: RCT-0.17, RCT-0.18, RCT-0.19, ARC-D89 · Intention i-0caa25c2 · 2026-11-23
+
+## operate
+
+Reason: Compose verified closed Exchange transition operator
+
+Origins: RCT-0.17, RCT-0.18, RCT-0.19, ARC-D89 · Intention i-0caa25c2 · 2026-11-23
+
+## request
+
+Reason: Compose verified closed Exchange transition operator
+
+Origins: RCT-0.17, RCT-0.18, RCT-0.19, ARC-D89 · Intention i-0caa25c2 · 2026-11-23
+
+## stage
+
+Reason: Compose verified closed Exchange transition operator
+
+Origins: RCT-0.17, RCT-0.18, RCT-0.19, ARC-D89 · Intention i-0caa25c2 · 2026-11-23
+
+## verify_inputs
+
+Reason: Compose verified closed Exchange transition operator
+
+Origins: RCT-0.17, RCT-0.18, RCT-0.19, ARC-D89 · Intention i-0caa25c2 · 2026-11-23
 
