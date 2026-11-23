@@ -5,9 +5,9 @@ role: authored
 
 ## <before operation>
 
-Reason: Refuse exclusive closure when recovery note names or file custody remain unresolved without reading content.
+Reason: Verify and bind the exact qualified Exchange release under the existing exclusive maintenance custody.
 
-Origins: RCT-0.18, BKD-0.35 · Intention i-2c9c7e7f · 2026-11-23
+Origins: RCT-0.17, RCT-0.18, RCT-0.19, ARC-D89 · Intention i-ef449ae1 · 2026-11-23
 
 ## begin_maintenance
 
@@ -65,7 +65,7 @@ Origins: ARC-4.4, ARC-4.8 · Intention i-4292c8dd · 2026-11-12
 
 ## reopen
 
-Reason: Refuse exclusive closure when recovery note names or file custody remain unresolved without reading content.
+Reason: Verify and bind the exact qualified Exchange release under the existing exclusive maintenance custody.
 
-Origins: RCT-0.18, BKD-0.35 · Intention i-2c9c7e7f · 2026-11-23
+Origins: RCT-0.17, RCT-0.18, RCT-0.19, ARC-D89 · Intention i-ef449ae1 · 2026-11-23
 
