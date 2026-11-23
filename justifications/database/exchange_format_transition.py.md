@@ -71,9 +71,9 @@ Origins: RCT-0.18, RCT-0.19, BKD-0.35 · Intention i-2fbb5c06 · 2026-11-23
 
 ## operate
 
-Reason: Expose controlled drain and exact-session freeze
+Reason: Recover the existing exact session after a lost drain reply
 
-Origins: RCT-0.18, RCT-0.19, BKD-0.35 · Intention i-2fbb5c06 · 2026-11-23
+Origins: RCT-0.18, RCT-0.19 · Intention i-db0ef7d8 · 2026-11-23
 
 ## request
 
