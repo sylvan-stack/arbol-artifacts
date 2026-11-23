@@ -1185,9 +1185,9 @@ The first concrete [Communicado Species](#communicado-species). It accepts a `ti
 
 ## Mach Speed
 
-The fixed rate of output-token equivalents per hour that would use an allowance window’s full budget exactly as the window ends, starting at the beginning and producing evenly throughout. Calculate it as the **full allowance divided by the full window duration in hours**. Mach 1 equals that window’s Mach speed. Mach 2 is twice that rate. The reference stays fixed as time passes and the allowance is used.
+The fixed rate of output-token equivalents per hour that would use an allowance window’s full budget exactly as the window ends, starting at the beginning and producing evenly throughout. Calculate it as the **full allowance divided by the full window duration in hours**. A window’s Mach speed is always Mach 1 on its own scale. The reference stays fixed as time passes and the allowance is used.
 
-Always identify the window when naming a Mach speed or quoting a Mach value. Use **short-window Mach speed** for the five-hour window, **weekly Mach speed** for the weekly window, and **monthly Mach speed** for the monthly window. A heading or table row can supply the window context for the figures it labels.
+Always identify the window when naming a Mach speed or quoting a Mach value. Use **short-window Mach speed** for the five-hour window, **weekly Mach speed** for the weekly window, and **monthly Mach speed** for the monthly window. A heading or table row can supply the window context for the figures it labels. To compare Mach speeds across windows, divide their reference rates in equivalents per hour. A short-window Mach speed of 90,000/h is three times a weekly Mach speed of 30,000/h.
 
 **Example.** A short window with 250,000 output-token equivalents over five hours has a short-window Mach speed of 50,000 equivalents per hour. See the [Required Pace example](#required-pace) for how that reference is used alongside weekly and monthly references.
 
@@ -1470,7 +1470,7 @@ The UIShell-header dropdown selecting which [Repo](#repo) an app's [Mycel](#myce
 
 The rate of output-token equivalents per hour an agent would need to generate from now through an allowance window’s deadline to use exactly its remaining allowance. Calculate it as the **remaining allowance divided by the hours left** while the window is open. To express it as a Mach value, divide that rate by the same window’s [Mach speed](#mach-speed).
 
-Always identify the window. Use **short-window required pace**, **weekly required pace**, or **monthly required pace**. Say “the weekly window needs Mach 2.” On a card headed **Weekly window**, **Required pace · Mach 2** carries the same meaning.
+Always identify the window. Use **short-window required pace**, **weekly required pace**, or **monthly required pace**. Say “the weekly required pace is Mach 2.” On a card headed **Weekly window**, **Required pace · Mach 2** carries the same meaning.
 
 **Example.** A Subscription has three active allowance windows. The monthly window in this example lasts 30 days. All amounts are output-token equivalents, and `/h` means per hour.
 
@@ -1480,9 +1480,11 @@ Always identify the window. Use **short-window required pace**, **weekly require
 | Weekly | 5,040,000 | 168 h | 30,000/h | 2,520,000 | 42 h | 60,000/h · Mach 2 |
 | Monthly | 14,400,000 | 720 h | 20,000/h | 2,400,000 | 240 h | 10,000/h · Mach 0.5 |
 
-The short window needs Mach 1.6 because 80% of its allowance remains and half of its duration is left. The weekly window needs Mach 2 because half of its allowance remains with a quarter of its duration left. The monthly window needs Mach 0.5 because one-sixth of its allowance remains with one-third of its duration left.
+The short-window required pace is Mach 1.6 because 80% of its allowance remains and half of its duration is left. The weekly required pace is Mach 2 because half of its allowance remains with a quarter of its duration left. The monthly required pace is Mach 0.5 because one-sixth of its allowance remains with one-third of its duration left.
 
-Compare the equivalents per hour to see which window calls for the faster absolute pace. The short window needs 80,000/h and the weekly window needs 60,000/h. Compare the Mach values to see how far each pace is from its own reference. The weekly window needs twice its reference rate.
+Compare the equivalents per hour to see which window calls for the faster absolute pace. The short window needs 80,000/h and the weekly window needs 60,000/h. Compare the Mach values to see how far each pace is from its own reference. Weekly Mach 2 is twice the weekly Mach speed.
+
+Each required pace is a target for its own window. If the monthly and weekly windows count the same output and the monthly allowance stays fixed, a pace of 60,000/h would exhaust the monthly balance after 40 hours and leave 120,000 equivalents in the weekly balance at that point. The weekly required pace describes what would exhaust the weekly balance by its deadline. The monthly limit determines how much of that target is achievable in this example.
 
 Suppose the same output counts against all three windows, and the weekly and monthly deadlines and allowances stay fixed over the next 2.5 hours. Running at 80,000/h spends 200,000 equivalents and uses up the short window exactly at its deadline. The weekly window then has 2,320,000 equivalents and 39.5 hours left, so it needs about 58,700/h, or weekly Mach 1.96. The monthly window has 2,200,000 equivalents and 237.5 hours left, so it needs about 9,260/h, or monthly Mach 0.46. Each row starts from its own remaining balance and deadline. Both Mach speeds stay fixed.
 
