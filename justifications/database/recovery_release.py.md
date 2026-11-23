@@ -95,9 +95,9 @@ Origins: ARC-5.4 · Intention i-3a3f6a76 · 2026-11-19
 
 ## record_release
 
-Reason: Record clean reproducible release inputs on the verified Mercury volume and preserve verification of older release records.
+Reason: Bind explicit Exchange and note capabilities to the exact selected release Builds and their verified payload evidence.
 
-Origins: ARC-5.4 · Intention i-3a3f6a76 · 2026-11-19
+Origins: RCT-0.17, BKD-0.34 · Intention i-4cc0d525 · 2026-11-23
 
 ## relative
 
@@ -137,9 +137,9 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
 
 ## verify_release
 
-Reason: Record clean reproducible release inputs on the verified Mercury volume and preserve verification of older release records.
+Reason: Bind explicit Exchange and note capabilities to the exact selected release Builds and their verified payload evidence.
 
-Origins: ARC-5.4 · Intention i-3a3f6a76 · 2026-11-19
+Origins: RCT-0.17, BKD-0.34 · Intention i-4cc0d525 · 2026-11-23
 
 ## write_private
 
@@ -218,4 +218,10 @@ Origins: ARC-4.5, ARC-5.4, ARC-D95, ARC-D96 · Intention i-c535ce9e · 2026-11-1
 Reason: Bind Browser recovery to the exact signed host, published source admission, and retained pinned inputs consumed by its unchanged recipe and gate.
 
 Origins: ARC-4.5, ARC-5.4, ARC-D95, ARC-D96 · Intention i-c535ce9e · 2026-11-19
+
+## exchange_capabilities
+
+Reason: Bind explicit Exchange and note capabilities to the exact selected release Builds and their verified payload evidence.
+
+Origins: RCT-0.17, BKD-0.34 · Intention i-4cc0d525 · 2026-11-23
 
