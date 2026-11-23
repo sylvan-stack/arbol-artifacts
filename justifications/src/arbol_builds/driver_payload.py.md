@@ -251,9 +251,9 @@ Origins: DRV-6.18, DRV-6.21 · Intention i-425cae65 · 2026-11-15
 
 ## _registered_payload
 
-Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
+Reason: Verify committed private Driver registration and exact installed package bytes
 
-Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
+Origins: DRV-6.22 · Intention i-32a5fe52 · 2026-11-23
 
 ## CandidateScope
 
@@ -314,4 +314,10 @@ Origins: DRV-6.18, DRV-6.21, BLD-0.3, BLD-0.11 · Intention i-2966bfe0 · 2026-1
 Reason: Resolve immutable installed Driver payloads separately from numbered Build records.
 
 Origins: DRV-6.18, DRV-6.21 · Intention i-da51c66f · 2026-11-23
+
+## _private_registration
+
+Reason: Verify committed private Driver registration and exact installed package bytes
+
+Origins: DRV-6.22 · Intention i-32a5fe52 · 2026-11-23
 
