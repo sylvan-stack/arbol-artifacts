@@ -35,9 +35,9 @@ Origins: ARC-4.6 · Intention i-1ef86594 · 2026-11-12
 
 ## project
 
-Reason: Discover pending and running Exchanges from verified installation records
+Reason: Accept both validated raw Exchange formats while preserving immutable assignment and exact recorded Build settlement.
 
-Origins: ARC-4.6 · Intention i-1ef86594 · 2026-11-12
+Origins: RCT-1.14, RCT-2.24 · Intention i-4465727b · 2026-11-23
 
 ## read_record
 

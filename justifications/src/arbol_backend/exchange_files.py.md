@@ -41,9 +41,9 @@ Origins: ARC-4.1, ARC-4.6 · Intention i-37a0246e · 2026-11-12
 
 ## record
 
-Reason: Coalesce inventory by Exchange UUID and verify event folders against the recorded assignment and process.
+Reason: Accept both validated raw Exchange formats while preserving immutable assignment and exact recorded Build settlement.
 
-Origins: ARC-4.1, ARC-4.6 · Intention i-37a0246e · 2026-11-12
+Origins: RCT-1.14, RCT-2.24 · Intention i-4465727b · 2026-11-23
 
 ## Folders.names
 
