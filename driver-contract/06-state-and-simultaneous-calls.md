@@ -357,6 +357,7 @@ Supported Driver restore/reset is the same closed/drained helper route: restore 
 |---|---|---|---|
 | DRV-6.21 | supply the concrete shared installed-launcher maintenance gate, cooperative qualified metadata-writer/helper lifetime custody, pre-execution legacy taint, verified closed boot-boundary recovery and drain, epoch-bound maintenance handoff, recoverable rollout and fail-closed reopen before format conversion/reset/restore | DRV-6.18/.19; BRW-1.14 | pending ABR-39 implementation and ABR-38 composition/old-Build/helper-death qualification |
 | DRV-6.22 | publish installed acceptance for each Driver from the stable promotion record for the exact shared provider, four registered Drivers, gate and platform. Allow stable admission without separately requested verification evidence | BLD-0.5; [OG-6](/Users/msix/Artifacts/goals/OG-6.md) | Pending installer implementation |
+| DRV-6.23 | support installing all four Drivers with fresh layout-2 state when the owner chooses empty Driver folders. Keep the existing Arbol database, enforce closed launch admission and the old-writer fence, record fresh initialization for all four Drivers, then reopen together | Owner decision, 23 November 2026; DRV-6.21/.22 | Pending installed Build tool implementation |
 
 <!-- sources:
 arbol:@code/src/arbol_builds/launcher.py#launch
@@ -427,6 +428,10 @@ For `status: "qualified"`, `evidenceSha256` identifies the immutable stable prom
 The actual cutover continues to require closed launch admission, old-writer fencing, the verified boot boundary where required, recoverable state conversion, and verified reopening. The installer records those observations as the cutover happens. Its promotion record is available before cutover and does not certify a rehearsal or a future cutover outcome. Acceptance metadata is local owner-trust authority. It stays outside source, payloads and backups and carries no credentials or real-account data.
 
 A `candidate` record is limited to an explicitly isolated disposable registry in separately requested verification. Its scope must match that registry's physical path. The installed registry and Browser consumers reject it. ABR-38 records separately requested verification with its exact scope and results. It supplies no prerequisite to stable installation. A change in installed registry, launcher bytes or platform requires promotion evidence and acceptance for the changed target.
+
+### Installing with empty Driver folders
+
+The owner selected fresh Driver folders for the Claude, Codex, MiMo and Pi installation. Keep the existing Arbol database and the native tools' own files in place. During the closed installation, account for old writers using the same boot and custody rules. Move any existing Driver folders outside the active paths. The exact installed Driver packages initialize layout 2 in fresh private directories under exclusive admission. The provider records the identity of each new folder and verifies its layout marker. It opens normal use only after all four initializations are recorded. An interrupted install stays closed and resumes from its recorded step. Use fresh initialization records for this case in place of conversion results. The sequence is in [Install the four Arbol Drivers](/Users/msix/Artifacts/forester/operations/install-arbol-drivers.md).
 
 ### Isolated Python bootstrap and normal/helper admission wire
 
