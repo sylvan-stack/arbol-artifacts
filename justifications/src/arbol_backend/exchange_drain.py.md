@@ -5,9 +5,9 @@ role: authored
 
 ## <before operation>
 
-Reason: Prove an empty runtime and database under the same lease gate, then bind snapshot, upgrade and explicit verified reopen to the durable session.
+Reason: Refuse exclusive closure when recovery note names or file custody remain unresolved without reading content.
 
-Origins: ARC-4.4, ARC-4.8 · Intention i-4292c8dd · 2026-11-12
+Origins: RCT-0.18, BKD-0.35 · Intention i-2c9c7e7f · 2026-11-23
 
 ## begin_maintenance
 
@@ -35,9 +35,9 @@ Origins: ARC-4.4, ARC-4.8 · Intention i-4292c8dd · 2026-11-12
 
 ## freeze
 
-Reason: Preserve an optional strict compact authorization commitment through admission and drain transitions.
+Reason: Refuse exclusive closure when recovery note names or file custody remain unresolved without reading content.
 
-Origins: RCT-0.17, RCT-0.18, RCT-0.19 · Intention i-4fa3fb6b · 2026-11-23
+Origins: RCT-0.18, BKD-0.35 · Intention i-2c9c7e7f · 2026-11-23
 
 ## gate
 
@@ -65,7 +65,7 @@ Origins: ARC-4.4, ARC-4.8 · Intention i-4292c8dd · 2026-11-12
 
 ## reopen
 
-Reason: Preserve an optional strict compact authorization commitment through admission and drain transitions.
+Reason: Refuse exclusive closure when recovery note names or file custody remain unresolved without reading content.
 
-Origins: RCT-0.17, RCT-0.18, RCT-0.19 · Intention i-4fa3fb6b · 2026-11-23
+Origins: RCT-0.18, BKD-0.35 · Intention i-2c9c7e7f · 2026-11-23
 
