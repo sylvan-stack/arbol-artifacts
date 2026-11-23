@@ -53,9 +53,9 @@ Origins: ARC-4.1, ARC-4.3 · Intention i-fa05f54d · 2026-11-12
 
 ## launch_trunk
 
-Reason: Use a distinct read-only policy command that legacy launchers refuse before writer entry.
+Reason: Bind production launcher admission to the managed runtime and isolate alternate registry runtimes.
 
-Origins: RCT-0.17, RCT-0.18 · Intention i-945d195e · 2026-11-23
+Origins: RCT-0.17, RCT-0.18 · Intention i-1fdf6c12 · 2026-11-23
 
 ## pick_build
 
@@ -89,9 +89,9 @@ Origins: RCT-0.17, RCT-0.18 · Intention i-ccaaa8ee · 2026-11-23
 
 ## launch_installed_trunk
 
-Reason: Use a distinct read-only policy command that legacy launchers refuse before writer entry.
+Reason: Bind production launcher admission to the managed runtime and isolate alternate registry runtimes.
 
-Origins: RCT-0.17, RCT-0.18 · Intention i-945d195e · 2026-11-23
+Origins: RCT-0.17, RCT-0.18 · Intention i-1fdf6c12 · 2026-11-23
 
 ## schema_view
 
@@ -107,7 +107,7 @@ Origins: RCT-0.17, RCT-0.18 · Intention i-945d195e · 2026-11-23
 
 ## admission_runtime
 
-Reason: Verify selected Trunk payload and release before start effects under the current admission generation.
+Reason: Bind production launcher admission to the managed runtime and isolate alternate registry runtimes.
 
-Origins: RCT-0.17, RCT-0.18 · Intention i-ccaaa8ee · 2026-11-23
+Origins: RCT-0.17, RCT-0.18 · Intention i-1fdf6c12 · 2026-11-23
 
