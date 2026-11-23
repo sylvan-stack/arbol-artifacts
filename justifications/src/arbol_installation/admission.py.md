@@ -47,9 +47,9 @@ Origins: ARC-4.4, ARC-4.5 · Intention i-e245baed · 2026-11-12
 
 ## Lease
 
-Reason: Use the same installation lease to protect Build recovery inputs and stage its private module in both consumers.
+Reason: Bind local release capabilities and payload eligibility to the held installation admission lease.
 
-Origins: ARC-4.4, ARC-4.5 · Intention i-e245baed · 2026-11-12
+Origins: RCT-0.17, RCT-0.18, BKD-0.34 · Intention i-175af23b · 2026-11-23
 
 ## Lease.require
 
@@ -77,9 +77,9 @@ Origins: ARC-4.4, ARC-4.5 · Intention i-e245baed · 2026-11-12
 
 ## directory_lease
 
-Reason: Use the same installation lease to protect Build recovery inputs and stage its private module in both consumers.
+Reason: Bind local release capabilities and payload eligibility to the held installation admission lease.
 
-Origins: ARC-4.4, ARC-4.5 · Intention i-e245baed · 2026-11-12
+Origins: RCT-0.17, RCT-0.18, BKD-0.34 · Intention i-175af23b · 2026-11-23
 
 ## lock
 
