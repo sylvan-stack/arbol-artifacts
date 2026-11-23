@@ -5,9 +5,9 @@ role: authored
 
 ## <before _route>
 
-Reason: Add only the reviewed literal Mimo candidate death-fixture selectors and matching zero-argument Guardian guards; preserve existing admission, stdio, custody and lifecycle.
+Reason: Require the current Driver state layout and exact acceptance before the shared launcher starts a Driver.
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.21, BLD-0.9, BLD-0.15, MIM-6.13 · Intention i-0191280d · 2026-11-15
+Origins: DRV-6.18, DRV-6.21 · Intention i-43aafbed · 2026-11-23
 
 ## _admission_marker
 
@@ -17,9 +17,9 @@ Origins: DRV-6.21, BLD-0.7, BLD-0.8, BLD-0.9, BLD-0.11 · Intention i-2499f246 �
 
 ## _legacy_taint
 
-Reason: Route approved Driver selections through qualified custody or pre-execution legacy taint while preserving other launcher branches
+Removed: Require the current Driver state layout and exact acceptance before the shared launcher starts a Driver.
 
-Origins: DRV-6.21, BLD-0.7, BLD-0.8, BLD-0.9, BLD-0.11 · Intention i-2499f246 · 2026-11-15
+Removed by Intention i-43aafbed · 2026-11-23
 
 ## _route
 
@@ -35,15 +35,15 @@ Origins: DRV-6.21, BLD-0.7, BLD-0.8, BLD-0.9, BLD-0.11 · Intention i-2499f246 �
 
 ## launch_gated
 
-Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
+Reason: Require the current Driver state layout and exact acceptance before the shared launcher starts a Driver.
 
-Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
+Origins: DRV-6.18, DRV-6.21 · Intention i-43aafbed · 2026-11-23
 
 ## launch_selected
 
-Reason: Route approved Driver selections through qualified custody or pre-execution legacy taint while preserving other launcher branches
+Reason: Require the current Driver state layout and exact acceptance before the shared launcher starts a Driver.
 
-Origins: DRV-6.21, BLD-0.7, BLD-0.8, BLD-0.9, BLD-0.11 · Intention i-2499f246 · 2026-11-15
+Origins: DRV-6.18, DRV-6.21 · Intention i-43aafbed · 2026-11-23
 
 ## guarded_publication
 
