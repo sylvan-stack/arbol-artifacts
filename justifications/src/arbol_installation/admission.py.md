@@ -5,9 +5,9 @@ role: authored
 
 ## <before AdmissionRefusal>
 
-Reason: Reject ambiguous duplicate fields in admission state when reading the successor commitment.
+Reason: Correct static import ordering in admission state validation.
 
-Origins: RCT-0.17 · Intention i-c6ef279a · 2026-11-23
+Origins: RCT-0.17 · Intention i-292f747f · 2026-11-23
 
 ## Admission
 
