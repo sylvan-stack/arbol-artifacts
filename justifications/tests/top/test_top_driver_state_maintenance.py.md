@@ -407,9 +407,9 @@ Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
 
 ## ClaudeCreateSubject
 
-Reason: Bind the ten original Claude create subjects to terminal helper evidence
+Reason: Verify Claude original descriptor identities at intake and throughout
 
-Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
+Origins: DRV-6.20 · Intention i-7a58e481 · 2026-11-23
 
 ## ClaudeCreateWalk
 
@@ -443,15 +443,15 @@ Origins: DRV-6.21 · Intention i-1dd1a81f · 2026-11-23
 
 ## ClaudeCreateWalk.unchanged
 
-Reason: Bind original create custody to real terminal archive across drains
+Reason: Verify Claude original descriptor identities at intake and throughout
 
-Origins: DRV-6.21 · Intention i-cb84947c · 2026-11-23
+Origins: DRV-6.20 · Intention i-7a58e481 · 2026-11-23
 
 ## claude_create_subjects
 
-Reason: Bind external observer to original sibling create subjects
+Reason: Verify Claude original descriptor identities at intake and throughout
 
-Origins: DRV-6.20 · Intention i-70ee6eda · 2026-11-23
+Origins: DRV-6.20 · Intention i-7a58e481 · 2026-11-23
 
 ## ClaudeCreateWalk.archived
 
