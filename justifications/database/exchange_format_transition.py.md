@@ -11,9 +11,9 @@ Origins: RCT-0.17, RCT-0.18, RCT-0.19, RCT-4.6 · Intention i-613a3da7 · 2026-1
 
 ## VerifiedDeployment
 
-Reason: Verify complete managed Exchange deployment and retained writer evidence
+Reason: Expose controlled drain and exact-session freeze
 
-Origins: RCT-0.17, RCT-0.18, RCT-4.6, ARC-D89 · Intention i-d66b4600 · 2026-11-23
+Origins: RCT-0.18, RCT-0.19, BKD-0.35 · Intention i-2fbb5c06 · 2026-11-23
 
 ## attachment
 
@@ -29,9 +29,9 @@ Origins: RCT-0.17, RCT-0.18, RCT-0.19, RCT-4.6, ARC-D89 · Intention i-5871a087 
 
 ## guarded_file
 
-Reason: Correct installed deployment verifier and prior rollback evidence
+Reason: Expose controlled drain and exact-session freeze
 
-Origins: RCT-0.17, RCT-0.18, RCT-0.19, RCT-4.6, ARC-D89 · Intention i-5871a087 · 2026-11-23
+Origins: RCT-0.18, RCT-0.19, BKD-0.35 · Intention i-2fbb5c06 · 2026-11-23
 
 ## physical
 
@@ -47,9 +47,9 @@ Origins: RCT-0.17, RCT-0.18, RCT-0.19, RCT-4.6, ARC-D89 · Intention i-5871a087 
 
 ## verified_deployment
 
-Reason: Correct installed deployment verifier and prior rollback evidence
+Reason: Expose controlled drain and exact-session freeze
 
-Origins: RCT-0.17, RCT-0.18, RCT-0.19, RCT-4.6, ARC-D89 · Intention i-5871a087 · 2026-11-23
+Origins: RCT-0.18, RCT-0.19, BKD-0.35 · Intention i-2fbb5c06 · 2026-11-23
 
 ## <before request>
 
@@ -65,21 +65,21 @@ Origins: RCT-0.17, RCT-0.18, RCT-0.19, ARC-D89 · Intention i-0caa25c2 · 2026-1
 
 ## main
 
-Reason: Correct command-specific evidence and compatible forward recovery
+Reason: Expose controlled drain and exact-session freeze
 
-Origins: RCT-0.17, RCT-0.18, RCT-0.19, RCT-4.6 · Intention i-613a3da7 · 2026-11-23
+Origins: RCT-0.18, RCT-0.19, BKD-0.35 · Intention i-2fbb5c06 · 2026-11-23
 
 ## operate
 
-Reason: Correct command-specific evidence and compatible forward recovery
+Reason: Expose controlled drain and exact-session freeze
 
-Origins: RCT-0.17, RCT-0.18, RCT-0.19, RCT-4.6 · Intention i-613a3da7 · 2026-11-23
+Origins: RCT-0.18, RCT-0.19, BKD-0.35 · Intention i-2fbb5c06 · 2026-11-23
 
 ## request
 
-Reason: Correct command-specific evidence and compatible forward recovery
+Reason: Expose controlled drain and exact-session freeze
 
-Origins: RCT-0.17, RCT-0.18, RCT-0.19, RCT-4.6 · Intention i-613a3da7 · 2026-11-23
+Origins: RCT-0.18, RCT-0.19, BKD-0.35 · Intention i-2fbb5c06 · 2026-11-23
 
 ## stage
 
