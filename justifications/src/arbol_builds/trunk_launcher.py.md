@@ -53,9 +53,9 @@ Origins: ARC-4.1, ARC-4.3 · Intention i-fa05f54d · 2026-11-12
 
 ## launch_trunk
 
-Reason: Verify selected Trunk payload and release before start effects under the current admission generation.
+Reason: Use a distinct read-only policy command that legacy launchers refuse before writer entry.
 
-Origins: RCT-0.17, RCT-0.18 · Intention i-ccaaa8ee · 2026-11-23
+Origins: RCT-0.17, RCT-0.18 · Intention i-945d195e · 2026-11-23
 
 ## pick_build
 
@@ -65,9 +65,9 @@ Origins: ARC-5.6, ARC-4.3 · Intention i-e3135619 · 2026-11-19
 
 ## read_call
 
-Reason: Drop the obsolete Root reader from the generated Trunk launcher and remove an unused import in the embedded schema reader.
+Reason: Use a distinct read-only policy command that legacy launchers refuse before writer entry.
 
-Origins: ARC-4.1, ARC-4.3 · Intention i-fa05f54d · 2026-11-12
+Origins: RCT-0.17, RCT-0.18 · Intention i-945d195e · 2026-11-23
 
 ## shown
 
@@ -89,9 +89,9 @@ Origins: RCT-0.17, RCT-0.18 · Intention i-ccaaa8ee · 2026-11-23
 
 ## launch_installed_trunk
 
-Reason: Verify selected Trunk payload and release before start effects under the current admission generation.
+Reason: Use a distinct read-only policy command that legacy launchers refuse before writer entry.
 
-Origins: RCT-0.17, RCT-0.18 · Intention i-ccaaa8ee · 2026-11-23
+Origins: RCT-0.17, RCT-0.18 · Intention i-945d195e · 2026-11-23
 
 ## schema_view
 
@@ -101,9 +101,9 @@ Origins: FOR-2.6 · Intention i-0775d715 · 2026-11-20
 
 ## <before admission_runtime>
 
-Reason: Verify selected Trunk payload and release before start effects under the current admission generation.
+Reason: Use a distinct read-only policy command that legacy launchers refuse before writer entry.
 
-Origins: RCT-0.17, RCT-0.18 · Intention i-ccaaa8ee · 2026-11-23
+Origins: RCT-0.17, RCT-0.18 · Intention i-945d195e · 2026-11-23
 
 ## admission_runtime
 
