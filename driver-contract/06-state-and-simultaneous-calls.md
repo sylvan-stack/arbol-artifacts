@@ -356,6 +356,7 @@ Supported Driver restore/reset is the same closed/drained helper route: restore 
 | ID | Requirement | Origin | Verified by |
 |---|---|---|---|
 | DRV-6.21 | supply the concrete shared installed-launcher maintenance gate, cooperative qualified metadata-writer/helper lifetime custody, pre-execution legacy taint, verified closed boot-boundary recovery and drain, epoch-bound maintenance handoff, recoverable rollout and fail-closed reopen before format conversion/reset/restore | DRV-6.18/.19; BRW-1.14 | pending ABR-39 implementation and ABR-38 composition/old-Build/helper-death qualification |
+| DRV-6.22 | publish installed acceptance for each Driver from the stable promotion record for the exact shared provider, four registered Drivers, gate and platform. Allow stable admission without separately requested verification evidence | BLD-0.5; [OG-6](/Users/msix/Artifacts/goals/OG-6.md) | Pending installer implementation |
 
 <!-- sources:
 arbol:@code/src/arbol_builds/launcher.py#launch
