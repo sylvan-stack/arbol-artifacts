@@ -5,9 +5,9 @@ role: authored
 
 ## <before _write_new>
 
-Reason: Observe the real witness retirement before journal clearing and verify operation-relative finish against surviving pending metadata.
+Reason: Bind the ten original Claude create subjects to terminal helper evidence
 
-Origins: DRV-5.11, DRV-6.17, DRV-6.20, DRV-6.21 · Intention i-53a31cbe · 2026-11-15
+Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
 
 ## Execute
 
@@ -41,9 +41,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-
 
 ## ExternalMaintenance.observe
 
-Reason: Qualify the sealed provider’s actual exclusive child dispatch, fail-closed substitution and crash recovery, and exact result replay through the external phase.
+Reason: Bind the ten original Claude create subjects to terminal helper evidence
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-11-15
+Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
 
 ## Maintenance
 
@@ -374,4 +374,82 @@ Origins: DRV-5.11, DRV-6.17, DRV-6.20, DRV-6.21 · Intention i-53a31cbe · 2026-
 Reason: Implement reviewed Claude same-subject create recovery observations
 
 Origins: DRV-6.20 · Intention i-07451655 · 2026-11-23
+
+## <before ClaudeCreateSubject>
+
+Reason: Bind the ten original Claude create subjects to terminal helper evidence
+
+Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
+
+## ClaudeCreateAbsence
+
+Reason: Bind the ten original Claude create subjects to terminal helper evidence
+
+Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
+
+## ClaudeCreateAbsence.observe
+
+Reason: Bind the ten original Claude create subjects to terminal helper evidence
+
+Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
+
+## ClaudeCreateRecovery
+
+Reason: Bind the ten original Claude create subjects to terminal helper evidence
+
+Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
+
+## ClaudeCreateRecovery.observe
+
+Reason: Bind the ten original Claude create subjects to terminal helper evidence
+
+Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
+
+## ClaudeCreateSubject
+
+Reason: Bind the ten original Claude create subjects to terminal helper evidence
+
+Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
+
+## ClaudeCreateWalk
+
+Reason: Bind the ten original Claude create subjects to terminal helper evidence
+
+Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
+
+## ClaudeCreateWalk.__init__
+
+Reason: Bind the ten original Claude create subjects to terminal helper evidence
+
+Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
+
+## ClaudeCreateWalk.execute
+
+Reason: Bind the ten original Claude create subjects to terminal helper evidence
+
+Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
+
+## ClaudeCreateWalk.metadata
+
+Reason: Bind the ten original Claude create subjects to terminal helper evidence
+
+Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
+
+## ClaudeCreateWalk.prepare
+
+Reason: Bind the ten original Claude create subjects to terminal helper evidence
+
+Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
+
+## ClaudeCreateWalk.unchanged
+
+Reason: Bind the ten original Claude create subjects to terminal helper evidence
+
+Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
+
+## claude_create_subjects
+
+Reason: Bind the ten original Claude create subjects to terminal helper evidence
+
+Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
 
