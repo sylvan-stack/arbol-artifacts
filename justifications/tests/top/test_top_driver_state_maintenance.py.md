@@ -557,9 +557,9 @@ Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
 
 ## PiCreateWalk.execute
 
-Reason: Bind Pi operation before-images to actual archive payload and result history
+Reason: Recheck original Pi guard and custody before maintenance finish
 
-Origins: DRV-6.20 · Intention i-b25e0b9a · 2026-11-23
+Origins: DRV-6.20 · Intention i-afa3b6fb · 2026-11-23
 
 ## PiCreateWalk.metadata
 
