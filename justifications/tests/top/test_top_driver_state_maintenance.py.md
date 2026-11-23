@@ -437,9 +437,9 @@ Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
 
 ## ClaudeCreateWalk.prepare
 
-Reason: Enforce completed H1 ordering and fixed deferred create identities
+Reason: Preserve Claude broker as twelfth helper in original first-drain custody
 
-Origins: DRV-6.21 · Intention i-1dd1a81f · 2026-11-23
+Origins: DRV-6.21 · Intention i-79aa40af · 2026-11-23
 
 ## ClaudeCreateWalk.unchanged
 
@@ -449,9 +449,9 @@ Origins: DRV-6.20 · Intention i-7a58e481 · 2026-11-23
 
 ## claude_create_subjects
 
-Reason: Author fixed Pi create recovery and absence observations on original subjects
+Reason: Preserve Claude broker as twelfth helper in original first-drain custody
 
-Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+Origins: DRV-6.21 · Intention i-79aa40af · 2026-11-23
 
 ## ClaudeCreateWalk.archived
 
@@ -461,9 +461,9 @@ Origins: DRV-6.21 · Intention i-cb84947c · 2026-11-23
 
 ## ClaudeCreateWalk.check_custody
 
-Reason: Bind original create custody to real terminal archive across drains
+Reason: Preserve Claude broker as twelfth helper in original first-drain custody
 
-Origins: DRV-6.21 · Intention i-cb84947c · 2026-11-23
+Origins: DRV-6.21 · Intention i-79aa40af · 2026-11-23
 
 ## ClaudeCreateAbsence.case_id
 
