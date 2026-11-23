@@ -29,9 +29,9 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
 
 ## capture_build
 
-Reason: Record exact deployed predecessor and qualified successor Exchange payload and entry evidence.
+Reason: Validate exact stable packaging checks, independently qualified unit gates and archived Exchange transition evidence.
 
-Origins: RCT-0.17, RCT-0.18, RCT-0.19, ARC-D89 · Intention i-df33c211 · 2026-11-23
+Origins: RCT-0.17, RCT-4.6, ARC-D89 · Intention i-31bea7dc · 2026-11-23
 
 ## check_hashes
 
@@ -137,9 +137,9 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
 
 ## verify_release
 
-Reason: Bind explicit Exchange and note capabilities to the exact selected release Builds and their verified payload evidence.
+Reason: Validate exact stable packaging checks, independently qualified unit gates and archived Exchange transition evidence.
 
-Origins: RCT-0.17, BKD-0.34 · Intention i-4cc0d525 · 2026-11-23
+Origins: RCT-0.17, RCT-4.6, ARC-D89 · Intention i-31bea7dc · 2026-11-23
 
 ## write_private
 
@@ -227,9 +227,9 @@ Origins: RCT-0.17, BKD-0.34 · Intention i-4cc0d525 · 2026-11-23
 
 ## exchange_transition_evidence
 
-Reason: Record exact deployed predecessor and qualified successor Exchange payload and entry evidence.
+Reason: Validate exact stable packaging checks, independently qualified unit gates and archived Exchange transition evidence.
 
-Origins: RCT-0.17, RCT-0.18, RCT-0.19, ARC-D89 · Intention i-df33c211 · 2026-11-23
+Origins: RCT-0.17, RCT-4.6, ARC-D89 · Intention i-31bea7dc · 2026-11-23
 
 ## exchange_transition_spec
 
@@ -242,4 +242,22 @@ Origins: RCT-0.17, RCT-0.18, RCT-0.19, ARC-D89 · Intention i-df33c211 · 2026-1
 Reason: Record exact deployed predecessor and qualified successor Exchange payload and entry evidence.
 
 Origins: RCT-0.17, RCT-0.18, RCT-0.19, ARC-D89 · Intention i-df33c211 · 2026-11-23
+
+## required_unit_checks
+
+Reason: Validate exact stable packaging checks, independently qualified unit gates and archived Exchange transition evidence.
+
+Origins: RCT-0.17, RCT-4.6, ARC-D89 · Intention i-31bea7dc · 2026-11-23
+
+## verify_exchange_transition
+
+Reason: Validate exact stable packaging checks, independently qualified unit gates and archived Exchange transition evidence.
+
+Origins: RCT-0.17, RCT-4.6, ARC-D89 · Intention i-31bea7dc · 2026-11-23
+
+## verify_qualification
+
+Reason: Validate exact stable packaging checks, independently qualified unit gates and archived Exchange transition evidence.
+
+Origins: RCT-0.17, RCT-4.6, ARC-D89 · Intention i-31bea7dc · 2026-11-23
 
