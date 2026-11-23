@@ -557,9 +557,9 @@ Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
 
 ## PiCreateWalk.execute
 
-Reason: Author fixed Pi create recovery and absence observations on original subjects
+Reason: Bind Pi operation before-images to actual archive payload and result history
 
-Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+Origins: DRV-6.20 · Intention i-b25e0b9a · 2026-11-23
 
 ## PiCreateWalk.metadata
 
