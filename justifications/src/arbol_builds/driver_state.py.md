@@ -119,9 +119,9 @@ Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
 
 ## provider_entry
 
-Reason: Bind the four new Driver commands to their verified fresh directories
+Reason: Install all four new empty Driver folders and enable their exact commands together
 
-Origins: DRV-6.21, DRV-6.23 · Intention i-8b06c687 · 2026-11-23
+Origins: DRV-6.22, DRV-6.23 · Intention i-28816104 · 2026-11-23
 
 ## _component
 
@@ -536,4 +536,10 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-
 Reason: Bind the four new Driver commands to their verified fresh directories
 
 Origins: DRV-6.21, DRV-6.23 · Intention i-8b06c687 · 2026-11-23
+
+## _install_fresh
+
+Reason: Install all four new empty Driver folders and enable their exact commands together
+
+Origins: DRV-6.22, DRV-6.23 · Intention i-28816104 · 2026-11-23
 
