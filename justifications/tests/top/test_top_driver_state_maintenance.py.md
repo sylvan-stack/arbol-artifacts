@@ -443,13 +443,13 @@ Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
 
 ## ClaudeCreateWalk.unchanged
 
-Reason: Bind the ten original Claude create subjects to terminal helper evidence
+Reason: Bind external observer to original sibling create subjects
 
-Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
+Origins: DRV-6.20 · Intention i-70ee6eda · 2026-11-23
 
 ## claude_create_subjects
 
-Reason: Bind the ten original Claude create subjects to terminal helper evidence
+Reason: Bind external observer to original sibling create subjects
 
-Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
+Origins: DRV-6.20 · Intention i-70ee6eda · 2026-11-23
 
