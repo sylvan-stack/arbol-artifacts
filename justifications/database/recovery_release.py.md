@@ -263,7 +263,7 @@ Origins: RCT-0.17, RCT-4.6 · Intention i-5ca6e8d7 · 2026-11-23
 
 ## unit_checks
 
-Reason: Preserve version 1 archive verification and bind version 2 qualification to recorded optional promotion units.
+Reason: Match explicit promotion selections whenever promotion results are recorded, including an empty list.
 
-Origins: RCT-0.17, RCT-4.6 · Intention i-5ca6e8d7 · 2026-11-23
+Origins: RCT-0.17, RCT-4.6 · Intention i-822f6fd8 · 2026-11-23
 
