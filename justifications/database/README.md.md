@@ -17,7 +17,13 @@ Origins: ARC-4.5, ARC-D95, ARC-D96 · Intention i-c2e9bfb3 · 2026-11-19
 
 ## Arbol's database server > Recovery after reopening
 
-Reason: Make the archive preflight the first operator gate for schema change and restore, and document the signed App recovery inputs.
+Reason: Carry the installed Backend compatibility declaration and independent Session Import minimum into the reviewed Exchange source.
 
-Origins: ARC-5.4 · Intention i-db3488a0 · 2026-11-19
+Origins: RCT-0.17 · Intention i-f34b46f7 · 2026-11-23
+
+## Arbol's database server > Backend and session import compatibility
+
+Reason: Carry the installed Backend compatibility declaration and independent Session Import minimum into the reviewed Exchange source.
+
+Origins: RCT-0.17 · Intention i-f34b46f7 · 2026-11-23
 
