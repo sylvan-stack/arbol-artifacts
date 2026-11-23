@@ -485,9 +485,9 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
 
 ## TerminalSchedule.verify
 
-Reason: Bind canonical terminal settled intent and source evidence and coordinate the full positive H1 and terminal span
+Reason: Validate the fixed Claude broker schedule and private context at terminal
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
+Origins: DRV-6.21 · Intention i-c7badce3 · 2026-11-23
 
 ## TerminalView
 
@@ -503,9 +503,9 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
 
 ## WholeCheckController.verify_terminal_armed
 
-Reason: Bind canonical terminal settled intent and source evidence and coordinate the full positive H1 and terminal span
+Reason: Validate the fixed Claude broker schedule and private context at terminal
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
+Origins: DRV-6.21 · Intention i-c7badce3 · 2026-11-23
 
 ## WholeCheckController.verify_terminal_closure
 
