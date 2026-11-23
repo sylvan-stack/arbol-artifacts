@@ -425,9 +425,9 @@ Origins: DRV-6.21 · Intention i-cb84947c · 2026-11-23
 
 ## ClaudeCreateWalk.execute
 
-Reason: Enforce completed H1 ordering and fixed deferred create identities
+Reason: Bind Claude operation before-images to actual archive payload and result history
 
-Origins: DRV-6.21 · Intention i-1dd1a81f · 2026-11-23
+Origins: DRV-6.20 · Intention i-03efdea9 · 2026-11-23
 
 ## ClaudeCreateWalk.metadata
 
@@ -584,4 +584,22 @@ Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
 Reason: Author fixed Pi create recovery and absence observations on original subjects
 
 Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+
+## CreateOperationBefore
+
+Reason: Bind Claude operation before-images to actual archive payload and result history
+
+Origins: DRV-6.20 · Intention i-03efdea9 · 2026-11-23
+
+## create_operation_before
+
+Reason: Bind Claude operation before-images to actual archive payload and result history
+
+Origins: DRV-6.20 · Intention i-03efdea9 · 2026-11-23
+
+## verify_create_operation_before
+
+Reason: Bind Claude operation before-images to actual archive payload and result history
+
+Origins: DRV-6.20 · Intention i-03efdea9 · 2026-11-23
 
