@@ -5,9 +5,9 @@ role: authored
 
 ## <before require>
 
-Reason: Bind canonical terminal settled intent and source evidence and coordinate the full positive H1 and terminal span
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 
 ## Baseline
 
@@ -413,15 +413,15 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
 
 ## H1View
 
-Reason: Author exact H1 report/source/custody validation and whole positive external-phase coordination on accepted bounded interactive collector, preserving full local inventory and all deferred assertions; source-only.
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 
 ## H1View.recheck_files
 
-Reason: Author exact H1 report/source/custody validation and whole positive external-phase coordination on accepted bounded interactive collector, preserving full local inventory and all deferred assertions; source-only.
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 
 ## WholeCheckController.run_h1_positive
 
@@ -431,9 +431,9 @@ Origins: DRV-6.21 · Intention i-fcd8f9c6 · 2026-11-23
 
 ## WholeCheckController.verify_h1_ready
 
-Reason: Author exact H1 report/source/custody validation and whole positive external-phase coordination on accepted bounded interactive collector, preserving full local inventory and all deferred assertions; source-only.
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-3e9fc5fd · 2026-11-15
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 
 ## _span_document
 
@@ -491,9 +491,9 @@ Origins: DRV-6.21 · Intention i-c7badce3 · 2026-11-23
 
 ## TerminalView
 
-Reason: Bind canonical terminal settled intent and source evidence and coordinate the full positive H1 and terminal span
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 
 ## TerminalView.recheck_files
 
@@ -503,19 +503,73 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
 
 ## WholeCheckController.verify_terminal_armed
 
-Reason: Validate the fixed Claude broker schedule and private context at terminal
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
 
-Origins: DRV-6.21 · Intention i-c7badce3 · 2026-11-23
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 
 ## WholeCheckController.verify_terminal_closure
 
-Reason: Bind canonical terminal settled intent and source evidence and coordinate the full positive H1 and terminal span
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-209fb993 · 2026-11-15
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 
 ## reported_h1_custody
 
 Reason: Protect private broker registration in shared reports
 
 Origins: DRV-6.21 · Intention i-fcd8f9c6 · 2026-11-23
+
+## PublicInvocations
+
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
+
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
+
+## PublicInvocations.image
+
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
+
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
+
+## PublicInvocations.recheck
+
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
+
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
+
+## WholeCheckController._public_call
+
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
+
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
+
+## WholeCheckController._public_invocations
+
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
+
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
+
+## codex_public_case
+
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
+
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
+
+## pi_public_case
+
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
+
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
+
+## verified_custody_images
+
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
+
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
+
+## verify_pi_public_output
+
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
+
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 

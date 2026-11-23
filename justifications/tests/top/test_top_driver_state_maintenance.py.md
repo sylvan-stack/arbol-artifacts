@@ -5,9 +5,9 @@ role: authored
 
 ## <before _write_new>
 
-Reason: Bind original create custody to real terminal archive across drains
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
 
-Origins: DRV-6.21 · Intention i-cb84947c · 2026-11-23
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 
 ## Execute
 
@@ -53,9 +53,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-
 
 ## Maintenance.__init__
 
-Reason: Qualify the sealed provider’s actual exclusive child dispatch, fail-closed substitution and crash recovery, and exact result replay through the external phase.
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-11-15
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 
 ## Maintenance._execute_reply
 
@@ -89,9 +89,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-
 
 ## Maintenance.admitted_proof
 
-Reason: Implement reviewed Claude same-subject create recovery observations
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
 
-Origins: DRV-6.20 · Intention i-07451655 · 2026-11-23
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 
 ## Maintenance.argv
 
@@ -371,9 +371,9 @@ Origins: DRV-5.11, DRV-6.17, DRV-6.20, DRV-6.21 · Intention i-53a31cbe · 2026-
 
 ## Maintenance.claude_create_refusal
 
-Reason: Implement reviewed Claude same-subject create recovery observations
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
 
-Origins: DRV-6.20 · Intention i-07451655 · 2026-11-23
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 
 ## <before ClaudeCreateSubject>
 
@@ -455,15 +455,15 @@ Origins: DRV-6.21 · Intention i-79aa40af · 2026-11-23
 
 ## ClaudeCreateWalk.archived
 
-Reason: Bind original create custody to real terminal archive across drains
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
 
-Origins: DRV-6.21 · Intention i-cb84947c · 2026-11-23
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 
 ## ClaudeCreateWalk.check_custody
 
-Reason: Preserve Claude broker as twelfth helper in original first-drain custody
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
 
-Origins: DRV-6.21 · Intention i-79aa40af · 2026-11-23
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 
 ## ClaudeCreateAbsence.case_id
 
@@ -485,9 +485,9 @@ Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
 
 ## Maintenance.pi_create_refusal
 
-Reason: Author fixed Pi create recovery and absence observations on original subjects
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
 
-Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 
 ## PiCreateAbsence
 
@@ -545,15 +545,15 @@ Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
 
 ## PiCreateWalk.archived
 
-Reason: Author fixed Pi create recovery and absence observations on original subjects
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
 
-Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 
 ## PiCreateWalk.check_custody
 
-Reason: Author fixed Pi create recovery and absence observations on original subjects
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
 
-Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 
 ## PiCreateWalk.execute
 
@@ -602,4 +602,16 @@ Origins: DRV-6.20 · Intention i-03efdea9 · 2026-11-23
 Reason: Bind Claude operation before-images to actual archive payload and result history
 
 Origins: DRV-6.20 · Intention i-03efdea9 · 2026-11-23
+
+## Maintenance._retain_pre_drain_call
+
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
+
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
+
+## Maintenance.verify_first_drain_source
+
+Reason: Verify original graph closure, archive custody and reviewed Pi and Codex public calls
+
+Origins: DRV-6.21 · Intention i-e9081159 · 2026-11-23
 
