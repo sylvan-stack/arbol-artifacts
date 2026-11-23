@@ -23,15 +23,15 @@ Origins: RCT-0.17, RCT-0.18, BKD-0.34 · Intention i-175af23b · 2026-11-23
 
 ## writer_version
 
-Reason: Replace the local archival release copy with exact compact authorization bound to admission and verified payloads.
+Reason: Complete strict typed validation and explicit refusal for missing compact lease fields.
 
-Origins: RCT-0.17, RCT-0.18, BKD-0.34, ARC-D89 · Intention i-fd2996e2 · 2026-11-23
+Origins: RCT-0.17, RCT-0.18 · Intention i-92c524ed · 2026-11-23
 
 ## authorization_from_release
 
-Reason: Bind derived compact authorization to the exact canonical archived release record digest.
+Reason: Complete strict typed validation and explicit refusal for missing compact lease fields.
 
-Origins: RCT-0.17, ARC-D89 · Intention i-72d3bc75 · 2026-11-23
+Origins: RCT-0.17, RCT-0.18 · Intention i-92c524ed · 2026-11-23
 
 ## canonical
 

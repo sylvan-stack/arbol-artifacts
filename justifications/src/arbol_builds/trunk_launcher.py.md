@@ -101,9 +101,9 @@ Origins: FOR-2.6 · Intention i-0775d715 · 2026-11-20
 
 ## <before admission_runtime>
 
-Reason: Use a distinct read-only policy command that legacy launchers refuse before writer entry.
+Reason: Complete strict typed validation and explicit refusal for missing compact lease fields.
 
-Origins: RCT-0.17, RCT-0.18 · Intention i-945d195e · 2026-11-23
+Origins: RCT-0.17, RCT-0.18 · Intention i-92c524ed · 2026-11-23
 
 ## admission_runtime
 
