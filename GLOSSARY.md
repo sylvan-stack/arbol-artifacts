@@ -30,11 +30,11 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **J** — [Justification](#justification)
 - **K** — [Knowledge System](#knowledge-system)
 - **L** — [Ladder](#ladder) · [Leather Bag](#leather-bag) · [Living Topic](#living-topic) · [Load](#load)
-- **M** — [Mac OS Communicado](#mac-os-communicado) · [Mycel](#mycel) · [Mycel Operation](#mycel-operation) · [Mycel Skill](#mycel-skill) · [Mycel-enabled](#mycel-enabled) · [Mycel-integrated](#mycel-integrated)
+- **M** — [Mac OS Communicado](#mac-os-communicado) · [Mach Speed](#mach-speed) · [Mycel](#mycel) · [Mycel Operation](#mycel-operation) · [Mycel Skill](#mycel-skill) · [Mycel-enabled](#mycel-enabled) · [Mycel-integrated](#mycel-integrated)
 - **N** — [Native Tool Call](#native-tool-call) · [Nex](#nex) · [Nex Colab](#nex-colab) · [Nex Knowledge Map](#nex-knowledge-map) · [Normalizer](#normalizer) · [Now Line](#now-line)
 - **O** — [Oaken](#oaken) · [Objectives](#objectives) · [Operational Artifact](#operational-artifact) · [Organization](#organization) · [Origin](#origin) · [Origin Coverage](#origin-coverage) · [Origin Link](#origin-link) · [Orphaned Change](#orphaned-change) · [Owner Goal](#owner-goal) · [Owner Requirement](#owner-requirement)
 - **P** — [Parse Result](#parse-result) · [Parser](#parser) · [Parser Pipeline](#parser-pipeline) · [Provider](#provider)
-- **R** — [Radar](#radar) · [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Release](#release) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Requirement](#requirement) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Runbook](#runbook)
+- **R** — [Radar](#radar) · [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Release](#release) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Required Pace](#required-pace) · [Requirement](#requirement) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Runbook](#runbook)
 - **S** — [Saga](#saga) · [Saga Planning](#saga-planning) · [Scan](#scan) · [Signal](#signal) · [Signal Rule](#signal-rule) · [Signal Type](#signal-type) · [Seqoya Lab](#seqoya-lab) · [Source Ref](#source-ref) · [Sparse Retrieval](#sparse-retrieval) · [Spec Requirement](#spec-requirement) · [Spec Writing](#spec-writing) · [Spotlight](#spotlight) · [Stale](#stale) · [Stale Summary Regeneration](#stale-summary-regeneration) · [State Runtime Profile](#state-runtime-profile) · [Step Intention](#step-intention) · [Stint](#stint) · [Subscription](#subscription) · [Subscriptions Vigor](#subscriptions-vigor) · [Summary Node](#summary-node) · [Surface](#surface) · [Sync Pass](#sync-pass)
 - **T** — [Taproot](#taproot) · [Text Snapshot](#text-snapshot) · [Theme](#theme) · [Tool](#tool) · [Tool Request](#tool-request) · [Tracked Source](#tracked-source) · [Trivial Trunk](#trivial-trunk) · [Trunk Runtime](#trunk-runtime) · [Turn](#turn)
 - **U** — [UI](#ui) · [UIShell / Chrome](#uishell--chrome) · [User Demo](#user-demo)
@@ -1183,6 +1183,14 @@ The first concrete [Communicado Species](#communicado-species). It accepts a `ti
 
 **Example:** Elma can deliver “Agent finished” with a Descriptor for that Chat Session; clicking the notification activates Elma and opens the session.
 
+## Mach Speed
+
+The fixed rate of output-token equivalents per hour that would use an allowance window’s full budget exactly as the window ends, starting at the beginning and producing evenly throughout. Calculate it as the **full allowance divided by the full window duration in hours**. Mach 1 equals that window’s Mach speed. Mach 2 is twice that rate. The reference stays fixed as time passes and the allowance is used.
+
+Always identify the window when naming a Mach speed or quoting a Mach value. Use **short-window Mach speed** for the five-hour window, **weekly Mach speed** for the weekly window, and **monthly Mach speed** for the monthly window. A heading or table row can supply the window context for the figures it labels.
+
+**Example.** A short window with 250,000 output-token equivalents over five hours has a short-window Mach speed of 50,000 equivalents per hour. See the [Required Pace example](#required-pace) for how that reference is used alongside weekly and monthly references.
+
 ## Mycel
 
 The knowledge engine *(formerly the "Knowledge System"; named for **mycelium**, the underground network through which real trees share nutrients and signals — what this system is to Arbol's tree-named apps)*. Mycel turns each [Repo](#repo)'s [Corpora](#corpus) into a *maintained, trustworthy, queryable* knowledge graph. Its source and build live in the independent `~/repo/sylvan-stack/mycel` repository; it publishes the standalone `mycel` and `better-grep` commands to `~/bin`. Mycel is a **pure library + per-task CLI — NO daemon of its own**. It owns the `kn_`-prefixed Postgres tables and `~/.mycel/config.toml` (repositories, database, embedding, and mirror settings); Brain Recipes belong to the independent Infer tool in `~/.infer/config.toml`. Mycel never imports or invokes Arbol code or instructions, although it may read Arbol databases, logs, source, and artifacts as data. Arbol is one consumer: its own **[Taproot](#taproot)** daemon (`daemons/taproot/`, `taproot.sock`) bundles Mycel's public library in the allowed direction to add a Corpus Watcher, sync loop, and UI-facing RPCs. Mycel invokes the independent `infer` executable when [RAPTOR](#raptor-tree) needs completions and has no Arbol Root fallback. See the [external tool architecture](../arbol_deprecated_v1/architecture/external-tools.md) for the repository and contract boundaries. Its capabilities span the full lifecycle of a [Chunk](#chunk):
@@ -1457,6 +1465,26 @@ The standard Git checkout associated with a [Repo](#repo), containing its source
 The UIShell-header dropdown selecting which [Repo](#repo) an app's [Mycel](#mycel) views are scoped to. Lists only [Mycel-enabled](#mycel-enabled) repos. Empty on an app's first run — pages that need a repo ([Seqoya Lab](#seqoya-lab)'s Chunks Viewer, Refresher, Artifacts, Retrieval) stay disabled until one is chosen — after which the selection is persisted **per UI** (each app remembers its own). A lens, not a power switch: [Sync Passes](#sync-pass) keep *all* enabled repos fresh regardless of what any picker shows.
 
 **Example:** Seqoya's picker on "Arbol" scopes every Mycel page to the Arbol corpora; switching to another enabled repo re-scopes the same pages instantly — neither repo's data is touched.
+
+## Required Pace
+
+The rate of output-token equivalents per hour an agent would need to generate from now through an allowance window’s deadline to use exactly its remaining allowance. Calculate it as the **remaining allowance divided by the hours left** while the window is open. To express it as a Mach value, divide that rate by the same window’s [Mach speed](#mach-speed).
+
+Always identify the window. Use **short-window required pace**, **weekly required pace**, or **monthly required pace**. Say “the weekly window needs Mach 2.” On a card headed **Weekly window**, **Required pace · Mach 2** carries the same meaning.
+
+**Example.** A Subscription has three active allowance windows. The monthly window in this example lasts 30 days. All amounts are output-token equivalents, and `/h` means per hour.
+
+| Window | Full allowance | Full duration | Mach speed | Allowance left | Time left | Required pace |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Short | 250,000 | 5 h | 50,000/h | 200,000 | 2.5 h | 80,000/h · Mach 1.6 |
+| Weekly | 5,040,000 | 168 h | 30,000/h | 2,520,000 | 42 h | 60,000/h · Mach 2 |
+| Monthly | 14,400,000 | 720 h | 20,000/h | 2,400,000 | 240 h | 10,000/h · Mach 0.5 |
+
+The short window needs Mach 1.6 because 80% of its allowance remains and half of its duration is left. The weekly window needs Mach 2 because half of its allowance remains with a quarter of its duration left. The monthly window needs Mach 0.5 because one-sixth of its allowance remains with one-third of its duration left.
+
+Compare the equivalents per hour to see which window calls for the faster absolute pace. The short window needs 80,000/h and the weekly window needs 60,000/h. Compare the Mach values to see how far each pace is from its own reference. The weekly window needs twice its reference rate.
+
+Suppose the same output counts against all three windows, and the weekly and monthly deadlines and allowances stay fixed over the next 2.5 hours. Running at 80,000/h spends 200,000 equivalents and uses up the short window exactly at its deadline. The weekly window then has 2,320,000 equivalents and 39.5 hours left, so it needs about 58,700/h, or weekly Mach 1.96. The monthly window has 2,200,000 equivalents and 237.5 hours left, so it needs about 9,260/h, or monthly Mach 0.46. Each row starts from its own remaining balance and deadline. Both Mach speeds stay fixed.
 
 ## Requirement
 
