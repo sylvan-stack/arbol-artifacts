@@ -21,4 +21,11 @@ heading-levels:
 - Is the tool checking or recording package versions? Say which packages it checks or records and why.
 - Is the tool moving saved files or starting a new version? Say which action is pending.
 
-**Example.** “The tool still needs to record which versions of the four Driver packages and the shared Arbol package it will use. Then it can move the Drivers’ saved files and start those versions.”
+**Example.** “The tool still needs to record which versions of the four Drivers and the arbol cli it will use before it starts them.”
+
+## shared arbol package
+
+**Prohibited.** Use **arbol cli** instead.
+
+- Which action does the arbol cli perform here? Name the command or describe what it does.
+- Does the reader need an exact package or Build number? Give that identifier separately.
