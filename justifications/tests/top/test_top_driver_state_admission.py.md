@@ -143,9 +143,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.21 · Intention i-59d10822 · 2026-11-15
 
 ## <before _collect_real>
 
-Reason: Require a paired public invocation and verify that the actual pinned admission check refuses the live draining session.
+Reason: Protect private broker registration in shared reports
 
-Origins: DRV-6.21 · Intention i-1d8182dd · 2026-11-15
+Origins: DRV-6.21 · Intention i-fcd8f9c6 · 2026-11-23
 
 ## <before complete_main_admission_inventory>
 
@@ -275,9 +275,9 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-ca968244 · 2026-11-15
 
 ## _raw_authority_image
 
-Reason: Capture independent raw metadata before and after late fixed-runner refusal; retain exact original custody and permit only genuine bound taint publication.
+Reason: Protect private broker registration in shared reports
 
-Origins: DRV-5.11, DRV-6.21 · Intention i-efb39c58 · 2026-11-15
+Origins: DRV-6.21 · Intention i-fcd8f9c6 · 2026-11-23
 
 ## <before H1ProgramPins>
 
@@ -371,9 +371,9 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
 
 ## H1SpanObservation.death
 
-Reason: Author all-four-family external H1 STOP/death and positive-control cases with actual report/process/source ownership, physical short-lock absence and original-inode raw EX proof, provider reap before sole-holder attribution and unconditional verified cleanup; source-only.
+Reason: Protect private broker registration in shared reports
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-4a40a104 · 2026-11-15
+Origins: DRV-6.21 · Intention i-fcd8f9c6 · 2026-11-23
 
 ## H1SpanObservation.positive_precontinue
 
