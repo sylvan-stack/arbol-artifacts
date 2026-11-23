@@ -5,9 +5,9 @@ role: authored
 
 ## valid_record
 
-Reason: Select and record declared promotion unit checks in Common Build and require explicit opt-in for a named verification check.
+Reason: Recognize complete package-only stable candidate records when loading exact Driver packages
 
-Origins: BLD-0.15 · Intention i-7591c502 · 2026-11-21
+Origins: BLD-0.5, DRV-6.22, OG-6 · Intention i-85346610 · 2026-11-23
 
 ## schema_compatibility
 
