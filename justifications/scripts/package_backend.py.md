@@ -5,9 +5,9 @@ role: authored
 
 ## package
 
-Reason: Ship the importer with Arbol and declare the additive fingerprint minimum schema revision
+Reason: Include Exchange transition operator with backend recovery scripts
 
-Origins: IMP-0.1, IMP-0.11, IMP-0.19, IMP-0.22, IMP-D35 · Intention i-e7d3aef4 · 2026-11-21
+Origins: RCT-0.17, RCT-0.18 · Intention i-38a703e4 · 2026-11-23
 
 ## <before package>
 
