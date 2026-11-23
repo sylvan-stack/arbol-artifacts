@@ -431,9 +431,9 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-65392ebf · 2026-11-15
 
 ## TerminalSpanObservation.__init__
 
-Reason: Observe genuine terminal-before-original-close interval and complete positive closure for all four producer families
+Reason: Bind actual positive span and terminal observations to deferred obligations
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-65392ebf · 2026-11-15
+Origins: DRV-5.11, DRV-6.21, BLD-0.5 · Intention i-34ad2202 · 2026-11-23
 
 ## TerminalSpanObservation._helpers
 
@@ -455,9 +455,9 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-65392ebf · 2026-11-15
 
 ## TerminalSpanObservation.finished
 
-Reason: Observe genuine terminal-before-original-close interval and complete positive closure for all four producer families
+Reason: Bind actual positive span and terminal observations to deferred obligations
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-65392ebf · 2026-11-15
+Origins: DRV-5.11, DRV-6.21, BLD-0.5 · Intention i-34ad2202 · 2026-11-23
 
 ## TerminalSpanObservation.interval
 
@@ -467,9 +467,9 @@ Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-65392ebf · 2026-11-15
 
 ## TerminalSpanObservation.precontinue
 
-Reason: Observe genuine terminal-before-original-close interval and complete positive closure for all four producer families
+Reason: Bind actual positive span and terminal observations to deferred obligations
 
-Origins: DRV-5.11, DRV-6.20, DRV-6.21 · Intention i-65392ebf · 2026-11-15
+Origins: DRV-5.11, DRV-6.21, BLD-0.5 · Intention i-34ad2202 · 2026-11-23
 
 ## _fixed_sleep_image
 
@@ -776,4 +776,46 @@ Origins: DRV-5.11, DRV-6.21 · Intention i-2fdb6512 · 2026-11-15
 Reason: Author the distinct verified-main SIGTERM, duplicate-signal suppression, and changed-reread refusal observations using the accepted Mimo setup and closure.
 
 Origins: DRV-5.11, DRV-6.21 · Intention i-2fdb6512 · 2026-11-15
+
+## H1SpanCompletion
+
+Reason: Bind actual positive span and terminal observations to deferred obligations
+
+Origins: DRV-5.11, DRV-6.21, BLD-0.5 · Intention i-34ad2202 · 2026-11-23
+
+## H1SpanCompletion.case_id
+
+Reason: Bind actual positive span and terminal observations to deferred obligations
+
+Origins: DRV-5.11, DRV-6.21, BLD-0.5 · Intention i-34ad2202 · 2026-11-23
+
+## H1SpanCompletion.observe
+
+Reason: Bind actual positive span and terminal observations to deferred obligations
+
+Origins: DRV-5.11, DRV-6.21, BLD-0.5 · Intention i-34ad2202 · 2026-11-23
+
+## TerminalCloseClosure
+
+Reason: Bind actual positive span and terminal observations to deferred obligations
+
+Origins: DRV-5.11, DRV-6.21, BLD-0.5 · Intention i-34ad2202 · 2026-11-23
+
+## TerminalCloseClosure.case_id
+
+Reason: Bind actual positive span and terminal observations to deferred obligations
+
+Origins: DRV-5.11, DRV-6.21, BLD-0.5 · Intention i-34ad2202 · 2026-11-23
+
+## TerminalCloseClosure.observe
+
+Reason: Bind actual positive span and terminal observations to deferred obligations
+
+Origins: DRV-5.11, DRV-6.21, BLD-0.5 · Intention i-34ad2202 · 2026-11-23
+
+## _completed_positive_subject
+
+Reason: Bind actual positive span and terminal observations to deferred obligations
+
+Origins: DRV-5.11, DRV-6.21, BLD-0.5 · Intention i-34ad2202 · 2026-11-23
 
