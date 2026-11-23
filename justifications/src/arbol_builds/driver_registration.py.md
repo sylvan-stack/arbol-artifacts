@@ -35,9 +35,9 @@ Origins: DRV-6.22 · Intention i-69de65cc · 2026-11-23
 
 ## _entry
 
-Reason: Register the exact five stable packages without changing launch selection
+Reason: Resolve packaged command links within the verified candidate image
 
-Origins: DRV-6.22 · Intention i-69de65cc · 2026-11-23
+Origins: DRV-6.22 · Intention i-5e787e7e · 2026-11-23
 
 ## _matches
 
