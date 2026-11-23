@@ -23,9 +23,9 @@ Origins: BLD-0.15 · Intention i-7591c502 · 2026-11-21
 
 ## launcher_source
 
-Reason: Build reservations, guards and generated launchers must find the same installed registry and settings while retaining isolated registries.
+Reason: Verify selected Trunk payload and release before start effects under the current admission generation.
 
-Origins: ARC-5.1, ARC-5.2, ARC-5.5 · Intention i-c5d7328f · 2026-11-19
+Origins: RCT-0.17, RCT-0.18 · Intention i-ccaaa8ee · 2026-11-23
 
 ## prune_protections
 

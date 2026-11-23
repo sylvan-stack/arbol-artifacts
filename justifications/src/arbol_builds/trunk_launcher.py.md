@@ -11,9 +11,9 @@ Removed by Intention i-fa05f54d · 2026-11-12
 
 ## <before Refused>
 
-Reason: Select stable Trunks only from Applications and preserve installed runtime use guards during registry maintenance
+Removed: Verify selected Trunk payload and release before start effects under the current admission generation.
 
-Origins: FOR-2.6 · Intention i-0775d715 · 2026-11-20
+Removed by Intention i-ccaaa8ee · 2026-11-23
 
 ## Call
 
@@ -53,9 +53,9 @@ Origins: ARC-4.1, ARC-4.3 · Intention i-fa05f54d · 2026-11-12
 
 ## launch_trunk
 
-Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
+Reason: Verify selected Trunk payload and release before start effects under the current admission generation.
 
-Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
+Origins: RCT-0.17, RCT-0.18 · Intention i-ccaaa8ee · 2026-11-23
 
 ## pick_build
 
@@ -83,19 +83,31 @@ Origins: FOR-2.6 · Intention i-0775d715 · 2026-11-20
 
 ## installed_trunks
 
-Reason: Select stable Trunks only from Applications and preserve installed runtime use guards during registry maintenance
+Reason: Verify selected Trunk payload and release before start effects under the current admission generation.
 
-Origins: FOR-2.6 · Intention i-0775d715 · 2026-11-20
+Origins: RCT-0.17, RCT-0.18 · Intention i-ccaaa8ee · 2026-11-23
 
 ## launch_installed_trunk
 
-Reason: Select stable Trunks only from Applications and preserve installed runtime use guards during registry maintenance
+Reason: Verify selected Trunk payload and release before start effects under the current admission generation.
 
-Origins: FOR-2.6 · Intention i-0775d715 · 2026-11-20
+Origins: RCT-0.17, RCT-0.18 · Intention i-ccaaa8ee · 2026-11-23
 
 ## schema_view
 
 Reason: Select stable Trunks only from Applications and preserve installed runtime use guards during registry maintenance
 
 Origins: FOR-2.6 · Intention i-0775d715 · 2026-11-20
+
+## <before admission_runtime>
+
+Reason: Verify selected Trunk payload and release before start effects under the current admission generation.
+
+Origins: RCT-0.17, RCT-0.18 · Intention i-ccaaa8ee · 2026-11-23
+
+## admission_runtime
+
+Reason: Verify selected Trunk payload and release before start effects under the current admission generation.
+
+Origins: RCT-0.17, RCT-0.18 · Intention i-ccaaa8ee · 2026-11-23
 
