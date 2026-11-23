@@ -34,6 +34,7 @@ The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and E
 - **N** — [Native Tool Call](#native-tool-call) · [Nex](#nex) · [Nex Colab](#nex-colab) · [Nex Knowledge Map](#nex-knowledge-map) · [Normalizer](#normalizer) · [Now Line](#now-line)
 - **O** — [Oaken](#oaken) · [Objectives](#objectives) · [Operational Artifact](#operational-artifact) · [Organization](#organization) · [Origin](#origin) · [Origin Coverage](#origin-coverage) · [Origin Link](#origin-link) · [Orphaned Change](#orphaned-change) · [Owner Goal](#owner-goal) · [Owner Requirement](#owner-requirement)
 - **P** — [Parse Result](#parse-result) · [Parser](#parser) · [Parser Pipeline](#parser-pipeline) · [Provider](#provider)
+- **Q** — [Quota Dash](#quota-dash)
 - **R** — [Radar](#radar) · [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Refresh](#refresh) · [Release](#release) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Required Pace](#required-pace) · [Requirement](#requirement) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Runbook](#runbook)
 - **S** — [Saga](#saga) · [Saga Planning](#saga-planning) · [Scan](#scan) · [Signal](#signal) · [Signal Rule](#signal-rule) · [Signal Type](#signal-type) · [Seqoya Lab](#seqoya-lab) · [Source Ref](#source-ref) · [Sparse Retrieval](#sparse-retrieval) · [Spec Requirement](#spec-requirement) · [Spec Writing](#spec-writing) · [Spotlight](#spotlight) · [Stale](#stale) · [Stale Summary Regeneration](#stale-summary-regeneration) · [State Runtime Profile](#state-runtime-profile) · [Step Intention](#step-intention) · [Stint](#stint) · [Subscription](#subscription) · [Subscriptions Vigor](#subscriptions-vigor) · [Summary Node](#summary-node) · [Surface](#surface) · [Sync Pass](#sync-pass)
 - **T** — [Taproot](#taproot) · [Text Snapshot](#text-snapshot) · [Theme](#theme) · [Tool](#tool) · [Tool Request](#tool-request) · [Tracked Source](#tracked-source) · [Trivial Trunk](#trivial-trunk) · [Trunk Runtime](#trunk-runtime) · [Turn](#turn)
@@ -1391,6 +1392,14 @@ Two distinct layers carry a provider value, and they deliberately differ for gat
 - **Vendor family** (the [Subscription](#subscription) level): who you actually pay and whose usage/models/branding apply. The glm subscription's family is `zai` (Z.AI), never Anthropic — even though its transport is the claude CLI.
 
 **Example:** `claude` is the transport provider for both `bro-claude` and `safe-claude`; `codex` is a different provider with its own driver. The `glm` IP rides the `claude` transport while its bound subscription belongs to the `zai` family — so its model picker offers GLM models and its usage comes from z.ai's quota API, never claude.ai or api.anthropic.com.
+
+## Quota Dash
+
+A designation for a weekly allowance window whose goal is to use its full weekly quota as quickly as useful work and applicable limits allow. During a Quota Dash planned for a limit reset, apply the reset as soon as the weekly quota is fully used. A large unused balance approaching expiration is another reason to designate the window. In that case, the goal is to use as much of the remaining quota as possible before it expires.
+
+The rules for designating a window, handling expiration deadlines, and applying resets are planned for later implementation.
+
+**Example.** A full weekly quota can be used in 3½ days at weekly Mach 2 if other limits allow it. If a limit reset is available, apply it once the quota is used and continue in the fresh weekly window. A weekly window with a large balance expiring tomorrow can also be designated a Quota Dash so that useful work can use the balance before the deadline.
 
 ## Radar
 
