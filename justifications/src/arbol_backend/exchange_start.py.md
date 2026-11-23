@@ -35,9 +35,9 @@ Origins: ARC-4.1, ARC-4.6 · Intention i-b28581e9 · 2026-11-12
 
 ## start
 
-Reason: Verify selected Trunk payload and release before start effects under the current admission generation.
+Reason: Use a distinct read-only policy command that legacy launchers refuse before writer entry.
 
-Origins: RCT-0.17, RCT-0.18 · Intention i-ccaaa8ee · 2026-11-23
+Origins: RCT-0.17, RCT-0.18 · Intention i-945d195e · 2026-11-23
 
 ## wait_reply
 
@@ -59,7 +59,7 @@ Origins: IMP-0.16, IMP-0.18, RCT-0.4, RCT-2.13, ARC-4.4, ARC-4.6 · Intention i-
 
 ## verify_selection
 
-Reason: Verify selected Trunk payload and release before start effects under the current admission generation.
+Reason: Use a distinct read-only policy command that legacy launchers refuse before writer entry.
 
-Origins: RCT-0.17, RCT-0.18 · Intention i-ccaaa8ee · 2026-11-23
+Origins: RCT-0.17, RCT-0.18 · Intention i-945d195e · 2026-11-23
 
