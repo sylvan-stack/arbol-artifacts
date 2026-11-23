@@ -29,9 +29,9 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
 
 ## capture_build
 
-Reason: Use the independently verified layout from the committed description and working record when the classifier manifest format omits it.
+Reason: Record exact deployed predecessor and qualified successor Exchange payload and entry evidence.
 
-Origins: ARC-4.5, ARC-5.6, BLD-0.4 · Intention i-8a8d4893 · 2026-11-19
+Origins: RCT-0.17, RCT-0.18, RCT-0.19, ARC-D89 · Intention i-df33c211 · 2026-11-23
 
 ## check_hashes
 
@@ -95,9 +95,9 @@ Origins: ARC-5.4 · Intention i-3a3f6a76 · 2026-11-19
 
 ## record_release
 
-Reason: Bind explicit Exchange and note capabilities to the exact selected release Builds and their verified payload evidence.
+Reason: Record exact deployed predecessor and qualified successor Exchange payload and entry evidence.
 
-Origins: RCT-0.17, BKD-0.34 · Intention i-4cc0d525 · 2026-11-23
+Origins: RCT-0.17, RCT-0.18, RCT-0.19, ARC-D89 · Intention i-df33c211 · 2026-11-23
 
 ## relative
 
@@ -224,4 +224,22 @@ Origins: ARC-4.5, ARC-5.4, ARC-D95, ARC-D96 · Intention i-c535ce9e · 2026-11-1
 Reason: Bind explicit Exchange and note capabilities to the exact selected release Builds and their verified payload evidence.
 
 Origins: RCT-0.17, BKD-0.34 · Intention i-4cc0d525 · 2026-11-23
+
+## exchange_transition_evidence
+
+Reason: Record exact deployed predecessor and qualified successor Exchange payload and entry evidence.
+
+Origins: RCT-0.17, RCT-0.18, RCT-0.19, ARC-D89 · Intention i-df33c211 · 2026-11-23
+
+## exchange_transition_spec
+
+Reason: Record exact deployed predecessor and qualified successor Exchange payload and entry evidence.
+
+Origins: RCT-0.17, RCT-0.18, RCT-0.19, ARC-D89 · Intention i-df33c211 · 2026-11-23
+
+## selected_entry
+
+Reason: Record exact deployed predecessor and qualified successor Exchange payload and entry evidence.
+
+Origins: RCT-0.17, RCT-0.18, RCT-0.19, ARC-D89 · Intention i-df33c211 · 2026-11-23
 
