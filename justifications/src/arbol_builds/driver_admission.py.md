@@ -239,9 +239,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-ee2e9990 · 2026-11-14
 
 ## normal_control
 
-Reason: Carry exact candidate scope through custody reconciliation without loss exceptions
+Reason: Bind the four new Driver commands to their verified fresh directories
 
-Origins: DRV-6.18, DRV-6.21 · Intention i-7e2e6166 · 2026-11-15
+Origins: DRV-6.21, DRV-6.23 · Intention i-8b06c687 · 2026-11-23
 
 ## read_handoff
 
@@ -332,4 +332,10 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
 Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
 
 Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
+
+## fresh_install
+
+Reason: Bind the four new Driver commands to their verified fresh directories
+
+Origins: DRV-6.21, DRV-6.23 · Intention i-8b06c687 · 2026-11-23
 

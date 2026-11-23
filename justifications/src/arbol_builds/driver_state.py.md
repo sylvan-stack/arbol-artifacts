@@ -5,9 +5,9 @@ role: authored
 
 ## <before _route>
 
-Reason: Resolve immutable installed Driver payloads separately from numbered Build records.
+Reason: Bind the four new Driver commands to their verified fresh directories
 
-Origins: DRV-6.18, DRV-6.21 · Intention i-da51c66f · 2026-11-23
+Origins: DRV-6.21, DRV-6.23 · Intention i-8b06c687 · 2026-11-23
 
 ## _admission_marker
 
@@ -41,9 +41,9 @@ Origins: DRV-6.18, DRV-6.21 · Intention i-43aafbed · 2026-11-23
 
 ## launch_selected
 
-Reason: Require the current Driver state layout and exact acceptance before the shared launcher starts a Driver.
+Reason: Bind the four new Driver commands to their verified fresh directories
 
-Origins: DRV-6.18, DRV-6.21 · Intention i-43aafbed · 2026-11-23
+Origins: DRV-6.21, DRV-6.23 · Intention i-8b06c687 · 2026-11-23
 
 ## guarded_publication
 
@@ -119,9 +119,9 @@ Origins: DRV-6.21, BLD-0.9, BLD-0.16 · Intention i-a1c2c39a · 2026-11-15
 
 ## provider_entry
 
-Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
+Reason: Bind the four new Driver commands to their verified fresh directories
 
-Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
+Origins: DRV-6.21, DRV-6.23 · Intention i-8b06c687 · 2026-11-23
 
 ## _component
 
@@ -530,4 +530,10 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-
 Reason: Preserve staged deployment and actual installed gate verification for candidate tuples
 
 Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-405ddcab · 2026-11-15
+
+## launch_fresh
+
+Reason: Bind the four new Driver commands to their verified fresh directories
+
+Origins: DRV-6.21, DRV-6.23 · Intention i-8b06c687 · 2026-11-23
 
