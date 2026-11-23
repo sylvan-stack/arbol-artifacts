@@ -449,9 +449,9 @@ Origins: DRV-6.20 · Intention i-7a58e481 · 2026-11-23
 
 ## claude_create_subjects
 
-Reason: Verify Claude original descriptor identities at intake and throughout
+Reason: Author fixed Pi create recovery and absence observations on original subjects
 
-Origins: DRV-6.20 · Intention i-7a58e481 · 2026-11-23
+Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
 
 ## ClaudeCreateWalk.archived
 
@@ -476,4 +476,112 @@ Origins: DRV-6.21 · Intention i-1dd1a81f · 2026-11-23
 Reason: Enforce completed H1 ordering and fixed deferred create identities
 
 Origins: DRV-6.21 · Intention i-1dd1a81f · 2026-11-23
+
+## <before PiCreateSubject>
+
+Reason: Author fixed Pi create recovery and absence observations on original subjects
+
+Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+
+## Maintenance.pi_create_refusal
+
+Reason: Author fixed Pi create recovery and absence observations on original subjects
+
+Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+
+## PiCreateAbsence
+
+Reason: Author fixed Pi create recovery and absence observations on original subjects
+
+Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+
+## PiCreateAbsence.case_id
+
+Reason: Author fixed Pi create recovery and absence observations on original subjects
+
+Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+
+## PiCreateAbsence.observe
+
+Reason: Author fixed Pi create recovery and absence observations on original subjects
+
+Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+
+## PiCreateRecovery
+
+Reason: Author fixed Pi create recovery and absence observations on original subjects
+
+Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+
+## PiCreateRecovery.case_id
+
+Reason: Author fixed Pi create recovery and absence observations on original subjects
+
+Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+
+## PiCreateRecovery.observe
+
+Reason: Author fixed Pi create recovery and absence observations on original subjects
+
+Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+
+## PiCreateSubject
+
+Reason: Author fixed Pi create recovery and absence observations on original subjects
+
+Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+
+## PiCreateWalk
+
+Reason: Author fixed Pi create recovery and absence observations on original subjects
+
+Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+
+## PiCreateWalk.__init__
+
+Reason: Author fixed Pi create recovery and absence observations on original subjects
+
+Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+
+## PiCreateWalk.archived
+
+Reason: Author fixed Pi create recovery and absence observations on original subjects
+
+Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+
+## PiCreateWalk.check_custody
+
+Reason: Author fixed Pi create recovery and absence observations on original subjects
+
+Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+
+## PiCreateWalk.execute
+
+Reason: Author fixed Pi create recovery and absence observations on original subjects
+
+Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+
+## PiCreateWalk.metadata
+
+Reason: Author fixed Pi create recovery and absence observations on original subjects
+
+Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+
+## PiCreateWalk.prepare
+
+Reason: Author fixed Pi create recovery and absence observations on original subjects
+
+Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+
+## PiCreateWalk.unchanged
+
+Reason: Author fixed Pi create recovery and absence observations on original subjects
+
+Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
+
+## pi_create_subjects
+
+Reason: Author fixed Pi create recovery and absence observations on original subjects
+
+Origins: DRV-6.20 · Intention i-501124b4 · 2026-11-23
 
