@@ -89,9 +89,9 @@ Origins: DRV-5.11, DRV-6.18, DRV-6.19, DRV-6.21 · Intention i-a50c58ec · 2026-
 
 ## Maintenance.admitted_proof
 
-Reason: Observe the real witness retirement before journal clearing and verify operation-relative finish against surviving pending metadata.
+Reason: Implement reviewed Claude same-subject create recovery observations
 
-Origins: DRV-5.11, DRV-6.17, DRV-6.20, DRV-6.21 · Intention i-53a31cbe · 2026-11-15
+Origins: DRV-6.20 · Intention i-07451655 · 2026-11-23
 
 ## Maintenance.argv
 
@@ -368,4 +368,10 @@ Origins: DRV-5.11, DRV-6.17, DRV-6.20, DRV-6.21 · Intention i-53a31cbe · 2026-
 Reason: Observe the real witness retirement before journal clearing and verify operation-relative finish against surviving pending metadata.
 
 Origins: DRV-5.11, DRV-6.17, DRV-6.20, DRV-6.21 · Intention i-53a31cbe · 2026-11-15
+
+## Maintenance.claude_create_refusal
+
+Reason: Implement reviewed Claude same-subject create recovery observations
+
+Origins: DRV-6.20 · Intention i-07451655 · 2026-11-23
 
