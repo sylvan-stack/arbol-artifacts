@@ -383,9 +383,9 @@ Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
 
 ## ClaudeCreateAbsence
 
-Reason: Bind the ten original Claude create subjects to terminal helper evidence
+Reason: Enforce completed H1 ordering and fixed deferred create identities
 
-Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
+Origins: DRV-6.21 · Intention i-1dd1a81f · 2026-11-23
 
 ## ClaudeCreateAbsence.observe
 
@@ -395,9 +395,9 @@ Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
 
 ## ClaudeCreateRecovery
 
-Reason: Bind the ten original Claude create subjects to terminal helper evidence
+Reason: Enforce completed H1 ordering and fixed deferred create identities
 
-Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
+Origins: DRV-6.21 · Intention i-1dd1a81f · 2026-11-23
 
 ## ClaudeCreateRecovery.observe
 
@@ -425,9 +425,9 @@ Origins: DRV-6.21 · Intention i-cb84947c · 2026-11-23
 
 ## ClaudeCreateWalk.execute
 
-Reason: Bind original create custody to real terminal archive across drains
+Reason: Enforce completed H1 ordering and fixed deferred create identities
 
-Origins: DRV-6.21 · Intention i-cb84947c · 2026-11-23
+Origins: DRV-6.21 · Intention i-1dd1a81f · 2026-11-23
 
 ## ClaudeCreateWalk.metadata
 
@@ -437,9 +437,9 @@ Origins: DRV-6.20 · Intention i-0001a0a1 · 2026-11-23
 
 ## ClaudeCreateWalk.prepare
 
-Reason: Bind original create custody to real terminal archive across drains
+Reason: Enforce completed H1 ordering and fixed deferred create identities
 
-Origins: DRV-6.21 · Intention i-cb84947c · 2026-11-23
+Origins: DRV-6.21 · Intention i-1dd1a81f · 2026-11-23
 
 ## ClaudeCreateWalk.unchanged
 
@@ -464,4 +464,16 @@ Origins: DRV-6.21 · Intention i-cb84947c · 2026-11-23
 Reason: Bind original create custody to real terminal archive across drains
 
 Origins: DRV-6.21 · Intention i-cb84947c · 2026-11-23
+
+## ClaudeCreateAbsence.case_id
+
+Reason: Enforce completed H1 ordering and fixed deferred create identities
+
+Origins: DRV-6.21 · Intention i-1dd1a81f · 2026-11-23
+
+## ClaudeCreateRecovery.case_id
+
+Reason: Enforce completed H1 ordering and fixed deferred create identities
+
+Origins: DRV-6.21 · Intention i-1dd1a81f · 2026-11-23
 
