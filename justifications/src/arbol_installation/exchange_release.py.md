@@ -5,9 +5,9 @@ role: authored
 
 ## <before pairs>
 
-Reason: Bind local release capabilities and payload eligibility to the held installation admission lease.
+Reason: Replace the local archival release copy with exact compact authorization bound to admission and verified payloads.
 
-Origins: RCT-0.17, RCT-0.18, BKD-0.34 · Intention i-175af23b · 2026-11-23
+Origins: RCT-0.17, RCT-0.18, BKD-0.34, ARC-D89 · Intention i-fd2996e2 · 2026-11-23
 
 ## pairs
 
@@ -23,7 +23,31 @@ Origins: RCT-0.17, RCT-0.18, BKD-0.34 · Intention i-175af23b · 2026-11-23
 
 ## writer_version
 
-Reason: Bind local release capabilities and payload eligibility to the held installation admission lease.
+Reason: Replace the local archival release copy with exact compact authorization bound to admission and verified payloads.
 
-Origins: RCT-0.17, RCT-0.18, BKD-0.34 · Intention i-175af23b · 2026-11-23
+Origins: RCT-0.17, RCT-0.18, BKD-0.34, ARC-D89 · Intention i-fd2996e2 · 2026-11-23
+
+## authorization_from_release
+
+Reason: Replace the local archival release copy with exact compact authorization bound to admission and verified payloads.
+
+Origins: RCT-0.17, RCT-0.18, BKD-0.34, ARC-D89 · Intention i-fd2996e2 · 2026-11-23
+
+## canonical
+
+Reason: Replace the local archival release copy with exact compact authorization bound to admission and verified payloads.
+
+Origins: RCT-0.17, RCT-0.18, BKD-0.34, ARC-D89 · Intention i-fd2996e2 · 2026-11-23
+
+## checked
+
+Reason: Replace the local archival release copy with exact compact authorization bound to admission and verified payloads.
+
+Origins: RCT-0.17, RCT-0.18, BKD-0.34, ARC-D89 · Intention i-fd2996e2 · 2026-11-23
+
+## verify_authorization
+
+Reason: Replace the local archival release copy with exact compact authorization bound to admission and verified payloads.
+
+Origins: RCT-0.17, RCT-0.18, BKD-0.34, ARC-D89 · Intention i-fd2996e2 · 2026-11-23
 
