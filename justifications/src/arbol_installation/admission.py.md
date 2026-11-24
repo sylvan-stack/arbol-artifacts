@@ -131,13 +131,43 @@ Origins: ARC-5.6, ARC-5.7, ARC-5.8 · Intention i-dd047d30 · 2026-11-19
 
 ## convert_admission_layout
 
-Reason: Bind active writer admission to the installed layout and allow an exclusive operator to convert or reverse the marker without replacing locks.
+Reason: Keep the same exclusive admission descriptors through the layout marker conversion
 
-Origins: ARC-5.6, ARC-5.7, ARC-5.8 · Intention i-dd047d30 · 2026-11-19
+Origins: ARC-5.7, ARC-5.8 · Intention i-ae6336db · 2026-11-24
 
 ## unique_pairs
 
 Reason: Reject ambiguous duplicate fields in admission state when reading the successor commitment.
 
 Origins: RCT-0.17 · Intention i-c6ef279a · 2026-11-23
+
+## ExclusiveLayoutLease
+
+Reason: Keep the same exclusive admission descriptors through the layout marker conversion
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-ae6336db · 2026-11-24
+
+## ExclusiveLayoutLease.convert_marker
+
+Reason: Keep the same exclusive admission descriptors through the layout marker conversion
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-ae6336db · 2026-11-24
+
+## ExclusiveLayoutLease.require
+
+Reason: Keep the same exclusive admission descriptors through the layout marker conversion
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-ae6336db · 2026-11-24
+
+## _require_layout_pair
+
+Reason: Keep the same exclusive admission descriptors through the layout marker conversion
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-ae6336db · 2026-11-24
+
+## exclusive_layout_lease
+
+Reason: Keep the same exclusive admission descriptors through the layout marker conversion
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-ae6336db · 2026-11-24
 
