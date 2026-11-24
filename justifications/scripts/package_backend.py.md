@@ -5,9 +5,9 @@ role: authored
 
 ## package
 
-Reason: Make the existing database installer and probe available to the packaged move and recovery operator
+Reason: Expose explicit move and recovery modes and ship both operators through the packaged Python runtime
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-c0f6f867 · 2026-11-24
+Origins: ARC-5.4, ARC-5.7, ARC-5.8, ARC-5.10, ARC-5.11 · Intention i-b6aa9df4 · 2026-11-24
 
 ## <before package>
 
@@ -50,4 +50,10 @@ Origins: DRV-6.21 · Intention i-a705d492 · 2026-11-15
 Reason: Apply the existing early signal prelude to the sealed provider entry using verified committed service and generator bytes
 
 Origins: DRV-6.21, BLD-0.16 · Intention i-3a893e5a · 2026-11-15
+
+## database_operator
+
+Reason: Expose explicit move and recovery modes and ship both operators through the packaged Python runtime
+
+Origins: ARC-5.4, ARC-5.7, ARC-5.8, ARC-5.10, ARC-5.11 · Intention i-b6aa9df4 · 2026-11-24
 
