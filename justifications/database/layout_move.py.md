@@ -5,9 +5,9 @@ role: authored
 
 ## <before MovePaths>
 
-Reason: Run the historical Backend drain and freeze transitions against the verified source and bind their exact session and marker readback
+Reason: Persist the exact prior service state and stop only verified installation consumers before relocation
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-353ec655 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
 
 ## <end>
 
@@ -149,21 +149,21 @@ Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
 
 ## read_rename_record
 
-Reason: Bind forward relocation to actual prior Backend runtime and PostgreSQL inventory proof under the held exclusive lease
+Reason: Persist the exact prior service state and stop only verified installation consumers before relocation
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-077f1ac6 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
 
 ## record_renames
 
-Reason: Bind forward relocation to actual prior Backend runtime and PostgreSQL inventory proof under the held exclusive lease
+Reason: Persist the exact prior service state and stop only verified installation consumers before relocation
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-077f1ac6 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
 
 ## relocate_renames
 
-Reason: Bind forward relocation to actual prior Backend runtime and PostgreSQL inventory proof under the held exclusive lease
+Reason: Persist the exact prior service state and stop only verified installation consumers before relocation
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-077f1ac6 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
 
 ## rename_exclusive
 
@@ -236,4 +236,70 @@ Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-353ec655 · 2026-11-24
 Reason: Run the historical Backend drain and freeze transitions against the verified source and bind their exact session and marker readback
 
 Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-353ec655 · 2026-11-24
+
+## app_executables
+
+Reason: Persist the exact prior service state and stop only verified installation consumers before relocation
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
+
+## database_service
+
+Reason: Persist the exact prior service state and stop only verified installation consumers before relocation
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
+
+## move_process_observer
+
+Reason: Persist the exact prior service state and stop only verified installation consumers before relocation
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
+
+## observed_process
+
+Reason: Persist the exact prior service state and stop only verified installation consumers before relocation
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
+
+## read_move_document
+
+Reason: Persist the exact prior service state and stop only verified installation consumers before relocation
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
+
+## require_stopped_installation
+
+Reason: Persist the exact prior service state and stop only verified installation consumers before relocation
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
+
+## running_apps
+
+Reason: Persist the exact prior service state and stop only verified installation consumers before relocation
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
+
+## running_backend
+
+Reason: Persist the exact prior service state and stop only verified installation consumers before relocation
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
+
+## stop_installation_services
+
+Reason: Persist the exact prior service state and stop only verified installation consumers before relocation
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
+
+## stop_recorded_process
+
+Reason: Persist the exact prior service state and stop only verified installation consumers before relocation
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
+
+## write_move_document
+
+Reason: Persist the exact prior service state and stop only verified installation consumers before relocation
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
 
