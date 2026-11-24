@@ -89,9 +89,9 @@ Origins: ARC-4.1, ARC-4.2, ARC-4.3, ARC-4.8 · Intention i-f573246b · 2026-11-1
 
 ## database_target
 
-Reason: Read the installed schema and initialize the baseline only in an explicitly authorized empty database
+Reason: Resolve exact read-only move evidence from the installed Build storage and one pinned database settings file
 
-Origins: ARC-4.1, ARC-4.2, ARC-4.3, ARC-4.8 · Intention i-f573246b · 2026-11-12
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6b11388d · 2026-11-24
 
 ## initialize
 

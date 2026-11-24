@@ -35,9 +35,9 @@ Origins: ARC-5.1, ARC-5.2, ARC-5.3, ARC-5.5 · Intention i-f1e3f3c8 · 2026-11-1
 
 ## build_payload_directory
 
-Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
+Reason: Resolve exact read-only move evidence from the installed Build storage and one pinned database settings file
 
-Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6b11388d · 2026-11-24
 
 ## build_registry
 
