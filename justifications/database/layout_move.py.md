@@ -5,9 +5,9 @@ role: authored
 
 ## <before MovePaths>
 
-Reason: Persist the exact prior service state and stop only verified installation consumers before relocation
+Reason: Bind the staged launcher, plist, registry selection, continuity and sealed Driver deployment evidence to the exact move
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-baccd35a · 2026-11-24
 
 ## <end>
 
@@ -77,9 +77,9 @@ Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6b11388d · 2026-11-24
 
 ## main
 
-Reason: Record exact working-directory before-images and resolve interrupted no-overwrite moves under the held admission lease
+Reason: Bind the staged launcher, plist, registry selection, continuity and sealed Driver deployment evidence to the exact move
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-baccd35a · 2026-11-24
 
 ## owner_directory
 
@@ -302,4 +302,34 @@ Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
 Reason: Persist the exact prior service state and stop only verified installation consumers before relocation
 
 Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
+
+## move_object
+
+Reason: Bind the staged launcher, plist, registry selection, continuity and sealed Driver deployment evidence to the exact move
+
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-baccd35a · 2026-11-24
+
+## move_route
+
+Reason: Bind the staged launcher, plist, registry selection, continuity and sealed Driver deployment evidence to the exact move
+
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-baccd35a · 2026-11-24
+
+## pinned_move_input
+
+Reason: Bind the staged launcher, plist, registry selection, continuity and sealed Driver deployment evidence to the exact move
+
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-baccd35a · 2026-11-24
+
+## stage_input
+
+Reason: Bind the staged launcher, plist, registry selection, continuity and sealed Driver deployment evidence to the exact move
+
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-baccd35a · 2026-11-24
+
+## verify_staged_move
+
+Reason: Bind the staged launcher, plist, registry selection, continuity and sealed Driver deployment evidence to the exact move
+
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-baccd35a · 2026-11-24
 
