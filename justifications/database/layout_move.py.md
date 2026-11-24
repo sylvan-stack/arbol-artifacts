@@ -341,9 +341,9 @@ Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6e02c521 · 2026-11-24
 
 ## prepare_move_maintenance
 
-Reason: Persist drain ownership before publishing its marker and bind the prior snapshot and isolated restore to that session
+Reason: Allow a fresh isolated attempt against the same fenced snapshot without overwriting any failed restore evidence
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6e02c521 · 2026-11-24
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-ea4fce9e · 2026-11-24
 
 ## verify_writer_refusal
 
@@ -479,15 +479,15 @@ Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-0a48a0eb · 2026-11-24
 
 ## record_fallback
 
-Reason: Seat the exact independently restored replacement only under the original exclusive session and preserve the retired cluster
+Reason: Allow a fresh isolated attempt against the same fenced snapshot without overwriting any failed restore evidence
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-c59ebcf0 · 2026-11-24
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-ea4fce9e · 2026-11-24
 
 ## recover_snapshot_fallback
 
-Reason: Seat the exact independently restored replacement only under the original exclusive session and preserve the retired cluster
+Reason: Allow a fresh isolated attempt against the same fenced snapshot without overwriting any failed restore evidence
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-c59ebcf0 · 2026-11-24
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-ea4fce9e · 2026-11-24
 
 ## seat_fallback_data
 
