@@ -5,9 +5,9 @@ role: authored
 
 ## <before MovePaths>
 
-Reason: Restore exact local before-images and reopen only the verified prior release before the move boundary
+Reason: Seat the exact independently restored replacement only under the original exclusive session and preserve the retired cluster
 
-Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-0a48a0eb · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-c59ebcf0 · 2026-11-24
 
 ## <end>
 
@@ -476,4 +476,28 @@ Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-0a48a0eb · 2026-11-24
 Reason: Restore exact local before-images and reopen only the verified prior release before the move boundary
 
 Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-0a48a0eb · 2026-11-24
+
+## record_fallback
+
+Reason: Seat the exact independently restored replacement only under the original exclusive session and preserve the retired cluster
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-c59ebcf0 · 2026-11-24
+
+## recover_snapshot_fallback
+
+Reason: Seat the exact independently restored replacement only under the original exclusive session and preserve the retired cluster
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-c59ebcf0 · 2026-11-24
+
+## seat_fallback_data
+
+Reason: Seat the exact independently restored replacement only under the original exclusive session and preserve the retired cluster
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-c59ebcf0 · 2026-11-24
+
+## stop_prior_for_fallback
+
+Reason: Seat the exact independently restored replacement only under the original exclusive session and preserve the retired cluster
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-c59ebcf0 · 2026-11-24
 
