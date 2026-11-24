@@ -5,9 +5,9 @@ role: authored
 
 ## <before operation>
 
-Reason: Reuse the verified exclusive reopen with the held layout lease and preserve the marker format on a failed publication
+Reason: Verify the retargeted installation under admission and record a recoverable deliberate reopen boundary
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-d2c4567a · 2026-11-24
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-248663e2 · 2026-11-24
 
 ## begin_maintenance
 
@@ -65,9 +65,9 @@ Origins: ARC-4.4, ARC-4.8 · Intention i-4292c8dd · 2026-11-12
 
 ## reopen
 
-Reason: Reuse the verified exclusive reopen with the held layout lease and preserve the marker format on a failed publication
+Reason: Verify the retargeted installation under admission and record a recoverable deliberate reopen boundary
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-d2c4567a · 2026-11-24
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-248663e2 · 2026-11-24
 
 ## GuardedSelection
 

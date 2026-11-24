@@ -5,9 +5,9 @@ role: authored
 
 ## <before MovePaths>
 
-Reason: Persist the prior installation targets and apply only the staged configuration under the relocation fence
+Reason: Verify the retargeted installation under admission and record a recoverable deliberate reopen boundary
 
-Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-248663e2 · 2026-11-24
 
 ## <end>
 
@@ -377,9 +377,9 @@ Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
 
 ## record_retarget
 
-Reason: Persist the prior installation targets and apply only the staged configuration under the relocation fence
+Reason: Verify the retargeted installation under admission and record a recoverable deliberate reopen boundary
 
-Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-248663e2 · 2026-11-24
 
 ## replace_move_file
 
@@ -398,4 +398,34 @@ Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
 Reason: Persist the prior installation targets and apply only the staged configuration under the relocation fence
 
 Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
+
+## finish_move
+
+Reason: Verify the retargeted installation under admission and record a recoverable deliberate reopen boundary
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-248663e2 · 2026-11-24
+
+## move_database_ready
+
+Reason: Verify the retargeted installation under admission and record a recoverable deliberate reopen boundary
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-248663e2 · 2026-11-24
+
+## start_move_database
+
+Reason: Verify the retargeted installation under admission and record a recoverable deliberate reopen boundary
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-248663e2 · 2026-11-24
+
+## verify_move_database
+
+Reason: Verify the retargeted installation under admission and record a recoverable deliberate reopen boundary
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-248663e2 · 2026-11-24
+
+## verify_reopen_witness
+
+Reason: Verify the retargeted installation under admission and record a recoverable deliberate reopen boundary
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-248663e2 · 2026-11-24
 
