@@ -5,9 +5,9 @@ role: authored
 
 ## package
 
-Reason: Include Exchange transition operator with backend recovery scripts
+Reason: Include the existing layout inspection and archive operators in the Backend package
 
-Origins: RCT-0.17, RCT-0.18 · Intention i-38a703e4 · 2026-11-23
+Origins: ARC-5.4, ARC-5.7, ARC-5.10 · Intention i-59bb69b1 · 2026-11-24
 
 ## <before package>
 
