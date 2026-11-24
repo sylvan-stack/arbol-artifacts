@@ -5,9 +5,9 @@ role: authored
 
 ## <before MovePaths>
 
-Reason: Persist drain ownership before publishing its marker and bind the prior snapshot and isolated restore to that session
+Reason: Persist the prior installation targets and apply only the staged configuration under the relocation fence
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6e02c521 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
 
 ## <end>
 
@@ -251,9 +251,9 @@ Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
 
 ## move_process_observer
 
-Reason: Persist the exact prior service state and stop only verified installation consumers before relocation
+Removed: Persist the prior installation targets and apply only the staged configuration under the relocation fence
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
+Removed by Intention i-79688850 · 2026-11-24
 
 ## observed_process
 
@@ -263,15 +263,15 @@ Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
 
 ## read_move_document
 
-Reason: Persist the exact prior service state and stop only verified installation consumers before relocation
+Reason: Persist the prior installation targets and apply only the staged configuration under the relocation fence
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
 
 ## require_stopped_installation
 
-Reason: Persist the exact prior service state and stop only verified installation consumers before relocation
+Reason: Persist the prior installation targets and apply only the staged configuration under the relocation fence
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
 
 ## running_apps
 
@@ -287,9 +287,9 @@ Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
 
 ## stop_installation_services
 
-Reason: Persist the exact prior service state and stop only verified installation consumers before relocation
+Reason: Persist the prior installation targets and apply only the staged configuration under the relocation fence
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
 
 ## stop_recorded_process
 
@@ -350,4 +350,52 @@ Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6e02c521 · 2026-11-24
 Reason: Persist drain ownership before publishing its marker and bind the prior snapshot and isolated restore to that session
 
 Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6e02c521 · 2026-11-24
+
+## backup_excluded
+
+Reason: Persist the prior installation targets and apply only the staged configuration under the relocation fence
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
+
+## file_image
+
+Reason: Persist the prior installation targets and apply only the staged configuration under the relocation fence
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
+
+## installed_file
+
+Reason: Persist the prior installation targets and apply only the staged configuration under the relocation fence
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
+
+## move_provider_module
+
+Reason: Persist the prior installation targets and apply only the staged configuration under the relocation fence
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
+
+## record_retarget
+
+Reason: Persist the prior installation targets and apply only the staged configuration under the relocation fence
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
+
+## replace_move_file
+
+Reason: Persist the prior installation targets and apply only the staged configuration under the relocation fence
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
+
+## retarget_move
+
+Reason: Persist the prior installation targets and apply only the staged configuration under the relocation fence
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
+
+## verify_driver_destination
+
+Reason: Persist the prior installation targets and apply only the staged configuration under the relocation fence
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
 
