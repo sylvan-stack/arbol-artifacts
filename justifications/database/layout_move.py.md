@@ -77,9 +77,9 @@ Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6b11388d · 2026-11-24
 
 ## main
 
-Reason: Persist drain ownership before publishing its marker and bind the prior snapshot and isolated restore to that session
+Reason: Expose explicit move and recovery modes and ship both operators through the packaged Python runtime
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6e02c521 · 2026-11-24
+Origins: ARC-5.4, ARC-5.7, ARC-5.8, ARC-5.10, ARC-5.11 · Intention i-b6aa9df4 · 2026-11-24
 
 ## owner_directory
 
