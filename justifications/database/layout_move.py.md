@@ -5,9 +5,9 @@ role: authored
 
 ## <before MovePaths>
 
-Reason: Resolve exact read-only move evidence from the installed Build storage and one pinned database settings file
+Reason: Record exact working-directory before-images and resolve interrupted no-overwrite moves under the held admission lease
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6b11388d · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
 
 ## <end>
 
@@ -77,9 +77,9 @@ Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6b11388d · 2026-11-24
 
 ## main
 
-Reason: Verify Mercury, the physical layout paths, exact release records, and common database schema before the operator can close writer admission.
+Reason: Record exact working-directory before-images and resolve interrupted no-overwrite moves under the held admission lease
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-adf85059 · 2026-11-20
+Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
 
 ## owner_directory
 
@@ -119,9 +119,9 @@ Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6b11388d · 2026-11-24
 
 ## working_paths
 
-Reason: Resolve exact read-only move evidence from the installed Build storage and one pinned database settings file
+Reason: Record exact working-directory before-images and resolve interrupted no-overwrite moves under the held admission lease
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6b11388d · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
 
 ## read_settings
 
@@ -134,4 +134,64 @@ Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6b11388d · 2026-11-24
 Reason: Resolve exact read-only move evidence from the installed Build storage and one pinned database settings file
 
 Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6b11388d · 2026-11-24
+
+## destination_name
+
+Reason: Record exact working-directory before-images and resolve interrupted no-overwrite moves under the held admission lease
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
+
+## inspect_renames
+
+Reason: Record exact working-directory before-images and resolve interrupted no-overwrite moves under the held admission lease
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
+
+## read_rename_record
+
+Reason: Record exact working-directory before-images and resolve interrupted no-overwrite moves under the held admission lease
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
+
+## record_renames
+
+Reason: Record exact working-directory before-images and resolve interrupted no-overwrite moves under the held admission lease
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
+
+## relocate_renames
+
+Reason: Record exact working-directory before-images and resolve interrupted no-overwrite moves under the held admission lease
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
+
+## rename_exclusive
+
+Reason: Record exact working-directory before-images and resolve interrupted no-overwrite moves under the held admission lease
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
+
+## rename_identity
+
+Reason: Record exact working-directory before-images and resolve interrupted no-overwrite moves under the held admission lease
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
+
+## rename_positions
+
+Reason: Record exact working-directory before-images and resolve interrupted no-overwrite moves under the held admission lease
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
+
+## rename_roots
+
+Reason: Record exact working-directory before-images and resolve interrupted no-overwrite moves under the held admission lease
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
+
+## require_rename_fence
+
+Reason: Record exact working-directory before-images and resolve interrupted no-overwrite moves under the held admission lease
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
 
