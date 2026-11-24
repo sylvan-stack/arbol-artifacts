@@ -125,9 +125,9 @@ Origins: RCT-0.17, RCT-0.18, RCT-0.19 · Intention i-4fa3fb6b · 2026-11-23
 
 ## write_state
 
-Reason: Bind active writer admission to the installed layout and allow an exclusive operator to convert or reverse the marker without replacing locks.
+Reason: Reuse the verified exclusive reopen with the held layout lease and preserve the marker format on a failed publication
 
-Origins: ARC-5.6, ARC-5.7, ARC-5.8 · Intention i-dd047d30 · 2026-11-19
+Origins: ARC-5.7, ARC-5.8 · Intention i-d2c4567a · 2026-11-24
 
 ## convert_admission_layout
 

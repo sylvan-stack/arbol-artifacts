@@ -5,9 +5,9 @@ role: authored
 
 ## <before operation>
 
-Reason: Implement reviewed guarded reopen selection
+Reason: Reuse the verified exclusive reopen with the held layout lease and preserve the marker format on a failed publication
 
-Origins: RCT-0.17, RCT-0.18, RCT-0.19 · Intention i-1f420201 · 2026-11-23
+Origins: ARC-5.7, ARC-5.8 · Intention i-d2c4567a · 2026-11-24
 
 ## begin_maintenance
 
@@ -23,9 +23,9 @@ Origins: ARC-4.4, ARC-4.8 · Intention i-4292c8dd · 2026-11-12
 
 ## current
 
-Reason: Prove an empty runtime and database under the same lease gate, then bind snapshot, upgrade and explicit verified reopen to the durable session.
+Reason: Reuse the verified exclusive reopen with the held layout lease and preserve the marker format on a failed publication
 
-Origins: ARC-4.4, ARC-4.8 · Intention i-4292c8dd · 2026-11-12
+Origins: ARC-5.7, ARC-5.8 · Intention i-d2c4567a · 2026-11-24
 
 ## exclusive_upgrade
 
@@ -65,13 +65,19 @@ Origins: ARC-4.4, ARC-4.8 · Intention i-4292c8dd · 2026-11-12
 
 ## reopen
 
-Reason: Implement reviewed guarded reopen selection
+Reason: Reuse the verified exclusive reopen with the held layout lease and preserve the marker format on a failed publication
 
-Origins: RCT-0.17, RCT-0.18, RCT-0.19 · Intention i-1f420201 · 2026-11-23
+Origins: ARC-5.7, ARC-5.8 · Intention i-d2c4567a · 2026-11-24
 
 ## GuardedSelection
 
 Reason: Implement reviewed guarded reopen selection
 
 Origins: RCT-0.17, RCT-0.18, RCT-0.19 · Intention i-1f420201 · 2026-11-23
+
+## _reopen_directory
+
+Reason: Reuse the verified exclusive reopen with the held layout lease and preserve the marker format on a failed publication
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-d2c4567a · 2026-11-24
 
