@@ -5,9 +5,9 @@ role: authored
 
 ## <before MovePaths>
 
-Reason: Bind forward relocation to actual prior Backend runtime and PostgreSQL inventory proof under the held exclusive lease
+Reason: Run the historical Backend drain and freeze transitions against the verified source and bind their exact session and marker readback
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-077f1ac6 · 2026-11-24
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-353ec655 · 2026-11-24
 
 ## <end>
 
@@ -101,9 +101,9 @@ Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6b11388d · 2026-11-24
 
 ## tool_json
 
-Reason: Verify Mercury, the physical layout paths, exact release records, and common database schema before the operator can close writer admission.
+Reason: Run the historical Backend drain and freeze transitions against the verified source and bind their exact session and marker readback
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-adf85059 · 2026-11-20
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-353ec655 · 2026-11-24
 
 ## verify_payload
 
@@ -215,7 +215,25 @@ Origins: ARC-5.7, ARC-5.8 · Intention i-077f1ac6 · 2026-11-24
 
 ## verify_prior_writer_inventories
 
-Reason: Bind forward relocation to actual prior Backend runtime and PostgreSQL inventory proof under the held exclusive lease
+Reason: Run the historical Backend drain and freeze transitions against the verified source and bind their exact session and marker readback
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-077f1ac6 · 2026-11-24
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-353ec655 · 2026-11-24
+
+## prior_backend
+
+Reason: Run the historical Backend drain and freeze transitions against the verified source and bind their exact session and marker readback
+
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-353ec655 · 2026-11-24
+
+## prior_maintenance_transition
+
+Reason: Run the historical Backend drain and freeze transitions against the verified source and bind their exact session and marker readback
+
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-353ec655 · 2026-11-24
+
+## run_prior_backend
+
+Reason: Run the historical Backend drain and freeze transitions against the verified source and bind their exact session and marker readback
+
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-353ec655 · 2026-11-24
 
