@@ -5,9 +5,9 @@ role: authored
 
 ## <before MovePaths>
 
-Reason: Pin the ARC-4 snapshot and isolated restore before publishing or advancing any forward rename record
+Reason: Bind forward relocation to actual prior Backend runtime and PostgreSQL inventory proof under the held exclusive lease
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-a800877a · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-077f1ac6 · 2026-11-24
 
 ## <end>
 
@@ -149,21 +149,21 @@ Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
 
 ## read_rename_record
 
-Reason: Pin the ARC-4 snapshot and isolated restore before publishing or advancing any forward rename record
+Reason: Bind forward relocation to actual prior Backend runtime and PostgreSQL inventory proof under the held exclusive lease
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-a800877a · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-077f1ac6 · 2026-11-24
 
 ## record_renames
 
-Reason: Pin the ARC-4 snapshot and isolated restore before publishing or advancing any forward rename record
+Reason: Bind forward relocation to actual prior Backend runtime and PostgreSQL inventory proof under the held exclusive lease
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-a800877a · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-077f1ac6 · 2026-11-24
 
 ## relocate_renames
 
-Reason: Pin the ARC-4 snapshot and isolated restore before publishing or advancing any forward rename record
+Reason: Bind forward relocation to actual prior Backend runtime and PostgreSQL inventory proof under the held exclusive lease
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-a800877a · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-077f1ac6 · 2026-11-24
 
 ## rename_exclusive
 
@@ -179,9 +179,9 @@ Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
 
 ## rename_positions
 
-Reason: Pin the ARC-4 snapshot and isolated restore before publishing or advancing any forward rename record
+Reason: Bind forward relocation to actual prior Backend runtime and PostgreSQL inventory proof under the held exclusive lease
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-a800877a · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-077f1ac6 · 2026-11-24
 
 ## rename_roots
 
@@ -191,9 +191,9 @@ Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
 
 ## require_rename_fence
 
-Reason: Record exact working-directory before-images and resolve interrupted no-overwrite moves under the held admission lease
+Reason: Bind forward relocation to actual prior Backend runtime and PostgreSQL inventory proof under the held exclusive lease
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-077f1ac6 · 2026-11-24
 
 ## rename_snapshot_pins
 
@@ -206,4 +206,16 @@ Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-a800877a · 2026-11-24
 Reason: Pin the ARC-4 snapshot and isolated restore before publishing or advancing any forward rename record
 
 Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-a800877a · 2026-11-24
+
+## rename_inventory_proof
+
+Reason: Bind forward relocation to actual prior Backend runtime and PostgreSQL inventory proof under the held exclusive lease
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-077f1ac6 · 2026-11-24
+
+## verify_prior_writer_inventories
+
+Reason: Bind forward relocation to actual prior Backend runtime and PostgreSQL inventory proof under the held exclusive lease
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-077f1ac6 · 2026-11-24
 
