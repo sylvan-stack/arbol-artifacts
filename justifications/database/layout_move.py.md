@@ -5,9 +5,9 @@ role: authored
 
 ## <before MovePaths>
 
-Reason: Seat the exact independently restored replacement only under the original exclusive session and preserve the retired cluster
+Reason: Use the Driver deployment’s durable reopen evidence and resume a closed move after its required boot boundary
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-c59ebcf0 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-b7b1b2eb · 2026-11-24
 
 ## <end>
 
@@ -395,15 +395,15 @@ Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
 
 ## verify_driver_destination
 
-Reason: Persist the prior installation targets and apply only the staged configuration under the relocation fence
+Reason: Use the Driver deployment’s durable reopen evidence and resume a closed move after its required boot boundary
 
-Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-b7b1b2eb · 2026-11-24
 
 ## finish_move
 
-Reason: Verify the retargeted installation under admission and record a recoverable deliberate reopen boundary
+Reason: Use the Driver deployment’s durable reopen evidence and resume a closed move after its required boot boundary
 
-Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-248663e2 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-b7b1b2eb · 2026-11-24
 
 ## move_database_ready
 
@@ -503,9 +503,9 @@ Origins: ARC-5.7, ARC-5.8 · Intention i-c59ebcf0 · 2026-11-24
 
 ## execute_move
 
-Reason: Connect the verified move and recovery stages under one durable exclusive lease
+Reason: Use the Driver deployment’s durable reopen evidence and resume a closed move after its required boot boundary
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-a93caba9 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-b7b1b2eb · 2026-11-24
 
 ## execute_recovery
 
@@ -524,4 +524,10 @@ Origins: ARC-5.7, ARC-5.8 · Intention i-a93caba9 · 2026-11-24
 Reason: Connect the verified move and recovery stages under one durable exclusive lease
 
 Origins: ARC-5.7, ARC-5.8 · Intention i-a93caba9 · 2026-11-24
+
+## unload_retired_launch_job
+
+Reason: Use the Driver deployment’s durable reopen evidence and resume a closed move after its required boot boundary
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-b7b1b2eb · 2026-11-24
 
