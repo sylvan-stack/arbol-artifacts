@@ -5,9 +5,9 @@ role: authored
 
 ## <before MovePaths>
 
-Reason: Verify the retargeted installation under admission and record a recoverable deliberate reopen boundary
+Reason: Restore exact local before-images and reopen only the verified prior release before the move boundary
 
-Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-248663e2 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-0a48a0eb · 2026-11-24
 
 ## <end>
 
@@ -419,13 +419,61 @@ Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-248663e2 · 2026-11-24
 
 ## verify_move_database
 
-Reason: Verify the retargeted installation under admission and record a recoverable deliberate reopen boundary
+Reason: Restore exact local before-images and reopen only the verified prior release before the move boundary
 
-Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-248663e2 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-0a48a0eb · 2026-11-24
 
 ## verify_reopen_witness
 
 Reason: Verify the retargeted installation under admission and record a recoverable deliberate reopen boundary
 
 Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-248663e2 · 2026-11-24
+
+## PriorPlaces
+
+Reason: Restore exact local before-images and reopen only the verified prior release before the move boundary
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-0a48a0eb · 2026-11-24
+
+## PriorPlaces.folder
+
+Reason: Restore exact local before-images and reopen only the verified prior release before the move boundary
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-0a48a0eb · 2026-11-24
+
+## optional_move_document
+
+Reason: Restore exact local before-images and reopen only the verified prior release before the move boundary
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-0a48a0eb · 2026-11-24
+
+## recover_interrupted_drain
+
+Reason: Restore exact local before-images and reopen only the verified prior release before the move boundary
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-0a48a0eb · 2026-11-24
+
+## recover_move_files
+
+Reason: Restore exact local before-images and reopen only the verified prior release before the move boundary
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-0a48a0eb · 2026-11-24
+
+## reopen_prior_release
+
+Reason: Restore exact local before-images and reopen only the verified prior release before the move boundary
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-0a48a0eb · 2026-11-24
+
+## start_prior_database
+
+Reason: Restore exact local before-images and reopen only the verified prior release before the move boundary
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-0a48a0eb · 2026-11-24
+
+## stop_move_database
+
+Reason: Restore exact local before-images and reopen only the verified prior release before the move boundary
+
+Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-0a48a0eb · 2026-11-24
 
