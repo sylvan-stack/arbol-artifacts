@@ -5,9 +5,9 @@ role: authored
 
 ## <before MovePaths>
 
-Reason: Record exact working-directory before-images and resolve interrupted no-overwrite moves under the held admission lease
+Reason: Pin the ARC-4 snapshot and isolated restore before publishing or advancing any forward rename record
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-a800877a · 2026-11-24
 
 ## <end>
 
@@ -149,21 +149,21 @@ Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
 
 ## read_rename_record
 
-Reason: Record exact working-directory before-images and resolve interrupted no-overwrite moves under the held admission lease
+Reason: Pin the ARC-4 snapshot and isolated restore before publishing or advancing any forward rename record
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-a800877a · 2026-11-24
 
 ## record_renames
 
-Reason: Record exact working-directory before-images and resolve interrupted no-overwrite moves under the held admission lease
+Reason: Pin the ARC-4 snapshot and isolated restore before publishing or advancing any forward rename record
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-a800877a · 2026-11-24
 
 ## relocate_renames
 
-Reason: Record exact working-directory before-images and resolve interrupted no-overwrite moves under the held admission lease
+Reason: Pin the ARC-4 snapshot and isolated restore before publishing or advancing any forward rename record
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-a800877a · 2026-11-24
 
 ## rename_exclusive
 
@@ -179,9 +179,9 @@ Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
 
 ## rename_positions
 
-Reason: Record exact working-directory before-images and resolve interrupted no-overwrite moves under the held admission lease
+Reason: Pin the ARC-4 snapshot and isolated restore before publishing or advancing any forward rename record
 
-Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-a800877a · 2026-11-24
 
 ## rename_roots
 
@@ -194,4 +194,16 @@ Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
 Reason: Record exact working-directory before-images and resolve interrupted no-overwrite moves under the held admission lease
 
 Origins: ARC-5.7, ARC-5.8 · Intention i-a8e0e01a · 2026-11-24
+
+## rename_snapshot_pins
+
+Reason: Pin the ARC-4 snapshot and isolated restore before publishing or advancing any forward rename record
+
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-a800877a · 2026-11-24
+
+## verify_rename_snapshot
+
+Reason: Pin the ARC-4 snapshot and isolated restore before publishing or advancing any forward rename record
+
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-a800877a · 2026-11-24
 
