@@ -329,9 +329,9 @@ Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-baccd35a · 2026-11-24
 
 ## verify_staged_move
 
-Reason: Bind the staged launcher, plist, registry selection, continuity and sealed Driver deployment evidence to the exact move
+Reason: Connect the verified move and recovery stages under one durable exclusive lease
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-baccd35a · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-a93caba9 · 2026-11-24
 
 ## drain_attribution
 
@@ -449,9 +449,9 @@ Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-0a48a0eb · 2026-11-24
 
 ## recover_interrupted_drain
 
-Reason: Restore exact local before-images and reopen only the verified prior release before the move boundary
+Reason: Connect the verified move and recovery stages under one durable exclusive lease
 
-Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-0a48a0eb · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-a93caba9 · 2026-11-24
 
 ## recover_move_files
 
@@ -500,4 +500,28 @@ Origins: ARC-5.7, ARC-5.8 · Intention i-c59ebcf0 · 2026-11-24
 Reason: Seat the exact independently restored replacement only under the original exclusive session and preserve the retired cluster
 
 Origins: ARC-5.7, ARC-5.8 · Intention i-c59ebcf0 · 2026-11-24
+
+## execute_move
+
+Reason: Connect the verified move and recovery stages under one durable exclusive lease
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a93caba9 · 2026-11-24
+
+## execute_recovery
+
+Reason: Connect the verified move and recovery stages under one durable exclusive lease
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a93caba9 · 2026-11-24
+
+## intent_matches
+
+Reason: Connect the verified move and recovery stages under one durable exclusive lease
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a93caba9 · 2026-11-24
+
+## wait_for_move_witness
+
+Reason: Connect the verified move and recovery stages under one durable exclusive lease
+
+Origins: ARC-5.7, ARC-5.8 · Intention i-a93caba9 · 2026-11-24
 
