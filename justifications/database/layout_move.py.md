@@ -5,9 +5,9 @@ role: authored
 
 ## <before MovePaths>
 
-Reason: Bind the staged launcher, plist, registry selection, continuity and sealed Driver deployment evidence to the exact move
+Reason: Persist drain ownership before publishing its marker and bind the prior snapshot and isolated restore to that session
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-baccd35a · 2026-11-24
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6e02c521 · 2026-11-24
 
 ## <end>
 
@@ -77,9 +77,9 @@ Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6b11388d · 2026-11-24
 
 ## main
 
-Reason: Bind the staged launcher, plist, registry selection, continuity and sealed Driver deployment evidence to the exact move
+Reason: Persist drain ownership before publishing its marker and bind the prior snapshot and isolated restore to that session
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-baccd35a · 2026-11-24
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6e02c521 · 2026-11-24
 
 ## owner_directory
 
@@ -101,9 +101,9 @@ Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6b11388d · 2026-11-24
 
 ## tool_json
 
-Reason: Run the historical Backend drain and freeze transitions against the verified source and bind their exact session and marker readback
+Reason: Persist drain ownership before publishing its marker and bind the prior snapshot and isolated restore to that session
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-353ec655 · 2026-11-24
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6e02c521 · 2026-11-24
 
 ## verify_payload
 
@@ -227,15 +227,15 @@ Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-353ec655 · 2026-11-24
 
 ## prior_maintenance_transition
 
-Reason: Run the historical Backend drain and freeze transitions against the verified source and bind their exact session and marker readback
+Reason: Persist drain ownership before publishing its marker and bind the prior snapshot and isolated restore to that session
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-353ec655 · 2026-11-24
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6e02c521 · 2026-11-24
 
 ## run_prior_backend
 
-Reason: Run the historical Backend drain and freeze transitions against the verified source and bind their exact session and marker readback
+Reason: Persist drain ownership before publishing its marker and bind the prior snapshot and isolated restore to that session
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-353ec655 · 2026-11-24
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6e02c521 · 2026-11-24
 
 ## app_executables
 
@@ -332,4 +332,22 @@ Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-baccd35a · 2026-11-24
 Reason: Bind the staged launcher, plist, registry selection, continuity and sealed Driver deployment evidence to the exact move
 
 Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-baccd35a · 2026-11-24
+
+## drain_attribution
+
+Reason: Persist drain ownership before publishing its marker and bind the prior snapshot and isolated restore to that session
+
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6e02c521 · 2026-11-24
+
+## prepare_move_maintenance
+
+Reason: Persist drain ownership before publishing its marker and bind the prior snapshot and isolated restore to that session
+
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6e02c521 · 2026-11-24
+
+## verify_writer_refusal
+
+Reason: Persist drain ownership before publishing its marker and bind the prior snapshot and isolated restore to that session
+
+Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6e02c521 · 2026-11-24
 
