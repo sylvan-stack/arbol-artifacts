@@ -5,9 +5,9 @@ role: authored
 
 ## <before Refused>
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Admit only the pinned physical root-owned macOS Git executable in qualification delivery while preserving single-link checks for all other reads.
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.18, BRW-D44 · Intention i-9f102f94 · 2026-11-24
 
 ## Context
 
@@ -245,9 +245,9 @@ Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
 
 ## check_reference
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Admit only the pinned physical root-owned macOS Git executable in qualification delivery while preserving single-link checks for all other reads.
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.18, BRW-D44 · Intention i-9f102f94 · 2026-11-24
 
 ## child
 
@@ -257,9 +257,9 @@ Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
 
 ## delivery
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Admit only the pinned physical root-owned macOS Git executable in qualification delivery while preserving single-link checks for all other reads.
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.18, BRW-D44 · Intention i-9f102f94 · 2026-11-24
 
 ## encode
 
@@ -275,9 +275,9 @@ Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
 
 ## git
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Admit only the pinned physical root-owned macOS Git executable in qualification delivery while preserving single-link checks for all other reads.
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.18, BRW-D44 · Intention i-9f102f94 · 2026-11-24
 
 ## identity
 
@@ -335,9 +335,9 @@ Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
 
 ## reference
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Admit only the pinned physical root-owned macOS Git executable in qualification delivery while preserving single-link checks for all other reads.
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.18, BRW-D44 · Intention i-9f102f94 · 2026-11-24
 
 ## request
 
@@ -353,9 +353,9 @@ Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
 
 ## safe_file
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Admit only the pinned physical root-owned macOS Git executable in qualification delivery while preserving single-link checks for all other reads.
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.18, BRW-D44 · Intention i-9f102f94 · 2026-11-24
 
 ## sha
 
