@@ -5,9 +5,9 @@ role: authored
 
 ## package
 
-Reason: Include the existing layout inspection and archive operators in the Backend package
+Reason: Make the existing database installer and probe available to the packaged move and recovery operator
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.10 · Intention i-59bb69b1 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-c0f6f867 · 2026-11-24
 
 ## <before package>
 
