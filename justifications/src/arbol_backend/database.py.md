@@ -29,9 +29,9 @@ Removed by Intention i-fd7b43a3 · 2026-11-12
 
 ## <before Schema>
 
-Reason: Verify import reads against the admitted connection identity and the installed migration ledger
+Reason: Fence restored database targets before accepting Browser bindings, recheck the exact Driver proof under that authority, and package the verifier at revision 6.
 
-Origins: IMP-0.19, IMP-0.22, ARC-4.4 · Intention i-15647c06 · 2026-11-21
+Origins: BRW-1.14, DRV-6.19 · Intention i-086414eb · 2026-11-25
 
 ## Database.read_schema
 
@@ -158,4 +158,22 @@ Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
 Reason: Verify import reads against the admitted connection identity and the installed migration ledger
 
 Origins: IMP-0.19, IMP-0.22, ARC-4.4 · Intention i-15647c06 · 2026-11-21
+
+## Database.browser_authority
+
+Reason: Fence restored database targets before accepting Browser bindings, recheck the exact Driver proof under that authority, and package the verifier at revision 6.
+
+Origins: BRW-1.14, DRV-6.19 · Intention i-086414eb · 2026-11-25
+
+## Database.browser_endpoint
+
+Reason: Fence restored database targets before accepting Browser bindings, recheck the exact Driver proof under that authority, and package the verifier at revision 6.
+
+Origins: BRW-1.14, DRV-6.19 · Intention i-086414eb · 2026-11-25
+
+## Database.verify_browser_epoch
+
+Reason: Fence restored database targets before accepting Browser bindings, recheck the exact Driver proof under that authority, and package the verifier at revision 6.
+
+Origins: BRW-1.14, DRV-6.19 · Intention i-086414eb · 2026-11-25
 

@@ -5,9 +5,9 @@ role: authored
 
 ## package
 
-Reason: Use Arbol's existing executable for the isolated installation Exchange runtime and preserve retained releases.
+Reason: Fence restored database targets before accepting Browser bindings, recheck the exact Driver proof under that authority, and package the verifier at revision 6.
 
-Origins: ARC-4.1, ARC-4.6 · Intention i-8cdaffea · 2026-11-25
+Origins: BRW-1.14, DRV-6.19 · Intention i-086414eb · 2026-11-25
 
 ## <before package>
 
