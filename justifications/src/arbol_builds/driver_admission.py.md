@@ -329,9 +329,9 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-003ac822 · 2026-11-15
 
 ## archive_boot_custody
 
-Reason: Implement exact closed checkpoint boot recovery with real-kernel UUID comparison, all-four exclusive custody archival and resumable private recovery journal; do not execute native APIs or recovery
+Reason: Reuse the durable boot archive for both recorded custody loss and healthy, terminal custody without changing legacy callers.
 
-Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
+Origins: DRV-6.21, DRV-6.23 · Intention i-16bc9206 · 2026-11-25
 
 ## fresh_install
 
