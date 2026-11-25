@@ -5,9 +5,9 @@ role: authored
 
 ## <before Refused>
 
-Reason: Admit only the pinned physical root-owned macOS Git executable in qualification delivery while preserving single-link checks for all other reads.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.18, BRW-D44 · Intention i-9f102f94 · 2026-11-24
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context
 
@@ -17,33 +17,33 @@ Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
 
 ## Context.__init__
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.archive_inventory
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.before_replace
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.catalog_document
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.catalog_lock
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.check_failure
 
@@ -53,63 +53,63 @@ Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
 
 ## Context.check_failure_ledger
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.check_receipt
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.clear_reads
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.close
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.custody
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.digest
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.directory
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.document
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.failures
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.file
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.file_mode
 
@@ -131,39 +131,39 @@ Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
 
 ## Context.lock
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.observe_optional
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.observed_live_mode
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.operation
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.optional_reference
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.publication
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.require_archive
 
@@ -191,21 +191,21 @@ Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
 
 ## Context.temporary_closed
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.temporary_created
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.unlink
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## Context.verify_signature
 
@@ -233,9 +233,9 @@ Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
 
 ## authority
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## canonical
 
@@ -245,21 +245,21 @@ Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
 
 ## check_reference
 
-Reason: Admit only the pinned physical root-owned macOS Git executable in qualification delivery while preserving single-link checks for all other reads.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.18, BRW-D44 · Intention i-9f102f94 · 2026-11-24
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## child
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## delivery
 
-Reason: Admit only the pinned physical root-owned macOS Git executable in qualification delivery while preserving single-link checks for all other reads.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.18, BRW-D44 · Intention i-9f102f94 · 2026-11-24
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## encode
 
@@ -269,9 +269,9 @@ Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
 
 ## entry
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## git
 
@@ -305,15 +305,15 @@ Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
 
 ## perform
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## producer_verify
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## published_block
 
@@ -341,9 +341,9 @@ Origins: BRW-1.18, BRW-D44 · Intention i-9f102f94 · 2026-11-24
 
 ## request
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## require
 
@@ -377,13 +377,13 @@ Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
 
 ## strict
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
 ## tree_map
 
-Reason: Implement the independently accepted isolated Browser rollback qualification source overlay, bounded adapter, reproducible preparation, and supported private installer.
+Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
 
-Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
+Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
 
