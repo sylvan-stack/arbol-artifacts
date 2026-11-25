@@ -5,9 +5,9 @@ role: authored
 
 ## <before _Candidate>
 
-Reason: Register the exact five stable packages without changing launch selection
+Reason: Register only the selected, exact stable Driver packages while keeping the sealed provider registration format and exposing the installed replacement command.
 
-Origins: DRV-6.22 · Intention i-69de65cc · 2026-11-23
+Origins: DRV-6.24, DRV-6.22 · Intention i-4979619f · 2026-11-25
 
 ## _Candidate
 
@@ -59,9 +59,9 @@ Origins: DRV-6.22 · Intention i-69de65cc · 2026-11-23
 
 ## _register
 
-Reason: Register the exact five stable packages without changing launch selection
+Reason: Register only the selected, exact stable Driver packages while keeping the sealed provider registration format and exposing the installed replacement command.
 
-Origins: DRV-6.22 · Intention i-69de65cc · 2026-11-23
+Origins: DRV-6.24, DRV-6.22 · Intention i-4979619f · 2026-11-25
 
 ## _stable_parent
 
@@ -77,19 +77,19 @@ Origins: DRV-6.22 · Intention i-69de65cc · 2026-11-23
 
 ## _with_writers
 
-Reason: Register the exact five stable packages without changing launch selection
+Reason: Register only the selected, exact stable Driver packages while keeping the sealed provider registration format and exposing the installed replacement command.
 
-Origins: DRV-6.22 · Intention i-69de65cc · 2026-11-23
+Origins: DRV-6.24, DRV-6.22 · Intention i-4979619f · 2026-11-25
 
 ## install_command
 
-Reason: Register the exact five stable packages without changing launch selection
+Reason: Register only the selected, exact stable Driver packages while keeping the sealed provider registration format and exposing the installed replacement command.
 
-Origins: DRV-6.22 · Intention i-69de65cc · 2026-11-23
+Origins: DRV-6.24, DRV-6.22 · Intention i-4979619f · 2026-11-25
 
 ## register_candidates
 
-Reason: Register the exact five stable packages without changing launch selection
+Reason: Register only the selected, exact stable Driver packages while keeping the sealed provider registration format and exposing the installed replacement command.
 
-Origins: DRV-6.22 · Intention i-69de65cc · 2026-11-23
+Origins: DRV-6.24, DRV-6.22 · Intention i-4979619f · 2026-11-25
 
