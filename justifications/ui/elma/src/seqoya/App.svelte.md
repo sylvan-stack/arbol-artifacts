@@ -11,7 +11,7 @@ Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
 
 ## script
 
-Reason: Keep native profile confirmation live for its bounded window and display only results for the exact current account.
+Reason: Use the private cached read outside Subscriptions and drop the old selector-specific startup behavior.
 
-Origins: BRW-1.14, BRW-2.1 · Intention i-172ba288 · 2026-11-25
+Origins: BKD-3.20, BKD-3.26 · Intention i-67682fee · 2026-11-25
 
