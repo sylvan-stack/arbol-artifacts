@@ -5,15 +5,15 @@ role: authored
 
 ## Backend.__init__
 
-Reason: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
+Reason: Route Seqoya usage Open and explicit replacement through exact proof-backed Browser profiles and opaque, stale-safe confirmation.
 
-Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
+Origins: BRW-1.11, BRW-1.14 · Intention i-9337f02b · 2026-11-25
 
 ## <before Backend>
 
-Reason: Bring the published cleanup worker and startup hook to the clean revision-1-compatible Build c source.
+Reason: Route Seqoya usage Open and explicit replacement through exact proof-backed Browser profiles and opaque, stale-safe confirmation.
 
-Origins: BLD-1.2 · Intention i-ee37678f · 2026-11-19
+Origins: BRW-1.11, BRW-1.14 · Intention i-9337f02b · 2026-11-25
 
 ## Backend.monitor
 
