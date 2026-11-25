@@ -83,9 +83,9 @@ Origins: DRV-6.24, DRV-6.22 · Intention i-4979619f · 2026-11-25
 
 ## install_command
 
-Reason: Register only the selected, exact stable Driver packages while keeping the sealed provider registration format and exposing the installed replacement command.
+Reason: Validate the audited installed custody inventory and preserve the original records in a resumable closed recovery.
 
-Origins: DRV-6.24, DRV-6.22 · Intention i-4979619f · 2026-11-25
+Origins: DRV-6.25, DRV-6.21 · Intention i-47e822df · 2026-11-25
 
 ## register_candidates
 
