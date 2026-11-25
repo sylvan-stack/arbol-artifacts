@@ -167,15 +167,15 @@ Origins: BRW-0.12, OG-3 · Intention i-5fd3d205 · 2026-11-21
 
 ## build_allocated
 
-Reason: Select and record declared promotion unit checks in Common Build and require explicit opt-in for a named verification check.
+Reason: Build signed Browser production candidates from their production admission and signed launcher without packaging an isolated qualification host
 
-Origins: BLD-0.15 · Intention i-7591c502 · 2026-11-21
+Origins: BRW-4.19, BLD-0.15 · Intention i-f4331966 · 2026-11-25
 
 ## release_artifact
 
-Reason: Bind the canonical release reservation to a private Build and route ordinary Browser starts before any registry inspection
+Reason: Build signed Browser production candidates from their production admission and signed launcher without packaging an isolated qualification host
 
-Origins: BRW-0.12, OG-3 · Intention i-5fd3d205 · 2026-11-21
+Origins: BRW-4.19, BLD-0.15 · Intention i-f4331966 · 2026-11-25
 
 ## browser_document
 
