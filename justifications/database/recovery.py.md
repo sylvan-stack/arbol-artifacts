@@ -5,9 +5,9 @@ role: authored
 
 ## <before timestamp>
 
-Reason: Bind the recovery snapshot and its release record to the verified Mercury archive before the snapshot lease.
+Reason: Fence restored database targets before accepting Browser bindings, recheck the exact Driver proof under that authority, and package the verifier at revision 6.
 
-Origins: ARC-5.4 · Intention i-eb4f61a5 · 2026-11-19
+Origins: BRW-1.14, DRV-6.19 · Intention i-086414eb · 2026-11-25
 
 ## <end>
 
@@ -59,9 +59,9 @@ Origins: ARC-5.4 · Intention i-eb4f61a5 · 2026-11-19
 
 ## main
 
-Reason: Verify Mercury and the recovery receipt paths before connecting to the isolated restore target.
+Reason: Fence restored database targets before accepting Browser bindings, recheck the exact Driver proof under that authority, and package the verifier at revision 6.
 
-Origins: ARC-5.4 · Intention i-19900d69 · 2026-11-19
+Origins: BRW-1.14, DRV-6.19 · Intention i-086414eb · 2026-11-25
 
 ## observations
 
@@ -113,9 +113,9 @@ Origins: ARC-5.4 · Intention i-eb4f61a5 · 2026-11-19
 
 ## restore
 
-Reason: Verify Mercury and the recovery receipt paths before connecting to the isolated restore target.
+Reason: Fence restored database targets before accepting Browser bindings, recheck the exact Driver proof under that authority, and package the verifier at revision 6.
 
-Origins: ARC-5.4 · Intention i-19900d69 · 2026-11-19
+Origins: BRW-1.14, DRV-6.19 · Intention i-086414eb · 2026-11-25
 
 ## validate_snapshot
 
@@ -128,4 +128,22 @@ Origins: ARC-5.4 · Intention i-eb4f61a5 · 2026-11-19
 Reason: Verify Mercury and the recovery receipt paths before connecting to the isolated restore target.
 
 Origins: ARC-5.4 · Intention i-19900d69 · 2026-11-19
+
+## invalidate_browser_identity
+
+Reason: Fence restored database targets before accepting Browser bindings, recheck the exact Driver proof under that authority, and package the verifier at revision 6.
+
+Origins: BRW-1.14, DRV-6.19 · Intention i-086414eb · 2026-11-25
+
+## invalidate_target
+
+Reason: Fence restored database targets before accepting Browser bindings, recheck the exact Driver proof under that authority, and package the verifier at revision 6.
+
+Origins: BRW-1.14, DRV-6.19 · Intention i-086414eb · 2026-11-25
+
+## restore_target
+
+Reason: Fence restored database targets before accepting Browser bindings, recheck the exact Driver proof under that authority, and package the verifier at revision 6.
+
+Origins: BRW-1.14, DRV-6.19 · Intention i-086414eb · 2026-11-25
 
