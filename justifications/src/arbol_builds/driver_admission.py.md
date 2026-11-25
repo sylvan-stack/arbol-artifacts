@@ -305,9 +305,9 @@ Origins: DRV-6.18, DRV-6.21 · Intention i-1c11af85 · 2026-11-15
 
 ## reconcile
 
-Reason: Carry exact candidate scope through custody reconciliation without loss exceptions
+Reason: Reconcile every custody record while accounting separately for the exact state-free parent under independently exclusive admission.
 
-Origins: DRV-6.18, DRV-6.21 · Intention i-7e2e6166 · 2026-11-15
+Origins: DRV-6.25, DRV-6.21 · Intention i-452f65e2 · 2026-11-25
 
 ## admission_fingerprint
 
@@ -338,4 +338,10 @@ Origins: DRV-6.21, DRV-6.18 · Intention i-12c0f048 · 2026-11-15
 Reason: Bind the four new Driver commands to their verified fresh directories
 
 Origins: DRV-6.21, DRV-6.23 · Intention i-8b06c687 · 2026-11-23
+
+## ClosedGuardian
+
+Reason: Reconcile every custody record while accounting separately for the exact state-free parent under independently exclusive admission.
+
+Origins: DRV-6.25, DRV-6.21 · Intention i-452f65e2 · 2026-11-25
 
