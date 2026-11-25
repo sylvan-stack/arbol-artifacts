@@ -5,9 +5,9 @@ role: authored
 
 ## <before OfferedReplacement>
 
-Reason: Route Seqoya usage Open and explicit replacement through exact proof-backed Browser profiles and opaque, stale-safe confirmation.
+Reason: Keep private Browser usage capture inaccessible to callers that lack an active bound Backend request.
 
-Origins: BRW-1.11, BRW-1.14 · Intention i-9337f02b · 2026-11-25
+Origins: BRW-3.19, BKD-3.26 · Intention i-b071835c · 2026-11-25
 
 ## BrowserBridge
 
@@ -17,9 +17,9 @@ Origins: BRW-1.11, BRW-1.14 · Intention i-9337f02b · 2026-11-25
 
 ## BrowserBridge.__init__
 
-Reason: Route Seqoya usage Open and explicit replacement through exact proof-backed Browser profiles and opaque, stale-safe confirmation.
+Reason: Keep private Browser usage capture inaccessible to callers that lack an active bound Backend request.
 
-Origins: BRW-1.11, BRW-1.14 · Intention i-9337f02b · 2026-11-25
+Origins: BRW-3.19, BKD-3.26 · Intention i-b071835c · 2026-11-25
 
 ## BrowserBridge.open
 
@@ -62,4 +62,28 @@ Origins: BRW-1.11, BRW-1.14 · Intention i-9337f02b · 2026-11-25
 Reason: Move Seqoya Browser Open and rebind off the renderer Bridge and preserve actionable safe refusal statuses.
 
 Origins: BRW-1.14, BRW-2.1 · Intention i-5ce66d27 · 2026-11-25
+
+## BrowserBridge.capture_usage
+
+Reason: Keep private Browser usage capture inaccessible to callers that lack an active bound Backend request.
+
+Origins: BRW-3.19, BKD-3.26 · Intention i-b071835c · 2026-11-25
+
+## BrowserBridge.claim_params
+
+Reason: Keep private Browser usage capture inaccessible to callers that lack an active bound Backend request.
+
+Origins: BRW-3.19, BKD-3.26 · Intention i-b071835c · 2026-11-25
+
+## BrowserBridge.claim_usage
+
+Reason: Keep private Browser usage capture inaccessible to callers that lack an active bound Backend request.
+
+Origins: BRW-3.19, BKD-3.26 · Intention i-b071835c · 2026-11-25
+
+## UsageClaim
+
+Reason: Keep private Browser usage capture inaccessible to callers that lack an active bound Backend request.
+
+Origins: BRW-3.19, BKD-3.26 · Intention i-b071835c · 2026-11-25
 

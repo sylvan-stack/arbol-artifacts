@@ -5,9 +5,9 @@ role: authored
 
 ## <before unavailable>
 
-Reason: Run the exact installed signed Browser with bounded format-2 replies and the expected profile instance for all binding opens.
+Reason: Keep private Browser usage capture inaccessible to callers that lack an active bound Backend request.
 
-Origins: BRW-1.14, BRW-1.3 · Intention i-56094d8f · 2026-11-25
+Origins: BRW-3.19, BKD-3.26 · Intention i-b071835c · 2026-11-25
 
 ## BrowserCommands
 
@@ -29,9 +29,9 @@ Origins: BRW-1.14, BRW-1.3 · Intention i-56094d8f · 2026-11-25
 
 ## BrowserCommands.execute
 
-Reason: Run the exact installed signed Browser with bounded format-2 replies and the expected profile instance for all binding opens.
+Reason: Keep private Browser usage capture inaccessible to callers that lack an active bound Backend request.
 
-Origins: BRW-1.14, BRW-1.3 · Intention i-56094d8f · 2026-11-25
+Origins: BRW-3.19, BKD-3.26 · Intention i-b071835c · 2026-11-25
 
 ## BrowserCommands.list
 
@@ -47,9 +47,9 @@ Origins: BRW-1.14, BRW-1.3 · Intention i-56094d8f · 2026-11-25
 
 ## BrowserCommands.run
 
-Reason: Run the exact installed signed Browser with bounded format-2 replies and the expected profile instance for all binding opens.
+Reason: Keep private Browser usage capture inaccessible to callers that lack an active bound Backend request.
 
-Origins: BRW-1.14, BRW-1.3 · Intention i-56094d8f · 2026-11-25
+Origins: BRW-3.19, BKD-3.26 · Intention i-b071835c · 2026-11-25
 
 ## BrowserProfile
 
@@ -68,4 +68,10 @@ Origins: BRW-1.14, BRW-1.3 · Intention i-56094d8f · 2026-11-25
 Reason: Run the exact installed signed Browser with bounded format-2 replies and the expected profile instance for all binding opens.
 
 Origins: BRW-1.14, BRW-1.3 · Intention i-56094d8f · 2026-11-25
+
+## BrowserCommands.capture_usage
+
+Reason: Keep private Browser usage capture inaccessible to callers that lack an active bound Backend request.
+
+Origins: BRW-3.19, BKD-3.26 · Intention i-b071835c · 2026-11-25
 
