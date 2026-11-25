@@ -47,7 +47,7 @@ Origins: DRV-6.21, DRV-6.23 · Intention i-16bc9206 · 2026-11-25
 
 ## recover_boot
 
-Reason: Reuse the durable boot archive for both recorded custody loss and healthy, terminal custody without changing legacy callers.
+Reason: Cancel the prepared Driver reboot checkpoint on the same boot and restore the exact original gate after the owner withdrew restart permission.
 
-Origins: DRV-6.21, DRV-6.23 · Intention i-16bc9206 · 2026-11-25
+Origins: DRV-6.21, DRV-6.23 · Intention i-f4f86d10 · 2026-11-25
 
