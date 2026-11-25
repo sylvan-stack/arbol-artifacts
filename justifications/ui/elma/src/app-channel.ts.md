@@ -11,9 +11,9 @@ Origins: BKD-0.11, BKD-1.7, BKD-3.16 · Intention i-3d376ddd · 2026-11-11
 
 ## AppChannel.call
 
-Reason: Carry the selected Willo UUID through the app channel and report launch errors in the shared page.
+Reason: Keep native profile confirmation live for its bounded window and display only results for the exact current account.
 
-Origins: BKD-3.21, BKD-3.12, BKD-2.19 · Intention i-23fe820b · 2026-11-21
+Origins: BRW-1.14, BRW-2.1 · Intention i-172ba288 · 2026-11-25
 
 ## <before AppChannel>
 
