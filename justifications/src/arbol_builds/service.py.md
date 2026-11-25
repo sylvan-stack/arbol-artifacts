@@ -161,9 +161,9 @@ Origins: BRW-0.9, OG-3 · Intention i-42550058 · 2026-11-21
 
 ## browser_release_allocation
 
-Reason: Bind the canonical release reservation to a private Build and route ordinary Browser starts before any registry inspection
+Reason: Prepare the private Browser state directory required by release allocation without packaging the isolated host.
 
-Origins: BRW-0.12, OG-3 · Intention i-5fd3d205 · 2026-11-21
+Origins: BRW-4.19, BLD-0.15 · Intention i-10a3136b · 2026-11-25
 
 ## build_allocated
 
