@@ -159,3 +159,9 @@ Reason: Calculate current allowance figures and use the shared balance presentat
 
 Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
 
+## subscriptionUsageProvider
+
+Reason: Regenerate the renderer snapshot from the published maintained source and verify its provenance.
+
+Origins: BRW-1.14, BRW-2.1 · Intention i-1e6e8c02 · 2026-11-25
+
