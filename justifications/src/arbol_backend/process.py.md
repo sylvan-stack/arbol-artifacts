@@ -5,9 +5,9 @@ role: authored
 
 ## Programs.call
 
-Reason: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
+Reason: Use Arbol's existing executable for the isolated installation Exchange runtime and preserve retained releases.
 
-Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
+Origins: ARC-4.1, ARC-4.6 · Intention i-8cdaffea · 2026-11-25
 
 ## <before Child>
 
@@ -23,9 +23,9 @@ Removed by Intention i-961a1afa · 2026-11-12
 
 ## <before lock_pid>
 
-Reason: Bind backend and direct Vigor operations to authoritative installation leases, register PostgreSQL sessions before writes, and stamp detached lifecycle dispatch with the held generation
+Reason: Use Arbol's existing executable for the isolated installation Exchange runtime and preserve retained releases.
 
-Origins: ARC-4.4 · Intention i-4f63d0c4 · 2026-11-12
+Origins: ARC-4.1, ARC-4.6 · Intention i-8cdaffea · 2026-11-25
 
 ## acquire_backend
 

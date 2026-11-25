@@ -5,9 +5,9 @@ role: authored
 
 ## <before read_days>
 
-Reason: Recognize the normal lock-only tombstone produced by completed Browser profile removal while preserving interrupted deletions
+Reason: Use Arbol's existing executable for the isolated installation Exchange runtime and preserve retained releases.
 
-Origins: BRW-1.7, OG-2 · Intention i-0deffa73 · 2026-11-21
+Origins: ARC-4.1, ARC-4.6 · Intention i-8cdaffea · 2026-11-25
 
 ## prune_unused
 
@@ -35,9 +35,9 @@ Origins: RCT-1.14 · Intention i-65edc292 · 2026-11-23
 
 ## usage_snapshot
 
-Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
+Reason: Use Arbol's existing executable for the isolated installation Exchange runtime and preserve retained releases.
 
-Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
+Origins: ARC-4.1, ARC-4.6 · Intention i-8cdaffea · 2026-11-25
 
 ## Usage.retains
 
