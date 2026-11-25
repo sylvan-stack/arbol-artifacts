@@ -5,9 +5,9 @@ role: authored
 
 ## <before Accounts>
 
-Reason: Fence restored database targets before accepting Browser bindings, recheck the exact Driver proof under that authority, and package the verifier at revision 6.
+Reason: Reconcile and activate only the reserved Browser receipt, then recheck the exact binding and Driver before and after opening.
 
-Origins: BRW-1.14, DRV-6.19 · Intention i-086414eb · 2026-11-25
+Origins: BRW-1.14, BRW-1.11 · Intention i-a54fcafb · 2026-11-25
 
 ## Accounts.__init__
 
@@ -53,9 +53,9 @@ Origins: BKD-0.25, BKD-3.17 · Intention i-2339b7d1 · 2026-11-13
 
 ## Accounts.browser_identity
 
-Reason: Fence restored database targets before accepting Browser bindings, recheck the exact Driver proof under that authority, and package the verifier at revision 6.
+Reason: Reconcile and activate only the reserved Browser receipt, then recheck the exact binding and Driver before and after opening.
 
-Origins: BRW-1.14, DRV-6.19 · Intention i-086414eb · 2026-11-25
+Origins: BRW-1.14, BRW-1.11 · Intention i-a54fcafb · 2026-11-25
 
 ## Accounts.browser_slot
 
@@ -83,7 +83,7 @@ Origins: BRW-1.14, DRV-6.19 · Intention i-086414eb · 2026-11-25
 
 ## Accounts.browser_identity_request
 
-Reason: Fence restored database targets before accepting Browser bindings, recheck the exact Driver proof under that authority, and package the verifier at revision 6.
+Reason: Reconcile and activate only the reserved Browser receipt, then recheck the exact binding and Driver before and after opening.
 
-Origins: BRW-1.14, DRV-6.19 · Intention i-086414eb · 2026-11-25
+Origins: BRW-1.14, BRW-1.11 · Intention i-a54fcafb · 2026-11-25
 
