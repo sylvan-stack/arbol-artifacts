@@ -65,9 +65,9 @@ Origins: BRW-1.14, DRV-1.30 · Intention i-30a64d44 · 2026-11-25
 
 ## selection
 
-Reason: Capture and compare proof only through the installed immutable qualified Driver route while leaving Accounts admission closed.
+Reason: Use the registered Applications launcher to verify Driver lifetime proofs when the Backend is started with PATH aliases.
 
-Origins: BRW-1.14, DRV-1.30 · Intention i-30a64d44 · 2026-11-25
+Origins: DRV-6.21 · Intention i-71e6cd0e · 2026-11-25
 
 ## unavailable
 
