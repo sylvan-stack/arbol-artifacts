@@ -173,9 +173,9 @@ Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9
 
 ## retention
 
-Reason: Protect pinned provider, pending recovery and independent helper payloads through both pruning paths and guard reference publication against removal
+Reason: Use resolved cooperative custody on the running Mac, retain the exact before and after Builds while closed, and resume without changing state paths.
 
-Origins: DRV-6.21, DRV-6.18, BLD-0.11, BLD-0.26, BLD-0.28 · Intention i-f1434a9f · 2026-11-15
+Origins: DRV-6.24, DRV-6.21 · Intention i-49083c35 · 2026-11-25
 
 ## retention_status
 
@@ -239,9 +239,9 @@ Origins: DRV-6.21, DRV-6.18, DRV-6.19, BLD-0.13 · Intention i-bdcb918c · 2026-
 
 ## <before optional_descriptor>
 
-Reason: Resolve installed Arbol records and stable executable payloads from their separate managed locations
+Reason: Use resolved cooperative custody on the running Mac, retain the exact before and after Builds while closed, and resume without changing state paths.
 
-Origins: FOR-2.5 · Intention i-9907e6fb · 2026-11-20
+Origins: DRV-6.24, DRV-6.21 · Intention i-49083c35 · 2026-11-25
 
 ## optional_descriptor
 
