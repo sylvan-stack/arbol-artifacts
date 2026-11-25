@@ -358,6 +358,7 @@ Supported Driver restore/reset is the same closed/drained helper route: restore 
 | DRV-6.21 | supply the concrete shared installed-launcher maintenance gate, cooperative qualified metadata-writer/helper lifetime custody, pre-execution legacy taint, verified closed boot-boundary recovery and drain, epoch-bound maintenance handoff, recoverable rollout and fail-closed reopen before format conversion/reset/restore | DRV-6.18/.19; BRW-1.14 | pending ABR-39 implementation and ABR-38 composition/old-Build/helper-death qualification |
 | DRV-6.22 | publish installed acceptance for each Driver from the stable promotion record for the exact shared provider, four registered Drivers, gate and platform. Allow stable admission without separately requested verification evidence | BLD-0.5; [OG-6](/Users/msix/Artifacts/goals/OG-6.md) | Pending installer implementation |
 | DRV-6.23 | install the four replacement Drivers together using new, empty layout-2 folders and the existing Arbol database. Enable normal admission after verifying all four launch commands and fixed folder paths. Each Driver initializes its own fresh folder on its first admitted invocation. Verify the four running Builds and layout markers after installation | Owner decision, 23 November 2026; DRV-6.21/.22 | Pending installed Build tool implementation |
+| DRV-6.24 | replace selected installed layout-2 Driver Builds on the running Mac. Reuse their recorded state and launch routes. Verify exact stable candidates, close and verify cooperative custody, and reopen the recorded cohort together. Preserve unresolved custody for recovery | Owner decision, 25 November 2026; DRV-6.21/.22/.23 | Stable Driver replacement and installed selection |
 
 <!-- sources:
 arbol:@code/src/arbol_builds/launcher.py#launch
@@ -365,6 +366,14 @@ arbol:@code/src/arbol_builds/launcher.py#hold_build_use
 arbol:@code/src/arbol_builds/service.py
 -->
 
+
+### Replacing installed Drivers on the current boot
+
+`arbol-builds driver-install replace <UUID> <stable-candidate-folder>...` updates one or more selected layout-2 Builds in the completed four-Driver installation under DRV-6.23. The canonical registry, sealed provider, launchers, aliases and physical state directories remain bound to the existing installation. This operation changes the selected packages and acceptance records, without moving or converting Driver state or opening native provider settings, sessions or credential stores. It uses the current boot. The boot identifier remains part of process identity and historical recovery evidence.
+
+Verify the current cohort and each exact newer, package-only candidate as ordinary stable promotion under DRV-6.22. Allow active work to finish and retry if the current Build-use guards or component admission leases are held. Under the deployment mutex, exact Build-use guards, all four control mutexes and exclusive admission leases, reconcile the four current custody records. Refuse a tainted, unresolved or unrelated maintenance state before changing selection. Preserve the terminal custody archive and publish fresh admission epochs for the new complete cohort. The replacement does not clear any recorded custody loss.
+
+Record the exact before and after selections durably before publishing the closed installation record. During publication all four routes refuse fresh admission. `arbol-builds driver-install replace <UUID>` resumes the same recorded replacement, revalidates the exact evidence and completes the switch once all four selections, bindings and controls agree. An incompatible or unverified recovery stays closed. Existing evidence for legacy deployment and metadata recovery remains available under DRV-6.21.
 
 ### Exact maintenance handoff and command lifetime
 
