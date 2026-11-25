@@ -5,9 +5,9 @@ role: authored
 
 ## <before MovePaths>
 
-Reason: Use the Driver deployment’s durable reopen evidence and resume a closed move after its required boot boundary
+Reason: Resolve the move operator packaging diagnostics while preserving its runtime behavior
 
-Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-b7b1b2eb · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-2ad12a18 · 2026-11-25
 
 ## <end>
 
@@ -77,9 +77,9 @@ Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6b11388d · 2026-11-24
 
 ## main
 
-Reason: Expose explicit move and recovery modes and ship both operators through the packaged Python runtime
+Reason: Resolve the move operator packaging diagnostics while preserving its runtime behavior
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8, ARC-5.10, ARC-5.11 · Intention i-b6aa9df4 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-2ad12a18 · 2026-11-25
 
 ## owner_directory
 
@@ -287,9 +287,9 @@ Origins: ARC-5.7, ARC-5.8 · Intention i-a96632f0 · 2026-11-24
 
 ## stop_installation_services
 
-Reason: Persist the prior installation targets and apply only the staged configuration under the relocation fence
+Reason: Resolve the move operator packaging diagnostics while preserving its runtime behavior
 
-Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-2ad12a18 · 2026-11-25
 
 ## stop_recorded_process
 
@@ -335,15 +335,15 @@ Origins: ARC-5.7, ARC-5.8 · Intention i-a93caba9 · 2026-11-24
 
 ## drain_attribution
 
-Reason: Persist drain ownership before publishing its marker and bind the prior snapshot and isolated restore to that session
+Reason: Resolve the move operator packaging diagnostics while preserving its runtime behavior
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-6e02c521 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-2ad12a18 · 2026-11-25
 
 ## prepare_move_maintenance
 
-Reason: Allow a fresh isolated attempt against the same fenced snapshot without overwriting any failed restore evidence
+Reason: Resolve the move operator packaging diagnostics while preserving its runtime behavior
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8 · Intention i-ea4fce9e · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-2ad12a18 · 2026-11-25
 
 ## verify_writer_refusal
 
@@ -359,9 +359,9 @@ Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
 
 ## file_image
 
-Reason: Persist the prior installation targets and apply only the staged configuration under the relocation fence
+Reason: Resolve the move operator packaging diagnostics while preserving its runtime behavior
 
-Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-2ad12a18 · 2026-11-25
 
 ## installed_file
 
@@ -371,15 +371,15 @@ Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
 
 ## move_provider_module
 
-Reason: Persist the prior installation targets and apply only the staged configuration under the relocation fence
+Reason: Resolve the move operator packaging diagnostics while preserving its runtime behavior
 
-Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-79688850 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-2ad12a18 · 2026-11-25
 
 ## record_retarget
 
-Reason: Verify the retargeted installation under admission and record a recoverable deliberate reopen boundary
+Reason: Resolve the move operator packaging diagnostics while preserving its runtime behavior
 
-Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-248663e2 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-2ad12a18 · 2026-11-25
 
 ## replace_move_file
 
@@ -401,9 +401,9 @@ Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-b7b1b2eb · 2026-11-24
 
 ## finish_move
 
-Reason: Use the Driver deployment’s durable reopen evidence and resume a closed move after its required boot boundary
+Reason: Resolve the move operator packaging diagnostics while preserving its runtime behavior
 
-Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-b7b1b2eb · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-2ad12a18 · 2026-11-25
 
 ## move_database_ready
 
@@ -413,15 +413,15 @@ Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-248663e2 · 2026-11-24
 
 ## start_move_database
 
-Reason: Verify the retargeted installation under admission and record a recoverable deliberate reopen boundary
+Reason: Resolve the move operator packaging diagnostics while preserving its runtime behavior
 
-Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-248663e2 · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-2ad12a18 · 2026-11-25
 
 ## verify_move_database
 
-Reason: Restore exact local before-images and reopen only the verified prior release before the move boundary
+Reason: Resolve the move operator packaging diagnostics while preserving its runtime behavior
 
-Origins: ARC-5.7, ARC-5.8, ARC-5.11 · Intention i-0a48a0eb · 2026-11-24
+Origins: ARC-5.7, ARC-5.8 · Intention i-2ad12a18 · 2026-11-25
 
 ## verify_reopen_witness
 
