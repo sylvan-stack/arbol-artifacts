@@ -59,9 +59,9 @@ Origins: BRW-1.14, BRW-1.11 · Intention i-a54fcafb · 2026-11-25
 
 ## Accounts.browser_slot
 
-Reason: Expose browser-only explicit identity lifecycle without database calls or deletion on account discovery
+Reason: Serialize foreground and resident refresh and return only valid typed evidence for still-current profiles.
 
-Origins: BRW-1.11, BRW-1.14 · Intention i-1c69d4bf · 2026-11-14
+Origins: BRW-3.19, BKD-3.26 · Intention i-db7aa636 · 2026-11-25
 
 ## Accounts.identity_authority
 
