@@ -5,9 +5,9 @@ role: authored
 
 ## <before OfferedReplacement>
 
-Reason: Keep private Browser usage capture inaccessible to callers that lack an active bound Backend request.
+Reason: Serialize foreground and resident refresh and return only valid typed evidence for still-current profiles.
 
-Origins: BRW-3.19, BKD-3.26 · Intention i-b071835c · 2026-11-25
+Origins: BRW-3.19, BKD-3.26 · Intention i-db7aa636 · 2026-11-25
 
 ## BrowserBridge
 
@@ -17,9 +17,9 @@ Origins: BRW-1.11, BRW-1.14 · Intention i-9337f02b · 2026-11-25
 
 ## BrowserBridge.__init__
 
-Reason: Keep private Browser usage capture inaccessible to callers that lack an active bound Backend request.
+Reason: Serialize foreground and resident refresh and return only valid typed evidence for still-current profiles.
 
-Origins: BRW-3.19, BKD-3.26 · Intention i-b071835c · 2026-11-25
+Origins: BRW-3.19, BKD-3.26 · Intention i-db7aa636 · 2026-11-25
 
 ## BrowserBridge.open
 
@@ -77,13 +77,25 @@ Origins: BRW-3.19, BKD-3.26 · Intention i-b071835c · 2026-11-25
 
 ## BrowserBridge.claim_usage
 
-Reason: Keep private Browser usage capture inaccessible to callers that lack an active bound Backend request.
+Reason: Serialize foreground and resident refresh and return only valid typed evidence for still-current profiles.
 
-Origins: BRW-3.19, BKD-3.26 · Intention i-b071835c · 2026-11-25
+Origins: BRW-3.19, BKD-3.26 · Intention i-db7aa636 · 2026-11-25
 
 ## UsageClaim
 
 Reason: Keep private Browser usage capture inaccessible to callers that lack an active bound Backend request.
 
 Origins: BRW-3.19, BKD-3.26 · Intention i-b071835c · 2026-11-25
+
+## BrowserBridge.admit_usage
+
+Reason: Serialize foreground and resident refresh and return only valid typed evidence for still-current profiles.
+
+Origins: BRW-3.19, BKD-3.26 · Intention i-db7aa636 · 2026-11-25
+
+## BrowserBridge.check_usage
+
+Reason: Serialize foreground and resident refresh and return only valid typed evidence for still-current profiles.
+
+Origins: BRW-3.19, BKD-3.26 · Intention i-db7aa636 · 2026-11-25
 
