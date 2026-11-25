@@ -5,9 +5,9 @@ role: authored
 
 ## <before main>
 
-Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
+Removed: Seal only the fixed empty private uv lock before sealed qualification tool inventory.
 
-Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
+Removed by Intention i-72857b94 · 2026-11-25
 
 ## <end>
 
@@ -17,7 +17,19 @@ Origins: BRW-1.16, BRW-1.17, BRW-1.18 · Intention i-e7e45330 · 2026-11-23
 
 ## main
 
-Reason: Restore Backend packaging lint compatibility without changing the verified rollback operation
+Reason: Seal only the fixed empty private uv lock before sealed qualification tool inventory.
 
-Origins: BRW-1.17 · Intention i-a71b5603 · 2026-11-25
+Origins: BRW-1.17, BRW-1.18 · Intention i-72857b94 · 2026-11-25
+
+## <before seal_schema_lock>
+
+Reason: Seal only the fixed empty private uv lock before sealed qualification tool inventory.
+
+Origins: BRW-1.17, BRW-1.18 · Intention i-72857b94 · 2026-11-25
+
+## seal_schema_lock
+
+Reason: Seal only the fixed empty private uv lock before sealed qualification tool inventory.
+
+Origins: BRW-1.17, BRW-1.18 · Intention i-72857b94 · 2026-11-25
 
