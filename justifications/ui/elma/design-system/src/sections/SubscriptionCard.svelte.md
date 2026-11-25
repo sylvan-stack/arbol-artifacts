@@ -5,15 +5,15 @@ role: authored
 
 ## <before style>
 
-Reason: Connect the shared provider controls to the signed app channel while preserving automatic usage reads.
+Reason: Regenerate the renderer snapshot from the published maintained source and verify its provenance.
 
-Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
+Origins: BRW-1.14, BRW-2.1 · Intention i-1e6e8c02 · 2026-11-25
 
 ## script
 
-Reason: Connect the shared provider controls to the signed app channel while preserving automatic usage reads.
+Reason: Regenerate the renderer snapshot from the published maintained source and verify its provenance.
 
-Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
+Origins: BRW-1.14, BRW-2.1 · Intention i-1e6e8c02 · 2026-11-25
 
 ## style
 
