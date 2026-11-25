@@ -83,9 +83,9 @@ Origins: DRV-6.24, DRV-6.22 · Intention i-4979619f · 2026-11-25
 
 ## install_command
 
-Reason: Cancel the prepared Driver reboot checkpoint on the same boot and restore the exact original gate after the owner withdrew restart permission.
+Reason: Verify and archive the sealed Claude pre-acceptance handoff with no child registration, on the current boot.
 
-Origins: DRV-6.21, DRV-6.23 · Intention i-f4f86d10 · 2026-11-25
+Origins: DRV-6.21, DRV-6.25 · Intention i-c413f1ee · 2026-11-25
 
 ## register_candidates
 
