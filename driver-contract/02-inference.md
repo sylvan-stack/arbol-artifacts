@@ -5,6 +5,14 @@ status: accepted
 ---
 # Driver Contract · 02 Inference
 
+## Native Codex and Claude Code behavior · 25 November 2026
+
+The owner directed that the Codex and Claude Code Drivers respect their tools' own settings and let the tools save native Chat Session files as from a terminal. [OG-7](/Users/msix/Artifacts/goals/OG-7.md) · [OG-8](/Users/msix/Artifacts/goals/OG-8.md)
+
+For these two Drivers, the tool chooses its configuration, permission defaults, shell, hooks, memory and persistence in its normal home. The Driver supplies the transport and explicitly requested inputs, including the requested working directory, model, effort, service tier, tool restrictions and prompt context that the tool supports. When the request omits a directory, the provider starts from the Driver command's current working directory. When the request omits a model or effort, the tool chooses it. A request for permission that needs a person is declined when the Driver has no approval channel. The Driver keeps its own run records and manages processes it can attribute to the run.
+
+The tool owns its native Chat Session files, including in runs with no tools or no explicit working directory. Arbol resumes existing native history through the public provider interface. When it cannot resume and has earlier Arbol messages, it supplies them as labelled prompt context in a new native Chat Session. This supersedes the former shared conversation reconstruction and no-folder persistence exceptions for these two Drivers. The provider-specific requirements are CLD-2.27 and CDX-2.23.
+
 A *run* is one start of the vendor tool for one request: a Subscription, a model, model settings, a conversation and a new message go in, and a stream of events comes out that ends in exactly one outcome. A Driver keeps no conversation of its own: chat sessions and their history belong to the caller. This specification states what every Driver offers for runs. It matters because the run is where money is spent and where version 1 lost the most: failures reported as success, turns that never ended, and an agent that forgot its own work between messages.
 
 ## Scope
