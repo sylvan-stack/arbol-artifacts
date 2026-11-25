@@ -29,9 +29,9 @@ Origins: ARC-4.5, ARC-4.8 · Intention i-746d749b · 2026-11-12
 
 ## capture_build
 
-Reason: Validate exact stable packaging checks, independently qualified unit gates and archived Exchange transition evidence.
+Reason: Use Arbol's existing executable for the isolated installation Exchange runtime and preserve retained releases.
 
-Origins: RCT-0.17, RCT-4.6, ARC-D89 · Intention i-31bea7dc · 2026-11-23
+Origins: ARC-4.1, ARC-4.6 · Intention i-8cdaffea · 2026-11-25
 
 ## check_hashes
 
@@ -227,9 +227,9 @@ Origins: RCT-0.17, BKD-0.34 · Intention i-4cc0d525 · 2026-11-23
 
 ## exchange_transition_evidence
 
-Reason: Preserve version 1 archive verification and bind version 2 qualification to recorded optional promotion units.
+Reason: Use Arbol's existing executable for the isolated installation Exchange runtime and preserve retained releases.
 
-Origins: RCT-0.17, RCT-4.6 · Intention i-5ca6e8d7 · 2026-11-23
+Origins: ARC-4.1, ARC-4.6 · Intention i-8cdaffea · 2026-11-25
 
 ## exchange_transition_spec
 
@@ -251,9 +251,9 @@ Removed by Intention i-5ca6e8d7 · 2026-11-23
 
 ## verify_exchange_transition
 
-Reason: Preserve version 1 archive verification and bind version 2 qualification to recorded optional promotion units.
+Reason: Use Arbol's existing executable for the isolated installation Exchange runtime and preserve retained releases.
 
-Origins: RCT-0.17, RCT-4.6 · Intention i-5ca6e8d7 · 2026-11-23
+Origins: ARC-4.1, ARC-4.6 · Intention i-8cdaffea · 2026-11-25
 
 ## verify_qualification
 

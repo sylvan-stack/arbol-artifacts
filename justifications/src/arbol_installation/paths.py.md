@@ -5,9 +5,9 @@ role: authored
 
 ## <before installation_root>
 
-Reason: Record the Build layout independently from its schema declaration, preserving readability of existing records.
+Reason: Use Arbol's existing executable for the isolated installation Exchange runtime and preserve retained releases.
 
-Origins: ARC-5.6 · Intention i-1c7ef6e6 · 2026-11-19
+Origins: ARC-4.1, ARC-4.6 · Intention i-8cdaffea · 2026-11-25
 
 ## database_settings
 

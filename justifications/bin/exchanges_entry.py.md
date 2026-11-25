@@ -5,7 +5,7 @@ role: authored
 
 ## <end>
 
-Reason: Expose the private installation command with replies matching backend consumers
+Removed: Use Arbol's existing executable for the isolated installation Exchange runtime and preserve retained releases.
 
-Origins: ARC-4.1, ARC-4.6 · Intention i-b28581e9 · 2026-11-12
+Removed by Intention i-8cdaffea · 2026-11-25
 

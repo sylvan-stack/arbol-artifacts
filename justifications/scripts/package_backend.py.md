@@ -5,9 +5,9 @@ role: authored
 
 ## package
 
-Reason: Expose explicit move and recovery modes and ship both operators through the packaged Python runtime
+Reason: Use Arbol's existing executable for the isolated installation Exchange runtime and preserve retained releases.
 
-Origins: ARC-5.4, ARC-5.7, ARC-5.8, ARC-5.10, ARC-5.11 · Intention i-b6aa9df4 · 2026-11-24
+Origins: ARC-4.1, ARC-4.6 · Intention i-8cdaffea · 2026-11-25
 
 ## <before package>
 
