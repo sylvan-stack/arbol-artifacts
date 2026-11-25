@@ -5,15 +5,15 @@ role: authored
 
 ## Backend.__init__
 
-Reason: Route Seqoya usage Open and explicit replacement through exact proof-backed Browser profiles and opaque, stale-safe confirmation.
+Reason: Move Seqoya Browser Open and rebind off the renderer Bridge and preserve actionable safe refusal statuses.
 
-Origins: BRW-1.11, BRW-1.14 · Intention i-9337f02b · 2026-11-25
+Origins: BRW-1.14, BRW-2.1 · Intention i-5ce66d27 · 2026-11-25
 
 ## <before Backend>
 
-Reason: Route Seqoya usage Open and explicit replacement through exact proof-backed Browser profiles and opaque, stale-safe confirmation.
+Reason: Move Seqoya Browser Open and rebind off the renderer Bridge and preserve actionable safe refusal statuses.
 
-Origins: BRW-1.11, BRW-1.14 · Intention i-9337f02b · 2026-11-25
+Origins: BRW-1.14, BRW-2.1 · Intention i-5ce66d27 · 2026-11-25
 
 ## Backend.monitor
 
@@ -23,9 +23,9 @@ Origins: ARC-4.4, ARC-4.7 · Intention i-fded1ae6 · 2026-11-12
 
 ## Backend.run
 
-Reason: Bring the published cleanup worker and startup hook to the clean revision-1-compatible Build c source.
+Reason: Move Seqoya Browser Open and rebind off the renderer Bridge and preserve actionable safe refusal statuses.
 
-Origins: BLD-1.2 · Intention i-ee37678f · 2026-11-19
+Origins: BRW-1.14, BRW-2.1 · Intention i-5ce66d27 · 2026-11-25
 
 ## Backend.initial_catalogue
 
@@ -35,9 +35,9 @@ Removed by Intention i-961a1afa · 2026-11-12
 
 ## Backend.connection
 
-Reason: Keep safe saved reads, preserve captured retries and revalidate when maintenance reopens without a database outage.
+Reason: Move Seqoya Browser Open and rebind off the renderer Bridge and preserve actionable safe refusal statuses.
 
-Origins: ARC-4.4, ARC-4.7 · Intention i-8e23ab0f · 2026-11-12
+Origins: BRW-1.14, BRW-2.1 · Intention i-5ce66d27 · 2026-11-25
 
 ## Backend.listed
 

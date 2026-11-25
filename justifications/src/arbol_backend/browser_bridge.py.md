@@ -23,9 +23,9 @@ Origins: BRW-1.11, BRW-1.14 · Intention i-9337f02b · 2026-11-25
 
 ## BrowserBridge.open
 
-Reason: Route Seqoya usage Open and explicit replacement through exact proof-backed Browser profiles and opaque, stale-safe confirmation.
+Reason: Move Seqoya Browser Open and rebind off the renderer Bridge and preserve actionable safe refusal statuses.
 
-Origins: BRW-1.11, BRW-1.14 · Intention i-9337f02b · 2026-11-25
+Origins: BRW-1.14, BRW-2.1 · Intention i-5ce66d27 · 2026-11-25
 
 ## BrowserBridge.open_params
 
@@ -35,9 +35,9 @@ Origins: BRW-1.11, BRW-1.14 · Intention i-9337f02b · 2026-11-25
 
 ## BrowserBridge.rebind
 
-Reason: Route Seqoya usage Open and explicit replacement through exact proof-backed Browser profiles and opaque, stale-safe confirmation.
+Reason: Move Seqoya Browser Open and rebind off the renderer Bridge and preserve actionable safe refusal statuses.
 
-Origins: BRW-1.11, BRW-1.14 · Intention i-9337f02b · 2026-11-25
+Origins: BRW-1.14, BRW-2.1 · Intention i-5ce66d27 · 2026-11-25
 
 ## BrowserBridge.rebind_params
 
@@ -56,4 +56,10 @@ Origins: BRW-1.11, BRW-1.14 · Intention i-9337f02b · 2026-11-25
 Reason: Route Seqoya usage Open and explicit replacement through exact proof-backed Browser profiles and opaque, stale-safe confirmation.
 
 Origins: BRW-1.11, BRW-1.14 · Intention i-9337f02b · 2026-11-25
+
+## BrowserBridge.unavailable
+
+Reason: Move Seqoya Browser Open and rebind off the renderer Bridge and preserve actionable safe refusal statuses.
+
+Origins: BRW-1.14, BRW-2.1 · Intention i-5ce66d27 · 2026-11-25
 
