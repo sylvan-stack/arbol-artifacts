@@ -5,9 +5,9 @@ role: authored
 
 ## <before unavailable>
 
-Reason: Keep private Browser usage capture inaccessible to callers that lack an active bound Backend request.
+Removed: Look up only the verified subscription profile on Seqoya opens and usage capture.
 
-Origins: BRW-3.19, BKD-3.26 · Intention i-b071835c · 2026-11-25
+Removed by Intention i-c78749b0 · 2026-11-26
 
 ## BrowserCommands
 
@@ -29,15 +29,15 @@ Origins: BRW-1.14, BRW-1.3 · Intention i-56094d8f · 2026-11-25
 
 ## BrowserCommands.execute
 
-Reason: Keep private Browser usage capture inaccessible to callers that lack an active bound Backend request.
+Reason: Look up only the verified subscription profile on Seqoya opens and usage capture.
 
-Origins: BRW-3.19, BKD-3.26 · Intention i-b071835c · 2026-11-25
+Origins: BRW-1.4, BRW-3.19 · Intention i-c78749b0 · 2026-11-26
 
 ## BrowserCommands.list
 
-Reason: Run the exact installed signed Browser with bounded format-2 replies and the expected profile instance for all binding opens.
+Reason: Look up only the verified subscription profile on Seqoya opens and usage capture.
 
-Origins: BRW-1.14, BRW-1.3 · Intention i-56094d8f · 2026-11-25
+Origins: BRW-1.4, BRW-3.19 · Intention i-c78749b0 · 2026-11-26
 
 ## BrowserCommands.open
 
@@ -47,9 +47,9 @@ Origins: BRW-1.14, BRW-1.3 · Intention i-56094d8f · 2026-11-25
 
 ## BrowserCommands.run
 
-Reason: Keep private Browser usage capture inaccessible to callers that lack an active bound Backend request.
+Reason: Look up only the verified subscription profile on Seqoya opens and usage capture.
 
-Origins: BRW-3.19, BKD-3.26 · Intention i-b071835c · 2026-11-25
+Origins: BRW-1.4, BRW-3.19 · Intention i-c78749b0 · 2026-11-26
 
 ## BrowserProfile
 
@@ -74,4 +74,16 @@ Origins: BRW-1.14, BRW-1.3 · Intention i-56094d8f · 2026-11-25
 Reason: Keep private Browser usage capture inaccessible to callers that lack an active bound Backend request.
 
 Origins: BRW-3.19, BKD-3.26 · Intention i-b071835c · 2026-11-25
+
+## <before UnsupportedScopedListing>
+
+Reason: Look up only the verified subscription profile on Seqoya opens and usage capture.
+
+Origins: BRW-1.4, BRW-3.19 · Intention i-c78749b0 · 2026-11-26
+
+## UnsupportedScopedListing
+
+Reason: Look up only the verified subscription profile on Seqoya opens and usage capture.
+
+Origins: BRW-1.4, BRW-3.19 · Intention i-c78749b0 · 2026-11-26
 

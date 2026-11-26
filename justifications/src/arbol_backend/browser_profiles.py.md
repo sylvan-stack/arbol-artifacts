@@ -89,9 +89,9 @@ Origins: BRW-1.14, BRW-1.11 · Intention i-a54fcafb · 2026-11-25
 
 ## BrowserProfiles.reconcile
 
-Reason: Reconcile and activate only the reserved Browser receipt, then recheck the exact binding and Driver before and after opening.
+Reason: Look up only the verified subscription profile on Seqoya opens and usage capture.
 
-Origins: BRW-1.14, BRW-1.11 · Intention i-a54fcafb · 2026-11-25
+Origins: BRW-1.4, BRW-3.19 · Intention i-c78749b0 · 2026-11-26
 
 ## BrowserProfiles.require_binding
 
@@ -101,7 +101,7 @@ Origins: BRW-1.14, BRW-1.11 · Intention i-a54fcafb · 2026-11-25
 
 ## BrowserProfiles.verify
 
-Reason: Reconcile and activate only the reserved Browser receipt, then recheck the exact binding and Driver before and after opening.
+Reason: Look up only the verified subscription profile on Seqoya opens and usage capture.
 
-Origins: BRW-1.14, BRW-1.11 · Intention i-a54fcafb · 2026-11-25
+Origins: BRW-1.4, BRW-3.19 · Intention i-c78749b0 · 2026-11-26
 
