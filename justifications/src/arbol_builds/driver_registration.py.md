@@ -83,9 +83,9 @@ Origins: DRV-6.24, DRV-6.22 · Intention i-4979619f · 2026-11-25
 
 ## install_command
 
-Reason: Verify and archive the sealed Claude pre-acceptance handoff with no child registration, on the current boot.
+Reason: Recover exact unaccepted Codex and state-free Claude guardian interruptions while keeping other Driver custody fenced.
 
-Origins: DRV-6.21, DRV-6.25 · Intention i-c413f1ee · 2026-11-25
+Origins: DRV-6.21, DRV-6.25 · Intention i-3370e1d4 · 2026-11-26
 
 ## register_candidates
 
