@@ -17,9 +17,9 @@ Origins: BKD-3.17 · Intention i-9cd567d4 · 2026-11-12
 
 ## SubscriptionView
 
-Reason: Connect the shared provider controls to the signed app channel while preserving automatic usage reads.
+Reason: Acknowledge an exact successful Browser handoff and label the pending verification.
 
-Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
+Origins: BRW-1.14 · Intention i-c462d53b · 2026-11-26
 
 ## SubscriptionActivity
 

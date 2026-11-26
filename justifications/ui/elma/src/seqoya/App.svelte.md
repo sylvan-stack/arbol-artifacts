@@ -11,7 +11,7 @@ Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
 
 ## script
 
-Reason: Use the private cached read outside Subscriptions and drop the old selector-specific startup behavior.
+Reason: Acknowledge an exact successful Browser handoff and label the pending verification.
 
-Origins: BKD-3.20, BKD-3.26 · Intention i-67682fee · 2026-11-25
+Origins: BRW-1.14 · Intention i-c462d53b · 2026-11-26
 
