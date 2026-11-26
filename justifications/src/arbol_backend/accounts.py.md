@@ -83,9 +83,9 @@ Origins: BRW-1.14, DRV-6.19 · Intention i-086414eb · 2026-11-25
 
 ## Accounts.browser_identity_request
 
-Reason: Reconcile and activate only the reserved Browser receipt, then recheck the exact binding and Driver before and after opening.
+Reason: Remove the extra pre-read check for an existing active binding while requiring comparison before open and at result; transient proof errors must not create a rebind offer.
 
-Origins: BRW-1.14, BRW-1.11 · Intention i-a54fcafb · 2026-11-25
+Origins: DRV-1.28, DRV-1.30, BRW-1.11 · Intention i-11893957 · 2026-11-26
 
 ## <before BrowserReplacement>
 

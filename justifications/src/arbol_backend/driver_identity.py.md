@@ -47,9 +47,9 @@ Origins: BRW-1.14, DRV-1.30 · Intention i-30a64d44 · 2026-11-25
 
 ## DriverIdentity.request
 
-Reason: Capture and compare proof only through the installed immutable qualified Driver route while leaving Accounts admission closed.
+Reason: Remove the extra pre-read check for an existing active binding while requiring comparison before open and at result; transient proof errors must not create a rebind offer.
 
-Origins: BRW-1.14, DRV-1.30 · Intention i-30a64d44 · 2026-11-25
+Origins: DRV-1.28, DRV-1.30, BRW-1.11 · Intention i-11893957 · 2026-11-26
 
 ## DriverSelection
 
@@ -71,7 +71,7 @@ Origins: DRV-6.21 · Intention i-71e6cd0e · 2026-11-25
 
 ## unavailable
 
-Reason: Capture and compare proof only through the installed immutable qualified Driver route while leaving Accounts admission closed.
+Reason: Remove the extra pre-read check for an existing active binding while requiring comparison before open and at result; transient proof errors must not create a rebind offer.
 
-Origins: BRW-1.14, DRV-1.30 · Intention i-30a64d44 · 2026-11-25
+Origins: DRV-1.28, DRV-1.30, BRW-1.11 · Intention i-11893957 · 2026-11-26
 

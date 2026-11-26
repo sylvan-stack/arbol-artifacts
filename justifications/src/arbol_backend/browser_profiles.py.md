@@ -71,9 +71,9 @@ Origins: BRW-1.14, BRW-1.11 · Intention i-a54fcafb · 2026-11-25
 
 ## BrowserProfiles.active
 
-Reason: Reconcile and activate only the reserved Browser receipt, then recheck the exact binding and Driver before and after opening.
+Reason: Remove the extra pre-read check for an existing active binding while requiring comparison before open and at result; transient proof errors must not create a rebind offer.
 
-Origins: BRW-1.14, BRW-1.11 · Intention i-a54fcafb · 2026-11-25
+Origins: DRV-1.28, DRV-1.30, BRW-1.11 · Intention i-11893957 · 2026-11-26
 
 ## BrowserProfiles.mark_needs_rebind
 
@@ -83,15 +83,15 @@ Origins: BRW-1.14, BRW-1.11 · Intention i-a54fcafb · 2026-11-25
 
 ## BrowserProfiles.open
 
-Reason: Let the selected signed Browser validate the prior creation receipt and instance as part of the single existing-profile open.
+Reason: Remove the extra pre-read check for an existing active binding while requiring comparison before open and at result; transient proof errors must not create a rebind offer.
 
-Origins: BRW-1.4, BRW-1.11 · Intention i-4c893e66 · 2026-11-26
+Origins: DRV-1.28, DRV-1.30, BRW-1.11 · Intention i-11893957 · 2026-11-26
 
 ## BrowserProfiles.reconcile
 
-Reason: Let the selected signed Browser validate the prior creation receipt and instance as part of the single existing-profile open.
+Reason: Remove the extra pre-read check for an existing active binding while requiring comparison before open and at result; transient proof errors must not create a rebind offer.
 
-Origins: BRW-1.4, BRW-1.11 · Intention i-4c893e66 · 2026-11-26
+Origins: DRV-1.28, DRV-1.30, BRW-1.11 · Intention i-11893957 · 2026-11-26
 
 ## BrowserProfiles.require_binding
 
@@ -104,4 +104,10 @@ Origins: BRW-1.14, BRW-1.11 · Intention i-a54fcafb · 2026-11-25
 Reason: Look up only the verified subscription profile on Seqoya opens and usage capture.
 
 Origins: BRW-1.4, BRW-3.19 · Intention i-c78749b0 · 2026-11-26
+
+## BrowserProfiles.lookup
+
+Reason: Remove the extra pre-read check for an existing active binding while requiring comparison before open and at result; transient proof errors must not create a rebind offer.
+
+Origins: DRV-1.28, DRV-1.30, BRW-1.11 · Intention i-11893957 · 2026-11-26
 
