@@ -29,9 +29,9 @@ Origins: BRW-1.14, BRW-1.3 · Intention i-56094d8f · 2026-11-25
 
 ## BrowserCommands.execute
 
-Reason: Look up only the verified subscription profile on Seqoya opens and usage capture.
+Reason: Overlap signed Browser startup with the Driver checks and approve navigation only for the same live verified Subscription binding.
 
-Origins: BRW-1.4, BRW-3.19 · Intention i-c78749b0 · 2026-11-26
+Origins: BRW-1.14 · Intention i-b07ceb05 · 2026-11-26
 
 ## BrowserCommands.list
 
@@ -41,15 +41,15 @@ Origins: BRW-1.4 · Intention i-03f69539 · 2026-11-26
 
 ## BrowserCommands.open
 
-Reason: Let the selected signed Browser validate the prior creation receipt and instance as part of the single existing-profile open.
+Reason: Overlap signed Browser startup with the Driver checks and approve navigation only for the same live verified Subscription binding.
 
-Origins: BRW-1.4, BRW-1.11 · Intention i-4c893e66 · 2026-11-26
+Origins: BRW-1.14 · Intention i-b07ceb05 · 2026-11-26
 
 ## BrowserCommands.run
 
-Reason: Let the selected signed Browser validate the prior creation receipt and instance as part of the single existing-profile open.
+Reason: Overlap signed Browser startup with the Driver checks and approve navigation only for the same live verified Subscription binding.
 
-Origins: BRW-1.4, BRW-1.11 · Intention i-4c893e66 · 2026-11-26
+Origins: BRW-1.14 · Intention i-b07ceb05 · 2026-11-26
 
 ## BrowserProfile
 
@@ -92,4 +92,10 @@ Origins: BRW-1.4, BRW-3.19 · Intention i-c78749b0 · 2026-11-26
 Reason: Let the selected signed Browser validate the prior creation receipt and instance as part of the single existing-profile open.
 
 Origins: BRW-1.4, BRW-1.11 · Intention i-4c893e66 · 2026-11-26
+
+## BrowserCommands.send_approval
+
+Reason: Overlap signed Browser startup with the Driver checks and approve navigation only for the same live verified Subscription binding.
+
+Origins: BRW-1.14 · Intention i-b07ceb05 · 2026-11-26
 

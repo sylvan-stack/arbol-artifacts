@@ -5,9 +5,9 @@ role: authored
 
 ## <before needs_rebind>
 
-Reason: Let the selected signed Browser validate the prior creation receipt and instance as part of the single existing-profile open.
+Reason: Overlap signed Browser startup with the Driver checks and approve navigation only for the same live verified Subscription binding.
 
-Origins: BRW-1.4, BRW-1.11 · Intention i-4c893e66 · 2026-11-26
+Origins: BRW-1.14 · Intention i-b07ceb05 · 2026-11-26
 
 ## BrowserProfiles
 
@@ -83,9 +83,9 @@ Origins: BRW-1.14, BRW-1.11 · Intention i-a54fcafb · 2026-11-25
 
 ## BrowserProfiles.open
 
-Reason: Remove the extra pre-read check for an existing active binding while requiring comparison before open and at result; transient proof errors must not create a rebind offer.
+Reason: Overlap signed Browser startup with the Driver checks and approve navigation only for the same live verified Subscription binding.
 
-Origins: DRV-1.28, DRV-1.30, BRW-1.11 · Intention i-11893957 · 2026-11-26
+Origins: BRW-1.14 · Intention i-b07ceb05 · 2026-11-26
 
 ## BrowserProfiles.reconcile
 
@@ -110,4 +110,16 @@ Origins: BRW-1.4, BRW-3.19 · Intention i-c78749b0 · 2026-11-26
 Reason: Remove the extra pre-read check for an existing active binding while requiring comparison before open and at result; transient proof errors must not create a rebind offer.
 
 Origins: DRV-1.28, DRV-1.30, BRW-1.11 · Intention i-11893957 · 2026-11-26
+
+## BrowserProfiles.open_bound
+
+Reason: Overlap signed Browser startup with the Driver checks and approve navigation only for the same live verified Subscription binding.
+
+Origins: BRW-1.14 · Intention i-b07ceb05 · 2026-11-26
+
+## BrowserProfiles.saved_binding
+
+Reason: Overlap signed Browser startup with the Driver checks and approve navigation only for the same live verified Subscription binding.
+
+Origins: BRW-1.14 · Intention i-b07ceb05 · 2026-11-26
 
