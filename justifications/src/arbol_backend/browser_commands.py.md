@@ -41,15 +41,15 @@ Origins: BRW-1.4 · Intention i-03f69539 · 2026-11-26
 
 ## BrowserCommands.open
 
-Reason: Run the exact installed signed Browser with bounded format-2 replies and the expected profile instance for all binding opens.
+Reason: Let the selected signed Browser validate the prior creation receipt and instance as part of the single existing-profile open.
 
-Origins: BRW-1.14, BRW-1.3 · Intention i-56094d8f · 2026-11-25
+Origins: BRW-1.4, BRW-1.11 · Intention i-4c893e66 · 2026-11-26
 
 ## BrowserCommands.run
 
-Reason: Look up only the verified subscription profile on Seqoya opens and usage capture.
+Reason: Let the selected signed Browser validate the prior creation receipt and instance as part of the single existing-profile open.
 
-Origins: BRW-1.4, BRW-3.19 · Intention i-c78749b0 · 2026-11-26
+Origins: BRW-1.4, BRW-1.11 · Intention i-4c893e66 · 2026-11-26
 
 ## BrowserProfile
 
@@ -86,4 +86,10 @@ Origins: BRW-1.4, BRW-3.19 · Intention i-c78749b0 · 2026-11-26
 Reason: Look up only the verified subscription profile on Seqoya opens and usage capture.
 
 Origins: BRW-1.4, BRW-3.19 · Intention i-c78749b0 · 2026-11-26
+
+## UnsupportedBoundOpen
+
+Reason: Let the selected signed Browser validate the prior creation receipt and instance as part of the single existing-profile open.
+
+Origins: BRW-1.4, BRW-1.11 · Intention i-4c893e66 · 2026-11-26
 

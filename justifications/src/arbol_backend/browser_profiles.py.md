@@ -5,9 +5,9 @@ role: authored
 
 ## <before needs_rebind>
 
-Reason: Reconcile and activate only the reserved Browser receipt, then recheck the exact binding and Driver before and after opening.
+Reason: Let the selected signed Browser validate the prior creation receipt and instance as part of the single existing-profile open.
 
-Origins: BRW-1.14, BRW-1.11 · Intention i-a54fcafb · 2026-11-25
+Origins: BRW-1.4, BRW-1.11 · Intention i-4c893e66 · 2026-11-26
 
 ## BrowserProfiles
 
@@ -83,15 +83,15 @@ Origins: BRW-1.14, BRW-1.11 · Intention i-a54fcafb · 2026-11-25
 
 ## BrowserProfiles.open
 
-Reason: Reconcile and activate only the reserved Browser receipt, then recheck the exact binding and Driver before and after opening.
+Reason: Let the selected signed Browser validate the prior creation receipt and instance as part of the single existing-profile open.
 
-Origins: BRW-1.14, BRW-1.11 · Intention i-a54fcafb · 2026-11-25
+Origins: BRW-1.4, BRW-1.11 · Intention i-4c893e66 · 2026-11-26
 
 ## BrowserProfiles.reconcile
 
-Reason: Look up only the verified subscription profile on Seqoya opens and usage capture.
+Reason: Let the selected signed Browser validate the prior creation receipt and instance as part of the single existing-profile open.
 
-Origins: BRW-1.4, BRW-3.19 · Intention i-c78749b0 · 2026-11-26
+Origins: BRW-1.4, BRW-1.11 · Intention i-4c893e66 · 2026-11-26
 
 ## BrowserProfiles.require_binding
 
