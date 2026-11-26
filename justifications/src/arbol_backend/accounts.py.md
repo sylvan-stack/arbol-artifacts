@@ -83,9 +83,9 @@ Origins: BRW-1.14, DRV-6.19 · Intention i-086414eb · 2026-11-25
 
 ## Accounts.browser_identity_request
 
-Reason: Capture and match the already-bound Driver lifetime in one qualified request before navigation, preserving fresh fallback and final proof.
+Reason: Keep simultaneous same-provider lifetime checks within their original budgets and retry only the exact expected foreground proof when its first check is temporarily unavailable.
 
-Origins: BRW-1.14 · Intention i-2fd6bc4c · 2026-11-26
+Origins: DRV-1.28, DRV-1.30, BRW-1.14 · Intention i-d0374933 · 2026-11-26
 
 ## <before BrowserReplacement>
 

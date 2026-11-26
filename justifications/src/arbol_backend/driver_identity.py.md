@@ -5,9 +5,9 @@ role: authored
 
 ## <before unavailable>
 
-Reason: Capture and compare proof only through the installed immutable qualified Driver route while leaving Accounts admission closed.
+Reason: Keep simultaneous same-provider lifetime checks within their original budgets and retry only the exact expected foreground proof when its first check is temporarily unavailable.
 
-Origins: BRW-1.14, DRV-1.30 · Intention i-30a64d44 · 2026-11-25
+Origins: DRV-1.28, DRV-1.30, BRW-1.14 · Intention i-d0374933 · 2026-11-26
 
 ## CapturedProof
 
@@ -23,9 +23,9 @@ Origins: BRW-1.14, DRV-1.30 · Intention i-30a64d44 · 2026-11-25
 
 ## DriverIdentity.__init__
 
-Reason: Capture and compare proof only through the installed immutable qualified Driver route while leaving Accounts admission closed.
+Reason: Keep simultaneous same-provider lifetime checks within their original budgets and retry only the exact expected foreground proof when its first check is temporarily unavailable.
 
-Origins: BRW-1.14, DRV-1.30 · Intention i-30a64d44 · 2026-11-25
+Origins: DRV-1.28, DRV-1.30, BRW-1.14 · Intention i-d0374933 · 2026-11-26
 
 ## DriverIdentity.capture
 
@@ -41,15 +41,15 @@ Origins: BRW-1.14, DRV-1.30 · Intention i-30a64d44 · 2026-11-25
 
 ## DriverIdentity.expect
 
-Reason: Capture and compare proof only through the installed immutable qualified Driver route while leaving Accounts admission closed.
+Reason: Keep simultaneous same-provider lifetime checks within their original budgets and retry only the exact expected foreground proof when its first check is temporarily unavailable.
 
-Origins: BRW-1.14, DRV-1.30 · Intention i-30a64d44 · 2026-11-25
+Origins: DRV-1.28, DRV-1.30, BRW-1.14 · Intention i-d0374933 · 2026-11-26
 
 ## DriverIdentity.request
 
-Reason: Capture and match the already-bound Driver lifetime in one qualified request before navigation, preserving fresh fallback and final proof.
+Reason: Keep simultaneous same-provider lifetime checks within their original budgets and retry only the exact expected foreground proof when its first check is temporarily unavailable.
 
-Origins: BRW-1.14 · Intention i-2fd6bc4c · 2026-11-26
+Origins: DRV-1.28, DRV-1.30, BRW-1.14 · Intention i-d0374933 · 2026-11-26
 
 ## DriverSelection
 
@@ -77,7 +77,13 @@ Origins: DRV-1.28, DRV-1.30, BRW-1.11 · Intention i-11893957 · 2026-11-26
 
 ## DriverIdentity.capture_expected
 
-Reason: Capture and match the already-bound Driver lifetime in one qualified request before navigation, preserving fresh fallback and final proof.
+Reason: Keep simultaneous same-provider lifetime checks within their original budgets and retry only the exact expected foreground proof when its first check is temporarily unavailable.
 
-Origins: BRW-1.14 · Intention i-2fd6bc4c · 2026-11-26
+Origins: DRV-1.28, DRV-1.30, BRW-1.14 · Intention i-d0374933 · 2026-11-26
+
+## DriverIdentity.read_proof
+
+Reason: Keep simultaneous same-provider lifetime checks within their original budgets and retry only the exact expected foreground proof when its first check is temporarily unavailable.
+
+Origins: DRV-1.28, DRV-1.30, BRW-1.14 · Intention i-d0374933 · 2026-11-26
 
