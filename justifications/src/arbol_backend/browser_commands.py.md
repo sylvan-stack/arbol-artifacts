@@ -35,9 +35,9 @@ Origins: BRW-1.4, BRW-3.19 · Intention i-c78749b0 · 2026-11-26
 
 ## BrowserCommands.list
 
-Reason: Look up only the verified subscription profile on Seqoya opens and usage capture.
+Reason: Avoid shadowing the requested profile with individual result records.
 
-Origins: BRW-1.4, BRW-3.19 · Intention i-c78749b0 · 2026-11-26
+Origins: BRW-1.4 · Intention i-03f69539 · 2026-11-26
 
 ## BrowserCommands.open
 
