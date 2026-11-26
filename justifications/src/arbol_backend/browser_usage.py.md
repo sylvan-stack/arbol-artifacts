@@ -29,9 +29,9 @@ Origins: BRW-3.19, BKD-3.26 · Intention i-db7aa636 · 2026-11-25
 
 ## BrowserUsage.one
 
-Reason: Serialize foreground and resident refresh and return only valid typed evidence for still-current profiles.
+Reason: Capture and match the already-bound Driver lifetime in one qualified request before navigation, preserving fresh fallback and final proof.
 
-Origins: BRW-3.19, BKD-3.26 · Intention i-db7aa636 · 2026-11-25
+Origins: BRW-1.14 · Intention i-2fd6bc4c · 2026-11-26
 
 ## BrowserUsage.refresh
 

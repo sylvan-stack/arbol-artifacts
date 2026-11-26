@@ -101,9 +101,9 @@ Origins: BRW-1.14, DRV-1.30 · Intention i-c6d921a2 · 2026-11-25
 
 ## SubscriptionIdentities.observe
 
-Reason: Record and compare the exact Driver proof transactionally while preserving legacy refusal and requiring explicit replacement of an established lifetime.
+Reason: Capture and match the already-bound Driver lifetime in one qualified request before navigation, preserving fresh fallback and final proof.
 
-Origins: BRW-1.14, DRV-1.30 · Intention i-c6d921a2 · 2026-11-25
+Origins: BRW-1.14 · Intention i-2fd6bc4c · 2026-11-26
 
 ## SubscriptionProof
 
@@ -116,4 +116,10 @@ Origins: BRW-1.14, DRV-1.30 · Intention i-c6d921a2 · 2026-11-25
 Reason: Record and compare the exact Driver proof transactionally while preserving legacy refusal and requiring explicit replacement of an established lifetime.
 
 Origins: BRW-1.14, DRV-1.30 · Intention i-c6d921a2 · 2026-11-25
+
+## SubscriptionIdentities.proof_row
+
+Reason: Capture and match the already-bound Driver lifetime in one qualified request before navigation, preserving fresh fallback and final proof.
+
+Origins: BRW-1.14 · Intention i-2fd6bc4c · 2026-11-26
 

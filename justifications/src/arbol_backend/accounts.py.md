@@ -53,9 +53,9 @@ Origins: BKD-0.25, BKD-3.17 · Intention i-2339b7d1 · 2026-11-13
 
 ## Accounts.browser_identity
 
-Reason: Reconcile and activate only the reserved Browser receipt, then recheck the exact binding and Driver before and after opening.
+Reason: Capture and match the already-bound Driver lifetime in one qualified request before navigation, preserving fresh fallback and final proof.
 
-Origins: BRW-1.14, BRW-1.11 · Intention i-a54fcafb · 2026-11-25
+Origins: BRW-1.14 · Intention i-2fd6bc4c · 2026-11-26
 
 ## Accounts.browser_slot
 
@@ -83,15 +83,15 @@ Origins: BRW-1.14, DRV-6.19 · Intention i-086414eb · 2026-11-25
 
 ## Accounts.browser_identity_request
 
-Reason: Remove the extra pre-read check for an existing active binding while requiring comparison before open and at result; transient proof errors must not create a rebind offer.
+Reason: Capture and match the already-bound Driver lifetime in one qualified request before navigation, preserving fresh fallback and final proof.
 
-Origins: DRV-1.28, DRV-1.30, BRW-1.11 · Intention i-11893957 · 2026-11-26
+Origins: BRW-1.14 · Intention i-2fd6bc4c · 2026-11-26
 
 ## <before BrowserReplacement>
 
-Reason: Route Seqoya usage Open and explicit replacement through exact proof-backed Browser profiles and opaque, stale-safe confirmation.
+Reason: Capture and match the already-bound Driver lifetime in one qualified request before navigation, preserving fresh fallback and final proof.
 
-Origins: BRW-1.11, BRW-1.14 · Intention i-9337f02b · 2026-11-25
+Origins: BRW-1.14 · Intention i-2fd6bc4c · 2026-11-26
 
 ## Accounts.prepare_browser_rebind
 

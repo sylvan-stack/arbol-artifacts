@@ -5,9 +5,9 @@ role: authored
 
 ## <before needs_rebind>
 
-Reason: Overlap signed Browser startup with the Driver checks and approve navigation only for the same live verified Subscription binding.
+Reason: Capture and match the already-bound Driver lifetime in one qualified request before navigation, preserving fresh fallback and final proof.
 
-Origins: BRW-1.14 · Intention i-b07ceb05 · 2026-11-26
+Origins: BRW-1.14 · Intention i-2fd6bc4c · 2026-11-26
 
 ## BrowserProfiles
 
@@ -113,13 +113,13 @@ Origins: DRV-1.28, DRV-1.30, BRW-1.11 · Intention i-11893957 · 2026-11-26
 
 ## BrowserProfiles.open_bound
 
-Reason: Overlap signed Browser startup with the Driver checks and approve navigation only for the same live verified Subscription binding.
+Reason: Capture and match the already-bound Driver lifetime in one qualified request before navigation, preserving fresh fallback and final proof.
 
-Origins: BRW-1.14 · Intention i-b07ceb05 · 2026-11-26
+Origins: BRW-1.14 · Intention i-2fd6bc4c · 2026-11-26
 
 ## BrowserProfiles.saved_binding
 
-Reason: Overlap signed Browser startup with the Driver checks and approve navigation only for the same live verified Subscription binding.
+Reason: Capture and match the already-bound Driver lifetime in one qualified request before navigation, preserving fresh fallback and final proof.
 
-Origins: BRW-1.14 · Intention i-b07ceb05 · 2026-11-26
+Origins: BRW-1.14 · Intention i-2fd6bc4c · 2026-11-26
 
