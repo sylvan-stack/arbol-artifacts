@@ -5,9 +5,9 @@ role: authored
 
 ## <before needs_rebind>
 
-Reason: Ship the scoped adoption operator in the verified Backend build.
+Reason: Satisfy package lint and static checking for the existing binding operation.
 
-Origins: BRW-1.11, BRW-1.14 · Intention i-5dce82e5 · 2026-11-27
+Origins: BRW-1.14 · Intention i-58da1154 · 2026-11-27
 
 ## BrowserProfiles
 
