@@ -83,7 +83,7 @@ Origins: BRW-3.19, BKD-3.26 · Intention i-db7aa636 · 2026-11-25
 
 ## report
 
-Reason: Serialize foreground and resident refresh and return only valid typed evidence for still-current profiles.
+Reason: Validate the signed Browser MiniMax billing report and use the existing Seqoya API balance card.
 
-Origins: BRW-3.19, BKD-3.26 · Intention i-db7aa636 · 2026-11-25
+Origins: BRW-1.14, BKD-3.17 · Intention i-dcdb9bc3 · 2026-11-27
 
