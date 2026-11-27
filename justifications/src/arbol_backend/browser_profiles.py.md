@@ -5,9 +5,9 @@ role: authored
 
 ## <before needs_rebind>
 
-Reason: Capture and match the already-bound Driver lifetime in one qualified request before navigation, preserving fresh fallback and final proof.
+Reason: Ship the scoped adoption operator in the verified Backend build.
 
-Origins: BRW-1.14 · Intention i-2fd6bc4c · 2026-11-26
+Origins: BRW-1.11, BRW-1.14 · Intention i-5dce82e5 · 2026-11-27
 
 ## BrowserProfiles
 
@@ -23,9 +23,9 @@ Origins: BRW-1.14, BRW-1.11 · Intention i-0035b5b1 · 2026-11-25
 
 ## BrowserProfiles.current
 
-Reason: Reserve one recoverable Browser profile for an exact proof-backed Subscription incarnation and commit the creation request before Browser work.
+Reason: Ship the scoped adoption operator in the verified Backend build.
 
-Origins: BRW-1.14, BRW-1.11 · Intention i-0035b5b1 · 2026-11-25
+Origins: BRW-1.11, BRW-1.14 · Intention i-5dce82e5 · 2026-11-27
 
 ## BrowserProfiles.require_identity
 
@@ -41,9 +41,9 @@ Origins: BRW-1.14, BRW-1.11 · Intention i-a54fcafb · 2026-11-25
 
 ## ProfileBinding
 
-Reason: Reserve one recoverable Browser profile for an exact proof-backed Subscription incarnation and commit the creation request before Browser work.
+Reason: Ship the scoped adoption operator in the verified Backend build.
 
-Origins: BRW-1.14, BRW-1.11 · Intention i-0035b5b1 · 2026-11-25
+Origins: BRW-1.11, BRW-1.14 · Intention i-5dce82e5 · 2026-11-27
 
 ## ProfileBinding.owner
 
@@ -122,4 +122,16 @@ Origins: BRW-1.14 · Intention i-2fd6bc4c · 2026-11-26
 Reason: Capture and match the already-bound Driver lifetime in one qualified request before navigation, preserving fresh fallback and final proof.
 
 Origins: BRW-1.14 · Intention i-2fd6bc4c · 2026-11-26
+
+## BrowserProfiles.adopt_existing
+
+Reason: Ship the scoped adoption operator in the verified Backend build.
+
+Origins: BRW-1.11, BRW-1.14 · Intention i-5dce82e5 · 2026-11-27
+
+## existing_profile
+
+Reason: Ship the scoped adoption operator in the verified Backend build.
+
+Origins: BRW-1.11, BRW-1.14 · Intention i-5dce82e5 · 2026-11-27
 

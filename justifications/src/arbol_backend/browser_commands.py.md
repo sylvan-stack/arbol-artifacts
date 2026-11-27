@@ -41,9 +41,9 @@ Origins: BRW-1.4 · Intention i-03f69539 · 2026-11-26
 
 ## BrowserCommands.open
 
-Reason: Overlap signed Browser startup with the Driver checks and approve navigation only for the same live verified Subscription binding.
+Reason: Ship the scoped adoption operator in the verified Backend build.
 
-Origins: BRW-1.14 · Intention i-b07ceb05 · 2026-11-26
+Origins: BRW-1.11, BRW-1.14 · Intention i-5dce82e5 · 2026-11-27
 
 ## BrowserCommands.run
 
@@ -71,9 +71,9 @@ Origins: BRW-1.14, BRW-1.3 · Intention i-56094d8f · 2026-11-25
 
 ## BrowserCommands.capture_usage
 
-Reason: Keep private Browser usage capture inaccessible to callers that lack an active bound Backend request.
+Reason: Ship the scoped adoption operator in the verified Backend build.
 
-Origins: BRW-3.19, BKD-3.26 · Intention i-b071835c · 2026-11-25
+Origins: BRW-1.11, BRW-1.14 · Intention i-5dce82e5 · 2026-11-27
 
 ## <before UnsupportedScopedListing>
 

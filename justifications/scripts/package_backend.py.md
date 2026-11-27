@@ -5,9 +5,9 @@ role: authored
 
 ## package
 
-Reason: Fence restored database targets before accepting Browser bindings, recheck the exact Driver proof under that authority, and package the verifier at revision 6.
+Reason: Ship the scoped adoption operator in the verified Backend build.
 
-Origins: BRW-1.14, DRV-6.19 · Intention i-086414eb · 2026-11-25
+Origins: BRW-1.11, BRW-1.14 · Intention i-5dce82e5 · 2026-11-27
 
 ## <before package>
 
