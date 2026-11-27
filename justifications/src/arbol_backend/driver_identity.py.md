@@ -5,15 +5,15 @@ role: authored
 
 ## <before unavailable>
 
-Reason: Keep simultaneous same-provider lifetime checks within their original budgets and retry only the exact expected foreground proof when its first check is temporarily unavailable.
+Reason: Publish the same Codex launcher integration from the current shared Backend source
 
-Origins: DRV-1.28, DRV-1.30, BRW-1.14 · Intention i-d0374933 · 2026-11-26
+Origins: DRV-0.8, BRW-1.11, BRW-1.14 · Intention i-c82b6198 · 2026-11-27
 
 ## CapturedProof
 
-Reason: Capture and compare proof only through the installed immutable qualified Driver route while leaving Accounts admission closed.
+Reason: Publish the same Codex launcher integration from the current shared Backend source
 
-Origins: BRW-1.14, DRV-1.30 · Intention i-30a64d44 · 2026-11-25
+Origins: DRV-0.8, BRW-1.11, BRW-1.14 · Intention i-c82b6198 · 2026-11-27
 
 ## DriverIdentity
 
@@ -65,9 +65,9 @@ Origins: BRW-1.14, DRV-1.30 · Intention i-30a64d44 · 2026-11-25
 
 ## selection
 
-Reason: Use the registered Applications launcher to verify Driver lifetime proofs when the Backend is started with PATH aliases.
+Reason: Publish the same Codex launcher integration from the current shared Backend source
 
-Origins: DRV-6.21 · Intention i-71e6cd0e · 2026-11-25
+Origins: DRV-0.8, BRW-1.11, BRW-1.14 · Intention i-c82b6198 · 2026-11-27
 
 ## unavailable
 
@@ -86,4 +86,10 @@ Origins: DRV-1.28, DRV-1.30, BRW-1.14 · Intention i-d0374933 · 2026-11-26
 Reason: Keep simultaneous same-provider lifetime checks within their original budgets and retry only the exact expected foreground proof when its first check is temporarily unavailable.
 
 Origins: DRV-1.28, DRV-1.30, BRW-1.14 · Intention i-d0374933 · 2026-11-26
+
+## StandaloneDriverSelection
+
+Reason: Publish the same Codex launcher integration from the current shared Backend source
+
+Origins: DRV-0.8, BRW-1.11, BRW-1.14 · Intention i-c82b6198 · 2026-11-27
 
