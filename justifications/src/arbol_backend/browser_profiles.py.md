@@ -125,9 +125,9 @@ Origins: BRW-1.14 · Intention i-2fd6bc4c · 2026-11-26
 
 ## BrowserProfiles.adopt_existing
 
-Reason: Ship the scoped adoption operator in the verified Backend build.
+Reason: Attach the already confirmed Browser profiles to the Pi Subscriptions that need dashboard usage
 
-Origins: BRW-1.11, BRW-1.14 · Intention i-5dce82e5 · 2026-11-27
+Origins: BRW-1.11, BRW-1.14 · Intention i-8f388388 · 2026-11-27
 
 ## existing_profile
 
