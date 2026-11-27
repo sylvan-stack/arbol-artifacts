@@ -89,9 +89,9 @@ Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## SubscriptionWindow
 
-Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
+Reason: Keep the availability controls while adopting the restored subscription footer, card order and saved estimate presentation.
 
-Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
+Origins: BKD-3.17 · Intention i-2b2f526c · 2026-11-27
 
 ## <before formatSubscriptionCardTime>
 
@@ -212,4 +212,10 @@ Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
 Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
+
+## <before SubscriptionAvailability>
+
+Reason: Keep the availability controls while adopting the restored subscription footer, card order and saved estimate presentation.
+
+Origins: BKD-3.17 · Intention i-2b2f526c · 2026-11-27
 
