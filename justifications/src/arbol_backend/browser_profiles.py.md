@@ -125,13 +125,31 @@ Origins: BRW-1.14 · Intention i-2fd6bc4c · 2026-11-26
 
 ## BrowserProfiles.adopt_existing
 
-Reason: Attach the already confirmed Browser profiles to the Pi Subscriptions that need dashboard usage
+Reason: Commit the confirmed Pi proof and exact existing Browser profile together
 
-Origins: BRW-1.11, BRW-1.14 · Intention i-8f388388 · 2026-11-27
+Origins: BRW-1.14 · Intention i-01bc98dd · 2026-11-27
 
 ## existing_profile
 
 Reason: Ship the scoped adoption operator in the verified Backend build.
 
 Origins: BRW-1.11, BRW-1.14 · Intention i-5dce82e5 · 2026-11-27
+
+## BrowserProfiles.attach_existing
+
+Reason: Commit the confirmed Pi proof and exact existing Browser profile together
+
+Origins: BRW-1.14 · Intention i-01bc98dd · 2026-11-27
+
+## BrowserProfiles.existing_binding
+
+Reason: Commit the confirmed Pi proof and exact existing Browser profile together
+
+Origins: BRW-1.14 · Intention i-01bc98dd · 2026-11-27
+
+## BrowserProfiles.insert_existing
+
+Reason: Commit the confirmed Pi proof and exact existing Browser profile together
+
+Origins: BRW-1.14 · Intention i-01bc98dd · 2026-11-27
 

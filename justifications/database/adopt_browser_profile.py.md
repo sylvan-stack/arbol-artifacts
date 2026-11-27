@@ -17,9 +17,9 @@ Origins: BRW-1.11, BRW-1.14 · Intention i-5dce82e5 · 2026-11-27
 
 ## adopt
 
-Reason: Replace only retired or unbound Pi proof lifetimes when attaching a confirmed profile
+Reason: Commit the confirmed Pi proof and exact existing Browser profile together
 
-Origins: BRW-1.14 · Intention i-5066fd28 · 2026-11-27
+Origins: BRW-1.14 · Intention i-01bc98dd · 2026-11-27
 
 ## fingerprint
 
