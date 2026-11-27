@@ -5,9 +5,9 @@ role: authored
 
 ## <before unavailable>
 
-Reason: Call the installed standalone Driver for the Codex catalogue and live Subscription proof
+Reason: Use verified standalone Pi and MiMo account routes for the catalogue, usage and identity
 
-Origins: DRV-0.8, BRW-1.11, BRW-1.14 · Intention i-99307cbd · 2026-11-27
+Origins: BKD-3.17, BRW-1.14 · Intention i-5728372a · 2026-11-27
 
 ## CapturedProof
 
@@ -65,9 +65,9 @@ Origins: BRW-1.14, DRV-1.30 · Intention i-30a64d44 · 2026-11-25
 
 ## selection
 
-Reason: Call the installed standalone Driver for the Codex catalogue and live Subscription proof
+Reason: Use verified standalone Pi and MiMo account routes for the catalogue, usage and identity
 
-Origins: DRV-0.8, BRW-1.11, BRW-1.14 · Intention i-99307cbd · 2026-11-27
+Origins: BKD-3.17, BRW-1.14 · Intention i-5728372a · 2026-11-27
 
 ## unavailable
 

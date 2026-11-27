@@ -5,9 +5,9 @@ role: authored
 
 ## Programs.call
 
-Reason: Call the installed standalone Driver for the Codex catalogue and live Subscription proof
+Reason: Use verified standalone Pi and MiMo account routes for the catalogue, usage and identity
 
-Origins: DRV-0.8, BRW-1.11, BRW-1.14 · Intention i-99307cbd · 2026-11-27
+Origins: BKD-3.17, BRW-1.14 · Intention i-5728372a · 2026-11-27
 
 ## <before Child>
 
@@ -59,19 +59,31 @@ Removed by Intention i-6607cbec · 2026-11-12
 
 ## Programs.find_drivers
 
-Reason: Call the installed standalone Driver for the Codex catalogue and live Subscription proof
+Reason: Use verified standalone Pi and MiMo account routes for the catalogue, usage and identity
 
-Origins: DRV-0.8, BRW-1.11, BRW-1.14 · Intention i-99307cbd · 2026-11-27
+Origins: BKD-3.17, BRW-1.14 · Intention i-5728372a · 2026-11-27
 
 ## <before standalone_codex_route>
 
-Reason: Call the installed standalone Driver for the Codex catalogue and live Subscription proof
+Removed: Use verified standalone Pi and MiMo account routes for the catalogue, usage and identity
 
-Origins: DRV-0.8, BRW-1.11, BRW-1.14 · Intention i-99307cbd · 2026-11-27
+Removed by Intention i-5728372a · 2026-11-27
 
 ## standalone_codex_route
 
-Reason: Call the installed standalone Driver for the Codex catalogue and live Subscription proof
+Removed: Use verified standalone Pi and MiMo account routes for the catalogue, usage and identity
 
-Origins: DRV-0.8, BRW-1.11, BRW-1.14 · Intention i-99307cbd · 2026-11-27
+Removed by Intention i-5728372a · 2026-11-27
+
+## <before standalone_driver_route>
+
+Reason: Use verified standalone Pi and MiMo account routes for the catalogue, usage and identity
+
+Origins: BKD-3.17, BRW-1.14 · Intention i-5728372a · 2026-11-27
+
+## standalone_driver_route
+
+Reason: Use verified standalone Pi and MiMo account routes for the catalogue, usage and identity
+
+Origins: BKD-3.17, BRW-1.14 · Intention i-5728372a · 2026-11-27
 
