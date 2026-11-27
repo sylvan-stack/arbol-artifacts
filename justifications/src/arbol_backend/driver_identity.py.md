@@ -5,15 +5,15 @@ role: authored
 
 ## <before unavailable>
 
-Reason: Capture and compare proof only through the installed immutable qualified Driver route while leaving Accounts admission closed.
+Reason: Call the installed standalone Driver for the Codex catalogue and live Subscription proof
 
-Origins: BRW-1.14, DRV-1.30 · Intention i-30a64d44 · 2026-11-25
+Origins: DRV-0.8, BRW-1.11, BRW-1.14 · Intention i-99307cbd · 2026-11-27
 
 ## CapturedProof
 
-Reason: Capture and compare proof only through the installed immutable qualified Driver route while leaving Accounts admission closed.
+Reason: Call the installed standalone Driver for the Codex catalogue and live Subscription proof
 
-Origins: BRW-1.14, DRV-1.30 · Intention i-30a64d44 · 2026-11-25
+Origins: DRV-0.8, BRW-1.11, BRW-1.14 · Intention i-99307cbd · 2026-11-27
 
 ## DriverIdentity
 
@@ -65,13 +65,19 @@ Origins: BRW-1.14, DRV-1.30 · Intention i-30a64d44 · 2026-11-25
 
 ## selection
 
-Reason: Use the registered Applications launcher to verify Driver lifetime proofs when the Backend is started with PATH aliases.
+Reason: Call the installed standalone Driver for the Codex catalogue and live Subscription proof
 
-Origins: DRV-6.21 · Intention i-71e6cd0e · 2026-11-25
+Origins: DRV-0.8, BRW-1.11, BRW-1.14 · Intention i-99307cbd · 2026-11-27
 
 ## unavailable
 
 Reason: Capture and compare proof only through the installed immutable qualified Driver route while leaving Accounts admission closed.
 
 Origins: BRW-1.14, DRV-1.30 · Intention i-30a64d44 · 2026-11-25
+
+## StandaloneDriverSelection
+
+Reason: Call the installed standalone Driver for the Codex catalogue and live Subscription proof
+
+Origins: DRV-0.8, BRW-1.11, BRW-1.14 · Intention i-99307cbd · 2026-11-27
 

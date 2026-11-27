@@ -5,9 +5,9 @@ role: authored
 
 ## Programs.call
 
-Reason: Use Arbol's existing executable for the isolated installation Exchange runtime and preserve retained releases.
+Reason: Call the installed standalone Driver for the Codex catalogue and live Subscription proof
 
-Origins: ARC-4.1, ARC-4.6 · Intention i-8cdaffea · 2026-11-25
+Origins: DRV-0.8, BRW-1.11, BRW-1.14 · Intention i-99307cbd · 2026-11-27
 
 ## <before Child>
 
@@ -23,9 +23,9 @@ Removed by Intention i-961a1afa · 2026-11-12
 
 ## <before lock_pid>
 
-Reason: Use Arbol's existing executable for the isolated installation Exchange runtime and preserve retained releases.
+Removed: Call the installed standalone Driver for the Codex catalogue and live Subscription proof
 
-Origins: ARC-4.1, ARC-4.6 · Intention i-8cdaffea · 2026-11-25
+Removed by Intention i-99307cbd · 2026-11-27
 
 ## acquire_backend
 
@@ -56,4 +56,22 @@ Origins: ARC-4.6, ARC-4.7 · Intention i-d912d724 · 2026-11-12
 Removed: Stop and settle specific Exchange UUIDs through the installation runtime and remove the remaining Root routes.
 
 Removed by Intention i-6607cbec · 2026-11-12
+
+## Programs.find_drivers
+
+Reason: Call the installed standalone Driver for the Codex catalogue and live Subscription proof
+
+Origins: DRV-0.8, BRW-1.11, BRW-1.14 · Intention i-99307cbd · 2026-11-27
+
+## <before standalone_codex_route>
+
+Reason: Call the installed standalone Driver for the Codex catalogue and live Subscription proof
+
+Origins: DRV-0.8, BRW-1.11, BRW-1.14 · Intention i-99307cbd · 2026-11-27
+
+## standalone_codex_route
+
+Reason: Call the installed standalone Driver for the Codex catalogue and live Subscription proof
+
+Origins: DRV-0.8, BRW-1.11, BRW-1.14 · Intention i-99307cbd · 2026-11-27
 
