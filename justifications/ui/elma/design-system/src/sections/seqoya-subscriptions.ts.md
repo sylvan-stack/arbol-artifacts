@@ -11,15 +11,15 @@ Origins: BKD-3.17, BKD-0.25, DRV-1.14 · Intention i-a224ef00 · 2026-11-11
 
 ## SubscriptionRecord
 
-Reason: Synchronize the published shared design. Wire native renaming with connection and subscription-identity fencing, retain input on refusal and reread saved accounts on success. Remove the invalid Kimi calls conversion and use a matching local-output/share calibration; normalize display order without discarding vendor windows or scope. Add the native app-channel method and explicit browser-preview refusal. Serves BKD-3.17.
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17 · Intention i-9cd567d4 · 2026-11-12
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## SubscriptionView
 
-Reason: Acknowledge an exact successful Browser handoff and label the pending verification.
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BRW-1.14 · Intention i-c462d53b · 2026-11-26
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## SubscriptionActivity
 
@@ -35,9 +35,9 @@ Origins: BKD-3.18 · Intention i-ea002c00 · 2026-11-12
 
 ## ModelLabel
 
-Reason: Sync the published design snapshot. Apply the fixed label catalog to each returned account in the Seqoya adapter, by exact Driver and vendor family. Include the six default classifications and GPT-6-Astra from the specification. Retain account and usage data, keep Codex distinct from Pi's ChatGPT, and preserve the current connection and refresh paths. Serves BKD-3.17.
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17 · Intention i-5f439d61 · 2026-11-12
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## SubscriptionModelLabels
 
@@ -83,15 +83,15 @@ Removed by Intention i-6286b00e · 2026-11-20
 
 ## SubscriptionMetrics
 
-Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## SubscriptionWindow
 
-Reason: Project newer verified dashboard quota and exact credit observations with source and reset precision
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17 · Intention i-278c310f · 2026-11-18
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## <before formatSubscriptionCardTime>
 
@@ -119,15 +119,15 @@ Origins: BKD-3.17 · Intention i-9dbf0f62 · 2026-11-12
 
 ## AllowanceWindowType
 
-Reason: Synchronize the published shared design. Wire native renaming with connection and subscription-identity fencing, retain input on refusal and reread saved accounts on success. Remove the invalid Kimi calls conversion and use a matching local-output/share calibration; normalize display order without discarding vendor windows or scope. Add the native app-channel method and explicit browser-preview refusal. Serves BKD-3.17.
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17 · Intention i-9cd567d4 · 2026-11-12
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## RenameSubscription
 
-Reason: Synchronize the published shared design. Wire native renaming with connection and subscription-identity fencing, retain input on refusal and reread saved accounts on success. Remove the invalid Kimi calls conversion and use a matching local-output/share calibration; normalize display order without discarding vendor windows or scope. Add the native app-channel method and explicit browser-preview refusal. Serves BKD-3.17.
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17 · Intention i-9cd567d4 · 2026-11-12
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## allowanceWindowLabel
 
@@ -161,7 +161,55 @@ Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
 
 ## subscriptionUsageProvider
 
-Reason: Regenerate the renderer snapshot from the published maintained source and verify its provenance.
+Removed: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BRW-1.14, BRW-2.1 · Intention i-1e6e8c02 · 2026-11-25
+Removed by Intention i-41652053 · 2026-11-27
+
+## <before allowanceTokenTotal>
+
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
+
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
+
+## <before isSubscriptionUserScore>
+
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
+
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
+
+## EstimatedTokenCost
+
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
+
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
+
+## SubscriptionPrice
+
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
+
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
+
+## allowanceTokenTotal
+
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
+
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
+
+## formatAllowanceTokenTotal
+
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
+
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
+
+## isSubscriptionUserScore
+
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
+
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
+
+## validTokenCount
+
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
+
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 

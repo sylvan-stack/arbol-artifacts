@@ -5,9 +5,9 @@ role: authored
 
 ## <before QuotaReading>
 
-Reason: Synchronize the published shared card and date formatter. Use scoped window evidence to derive model estimates for Claude, Kimi, Pi ChatGPT and z.ai, preserving source, date and numerical basis. Use the recorded used share for the selected window and match the current account, identity check and window label. For z.ai use the current bound account’s verified model credit caps and the GLM-5.3 Standard conversion of credits × 10,000 ÷ 24. Preserve MCP call windows separately. Explain missing or invalidated evidence. Show z.ai’s zero-use rolling period as starting with its next use. Use specific states for closed periods and recurring expiry, and retain DeepSeek’s unavailable values. Serves BKD-3.17.
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17 · Intention i-d3d8c042 · 2026-11-12
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## <before matches>
 
@@ -47,9 +47,9 @@ Origins: BKD-3.17 · Intention i-278c310f · 2026-11-18
 
 ## UsageEvidence
 
-Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## allowance
 
@@ -65,9 +65,9 @@ Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
 
 ## codexCapacity
 
-Reason: Keep explicitly marked plan-capacity references across routine checks while preserving current quota and plan/incarnation/age guards
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17 · Intention i-c83ebb41 · 2026-11-13
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## matches
 
@@ -77,9 +77,9 @@ Origins: BKD-3.17 · Intention i-1ecb43ee · 2026-11-12
 
 ## mimoQuota
 
-Reason: Connect the shared provider controls to the signed app channel while preserving automatic usage reads.
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## validCredits
 
@@ -95,21 +95,21 @@ Origins: BKD-3.17 · Intention i-a65374d0 · 2026-11-12
 
 ## withAllowances
 
-Reason: Refresh confirmed Browser dashboard evidence on entering Subscriptions and project it onto the matching cards.
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## Capacity
 
-Reason: Sync the design and remove the unused meter from the renderer snapshot. Project dated provider windows and existing Pi and MiMo fallbacks into independent sections ordered by end. Attach Codex and MiMo estimates only to the matching window and derive used and remaining equivalents from the same dated window reading and reuse DeepSeek’s existing balance conversion. Keep known elapsed readings historical and derive pace only for a positive time remaining. Use Kimi’s monthly credit and Xiaomi’s Token Plan expiration policy. Parse Codex’s saved available reset inventory once per subscription. Count a full grant once even if it covers multiple windows, and subtract known expirations only when unique available entries reconcile with the reported count. Otherwise show the reported count with its reading time. Distinguish absent and confirmed zero. Leave the Vigor view and report schema intact. Serves BKD-3.17.
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17 · Intention i-a65374d0 · 2026-11-12
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## asWindow
 
-Reason: Project newer verified dashboard quota and exact credit observations with source and reset precision
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17 · Intention i-278c310f · 2026-11-18
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## endTime
 
@@ -131,9 +131,9 @@ Origins: BKD-3.17 · Intention i-d3d8c042 · 2026-11-12
 
 ## subscriptionMetrics
 
-Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## <before windowCapacity>
 
@@ -155,9 +155,9 @@ Origins: BKD-3.17 · Intention i-c83ebb41 · 2026-11-13
 
 ## windowCapacity
 
-Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## Rollover
 
@@ -179,9 +179,9 @@ Origins: BKD-3.17 · Intention i-9dbf0f62 · 2026-11-12
 
 ## <before sameCreation>
 
-Reason: Project newer verified dashboard quota and exact credit observations with source and reset precision
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17 · Intention i-278c310f · 2026-11-18
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## publicAccountPlan
 
@@ -215,9 +215,9 @@ Origins: BKD-3.17 · Intention i-2d3c8893 · 2026-11-19
 
 ## matchingClaudeDashboard
 
-Reason: Project newer verified dashboard quota and exact credit observations with source and reset precision
+Removed: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17 · Intention i-278c310f · 2026-11-18
+Removed by Intention i-41652053 · 2026-11-27
 
 ## preferDashboard
 
@@ -227,9 +227,9 @@ Origins: BKD-3.17 · Intention i-278c310f · 2026-11-18
 
 ## BrowserReport
 
-Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## matchingBrowserReport
 
@@ -281,9 +281,9 @@ Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
 
 ## apiBalance
 
-Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## piPlusReference
 
@@ -293,7 +293,49 @@ Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
 
 ## zaiCapacity
 
-Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
+
+## MembershipPayment
+
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
+
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
+
+## codexMonthlyPrice
+
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
+
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
+
+## currentPayment
+
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
+
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
+
+## matchingClaudeReading
+
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
+
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
+
+## mimoMonthlyPrice
+
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
+
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
+
+## planTokenCost
+
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
+
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
+
+## zaiOutputTokens
+
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
+
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 

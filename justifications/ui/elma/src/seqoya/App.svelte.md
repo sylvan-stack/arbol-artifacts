@@ -11,7 +11,7 @@ Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
 
 ## script
 
-Reason: Acknowledge an exact successful Browser handoff and label the pending verification.
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BRW-1.14 · Intention i-c462d53b · 2026-11-26
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 

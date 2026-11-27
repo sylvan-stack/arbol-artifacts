@@ -5,15 +5,15 @@ role: authored
 
 ## <before style>
 
-Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## script
 
-Reason: Calculate current allowance figures and use the shared balance presentation from the published design source.
+Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
-Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
+Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 
 ## style
 
