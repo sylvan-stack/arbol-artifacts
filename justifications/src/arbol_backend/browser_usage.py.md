@@ -23,9 +23,9 @@ Origins: BRW-3.19, BKD-3.26 · Intention i-db7aa636 · 2026-11-25
 
 ## BrowserUsage.collect
 
-Reason: Serialize foreground and resident refresh and return only valid typed evidence for still-current profiles.
+Reason: Keep matching saved usage and price the card from its dashboard
 
-Origins: BRW-3.19, BKD-3.26 · Intention i-db7aa636 · 2026-11-25
+Origins: BKD-3.18, BKD-3.20, BKD-3.26 · Intention i-c8d3ef5f · 2026-11-27
 
 ## BrowserUsage.one
 
@@ -86,4 +86,10 @@ Origins: BRW-3.19, BKD-3.26 · Intention i-db7aa636 · 2026-11-25
 Reason: Give the normalized MiniMax API report its own type through the Backend package check.
 
 Origins: BRW-1.14, BKD-3.17 · Intention i-ecf82a21 · 2026-11-27
+
+## BrowserUsage.saved_receipt
+
+Reason: Keep matching saved usage and price the card from its dashboard
+
+Origins: BKD-3.18, BKD-3.20, BKD-3.26 · Intention i-c8d3ef5f · 2026-11-27
 

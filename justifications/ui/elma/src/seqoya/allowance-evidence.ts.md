@@ -131,9 +131,9 @@ Origins: BKD-3.17 · Intention i-d3d8c042 · 2026-11-12
 
 ## subscriptionMetrics
 
-Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
+Reason: Keep matching saved usage and price the card from its dashboard
 
-Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
+Origins: BKD-3.18, BKD-3.20, BKD-3.26 · Intention i-c8d3ef5f · 2026-11-27
 
 ## <before windowCapacity>
 
@@ -179,9 +179,9 @@ Origins: BKD-3.17 · Intention i-9dbf0f62 · 2026-11-12
 
 ## <before sameCreation>
 
-Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
+Reason: Keep matching saved usage and price the card from its dashboard
 
-Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
+Origins: BKD-3.18, BKD-3.20, BKD-3.26 · Intention i-c8d3ef5f · 2026-11-27
 
 ## publicAccountPlan
 
