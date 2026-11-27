@@ -5,15 +5,15 @@ role: authored
 
 ## <before style>
 
-Reason: Regenerate the renderer snapshot from the published maintained source and verify its provenance.
+Reason: Render available subscriptions as soon as the catalogue arrives and retain last known cards on partial Driver refusals
 
-Origins: BRW-1.14, BRW-2.1 · Intention i-1e6e8c02 · 2026-11-25
+Origins: BKD-3.17 · Intention i-c2aa3576 · 2026-11-27
 
 ## script
 
-Reason: Regenerate the renderer snapshot from the published maintained source and verify its provenance.
+Reason: Render available subscriptions as soon as the catalogue arrives and retain last known cards on partial Driver refusals
 
-Origins: BRW-1.14, BRW-2.1 · Intention i-1e6e8c02 · 2026-11-25
+Origins: BKD-3.17 · Intention i-c2aa3576 · 2026-11-27
 
 ## style
 

@@ -53,9 +53,9 @@ Removed by Intention i-f7d7cbad · 2026-11-12
 
 ## <before subscriptionVendor>
 
-Reason: Connect the shared provider controls to the signed app channel while preserving automatic usage reads.
+Reason: Render available subscriptions as soon as the catalogue arrives and retain last known cards on partial Driver refusals
 
-Origins: BKD-3.17, BKD-3.20 · Intention i-6286b00e · 2026-11-20
+Origins: BKD-3.17 · Intention i-c2aa3576 · 2026-11-27
 
 ## formatSubscriptionTime
 
@@ -164,4 +164,16 @@ Origins: BKD-3.17, BKD-3.20 · Intention i-f60c05e4 · 2026-11-20
 Reason: Regenerate the renderer snapshot from the published maintained source and verify its provenance.
 
 Origins: BRW-1.14, BRW-2.1 · Intention i-1e6e8c02 · 2026-11-25
+
+## <before SubscriptionAvailability>
+
+Reason: Render available subscriptions as soon as the catalogue arrives and retain last known cards on partial Driver refusals
+
+Origins: BKD-3.17 · Intention i-c2aa3576 · 2026-11-27
+
+## SubscriptionAvailability
+
+Reason: Render available subscriptions as soon as the catalogue arrives and retain last known cards on partial Driver refusals
+
+Origins: BKD-3.17 · Intention i-c2aa3576 · 2026-11-27
 
