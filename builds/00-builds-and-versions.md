@@ -29,6 +29,8 @@ The source was written between 21 and 23 November 2026 on a local line that was 
 
 That line packaged the tray and the three windows as four components: `arbol-app`, `arbol-elma-chat`, `arbol-seqoya-lab` and `arbol-willo-station`. The default branch packages them as the one component `arbol-app`, whose resident is Seqoya Lab. The inventory still names the four, so it reports them as missing until it follows the packaging of the default branch. That change is open.
 
+The manager builds a component with `arbol-builds build <component> --stable-candidate` and promotes it with `arbol-builds promote <candidate> --show-builder`. Neither option is in the build tool on the default branch; they are on another line that was never published. Until the build tool has them, the manager on the default branch compiles and shows its inventory but cannot build or promote.
+
 ## Single-database amendment
 
 For [ARC-4](../architecture/04-single-database.md), replace BLD-0.17–.21 and the Root-specific parts of .9, .23, .28. Number each component independently, keep existing Build metadata and preserve the registry's separation from application code and schema. Database-dependent components declare `schemaCompatibility: [{"compatibilityVersion":1,"minRevision":3}]` in the build description and immutable Build record. Each version is a unique positive integer and each minimum is a positive revision. Match the installed version and minimum; legacy `rootContracts` alone does not fit. Neither Build tools nor launchers take a Root selector. Scope pruning protection to the installation's usable default(s), protected/running payloads and Builds needed for pending settlement or recorded release recovery.
