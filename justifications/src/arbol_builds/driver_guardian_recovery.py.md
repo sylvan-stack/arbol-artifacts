@@ -29,9 +29,9 @@ Origins: DRV-6.25, DRV-6.21 · Intention i-47e822df · 2026-11-25
 
 ## recover_guardians
 
-Reason: Declare the two existing nullable locals on published main without changing audited Driver recovery logic.
+Reason: Recover the audited Claude handoff while recognizing the independent installed Codex command.
 
-Origins: DRV-6.25 · Intention i-f4e5e80a · 2026-11-26
+Origins: DRV-6.25 · Intention i-c141fdad · 2026-11-28
 
 ## _prior_marker
 

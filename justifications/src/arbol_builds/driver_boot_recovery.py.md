@@ -47,7 +47,7 @@ Origins: DRV-6.21, DRV-6.23 · Intention i-16bc9206 · 2026-11-25
 
 ## recover_boot
 
-Reason: Cancel the prepared Driver reboot checkpoint on the same boot and restore the exact original gate after the owner withdrew restart permission.
+Reason: Recover the audited Claude handoff while recognizing the independent installed Codex command.
 
-Origins: DRV-6.21, DRV-6.23 · Intention i-f4f86d10 · 2026-11-25
+Origins: DRV-6.25 · Intention i-c141fdad · 2026-11-28
 

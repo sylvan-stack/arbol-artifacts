@@ -5,9 +5,9 @@ role: authored
 
 ## <before _bound_packages>
 
-Reason: Use resolved cooperative custody on the running Mac, retain the exact before and after Builds while closed, and resume without changing state paths.
+Removed: Recover the audited Claude handoff while recognizing the independent installed Codex command.
 
-Origins: DRV-6.24, DRV-6.21 · Intention i-49083c35 · 2026-11-25
+Removed by Intention i-c141fdad · 2026-11-28
 
 ## _acceptance
 
@@ -17,9 +17,9 @@ Origins: DRV-6.24, DRV-6.21 · Intention i-49083c35 · 2026-11-25
 
 ## _bound_packages
 
-Reason: Use resolved cooperative custody on the running Mac, retain the exact before and after Builds while closed, and resume without changing state paths.
+Reason: Recover the audited Claude handoff while recognizing the independent installed Codex command.
 
-Origins: DRV-6.24, DRV-6.21 · Intention i-49083c35 · 2026-11-25
+Origins: DRV-6.25 · Intention i-c141fdad · 2026-11-28
 
 ## _controls
 
@@ -68,4 +68,16 @@ Origins: DRV-6.24, DRV-6.21 · Intention i-49083c35 · 2026-11-25
 Reason: Use resolved cooperative custody on the running Mac, retain the exact before and after Builds while closed, and resume without changing state paths.
 
 Origins: DRV-6.24, DRV-6.21 · Intention i-49083c35 · 2026-11-25
+
+## <before _verify_standalone_codex>
+
+Reason: Recover the audited Claude handoff while recognizing the independent installed Codex command.
+
+Origins: DRV-6.25 · Intention i-c141fdad · 2026-11-28
+
+## _verify_standalone_codex
+
+Reason: Recover the audited Claude handoff while recognizing the independent installed Codex command.
+
+Origins: DRV-6.25 · Intention i-c141fdad · 2026-11-28
 
