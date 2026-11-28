@@ -19,7 +19,7 @@ On 28 November 2026 the owner asked for "some visual cue to all Arbol components
 
 A temporary Build frames every window it shows with a three-point border in the temporary-Build colour, orange, and adds `· temporary Build <number>` to the window title (BLD-0.29). The frame takes no clicks and changes no layout. The stable Build draws nothing extra, so the cue never needs switching off. The design contract is in the design system's [Native and auxiliary surfaces](https://github.com/sylvan-stack/arbol-design-system/blob/main/docs/design-system/08-native-and-auxiliary.md) chapter.
 
-The Arbol Swift App implements it for the Elma Chat, Seqoya Lab and Willo Station windows and for the Browser launch window ([BKD-3.27](../backend/03-the-arbol-swift-app.md)). Arbol Browser and Arbol Builder Manager do not show the frame yet. Components without a window, such as the backend, Drivers, Trunks and the command-line tools, are not marked.
+The Arbol Swift App implements it for the Elma Chat, Seqoya Lab and Willo Station windows and for the Browser launch window ([BKD-3.27](../backend/03-the-arbol-swift-app.md)). Arbol Builder Manager draws the same native frame on its window. Arbol Browser has no native layer above its web content, so its shell page draws the frame and a temporary Build insets the website by three points at the right and bottom edges. The Browser counts as stable when it runs from its installed mount under `~/Applications/Arbol Browser`. Neither has been seen on screen yet. Components without a window, such as the backend, Drivers, Trunks and the command-line tools, are not marked.
 
 ## Arbol Builder Manager
 
