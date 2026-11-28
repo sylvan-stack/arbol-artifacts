@@ -51,11 +51,12 @@ What Arbol itself does while a chat is read, written and answered. Start at its 
 
 The components, what each owns, and how Arbol lives with breaking changes. Start at its [README](architecture/README.md). The inside of a Trunk is not part of it.
 
-- [`00-components-and-boundaries.md`](architecture/00-components-and-boundaries.md) (ARC-0): what `arbol`, `arbol-root`, `arbol-trunk`, the Drivers and `arbol-classifier` own and must never do, the processes and their lifetimes, the Arbol Swift App and the Arbol backend, the command line, small model calls, accounts, Brain Recipes and the resolved route, what any Trunk must offer, who writes which data, the database server.
+- [`00-components-and-boundaries.md`](architecture/00-components-and-boundaries.md) (ARC-0): what `arbol`, `arbol-root`, `arbol-trunk`, the Drivers, `arbol-classifier` and `arbol-browser` own and must never do, the processes and their lifetimes, the Arbol Swift App and the Arbol backend, the command line, small model calls, accounts, Brain Recipes and the resolved route, what any Trunk must offer, who writes which data, the database server. The draft [Arbol Browser specifications](../arbol-browser/specs/README.md) (BRW-0 to BRW-3) specify profiles, control handoff and MCP tools.
 - [`01-roots.md`](architecture/01-roots.md) (ARC-1): a named Root as a persistent compatibility environment with its own folder, database, settings and compatible Builds; Root identity, manager Builds and invocations; what lies outside every Root; names; Builds and Roots; the tray menu and `arbol-roots`; the current Root; cross-Root discovery and migration.
 - [`02-chat-exchange-across-components.md`](architecture/02-chat-exchange-across-components.md) (ARC-2): one message from sending to its final state: the folder of an Exchange, the arriving answer as a file, stop and answers, the end, an Exchange whose process is gone, a database that cannot be reached.
 - [`03-stuck-trunks.md`](architecture/03-stuck-trunks.md) (ARC-3): when an Exchange counts as stuck, the heartbeat of a Trunk, a Trunk that ends itself, how Arbol notices from outside, a stop that is not obeyed, ending by force, long waits on purpose.
 - [`04-single-database.md`](architecture/04-single-database.md) (ARC-4, draft): one installed database, in-place schema upgrades, Trunk Build compatibility, snapshots and recovery, and the one-time clean start.
+- [`05-where-arbol-keeps-its-files.md`](architecture/05-where-arbol-keeps-its-files.md) (ARC-5, accepted): every Arbol file out of `~/Library/Application Support`: working state in `~/.arbol/` with the database in `~/.arbol/postgres/`, archival material on Mercury, the layout marker on Builds, and the one-time move of the live installation.
 
 #### `architecture/provider-hooks/`: the hooks of Claude Code and Codex
 
@@ -71,6 +72,14 @@ Claude Code, Codex, Kimi Code, Pi and Mimo sessions as read-only, archived Arbol
 - [`00-the-import.md`](session-import/00-the-import.md) (IMP-0, accepted): the `arbol import` command, which sessions are imported, from a session to a chat and its Exchanges, sub-agents, provenance tables, the raw archive, importing again, read-only chats, admission and failures.
 - [`01-reading-each-tool.md`](session-import/01-reading-each-tool.md) (IMP-1, accepted): for each tool, where its sessions live, their kinds, duplicate records, turns, items, sub-agents, usage and liveness.
 
+### `mimo-driver/`: Mimo Driver specifications
+
+- [Mimo Driver specifications](mimo-driver/specs/README.md): MIM-0–MIM-6
+  refine the Driver Contract for native Xiaomi attachment, history, reliable
+  events and guarded resource ownership. Accepted 28 October 2026; includes
+  explicit shared-contract additions and complete shared-requirement coverage.
+  Implementation and release checks remain pending.
+
 ## Conventions
 
 - Artifacts go in chapter folders. `README.md`, `INDEX.md`, `GLOSSARY.md` and `NEGATIVE-GLOSSARY.md` live at the corpus root.
@@ -83,4 +92,14 @@ Claude Code, Codex, Kimi Code, Pi and Mimo sessions as read-only, archived Arbol
 
 - [Arbol with one database](research/arbol-single-database.md): dependencies and transition decisions for retiring Arbol Roots and migrating one database in place.
 - [Importing native harness sessions](research/native-session-import.md): native session formats of five tools and how they map into Arbol's chat tables and a raw archive.
+- [Arbol out of Application Support](research/arbol-out-of-application-support.md): everything under `~/Library/Application Support/Arbol/` with its size, owner and the code that names its path, and the constraints on moving it to `~/.arbol/` and Mercury.
+- [Mimo Driver investigation](research/mimo-driver.md): integration surfaces,
+  native Xiaomi credentials, history and prompt behavior, memory, event delivery,
+  ownership and the compatibility gates for specifications. [Pinned 0.1.16
+  source evidence](research/mimo-upstream-2026-10-27.md), captured 27 October 2026.
+  [Executable compatibility probes](research/mimo-compatibility/README.md)
+  resolve integration choices and demonstrate a command-group bridge closing
+  the ownership feasibility blocker for the tested macOS profile; original
+  counterexamples and runtime reports remain in ignored local output.
+
 Mimo Driver: [dedicated accepted originals](../arbol-mimo-driver/specs/README.md), relocated by SYL-312; implementation started, release gates pending.

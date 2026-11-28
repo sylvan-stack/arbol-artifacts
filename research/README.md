@@ -16,6 +16,22 @@ credentials and personal account data stay outside Git. Update an existing
 topic before creating another document and list new topics in
 [the corpus catalog](../INDEX.md).
 
+- [Mimo Driver investigation](mimo-driver.md): installed CLI interfaces, native
+  Xiaomi login, history and prompt semantics, memory and ownership gaps, and
+  the qualification needed before specifications are accepted.
+- [Mimo 0.1.16 source snapshot, 27 October 2026](mimo-upstream-2026-10-27.md):
+  immutable upstream excerpts supporting that investigation; runtime probe
+  material stays in ignored local output.
+- [Mimo compatibility probes](mimo-compatibility/README.md): native history,
+  memory/context controls, normal resource discovery, tools, questions, events,
+  actors, errors and process ownership; retains the server-only EOF guardian
+  counterexample and the tested command-group ownership bridge that closes
+  the pre-specification feasibility blocker. Read the investigation's scope
+  before drafting.
 - [Importing native harness sessions](native-session-import.md): on-disk session
   formats of Claude Code, Codex, Kimi Code, Pi and Mimo, their mapping to the
   chat tables plus a raw archive, and the questions for Spec Writing.
+- [Arbol out of Application Support](arbol-out-of-application-support.md):
+  every item under `~/Library/Application Support/Arbol/`, its size, owner and
+  the code that names its path; what goes to `~/.arbol/` and what to Mercury;
+  the constraints of the move, and the missing cutover archive.

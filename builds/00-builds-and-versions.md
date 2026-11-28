@@ -13,9 +13,29 @@ This rule applies to every component, including Drivers and recipes that still l
 
 `arbol-builds build --check <name>` adds a declared check to separately requested verification. Common Build refuses an unknown name before reserving output. Production Browser packaging and promotion still follow its signed artifact and installer procedures.
 
+## Single-database amendment
+
+For [ARC-4](../architecture/04-single-database.md), replace BLD-0.17–.21 and the Root-specific parts of .9, .23, .28. Number each component independently, keep existing Build metadata and preserve the registry's separation from application code and schema. Database-dependent components declare `schemaCompatibility: [{"compatibilityVersion":1,"minRevision":3}]` in the build description and immutable Build record. Each version is a unique positive integer and each minimum is a positive revision. Match the installed version and minimum; legacy `rootContracts` alone does not fit. Neither Build tools nor launchers take a Root selector. Scope pruning protection to the installation's usable default(s), protected/running payloads and Builds needed for pending settlement or recorded release recovery.
+
+`arbol-trunk [<code name>] [-v <build>] run …` defaults to the newest working runnable compatible Build of the named Trunk or `trivial`. An explicit runnable Build may run only when compatible; preserve the existing explicit selection rules and never fall back. `arbol-trunk [<code name>] list` reports the installed schema pair, compatible/runnable/chosen per Build and code name; report unavailable schema distinctly and claim no chosen Build. Keep `unknown_trunk`, `invalid_input` and `no_fit` with alternatives for that code name. The launcher selects and runtime admission rechecks on the same installed schema before starting durable work. The verified release includes every affected consumer and its protocol dependencies. Bridge compatibility, Build check status and schema compatibility are separate checks.
+
+This amendment applies to the release governed by ARC-4 upon its acceptance. The prior text, IDs, Decisions and qualification below retain their original scope.
+
+
 Every component of Arbol 2 is built into numbered [Builds](../GLOSSARY.md#build). The Builds of a component are kept side by side on the machine and listed in one registry. Whoever starts a component gets its newest eligible working Build, or names another one; for `arbol` and `arbol-root`, eligibility is restricted to the selected [Root](../architecture/01-roots.md). This specification states the numbering, the registry, the rule for the default and how a Build or a Root is named on the command line. It matters because version 1 could run only what was installed last, named its builds with a timestamp nobody could type, and grew upgrade machinery larger than the product. Here a Build is a folder and a number, and choosing one means reading a few small files.
 
 It follows the conventions of the [Driver Contract](../driver-contract/README.md#conventions).
+
+## File layout amendment
+
+For [ARC-5](../architecture/05-where-arbol-keeps-its-files.md), accepted on 17 November 2026, Arbol keeps nothing under `~/Library/Application Support/`. Its working state is in `~/.arbol/`, beside the settings, and its archival material on the external drive Mercury in `/Volumes/Mercury/Arbol/`. For this specification:
+
+- The registry is `~/.arbol/builds/`, and the launchers in `~/.local/bin` name it.
+- A Build's description and record carry `installationLayout`, a positive integer; a Build without it has layout 1. The launcher and the runtime refuse a Build whose layout differs from the installation's.
+- Retention is unchanged for Builds in use, needed to settle an Exchange, Locked or default. Older Builds are not recovery inputs: recovery rebuilds them from their recorded source revisions (ARC-D95). `~/Builds` holds only current Builds.
+- Examples below that show the registry under `~/Library/Application Support/Arbol/builds/` describe the layout of their time.
+
+This amendment applies from the release that moves the installation, as [ARC-5](../architecture/05-where-arbol-keeps-its-files.md) describes. The prior text, IDs and Decisions below keep their original scope.
 
 ## Session import amendment
 
@@ -602,7 +622,7 @@ The 6–7 October decisions below remain as recorded. The Root-specific extensio
 | BLD-D2 | Which version runs when none is named? | The last working one that was built successfully | Decided 6 October 2026 by the owner |
 | BLD-D3 | How is a version named on the command line? | `-v <version>` as the first argument, as in `arbol-codex-driver -v a3 …` | Decided 6 October 2026 by the owner |
 | BLD-D4 | What makes a Build working? | The build finished and the component's own automatic checks passed. Checks that spend quota are not among them. A Build that fails later in use is withdrawn by hand | Decided 6 October 2026 by the owner: the automatic checks and, on top of them, one real message through the real tool on every build (SYL-31) |
-| BLD-D5 | Where is the registry? | `~/Library/Application Support/Arbol/builds/` | Decided 6 October 2026 by the owner: the proposed default (SYL-32) |
+| BLD-D5 | Where is the registry? | `~/Library/Application Support/Arbol/builds/` | Decided 6 October 2026 by the owner: the proposed default (SYL-32). Amended 17 November 2026 by [ARC-5](../architecture/05-where-arbol-keeps-its-files.md): `~/.arbol/builds/`. |
 | BLD-D6 | What becomes of the version numbers in `package.json` and in the repositories' README files (2.0.0, 1.0.0)? | `package.json` keeps a number because npm needs one, and it means nothing. The registry's number is the component's version. The README files are corrected when the first Builds exist | Decided 6 October 2026 by the owner, against the proposed default: both numbers stay. 2.0.0 and 1.0.0 are package versions, and the hexadecimal count is the build number (SYL-33) |
 | BLD-D7 | How many Builds are kept? | All, until `prune` is run. Suggested habit: the newest four working ones, as in version 1 | Decided 6 October 2026 by the owner: managing Builds, pruning included, is Arbol's work and never a Driver's. With that the proposed default stands (SYL-51). Extended on 13 October 2026 by BLD-D12 |
 | BLD-D8 | Is a version named the same way for a component that stays running, such as the application? | Yes, `-v` starts that Build. Only one Build of such a component runs at a time, and replacing it while it runs is specified with that component | Decided 6 October 2026 by the owner: `-v` means the same for every component. It runs exactly that Build, and without it the newest working one runs. Any number of invocations can run at once, of one Build or of several. Whether a component that stays running can run twice at the same time is left to that component's own specification and is not settled here (SYL-52) |

@@ -5,6 +5,13 @@ status: implemented
 ---
 # Sagas · 01 Subscriptions Vigor
 
+## Single-database amendment
+
+For [ARC-4](../architecture/04-single-database.md), SGM-D29 and SGM-D37 are historical for Root-based storage. One installed database stores report/calculation history and approved profiles (SGM-1.10–.11); the last approved installed profile or the existing documented uncalibrated fallback applies. One backend provides periodic recomputation and manual refresh; the same saved data is read by Seqoya Lab and the `arbol vigor` CLI without a vendor call on ordinary reads. CLI profile operations, approval, refresh, recalculation and scheduled writes use installation writer admission. Pause periodic work during maintenance and refuse new manual writes; independent Driver account reads may continue. The cutover starts empty, without fake zero reports or imported history. Preserve formula, staleness, prediction, public provider details and advisory-only behavior.
+
+This amendment applies to the release governed by ARC-4 upon its acceptance. The prior text, IDs, Decisions and qualification below retain their original scope.
+
+
 ## Purpose
 
 Specify Vigor: how urgent it is to use a [Subscription](../GLOSSARY.md#subscription)

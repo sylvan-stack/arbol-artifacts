@@ -5,9 +5,31 @@ status: accepted
 ---
 # Architecture · 00 Components and boundaries
 
-Arbol 2 is a few programs with one job each: the Arbol Swift App, `arbol`, `arbol-root`, `arbol-trunk`, the [Drivers](../GLOSSARY.md#driver) and `arbol-classifier`. This specification states what each of them owns and must never do, which processes exist and for how long, and how one reaches another. It matters because version 1 ran eleven resident services that spoke closed, version-coupled protocols and needed each other to be up: one failed turn could block every chat, and an upgrade could take more than an hour. Here every component is a command-line program, only Arbol itself stays running, and no [Chat Exchange](../GLOSSARY.md#chat-exchange) in progress depends on it.
+## Single-database amendment
+
+[ARC-4](04-single-database.md) defines the single installation target. For it, read ARC-0.5–.7, .14–.22, .26–.28 and .32 with these changes:
+
+- One App and one installation backend use the owner-only Bridge. The App does no SQL. The backend/CLI use one database, one settings scope and one listener set. Report the server health and size of that installed database. A compatible App/renderer/backend set replaces the rule that each newer App must serve every retained Root.
+- The installation runtime replaces the Root manager's product role: short-lived lifecycle operations, installation Exchange files and exact Trunk Build dispatch. A schema status/admission check is permitted at that boundary; it does not grant runtime authority to read chat content or run schema DDL. The migration tool is the only schema writer. Preserve direction of dependency, distinct executable boundaries and direct ownership of authorized chat writes.
+- The Trunk remains detached, owns one accepted Exchange, writes only the installed schema it supports, and records its exact Build and the result in the installation's Exchange files/database. Database outage, backend restart or App departure still do not terminate accepted work. Component protocols and the browser, account, route, secrets and classifier boundaries remain independent of this change. Retire the Root catalogue tool from the installed command set.
+
+The earlier component descriptions and evidence below describe the Root-based release.
+
+This amendment applies to the release governed by ARC-4 upon its acceptance. The prior text, IDs, Decisions and qualification below retain their original scope.
+
+
+Arbol 2 is a few programs with one job each: the Arbol Swift App, `arbol`, `arbol-root`, `arbol-trunk`, the [Drivers](../GLOSSARY.md#driver), `arbol-classifier` and `arbol-browser`. This specification states what each of them owns and must never do, which processes exist and for how long, and how one reaches another. It matters because version 1 ran eleven resident services that spoke closed, version-coupled protocols and needed each other to be up: one failed turn could block every chat, and an upgrade could take more than an hour. Here every component is a command-line program, only Arbol itself stays running, and no [Chat Exchange](../GLOSSARY.md#chat-exchange) in progress depends on it.
 
 It follows the conventions of the [Driver Contract](../driver-contract/README.md#conventions) and the additions in this chapter's [README](README.md#conventions).
+
+## File layout amendment
+
+For [ARC-5](05-where-arbol-keeps-its-files.md), accepted on 17 November 2026, Arbol keeps nothing under `~/Library/Application Support/`. Its working state is in `~/.arbol/`, beside the settings, and its archival material on the external drive Mercury in `/Volumes/Mercury/Arbol/`. For this specification:
+
+- The database server's data folder is `~/.arbol/postgres/data`, its socket folder `~/.arbol/postgres/socket` and its launch agent's output `~/.arbol/postgres/launchd.log`. The data folder stays on the internal disk, and the probe still refuses one on an external or removable disk.
+- The installation runtime, the App's locks, the Build registry, the Drivers' default state and the native resources are in `~/.arbol/runtime/`, `~/.arbol/app/`, `~/.arbol/builds/`, `~/.arbol/drivers/<driver>/` and `~/.arbol/native-resources/`.
+
+This amendment applies from the release that moves the installation, as [ARC-5](05-where-arbol-keeps-its-files.md) describes. The prior text, IDs and Decisions below keep their original scope.
 
 ## Session import amendment
 
@@ -20,9 +42,9 @@ This amendment applies from migration revision 3 and the `arbol` Build that decl
 
 ## Scope
 
-Covered: the components and what each owns, the direction of dependence, the processes and their lifetimes, the two parts of Arbol, the command line, small model calls, accounts, secrets, Brain Recipes and the resolved route, what Arbol Root does, what any Trunk must offer, who writes which data, the database server, the languages, what fails together.
+Covered: the components and what each owns, the direction of dependence, the processes and their lifetimes, the two parts of Arbol, the command line, small model calls, accounts, secrets, Brain Recipes and the resolved route, what Arbol Root does, what any Trunk must offer, who writes which data, the database server, the languages, Arbol Browser's place and failure boundary, what fails together.
 
-Not covered: the creation, isolation and migration of named Roots ([ARC-1](01-roots.md)); the path of one Chat Exchange through the components ([ARC-2](02-chat-exchange-across-components.md)); the inside of a Trunk, which each Trunk's own specification states; a Trunk's command line and files, which are in the [Root Contract](../../arbol-root/contract/README.md) ([RCT-0](../../arbol-root/contract/00-overview.md) to [RCT-2](../../arbol-root/contract/02-starting-stopping-and-settling.md)); the Drivers ([DRV-0](../driver-contract/00-overview-and-boundary.md)); Builds ([BLD-0](../builds/00-builds-and-versions.md)); what each UI shows; what Telegram does; a message sent while its chat is busy.
+Not covered: the creation, isolation and migration of named Roots ([ARC-1](01-roots.md)); the path of one Chat Exchange through the components ([ARC-2](02-chat-exchange-across-components.md)); the inside of a Trunk, which each Trunk's own specification states; a Trunk's command line and files, which are in the [Root Contract](../../arbol-root/contract/README.md) ([RCT-0](../../arbol-root/contract/00-overview.md) to [RCT-2](../../arbol-root/contract/02-starting-stopping-and-settling.md)); the Drivers ([DRV-0](../driver-contract/00-overview-and-boundary.md)); Arbol Browser's profiles, tabs, control and tools ([BRW-0 to BRW-3](../../arbol-browser/specs/README.md)); Builds ([BLD-0](../builds/00-builds-and-versions.md)); what each UI shows; what Telegram does; a message sent while its chat is busy.
 
 ## Behaviour
 
@@ -36,6 +58,7 @@ Not covered: the creation, isolation and migration of named Roots ([ARC-1](01-ro
 | A Trunk (`arbol-trunk/<code name>`, such as `arbol-trunk/trivial`; all in the repository `arbol-trunk`, with one launcher, `arbol-trunk`, for every Trunk) | One Chat Exchange from accepted input to its final state; the rows of the chat tables | Knows a Brain Recipe. Manages an account. Creates or changes a table. Needs Arbol, the Root manager or the database in order to finish |
 | A Driver | The vendor tool and its [Subscriptions](../GLOSSARY.md#subscription) (DRV-0) | Keeps a conversation |
 | `arbol-classifier` | Classifications through Jev: the key, the pinned model version and the limits of size and time | Interprets a question. Keeps anything between two calls. Starts another component |
+| `arbol-browser` | Shared Chromium windows and profiles, per-tab user/agent control, the owner-only browser control socket and direct agent CLI | Keeps a chat, Subscription or Root database. Exposes ordinary user tabs without sharing. Starts a component to its left. Runs as a resident daemon |
 
 Arbol holds the UIs and brings the components together. A named Root is the persistent environment in which compatible Trunks are managed; its `arbol-root` Build provides the management commands. Neither the manager nor a Trunk knows a UI's renderer or presentation. Arbol as the Leather Bag sees it is the Arbol Swift App together with the Arbol backend; the two are built from two repositories, `arbol-app` and `arbol` ([ARC-D21](#decisions)).
 
@@ -53,13 +76,15 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 
 ```text
 Arbol Swift App  →  arbol  →  arbol-root  →  arbol-trunk  →  a Driver  →  the vendor tool
-                      └──────────── account commands ───────────┘
-                                             arbol-trunk  →  arbol-classifier  →  Jev
+       │                  └──────────── account commands ───────────┘
+       │                                     arbol-trunk  →  arbol-classifier  →  Jev
+       └──────────────────────────────────────────────┐
+                                              a Driver  →  arbol-browser
 ```
 
 | Rule | Detail |
 |---|---|
-| A component starts only what lies to its right | Arbol also starts a Driver directly, and only for account commands. A Trunk starts a Driver and `arbol-classifier` |
+| A component starts only what lies to its right | Arbol also starts a Driver directly, and only for account commands, and starts `arbol-browser` for a person. A Trunk starts a Driver and `arbol-classifier`; an agent invokes `arbol-browser agent` through the Driver's ordinary command capability |
 | No component holds another's code | A caller starts the other program and reads what it prints or what it leaves in files, as a Driver's caller does (DRV-D2) |
 | Nothing reaches leftward | No component starts or calls a component to its left. Until 13 October 2026 a Trunk reached `arbol` for its small model calls, through commands that its settings named ([ARC-D56](#decisions)) |
 | Builds are chosen by what they are compatible with | Each caller picks the newest working Build that implements the contract version it speaks ([ARC-1](01-roots.md#builds-and-roots)) |
@@ -74,9 +99,10 @@ Arbol Swift App  →  arbol  →  arbol-root  →  arbol-trunk  →  a Driver  �
 | A Trunk process | `arbol-root`, detached; or a person, in the foreground ([RCT-2](../../arbol-root/contract/02-starting-stopping-and-settling.md)) | One Chat Exchange. It outlives whoever started it, and Arbol |
 | A Driver run | The Trunk | One run. It does not outlive its caller (DRV-2) |
 | A classification | The Trunk | One call of `arbol-classifier` |
+| A browser process | Arbol for a person, an agent through `arbol-browser agent`, or a person from the command line | On demand, one per open browser profile, until its last window closes. No LaunchAgent or automatic restart ([BRW-0](../../arbol-browser/specs/00-the-browser-component.md)) |
 | PostgreSQL | The system | Always |
 
-Resident by design are Arbol, with its two parts, and the database server.
+Resident by design are Arbol, with its two parts, and the database server. A browser process runs only while its profile has an open window; it is not a resident service.
 
 ### Arbol: the Swift App and the backend
 
@@ -160,6 +186,8 @@ Subscriptions are shared by all Roots. They are Driver state, and the Drivers li
 ### Secrets
 
 Every secret of Arbol 2 is a Keychain item, and the Leather Bag manages all of them in one place: the Secrets page of Seqoya Lab ([ARC-D62](#decisions)). There a secret is entered, replaced and removed. Each is shown only as set or not set, and its value is never shown again.
+
+Browser cookies and site storage are browser-managed session data, not individual Arbol secrets. Arbol Browser keeps them in its private Chromium profiles under BRW-1 and never exposes them through agent CLI sessions or management commands. This exception does not cover a component's API key or other explicitly managed secret.
 
 | Rule | Detail |
 |---|---|
@@ -292,7 +320,7 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 
 ### Languages
 
-`arbol-root`, `arbol-trunk`, `arbol-classifier`, the Arbol backend and the command line are typed Python with a packaged interpreter, as the Drivers are (DRV-D1, BLD-0). The Arbol Swift App is Swift. The renderer bundles are web pages. The build tool, the launchers and the conformance runner are typed Python too, by the owner's decision of 14 October 2026. They are not Builds: the build tool and the launchers run on the pinned interpreter that is installed with `arbol-builds` ([BLD-D15](../builds/00-builds-and-versions.md#decisions)), and so does `arbol-roots`; a Driver's contract check runs the conformance runner with the Python of the Build it checks.
+`arbol-root`, `arbol-trunk`, `arbol-classifier`, the Arbol backend and the command line are typed Python with a packaged interpreter, as the Drivers are (DRV-D1, BLD-0). The Arbol Swift App is Swift. The renderer bundles are web pages. Arbol Browser is TypeScript with its pinned Electron, Chromium and Node runtime carried by each Build ([BRW-D2](../../arbol-browser/specs/00-the-browser-component.md#decisions)). The build tool, the launchers and the conformance runner are typed Python too, by the owner's decision of 14 October 2026. They are not Builds: the build tool and the launchers run on the pinned interpreter that is installed with `arbol-builds` ([BLD-D15](../builds/00-builds-and-versions.md#decisions)), and so does `arbol-roots`; a Driver's contract check runs the conformance runner with the Python of the Build it checks.
 
 ### What fails together
 
@@ -300,11 +328,12 @@ Historical evidence (frozen version 1; ordinary locators, not Source Refs):
 |---|---|
 | One Trunk process | One Chat Exchange |
 | The Arbol backend | Live updates in the UIs, and incoming Telegram messages, until the Swift App has started it again |
-| The Arbol Swift App, or Arbol quitting | The UIs. No Exchange |
+| The Arbol Swift App, or Arbol quitting | The UIs. No Exchange or browser process |
 | One Root's folder or database | That Root's chats |
 | The PostgreSQL server | New messages in every Root. Exchanges in progress finish and keep their result (ARC-2) |
 | One Driver's state, or a vendor | That Subscription, in every Root |
 | `arbol-classifier`, or Jev | Classifications. No Exchange: a Trunk goes on without the result |
+| One browser process or its profile | Browser operations in that profile. No other profile, Exchange or Root; the affected Driver receives a browser error |
 
 <!-- sources:
 arbol-root:roots/sapling/drills/trunk_drills.py#starter_gone
@@ -317,15 +346,15 @@ Every component:
 
 | ID | A component must… | Origin | Verified by |
 |---|---|---|---|
-| ARC-0.1 | be a command-line program whose command line and files are its only interfaces, and hold none of another component's code | Changed | unit |
-| ARC-0.2 | start only components to its right in the order `arbol`, `arbol-root`, `arbol-trunk`, then a Driver or `arbol-classifier`, and never start or call a component to its left | New | unit |
-| ARC-0.3 | be written in typed Python with a packaged interpreter, except the Arbol Swift App and the renderer bundles | New | unit |
+| ARC-0.1 | be a command-line program whose public component boundary consists only of its documented command line, files and, where specified, owner-only socket and stdio protocols, and hold none of another component's code | Changed | unit |
+| ARC-0.2 | start only components to its right in the order `arbol`, `arbol-root`, `arbol-trunk`, then a Driver or `arbol-classifier`, with `arbol-browser` to the right of a Driver, and never start or call a component to its left | New | unit |
+| ARC-0.3 | be written in typed Python with a packaged interpreter, except the Swift Arbol Swift App, the renderer bundles and the TypeScript/Electron Arbol Browser with its packaged runtime | New | unit |
 
 Arbol:
 
 | ID | Arbol must… | Origin | Verified by |
 |---|---|---|---|
-| ARC-0.4 | own every Surface: the UIs, the command line and every listener | Changed | journey |
+| ARC-0.4 | own every Surface other than Arbol Browser's native browser windows: the UIs, the command line and every listener | Changed | journey |
 | ARC-0.5 | consist of the Arbol Swift App, outside every Root, and one Arbol backend for each Root in use | Changed | journey |
 | ARC-0.6 | pass Bridge messages between a UI and its Root's backend without interpreting them in the Swift App, and never open the database from it | Changed | unit |
 | ARC-0.7 | keep the current Root's backend running as long as Arbol runs, start it again when it ends, and run listeners nowhere else | New | drill |
@@ -335,8 +364,17 @@ Arbol:
 | ARC-0.11 | keep its command line to sending a message with a chosen Build, Subscription or Brain Recipe and to reading Subscriptions Vigor and approving its profiles (`arbol vigor`, SGM-D28, SGM-D37), and let it work while no backend runs | Changed | unit; the profile commands: `radar.learn-commands`, `radar.learn-command-refusals` (SYL-299); the read: `radar.verb-parse`, `radar.verb-refusals`, `radar.read-program` (SYL-298) |
 | ARC-0.26 | keep every newer Build of the Arbol Swift App working with every Root that still exists | New | journey |
 | ARC-0.14 | report the health of the database server and the size of each Root's database, and warn before space runs out | Changed | journey |
-| ARC-0.31 | let the Leather Bag enter, replace and remove every secret of every component on the Secrets page of Seqoya Lab, store each as the Keychain item its component names, show it only as set or not set, and never display, log or hand on its value | Changed | journey |
+| ARC-0.31 | let the Leather Bag enter, replace and remove every secret of every component on the Secrets page of Seqoya Lab, store each as the Keychain item its component names, show it only as set or not set, and never display, log or hand on its value; browser-managed cookies and site storage follow BRW-1 instead and are never exposed as secrets | Changed | journey |
 | ARC-0.32 | be started by its name alone, without a path, in any newly opened terminal window, as must the tools `arbol-builds` and `arbol-roots` | New | global tools part: installed clean-login-shell probe of arbol-roots/arbol-builds; unit `builds.install`, `roots.install-rollback` (SYL-160). Other command-line programs are qualified by their own Beats Backend command: private Root-scoped packaged `backend.name-only-build`, clean login shell and bounded shutdown (SYL-246). |
+
+Arbol Browser:
+
+| ID | Arbol Browser must… | Origin | Verified by |
+|---|---|---|---|
+| ARC-0.33 | be built from `arbol-browser` into Root-independent numbered Builds, start on demand from Arbol, a Driver or the command line, run one process per open profile and install no LaunchAgent or automatic restart | New | BRW-0 contract and probe |
+| ARC-0.34 | use the shared `default` profile for ordinary work and allow an additional profile only for a different login to the same service, never automatically per Driver, Root, service, repository or task | New | BRW-1 contract |
+| ARC-0.35 | keep ordinary tabs invisible to agents unless explicitly shared, enforce one user or agent controller per tab, and provide explicit Take control and Return control with stale-action invalidation | New | BRW-2 contract and probe |
+| ARC-0.36 | expose its agent tools through the versioned direct CLI and an owner-only Unix socket, with no Browser MCP dependency, public debugging listener or cookie, credential and password export | BRW-D43 | BRW-3 contract and probe |
 
 ARC-0.12 and ARC-0.13, on the helper commands `ask` and `jev`, were withdrawn on 13 October 2026 by [ARC-D56](#decisions): a Trunk makes its small model calls itself (ARC-0.24, ARC-0.29, ARC-0.30).
 
@@ -442,6 +480,7 @@ The Root environment wording below follows ARC-D47 of 12 October 2026. The entri
 | [Draft](../GLOSSARY.md#draft) | Kept by Arbol before a Chat Exchange is accepted, no longer inside one |
 | [Trunk Runtime](../GLOSSARY.md#trunk-runtime), [Default Arbol Trunk](../GLOSSARY.md#default-arbol-trunk) | History. There is no resident Trunk and no generation of one |
 | [Arbol Swift App](../GLOSSARY.md#arbol-swift-app) | A component of its own, `arbol-app`. Its Builds belong to no Root, and each Root names the oldest of them it works with. It passes the Bridge on to the Arbol backend, not to Root, and loads renderer bundles from its own App Build |
+| [Arbol Browser](../GLOSSARY.md#arbol-browser) | New. A component of its own, `arbol-browser`, with shared profiles, explicit per-tab control and an on-demand process per open profile. Its Builds belong to no Root |
 | [UI](../GLOSSARY.md#ui) | Its renderer is shipped in the shared Swift App Build. Three remain: Elma Chat, Willo Station, Seqoya Lab |
 | [CLI](../GLOSSARY.md#cli) | `arbol`, with few commands. No longer a client of Root that mirrors the UIs |
 | [Brain Recipe](../GLOSSARY.md#brain-recipe) | Belongs to Arbol alone. No longer built on one Intelligence Provider: its logic may weigh several Subscriptions. It is resolved to a route before an Exchange starts |
@@ -480,4 +519,5 @@ The decisions below retain their recorded wording. [ARC-D47](01-roots.md#decisio
 | ARC-D56 | How does a Trunk make its small model calls? | A small text, such as a title: the Trunk starts a Driver run without tools itself, on a small-call route that Arbol resolves from a Brain Recipe and hands down beside the route of the Exchange. A classification: a small program of its own to the right of the Trunk, with a short contract of its own. It is not a Driver, because it has no sign-in, no tools and no conversation | Decided 13 October 2026 by the owner: agreed, and the program is built from a new repository, `arbol-classifier`. The owner had found the helper commands inconsistent: `arbol ask` made Arbol start a Driver for a model call, against the rule that it does so for account commands only. This replaces ARC-D18 and the helper commands of ARC-D17, and withdraws ARC-0.12 and ARC-0.13 |
 | ARC-D62 | Where does the Leather Bag manage secrets? | On the Secrets page of Seqoya Lab, all of them. Arbol writes the Keychain item a component names, and the component only reads it | Decided 13 October 2026 by the owner: "all secrets still should be managed by Seqoya Secrets page." It was said about the Jev key of `arbol-classifier` and holds for every secret. MYC-D15 said the same of Mycel's keys on 8 October 2026. On 14 October 2026 the owner added a second way for the Jev key alone: `arbol-classifier add-key` (CLS-D7 in CLS-0) |
 | ARC-D63 | Can every command-line program of Arbol 2 be started from any terminal by its name? | Not stated: BLD-0 puts the launchers in `~/.local/bin` and says that folder has to be on the owner's search path | Decided 14 October 2026 by the owner: all Arbol command-line tools are available globally in the terminal. ARC-0.32 states it |
-| ARC-D64 | How is the database server installed on this Mac, and how is it started? | PostgreSQL 17 from Homebrew (`postgresql@17`, installed in SYL-170), with a data folder of its own, `~/Library/Application Support/Arbol/database/data`, made by `database/install_database_server.py` of the `arbol` repository; Homebrew's default folder `/opt/homebrew/var/postgresql@17` and `brew services` are not used. It listens on `127.0.0.1` at port 5433 and on no other address, and on a socket in the private folder `database/socket` beside the data folder, which only the installation uses, as the owner's account (`peer`). Over the network every role needs its password (`scram-sha-256`). The role `arbol` may log in and create databases, and so remove the ones it made, and nothing more. The installation makes up its password, stores it in the Keychain item and hands the server only its SCRAM verifier, so the password itself never reaches the server, a log or a terminal. The launch agent `com.sylvan-stack.arbol.database` of the owner's account runs the server's `postgres` and starts it at login and again whenever it ends. The data folder uses UTF-8 with the builtin locale `C.UTF-8` and data checksums, and keeps the server's log in one file per weekday, so the log never holds more than a week | Decided 16 October 2026, a technical choice (SYL-156). Port 5432 is held by the container `arbol-postgres`, and the owner did not mind which port the new server uses (13 October 2026). A data folder of Arbol's own leaves Homebrew's folder to any other use, and its size is that of one folder (ARC-0.14). A launch agent and not a launch daemon, because the server runs as the owner and needs no administrator; after a restart it starts when the owner logs in. The builtin `C.UTF-8` sorts as the C locale of the conformance suite's servers (RCT-4) and does not change with the system's libraries |
+| ARC-D64 | How is the database server installed on this Mac, and how is it started? | PostgreSQL 17 from Homebrew (`postgresql@17`, installed in SYL-170), with a data folder of its own, `~/Library/Application Support/Arbol/database/data`, made by `database/install_database_server.py` of the `arbol` repository; Homebrew's default folder `/opt/homebrew/var/postgresql@17` and `brew services` are not used. It listens on `127.0.0.1` at port 5433 and on no other address, and on a socket in the private folder `database/socket` beside the data folder, which only the installation uses, as the owner's account (`peer`). Over the network every role needs its password (`scram-sha-256`). The role `arbol` may log in and create databases, and so remove the ones it made, and nothing more. The installation makes up its password, stores it in the Keychain item and hands the server only its SCRAM verifier, so the password itself never reaches the server, a log or a terminal. The launch agent `com.sylvan-stack.arbol.database` of the owner's account runs the server's `postgres` and starts it at login and again whenever it ends. The data folder uses UTF-8 with the builtin locale `C.UTF-8` and data checksums, and keeps the server's log in one file per weekday, so the log never holds more than a week | Decided 16 October 2026, a technical choice (SYL-156). Port 5432 is held by the container `arbol-postgres`, and the owner did not mind which port the new server uses (13 October 2026). A data folder of Arbol's own leaves Homebrew's folder to any other use, and its size is that of one folder (ARC-0.14). A launch agent and not a launch daemon, because the server runs as the owner and needs no administrator; after a restart it starts when the owner logs in. The builtin `C.UTF-8` sorts as the C locale of the conformance suite's servers (RCT-4) and does not change with the system's libraries. Amended 17 November 2026 by [ARC-5](05-where-arbol-keeps-its-files.md): the data folder is `~/.arbol/postgres/data` and the socket folder `~/.arbol/postgres/socket`. |
+| ARC-D75 | How does Arbol provide one shared browser to every Driver and the Leather Bag? | A new Root-independent `arbol-browser` component, started on demand by Arbol, a Driver or the command line; one Electron/Chromium process per open profile, no LaunchAgent or automatic restart, numbered Builds with a packaged TypeScript/Node runtime, and a versioned MCP adapter. The shared `default` profile serves ordinary work; an additional profile exists only for a different login to the same service. Tabs have explicit user/agent control with Take control and Return control; ordinary tabs stay invisible unless shared | Decided 27 October 2026 by the owner: the proposed component, lifecycle, control handoff and default-profile rule. Electron/TypeScript, per-client tab scoping, generation-checked actions and owner-only Unix IPC are technical choices in the draft BRW-0 to BRW-3 specifications. Browser-managed cookies and site storage are the exception to individually managed Arbol Keychain secrets stated in BRW-D5; they are never exported through MCP. [BRW-D43](../../arbol-browser/specs/00-the-browser-component.md#decisions) replaces the Browser transport with the direct CLI and existing Cue Card |

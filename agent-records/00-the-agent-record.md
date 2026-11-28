@@ -11,6 +11,15 @@ It follows the conventions of the [Driver Contract](../driver-contract/README.md
 
 In this chapter the *owner* of a record is always a process, as in DRV-6. The person who works with the agent is the Leather Bag.
 
+## File layout amendment
+
+For [ARC-5](../architecture/05-where-arbol-keeps-its-files.md), accepted on 17 November 2026, Arbol keeps nothing under `~/Library/Application Support/`. Its working state is in `~/.arbol/`, beside the settings, and its archival material on the external drive Mercury in `/Volumes/Mercury/Arbol/`. For this specification:
+
+- The records are in `~/.arbol/agents/<tool>-<session>.json` (AGR-0.1). `ARBOL_AGENTS_DIR` still selects another folder.
+- Exchange folders are in `~/.arbol/runtime/exchanges/`; the per-Root folders named below are historical (ARC-4).
+
+This amendment applies from the release that moves the installation, as [ARC-5](../architecture/05-where-arbol-keeps-its-files.md) describes. The prior text, IDs and Decisions below keep their original scope.
+
 ## Scope
 
 Covered: what one agent session is, where the records are, the record and its fields, writing a record, the owner, what an agent waits for, signs of life, what a reader can tell, an Exchange of an Arbol Trunk, the program `arbol-agents` and its listing, removing old records, what changes elsewhere once this is accepted.

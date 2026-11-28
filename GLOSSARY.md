@@ -13,30 +13,30 @@ Event/replay descriptions below apply to the legacy profile. The implemented
 explicit [State Runtime Profile](#state-runtime-profile) has separate current-row
 authority; building it does not activate production or authorize retention cleanup.
 
-The Arbol 2 definitions of Arbol, Arbol Root, Arbol Swift App, Arbol Trunk and Exchange Assignment follow the [current architecture](architecture/README.md). Trunk Runtime is retained as a historical term. The other definitions describing legacy processes and Event Log interactions have not been rewritten by that architecture revision.
+For the release governed by [ARC-4](architecture/04-single-database.md), an **Arbol installation** is one backend, one installed PostgreSQL database and one private Exchange runtime. Its [Schema Revision](#schema-revision) and schema compatibility version describe the installed database. An **Arbol chat identity** is its chat UUID; an accepted **Exchange assignment** is its Exchange UUID and immutable Trunk code name and Build.
 
 **Table of Contents**
 
-- **A** — [A-Nex](#a-nex) · [Action Item](#action-item) · [Activity](#activity) · [Activity Execution](#activity-execution) · [Activity Graph](#activity-graph) · [Admission Boundary](#admission-boundary) · [Agent Attempt](#agent-attempt) · [Agent Record](#agent-record) · [Aggregate](#aggregate) · [Answer Beacon](#answer-beacon) · [Answer Threshold](#answer-threshold) · [Approach](#approach) · [Arbol](#arbol) · [Arbol Trunk](#arbol-trunk) · [Arbol Component](#arbol-component) · [Arbol Root](#arbol-root) · [Arbol Internals](#arbol-internals) · [Arbol Secret](#arbol-secret) · [Arbol Swift App](#arbol-swift-app) · [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) · [Arc](#arc) · [Arc Review](#arc-review) · [Artifact](#artifact) · [Artifact Chapter](#artifact-chapter) · [Artifact Corpus](#artifact-corpus) · [Artifact Space](#artifact-space) · [Attestation](#attestation) · [Authoritative Input](#authoritative-input) · [Authority Epoch](#authority-epoch)
+- **A** — [A-Nex](#a-nex) · [Action Item](#action-item) · [Activity](#activity) · [Activity Execution](#activity-execution) · [Activity Graph](#activity-graph) · [Admission Boundary](#admission-boundary) · [Agent Attempt](#agent-attempt) · [Agent Record](#agent-record) · [Aggregate](#aggregate) · [Answer Beacon](#answer-beacon) · [Answer Threshold](#answer-threshold) · [Approach](#approach) · [Arbol](#arbol) · [Arbol Backend](#arbol-backend) · [Arbol Browser](#arbol-browser) · [Arbol Component](#arbol-component) · [Arbol Trunk](#arbol-trunk) · [Arbol Internals](#arbol-internals) · [Arbol Secret](#arbol-secret) · [Arbol Swift App](#arbol-swift-app) · [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) · [Arc](#arc) · [Arc Review](#arc-review) · [Artifact](#artifact) · [Artifact Chapter](#artifact-chapter) · [Artifact Corpus](#artifact-corpus) · [Artifact Space](#artifact-space) · [Attestation](#attestation) · [Authoritative Input](#authoritative-input) · [Authority Epoch](#authority-epoch)
 - **B** — [Beat](#beat) · [better-grep](#better-grep) · [Blueprint](#blueprint) · [Blueprint Chain](#blueprint-chain) · [Book](#book) · [Brain Recipe](#brain-recipe) · [Branch](#branch) · [Branch Overlay](#branch-overlay) · [Bridge](#bridge) · [Build](#build) · [Burn](#burn)
 - **C** — [Cell](#cell) · [Change Walkthrough](#change-walkthrough) · [Chat Exchange](#chat-exchange) · [Chat Note](#chat-note) · [Chat Session](#chat-session) · [Checkpoint](#checkpoint) · [Chunk](#chunk) · [Chunking](#chunking) · [CLI](#cli) · [Code Corpus](#code-corpus) · [Code Map](#code-map) · [Code Scout](#code-scout) · [Command](#command) · [Communicado](#communicado) · [Communicado Action](#communicado-action) · [Communicado Delivery](#communicado-delivery) · [Communicado Descriptor](#communicado-descriptor) · [Communicado Family](#communicado-family) · [Communicado Presentation](#communicado-presentation) · [Communicado Species](#communicado-species) · [Communicado State](#communicado-state) · [Companion](#companion) · [Completion](#completion) · [Corpus](#corpus) · [Corpus Watcher](#corpus-watcher) · [Coupling](#coupling) · [Cue](#cue) · [Cue Card](#cue-card) · [Cue Detection Catalog](#cue-detection-catalog) · [Cue Target](#cue-target)
-- **D** — [Decision](#decision) · [Default Arbol Trunk](#default-arbol-trunk) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Draft Cue](#draft-cue) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance) · [Duty Observation](#duty-observation) · [Duty Routine](#duty-routine)
+- **D** — [Decision](#decision) · [Deck Talk](#deck-talk) · [Default Arbol Trunk](#default-arbol-trunk) · [Dense Retrieval](#dense-retrieval) · [Derivation](#derivation) · [Design Token](#design-token) · [Detection](#detection) · [Diff](#diff) · [Diff View](#diff-view) · [Draft](#draft) · [Draft Cue](#draft-cue) · [Drift](#drift) · [Drift Candidate](#drift-candidate) · [Driver](#driver) · [Driver Instance](#driver-instance) · [Duty Observation](#duty-observation) · [Duty Routine](#duty-routine)
 
-- **E** — [Effective Token Cost](#effective-token-cost) · [Effector](#effector) · [Email Source Item](#email-source-item) · [Elma Chat](#elma-chat) · [Elma View Page](#elma-view-page) · [Embedder Profile](#embedder-profile) · [Embedding](#embedding) · [Embedding Provider](#embedding-provider) · [Entity](#entity) · [Entity Card](#entity-card) · [Entity Card Content](#entity-card-content) · [Entity Card Resolver](#entity-card-resolver) · [Entity Chip](#entity-chip) · [Entity Context Menu](#entity-context-menu) · [Entity Edge](#entity-edge) · [Entity Kind](#entity-kind) · [Entity Shape](#entity-shape) · [Entity URI](#entity-uri) · [Env Keepers](#env-keepers) · [Event Log](#event-log) · [Event Log Service](#event-log-service) · [Event Sourcing](#event-sourcing) · [Exchange Assignment](#exchange-assignment) · [Exhausted Subscription](#exhausted-subscription)
-- **F** — [Fanout](#fanout) · [Feature Course](#feature-course) · [Feature Triage](#feature-triage) · [Flyer](#flyer) · [Fold / Projection](#fold--projection) · [Font Scale](#font-scale) · [Forester](#forester) · [Forester Feed](#forester-feed) · [Forester Watcher](#forester-watcher) · [Free Intention](#free-intention) · [Free-standing](#free-standing)
+- **E** — [Effective Token Cost](#effective-token-cost) · [Effector](#effector) · [Elma Chat](#elma-chat) · [Elma View Page](#elma-view-page) · [Email Source Item](#email-source-item) · [Embedder Profile](#embedder-profile) · [Embedding Provider](#embedding-provider) · [Embedding](#embedding) · [Entity Card Content](#entity-card-content) · [Entity Card Resolver](#entity-card-resolver) · [Entity Card](#entity-card) · [Entity Chip](#entity-chip) · [Entity Context Menu](#entity-context-menu) · [Entity Edge](#entity-edge) · [Entity Kind](#entity-kind) · [Entity Shape](#entity-shape) · [Entity URI](#entity-uri) · [Entity](#entity) · [Env Keepers](#env-keepers) · [Event Log Service](#event-log-service) · [Event Log](#event-log) · [Event Sourcing](#event-sourcing) · [Exchange Assignment](#exchange-assignment) · [Exhausted Subscription](#exhausted-subscription)
+- **F** — [Fanout](#fanout) · [Feature Course](#feature-course) · [Feature Triage](#feature-triage) · [Flyer](#flyer) · [Fold / Projection](#fold--projection) · [Font Scale](#font-scale) · [Forester Feed](#forester-feed) · [Forester Hook](#forester-hook) · [Forester Watcher](#forester-watcher) · [Forester](#forester) · [Free Intention](#free-intention) · [Free-standing](#free-standing)
 - **G** — [Generation](#generation)
 - **H** — [H-Nex](#h-nex) · [Heartwood](#heartwood) · [Hold](#hold) · [Hunk Review](#hunk-review)
 - **I** — [Idea Discussion](#idea-discussion) · [Identity Reconciliation](#identity-reconciliation) · [Ignore Rule](#ignore-rule) · [Implementation Planning](#implementation-planning) · [Index Store](#index-store) · [Ingest](#ingest) · [Initial Research](#initial-research) · [Initiator](#initiator) · [Instructions Hub](#instructions-hub) · [Intelligence Provider (IP)](#intelligence-provider-ip) · [Intention](#intention)
 - **J** — [Justification](#justification)
 - **K** — [Knowledge System](#knowledge-system)
 - **L** — [Ladder](#ladder) · [Leather Bag](#leather-bag) · [Living Topic](#living-topic) · [Load](#load)
-- **M** — [Mac OS Communicado](#mac-os-communicado) · [Mach Speed](#mach-speed) · [Mycel](#mycel) · [Mycel Operation](#mycel-operation) · [Mycel Skill](#mycel-skill) · [Mycel-enabled](#mycel-enabled) · [Mycel-integrated](#mycel-integrated)
-- **N** — [Native Tool Call](#native-tool-call) · [Nex](#nex) · [Nex Colab](#nex-colab) · [Nex Knowledge Map](#nex-knowledge-map) · [Normalizer](#normalizer) · [Now Line](#now-line)
+- **M** — [Mac OS Communicado](#mac-os-communicado) · [Mach Speed](#mach-speed) · [Mycel Operation](#mycel-operation) · [Mycel Skill](#mycel-skill) · [Mycel](#mycel) · [Mycel-enabled](#mycel-enabled) · [Mycel-integrated](#mycel-integrated)
+- **N** — [Narrative](#narrative) · [Narrator](#narrator) · [Native Tool Call](#native-tool-call) · [Nex Colab](#nex-colab) · [Nex Knowledge Map](#nex-knowledge-map) · [Nex](#nex) · [Normalizer](#normalizer) · [Now Line](#now-line)
 - **O** — [Oaken](#oaken) · [Objectives](#objectives) · [Operational Artifact](#operational-artifact) · [Organization](#organization) · [Origin](#origin) · [Origin Coverage](#origin-coverage) · [Origin Link](#origin-link) · [Orphaned Change](#orphaned-change) · [Owner Goal](#owner-goal) · [Owner Requirement](#owner-requirement)
 - **P** — [Parse Result](#parse-result) · [Parser](#parser) · [Parser Pipeline](#parser-pipeline) · [Provider](#provider)
 - **Q** — [Quota Dash](#quota-dash)
-- **R** — [Radar](#radar) · [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference](#reference) · [Reference Token Cost](#reference-token-cost) · [Refresh](#refresh) · [Release](#release) · [Repo](#repo) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Required Pace](#required-pace) · [Requirement](#requirement) · [Research Trip](#research-trip) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Runbook](#runbook)
-- **S** — [Saga](#saga) · [Saga Planning](#saga-planning) · [Scan](#scan) · [Signal](#signal) · [Signal Rule](#signal-rule) · [Signal Type](#signal-type) · [Seqoya Lab](#seqoya-lab) · [Source Ref](#source-ref) · [Sparse Retrieval](#sparse-retrieval) · [Spec Requirement](#spec-requirement) · [Spec Writing](#spec-writing) · [Spotlight](#spotlight) · [Stale](#stale) · [Stale Summary Regeneration](#stale-summary-regeneration) · [State Runtime Profile](#state-runtime-profile) · [Step Intention](#step-intention) · [Stint](#stint) · [Subscription](#subscription) · [Subscriptions Vigor](#subscriptions-vigor) · [Summary Node](#summary-node) · [Surface](#surface) · [Sync Pass](#sync-pass)
+- **R** — [Radar](#radar) · [RAPTOR Rebuild](#raptor-rebuild) · [RAPTOR Summarization](#raptor-summarization) · [RAPTOR Tree](#raptor-tree) · [Reference Token Cost](#reference-token-cost) · [Reference](#reference) · [Refresh](#refresh) · [Release](#release) · [Repo Folder](#repo-folder) · [Repo Picker](#repo-picker) · [Repo](#repo) · [Required Pace](#required-pace) · [Requirement](#requirement) · [Research Trip](#research-trip) · [Responsible Statement](#responsible-statement) · [Responsible Tree](#responsible-tree) · [Retrieval](#retrieval) · [Root Contract](#root-contract) · [Runbook](#runbook)
+- **S** — [Saga Planning](#saga-planning) · [Saga](#saga) · [Scan](#scan) · [Schema Revision](#schema-revision) · [Seqoya Lab](#seqoya-lab) · [Signal Rule](#signal-rule) · [Signal Type](#signal-type) · [Signal](#signal) · [Source Ref](#source-ref) · [Sparse Retrieval](#sparse-retrieval) · [Spec Requirement](#spec-requirement) · [Spec Writing](#spec-writing) · [Spotlight](#spotlight) · [Stale Summary Regeneration](#stale-summary-regeneration) · [Stale](#stale) · [State Runtime Profile](#state-runtime-profile) · [Step Intention](#step-intention) · [Stint](#stint) · [Subscription](#subscription) · [Subscriptions Vigor](#subscriptions-vigor) · [Summary Node](#summary-node) · [Surface](#surface) · [Sync Pass](#sync-pass)
 - **T** — [Taproot](#taproot) · [Text Snapshot](#text-snapshot) · [Theme](#theme) · [Tool](#tool) · [Tool Request](#tool-request) · [Tracked Source](#tracked-source) · [Trivial Trunk](#trivial-trunk) · [Trunk Runtime](#trunk-runtime) · [Turn](#turn)
 - **U** — [UI](#ui) · [UIShell / Chrome](#uishell--chrome) · [User Demo](#user-demo)
 - **V** — [Velocity](#velocity) · [Vigor](#vigor) · [Visit](#visit)
@@ -120,39 +120,41 @@ The high-level plan of a [Saga](#saga) or an [Arc](#arc), written in its file du
 
 ## Arbol
 
-The local, single-user macOS application, consisting of one global [Arbol Swift App](#arbol-swift-app) and one backend for each [Arbol Root](#arbol-root) in use. The Swift App Build supplies shared UI renderers and hosts them in web views. A Root's `arbol` Build supplies its backend, which answers the UI's Bridge calls. The backend holds listeners, resolves Brain Recipes and calls the Root's manager to start [Arbol Trunks](#arbol-trunk), which run [Drivers](#driver). The command line is also `arbol` and works without a running backend. Roots keep separate chat databases and settings; the Swift App and Drivers are shared. See [components and boundaries](architecture/00-components-and-boundaries.md).
+The local, single-user macOS application. One [Arbol Swift App](#arbol-swift-app) hosts the UI renderers and connects through the [Bridge](#bridge) to one [Arbol Backend](#arbol-backend). The installation uses one PostgreSQL database and one private Exchange runtime. The `arbol` command can run from a terminal with the App closed. See [the installation architecture](architecture/04-single-database.md).
 
-**Example:** Elma Chat opened in First Sapling uses the shared Elma renderer and First Sapling's backend. Its accepted Exchange keeps running in a detached Trunk process when Arbol quits; reopening Arbol discovers the retained Roots and reads First Sapling's database and Exchange records again.
+**Example:** Elma Chat sends a message through the backend. The accepted [Chat Exchange](#chat-exchange) runs in a detached [Arbol Trunk](#arbol-trunk). Reopening the App reconnects to the backend, which discovers the Exchange by its UUID.
 
 ## Arbol Backend
 
-The one process of a Root's `arbol` [Build](#build) that serves the [Leather Bag](#leather-bag)'s windows in that Root: it reads the Root's chat tables, keeps the [Drafts](#draft), sends a message by having `arbol-root` start an [Arbol Trunk](#arbol-trunk), follows the answer as it arrives in the Exchange's folder, and passes stops and answers on. One runs for each Root in use, started by the [Arbol Swift App](#arbol-swift-app). Specified in [BKD-0](backend/00-the-arbol-backend.md).
+The owner-only `arbol backend` process serving the installation's App windows and CLI clients. It reads chats from the installed database, keeps [Drafts](#draft) and uses the installation runtime to start and discover detached [Chat Exchanges](#chat-exchange). It relays progress, stops and answers over the [Bridge](#bridge). Specified in [BKD-0](backend/00-the-arbol-backend.md#single-database-amendment).
 
-**Example:** First Sapling's backend listens on `~/Library/Application Support/Arbol/roots/sapling/backend.sock`; an [Elma Chat](#elma-chat) window of First Sapling sends `chat.send` there through the [Bridge](#bridge).
+**Example:** An [Elma Chat](#elma-chat) window sends `chat.send` through the Bridge. The backend listens on `~/.arbol/runtime/backend.sock`.
+
+## Arbol Browser
+
+The shared browser component built from `arbol-browser`, with numbered [Builds](#build), persistent Chromium profiles and a visible per-tab user/agent controller. Arbol or a [Driver](#driver) starts it on demand; one process serves one open profile and ends when its last window closes, with no resident daemon. Every service and Driver uses the `default` profile unless the Leather Bag needs a different login for the same service. Ordinary user tabs are not exposed to an agent unless explicitly shared; **Take control** and **Return control** transfer page input explicitly. Specified in [BRW-0 to BRW-3](../arbol-browser/specs/README.md).
+
+**Example:** A Claude Driver and a Codex Driver use the same `default` login for GitHub in separate agent-controlled tabs. The Leather Bag selects **Take control** in one tab to sign in; that tab becomes user-controlled without exposing an ordinary tab or ending the other tab's work.
 
 ## Arbol Trunk
 
-A complete, versionable implementation of an Arbol communication strategy, named by a *code name* such as `trivial`. Each distinct implementation is a component `arbol-trunk/<code name>`, kept with every other Trunk in the repository `arbol-trunk`, with its own numbered [Builds](#build). It owns one [Chat Exchange](#chat-exchange) from accepted input to its final state, including its chat data. Each Exchange runs in one process, started from a Trunk Build whose list of [Root Contract](#root-contract) versions holds its [Arbol Root](#arbol-root)'s version, and detached when `arbol-root` starts it. Its record retains the `root` and Trunk Build; changing a default or starting another Root never moves accepted work. The Trunk receives the resolved Driver, Subscription, model and effort, and does not choose another route or require Arbol, its Root manager or the database to finish. The inside of the first Trunk, the [Trivial Trunk](#trivial-trunk), is specified separately; the common boundary is [what any Trunk must offer](architecture/00-components-and-boundaries.md#what-any-trunk-must-offer).
+A versioned Arbol communication strategy identified by a code name such as `trivial`. Each implementation is a component `arbol-trunk/<code name>` with independently numbered [Builds](#build). The installation runtime starts the selected compatible Build in a detached process. That process owns one [Chat Exchange](#chat-exchange) from acceptance to settlement and runs the resolved Driver, Subscription, model and effort. Its saved assignment retains the Exchange UUID and exact Trunk Build. See [the installation architecture](architecture/04-single-database.md#exchange-lifecycle-and-persistence).
 
-**Naming warning:** **Arbol Trunk** is the new architectural term. The established bare [Branch](#branch) term continues to name a Git branch Entity; Arbol Trunk is unambiguous.
-
-**Example:** First Sapling lists a conversational Trunk and a research Trunk whose Builds both list its Root Contract version. The caller picks the research component; First Sapling's Root Build starts that component's newest compatible working Build for this Exchange. A later Exchange in the same Chat Session may use the conversational Trunk.
+**Example:** An Exchange accepted by a research Trunk keeps that Build when the caller changes the default Trunk. A later Exchange in the same Chat Session can use a different Trunk.
 
 ## Arbol Component
 
-Any runnable instance/process that makes up a running [Arbol](#arbol). Components differ in lifecycle: the **[Arbol Swift App](#arbol-swift-app)** is user-launched (one process per open window); the **daemons** are long-lived and expected to stay up; **[Driver Instances](#driver-instance)** are launched **on demand** by [Arbol Root](#arbol-root), versioned, run side-by-side during a safe rebuild, then drained and garbage-collected; the **CLI** is short-lived (one process per invocation). The full set:
+A runnable part of [Arbol](#arbol) with its own responsibility and process lifetime.
 
-- **[Arbol Swift App](#arbol-swift-app)** — the shell binary backing every window; one process per open [UI](#ui).
-- **[Arbol Root](#arbol-root)** — control plane and UI gateway. The current `arbol-core` implementation is also the sole Event Log writer and still contains chat execution responsibilities that move behind Trunk boundaries. *(daemon)*
-- **[Event Log](#event-log) service** — independently supervised stable append/replay service backed by PostgreSQL; a target component extracted from current Root-owned persistence. *(daemon; planned target topology)*
-- **[Trunk Runtime](#trunk-runtime)** — a concrete versioned process generation executing one [Arbol Trunk](#arbol-trunk); old and new generations run side by side while Trunk-owned [Chat Exchanges](#chat-exchange) drain. *(independently supervised process)*
-- **[Effector](#effector)** — executes and settles [Tool Requests](#tool-request). *(daemon)*
-- **Integrations** — the *Integrator* daemon (Slack / IMAP / HTTP and other side-channels). *(daemon)*
-- **[Taproot](#taproot)** — the resident [Mycel](#mycel) knowledge host: Corpus Watcher, sync/embed/RAPTOR jobs, and the `knowledge.*` RPCs [Arbol Root](#arbol-root) proxies. *(daemon)*
-- **[Driver Instance](#driver-instance)** — a versioned `<provider>@<build_id>` process with its own binary, launchd job, and socket; launched on demand by [Arbol Root](#arbol-root).
-- **[CLI](#cli)** (`arbol-cli`) — a short-lived client process (one per invocation) driving the same [Arbol Root](#arbol-root)/daemon RPC the UIs use. Also a [Surface](#surface).
+- The [Arbol Swift App](#arbol-swift-app) hosts the windows and native surfaces.
+- One [Arbol Backend](#arbol-backend) serves the installation's App and CLI clients.
+- An [Arbol Trunk](#arbol-trunk) process owns one accepted [Chat Exchange](#chat-exchange).
+- A [Driver Instance](#driver-instance) is a versioned process started on demand.
+- [Arbol Browser](#arbol-browser) starts one process per open profile on demand.
+- The [CLI](#cli) runs for one invocation.
+- The legacy runtime profile also describes services such as [Event Log Service](#event-log-service), [Effector](#effector) and [Taproot](#taproot).
 
-**Example:** You can restart the Swift App, Root, Effector, and Integrations together; [Arbol Root](#arbol-root) then launches [Driver Instances](#driver-instance) on demand as turns route to each provider; an `arbol-cli` invocation is a fifth component that comes and goes.
+**Example:** An accepted Exchange can continue in its detached Trunk while the App or the backend restarts.
 
 ## Arbol-Initiated Chat Session
 
@@ -174,9 +176,9 @@ An [Entity](#entity) (kind `secret`, tag `sec`): a user-provided value containin
 
 ## Arbol Swift App
 
-The native macOS Swift/AppKit component built from `arbol-app`, with its own numbered [Builds](#build) outside every [Arbol Root](#arbol-root). One process holds the tray menu, hotkeys, native surfaces and the web views of the UIs. It discovers the retained Roots on every start and loads its shared renderer bundles into Root-specific windows. It exposes the [Bridge](#bridge) and passes calls and subscriptions to the selected Root's backend without interpreting them or opening its database. Each Root records its minimum App Build; the tray menu offers Roots the running App can serve and says which Build the others need. See [the Swift App and the backend](architecture/00-components-and-boundaries.md#arbol-the-swift-app-and-the-backend) and [BKD-3](backend/03-the-arbol-swift-app.md).
+The native macOS Swift/AppKit component built from `arbol-app`. It hosts window renderers, the tray menu, hotkeys and native surfaces. The App connects to the installation backend over the owner-only [Bridge](#bridge). The backend handles database access. See [BKD-3](backend/03-the-arbol-swift-app.md) and [the current component boundary](architecture/00-components-and-boundaries.md#single-database-amendment).
 
-**Example:** One Swift App shows First Sapling and a second Root in its tray menu. Opening Elma Chat in each loads the same shared renderer and connects it to the corresponding Root's backend in the same Swift App process.
+**Example:** Elma Chat and Seqoya Lab load different renderers in the App and connect to the same backend.
 
 ## Arc
 
@@ -239,13 +241,13 @@ An attestation **decays**: it is bound to the version it verified, so when the c
 
 ## Attention Item
 
-Something that is not a normal state of a Root and that every window of the Root shows for as long as it lasts, with its cause, such as a database server that does not answer or a disk that is nearly full. The [Arbol Backend](#arbol-backend) opens and closes it and sends it over the [Bridge](#bridge). Specified in [BKD-1](backend/01-the-bridge.md#attention).
+An ongoing condition that the App displays in its windows, with the cause. The [Arbol Backend](#arbol-backend) publishes and clears it over the [Bridge](#bridge). Examples include a database outage or low disk space. Specified in [BKD-1](backend/01-the-bridge.md#attention).
 
-**Example:** While the database server restarts, every window of First Sapling shows "The database server does not answer at 127.0.0.1:5433", and the line goes when the server answers again.
+**Example:** The windows show that the database server is unavailable while it restarts. The message clears when the server responds again.
 
 ## Authoritative Input
 
-The exact initiator input durably accepted by an [Arbol Trunk](#arbol-trunk) as the request to execute in one [Chat Exchange](#chat-exchange). Before acceptance, Composer content is a provisional [Draft](#draft) and may trigger speculative Activities; after acceptance, the immutable Authoritative Input is the only text and attachment set that may determine the Exchange's agent invocation and required effects. Accepting Authoritative Input is distinct from [Exchange Assignment](#exchange-assignment): assignment binds the Exchange to its Root, Trunk Build and process, while input acceptance establishes what that Exchange must process.
+The exact initiator input durably accepted by an [Arbol Trunk](#arbol-trunk) as the request to execute in one [Chat Exchange](#chat-exchange). Before acceptance, Composer content is a provisional [Draft](#draft) and may trigger speculative Activities; after acceptance, the immutable Authoritative Input is the only text and attachment set that may determine the Exchange's agent invocation and required effects. Accepting Authoritative Input is distinct from [Exchange Assignment](#exchange-assignment): assignment binds the Exchange UUID to its Trunk Build and process, while input acceptance establishes what that Exchange must process.
 
 **Example:** A Draft mentions “Arbol Trunk,” starts speculative Cue extraction, and is then edited before Send. Only the exact text and attachments accepted on Send are Authoritative Input; removed provisional Cues cannot affect the agent invocation.
 
@@ -349,7 +351,7 @@ A guided inspection of code changes on a dedicated Elma page: the Leather Bag se
 
 ## Chat Exchange
 
-One message of the [Leather Bag](#leather-bag) in a [Chat Session](#chat-session) and the agent's answer to it, from its acceptance by one [Arbol Trunk](#arbol-trunk) process ([RCT-2](../arbol-root/contract/02-starting-stopping-and-settling.md#accepting-a-message)) to its end; one row of `exchanges` in the chat tables of its [Arbol Root](#arbol-root)'s database ([RCT-3](../arbol-root/contract/03-the-chat-tables.md)). A message that is refused is no Exchange: it leaves no row, starts nothing, and its [Draft](#draft) stays in the composer. From acceptance the one process owns the Exchange and runs it with the one route it was handed, with no retry on another route and no failover. It ends the Exchange by itself as completed, failed with its cause, or cancelled; when the process died first, settling ends it as interrupted. An Exchange may hold several agent [Turns](#turn) and tool calls. **Chat Exchange** replaces the old broad product use of “Turn”; `Exchange` is the accepted short form when context is unambiguous. See [a Chat Exchange across the components](architecture/02-chat-exchange-across-components.md).
+One message of the [Leather Bag](#leather-bag) in a [Chat Session](#chat-session) and the agent's answer to it, from its acceptance by one [Arbol Trunk](#arbol-trunk) process to its end. The Exchange is recorded in the installed database and identified by its UUID. A message that is refused is no Exchange: it leaves no row, starts nothing, and its [Draft](#draft) stays in the composer. From acceptance the one process owns the Exchange and runs it with the one route it was handed, with no retry on another route and no failover. It ends the Exchange by itself as completed, failed with its cause, or cancelled; when the process died first, settling ends it as interrupted. An Exchange may hold several agent [Turns](#turn) and tool calls. **Chat Exchange** replaces the old broad product use of “Turn”; `Exchange` is the accepted short form when context is unambiguous. See [a Chat Exchange across the components](architecture/02-chat-exchange-across-components.md).
 
 In version 1 an Exchange was owned by a resident [Trunk Runtime](#trunk-runtime) through an assignment recorded in the [Event Log](#event-log), began when the composing of a message began, and could hold Draft revisions, retries and failovers.
 
@@ -391,9 +393,9 @@ The step of [Ingest](#ingest) that splits one corpus file's text into **chunk ca
 literal: exclude
 -->
 
-`arbol-cli`: the command-line client — both an [Arbol Component](#arbol-component) (a short-lived process, one per invocation) and a terminal [Surface](#surface). A thin, stateless RPC client that reaches [Arbol Root](#arbol-root) and the other daemons over their Unix sockets, exposing the *same* method surface the [UIs](#ui) use — `session.*`, `ip.*`, `subscription.*`, `secrets.*`, `integration.*`, plus `healthz` / `triage` / `audit` / `watch` / `pending` / `approve`. It owns no state; every daemon it calls is the real owner. Built by `build.sh` (→ `dist/Arbol/bin/arbol-cli`) and installed to `$PREFIX/bin`. Serves as the headless admin / diagnostic / scripting interface: `gc-ip-instances.sh` drives [Driver Instance](#driver-instance) garbage-collection through it (`ip gc-candidates` / `ip collect`), and `rebuild-and-restart.sh` gates Root readiness on `arbol-cli healthz`.
+The `arbol` command-line program. Each invocation handles one request and exits. It can access the installation backend with the App closed and provides commands for inspecting health, managing subscriptions and working with Exchanges. See [the installation architecture](architecture/04-single-database.md).
 
-**Example:** `arbol-cli session list` or `arbol-cli ip collect <id>` performs the same RPC a [UI](#ui) would, straight from a terminal — useful for debugging a wedged daemon without opening a window.
+**Example:** `arbol backend` starts the installation backend from the terminal.
 
 ## Code Map
 
@@ -447,7 +449,7 @@ A locator for the Artifact content a [Cue Card](#cue-card) adds. A Cue Target id
 literal: exclude
 -->
 
-An *intent* to change state — imperative, present/future tense (`SendMessage`, `CreateChatSession`), the counterpart to an [Event](#event-log) (a past-tense fact). A Command is *requested*, never stored as truth: [Arbol Root](#arbol-root) validates it against the current [folded](#fold--projection) state via the [Aggregate](#aggregate) guard, and on success it produces one or more events; on failure it is **rejected** (e.g. `IllegalTransition`). Events are immutable and cannot be rejected; Commands can be edited or refused right up until they are accepted. A [Draft](#draft) is a durable, editable representation of not-yet-accepted input; its revision and lifecycle facts may be event-sourced without turning the provisional content into accepted [Authoritative Input](#authoritative-input). See also: [Draft](#draft), [Aggregate](#aggregate), [Event Log](#event-log).
+An *intent* to change state — imperative, present/future tense (`SendMessage`, `CreateChatSession`), the counterpart to an [Event](#event-log) (a past-tense fact). A Command is *requested*, never stored as truth: the component that owns the affected state validates it against the current [folded](#fold--projection) state via the [Aggregate](#aggregate) guard, and on success it produces one or more events; on failure it is **rejected** (e.g. `IllegalTransition`). Events are immutable and cannot be rejected; Commands can be edited or refused right up until they are accepted. A [Draft](#draft) is a durable, editable representation of not-yet-accepted input; its revision and lifecycle facts may be event-sourced without turning the provisional content into accepted [Authoritative Input](#authoritative-input). See also: [Draft](#draft), [Aggregate](#aggregate), [Event Log](#event-log).
 
 **Example:** "Send this message" is a Command. If the [Chat Session](#chat-session) is `archived`, the guard rejects it; if legal, it is accepted and appended as the `USER_SENT_MESSAGE` event — at which point it is a fact and can no longer be unsent, only superseded by later events.
 
@@ -461,7 +463,7 @@ A Communicado is an [Entity](#entity) (kind `communicado`, tag `com`, shape `mar
 
 ## Communicado Action
 
-A choice a [Communicado Species](#communicado-species) offers on one [Communicado](#communicado). Selecting an Action expresses user intent; it should enter Arbol as a [Command](#command), which [Arbol Root](#arbol-root) validates before resulting facts are recorded—not let a renderer append an event or execute an arbitrary RPC directly.
+A choice a [Communicado Species](#communicado-species) offers on one [Communicado](#communicado). Selecting an Action expresses user intent; it should enter Arbol as a [Command](#command), which the component that owns the affected state validates before recording the result.
 
 **Example:** **Retry**, **Open pipeline**, and **Dismiss** can be three Actions on a failed-pipeline Communicado.
 
@@ -514,14 +516,6 @@ A **one-shot, non-agentic** model call: a single prompt → output via a [Brain 
 **Example:** RAPTOR runs each cluster through a Completion — prompt in, summary out — instead of spinning up a throwaway Chat Session per cluster.
 
 <a id="core"></a>
-## Arbol Root
-
-**Arbol Root**, or **Root**, is a named, persistent environment for all [Arbol Trunks](#arbol-trunk) compatible with it: its identifier, display name, folder, database, settings and the Builds of `arbol` and `arbol-root` made for it. A **Root Build** is a numbered Build of `arbol-root`, the manager of that environment. It lists compatible Trunk components and Builds, selects a compatible working Build within the caller's chosen component or the [Trivial Trunk](#trivial-trunk), starts Exchanges detached, lists and stops them, and delegates interrupted-Exchange settlement to a Trunk. Each invocation is a short command; no resident Root process is required. The environment outlives its manager's invocations and Builds. See [Roots](architecture/01-roots.md) and [the Root manager](architecture/00-components-and-boundaries.md#arbol-root).
-
-Roots replace the proposed name Ring. A breaking change creates a new Root beside the old one, preserving the old Root's chats and usability. The global `arbol-roots` command, outside every Root, manages the catalogue, creation, readiness, failure, minimum App Build, migration and removal. The global Swift App discovers Roots again when it starts; each Root has its own backend Builds and uses the App's shared renderer. Drivers, Subscriptions, Trunk Builds, the App and the build registry are shared. The Root manager holds compatibility and lifecycle policy, reads Exchange records and never reads chat content or opens the database. An accepted Exchange keeps its `root` and Trunk Build and continues when the manager, backend or App ends.
-
-**Example:** First Sapling uses Root Build `6`; a second Root uses Root Build `8`. Both can use a compatible research Trunk Build when both use the same Root Contract version. Replacing First Sapling's Root Build changes later command invocations, while its existing Exchanges continue in the processes already started for them.
-
 ## Corpus
 
 A set of files [Mycel](#mycel) watches and reasons over (plural: *corpora*). Each [Repo](#repo) has two: its [Artifact Corpus](#artifact-corpus) (documents under `~/Artifacts/<repo-name>/`) and its [Code Corpus](#code-corpus) (indexed source roots) — named per Repo, e.g. the *Arbol Artifact Corpus* and the *Arbol Code Corpus*. A corpus is turned into stored [Chunks](#chunk) by [Ingest](#ingest); the stored graph is a **projection** of the corpus — accurate only as of the last ingest, which is why the [Corpus Watcher](#corpus-watcher) re-syncs it whenever corpus files change.
@@ -548,9 +542,54 @@ A choice the owner made about a product, recorded as one row of a specification'
 
 **Example:** `| MYC-D45 <!-- 9b6984cc-db34-4a84-b948-0eaefbea916a --> | What is a requirement or decision in the Index Store? | … | Decided 19 October 2026 by the owner: … |` is one Decision; `mycel read '[dec:9b6984cc-db34-4a84-b948-0eaefbea916a:…]'` returns the row and the content of the chats its Discussion cell names.
 
+## Deck Talk
+
+The owner's local agent communication service and the `deck-talk` repository at
+`~/repos/deck-talk`. An agent displays a question on an Elgato Stream Deck +,
+assigns up to three answer options to physical buttons 6–8, and receives the selected
+option through the local HTTP API or MCP adapter. Button 1 shows an animated
+countdown; questions allow five minutes by default. Agents declare a cancel-like
+option by ID, or Deck Talk adds a separate red "Don't answer" answer key. The
+countdown is display-only. Choices can span swipe pages while Cancel stays
+visible. Declining returns
+cancellation, never an ordinary answer. Unresolved questions have a breathing
+background and cannot be cleared until answered or explicitly cancelled, even
+after timeout. Informational messages need no reply and have a steady background.
+Agents can import batches with original timestamps; message age and history order
+use that time rather than reception time. High-priority urgent alerts interrupt
+the view with a vibrant background and a chime, and lock history navigation until
+physical button 6 acknowledges them. Pending alerts survive restart and cannot
+be cleared; acknowledgement means seen, not permission or a question answer.
+Buttons 2–4 show the clock,
+and button 5 shows the message's age. All incoming messages and outcomes are saved
+locally across restarts. Turn knob 1 to browse history; press it for a
+"Clear message history?" confirmation (Yes on button 6, No on button 7). The monitor
+brightness, Deck brightness, and volume knobs continue working during questions.
+The touchscreen shows message text without a metadata header. For overflowing
+messages, knob 2 temporarily scrolls one wrapped line per detent instead of
+adjusting monitor brightness; a thin right-side overview marks the visible text
+and what remains above and below. Knob 1 still browses message history.
+
+Messages can also offer reusable purple command keys. Each action carries a
+named `callback.command` and JSON arguments, routed to a unique `consumerId`.
+An agent/app receives commands through MCP or HTTP, handles them in its own
+context, and acknowledges completion or failure. The durable inbox preserves
+unacknowledged events across reconnects; command keys are distinct from answers.
+
+Whenever an owner message contains the literal term **Deck Talk**, load the
+[Deck Talk instructions](/Users/msix/repos/deck-talk/skills/deck-talk/SKILL.md)
+before responding or acting. The same skill is installed for Claude Code,
+Codex, and Kimi Code. Detailed guidance is maintained in the repository and available through
+the MCP resource `deck-talk://instructions`.
+
+**Example:** “Ask me through Deck Talk whether to run the full test suite” loads
+the instructions, displays the choices, and returns the pressed option to the
+requesting agent. “Update Deck Talk” loads the same instructions before work in
+the repository.
+
 ## Default Arbol Trunk
 
-The first [Arbol Trunk](#arbol-trunk), created by behavior-preserving isolation of the chat communication implementation currently centered on `ChatSessionOrchestrator`. It is the compatibility baseline used while Root–Trunk process boundaries, complete Chat Session Event Sourcing, and side-by-side Trunk replacement are introduced. “Default” names this specific Trunk implementation, not a permanently privileged architecture role; later Trunks may be selected for future [Chat Exchanges](#chat-exchange). It is not the [Trivial Trunk](#trivial-trunk), the default Trunk of every Root in Arbol 2.
+The first [Arbol Trunk](#arbol-trunk), created by behavior-preserving isolation of the chat communication implementation currently centered on `ChatSessionOrchestrator`. It is the compatibility baseline used while separate control and Trunk processes, complete Chat Session Event Sourcing, and side-by-side Trunk replacement are introduced. “Default” names this specific Trunk implementation, not a permanently privileged architecture role; later Trunks may be selected for future [Chat Exchanges](#chat-exchange). The single-installation architecture defaults to the [Trivial Trunk](#trivial-trunk).
 
 **Example:** During the first migration, all new Exchanges are assigned to a Default Arbol Trunk runtime even though old and new runtime generations may coexist during a safe rebuild.
 
@@ -582,7 +621,7 @@ The designed refinement handles a source change on **two channels**, by *what ki
 
 ## Draft
 
-Composer input—text, attachments, and related editable selections—that the [Leather Bag](#leather-bag) has not sent yet, before a [Chat Exchange](#chat-exchange) is accepted. A Draft belongs to Arbol: the Arbol backend keeps it in Arbol's own tables of the Root's database, apart from the chat tables a Trunk writes (see [who writes what](architecture/00-components-and-boundaries.md#who-writes-what)). It may have durable, coalesced revisions so it survives a restart of a UI or of the backend, and so speculative [Activity Executions](#activity-execution) can identify the exact [Text Snapshot](#text-snapshot) they observed. Sending hands the message to a Trunk: once the Trunk accepts it, it is the Exchange's [Authoritative Input](#authoritative-input); when it is refused, nothing starts and the Draft stays in the composer ([the Exchange steps](architecture/02-chat-exchange-across-components.md#the-steps)). Abandoning a Draft starts no Exchange.
+Composer input—text, attachments, and related editable selections—that the [Leather Bag](#leather-bag) has not sent yet, before a [Chat Exchange](#chat-exchange) is accepted. A Draft belongs to Arbol: the Arbol backend keeps it in Arbol's own tables of the installed database, apart from the chat tables a Trunk writes (see [who writes what](architecture/00-components-and-boundaries.md#who-writes-what)). It may have durable, coalesced revisions so it survives a restart of a UI or of the backend, and so speculative [Activity Executions](#activity-execution) can identify the exact [Text Snapshot](#text-snapshot) they observed. Sending hands the message to a Trunk: once the Trunk accepts it, it is the Exchange's [Authoritative Input](#authoritative-input); when it is refused, nothing starts and the Draft stays in the composer ([the Exchange steps](architecture/02-chat-exchange-across-components.md#the-steps)). Abandoning a Draft starts no Exchange.
 
 In version 1 a Draft was placed inside a provisional, Trunk-owned Chat Exchange, which abandoning the Draft closed or cancelled; the implementation stored new-chat Drafts on their own and made the chat's record only on Send.
 
@@ -640,7 +679,7 @@ The code that speaks one provider's CLI/API and Arbol's request protocol (`drive
 
 ## Driver Instance
 
-A concrete, versioned build of a [Driver](#driver), identified `<provider>@<build_id>` (e.g. `claude@20260612T135543Z-…`). The unit that is started, run side-by-side during a safe rebuild, drained, and garbage-collected. One or more [Intelligence Providers](#intelligence-provider-ip) route to one Driver Instance per [Build](#build). *(Not "daemon" — that term is reserved for [Arbol Root](#arbol-root) and [Effector](#effector) background processes. The binary/socket/launchd filenames, e.g. `arbol-driver-claude` / `driver.claude.sock` / `com.arbol.driver.claude`, are implementation details.)*
+A concrete, versioned build of a [Driver](#driver), identified `<provider>@<build_id>` (e.g. `claude@20260612T135543Z-…`). The unit that is started, run side-by-side during a safe rebuild, drained, and garbage-collected. One or more [Intelligence Providers](#intelligence-provider-ip) route to one Driver Instance per [Build](#build). Driver Instances start on demand. Binary, socket and launchd filenames are implementation details.
 
 **Example:** `claude@20260612T135543Z-a1b2c3` and `claude@20260613T090000Z-d4e5f6` can run side-by-side while Agent Attempts pinned to the old instance drain.
 
@@ -724,7 +763,7 @@ The **standalone app that holds the warm on-device embedding model** — `mycel_
 
 ## Email Source Item
 
-One durable, provider-message-level input to email automation. Its private external capture is stored raw-first under `~/Artifacts/mirrors/emails/`; a versioned Normalizer writes canonical text, structured metadata, and sanitized HTML under `~/Artifacts/emails/`. Root keeps a rebuildable index with provider message/thread identity, an immutable acceptance sequence, content hash, provenance paths, and evidence-based completeness (`preview`, `partial`, `rendered_complete`, or `raw_complete`). Gmail DOM captures may be `rendered_complete`, never `raw_complete`.
+One durable, provider-message-level input to email automation. Its private external capture is stored raw-first under `~/Artifacts/mirrors/emails/`; a versioned Normalizer writes canonical text, structured metadata, and sanitized HTML under `~/Artifacts/emails/`. Arbol keeps a rebuildable index with provider message/thread identity, an immutable acceptance sequence, content hash, provenance paths, and evidence-based completeness (`preview`, `partial`, `rendered_complete`, or `raw_complete`). Gmail DOM captures may be `rendered_complete`, never `raw_complete`.
 
 **Example:** One rendered notification inside a Gmail conversation becomes an Email Source Item distinct from the inbox-row/thread preview and from other messages in that conversation.
 
@@ -834,33 +873,31 @@ The **gitignored-but-precious files** a fresh checkout or worktree needs but git
 
 ## Event Log
 
-The single source of truth: an append-only, ordered, durable record of facts. Everything else is derived from it. In the Arbol Trunk target architecture, Trunks author chat facts and append them through an independently supervised **Event Log service** backed by required PostgreSQL storage; [Arbol Root](#arbol-root) replays those facts for projections and UIs. The service owns ordering, idempotency, validation, replay, and database-facing persistence, but not chat orchestration.
+The single source of truth: an append-only, ordered, durable record of facts. Everything else is derived from it. In the legacy event-sourced runtime, Trunks author chat facts and append them through an independently supervised **Event Log service** backed by required PostgreSQL storage; Arbol replays those facts for projections and UIs. The service owns ordering, idempotency, validation, replay, and database-facing persistence, but not chat orchestration.
 
-If the Event Log service or PostgreSQL briefly restarts, Trunks remain alive and retain their Exchanges but pause at durability boundaries until they reconnect and reconcile. Root must show an explicit database/service-unavailable error while the dependency is down. See also: [Aggregate](#aggregate), [Fold / Projection](#fold--projection), [Fanout](#fanout).
+If the Event Log service or PostgreSQL briefly restarts, Trunks remain alive and retain their Exchanges but pause at durability boundaries until they reconnect and reconcile. The App shows an explicit database/service-unavailable error while the dependency is down. See also: [Aggregate](#aggregate), [Fold / Projection](#fold--projection), [Fanout](#fanout).
 
-**Example:** Instead of storing “current chat text” as the source of truth, Arbol stores events such as message appended, tool requested, and tool settled. Root can restart and rebuild its view while independently running Trunks and the Event Log preserve the conversation.
+**Example:** Instead of storing “current chat text” as the source of truth, Arbol stores events such as message appended, tool requested, and tool settled. Arbol can restart and rebuild its view while independently running Trunks and the Event Log preserve the conversation.
 
 ## Event Log Service
 
-The independently supervised Arbol daemon that provides the stable append, read, replay, subscription, ordering, optimistic-concurrency, idempotency, validation, and upcasting boundary for the [Event Log](#event-log), backed by required PostgreSQL storage. It persists facts authored by [Arbol Trunks](#arbol-trunk) and serves replay to [Arbol Root](#arbol-root), but it does not select Trunks, run Activities, invoke agents, settle tools, or implement UI policy. Old and new Trunk Runtime generations may use compatible versions of its protocol concurrently.
+The independently supervised Arbol daemon that provides the stable append, read, replay, subscription, ordering, optimistic-concurrency, idempotency, validation, and upcasting boundary for the [Event Log](#event-log), backed by required PostgreSQL storage. It persists facts authored by [Arbol Trunks](#arbol-trunk) and serves replay to Arbol, but it does not select Trunks, run Activities, invoke agents, settle tools, or implement UI policy. Old and new Trunk Runtime generations may use compatible versions of its protocol concurrently.
 
 If the Event Log Service or PostgreSQL restarts briefly, Trunks remain alive and retain Exchange ownership but pause at durability boundaries, reconnect, reconcile by stable identities and revisions, and continue. PostgreSQL unavailability is a hard application error, not a degraded mode that permits unrecorded chat effects.
 
-**Example:** Root is killed while a Default Trunk continues an Exchange. The Trunk keeps appending facts through the still-running Event Log Service; a later brief PostgreSQL restart pauses the Trunk for several seconds without failing or duplicating the Exchange.
+**Example:** The application process exits while a Default Trunk continues an Exchange. The Trunk keeps appending facts through the still-running Event Log Service; a later brief PostgreSQL restart pauses the Trunk for several seconds without failing or duplicating the Exchange.
 
 ## Event Sourcing
 
-The architecture in which accepted state changes are represented first as immutable facts in an [Event Log](#event-log), while current state, guards, timelines, and UI views are deterministic folds or projections of those facts. Event Sourcing is an architectural method, not a process: [Arbol Trunks](#arbol-trunk) author chat facts, the [Event Log Service](#event-log-service) persists them, and [Arbol Root](#arbol-root) rebuilds presentation projections from them. High-frequency transient token deltas need not be individual events, but consequential Chat Session, Exchange, Activity, agent, tool, and outcome facts must be recoverable and causally inspectable.
+The architecture in which accepted state changes are represented first as immutable facts in an [Event Log](#event-log), while current state, guards, timelines, and UI views are deterministic folds or projections of those facts. Event Sourcing is an architectural method, not a process: [Arbol Trunks](#arbol-trunk) author chat facts, the [Event Log Service](#event-log-service) persists them, and Arbol rebuilds presentation projections from them. High-frequency transient token deltas need not be individual events, but consequential Chat Session, Exchange, Activity, agent, tool, and outcome facts must be recoverable and causally inspectable.
 
-**Example:** After Root restarts, it replays Chat Session and Chat Exchange events to reconstruct messages, active work, pending Action Items, and owning Trunk Runtimes instead of trusting the process state it lost.
+**Example:** After the application restarts, it replays Chat Session and Chat Exchange events to reconstruct messages, active work, pending Action Items, and owning Trunk Runtimes instead of trusting the process state it lost.
 
 ## Exchange Assignment
 
-The acceptance boundary that binds a new [Chat Exchange](#chat-exchange) to its [Arbol Root](#arbol-root), selected Trunk Build and process. The Root manager starts the selected compatible Build with the resolved route and Root. The Trunk writes the Exchange record in that Root's folder and the submitted message in its database before reporting acceptance. From acceptance to the final state the Exchange is Trunk-owned and retains its `root` and Trunk Build. It continues when the manager or Arbol is absent; it is never reassigned by a Build or Root change. If input is refused before acceptance, the Draft stays in the composer. See [the Exchange steps](architecture/02-chat-exchange-across-components.md#the-steps).
+The durable record of the [Chat Exchange](#chat-exchange) UUID, the selected Trunk code name and the exact Trunk Build. The installation runtime starts a detached process with the resolved route. The Trunk publishes its private Exchange folder and durably records the input and assignment before acknowledging acceptance. A repeat with the same UUID starts no duplicate Exchange. If the start is refused, the [Draft](#draft) stays in the composer. See [Exchange lifecycle and persistence](architecture/04-single-database.md#exchange-lifecycle-and-persistence).
 
-This replaces the legacy assignment to a resident Trunk Runtime generation. There is one process per accepted Exchange; the precise command and file formats, including duplicate-submission handling, belong to the [Root Contract](#root-contract) ([RCT-2](../arbol-root/contract/02-starting-stopping-and-settling.md#a-repeat-after-a-lost-answer): a repeat with the same Exchange identifier starts nothing) and are not specified by this definition.
-
-**Example:** First Sapling's manager starts research Trunk Build `a3` for Exchange E4. The Trunk records E4's First Sapling `root`, Build and process, writes its input and acknowledges acceptance. Opening a second Root later does not move E4; it finishes in First Sapling.
+**Example:** Exchange E4 is accepted by research Trunk Build `a3`. The backend can restart and find E4 by its UUID. The accepted assignment to `a3` continues.
 
 ## Exchange Update
 
@@ -878,7 +915,7 @@ A [Subscription](#subscription) whose vendor refuses every request because a win
 
 Pub/sub delivery of appended events to live subscribers.
 
-**Example:** When Root appends a new turn event, Elma Chat and a status bar subscriber both receive the update live.
+**Example:** When Arbol appends a new turn event, Elma Chat and a status bar subscriber both receive the update live.
 
 ## Feature Course
 
@@ -900,7 +937,7 @@ An [Entity](#entity) (kind `flyer`, tag `fly`): any excerpt of text carrying imp
 
 ## Fold / Projection
 
-A deterministic reduce over [Event Log](#event-log) events into a derived view (a read model in [Arbol Root](#arbol-root), `project()` in a UI). Disposable and rebuildable.
+A deterministic reduce over [Event Log](#event-log) events into a derived view (a read model in Arbol, `project()` in a UI). Disposable and rebuildable.
 
 **Example:** To render a conversation tree, the UI folds message and branch events into the current tree; deleting the projection is safe because it can be rebuilt from the Event Log.
 
@@ -948,6 +985,18 @@ a prototype, the rest is not implemented yet.
 changed by hand, nobody has booked it" as a `notification`; it appears on the
 Deck within seconds, while the debug post of each Duty Routine check appears
 only when the owner presses Debug.
+
+## Forester Hook
+
+An automatic callback that invokes [Forester](#forester) at a specific point
+in an agent session or a Git operation. Depending on the event, Forester can
+record what happened, add context for the agent, or block an action.
+The [Forester Hook Reference](../forester/operations/hooks.md) lists the
+harness events and Git hooks Forester handles.
+
+**Example:** Before Codex applies a patch, its `PreToolUse` callback invokes
+`forester hook --tool codex pre-tool-use`. Forester can refuse the edit if an
+affected file falls outside the session's booking.
 
 ## Forester Watcher
 
@@ -1048,7 +1097,7 @@ Whatever matches neither round is **new** (fresh id); stored chunks left unmatch
 
 ## Ignore Rule
 
-Mutable user configuration that prevents a matching external source from being retained, displayed, parsed, classified, or used to emit future [Signals](#signal). Email Ignore Rules match one canonical sender or one domain plus label-bounded subdomains and are enforced by [Arbol Root](#arbol-root) before private Artifact writes. Creating one purges matching retained source/derived content and suppresses matching local Signals while retaining only invisible correctness tombstones; removing it permits later provider synchronization but does not restore purged content.
+Mutable user configuration that prevents a matching external source from being retained, displayed, parsed, classified, or used to emit future [Signals](#signal). Email Ignore Rules match one canonical sender or one domain plus label-bounded subdomains and are enforced by Arbol before private Artifact writes. Creating one purges matching retained source/derived content and suppresses matching local Signals while retaining only invisible correctness tombstones; removing it permits later provider synchronization but does not restore purged content.
 
 **Example:** Ignoring domain `com` intentionally suppresses every sender in `.com`; the confirmation previews the impact rather than prohibiting that broad rule.
 
@@ -1107,7 +1156,7 @@ The **one stable address every knowledge consumer memorizes**: `~/Artifacts/myce
 
 ## Intelligence Provider (IP)
 
-A configured, build-agnostic way to run inference: a [Driver](#driver) + a bound [Subscription](#subscription) + repo rules + a **default** model + thinking, **spanning all the models that provider offers** (the default is just that — a default, not the only model it may run). A given run can pin a specific model + thinking via a [Brain Recipe](#brain-recipe), still subject to the IP's repo rules. The unit [Seqoya Lab](#seqoya-lab) manages and a [Chat Session](#chat-session) is pinned to. Deployed IPs: `bro-claude`, `safe-claude`, `codex`, `cursor`. Several IPs can share one Driver — `bro-claude` and `safe-claude` both run on the `claude` Driver; [Arbol Root](#arbol-root) hands the IP's bound Subscription token to the Driver per [Turn](#turn), so the Driver itself is subscription-agnostic. **IP refers to this layer only.**
+A configured, build-agnostic way to run inference: a [Driver](#driver) + a bound [Subscription](#subscription) + repo rules + a **default** model + thinking, **spanning all the models that provider offers** (the default is just that — a default, not the only model it may run). A given run can pin a specific model + thinking via a [Brain Recipe](#brain-recipe), still subject to the IP's repo rules. The unit [Seqoya Lab](#seqoya-lab) manages and a [Chat Session](#chat-session) is pinned to. Deployed IPs: `bro-claude`, `safe-claude`, `codex`, `cursor`. Several IPs can share one Driver — `bro-claude` and `safe-claude` both run on the `claude` Driver; the Driver receives the bound Subscription for each [Turn](#turn), so the Driver itself is subscription-agnostic. **IP refers to this layer only.**
 
 **Example:** `safe-claude` pairs the Claude driver with Alex’s Claude subscription, a default model + conservative thinking, and strict repo rules; a given run may pin a different model + thinking via a [Brain Recipe](#brain-recipe), still bound by those repo rules.
 
@@ -1214,7 +1263,7 @@ See the [Required Pace example](#required-pace) for a worked comparison of three
 
 ## Mycel
 
-The knowledge engine *(formerly the "Knowledge System"; named for **mycelium**, the underground network through which real trees share nutrients and signals — what this system is to Arbol's tree-named apps)*. Mycel turns each [Repo](#repo)'s [Corpora](#corpus) into a *maintained, trustworthy, queryable* knowledge graph. Its source and build live in the independent `~/repo/sylvan-stack/mycel` repository; it publishes the standalone `mycel` and `better-grep` commands to `~/bin`. Mycel is a **pure library + per-task CLI — NO daemon of its own**. It owns the `kn_`-prefixed Postgres tables and `~/.mycel/config.toml` (repositories, database, embedding, and mirror settings); Brain Recipes belong to the independent Infer tool in `~/.infer/config.toml`. Mycel never imports or invokes Arbol code or instructions, although it may read Arbol databases, logs, source, and artifacts as data. Arbol is one consumer: its own **[Taproot](#taproot)** daemon (`daemons/taproot/`, `taproot.sock`) bundles Mycel's public library in the allowed direction to add a Corpus Watcher, sync loop, and UI-facing RPCs. Mycel invokes the independent `infer` executable when [RAPTOR](#raptor-tree) needs completions and has no Arbol Root fallback. See the [external tool architecture](../arbol_deprecated_v1/architecture/external-tools.md) for the repository and contract boundaries. Its capabilities span the full lifecycle of a [Chunk](#chunk):
+The knowledge engine *(formerly the "Knowledge System"; named for **mycelium**, the underground network through which real trees share nutrients and signals — what this system is to Arbol's tree-named apps)*. Mycel turns each [Repo](#repo)'s [Corpora](#corpus) into a *maintained, trustworthy, queryable* knowledge graph. Its source and build live in the independent `~/repo/sylvan-stack/mycel` repository; it publishes the standalone `mycel` and `better-grep` commands to `~/bin`. Mycel is a **pure library + per-task CLI — NO daemon of its own**. It owns the `kn_`-prefixed Postgres tables and `~/.mycel/config.toml` (repositories, database, embedding, and mirror settings); Brain Recipes belong to the independent Infer tool in `~/.infer/config.toml`. Mycel never imports or invokes Arbol code or instructions, although it may read Arbol databases, logs, source, and artifacts as data. Arbol is one consumer: its own **[Taproot](#taproot)** daemon (`daemons/taproot/`, `taproot.sock`) bundles Mycel's public library in the allowed direction to add a Corpus Watcher, sync loop, and UI-facing RPCs. Mycel invokes the independent `infer` executable when [RAPTOR](#raptor-tree) needs completions and requires no Arbol service for that call. See the [external tool architecture](../arbol_deprecated_v1/architecture/external-tools.md) for the repository and contract boundaries. Its capabilities span the full lifecycle of a [Chunk](#chunk):
 
 - **[Ingest](#ingest)** — files → [Chunks](#chunk) → stable identity → hashes *(built)*
 - **[Derivation](#derivation)** — record where each chunk came from *(built)*
@@ -1262,6 +1311,18 @@ Creating or changing a Mycel Skill means supporting **both native Codex CLI and 
 
 **Example:** `code-research` is one Mycel Skill, invoked as `$code-research` in Codex or `/code-research` in Claude. Both discover the same activation contract, and `~/Artifacts/mycel/operations/code-research.md` owns its process.
 
+## Narrative
+
+A short, typed summary produced by the [Narrator](#narrator) for use as input to decision-making by a future feature. A Narrative can represent a single message, a block of messages, an entire conversation, a [Saga](#saga), an [Artifact](#artifact), or other material. Its types and fields are open for discussion before implementation.
+
+**Example:** A Narrative for a conversation about a design can capture the choice the user made and the question they left open, so a future feature can take both into account.
+
+## Narrator
+
+The planned feature that summarizes user prompts, agent responses, blocks of prompts and responses, entire [Chat Sessions](#chat-session), [Sagas](#saga), [Artifacts](#artifact), and other material as [Narratives](#narrative). The Narrator produces the summaries; a future feature uses them to make decisions. The [Narrator README](https://github.com/sylvan-stack/mycel/blob/main/scripts/narrator/README.md) describes how to generate labels and summarize text directly.
+
+**Example:** After several exchanges about a design, the Narrator can summarize that block as a Narrative. It can also summarize the whole Chat Session at a broader scope.
+
 ## Nex
 
 An individual participant in a continuing human–AI partnership, developing shared understanding and contributing to shared work. **Nex** is the shared identity for both [H-Nex](#h-nex) (human nex) and [A-Nex](#a-nex) (agent nex). The relationship is reciprocal: either participant can teach, learn, propose, question, initiate, or delegate according to the situation. Knowledge, expertise, initiative, and responsibilities can differ and change over time; neither participant has a permanently superior position by definition.
@@ -1292,7 +1353,7 @@ A pure, versioned conversion [Entity](#entity) that turns external-provider data
 
 ## Native Tool Call
 
-A tool the [Driver](#driver)'s CLI runs itself (`Bash, Read, Write, Edit, Glob, Grep`) instead of emitting an Arbol fence. The CLI executes; Arbol decides and audits. Permission asks ride the CLI's stdio bridge to [Arbol Root](#arbol-root), which routes each through the [Effector](#effector) classifier (a *decide-only* batch — same approve/deny/click pipeline, no execution) and answers the CLI. Two audit tracks linked by `tool_use_id`: the decision track (the [Tool Request](#tool-request) family with `origin: native`, only when the bridge is consulted) and the observational execution track (`IP_INVOKED_NATIVE_TOOL` / `IP_SETTLED_NATIVE_TOOL`, every execution). The legacy fence path survives as fallback for policy-denied commands and capabilities the tools don't cover. Per-IP, [Seqoya Lab](#seqoya-lab)-gated (`ip_settings.native_tools`); off keeps the fence-only path byte-identical.
+A tool the [Driver](#driver)'s CLI runs itself (`Bash, Read, Write, Edit, Glob, Grep`) instead of emitting an Arbol fence. The CLI executes; Arbol decides and audits. Permission asks ride the CLI's stdio bridge to Arbol, which routes each through the [Effector](#effector) classifier (a *decide-only* batch — same approve/deny/click pipeline, no execution) and answers the CLI. Two audit tracks linked by `tool_use_id`: the decision track (the [Tool Request](#tool-request) family with `origin: native`, only when the bridge is consulted) and the observational execution track (`IP_INVOKED_NATIVE_TOOL` / `IP_SETTLED_NATIVE_TOOL`, every execution). The legacy fence path survives as fallback for policy-denied commands and capabilities the tools don't cover. Per-IP, [Seqoya Lab](#seqoya-lab)-gated (`ip_settings.native_tools`); off keeps the fence-only path byte-identical.
 
 **Example:** Claude Code may directly call its `Read` tool for `README.md`; Arbol records that native tool execution and, when needed, routes permission decisions through Effector.
 
@@ -1539,17 +1600,46 @@ An [Arbol-Initiated Chat Session](#arbol-initiated-chat-session) dispatched to r
 
 **Example:** Before editing, the agent in a Chat Session sends a Research Trip to map how Chat Sessions are persisted; it returns a three-paragraph summary instead of fifty files of context.
 
+## Responsible Statement
+
+One identifiable statement in a [Responsible Tree](#responsible-tree). It can
+be a [Requirement](#requirement), a constraint, an instruction issued in a
+[Chat Session](#chat-session), an observation, or a conclusion. It records its
+wording, kind, source, and scope. It can link to the Responsible Statements it
+relies on. Whether it binds the work depends on the authority of its source
+and where it applies. A person or agent can record a conclusion with links
+to its basis. Someone with authority over that scope can adopt it as an
+instruction.
+
+**Example.** “Preserve the public API” can be a binding instruction for one
+task, with a link to the message that issued it. “The retry handler is the
+likely cause” is a conclusion that can link to a failing test.
+
+## Responsible Tree
+
+A planned, named hierarchy of [Responsible Statements](#responsible-statement)
+for a defined project scope or facet. It lets a person read the instructions
+that govern work in that area and trace the context and conclusions used to
+interpret them. A project can have several Responsible Trees. A task uses the
+trees that cover its work, including any standing instructions that apply
+across those areas and explicit instructions from its
+[Chat Session](#chat-session).
+
+A Responsible Statement has one place in the hierarchy and can rely on
+Responsible Statements in other trees.
+Initial sources include [Owner Goals](#owner-goal) and
+[Requirements](#requirement).
+
+**Example.** A Drivers tree records the standing requirement to implement
+drivers in Python. A task to fix a retry bug uses that tree and an instruction
+from its Chat Session to preserve the public API. A conclusion about where to
+put the fix can link to both statements.
+
 ## Retrieval
 
 [Mycel](#mycel)'s capability for querying its corpora. Mycel searches original artifact sections, code chunks and generated overview sections. Code search combines exact identifiers and embedding similarity. Use `mycel search --only code` for code. Standalone Narrator can generate summaries and short labels on request.
 
 **Example:** A [Research Trip](#research-trip) uses Retrieval to pull only the chunks relevant to "how are turns persisted" instead of reading whole files.
-
-## Root Contract
-
-The contract that an [Arbol Root](#arbol-root) shares with all its [Arbol Trunks](#arbol-trunk): the command `arbol-trunk`, the folder of each [Chat Exchange](#chat-exchange) while it runs, the chat tables of the Root's database, and a conformance suite that every Trunk Build passes. Only the Root Contract has version numbers: a Root uses one version, named as `rootContract` in its record, and each Trunk Build lists the versions it implements as `rootContracts`. A Trunk Build fits a Root when its list holds the Root's version, and Roots of the same version share every Trunk Build that fits. It replaces the name Trunk Contract. See [the Root Contract](../arbol-root/contract/README.md).
-
-**Example:** First Sapling and a second Root made from it both use version 1, so Build 4 of the [Trivial Trunk](#trivial-trunk), with `"rootContracts": [1, 2]`, runs in both without being built again.
 
 ## Runbook
 
@@ -1581,6 +1671,14 @@ The fifth stage of a [Feature Course](#feature-course). The Saga Planner, the ag
 The first step of [Ingest](#ingest): read every file of a [Corpus](#corpus) from disk and compute each file's whole-file content hash. Read-only — no database writes — and it produces the picture of "what exists right now" the rest of Ingest works from. A file whose hash matches the stored one is **skipped entirely** (its chunks are provably identical, since [Chunking](#chunking) is deterministic); this short-circuit is what makes an idle Ingest sub-second.
 
 **Example:** A [Sync Pass](#sync-pass) on an untouched corpus is a Scan and nothing more — ~360 files read and hashed, zero writes, done in well under a second.
+
+## Schema Revision
+
+The number of the latest migration successfully applied to Arbol's installed PostgreSQL database. The baseline is revision `1`. Each migration advances the revision by one and records it in the database's migration ledger in the same transaction as the migration.
+
+A database-dependent [Build](#build) declares a minimum schema revision for each schema compatibility version it supports. The database must have a supported compatibility version and meet its minimum revision. An additive migration can advance the revision while keeping the compatibility version. A breaking migration advances both. See [ARC-4](architecture/04-single-database.md#build-selection-and-release-compatibility).
+
+**Example.** Backend Build `c` requires revision `5` under compatibility version `1`. A database at revision `4` and compatibility version `1` has the right compatibility version and still needs migration `5` before it can serve that Build.
 
 ## Seqoya Lab
 
@@ -1636,7 +1734,7 @@ A durable, Leather-Bag-controlled designation attached to exactly one [Entity](#
 
 Spotlight is persisted as current set membership only: a database row means the Entity is Spotlighted; removing it deletes that row. It has no start/end dates, inactive rows, expiration, or retained Spotlight history. A Spotlight may target any Entity Kind, including a Communicado. It is fully orthogonal to Communicado status: Action Items are not Spotlighted automatically, and resolving a Spotlighted Action Item leaves its Spotlight intact.
 
-Willo Station renders the complete durable Spotlight set in a persistent column visible on every full Station page. Slack's 👀 reaction is one input gesture that Spotlights the canonical Slack thread-root Entity; it is removed after Root persists that designation.
+Willo Station renders the complete durable Spotlight set in a persistent column visible on every full Station page. Slack's 👀 reaction is one input gesture that Spotlights the canonical Slack thread-root Entity; it is removed after Arbol saves that designation.
 
 **Example:** Spotlighting a Slack thread keeps it visible throughout Willo Station and allows a separate Reaction to recognize future replies in that thread. It does not by itself ask the user to act or authorize an agent.
 
@@ -1656,7 +1754,7 @@ The **incremental** path for repairing a [RAPTOR Tree](#raptor-tree): re-run [RA
 
 ## State Runtime Profile
 
-The explicit `state` build/install selection whose dedicated Root, Default Trunk and Provider entrypoints use controller-bound PostgreSQL current-state authority and direct domain transactions. Its package contains no ELS executable; compiled/runtime import guards reject legacy authority, replay, aggregates/projections, snapshots and the separate offline importer. Typed render DTOs, Provider delivery sequences, current-state history, live overlays and dirty hints remain reusable. The default installed production profile remains `legacy` until actual acceptance and separately authorized production conversion. See [architecture](../arbol_deprecated_v1/architecture/state-runtime.md) and [operator contract](../arbol_deprecated_v1/tools/state-runtime.md).
+The explicit `state` build/install selection whose dedicated controller, Default Trunk and Provider entry points use controller-bound PostgreSQL current-state authority and direct domain transactions. Its package contains no ELS executable; compiled/runtime import guards reject legacy authority, replay, aggregates/projections, snapshots and the separate offline importer. Typed render DTOs, Provider delivery sequences, current-state history, live overlays and dirty hints remain reusable. The default installed production profile remains `legacy` until actual acceptance and separately authorized production conversion. See [architecture](../arbol_deprecated_v1/architecture/state-runtime.md) and [operator contract](../arbol_deprecated_v1/tools/state-runtime.md).
 
 ## Step Intention
 
@@ -1711,9 +1809,9 @@ One run of the routine that **synchronizes [Mycel](#mycel)'s stored graph with t
 
 ## Taproot
 
-Arbol's resident knowledge daemon — the tree's always-on main root into the [Mycel](#mycel) network (`daemons/taproot/`, binary `arbol-taproot`, label `com.arbol.taproot`, socket `taproot.sock`; formerly the "mycel client"). An Arbol-owned host that bundles Mycel's public library in the allowed direction to keep everything that must stay resident on the Arbol side of the dependency law: the [Corpus Watcher](#corpus-watcher), the debounced [Sync Pass](#sync-pass) loop, embedding and [RAPTOR](#raptor-tree) job supervision, search freshness, and every `knowledge.*`/`overlay.*`/`artifacts.*`/`repos.*` RPC that [Arbol Root](#arbol-root) proxies to it. Exists because Mycel itself is prohibited from running as a daemon; Taproot may die with Arbol without taking any Mycel capability with it (the severance test).
+Arbol's resident [Mycel](#mycel) host (`daemons/taproot/`, binary `arbol-taproot`, label `com.arbol.taproot`, socket `taproot.sock`; formerly the "mycel client"). An Arbol-owned host that bundles Mycel's public library in the allowed direction to keep everything that must stay resident on the Arbol side of the dependency law: the [Corpus Watcher](#corpus-watcher), the debounced [Sync Pass](#sync-pass) loop, embedding and [RAPTOR](#raptor-tree) job supervision, search freshness, and every `knowledge.*`/`overlay.*`/`artifacts.*`/`repos.*` RPC that the application proxies to it. Exists because Mycel itself is prohibited from running as a daemon; Taproot may die with Arbol without taking any Mycel capability with it (the severance test).
 
-**Example:** Seqoya's Dashboard polls `knowledge.activity` through Root → Taproot, while an agent's `mycel activity` reads the same feed daemon-less — same library, one resident host, one per-task CLI.
+**Example:** Seqoya's Dashboard polls `knowledge.activity` through Taproot, while an agent's `mycel activity` reads the same feed daemon-less — same library, one resident host, one per-task CLI.
 
 ## Text Snapshot
 
@@ -1747,9 +1845,9 @@ A whole-file hash record for a [Derivation](#derivation) source that isn't itsel
 
 ## Trivial Trunk
 
-The first [Arbol Trunk](#arbol-trunk), code name `trivial`: for each [Chat Exchange](#chat-exchange) it makes one Driver run with the route it is handed, and nothing else. It is the default Trunk of every [Arbol Root](#arbol-root), so a command that names no Trunk gets it, and a Root is marked working only while a working Build of it fits the Root. It carries as little logic as it can, so that Arbol keeps working when every other Trunk fails. It is not the [Default Arbol Trunk](#default-arbol-trunk) of version 1. See [the Trivial Trunk's specifications](../arbol-trunk/trunks/trivial/specs/README.md).
+The [Arbol Trunk](#arbol-trunk) with code name `trivial`. It runs one Driver with the resolved route for each [Chat Exchange](#chat-exchange). The installation selects it when the start request omits a Trunk code name. The selected Build must support the installed schema. See [the Trivial Trunk specifications](../arbol-trunk/trunks/trivial/specs/README.md).
 
-**Example:** `arbol-trunk run "What does build.sh do?"` starts the newest working Build of `trivial` that fits the current Root.
+**Example:** A start request with no Trunk code name uses the newest working, compatible Build of `trivial`.
 
 ## Trunk Runtime
 
@@ -1768,9 +1866,19 @@ A complete [Chat Exchange](#chat-exchange) may span several Turns, retries, fail
 
 ## UI
 
-A windowed [Surface](#surface) of Arbol. One [Arbol Swift App](#arbol-swift-app) opens one window per UI and Root. The window loads the shared renderer from the App Build, connects to the selected Root's backend and shows its display name. Compatible UI and backend Builds can change independently. The architecture names [Elma Chat](#elma-chat), [Willo Station](#willo-station) and [Seqoya Lab](#seqoya-lab). [BKD-2](backend/02-elma-chat.md) specifies Elma Chat. [BKD-3](backend/03-the-arbol-swift-app.md) specifies how the App opens and hosts these windows.
+<!-- mycel:cues
+literal: exclude
+-->
 
-**Example:** Elma Chat can be open in First Sapling and another retained Root at the same time. Each window reads from its own Root.
+<!-- mycel:cues
+type: literal
+match: ["Arbol UI"]
+cue_target: "arbol:GLOSSARY.md#Arbol Glossary > UI"
+-->
+
+A windowed [Surface](#surface) of Arbol. The [Arbol Swift App](#arbol-swift-app) loads the renderer for [Elma Chat](#elma-chat), [Willo Station](#willo-station) or [Seqoya Lab](#seqoya-lab). The windows use the installation backend through the [Bridge](#bridge). See [BKD-2](backend/02-elma-chat.md) and [BKD-3](backend/03-the-arbol-swift-app.md).
+
+**Example:** Elma Chat and Seqoya Lab can be open together and connect to the same installation backend.
 
 ## UIShell / Chrome
 

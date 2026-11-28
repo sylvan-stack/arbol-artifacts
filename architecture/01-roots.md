@@ -5,6 +5,13 @@ status: accepted
 ---
 # Architecture · 01 Roots
 
+## Single-database amendment
+
+[ARC-4](04-single-database.md) supersedes the operating model in this chapter for the single-database release. ARC-1.1–.28 and the associated Decisions and qualification below document how the installed Roots worked, including the archived states restored during cutover recovery. Do not implement catalogue/current selection, Root layouts, parallel Root compatibility or whole/chat reimport for the new release. The successor retains isolated qualification, persistent Exchange ownership, compatible Build discovery, local health/size and verifiable recovery under ARC-4.2–.8.
+
+This amendment applies to the release governed by ARC-4 upon its acceptance. The prior text, IDs, Decisions and qualification below retain their original scope.
+
+
 A Root is a named, persistent environment that holds compatible [Arbol Trunks](../GLOSSARY.md#arbol-trunk) together. It has an identity, a folder, a database, settings, and the [Builds](../GLOSSARY.md#build) of `arbol` and `arbol-root` made for it. Several Roots are kept side by side, and each stays usable. This specification states what belongs to a Root, how its manager finds compatible Trunks, how Arbol discovers work across Roots, and how chats move from an older Root to a newer one. It matters because version 1 could run one version only, and its last upgrade tried to convert all of history in place behind a gate that never closed. Here a breaking change, even a complete rewrite of Arbol, starts beside the Root in use and never touches its chats.
 
 It follows the conventions of the [Driver Contract](../driver-contract/README.md#conventions) and the additions in this chapter's [README](README.md#conventions).

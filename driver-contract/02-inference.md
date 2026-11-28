@@ -13,6 +13,13 @@ For these two Drivers, the tool chooses its configuration, permission defaults, 
 
 The tool owns its native Chat Session files, including in runs with no tools or no explicit working directory. Arbol resumes existing native history through the public provider interface. When it cannot resume and has earlier Arbol messages, it supplies them as labelled prompt context in a new native Chat Session. This supersedes the former shared conversation reconstruction and no-folder persistence exceptions for these two Drivers. The provider-specific requirements are CLD-2.27 and CDX-2.23.
 
+## Single-database amendment
+
+For [ARC-4](../architecture/04-single-database.md), replace DRV-2.37 and the request/environment behavior of DRV-D47 for participating Claude and Codex Drivers: optional field `arbolChat` may be absent or the literal boolean `true`. When true, require lowercase hyphenated UUID `chatSessionId` and pass only `ARBOL_CHAT=<uuid>` in the vendor tool environment for that run. Reject `rootId`, any non-true supplied marker or a malformed marked UUID before vendor launch. Never take identity from inherited `ARBOL_CHAT` or `ARBOL_ROOT`. Without the marker, `chatSessionId` remains optional and opaque and neither environment variable is set. Preserve continuity lookup; vendor-native IDs do not become chat UUIDs. Arbol sends the marker only to Drivers that implement it (Claude and Codex in this release); Pi and MiMo keep the existing opaque continuity field alone.
+
+This amendment applies to the release governed by ARC-4 upon its acceptance. The prior text, IDs, Decisions and qualification below retain their original scope.
+
+
 A *run* is one start of the vendor tool for one request: a Subscription, a model, model settings, a conversation and a new message go in, and a stream of events comes out that ends in exactly one outcome. A Driver keeps no conversation of its own: chat sessions and their history belong to the caller. This specification states what every Driver offers for runs. It matters because the run is where money is spent and where version 1 lost the most: failures reported as success, turns that never ended, and an agent that forgot its own work between messages.
 
 ## Scope

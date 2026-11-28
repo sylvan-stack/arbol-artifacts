@@ -13,6 +13,11 @@ Documentation and working documents for the `arbol` repository.
 
 The corpus was created on 2026-10-05. It holds the [Glossary](GLOSSARY.md), the [Architecture](architecture/README.md), the [Driver Contract](driver-contract/README.md) and the specification of [Builds and versions](builds/00-builds-and-versions.md). The catalog is [INDEX.md](INDEX.md).
 
+The [Mimo Driver specification set](mimo-driver/specs/README.md) is kept here while no
+dedicated Mimo Driver repository/corpus is registered. MIM-0–MIM-6 and their
+scoped contract additions were accepted on 28 October 2026; implementation and
+release qualification remain outstanding.
+
 Until the other documents are written or moved here, the rest of the documentation that drives the rewrite is in the frozen legacy corpus `~/Artifacts/arbol_deprecated_v1/`:
 
 - `product-spec/`: what Arbol does (start at `01-overview-and-scope.md`).

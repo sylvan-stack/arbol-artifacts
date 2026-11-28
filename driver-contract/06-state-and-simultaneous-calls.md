@@ -7,6 +7,14 @@ status: accepted
 
 A Driver is started anew for every operation, so everything it knows from one call to the next is in files. This specification names those files and their formats, says how several calls that run at the same moment keep out of each other's way, how one call reaches another that is already running, and what is done about the leftovers of a call that was killed. It matters because a Driver has no process that stays running and could keep order: the files and the rules for writing them are the only coordination there is.
 
+## File layout amendment
+
+For [ARC-5](../architecture/05-where-arbol-keeps-its-files.md), accepted on 17 November 2026, Arbol keeps nothing under `~/Library/Application Support/`. Its working state is in `~/.arbol/`, beside the settings, and its archival material on the external drive Mercury in `/Volumes/Mercury/Arbol/`. For this specification:
+
+- A Driver's files are under `~/.arbol/drivers/<driver>/` by default, or the folder named with `--state-dir`. The modes stay as below.
+
+This amendment applies from the release that moves the installation, as [ARC-5](../architecture/05-where-arbol-keeps-its-files.md) describes. The prior text, IDs and Decisions below keep their original scope.
+
 ## Scope
 
 Covered: the layout of the state directory, the format of each file in it, how files are written, the data format number, the map from chat sessions to the vendor tools' saved conversations and how a Driver decides whether a saved conversation still fits, records of runs and sign-ins in progress, locks, stopping a run from another call, replacing a sign-in, leftovers of a killed call, what the Driver remembers about the vendor tool's program.

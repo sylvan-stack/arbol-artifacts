@@ -9,6 +9,13 @@ status: accepted
 
 For all Drivers, [BLD-0.5](../builds/00-builds-and-versions.md#stable-promotion-and-requested-verification) and [OG-6](/Users/msix/Artifacts/goals/OG-6.md) govern stable promotion. The verification cases documented here and in each Driver's specifications belong to separately requested testing whenever they go beyond the promotion's unit selection. This rule supersedes earlier statements making conformance, provider gates, a live message, a rehearsal migration, or verification sign-off prerequisites for a stable Build. The product and migration requirements those cases exercise still apply.
 
+## Single-database amendment
+
+For the [ARC-4 release](../architecture/04-single-database.md), qualify marked Claude and Codex requests at the real child environment boundary. A valid chat UUID arrives as `ARBOL_CHAT` with no `ARBOL_ROOT`; inherited values do not leak into marked or unmarked runs. Malformed marked UUID, non-true marker and legacy `rootId` fail before vendor launch. An unmarked standalone opaque ID still resumes/rebuilds under existing continuity rules and creates no Arbol identity. Pi and MiMo are not asked to qualify the marker; qualify continuity without it. Preserve the old Root-identity results below as evidence of the previous release.
+
+This amendment applies to the release governed by ARC-4 upon its acceptance. The prior text, IDs, Decisions and qualification below retain their original scope.
+
+
 How a Driver proves that it meets this contract. One suite of scenarios runs against every Driver, with a scripted stand-in for its vendor tool, and needs no network, no account and no quota. Beside it are probes of the installed vendor tool, which cost nothing, and live checks, which spend quota and run only when asked for. This specification lists the scenarios and the rules for the other two. It matters because version 1's tests ran against a stand-in written for an older tool version and kept passing while the installed tool had moved on, and because probing a real tool on a real machine can damage the owner's own setup, as happened on 5 October 2026.
 
 ## Contract 2 credential modes
@@ -16,6 +23,16 @@ How a Driver proves that it meets this contract. One suite of scenarios runs aga
 The accepted [A1/A2 amendments](../../sagas/pi-integration-specs/cutover.md) apply to the scenarios below. Dated contract-1 verification is historical. C3 keeps its Keychain deletion case and adds native-owned rejection without deletion. C5/C39 require bound native-owned sign-out/removal refusal even with force. C7 inspects private child transport boundaries without exposing secrets. C9/C37 include Pi's real discovery and append-prompt preservation. C32 tests native key attachment without `store_secret` or public export. No mode may skip credential isolation checks. Separately requested verification for these credential modes covers Pi z.ai and DeepSeek and the Claude Anthropic regression and stale z.ai route, default, import and settings refusal (PI-M2/M2).
 
 ## Scope
+
+Accepted 28 October 2026: [MIM-A1–A3](../mimo-driver/specs/00-overview-and-boundary.md#shared-contract-additions)
+add explicit Mimo applicability. C1/C39 assert refusal of a second production
+Xiaomi record and isolated `test-xiaomi`; C3/C7/C32 test selected native lookup
+without deletion, public export or durable credential copy; C5/C39 assert bound
+native-owned sign-out/removal refusal even with force, without cancelling a run
+for an operation that will be refused; C9/C14/C37 allow only declared completed
+history import and retain native resource discovery. All 38 scenario identifiers
+and every applicable assertion remain required through the reviewed Mimo fixture.
+This is specification acceptance, not a passed Mimo suite or working Build.
 
 Covered: the stand-ins, the scenarios of the shared suite and the requirements each covers, the rules for probes and live checks.
 

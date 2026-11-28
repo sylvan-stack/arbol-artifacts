@@ -5,6 +5,13 @@ status: accepted
 ---
 # Architecture · 02 A Chat Exchange across the components
 
+## Single-database amendment
+
+For the [ARC-4 release](04-single-database.md), the Exchange UUID is the identity and one installation supplies its database and private Exchange folder. ARC-2.12 keeps the immutable concrete Trunk and Build but drops the Root from the durable record; ARC-2.13 uses one installation inventory and saved state for rediscovery and control after App/backend restart. A new start records the assignment in the same acceptance transaction as the open Exchange and message. Its acknowledgement is recoverable by the same UUID even after the folder is removed. Keep the Draft until acceptance is known, and use the same ID on uncertainty. Preserve ARC-2's one open Exchange per chat, detached process, live events, controls, and pending end retention. Drainage may answer/stop existing Exchanges and settle ended or interrupted work; settle before exclusive maintenance. The recorded compatible Build (or an explicitly qualified settlement reader for its format) commits the pending end once without restarting the Driver. See [RCT-2](../../arbol-root/contract/02-starting-stopping-and-settling.md).
+
+This amendment applies to the release governed by ARC-4 upon its acceptance. The prior text, IDs, Decisions and qualification below retain their original scope.
+
+
 This specification follows one message from the moment the [Leather Bag](../GLOSSARY.md#leather-bag) sends it to the final state of its [Chat Exchange](../GLOSSARY.md#chat-exchange), and states what passes between Arbol, Arbol Root and the Trunk on the way. It matters because version 1 chained the end of a turn to a separate service that could refuse it, and wrapped every streamed fragment in database rows: chats stayed "running" for ever, one failed turn blocked every other chat, and the disk filled twice. Here an Exchange is one process with one folder, its arriving answer is a file, and its end needs nobody's permission.
 
 It follows the conventions of the [Driver Contract](../driver-contract/README.md#conventions) and the additions in this chapter's [README](README.md#conventions).

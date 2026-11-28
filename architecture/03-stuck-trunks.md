@@ -5,6 +5,13 @@ status: accepted
 ---
 # Architecture · 03 Stuck Trunks
 
+## Single-database amendment
+
+For [ARC-4](04-single-database.md), apply ARC-3.5–.9 and .14 to the installation inventory and Exchange UUID. The one backend observes the same heartbeat and waiting reason after restart; self-watch still works when it is absent. Preserve the 10-second heartbeat, 60-second self-watch, 30-second polling and at-least-90-second comparison with sleep excluded, and the existing 20-second graceful stop and 5-second termination grace. An intentional wait is not a stuck Trunk. Signal only the recorded live process group. On forced or interrupted work, settle its buffered events with the recorded compatible Build or qualified settlement reader, respecting any recorded end; keep pending state visible until it is saved. A normal confirmed stop remains cancelled, and stopping an unknown or already ended Exchange remains harmless. These actions can drain accepted work before exclusive maintenance.
+
+This amendment applies to the release governed by ARC-4 upon its acceptance. The prior text, IDs, Decisions and qualification below retain their original scope.
+
+
 An [Arbol Trunk](../GLOSSARY.md#arbol-trunk) is *stuck* when its process is alive and does nothing: it gives no sign of life, or it was told to stop and does not. This specification states how that differs from waiting on purpose, how it is noticed although nothing but Arbol stays running, and how a stuck [Chat Exchange](../GLOSSARY.md#chat-exchange) is ended so that its chat can be used again. It matters because version 1 had no limit of any kind: a silent turn held its processes until someone stopped it, chats showed "running" for ever, and about fifteen one-off repair scripts were the way out.
 
 It follows the conventions of the [Driver Contract](../driver-contract/README.md#conventions) and the additions in this chapter's [README](README.md#conventions). The owner asked for this specification on 13 October 2026, because the decision is an important one ([ARC-D55](02-chat-exchange-across-components.md#decisions)), and decided its five points the same day (ARC-D57 to ARC-D61). The times are the values to start with.

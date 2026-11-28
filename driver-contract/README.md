@@ -55,6 +55,11 @@ Driver specifications: [Claude Driver](../../arbol-claude-driver/specs/README.md
 
 Permanent Pi originals: [Pi Driver corpus](../../arbol-pi-driver/specs/README.md), relocated by SYL-273 on 20 October 2026; accepted identifiers retained.
 
+Mimo originals: [Mimo Driver specifications](../mimo-driver/specs/README.md),
+accepted 28 October 2026 in this corpus until its dedicated repository is
+established. MIM-A1–A3 are the explicit Contract 2 account/credential/history
+additions; implementation and release qualification remain outstanding.
+
 ## Browser identity amendment · 14 November 2026
 
 [DRV-1's local lifetime proof](01-subscriptions.md#local-subscription-lifetime-proof--browser-amendment-14-november-2026), [DRV-6's format-2 admission and recovery](06-state-and-simultaneous-calls.md#identity-format-2-and-maintenance-boundary--14-november-2026) and [DRV-5 qualification](05-conformance.md#browser-identity-qualification-amendment--14-november-2026) are technical means for accepted BRW-1.11/.14, allocated by ABR-33. They are specified and unimplemented: older dated qualification and working Builds do not qualify them. Contract 2 stays unchanged; the optional capability revision is explicit and unsupported producers refuse Browser continuity. No owner state, installed Build or native credential store is migrated by this amendment.

@@ -5,9 +5,28 @@ status: implemented
 ---
 # Arbol backend · 00 The Arbol backend
 
+## Single-database amendment
+
+For [ARC-4](../architecture/04-single-database.md), one owner-only `arbol backend` instance serves the installation and its CLI clients. Remove Root flags, catalogue lookup and cross-Root comparison/reimport; replace the Root scope of BKD-0.1–.4, .6–.7, .11–.12, .16–.22, .27, .29–.30, .32–.33 and other Root-based settings, observations and health requirements. Read one installation configuration for connection, route/repository defaults, settings and listeners. Startup reports the one endpoint/Build without Root fields. App and CLI acquisition converge on it with the App open or closed. Keep private socket validation and explicit isolated test overrides.
+
+Read the installed schema; use the migration ledger as schema authority. Keep database outages distinct from incompatible/uninitialized schema and maintenance. Health and independent Driver account reads remain available where safe. Admit every mutation (including Draft reconciliation, metadata, paste/file storage, listeners, Vigor and profile changes) through the installation fence. During draining allow control of accepted work and settlement, preserve Drafts on a refused start, and avoid implicit writes from reads. Discovery and stop use Exchange UUID, the durable assignment and the installation runtime; no per-Root routing. Serve the same subscription and saved Vigor data and administration as the CLI. The application still does no DDL.
+
+This amendment applies to the release governed by ARC-4 upon its acceptance. The prior text, IDs, Decisions and qualification below retain their original scope.
+
+
 The *Arbol backend* is the one process of a [Root](../GLOSSARY.md#arbol-root)'s `arbol` [Build](../GLOSSARY.md#build) that serves the [Leather Bag](../GLOSSARY.md#leather-bag)'s windows in that Root. It reads the chats from the Root's database, keeps the [Drafts](../GLOSSARY.md#draft), sends a message by having `arbol-root` start an [Arbol Trunk](../GLOSSARY.md#arbol-trunk) for a new [Chat Exchange](../GLOSSARY.md#chat-exchange) (*Exchange* for short: the message and the agent's answer to it), follows the answer as it arrives in the Exchange's folder, passes on a stop and the Leather Bag's answers to the agent's questions, looks every 30 seconds for an Exchange that is stuck, notices a database that cannot be reached, lists the Leather Bag's Subscriptions through the [Drivers](../GLOSSARY.md#driver), and reports how much space the chats take. For example, when the Leather Bag sends "What does build.sh do?" in First Sapling, the backend writes a request file, runs `arbol-root --root sapling start --exchange 2d4f6a8c-… --request …/2d4f6a8c-….json`, reads the acceptance line, and from then on reads `exchanges/2d4f6a8c-…/events.jsonl` line by line and passes each line to every window that shows the chat. This specification states the process and its socket, the database and the backend's own tables, Drafts, sending and sending again, an Exchange in progress, stopping and answering the agent's questions, settling, stuck Exchanges, restarts and discovery across Roots, a database that cannot be reached, accounts, health and storage, and tests. It matters because in version 1 every window talked to a resident service that also ran the chats, so one failed turn could hold up every chat, a chat whose end could not be recorded showed "running" for ever, and the database filled its disk twice without anyone seeing it coming.
 
 It follows the conventions of the [Driver Contract](../driver-contract/README.md#conventions) and the additions in this chapter's [README](README.md#conventions). It makes exact what [ARC-0](../architecture/00-components-and-boundaries.md#arbol-the-swift-app-and-the-backend) to [ARC-3](../architecture/03-stuck-trunks.md) say of the backend, and is one party of the [Root Contract](../../arbol-root/contract/README.md), version 1: it reads the Exchange folder of [RCT-1](../../arbol-root/contract/01-the-exchange-folder.md) and the chat tables of [RCT-3](../../arbol-root/contract/03-the-chat-tables.md), and writes answers into `control`. The forms are technical choices made on 18 October 2026; the questions only the owner can settle are rows of the Decisions table with a proposed answer.
+
+## File layout amendment
+
+For [ARC-5](../architecture/05-where-arbol-keeps-its-files.md), accepted on 17 November 2026, Arbol keeps nothing under `~/Library/Application Support/`. Its working state is in `~/.arbol/`, beside the settings, and its archival material on the external drive Mercury in `/Volumes/Mercury/Arbol/`. For this specification:
+
+- The database data folder is `~/.arbol/postgres/data`.
+- The installation runtime and the backend's socket are in `~/.arbol/runtime/`, such as `~/.arbol/runtime/backend.sock`.
+- The Build registry is `~/.arbol/builds/`; examples below that show it under `~/Library/Application Support/Arbol/` describe the layout of their time.
+
+This amendment applies from the release that moves the installation, as [ARC-5](../architecture/05-where-arbol-keeps-its-files.md) describes. The prior text, IDs and Decisions below keep their original scope.
 
 ## Session import amendment
 
