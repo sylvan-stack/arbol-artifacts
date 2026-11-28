@@ -47,9 +47,9 @@ Origins: BKD-3.17 · Intention i-278c310f · 2026-11-18
 
 ## UsageEvidence
 
-Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
+Reason: Bind live calibration to the Codex Driver weekly window and update displayed capacity
 
-Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
+Origins: BKD-3.18 · Intention i-7b713a92 · 2026-11-28
 
 ## allowance
 
@@ -95,9 +95,9 @@ Origins: BKD-3.17 · Intention i-a65374d0 · 2026-11-12
 
 ## withAllowances
 
-Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
+Reason: Bind live calibration to the Codex Driver weekly window and update displayed capacity
 
-Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
+Origins: BKD-3.18 · Intention i-7b713a92 · 2026-11-28
 
 ## Capacity
 
@@ -131,9 +131,9 @@ Origins: BKD-3.17 · Intention i-d3d8c042 · 2026-11-12
 
 ## subscriptionMetrics
 
-Reason: Keep matching saved usage and price the card from its dashboard
+Reason: Bind live calibration to the Codex Driver weekly window and update displayed capacity
 
-Origins: BKD-3.18, BKD-3.20, BKD-3.26 · Intention i-c8d3ef5f · 2026-11-27
+Origins: BKD-3.18 · Intention i-7b713a92 · 2026-11-28
 
 ## <before windowCapacity>
 
@@ -338,4 +338,16 @@ Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
 Reason: Restore the exact Seqoya allowance and timed Vigor features shipped in the former Seqoya build while carrying forward the signed Browser and Driver integration.
 
 Origins: BKD-3.17, BKD-3.18 · Intention i-41652053 · 2026-11-27
+
+## CodexWeeklyCalibration
+
+Reason: Bind live calibration to the Codex Driver weekly window and update displayed capacity
+
+Origins: BKD-3.18 · Intention i-7b713a92 · 2026-11-28
+
+## continuousCodex
+
+Reason: Bind live calibration to the Codex Driver weekly window and update displayed capacity
+
+Origins: BKD-3.18 · Intention i-7b713a92 · 2026-11-28
 

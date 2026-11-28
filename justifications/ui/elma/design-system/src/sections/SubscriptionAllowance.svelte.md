@@ -5,9 +5,9 @@ role: authored
 
 ## <before style>
 
-Reason: Keep the availability controls while adopting the restored subscription footer, card order and saved estimate presentation.
+Reason: Bind live calibration to the Codex Driver weekly window and update displayed capacity
 
-Origins: BKD-3.17 · Intention i-2b2f526c · 2026-11-27
+Origins: BKD-3.18 · Intention i-7b713a92 · 2026-11-28
 
 ## script
 
