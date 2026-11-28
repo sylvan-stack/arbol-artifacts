@@ -95,9 +95,9 @@ Origins: BKD-3.17 · Intention i-a65374d0 · 2026-11-12
 
 ## withAllowances
 
-Reason: Bind live calibration to the Codex Driver weekly window and update displayed capacity
+Reason: Attribute local Codex calibration per Subscription by plan and weekly reset, as the A-B-A experiment showed per-response snapshots identify the paying Subscription
 
-Origins: BKD-3.18 · Intention i-7b713a92 · 2026-11-28
+Origins: BKD-3.18 · Intention i-793c5ac7 · 2026-11-28
 
 ## Capacity
 
