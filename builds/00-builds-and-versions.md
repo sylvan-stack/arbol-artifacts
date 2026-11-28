@@ -21,6 +21,14 @@ A temporary Build frames every window it shows with a three-point border in the 
 
 The Arbol Swift App implements it for the Elma Chat, Seqoya Lab and Willo Station windows and for the Browser launch window ([BKD-3.27](../backend/03-the-arbol-swift-app.md)). Arbol Browser and Arbol Builder Manager do not show the frame yet. Components without a window, such as the backend, Drivers, Trunks and the command-line tools, are not marked.
 
+## Arbol Builder Manager
+
+Arbol Builder Manager is a native app that lists the stable Build of each Arbol component, reports a missing or stale one, and builds and promotes a replacement through the build tool. It is the component `arbol-builder-manager`. Its recipe, its entry point and its packaging script are in the `builder-manager` folder of the `arbol-app` repository on the default branch, and it compiles the App's `Sources` folder with the `BUILDER_MANAGER` condition (BLD-0.30). It does not link the Browser supervisor. A failed Build can be opened as a repair draft in Elma Chat.
+
+The source was written between 21 and 23 November 2026 on a local line that was never published, and Build `7` was installed from it. On 28 November 2026 the owner asked for it to be brought onto the default branch.
+
+That line packaged the tray and the three windows as four components: `arbol-app`, `arbol-elma-chat`, `arbol-seqoya-lab` and `arbol-willo-station`. The default branch packages them as the one component `arbol-app`, whose resident is Seqoya Lab. The inventory still names the four, so it reports them as missing until it follows the packaging of the default branch. That change is open.
+
 ## Single-database amendment
 
 For [ARC-4](../architecture/04-single-database.md), replace BLD-0.17–.21 and the Root-specific parts of .9, .23, .28. Number each component independently, keep existing Build metadata and preserve the registry's separation from application code and schema. Database-dependent components declare `schemaCompatibility: [{"compatibilityVersion":1,"minRevision":3}]` in the build description and immutable Build record. Each version is a unique positive integer and each minimum is a positive revision. Match the installed version and minimum; legacy `rootContracts` alone does not fit. Neither Build tools nor launchers take a Root selector. Scope pruning protection to the installation's usable default(s), protected/running payloads and Builds needed for pending settlement or recorded release recovery.
@@ -469,6 +477,7 @@ Last-start recording and locking, accepted on 13 October 2026 ([BLD-D12](#decisi
 | BLD-0.27 | offer in Seqoya Lab a page that lists the Builds of each component with their last start, a Locked switch for each and the optional age-maintenance setting | New | journey (pending) |
 | BLD-0.28 <!-- 9f5c0b20-99bc-459b-b4c9-a153bf9609a2 --> | retain the newest runnable working payload per selection scope and any payload still in use or protected, remove superseded payloads after promotion or process release, and keep a failed Build’s record and log while clearing its payload | Changed · BLD-D25 | Retention drill pending |
 | BLD-0.29 | mark a running Build that is not the installed stable Build of its component: every window it shows carries the temporary-Build frame, a three-point border in the temporary-Build colour, and names the Build in its title; the stable Build shows nothing extra, and a component without a window is not marked | New | Design story `Native adapters/Temporary Build Frame`; the owner's view of a temporary Build |
+| BLD-0.30 | keep the source of Arbol Builder Manager in the `builder-manager` folder of `arbol-app` on the default branch, so that it builds as the component `arbol-builder-manager` from the shared checkout | New | `swiftc -typecheck` of the Builder Manager target and a linked executable on 28 November 2026; candidate Build pending |
 
 Every component must:
 
